@@ -114,18 +114,17 @@ def get_wordlists(path="lexibank.sqlite3"):
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [lidx, glottocode, family, concept, tokens, cog]
         
-    # retrieve best glottocodes
+    # retrieve best glottocodeis
     all_wordlists = {}
     for glottocode in wordlists:
-        if families[glottocode] and families[glottocode] not in ["Unattested"]:
-            if len(wordlists[glottocode]) == 1:
-                best_key = list(wordlists[glottocode].keys())[0]
-            else:
-                best_key = sorted(
-                        wordlist[glottocode].keys(),
-                        key=lambda x: x[1],
-                        reverse=True)[0]
-            all_wordlists[glottocode] = wordlists[glottocode][best_key]
+        if len(wordlists[glottocode]) == 1:
+            best_key = list(wordlists[glottocode].keys())[0]
+        else:
+            best_key = sorted(
+                    wordlist[glottocode].keys(),
+                    key=lambda x: x[1],
+                    reverse=True)[0]
+        all_wordlists[glottocode] = wordlists[glottocode][best_key]
     return all_wordlists
 
 
@@ -156,6 +155,17 @@ def training_data(wordlists, families, sample=0.8, threshold=5):
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
+
+    # assemble languages belonging to one family alone to form the group of
+    # unclassified languages which is our control group (!)
+    unclassified, delis = [], []
+    for fam, gcodes in by_fam.items():
+        if len(set(gcodes)) == 1:
+            unclassified.extend(gcodes)
+            delis.append(fam)
+    for fam in delis:
+        del by_fam[fam]
+    by_fam["Unclassified"] = unclassified
     
     # select 80% of languages per family, retain families with at least 5
     # exemplars
