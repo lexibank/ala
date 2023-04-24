@@ -233,7 +233,8 @@ def get_lingpy(data, header):
     data[0] = header
     wl = lingpy.Wordlist(data)
     for idx in wl:
-        wl[idx, "tokens"] = wl[idx, "tokens"].split()
+        if isinstance(wl[idx, "tokens"], str):
+            wl[idx, "tokens"] = wl[idx, "tokens"].split()
     return wl
 
 
