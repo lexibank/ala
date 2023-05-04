@@ -15,7 +15,7 @@ WL_QUERY = """SELECT
   p.cldf_name, 
   f.cldf_segments, 
   p.cldf_id || "-" || SUBSTR(
-    REPLACE(f.dolgo_sound_classes, "V", ""), 0, 3),
+    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
   c.Word_Number
 FROM
   formtable as f,
@@ -59,30 +59,40 @@ WHERE
   )
 ;"""
 
-
-WL_QUERY2 = """SELECT 
-  ROW_NUMBER() OVER() as ID,
-  l.cldf_id as IDX,
-  l.cldf_glottocode as DOCULECT, 
-  p.cldf_name as CONCEPT, 
-  f.cldf_segments as TOKENS, 
-  p.cldf_id || "-" || SUBSTR(
-    REPLACE(f.dolgo_sound_classes, "V", ""), 0, 3) as COG
+GB_QUERY = """SELECT 
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  p.cldf_name, 
+  f.cldf_value
 FROM
-  formtable as f,
+  valuetable as f,
   languagetable as l,
   parametertable as p
+ON 
+  f.cldf_languagereference = l.cldf_id
 WHERE
   f.cldf_parameterReference = p.cldf_id
     AND
   f.cldf_languageReference = l.cldf_id
-    AND
-  (
-    p.core_concept like "%Swadesh-1952-200%"
-      OR
-    p.core_concept like "%Swadesh-1955-100%"
-  )
-;"""
+"""
+
+
+def get_gb(path="grambank.sqlite3"):
+    """
+    Retrieve all wordlists from data.
+
+    Note: fetch biggest by glottocode.
+    """
+    db = get_db(path)
+    wordlists = defaultdict(lambda : defaultdict(dict))
+    db.execute(GB_QUERY)
+    for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
+        if tokens:
+            wordlists[glottocode][idx] = [idx, glottocode,
+                                                  concept, tokens,
+                                      "{0}-{1}".format(slug(concept), tokens)]
+    return wordlists
+
 
 
 def get_db(path):
@@ -180,6 +190,49 @@ def training_data(wordlists, families, sample=0.8, threshold=5):
                     gcode: wordlists[gcode] for gcode in 
                     gcodes if gcode not in train[fam]}
     return train, test
+
+
+
+def affiliate_by_grambank(
+        language, 
+        wordlist, 
+        wordlists, 
+        criterion="mean"
+        ):
+    """
+    """
+    crt = {"mean": 1, "median": 2, "max": 3, "min": 4}
+
+    # transform the language in the lingpy wordlist 
+    items = set()
+    for idx, doculect, concept, tokens in wordlist.iter_rows(
+            "doculect", "concept", "tokens"):
+        if doculect == language and tokens:
+            items.add(
+                    "{0}-{1}".format(
+                    slug(concept),
+                    tokens[0])
+                    )
+    matches = defaultdict(lambda : defaultdict(list))
+    
+    classes = []
+    for fam, data in wordlists.items():
+        scores = []
+        for gcode, words in data.items():
+            if gcode != language:
+                items_b =  set([row[4] for row in words.values()])
+                commons = items.intersection(items_b)
+                matches = len(commons) / len(items)
+                scores += [matches]
+        classes += [(
+            fam, 
+            statistics.mean(scores),
+            statistics.median(scores),
+            max(scores), 
+            min(scores)
+            )]
+    return sorted(classes, key=lambda x: x[crt[criterion]], reverse=True)[:3]
+
 
 
 def affiliate_by_consonant_class(

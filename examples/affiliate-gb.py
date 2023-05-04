@@ -1,4 +1,4 @@
-from ala import get_wordlists, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wordlists, get_gb, affiliate_by_grambank, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
 import random
 import statistics
 from tabulate import tabulate
@@ -8,12 +8,12 @@ THRESHOLD = 0.03
 LEVEL = 0
 min_classes = 3
 test_size = 10
-RUNS = 100
+RUNS = 10
 tt_split = 0.8
 TEST_SIZE = 250
 
 asjp = get_asjp()
-wordlists = get_wordlists("lexibank.sqlite3")
+wordlists = get_gb("grambank.sqlite3")
 
 results = {"TOTAL": []}
 
@@ -43,16 +43,16 @@ for i in range(RUNS):
                 sorted(itms), TEST_SIZE if TEST_SIZE <= len(itms) else len(itms))}
             wl = get_lingpy(
                 selected, 
-                ["lid", "doculect", "family", "concept", "tokens", "cog"])
-            fams = affiliate_by_consonant_class(
+                ["lid", "doculect", "concept", "tokens", "cog"])
+            fams = affiliate_by_grambank(
                     gcode, 
                     wl, 
                     train, 
                     criterion="max"
                     )
             best_fam = fams[0][0]
-            if best_fam == "Unclassified":
-                best_fam = ""
+            #if best_fam == "Unclassified":
+            #    best_fam = ""
             best_fam_score = fams[0][1]
             if best_fam_score <= THRESHOLD:
                 best_fam = "Unclassified"
@@ -137,7 +137,7 @@ test_size = 10
 RUNS = 5
 
 
-with open("results-lexibank-runs-{0}-{1}-{2}-{3}-{4:.2f}-{5:.2f}-{6}.tsv".format(
+with open("results-grambank-runs-{0}-{1}-{2}-{3}-{4:.2f}-{5:.2f}-{6}.tsv".format(
     LEVEL,
     min_classes,
     test_size,
