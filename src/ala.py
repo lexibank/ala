@@ -59,6 +59,7 @@ WHERE
   )
 ;"""
 
+
 GB_QUERY = """SELECT 
   ROW_NUMBER() OVER(),
   l.cldf_id,
@@ -77,6 +78,21 @@ WHERE
 """
 
 
+CONCEPT_QUERY = """SELECT
+  cldf_name
+FROM
+  parametertable
+WHERE
+  (
+    core_concept like "%Swadesh-1952-200%"
+      OR
+    core_concept like "%Swadesh-1955-100%"
+  );"""
+
+
+
+
+
 def get_gb(path="grambank.sqlite3"):
     """
     Retrieve all wordlists from data.
@@ -93,6 +109,52 @@ def get_gb(path="grambank.sqlite3"):
                                       "{0}-{1}".format(slug(concept), tokens)]
     return wordlists
 
+
+def concept2vec(db, model="dolgo"):
+    """
+    Function returns a function that converts data from one language to a vector.
+
+    The representation is based on a certain set of sound classes and the set
+    of concepts. For each concept, two slots of n sound classes each are
+    provided. 
+    """
+    sc_model = lingpy.rc(model)
+    # ugly hack, must refine dolgo-model in lingpy!
+    sc_model.tones = "1"
+
+    db.execute(CONCEPT_QUERY);
+    concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
+
+    sound_classes = [c for c in
+                     sorted(set(sc_model.converter.values())) if c not
+                     in "+_" + sc_model.vowels + sc_model.tones] + ["?"]
+    cls2idx = {c: i for i, c in enumerate(sound_classes)}
+
+    def converter(words):
+        nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in
+                  concepts]
+        
+        for concept, tokens in words:
+            class_string = lingpy.tokens2class(tokens, model)
+            reduced_string = [t for t in class_string if t in
+                              sound_classes][:2]
+            if not reduced_string:
+                first, second = "?", "?"
+            elif len(reduced_string) == 1:
+                if class_string[0] in sc_model.vowels:
+                    first, second = "?", reduced_string[0]
+                else:
+                    first, second = reduced_string[0], "?"
+            else:
+                first, second = reduced_string
+            nested_vector[concepts[concept]][0][cls2idx[first]] = 1
+            nested_vector[concepts[concept]][1][cls2idx[second]] = 1
+        vector = []
+        for a, b in nested_vector:
+            vector += a + b
+        return vector
+
+    return converter
 
 
 def get_db(path):
