@@ -5,15 +5,17 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 THRESHOLD = 0.03
-LEVEL = 0
+LEVEL = 1
 min_classes = 3
 test_size = 10
-RUNS = 10
+RUNS = 100
 tt_split = 0.8
 TEST_SIZE = 250
 
 asjp = get_asjp()
 wordlists = get_gb("grambank.sqlite3")
+control = get_wordlists("lexibank.sqlite3")
+wordlists = {k: v for k, v in wordlists.items() if k in control}
 
 results = {"TOTAL": []}
 

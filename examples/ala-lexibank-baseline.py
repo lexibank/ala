@@ -1,19 +1,23 @@
-from ala import get_wordlists, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wordlists, get_gb, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
 import random
 import statistics
 from tabulate import tabulate
 from tqdm import tqdm
 
 THRESHOLD = 0.03
-LEVEL = 0
+LEVEL = 0 # either family or genus in ASJP / WALS
 min_classes = 3
 test_size = 10
 RUNS = 100
 tt_split = 0.8
 TEST_SIZE = 250
 
+# we need asjp for family information
 asjp = get_asjp()
 wordlists = get_wordlists("lexibank.sqlite3")
+control = get_gb("grambank.sqlite3")
+# reduce to languages also found in grambank
+wordlists = {k: v for k, v in wordlists.items() if k in control}
 
 results = {"TOTAL": []}
 

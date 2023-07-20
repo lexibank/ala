@@ -6,6 +6,10 @@ from tqdm import tqdm
 from lingpy.convert.html import colorRange
 from collections import defaultdict
 from tabulate import tabulate
+from scipy.spatial.distance import cosine
+from itertools import combinations
+from clldutils.misc import slug
+
 
 
 # get database and converter
@@ -69,7 +73,6 @@ for fam in test:
 
 idx2fam = {v: k for k, v in fams.items()}
 
-
 nn = FF(
         len(vec3),
         2 * len(fams),
@@ -105,37 +108,21 @@ print(tabulate(table))
 
 
 
-# print("Compiled Training Data")
-# print("Vector-Length is {0}".format(len(vec3)))
-# epoch_loss, weights_in, weights_out = train_ff(
-#         len(vec3), #len(cognates),
-#         len(fams), #int(3 * len(fams) + 0.5),
-#         len(fams),
-#         20,
-#         np.array(training2, dtype="longdouble"),
-#         0.02,
-#         verbose=True)
-# 
-# 
-# from tabulate import tabulate
-# from scipy.spatial.distance import cosine
-# 
-# weights = np.transpose(weights_out[-1])
-# tab = []
-# for fam, idx in fams.items():
-#     cos = cosine(weights[fams[fam]], weights[fams["Sino-Tibetan"]])
-#     tab += [[fam, cos]]
-# tab = sorted(tab, key=lambda x: x[-1])
-# print(tabulate(tab, floatfmt=".2f"))
-# 
-# from itertools import combinations
-# from clldutils.misc import slug
-# 
-# distances = [[0.0 for f in fams] for f in fams]
-# for (fam_a, idx_a), (fam_b, idx_b) in combinations(fams.items(), r=2):
-#     distances[idx_a][idx_b] = distances[idx_b][idx_a] = cosine(weights[idx_a],
-#                                                                weights[idx_b])
-# 
+# write distances to phylip file
+weights = nn.output_layer 
+tab = []
+for fam, idx in fams.items():
+    cos = cosine(weights[fams[fam]], weights[fams["Sino-Tibetan"]])
+    tab += [[fam, cos]]
+tab = sorted(tab, key=lambda x: x[-1])
+print(tabulate(tab, floatfmt=".2f"))
+
+
+distances = [[0.0 for f in fams] for f in fams]
+for (fam_a, idx_a), (fam_b, idx_b) in combinations(fams.items(), r=2):
+    distances[idx_a][idx_b] = distances[idx_b][idx_a] = cosine(weights[idx_a],
+                                                               weights[idx_b])
+ 
 # idx2fam = {v: k for k, v in fams.items()}
 # with open("family-distances.tsv", "w") as f:
 #     f.write(" "+str(len(fams))+"\n")
