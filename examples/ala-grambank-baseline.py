@@ -5,7 +5,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 THRESHOLD = 0.03
-LEVEL = 1
+LEVEL = 0
 min_classes = 3
 test_size = 10
 RUNS = 100
