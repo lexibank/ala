@@ -5,7 +5,7 @@ from tabulate import tabulate
 from tqdm import tqdm
 
 THRESHOLD = 0.03
-LEVEL = 0 # either family or genus in ASJP / WALS
+LEVEL = 0  # either family or genus in ASJP / WALS
 min_classes = 3
 test_size = 10
 RUNS = 100
@@ -22,14 +22,13 @@ wordlists = {k: v for k, v in wordlists.items() if k in control}
 results = {"TOTAL": []}
 
 for i in range(RUNS):
-
     train, test = training_data(
-            wordlists, 
-            {k: v[LEVEL] for k, v in get_asjp().items()}, 
+            wordlists,
+            {k: v[LEVEL] for k, v in get_asjp().items()},
             tt_split,
             min_classes
             )
-    
+
     hits, scores, by_fam_table = [], [], []
     train_count, test_count = 0, 0
     for fam, data in tqdm(test.items()):
@@ -46,12 +45,12 @@ for i in range(RUNS):
             selected = {k: itms[k] for k in random.sample(
                 sorted(itms), TEST_SIZE if TEST_SIZE <= len(itms) else len(itms))}
             wl = get_lingpy(
-                selected, 
+                selected,
                 ["lid", "doculect", "family", "concept", "tokens", "cog"])
             fams = affiliate_by_consonant_class(
-                    gcode, 
-                    wl, 
-                    train, 
+                    gcode,
+                    wl,
+                    train,
                     criterion="max"
                     )
             best_fam = fams[0][0]
