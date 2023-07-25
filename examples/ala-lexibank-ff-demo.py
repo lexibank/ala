@@ -17,7 +17,7 @@ SPLIT = 0.8
 MIN_LANGS = 3
 
 # number of epochs
-EPOCHS = 5
+EPOCHS = 10
 # learning rate
 # !!! cut down to 0.01 or less to avoid vanishing gradient!
 LR = 0.01
@@ -92,12 +92,8 @@ for fam in train:
         vec3 = converter(words)
         vec3 = np.array(vec3)
         vec2 = np.array(vec2)
-        print(vec3.shape)
-        print(vec2.shape)
-        # print(vec3)
-        # print(type(vec3))
-        # print(len(vec3))
-        # print("---")
+        # print(vec3.shape)
+        # print(vec2.shape)
         # attach sound class vector and family vector to training2
         training2 += [[vec3, vec2]]
 

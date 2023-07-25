@@ -93,8 +93,10 @@ for fam in train:
         # one-hot encode the family that is looped
         vec2[fams[fam]] = 1
         vec = np.array(vec)
-        vec = vec.reshape(-1)
+        # vec = vec.reshape(-1)  # flat array
         vec2 = np.array(vec2)
+        vec2 = vec2.reshape(1, len(vec2))
+        # print(vec)
         # print(vec.shape)
         # print(vec2.shape)
         # print("--")
@@ -121,7 +123,7 @@ for fam in test:
             vec[params[row[-1]]][int(row[2])] = 1
 
         vec = np.array(vec)
-        vec = vec.reshape(-1)
+        # vec = vec.reshape(-1)
         testing += [vec]
         testing_true += [[fam, fams[fam]]]
 

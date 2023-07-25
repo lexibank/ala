@@ -395,7 +395,6 @@ class FF(object):
         self.epoch_loss = []
         self.verbose = verbose
 
-
     def train(self, training_data, epochs, learning_rate=0.01):
         for i in range(epochs):
             loss = 0
@@ -427,13 +426,14 @@ class FF(object):
                 print("Epoch: {0}, Loss: {1:.2f}".format(i+1, loss))
 
     def get_error(self, predicted, output_data):
+        print(output_data)
         idxs = set([i for i in range(len(output_data)) if output_data[i] == 1])
         idxs_l = len(idxs)
 
         total_error = [
                 (p - 1) + (idxs_l - 1) * p if i in idxs else idxs_l * p for i, p in enumerate(predicted)
-                ]           
-        return  np.array(total_error)
+                ]
+        return np.array(total_error)
 
     def get_loss(self, output_layer, output_data):
         #if [x for x in output_layer if x > 700]:
@@ -446,7 +446,6 @@ class FF(object):
         sum_2 = sum(output_data) * np.log(np.sum(np.exp(output_layer)))
         return sum_1 + sum_2
 
-
     def backward(
             self,
             total_error,
@@ -454,6 +453,9 @@ class FF(object):
             input_data,
             learning_rate
             ):
+        # print(input_data.shape)
+        # print(hidden_layer.shape)
+        # print(self.output_layer.shape)
         dl_hidden_in = np.outer(input_data, np.dot(self.output_layer, total_error.T))
         dl_hidden_out = np.outer(hidden_layer, total_error)
 
@@ -473,7 +475,6 @@ class FF(object):
         """
         e_x = np.exp(x - np.max(x))
         return e_x / e_x.sum(axis=0, keepdims=True)
-
 
     def forward(self, iweights, oweights, ivecs):
         # from input vectors to input weights for first layer
