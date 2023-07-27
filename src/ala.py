@@ -444,10 +444,6 @@ class FF(object):
         self.input_layer = self.input_layer - (learning_rate * dl_hidden_in)
         self.output_layer = self.output_layer - (learning_rate * dl_hidden_out)
 
-    #def softmax(self, x):
-    #    e_x = np.exp(x - np.max(x))
-    #    return e_x / e_x.sum(axis=0)
-
     def softmax(self, x):   
         """
         Following
@@ -455,8 +451,10 @@ class FF(object):
         in adding a constant to the softmax calculation to avoid floating point
         or large number problems in numpy.
         """
-	    e_x = np.exp(x - np.max(x))
-	    return e_x / e_x.sum(axis=0, keepdims=True)
+
+        e_x = np.exp(x - np.max(x))
+	    
+        return e_x / e_x.sum(axis=0, keepdims=True)
 
     def forward(self, iweights, oweights, ivecs):
         
