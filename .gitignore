@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Databases
+*sqlite3
+examples/asjp/
+examples/grambank/
+examples/lexibank-analysed/

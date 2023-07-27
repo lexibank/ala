@@ -1,4 +1,4 @@
-from ala import get_wordlists, FF, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wordlists, FF, affiliate_by_consonant_class, get_asjp, training_data, get_gb, get_gb_new
 from ala import concept2vec, get_db
 import numpy as np
 from typing import Optional
@@ -11,15 +11,17 @@ from itertools import combinations
 from clldutils.misc import slug
 
 
+# Family/Genus in ASJP
+LEVEL = 0
 # split percentage
 SPLIT = 0.8
 # mininum number of languages in family
 MIN_LANGS = 3
 
 # number of epochs
-EPOCHS = 10
+EPOCHS = 100
 # learning rate
-# !!! cut down to 0.01 or less to avoid vanishing gradient!
+# cut down to 0.01 or less to avoid vanishing gradient!
 LR = 0.01
 
 # get database and converter
@@ -29,20 +31,20 @@ converter = concept2vec(db, model="dolgo")
 
 # loads asjp and wordlists
 asjp = get_asjp()
-wordlists = get_wordlists("lexibank.sqlite3")
+wordlists = get_gb_new("grambank.sqlite3")
 
 # splits data
 train, test = training_data(
         wordlists,
-        {k: v[0] for k, v in get_asjp().items()},
+        {k: v[LEVEL] for k, v in get_asjp().items()},
         SPLIT,
         MIN_LANGS
         )
 
-# create dictionary for all concepts
-# ??? are we talking concepts, or cognates?
-cognates = {}
-COGID = 0
+# create dictionary for all parameters
+params = {}
+answers = defaultdict()
+P_ID = 0
 # creates numeric ID's for language families in data
 fams = {fam: i for i, fam in enumerate(train)}
 # families in training data
@@ -52,86 +54,98 @@ for fam in train:
         # idx and row of items of language
         for idx, row in data.items():
             # retrieve value of dictionary for concept
-            this_cogid = cognates.get(row[-1])
+            this_P_ID = params.get(row[-1])
             # if not in dic, create new entry
-            if this_cogid is None:
-                cognates[row[-1]] = COGID
-                COGID += 1
-
+            if this_P_ID is None:
+                params[row[-1]] = P_ID
+                answers[row[-1]] = [row[2]]
+                P_ID += 1
+            elif row[2] not in answers[row[-1]]:
+                answers[row[-1]].append(row[2])
+# !!! create vector with list of all parameters that can be set to 1/0
+# print(answers)
+for answer in answers:
+    if 0 not in answers[answer]:
+        answers[answer].append(0)
 # Create training vector
-# ??? Why training and training2?
-training = []  # present concepts and family
-training2 = []  # sound class vector and family
+training = []
 
 # train: {lng: [data]}
 for fam in train:
     # iterate through data for each language
     for lng, data in train[fam].items():
-        # list of cogs for language
-        # ??? Why is the if-condition necessary?
-        # ??? Are not all concepts added to this list?
-        # previously:  if row[-1] in cognates
-        cogs = [cognates[row[-1]] for row in data.values()]
-
-        # vector of 0's for whole set of concepts
-        vec = [0 for i in range(len(cognates))]
-        # set 1 all concepts that are present in data
-        for c in cogs:
-            vec[c] = 1
+        vec = [0 for i in range(len(params))]
+        for idx, item in enumerate(answers):
+            # max value is 3, so range needs to be 4
+            # all vectors of same length
+            vec[idx] = [0 for i in range(4)]
+        # set value at ID of parameter as value of parameter in data
+        # Note: This 0's all missing data
+        for row in data.values():
+            old_entry = vec[params[row[-1]]]
+            vec[params[row[-1]]][int(row[2])] = 1
+            # print("---")
+            # print("param:", row[-1])
+            # print("new value:", vec[params[row[-1]]])
+            # print("value:", row[2])
         # parallel to full-length vector for concepts, make this for families
         vec2 = [0 for i in range(len(fams))]
         # one-hot encode the family that is looped
         vec2[fams[fam]] = 1
-
-        # add concepts and one-hot family vector to training data
-        training += [[vec, vec2]]
-
-        # words: [concept, [form] ]
-        words = [[row[3], row[4].split()] for row in data.values()]
-        # convert to long vector of sound classes
-        vec3 = converter(words)
-        vec3 = np.array(vec3)
+        vec = np.array(vec)
+        vec = vec.reshape(-1)  # flat array
         vec2 = np.array(vec2)
-        # print(vec3.shape)
+        # vec2 = vec2.reshape(1, len(vec2))
+        # print(vec)
+        # print(vec.shape)
         # print(vec2.shape)
+        # print("--")
         # attach sound class vector and family vector to training2
-        training2 += [[vec3, vec2]]
-
+        training += [[vec, vec2]]
+        # +++ GB equivalent: binary vector for parameters
+        # +++ Try out for GB: one-hot encoding
 
 # Similar vector creation of items in test-set
 # +++ modify this to a function call instead
 testing, testing_true = [], []
-testing2 = []
 for fam in test:
     # iterate through all items again
     for lng, data in test[fam].items():
-        cogs = [cognates[row[-1]] for row in data.values() if row[-1] in cognates]
-        vec = [0 for i in range(len(cognates))]
-        for c in cogs:
-            vec[c] = 1
+        vec = [0 for i in range(len(params))]
+        for idx, item in enumerate(answers):
+            # max value is 3, so range needs to be 4
+            # all vectors of same length
+            vec[idx] = [0 for i in range(4)]
+        # set value at ID of parameter as value of parameter in data
+        # Note: This 0's all missing data
+        for row in data.values():
+            old_entry = vec[params[row[-1]]]
+            vec[params[row[-1]]][int(row[2])] = 1
+
+        vec = np.array(vec)
+        vec = vec.reshape(-1)
         testing += [vec]
         testing_true += [[fam, fams[fam]]]
-
-        words = [[row[3], row[4].split()] for row in data.values()]
-        testing2 += [converter(words)]
 
 # idx2fam:  dict: {ID: "Name"}
 # fams:     dict: {"Name": ID}
 idx2fam = {v: k for k, v in fams.items()}
 
+
 nn = FF(
-        len(vec3),      # input: length of vec3
+        len(vec),      # input: length of vec3
         2 * len(fams),  # hidden: vec with double the length of fams
         len(fams),      # output: vec with length of fams
         verbose=True
         )
 # input sound-class and family vector, epochs, and LR
-nn.train(training2, EPOCHS, LR)
+nn.train(training, EPOCHS, LR)
 
 # create confusion matrix
 out = []
 confusion = defaultdict(list)
-for tst, trueres in zip(testing2, testing_true):
+for tst, trueres in zip(testing, testing_true):
+    # print(tst)
     # Run prediction
     res = nn.predict(tst, nn.input_layer, nn.output_layer)
     # check if prediction has been made
