@@ -92,6 +92,13 @@ WHERE
 
 
 
+GB_PARAMS = """SELECT
+  p.cldf_name, c.cldf_name
+FROM
+  parametertable as p, codetable as c
+WHERE
+  p.cldf_id = c.cldf_parameterreference;"""
+
 
 
 def get_gb(path="grambank.sqlite3"):
@@ -111,6 +118,7 @@ def get_gb(path="grambank.sqlite3"):
                 ]
     return wordlists
 
+
 def get_gb_new(path="grambank.sqlite3"):
     """
     Retrieve all wordlists from data.
@@ -127,6 +135,28 @@ def get_gb_new(path="grambank.sqlite3"):
                 idx, glottocode, tokens, concept
                 ]
     return wordlists
+
+
+def feature2vec(db):
+    """
+    Function turns data from one language into a flat vector.
+    """
+    db.execute(GB_PARAMS)
+    # we need to find out for each param, how many values it has, so we do a
+    # query on grambank here
+    keys = defaultdict(dict)
+    for i, (param, code) in enumerate(db.fetchall()):
+        keys[param][code] = i
+
+    # with this, we can iterate over the data, passed as pairs of parameter and
+    # value
+    def converter(words):
+        vector = [0 for x in range(i+1)]
+        for param, value in words:
+            vector[keys[param][value]] = 1
+        return vector
+    return converter
+    
 
 
 def concept2vec(db, model="dolgo"):
@@ -397,7 +427,7 @@ class FF(object):
 
     def train(self, training_data, epochs, learning_rate=0.01):
         for i in range(epochs):
-            loss = 0
+            losses = []
             for input_data, output_data in tqdm.tqdm(
                     training_data, desc="epoch {0}".format(i+1)):
                 # forward pass on the network
@@ -418,15 +448,15 @@ class FF(object):
                         )
 
                 # loss calculation
-                loss += self.get_loss(output_layer, output_data)
-            self.epoch_loss.append(loss)
+                losses += [self.get_loss(predicted, output_data)]
+
+            self.epoch_loss.append(statistics.mean(losses))
             self.input_weights.append(self.input_layer)
             self.output_weights.append(self.output_layer)
             if self.verbose:
-                print("Epoch: {0}, Loss: {1:.2f}".format(i+1, loss))
+                print("Epoch: {0}, Loss: {1:.4f}".format(i+1, statistics.mean(losses)))
 
     def get_error(self, predicted, output_data):
-        print(output_data)
         idxs = set([i for i in range(len(output_data)) if output_data[i] == 1])
         idxs_l = len(idxs)
 
@@ -436,15 +466,10 @@ class FF(object):
         return np.array(total_error)
 
     def get_loss(self, output_layer, output_data):
-        #if [x for x in output_layer if x > 700]:
-        #    for i in range(len(output_layer)):
-        #        if output_layer[i] > 700:
-        #            output_layer[i] = 700
-    
-        sum_1 = -1 * sum(
-                [output_layer[i] for i, c in enumerate(output_data) if c == 1]) 
-        sum_2 = sum(output_data) * np.log(np.sum(np.exp(output_layer)))
-        return sum_1 + sum_2
+        """
+        Calculate cross-entropy loss.
+        """
+        return -np.log(sum(np.clip(output_layer, 1e-7, 1 - 1e-7) * output_data))
 
     def backward(
             self,
@@ -453,20 +478,13 @@ class FF(object):
             input_data,
             learning_rate
             ):
-        # print(input_data.shape)
-        # print(hidden_layer.shape)
-        # print(self.output_layer.shape)
         dl_hidden_in = np.outer(input_data, np.dot(self.output_layer, total_error.T))
         dl_hidden_out = np.outer(hidden_layer, total_error)
 
         self.input_layer = self.input_layer - (learning_rate * dl_hidden_in)
         self.output_layer = self.output_layer - (learning_rate * dl_hidden_out)
 
-    #def softmax(self, x):
-    #    e_x = np.exp(x - np.max(x))
-    #    return e_x / e_x.sum(axis=0)
-
-    def softmax(self, x):
+    def softmax(self, x):   
         """
         Following
         https://www.adeveloperdiary.com/data-science/deep-learning/neural-network-with-softmax-in-python/
@@ -490,4 +508,4 @@ class FF(object):
 
         y, hidden, u = self.forward(weights_in, weights_out, x)
 
-        return [i for i, v in enumerate(y) if v >= 0.99]
+        return np.argmax(y) 
