@@ -1,6 +1,6 @@
 from ala import (
-        get_wordlists, FF, affiliate_by_consonant_class, get_asjp, 
-        training_data, get_lingpy, get_gb)
+        get_wordlists, FF, affiliate_by_consonant_class, get_asjp, training_data, 
+        get_gb, get_db, feature2vec)
 from ala import concept2vec, get_db
 import numpy as np
 from typing import Optional
@@ -13,15 +13,16 @@ from itertools import combinations
 from clldutils.misc import slug
 
 
-db = get_db("lexibank.sqlite3")
-converter = concept2vec(db, model="dolgo")
-
-# load asjp to retrieve labels 
-grambank = get_gb("grambank.sqlite3")
+# get lexibank to filter identical glottocodes, asjp for labels, and grambank
+# data as "wordlists"
+lexibank = get_wordlists("lexibank.sqlite3")
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_wordlists("lexibank.sqlite3").items() if k in
-             grambank}
+wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items() if k in lexibank}
 
+# get converter for grambank data
+converter = feature2vec(get_db("grambank.sqlite3"))
+
+# split data into test and training set
 train, test = training_data(
         wordlists,
         {k: v[0] for k, v in get_asjp().items()},
@@ -29,43 +30,39 @@ train, test = training_data(
         3
         )
 
-
 fam2idx = {fam: i for i, fam in enumerate(train)}
 idx2fam = {v: k for k, v in fam2idx.items()}
 
-# Create training vector
-training = [] 
+# create training data now
+training = []
 
 # train: {lng: [data]}
 for fam in train:
     # iterate through data for each language
     for lng, data in train[fam].items():
-        # set true label
-        true_labels = [0 for i in range(len(fam2idx))]
-        true_labels[fam2idx[fam]] = 1
+        # get param-value pairs to retrieve the feature vector
+        words = [[x[2], x[3]] for x in data.values()]
+        feature_vector = converter(words)
+        
+        # get the result vector
+        result_vector = [0 for x in fam2idx]
+        result_vector[fam2idx[fam]] = 1
+        training += [[np.array(feature_vector), np.array(result_vector)]]
 
-        # retrieve data to create converter
-        words = [[row[3], row[4].split()] for row in data.values()]
-
-        # convert to long vector of sound classes
-        words_as_vector = converter(words)
-        training.append([np.array(words_as_vector), np.array(true_labels)])
-
-# Similar vector creation of items in test-set
 testing = []
 for fam in test:
     # iterate through all items again
     for data in test[fam].values():
-        words = [[row[3], row[4].split()] for row in data.values()]
+        words = [[row[2], row[3]] for row in data.values()]
         testing += [[converter(words), fam, fam2idx[fam]]]
 
 nn = FF(
-        len(words_as_vector),
+        len(feature_vector),
         2 * len(fam2idx),  
         len(fam2idx),
         verbose=True
         )
-nn.train(training, 20, 0.02)
+nn.train(training, 50, 0.005)
 
 # create confusion matrix
 out = []
@@ -74,7 +71,7 @@ for tst, fam, fam_idx in testing:
     res = nn.predict(tst, nn.input_layer, nn.output_layer)
 
     # assert that prediction is correct
-    if res == fam_idx or res == "?" and fam == "unclassified":
+    if res == fam_idx:
         out += [1]
     else:
         out += [0]

@@ -92,6 +92,13 @@ WHERE
 
 
 
+GB_PARAMS = """SELECT
+  p.cldf_name, c.cldf_name
+FROM
+  parametertable as p, codetable as c
+WHERE
+  p.cldf_id = c.cldf_parameterreference;"""
+
 
 
 def get_gb(path="grambank.sqlite3"):
@@ -105,10 +112,51 @@ def get_gb(path="grambank.sqlite3"):
     db.execute(GB_QUERY)
     for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
         if tokens:
-            wordlists[glottocode][idx] = [idx, glottocode,
-                                                  concept, tokens,
-                                      "{0}-{1}".format(slug(concept), tokens)]
+            wordlists[glottocode][idx] = [
+                idx, glottocode, concept, tokens,
+                "{0}-{1}".format(slug(concept), tokens)
+                ]
     return wordlists
+
+
+def get_gb_new(path="grambank.sqlite3"):
+    """
+    Retrieve all wordlists from data.
+
+    Note: fetch biggest by glottocode.
+    """
+    db = get_db(path)
+    wordlists = defaultdict(lambda : defaultdict(dict))
+    db.execute(GB_QUERY)
+    for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
+        if tokens:
+            wordlists[glottocode][idx] = [
+                # don't slug parameters
+                idx, glottocode, tokens, concept
+                ]
+    return wordlists
+
+
+def feature2vec(db):
+    """
+    Function turns data from one language into a flat vector.
+    """
+    db.execute(GB_PARAMS)
+    # we need to find out for each param, how many values it has, so we do a
+    # query on grambank here
+    keys = defaultdict(dict)
+    for i, (param, code) in enumerate(db.fetchall()):
+        keys[param][code] = i
+
+    # with this, we can iterate over the data, passed as pairs of parameter and
+    # value
+    def converter(words):
+        vector = [0 for x in range(i+1)]
+        for param, value in words:
+            vector[keys[param][value]] = 1
+        return vector
+    return converter
+    
 
 
 def concept2vec(db, model="dolgo"):
@@ -132,9 +180,8 @@ def concept2vec(db, model="dolgo"):
     cls2idx = {c: i for i, c in enumerate(sound_classes)}
 
     def converter(words):
-        nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in
-                  concepts]
-        
+        nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
+
         for concept, tokens in words:
             class_string = lingpy.tokens2class(tokens, model)
             reduced_string = [t for t in class_string if t in
@@ -239,7 +286,7 @@ def training_data(wordlists, families, sample=0.8, threshold=5):
     for fam in delis:
         del by_fam[fam]
     by_fam["Unclassified"] = unclassified
-    
+
     # select 80% of languages per family, retain families with at least 5
     # exemplars
     train, test = {}, {}
@@ -378,10 +425,9 @@ class FF(object):
         self.epoch_loss = []
         self.verbose = verbose
 
-
     def train(self, training_data, epochs, learning_rate=0.01):
         for i in range(epochs):
-            loss = 0
+            losses = []
             for input_data, output_data in tqdm.tqdm(
                     training_data, desc="epoch {0}".format(i+1)):
                 # forward pass on the network
@@ -400,47 +446,41 @@ class FF(object):
                         input_data,
                         learning_rate
                         )
-                
+
                 # loss calculation
-                loss += self.get_loss(output_layer, output_data)
-            self.epoch_loss.append(loss)
+                losses += [self.get_loss(predicted, output_data)]
+
+            self.epoch_loss.append(statistics.mean(losses))
             self.input_weights.append(self.input_layer)
             self.output_weights.append(self.output_layer)
             if self.verbose:
-                print("Epoch: {0}, Loss: {1:.2f}".format(i+1, loss))
+                print("Epoch: {0}, Loss: {1:.4f}".format(i+1, statistics.mean(losses)))
 
     def get_error(self, predicted, output_data):
-        
         idxs = set([i for i in range(len(output_data)) if output_data[i] == 1])
         idxs_l = len(idxs)
-            
+
         total_error = [
                 (p - 1) + (idxs_l - 1) * p if i in idxs else idxs_l * p for i, p in enumerate(predicted)
-                ]           
-        return  np.array(total_error)
+                ]
+        return np.array(total_error)
 
     def get_loss(self, output_layer, output_data):
-        #if [x for x in output_layer if x > 700]:
-        #    for i in range(len(output_layer)):
-        #        if output_layer[i] > 700:
-        #            output_layer[i] = 700
-    
-        sum_1 = -1 * sum(
-                [output_layer[i] for i, c in enumerate(output_data) if c == 1]) 
-        sum_2 = sum(output_data) * np.log(np.sum(np.exp(output_layer)))
-        return sum_1 + sum_2 
-
+        """
+        Calculate cross-entropy loss.
+        """
+        return -np.log(sum(np.clip(output_layer, 1e-7, 1 - 1e-7) * output_data))
 
     def backward(
             self,
-            total_error, 
-            hidden_layer, 
+            total_error,
+            hidden_layer,
             input_data,
             learning_rate
             ):
         dl_hidden_in = np.outer(input_data, np.dot(self.output_layer, total_error.T))
         dl_hidden_out = np.outer(hidden_layer, total_error)
-    
+
         self.input_layer = self.input_layer - (learning_rate * dl_hidden_in)
         self.output_layer = self.output_layer - (learning_rate * dl_hidden_out)
 
@@ -451,24 +491,21 @@ class FF(object):
         in adding a constant to the softmax calculation to avoid floating point
         or large number problems in numpy.
         """
-
         e_x = np.exp(x - np.max(x))
-	    
         return e_x / e_x.sum(axis=0, keepdims=True)
 
     def forward(self, iweights, oweights, ivecs):
-        
         # from input vectors to input weights for first layer
         hidden = np.dot(iweights.T, ivecs)
         # from first layer to output layer
         out = np.dot(oweights.T, hidden)
         # prediction with softmax
         predicted = self.softmax(out)
-    
+
         return predicted, hidden, out
-    
+
     def predict(self, x, weights_in, weights_out):
-        
+
         y, hidden, u = self.forward(weights_in, weights_out, x)
-    
-        return [i for i, v in enumerate(y) if v >= 0.99]
+
+        return np.argmax(y) 

@@ -20,14 +20,13 @@ wordlists = {k: v for k, v in wordlists.items() if k in control}
 results = {"TOTAL": []}
 
 for i in range(RUNS):
-
     train, test = training_data(
-            wordlists, 
-            {k: v[LEVEL] for k, v in get_asjp().items()}, 
+            wordlists,
+            {k: v[LEVEL] for k, v in get_asjp().items()},
             tt_split,
             min_classes
             )
-    
+
     hits, scores, by_fam_table = [], [], []
     train_count, test_count = 0, 0
     for fam, data in tqdm(test.items()):
@@ -44,12 +43,12 @@ for i in range(RUNS):
             selected = {k: itms[k] for k in random.sample(
                 sorted(itms), TEST_SIZE if TEST_SIZE <= len(itms) else len(itms))}
             wl = get_lingpy(
-                selected, 
+                selected,
                 ["lid", "doculect", "concept", "tokens", "cog"])
             fams = affiliate_by_grambank(
-                    gcode, 
-                    wl, 
-                    train, 
+                    gcode,
+                    wl,
+                    train,
                     criterion="max"
                     )
             best_fam = fams[0][0]
@@ -138,7 +137,6 @@ min_classes = 3
 test_size = 10
 RUNS = 5
 
-
 with open("results-grambank-runs-{0}-{1}-{2}-{3}-{4:.2f}-{5:.2f}-{6}.tsv".format(
     LEVEL,
     min_classes,
@@ -148,7 +146,7 @@ with open("results-grambank-runs-{0}-{1}-{2}-{3}-{4:.2f}-{5:.2f}-{6}.tsv".format
     tt_split,
     TEST_SIZE), "w") as f:
     f.write("\t".join([
-        "Family", 
+        "Family",
         "Training",
         "Testing",
         "Samples",
@@ -168,4 +166,3 @@ with open("results-grambank-runs-{0}-{1}-{2}-{3}-{4:.2f}-{5:.2f}-{6}.tsv".format
                 '\t'+
                 '\t'.join(["{0:.2f}".format(x) for x in row[5:]])+
                 "\n")
-
