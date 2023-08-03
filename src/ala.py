@@ -92,6 +92,11 @@ WHERE
 
 
 
+GB_PARAMS = """SELECT
+  cldf_name
+FROM
+  parametertable;"""
+
 
 
 def get_gb(path="grambank.sqlite3"):
@@ -102,14 +107,18 @@ def get_gb(path="grambank.sqlite3"):
     """
     db = get_db(path)
     wordlists = defaultdict(lambda : defaultdict(dict))
+    db.execute(GB_PARAMS)
+    params = [x[0] for x in db.fetchall()] 
     db.execute(GB_QUERY)
+   
     for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
         if tokens:
             wordlists[glottocode][idx] = [
                 idx, glottocode, concept, tokens,
                 "{0}-{1}".format(slug(concept), tokens)
                 ]
-    return wordlists
+    return params, wordlists
+
 
 def get_gb_new(path="grambank.sqlite3"):
     """
@@ -397,7 +406,7 @@ class FF(object):
 
     def train(self, training_data, epochs, learning_rate=0.01):
         for i in range(epochs):
-            loss = 0
+            losses = []
             for input_data, output_data in tqdm.tqdm(
                     training_data, desc="epoch {0}".format(i+1)):
                 # forward pass on the network
@@ -418,15 +427,15 @@ class FF(object):
                         )
 
                 # loss calculation
-                loss += self.get_loss(output_layer, output_data)
-            self.epoch_loss.append(loss)
+                losses += [self.get_loss(predicted, output_data)]
+
+            self.epoch_loss.append(statistics.mean(losses))
             self.input_weights.append(self.input_layer)
             self.output_weights.append(self.output_layer)
             if self.verbose:
-                print("Epoch: {0}, Loss: {1:.2f}".format(i+1, loss))
+                print("Epoch: {0}, Loss: {1:.2f}".format(i+1, statistics.mean(losses)))
 
     def get_error(self, predicted, output_data):
-        print(output_data)
         idxs = set([i for i in range(len(output_data)) if output_data[i] == 1])
         idxs_l = len(idxs)
 
@@ -436,15 +445,10 @@ class FF(object):
         return np.array(total_error)
 
     def get_loss(self, output_layer, output_data):
-        #if [x for x in output_layer if x > 700]:
-        #    for i in range(len(output_layer)):
-        #        if output_layer[i] > 700:
-        #            output_layer[i] = 700
-    
-        sum_1 = -1 * sum(
-                [output_layer[i] for i, c in enumerate(output_data) if c == 1]) 
-        sum_2 = sum(output_data) * np.log(np.sum(np.exp(output_layer)))
-        return sum_1 + sum_2
+        """
+        Calculate cross-entropy loss.
+        """
+        return -np.log(sum(output_layer * output_data))
 
     def backward(
             self,
@@ -453,18 +457,11 @@ class FF(object):
             input_data,
             learning_rate
             ):
-        # print(input_data.shape)
-        # print(hidden_layer.shape)
-        # print(self.output_layer.shape)
         dl_hidden_in = np.outer(input_data, np.dot(self.output_layer, total_error.T))
         dl_hidden_out = np.outer(hidden_layer, total_error)
 
         self.input_layer = self.input_layer - (learning_rate * dl_hidden_in)
         self.output_layer = self.output_layer - (learning_rate * dl_hidden_out)
-
-    #def softmax(self, x):
-    #    e_x = np.exp(x - np.max(x))
-    #    return e_x / e_x.sum(axis=0)
 
     def softmax(self, x):
         """
@@ -490,4 +487,4 @@ class FF(object):
 
         y, hidden, u = self.forward(weights_in, weights_out, x)
 
-        return [i for i, v in enumerate(y) if v >= 0.99]
+        return np.argmax(y) 
