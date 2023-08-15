@@ -61,16 +61,16 @@ WHERE
 ;"""
 
 
-GB_QUERY = """SELECT 
+GB_QUERY = """SELECT
   ROW_NUMBER() OVER(),
   l.cldf_id,
-  p.cldf_name, 
+  p.cldf_name,
   f.cldf_value
 FROM
   valuetable as f,
   languagetable as l,
   parametertable as p
-ON 
+ON
   f.cldf_languagereference = l.cldf_id
 WHERE
   f.cldf_parameterReference = p.cldf_id
