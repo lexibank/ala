@@ -1,26 +1,36 @@
 from ala import (
-        get_wordlists, FF, affiliate_by_consonant_class, get_asjp, training_data, 
+        get_wordlists, FF, get_asjp, training_data,
         get_gb, get_db, feature2vec)
-from ala import concept2vec, get_db
+from ala import get_db
 import numpy as np
-from typing import Optional
-from tqdm import tqdm
 from lingpy.convert.html import colorRange
-from collections import defaultdict
+from collections import defaultdict, Counter
 from tabulate import tabulate
 from scipy.spatial.distance import cosine
 from itertools import combinations
 from clldutils.misc import slug
+from statistics import mean, stdev
 
 
+RUNS = 100
+scores = []
 # Languages for prediction
 control_languages = {
+    # South America
+    "kunz1244": "Kunza",
     "movi1243": "Movima",
-    "yura1255": "Yuracaré",
-    "mose1249": "Mosetén",
-    "kusu1250": "Kusunda"
+
+    # Eurasia
+    "kusu1250": "Kusunda",
+
+    # Africa
+    "bang1363": "Bangime",
+
+    # Pacific
+    "savo1255": "Savosavo",
+    "yele1255": "Yele",
 }
-control = []
+results = defaultdict()
 
 # get lexibank to filter identical glottocodes, asjp for labels, and grambank
 # data as "wordlists"
@@ -31,74 +41,89 @@ wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items() if k in lexiban
 # get converter for grambank data
 converter = feature2vec(get_db("grambank.sqlite3"))
 
-# split data into test and training set
-train, test = training_data(
-        wordlists,
-        {k: v[0] for k, v in get_asjp().items()},
-        0.8,
-        3
-        )
+for run in range(RUNS):
+    control = []
 
-fam2idx = {fam: i for i, fam in enumerate(train)}
-idx2fam = {v: k for k, v in fam2idx.items()}
+    # split data into test and training set
+    train, test = training_data(
+            wordlists,
+            {k: v[0] for k, v in get_asjp().items()},
+            0.8,
+            3
+            )
 
-# create training data now
-training = []
+    fam2idx = {fam: i for i, fam in enumerate(train)}
+    idx2fam = {v: k for k, v in fam2idx.items()}
 
-# train: {lng: [data]}
-for fam in train:
-    # iterate through data for each language
-    for lng, data in train[fam].items():
-        # get param-value pairs to retrieve the feature vector
-        words = [[x[2], x[3]] for x in data.values()]
-        feature_vector = converter(words)
+    # create training data now
+    training = []
 
-        # get the result vector
-        result_vector = [0 for x in fam2idx]
-        result_vector[fam2idx[fam]] = 1
-        if lng in control_languages:
-            control.append([np.array(feature_vector), control_languages[lng]])
+    # train: {lng: [data]}
+    for fam in train:
+        # iterate through data for each language
+        for lng, data in train[fam].items():
+            # get param-value pairs to retrieve the feature vector
+            words = [[x[2], x[3]] for x in data.values()]
+            feature_vector = converter(words)
+            # get the result vector
+            result_vector = [0 for x in fam2idx]
+            result_vector[fam2idx[fam]] = 1
+            if lng in control_languages:
+                control.append([np.array(feature_vector), control_languages[lng]])
+            else:
+                training.append([np.array(feature_vector), np.array(result_vector)])
+
+    testing = []
+    for fam in test:
+        # iterate through all items again
+        for lng, data in test[fam].items():
+            words = [[row[2], row[3]] for row in data.values()]
+            feature_vector = converter(words)
+            if lng in control_languages:
+                control.append([np.array(feature_vector), control_languages[lng]])
+            else:
+                testing += [[converter(words), fam, fam2idx[fam]]]
+
+    nn = FF(
+            len(feature_vector),
+            3*len(fam2idx),
+            len(fam2idx),
+            verbose=True
+            )
+    nn.train(training, 80, 0.005)
+
+    # create confusion matrix
+    out = []
+    confusion = defaultdict(list)
+    for tst, fam, fam_idx in testing:
+        res = nn.predict(tst, nn.input_layer, nn.output_layer)
+
+        # assert that prediction is correct
+        if res == fam_idx:
+            out += [1]
         else:
-            training.append([np.array(feature_vector), np.array(result_vector)])
+            out += [0]
+            confusion[fam] += [idx2fam[res]]
+    print("Correct:", round(sum(out) / len(out), 3))
+    print("Wrong:", round(out.count(0) / len(out), 3))
+    scores.append(round(sum(out) / len(out), 3))
 
+    for lang in control:
+        prediction = nn.predict(lang[0], nn.input_layer, nn.output_layer)
 
-testing = []
-for fam in test:
-    # iterate through all items again
-    for lng, data in test[fam].items():
-        words = [[row[2], row[3]] for row in data.values()]
-        feature_vector = converter(words)
-        if lng in control_languages:
-            control.append([np.array(feature_vector), control_languages[lng]])
+        if lang[1] in results:
+            results[lang[1]].append(idx2fam[prediction])
         else:
-            testing += [[converter(words), fam, fam2idx[fam]]]
+            results[lang[1]] = [idx2fam[prediction]]
 
-nn = FF(
-        len(feature_vector),
-        2 * len(fam2idx),
-        len(fam2idx),
-        verbose=True
-        )
-nn.train(training, 50, 0.005)
+# Output for isolate-classification
+# for item in results:
+#     print(item, Counter(results[item]))
 
-# create confusion matrix
-out = []
-confusion = defaultdict(list)
-for tst, fam, fam_idx in testing:
-    res = nn.predict(tst, nn.input_layer, nn.output_layer)
+print("---")
 
-    # assert that prediction is correct
-    if res == fam_idx:
-        out += [1]
-    else:
-        out += [0]
-        confusion[fam] += [idx2fam[res]]
-print("Correct:", round(sum(out) / len(out), 3))
-print("Wrong:", round(out.count(0) / len(out), 3))
-
-for lang in control:
-    prediction = nn.predict(lang[0], nn.input_layer, nn.output_layer)
-    print(lang[1], idx2fam[prediction])
+print("Overall:", round(mean(scores), 2))
+print("Standard deviation:", round(stdev(scores), 2))
 
 # Print confusion table
 # table = []
