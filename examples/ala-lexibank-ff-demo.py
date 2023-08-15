@@ -1,6 +1,6 @@
 from ala import (
-        get_wordlists, FF, affiliate_by_consonant_class, get_asjp, 
-        training_data, get_lingpy, get_gb)
+        get_wordlists, FF, get_asjp, training_data, get_gb
+        )
 from ala import concept2vec, get_db
 import numpy as np
 from typing import Optional
@@ -12,6 +12,15 @@ from scipy.spatial.distance import cosine
 from itertools import combinations
 from clldutils.misc import slug
 
+
+# Languages for prediction
+control_languages = {
+    "movi1243": "Movima",
+    "yura1255": "Yuracaré",
+    "mose1249": "Mosetén",
+    "kusu1250": "Kusunda"
+}
+control = []
 
 db = get_db("lexibank.sqlite3")
 converter = concept2vec(db, model="dolgo")
@@ -49,19 +58,27 @@ for fam in train:
 
         # convert to long vector of sound classes
         words_as_vector = converter(words)
-        training.append([np.array(words_as_vector), np.array(true_labels)])
+        if lng in control_languages:
+            control.append([np.array(words_as_vector), control_languages[lng]])
+        else:
+            training.append([np.array(words_as_vector), np.array(true_labels)])
+
 
 # Similar vector creation of items in test-set
 testing = []
 for fam in test:
     # iterate through all items again
-    for data in test[fam].values():
+    for lng, data in test[fam].items():
         words = [[row[3], row[4].split()] for row in data.values()]
-        testing += [[converter(words), fam, fam2idx[fam]]]
+        words_as_vector = converter(words)
+        if lng in control_languages:
+            control.append([np.array(words_as_vector), control_languages[lng]])
+        else:
+            testing += [[words_as_vector, fam, fam2idx[fam]]]
 
 nn = FF(
         len(words_as_vector),
-        2 * len(fam2idx),  
+        2 * len(fam2idx),
         len(fam2idx),
         verbose=True
         )
@@ -81,6 +98,10 @@ for tst, fam, fam_idx in testing:
         confusion[fam] += [idx2fam[res]]
 print("Correct:", round(sum(out) / len(out), 3))
 print("Wrong:", round(out.count(0) / len(out), 3))
+
+for lang in control:
+    prediction = nn.predict(lang[0], nn.input_layer, nn.output_layer)
+    print(lang[1], idx2fam[prediction])
 
 # Print confusion table
 # table = []

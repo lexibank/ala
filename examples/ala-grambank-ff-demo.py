@@ -13,6 +13,15 @@ from itertools import combinations
 from clldutils.misc import slug
 
 
+# Languages for prediction
+control_languages = {
+    "movi1243": "Movima",
+    "yura1255": "Yuracaré",
+    "mose1249": "Mosetén",
+    "kusu1250": "Kusunda"
+}
+control = []
+
 # get lexibank to filter identical glottocodes, asjp for labels, and grambank
 # data as "wordlists"
 lexibank = get_wordlists("lexibank.sqlite3")
@@ -43,22 +52,30 @@ for fam in train:
         # get param-value pairs to retrieve the feature vector
         words = [[x[2], x[3]] for x in data.values()]
         feature_vector = converter(words)
-        
+
         # get the result vector
         result_vector = [0 for x in fam2idx]
         result_vector[fam2idx[fam]] = 1
-        training += [[np.array(feature_vector), np.array(result_vector)]]
+        if lng in control_languages:
+            control.append([np.array(feature_vector), control_languages[lng]])
+        else:
+            training.append([np.array(feature_vector), np.array(result_vector)])
+
 
 testing = []
 for fam in test:
     # iterate through all items again
-    for data in test[fam].values():
+    for lng, data in test[fam].items():
         words = [[row[2], row[3]] for row in data.values()]
-        testing += [[converter(words), fam, fam2idx[fam]]]
+        feature_vector = converter(words)
+        if lng in control_languages:
+            control.append([np.array(feature_vector), control_languages[lng]])
+        else:
+            testing += [[converter(words), fam, fam2idx[fam]]]
 
 nn = FF(
         len(feature_vector),
-        2 * len(fam2idx),  
+        2 * len(fam2idx),
         len(fam2idx),
         verbose=True
         )
@@ -78,6 +95,10 @@ for tst, fam, fam_idx in testing:
         confusion[fam] += [idx2fam[res]]
 print("Correct:", round(sum(out) / len(out), 3))
 print("Wrong:", round(out.count(0) / len(out), 3))
+
+for lang in control:
+    prediction = nn.predict(lang[0], nn.input_layer, nn.output_layer)
+    print(lang[1], idx2fam[prediction])
 
 # Print confusion table
 # table = []
