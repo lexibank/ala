@@ -8,13 +8,13 @@ import statistics
 import numpy as np
 
 
-WL_QUERY = """SELECT 
+WL_QUERY = """SELECT
   ROW_NUMBER() OVER(),
   l.cldf_id,
-  l.cldf_glottocode, 
+  l.cldf_glottocode,
   l.family,
-  p.cldf_name, 
-  f.cldf_segments, 
+  p.cldf_name,
+  f.cldf_segments,
   p.cldf_id || "-" || SUBSTR(
     REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
   c.Word_Number
@@ -44,7 +44,7 @@ INNER JOIN
     GROUP BY
       l_2.cldf_glottocode
   ) as c
-ON 
+ON
   c.cldf_glottocode = l.cldf_glottocode
 WHERE
   f.cldf_parameterReference = p.cldf_id
@@ -91,14 +91,12 @@ WHERE
   );"""
 
 
-
 GB_PARAMS = """SELECT
   p.cldf_name, c.cldf_name
 FROM
   parametertable as p, codetable as c
 WHERE
   p.cldf_id = c.cldf_parameterreference;"""
-
 
 
 def get_gb(path="grambank.sqlite3"):
@@ -156,7 +154,6 @@ def feature2vec(db):
             vector[keys[param][value]] = 1
         return vector
     return converter
-    
 
 
 def concept2vec(db, model="dolgo"):
@@ -165,7 +162,7 @@ def concept2vec(db, model="dolgo"):
 
     The representation is based on a certain set of sound classes and the set
     of concepts. For each concept, two slots of n sound classes each are
-    provided. 
+    provided.
     """
     sc_model = lingpy.rc(model)
     # ugly hack, must refine dolgo-model in lingpy!
@@ -221,7 +218,7 @@ def get_asjp(path="asjp.sqlite3"):
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_wordlists(path="lexibank.sqlite3"):
+def get_wl(path="lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
@@ -233,7 +230,7 @@ def get_wordlists(path="lexibank.sqlite3"):
     db.execute(WL_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [lidx, glottocode, family, concept, tokens, cog]
-        
+
     # retrieve best glottocodeis
     all_wordlists = {}
     for glottocode in wordlists:
@@ -252,15 +249,14 @@ def get_families(wordlists, families, threshold=5):
     """
     Get all families from a wordlist with the family lookup.
     """
-    
+
     # order by family
     by_fam = defaultdict(lambda : defaultdict(dict))
     for gcode, items in wordlists.items():
         if gcode in families:
             by_fam[families[gcode]][gcode] = items
-    
+
     return {k: v for k, v in by_fam.items() if len(v) >= threshold}
-    
 
 
 def training_data(wordlists, families, sample=0.8, threshold=5):
@@ -294,26 +290,25 @@ def training_data(wordlists, families, sample=0.8, threshold=5):
         sampled = int(len(gcodes) * sample + 0.5)
         if sampled >= threshold:
             train[fam] = {
-                    gcode: wordlists[gcode] for gcode in 
+                    gcode: wordlists[gcode] for gcode in
                     random.sample(gcodes, sampled)}
             test[fam] = {
-                    gcode: wordlists[gcode] for gcode in 
+                    gcode: wordlists[gcode] for gcode in
                     gcodes if gcode not in train[fam]}
     return train, test
 
 
-
 def affiliate_by_grambank(
-        language, 
-        wordlist, 
-        wordlists, 
+        language,
+        wordlist,
+        wordlists,
         criterion="mean"
         ):
     """
     """
     crt = {"mean": 1, "median": 2, "max": 3, "min": 4}
 
-    # transform the language in the lingpy wordlist 
+    # transform the language in the lingpy wordlist
     items = set()
     for idx, doculect, concept, tokens in wordlist.iter_rows(
             "doculect", "concept", "tokens"):
@@ -324,7 +319,7 @@ def affiliate_by_grambank(
                     tokens[0])
                     )
     matches = defaultdict(lambda : defaultdict(list))
-    
+
     classes = []
     for fam, data in wordlists.items():
         scores = []
@@ -335,40 +330,39 @@ def affiliate_by_grambank(
                 matches = len(commons) / len(items)
                 scores += [matches]
         classes += [(
-            fam, 
+            fam,
             statistics.mean(scores),
             statistics.median(scores),
-            max(scores), 
+            max(scores),
             min(scores)
             )]
     return sorted(classes, key=lambda x: x[crt[criterion]], reverse=True)[:3]
 
 
-
 def affiliate_by_consonant_class(
-        language, 
-        wordlist, 
-        wordlists, 
+        language,
+        wordlist,
+        wordlists,
         criterion="mean"
         ):
     """
     """
     crt = {"mean": 1, "median": 2, "max": 3, "min": 4}
 
-    # transform the language in the lingpy wordlist 
+    # transform the language in the lingpy wordlist
     items = set()
     for idx, doculect, concept, tokens in wordlist.iter_rows(
             "doculect", "concept", "tokens"):
         if doculect == language:
             items.add(
                     "{0}-{1}".format(
-                    slug(concept), 
+                    slug(concept),
                     "".join(
                         lingpy.tokens2class(
                             tokens, "dolgo")).replace("V", "")[:2])
                         )
     matches = defaultdict(lambda : defaultdict(list))
-    
+
     classes = []
     for fam, data in wordlists.items():
         scores = []
@@ -379,10 +373,10 @@ def affiliate_by_consonant_class(
                 matches = len(commons) / len(items)
                 scores += [matches]
         classes += [(
-            fam, 
+            fam,
             statistics.mean(scores),
             statistics.median(scores),
-            max(scores), 
+            max(scores),
             min(scores)
             )]
     return sorted(classes, key=lambda x: x[crt[criterion]], reverse=True)[:3]
@@ -404,19 +398,19 @@ def get_lingpy(data, header):
 class FF(object):
 
     def __init__(
-            self, 
+            self,
             input_layer: int,
             hidden_layer: int,
             output_layer: int,
             verbose: bool=False,
             ):
         self.input_layer = np.array(np.random.uniform(
-                -1, 
-                1, 
+                -1,
+                1,
                 (input_layer, hidden_layer)),
                                      dtype="longdouble")
         self.output_layer = np.array(np.random.uniform(
-                -1, 
+                -1,
                 1,
                 (hidden_layer, output_layer)),
                                      dtype="longdouble")
@@ -484,7 +478,7 @@ class FF(object):
         self.input_layer = self.input_layer - (learning_rate * dl_hidden_in)
         self.output_layer = self.output_layer - (learning_rate * dl_hidden_out)
 
-    def softmax(self, x):   
+    def softmax(self, x):
         """
         Following
         https://www.adeveloperdiary.com/data-science/deep-learning/neural-network-with-softmax-in-python/
@@ -508,4 +502,4 @@ class FF(object):
 
         y, hidden, u = self.forward(weights_in, weights_out, x)
 
-        return np.argmax(y) 
+        return np.argmax(y)
