@@ -12,7 +12,7 @@ from clldutils.misc import slug
 from statistics import mean, stdev
 
 
-RUNS = 100
+RUNS = 1
 scores = []
 # Languages for prediction
 control_languages = {
@@ -38,8 +38,7 @@ converter = concept2vec(db, model="dolgo")
 # load asjp to retrieve labels
 grambank = get_gb("grambank.sqlite3")
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_wordlists("lexibank.sqlite3").items() if k in
-             grambank}
+wordlists = {k: v for k, v in get_wordlists("lexibank.sqlite3").items() if k in grambank}
 
 for i in range(RUNS):
     control = []
@@ -139,7 +138,7 @@ print("Standard deviation:", round(stdev(scores), 2))
 # print(tabulate(table))
 
 
-# write distances to phylip file
+# # write distances to phylip file
 # weights = nn.output_layer
 # tab = []
 # for fam, idx in fams.items():
@@ -160,24 +159,24 @@ print("Standard deviation:", round(stdev(scores), 2))
 #     for i, row in enumerate(distances):
 #         f.write(slug(idx2fam[i], lowercase=False)+" ")
 #         f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
-#
-#
+
+
 # # calculate weights (softmax) per language to get the dimensions
 # bars, maxis = [], []
 # weights_new = []
 # for i, row in enumerate(weights):
 #     norm = (row-np.min(row))/(np.max(row) - np.min(row))
 #     weights_new += [norm/sum(norm)]
-# 
+
 # for fam, idx in fams.items():
 #     bars += [(fam, weights_new[idx])]
-# 
+
 # for i, weight in enumerate(weights_new):
 #     maxis += [(i, max([weight[j] for j in range(len(fams))]))]
 # maxis = sorted(maxis, key=lambda x: x[1], reverse=True)
-# 
-# 
-# 
+
+
+
 # i2i = {j[0]: i for i, j in enumerate(maxis)}
 # bars = []
 # for fam, idx in fams.items():
@@ -185,17 +184,17 @@ print("Standard deviation:", round(stdev(scores), 2))
 #     for i, cell in enumerate(weights_new[idx]):
 #         new_weights[i2i[i]] = weights_new[idx][i]
 #     bars += [(fam, new_weights)]
-# 
+
 # bars = sorted(bars, key=lambda x: tuple(x[1]), reverse=True)
 # from matplotlib import pyplot as plt
-# 
+
 # plt.clf()
 # fig = plt.figure(figsize=(20, 10))
-# 
+
 # colors = colorRange(len(fams))
 # colors[0] = "0.5"
 # colors[-1] = "0.5"
-# 
+
 # for i, (fam, row) in enumerate(bars):
 #     prev = 0
 #     vals = []
