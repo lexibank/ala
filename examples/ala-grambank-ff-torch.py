@@ -54,7 +54,6 @@ class FF(nn.Module):
 
 
 for i in range(RUNS):
-    HIGH = 0
     full_data = convert_data(
         wordlists,
         {k: v[0] for k, v in get_asjp().items()},
@@ -108,7 +107,6 @@ for i in range(RUNS):
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=LR)
 
-    ITER = 0
     for epoch in range(EPOCHS):
         for idx, (data, labels) in enumerate(train_loader):
             # Clear gradients w.r.t. parameters
@@ -126,30 +124,24 @@ for i in range(RUNS):
             # Updating parameters
             optimizer.step()
 
-            ITER += 1
+    # Calculate Accuracy for test set
+    CORR = 0
+    TOTAL = 0
+    # Iterate through test dataset
+    for data, labels in test_loader:
+        # Forward pass only to get logits/output
+        outputs = model(data)
 
-            if ITER % 200 == 0:
-                # Calculate Accuracy
-                CORR = 0
-                TOTAL = 0
-                # Iterate through test dataset
-                for data, labels in test_loader:
-                    # Forward pass only to get logits/output
-                    outputs = model(data)
+        # Get predictions from the maximum value
+        _, predicted = torch.max(outputs.data, 1)
+        # Total number of labels
+        TOTAL += labels.size(0)
+        # Total correct predictions
+        CORR += (predicted == labels).sum()
 
-                    # Get predictions from the maximum value
-                    _, predicted = torch.max(outputs.data, 1)
-                    # Total number of labels
-                    TOTAL += labels.size(0)
-                    # Total correct predictions
-                    CORR += (predicted == labels).sum()
+    acc = 100 * CORR / TOTAL
 
-                acc = 100 * CORR / TOTAL
-                if acc > HIGH:
-                    HIGH = acc
-                # Print Loss
-                print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
-    scores.append(int(HIGH))
+    scores.append(int(acc))
     for lang in isolates:
         label = isolates[lang][0]
         data = torch.Tensor(np.array([isolates[lang][2]]))

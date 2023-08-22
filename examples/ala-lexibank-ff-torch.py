@@ -15,9 +15,8 @@ from ala import concept2vec, get_db
 EXCLUDE = True
 RUNS = 10
 LR = 0.002
-EPOCHS = 500
+EPOCHS = 200
 BATCH = 10
-ITER = 0
 HIDDEN = 3  # multiplier for length of fam
 
 
@@ -54,12 +53,12 @@ class FF(nn.Module):
 
 
 for i in range(RUNS):
-    HIGH = 0
     full_data = convert_data(
         wordlists,
         {k: v[0] for k, v in get_asjp().items()},
         converter,
-        load="lexibank")
+        load="lexibank",
+        threshold=2)
 
     isolates = defaultdict()
     data = []
@@ -125,30 +124,24 @@ for i in range(RUNS):
             # Updating parameters
             optimizer.step()
 
-            ITER += 1
+    # Calculate Accuracy for test set
+    CORR = 0
+    TOTAL = 0
+    for data, labels in test_loader:
+        # Forward pass only to get logits/output
+        outputs = model(data)
 
-            if ITER % 200 == 0:
-                # Calculate Accuracy
-                CORR = 0
-                TOTAL = 0
-                # Iterate through test dataset
-                for data, labels in test_loader:
-                    # Forward pass only to get logits/output
-                    outputs = model(data)
+        # Get predictions from the maximum value
+        _, predicted = torch.max(outputs.data, 1)
+        # Total number of labels
+        TOTAL += labels.size(0)
+        # Total correct predictions
+        CORR += (predicted == labels).sum()
 
-                    # Get predictions from the maximum value
-                    _, predicted = torch.max(outputs.data, 1)
-                    # Total number of labels
-                    TOTAL += labels.size(0)
-                    # Total correct predictions
-                    CORR += (predicted == labels).sum()
+    acc = 100 * CORR / TOTAL
+    scores.append(int(acc))
 
-                acc = 100 * CORR / TOTAL
-                if acc > HIGH:
-                    HIGH = acc
-                # Print Loss
-                print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
-    scores.append(int(HIGH))
+    # test Isolates
     for lang in isolates:
         label = isolates[lang][0]
         data = torch.Tensor(np.array([isolates[lang][2]]))
@@ -160,7 +153,7 @@ for i in range(RUNS):
             results[lang].append(predicted)
         else:
             results[lang] = [predicted]
-    print("mean at run", i, ":", round(mean(scores), 2))
+    print("Mean at run", i, ":", round(mean(scores), 2))
 
 print("---------------")
 for item in results:

@@ -128,6 +128,11 @@ def feature2vec(db):
     for i, (param, code) in enumerate(db.fetchall()):
         if code != "3":
             keys[param][code] = i
+        # elif code == "3":
+        #     print(code)
+        #     print(param)
+        #     print(keys[param])
+        #     print("---")
 
     # with this, we can iterate over the data, passed as pairs of parameter and
     # value
