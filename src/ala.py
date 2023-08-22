@@ -117,24 +117,6 @@ def get_gb(path="grambank.sqlite3"):
     return wordlists
 
 
-def get_gb_new(path="grambank.sqlite3"):
-    """
-    Retrieve all wordlists from data.
-
-    Note: fetch biggest by glottocode.
-    """
-    db = get_db(path)
-    wordlists = defaultdict(lambda : defaultdict(dict))
-    db.execute(GB_QUERY)
-    for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
-        if tokens:
-            wordlists[glottocode][idx] = [
-                # don't slug parameters
-                idx, glottocode, tokens, concept
-                ]
-    return wordlists
-
-
 def feature2vec(db):
     """
     Function turns data from one language into a flat vector.
@@ -144,14 +126,19 @@ def feature2vec(db):
     # query on grambank here
     keys = defaultdict(dict)
     for i, (param, code) in enumerate(db.fetchall()):
-        keys[param][code] = i
+        if code != "3":
+            keys[param][code] = i
 
     # with this, we can iterate over the data, passed as pairs of parameter and
     # value
     def converter(words):
         vector = [0 for x in range(i+1)]
         for param, value in words:
-            vector[keys[param][value]] = 1
+            if value == str(3):
+                vector[keys[param][str(1)]] = 1
+                vector[keys[param][str(2)]] = 1
+            else:
+                vector[keys[param][value]] = 1
         return vector
     return converter
 
@@ -168,7 +155,7 @@ def concept2vec(db, model="dolgo"):
     # ugly hack, must refine dolgo-model in lingpy!
     sc_model.tones = "1"
 
-    db.execute(CONCEPT_QUERY);
+    db.execute(CONCEPT_QUERY)
     concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
 
     sound_classes = [c for c in
@@ -226,10 +213,9 @@ def get_wl(path="lexibank.sqlite3"):
     """
     db = get_db(path)
     wordlists = defaultdict(lambda : defaultdict(dict))
-    families = {row[2]: row[3] for row in get_languages(db)}
     db.execute(WL_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
-        wordlists[glottocode][lidx, size][idx] = [lidx, glottocode, family, concept, tokens, cog]
+        wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
     # retrieve best glottocodeis
     all_wordlists = {}
@@ -238,7 +224,7 @@ def get_wl(path="lexibank.sqlite3"):
             best_key = list(wordlists[glottocode].keys())[0]
         else:
             best_key = sorted(
-                    wordlist[glottocode].keys(),
+                    wordlists[glottocode].keys(),
                     key=lambda x: x[1],
                     reverse=True)[0]
         all_wordlists[glottocode] = wordlists[glottocode][best_key]
@@ -257,6 +243,53 @@ def get_families(wordlists, families, threshold=5):
             by_fam[families[gcode]][gcode] = items
 
     return {k: v for k, v in by_fam.items() if len(v) >= threshold}
+
+
+def convert_data(wordlists, families, converter, load, threshold=3):
+    # order by family
+    by_fam = defaultdict(list)
+    for gcode in wordlists:
+        if gcode in families:
+            by_fam[families[gcode]] += [gcode]
+
+    # assemble languages belonging to one family alone to form the group of
+    # unclassified languages which is our control group (!)
+    unclassified, delis = [], []
+    for fam, gcodes in by_fam.items():
+        if len(set(gcodes)) == 1:
+            unclassified.extend(gcodes)
+            delis.append(fam)
+        elif len(set(gcodes)) < threshold:
+            delis.append(fam)
+    for fam in delis:
+        del by_fam[fam]
+    by_fam["Unclassified"] = unclassified
+
+    fam2idx = {fam: i for i, fam in enumerate(by_fam)}
+    # Convert to vector
+
+    features = []
+    labels = []
+    languages = []
+
+    all_languages = defaultdict()
+    for fam, gcodes in by_fam.items():
+        for gcode in gcodes:
+            data = wordlists[gcode]
+            label = fam2idx[fam]
+            if load == "lexibank":
+                features = [[row[2], row[3].split()] for row in data.values()]
+            if load == "grambank":
+                features = [[x[2], x[3]] for x in data.values()]
+            feature_vector = converter(features)
+
+            features.append(feature_vector)
+            labels.append(label)
+            languages.append(gcode)
+
+            all_languages[gcode] = [fam, label, feature_vector]
+
+    return all_languages
 
 
 def training_data(wordlists, families, sample=0.8, threshold=5):
@@ -325,7 +358,7 @@ def affiliate_by_grambank(
         scores = []
         for gcode, words in data.items():
             if gcode != language:
-                items_b =  set([row[4] for row in words.values()])
+                items_b = set([row[4] for row in words.values()])
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
                 scores += [matches]

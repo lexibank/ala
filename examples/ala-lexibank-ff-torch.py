@@ -1,22 +1,34 @@
+"""
+Part of this code is based on this tutorial:
+- https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
+"""
+from collections import defaultdict, Counter
 from statistics import mean, stdev
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader
-from ala import get_wl, get_asjp, training_data, get_gb
+from torch.utils.data import TensorDataset, DataLoader, random_split
+from ala import get_wl, get_asjp, get_gb, convert_data
 from ala import concept2vec, get_db
 
 
-RUNS = 100
+EXCLUDE = True
+RUNS = 10
+LR = 0.002
+EPOCHS = 500
+BATCH = 10
+ITER = 0
+HIDDEN = 3  # multiplier for length of fam
+
+
 scores = []
+results = defaultdict()  # isolates
 
-db = get_db("lexibank.sqlite3")
-converter = concept2vec(db, model="dolgo")
-
-# load asjp to retrieve labels
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
+converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
+# wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
 
 
 class FF(nn.Module):
@@ -42,65 +54,47 @@ class FF(nn.Module):
 
 
 for i in range(RUNS):
-    highest_acc = 0
-    train, test = training_data(
-            wordlists,
-            {k: v[0] for k, v in get_asjp().items()},
-            0.8,
-            3
-            )
+    HIGH = 0
+    full_data = convert_data(
+        wordlists,
+        {k: v[0] for k, v in get_asjp().items()},
+        converter,
+        load="lexibank")
 
-    fam2idx = {fam: i for i, fam in enumerate(train)}
-    idx2fam = {v: k for k, v in fam2idx.items()}
-    # Create training vector
-    training_vec = []
-    train_labels = []
+    isolates = defaultdict()
+    data = []
+    labels = []
+    idx2fam = defaultdict()
+    fam2idx = defaultdict()
+    IDX = 0
 
-    # train: {lng: [data]}
-    for fam in train:
-        # iterate through data for each language
-        for lng, data in train[fam].items():
-            # set true label
-            true_labels = [0 for i in range(len(fam2idx))]
-            true_labels[fam2idx[fam]] = 1
+    for lang in full_data:
+        family = full_data[lang][0]
+        if EXCLUDE is True:
+            if family == "Unclassified":
+                isolates[lang] = full_data[lang]
+            # somehow, suansu is not in the data! Why?
+            elif lang == "suan1234":
+                isolates[lang] = full_data[lang]
+            else:
+                data.append(full_data[lang][2])
+                labels.append(full_data[lang][1])
+        else:
+            data.append(full_data[lang][2])
+            labels.append(full_data[lang][1])
+        if family not in fam2idx:
+            idx2fam[IDX] = family
+            fam2idx[family] = IDX
+            IDX += 1
 
-            # retrieve data to create converter
-            words = [[row[3], row[4].split()] for row in data.values()]
+    data = torch.Tensor(np.array(data))
+    labels = torch.LongTensor(np.array(labels))
+    tensor_ds = TensorDataset(data, labels)
+    train_dataset, test_dataset = random_split(tensor_ds, [0.8, 0.2])
 
-            # convert to long vector of sound classes
-            words_as_vector = converter(words)
-            training_vec.append(words_as_vector)
-            train_labels.append(true_labels)
-
-    # Similar vector creation of items in test-set
-    test_vec = []
-    test_labels = []
-    for fam in test:
-        # iterate through all items again
-        for lng, data in test[fam].items():
-            true_labels = [0 for i in range(len(fam2idx))]
-            true_labels = fam2idx[fam]
-            words = [[row[3], row[4].split()] for row in data.values()]
-            words_as_vector = converter(words)
-            test_vec.append(words_as_vector)
-            test_labels.append(true_labels)
-
-    input_dim = len(words_as_vector)
-    hidden_dim = 3*len(fam2idx)
-    output_dim = len(fam2idx)
-
-    LR = 0.002
-    EPOCHS = 200
-    BATCH = 10
-    ITER = 0
-
-    train_data = torch.Tensor(np.array(training_vec))
-    train_labels = torch.Tensor(np.array(train_labels))
-    test_data = torch.Tensor(np.array(test_vec))
-    test_labels = torch.Tensor(np.array(test_labels))
-
-    train_dataset = TensorDataset(train_data, train_labels)
-    test_dataset = TensorDataset(test_data, test_labels)
+    input_dim = data.size()[1]  # Length of data tensor
+    hidden_dim = HIDDEN*len(idx2fam)
+    output_dim = len(idx2fam)
 
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
@@ -115,7 +109,7 @@ for i in range(RUNS):
     optimizer = torch.optim.SGD(model.parameters(), lr=LR)
 
     for epoch in range(EPOCHS):
-        for i, (data, labels) in enumerate(train_loader):
+        for idx, (data, labels) in enumerate(train_loader):
             # Clear gradients w.r.t. parameters
             optimizer.zero_grad()
 
@@ -133,7 +127,7 @@ for i in range(RUNS):
 
             ITER += 1
 
-            if ITER % 500 == 0:
+            if ITER % 200 == 0:
                 # Calculate Accuracy
                 CORR = 0
                 TOTAL = 0
@@ -144,21 +138,34 @@ for i in range(RUNS):
 
                     # Get predictions from the maximum value
                     _, predicted = torch.max(outputs.data, 1)
-
                     # Total number of labels
                     TOTAL += labels.size(0)
                     # Total correct predictions
                     CORR += (predicted == labels).sum()
 
                 acc = 100 * CORR / TOTAL
-                if acc > highest_acc:
-                    highest_acc = acc
+                if acc > HIGH:
+                    HIGH = acc
                 # Print Loss
-                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
-    scores.append(int(highest_acc))
-    print("mean at epoch", i, ":", round(mean(scores), 2))
+                print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
+    scores.append(int(HIGH))
+    for lang in isolates:
+        label = isolates[lang][0]
+        data = torch.Tensor(np.array([isolates[lang][2]]))
+
+        outputs = model(data)
+        _, predicted = torch.max(outputs.data, 1)
+        predicted = idx2fam[predicted.item()]
+        if lang in results:
+            results[lang].append(predicted)
+        else:
+            results[lang] = [predicted]
+    print("mean at run", i, ":", round(mean(scores), 2))
 
 print("---------------")
+for item in results:
+    print(item, Counter(results[item]))
+
 print("FINAL:")
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
