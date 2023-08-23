@@ -8,6 +8,63 @@ import statistics
 import numpy as np
 
 
+ATTACH_BPT = """
+ATTACH 'blumpanotacana.sqlite3' AS db1;
+"""
+
+
+ATTACH_LB = """
+ATTACH 'lexibank.sqlite3' AS db2;
+"""
+
+
+BPT_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.cldf_parameterReference = p_2.cldf_id
+        AND
+      (
+        p_2.core_concept like "%Swadesh-1952-200%"
+          OR
+        p_2.core_concept like "%Swadesh-1955-100%"
+      )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  c.Word_Number >= 100;
+"""
+
+
 WL_QUERY = """SELECT
   ROW_NUMBER() OVER(),
   l.cldf_id,
@@ -75,7 +132,7 @@ ON
 WHERE
   f.cldf_parameterReference = p.cldf_id
     AND
-  f.cldf_languageReference = l.cldf_id
+  f.cldf_languageReference = l.cldf_id;
 """
 
 
@@ -97,6 +154,29 @@ FROM
   parametertable as p, codetable as c
 WHERE
   p.cldf_id = c.cldf_parameterreference;"""
+
+
+def get_bpt(path="blumpanotacana.sqlite3"):
+    db = get_db(path)
+    wordlists = defaultdict(lambda : defaultdict(dict))
+    db.execute(ATTACH_BPT)
+    db.execute(ATTACH_LB)
+    db.execute(BPT_QUERY)
+    for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
+        wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
+
+    # retrieve best glottocodes
+    all_wordlists = {}
+    for glottocode in wordlists:
+        if len(wordlists[glottocode]) == 1:
+            best_key = list(wordlists[glottocode].keys())[0]
+        else:
+            best_key = sorted(
+                    wordlists[glottocode].keys(),
+                    key=lambda x: x[1],
+                    reverse=True)[0]
+        all_wordlists[glottocode] = wordlists[glottocode][best_key]
+    return all_wordlists
 
 
 def get_gb(path="grambank.sqlite3"):
@@ -128,11 +208,6 @@ def feature2vec(db):
     for i, (param, code) in enumerate(db.fetchall()):
         if code != "3":
             keys[param][code] = i
-        # elif code == "3":
-        #     print(code)
-        #     print(param)
-        #     print(keys[param])
-        #     print("---")
 
     # with this, we can iterate over the data, passed as pairs of parameter and
     # value
@@ -172,20 +247,23 @@ def concept2vec(db, model="dolgo"):
         nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
 
         for concept, tokens in words:
-            class_string = lingpy.tokens2class(tokens, model)
-            reduced_string = [t for t in class_string if t in
-                              sound_classes][:2]
-            if not reduced_string:
-                first, second = "?", "?"
-            elif len(reduced_string) == 1:
-                if class_string[0] in sc_model.vowels:
-                    first, second = "?", reduced_string[0]
+            # Addition for BPT to only add parameters that are in lexibank
+            # At least one case: MUD
+            if concept in concepts:
+                class_string = lingpy.tokens2class(tokens, model)
+                reduced_string = [t for t in class_string if t in
+                                sound_classes][:2]
+                if not reduced_string:
+                    first, second = "?", "?"
+                elif len(reduced_string) == 1:
+                    if class_string[0] in sc_model.vowels:
+                        first, second = "?", reduced_string[0]
+                    else:
+                        first, second = reduced_string[0], "?"
                 else:
-                    first, second = reduced_string[0], "?"
-            else:
-                first, second = reduced_string
-            nested_vector[concepts[concept]][0][cls2idx[first]] = 1
-            nested_vector[concepts[concept]][1][cls2idx[second]] = 1
+                    first, second = reduced_string
+                nested_vector[concepts[concept]][0][cls2idx[first]] = 1
+                nested_vector[concepts[concept]][1][cls2idx[second]] = 1
         vector = []
         for a, b in nested_vector:
             vector += a + b
