@@ -20,11 +20,11 @@ PANO = True
 ISOLATES = True
 
 # Hyperparameters
-RUNS = 10
-LR = 0.0001
-EPOCHS = 400
+RUNS = 100
+EPOCHS = 250
 BATCH = 8
 HIDDEN = 3  # multiplier for length of fam
+LR = 0.0001
 
 # Switch on GPU if available
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
@@ -43,7 +43,7 @@ tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
 panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
           "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
 pano_iso = ["mose1249", "movi1243", "chip1262"]
-isolates = ["basq1248", "suan1234"]
+test_isolates = ["basq1248", "suan1234"]
 northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                 "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
                 "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
@@ -97,7 +97,7 @@ for i in range(RUNS):
         {k: v[0] for k, v in get_asjp().items()},
         converter,
         load="lexibank",
-        threshold=3)
+        threshold=5)
 
     converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
     bpt_data = convert_data(
@@ -136,10 +136,10 @@ for i in range(RUNS):
             elif lang in pano_iso:
                 pass
             elif ISOLATES is True:
-                if family == "Unclassified":
-                    pass
-                elif lang in isolates:
+                if lang in test_isolates:
                     isolates[lang] = full_data[lang]
+                elif family == "Unclassified":
+                    pass
                 else:
                     data.append(full_data[lang][2])
                     labels.append(fam2idx[family])
@@ -151,14 +151,19 @@ for i in range(RUNS):
             if family == "Uto-Aztecan" and lang not in northern_uto:
                 southern_uto[lang] = full_data[lang]
             elif ISOLATES is True:
-                if family == "Unclassified":
+                if lang in test_isolates:
+                    isolates[lang] = full_data[lang]
+                elif family == "Unclassified":
                     pass
+                else:
+                    data.append(full_data[lang][2])
+                    labels.append(fam2idx[family])
             else:
                 data.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
         elif ISOLATES is True:
-            if lang in isolates:
+            if lang in test_isolates:
                 isolates[lang] = full_data[lang]
             elif family == "Unclassified":
                 pass
@@ -168,7 +173,6 @@ for i in range(RUNS):
         else:
             data.append(full_data[lang][2])
             labels.append(fam2idx[family])
-
     data = torch.Tensor(np.array(data))
     labels = torch.LongTensor(np.array(labels))
     data = data.to(device)
@@ -198,8 +202,7 @@ for i in range(RUNS):
     BEST = 0
     for epoch in range(EPOCHS):
         for idx, (data, labels) in enumerate(train_loader):
-            # print(ITER, idx)
-            # Clear gradients w.r.t. parameters
+            # Clear gradients
             optimizer.zero_grad()
 
             # Forward pass to get output/logits
@@ -216,8 +219,7 @@ for i in range(RUNS):
 
             # Calculate Accuracy for test set
             ITER += 1
-
-            if ITER % 100 == 0:
+            if ITER % 500 == 0:
                 CORR = 0
                 TOTAL = 0
                 for data, labels in test_loader:
@@ -232,19 +234,46 @@ for i in range(RUNS):
                     CORR += (predicted == labels).sum()
 
                 acc = 100 * CORR / TOTAL
+                print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
                 if acc > HIGH:
                     HIGH = acc
                     BEST = epoch
                     torch.save(model.state_dict(), 'best-model-parameters.pt')
-                    print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
 
+    # Summary for best epoch
     scores.append(int(HIGH))
-
-    # test Isolates or LongDistance
     model.load_state_dict(torch.load('best-model-parameters.pt'))
     print("Best epoch:", BEST)
     print("Mean at run", i, ":", round(mean(scores), 2))
+    print("---")
+    family_results = defaultdict()
+    for data, labels in test_loader:
+        outputs = model(data)
+        _, predicted = torch.max(outputs.data, 1)
 
+        # Create list with labels
+        for i, label in enumerate(labels):
+            pred = int(predicted[i])
+            label = int(label)
+            if label in family_results:
+                family_results[label].append(pred)
+            else:
+                family_results[label] = [pred]
+    avg_fam = defaultdict()
+    fam_avg = []
+    print("---")
+    for fam in family_results:
+        CORR = 0
+        TOTAL = len(family_results[fam])
+        for pred in family_results[fam]:
+            if fam == pred:
+                CORR += 1
+        avg_fam[fam] = 100 * CORR / TOTAL
+        fam_avg.append(avg_fam[fam])
+        print(idx2fam[fam], ":", avg_fam[fam])
+    print("Average family accuracy:", round(mean(fam_avg), 2))
+
+    # Long-distance test
     if UTOAZT is True:
         for lang in southern_uto:
             model.predict(southern_uto, lang, results)
@@ -261,7 +290,7 @@ for i in range(RUNS):
 
 for item in results:
     print(item, Counter(results[item]))
-
+print("---------------")
 print("FINAL:")
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
