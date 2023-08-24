@@ -1,6 +1,6 @@
 """
 Part of this code is based on this tutorial:
-- https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
+https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
 """
 from collections import defaultdict, Counter
 from statistics import mean, stdev
@@ -12,13 +12,22 @@ from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, get_db
 
 
-EXCLUDE = True
+# Switches for tests - set only one to True!
+UTOAZT = False
+PANO = True
+
+# Remove (True) or include (False) Isolates/"Unclassified"
+ISOLATES = True
+
+# Hyperparameters
 RUNS = 10
-LR = 0.002
-EPOCHS = 200
-BATCH = 10
+LR = 0.0001
+EPOCHS = 400
+BATCH = 8
 HIDDEN = 3  # multiplier for length of fam
 
+# Switch on GPU if available
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
 scores = []
 results = defaultdict()  # test cases
@@ -31,9 +40,18 @@ wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
 bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
-panoan =  ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
-            "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
-isolates = ["mose1249", "movi1243", "chip1262"]
+panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
+          "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
+pano_iso = ["mose1249", "movi1243", "chip1262"]
+isolates = ["basq1248", "suan1234"]
+northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
+                "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
+                "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
+
+# Dictionaries of data to be tested
+southern_uto = defaultdict()
+longdistance_test = defaultdict()
+isolates = defaultdict()
 
 
 class FF(nn.Module):
@@ -42,7 +60,7 @@ class FF(nn.Module):
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         # Non-linearity
-        self.tanh = nn.Tanh()
+        self.tanh = nn.ReLU()
         # Linear function (readout)
         self.fc2 = nn.Linear(hidden_dim, output_dim)
 
@@ -56,6 +74,21 @@ class FF(nn.Module):
         out = self.fc2(out)
 
         return out
+
+    def predict(self, vector, language, storage):
+        """Predicts based on new data, and stores results in dic."""
+        vector = torch.Tensor(np.array([vector[language][2]]))
+        vector = vector.to(device)
+
+        outs = model(vector)
+        _, prediction = torch.max(outs.data, 1)
+        prediction = idx2fam[prediction.item()]
+        if lang in storage:
+            storage[lang].append(prediction)
+        else:
+            storage[lang] = [prediction]
+
+        return storage
 
 
 for i in range(RUNS):
@@ -74,55 +107,74 @@ for i in range(RUNS):
         load="lexibank",
         threshold=3)
 
-    reduced_data = defaultdict()
-    for lang in full_data:
-        if lang in isolates:
-            pass
-        elif lang in panoan:
-            pass
-        elif lang in tacanan:
-            pass
-        else:
-            reduced_data[lang] = full_data[lang]
-
-    longdistance_test = defaultdict()
+    # Split Pano-Tacanan
     for lang in bpt_data:
-        if lang in panoan:
-            reduced_data[lang] = bpt_data[lang]
+        if PANO is True:
+            if lang in panoan:
+                full_data[lang] = bpt_data[lang]
+            else:
+                longdistance_test[lang] = bpt_data[lang]
         else:
-            longdistance_test[lang] = bpt_data[lang]
+            full_data[lang] = bpt_data[lang]
 
-    isolates = defaultdict()
     data = []
     labels = []
     idx2fam = defaultdict()
     fam2idx = defaultdict()
     IDX = 0
 
-    for lang in reduced_data:
-        family = reduced_data[lang][0]
+    for lang in full_data:
+        family = full_data[lang][0]
         if family not in fam2idx:
             idx2fam[IDX] = family
             fam2idx[family] = IDX
             IDX += 1
-        if EXCLUDE is True:
-            if family == "Unclassified":
-                isolates[lang] = reduced_data[lang]
-            # somehow, suansu is not in the data! Why?
-            elif lang == "suan1234":
-                isolates[lang] = reduced_data[lang]
+
+        if PANO is True:
+            if lang in tacanan:
+                pass
+            elif lang in pano_iso:
+                pass
+            elif ISOLATES is True:
+                if family == "Unclassified":
+                    pass
+                elif lang in isolates:
+                    isolates[lang] = full_data[lang]
+                else:
+                    data.append(full_data[lang][2])
+                    labels.append(fam2idx[family])
             else:
-                data.append(reduced_data[lang][2])
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+
+        elif UTOAZT is True:
+            if family == "Uto-Aztecan" and lang not in northern_uto:
+                southern_uto[lang] = full_data[lang]
+            elif ISOLATES is True:
+                if family == "Unclassified":
+                    pass
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+
+        elif ISOLATES is True:
+            if lang in isolates:
+                isolates[lang] = full_data[lang]
+            elif family == "Unclassified":
+                pass
+            else:
+                data.append(full_data[lang][2])
                 labels.append(fam2idx[family])
         else:
-            data.append(reduced_data[lang][2])
+            data.append(full_data[lang][2])
             labels.append(fam2idx[family])
-
 
     data = torch.Tensor(np.array(data))
     labels = torch.LongTensor(np.array(labels))
+    data = data.to(device)
+    labels = labels.to(device)
     tensor_ds = TensorDataset(data, labels)
-    train_dataset, test_dataset = random_split(tensor_ds, [0.99, 0.01])
+    train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
 
     input_dim = data.size()[1]  # Length of data tensor
     hidden_dim = HIDDEN*len(idx2fam)
@@ -137,10 +189,13 @@ for i in range(RUNS):
                              shuffle=False)
 
     model = FF(input_dim, hidden_dim, output_dim)
+    model = model.to(device)
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(model.parameters(), lr=LR)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
     ITER = 0
+    HIGH = 0
+    BEST = 0
     for epoch in range(EPOCHS):
         for idx, (data, labels) in enumerate(train_loader):
             # print(ITER, idx)
@@ -159,44 +214,54 @@ for i in range(RUNS):
             # Updating parameters
             optimizer.step()
 
-    # Calculate Accuracy for test set
-        ITER += 1
+            # Calculate Accuracy for test set
+            ITER += 1
 
-        if ITER % 500 == 0:
-            CORR = 0
-            TOTAL = 0
-            for data, labels in test_loader:
-                # Forward pass only to get logits/output
-                outputs = model(data)
+            if ITER % 100 == 0:
+                CORR = 0
+                TOTAL = 0
+                for data, labels in test_loader:
+                    # Forward pass only to get logits/output
+                    outputs = model(data)
 
-                # Get predictions from the maximum value
-                _, predicted = torch.max(outputs.data, 1)
-                # Total number of labels
-                TOTAL += labels.size(0)
-                # Total correct predictions
-                CORR += (predicted == labels).sum()
+                    # Get predictions from the maximum value
+                    _, predicted = torch.max(outputs.data, 1)
+                    # Total number of labels
+                    TOTAL += labels.size(0)
+                    # Total correct predictions
+                    CORR += (predicted == labels).sum()
 
-            acc = 100 * CORR / TOTAL
-            scores.append(int(acc))
-            print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
+                acc = 100 * CORR / TOTAL
+                if acc > HIGH:
+                    HIGH = acc
+                    BEST = epoch
+                    torch.save(model.state_dict(), 'best-model-parameters.pt')
+                    print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
+
+    scores.append(int(HIGH))
 
     # test Isolates or LongDistance
-    for lang in longdistance_test:
-        data = torch.Tensor(np.array([longdistance_test[lang][2]]))
+    model.load_state_dict(torch.load('best-model-parameters.pt'))
+    print("Best epoch:", BEST)
+    print("Mean at run", i, ":", round(mean(scores), 2))
 
-        outputs = model(data)
-        _, predicted = torch.max(outputs.data, 1)
-        predicted = idx2fam[predicted.item()]
-        if lang in results:
-            results[lang].append(predicted)
-        else:
-            results[lang] = [predicted]
-    # print("Mean at run", i, ":", round(mean(scores), 2))
+    if UTOAZT is True:
+        for lang in southern_uto:
+            model.predict(southern_uto, lang, results)
 
-print("---------------")
+    if PANO is True:
+        for lang in longdistance_test:
+            model.predict(longdistance_test, lang, results)
+
+    if ISOLATES is True:
+        for lang in isolates:
+            model.predict(isolates, lang, results)
+    print("---------------")
+
+
 for item in results:
     print(item, Counter(results[item]))
 
-# print("FINAL:")
-# print("Overall:", round(mean(scores), 2))
-# print("Standard deviation:", round(stdev(scores), 2))
+print("FINAL:")
+print("Overall:", round(mean(scores), 2))
+print("Standard deviation:", round(stdev(scores), 2))

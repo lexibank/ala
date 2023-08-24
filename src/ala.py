@@ -205,14 +205,15 @@ def feature2vec(db):
     # we need to find out for each param, how many values it has, so we do a
     # query on grambank here
     keys = defaultdict(dict)
+    idx = 0
     for i, (param, code) in enumerate(db.fetchall()):
         if code != "3":
-            keys[param][code] = i
+            keys[param][code] = idx
+            idx += 1
 
-    # with this, we can iterate over the data, passed as pairs of parameter and
-    # value
+    # Iterate over the data, passed as pairs of parameter and value
     def converter(words):
-        vector = [0 for x in range(i+1)]
+        vector = [0 for x in range(idx+1)]
         for param, value in words:
             if value == str(3):
                 vector[keys[param][str(1)]] = 1
