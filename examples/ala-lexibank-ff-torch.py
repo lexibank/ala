@@ -222,19 +222,35 @@ for i in range(RUNS):
             if ITER % 500 == 0:
                 CORR = 0
                 TOTAL = 0
+                family_results = defaultdict()
+                avg_fam = defaultdict()
+                fam_avg = []
                 for data, labels in test_loader:
                     # Forward pass only to get logits/output
                     outputs = model(data)
 
                     # Get predictions from the maximum value
                     _, predicted = torch.max(outputs.data, 1)
-                    # Total number of labels
-                    TOTAL += labels.size(0)
-                    # Total correct predictions
-                    CORR += (predicted == labels).sum()
+                    # Labels per family
+                    for i, label in enumerate(labels):
+                        pred = int(predicted[i])
+                        label = int(label)
+                        if label in family_results:
+                            family_results[label].append(pred)
+                        else:
+                            family_results[label] = [pred]
 
-                acc = 100 * CORR / TOTAL
-                print(f'Iteration: {ITER}. Loss: {loss.item()}. Accuracy: {acc}')
+                for fam in family_results:
+                    CORR = 0
+                    TOTAL = len(family_results[fam])
+                    for pred in family_results[fam]:
+                        if fam == pred:
+                            CORR += 1
+                    fam_average = 100 * CORR / TOTAL
+                    fam_avg.append(fam_average)
+
+                acc = mean(fam_avg)
+                print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {acc}')
                 if acc > HIGH:
                     HIGH = acc
                     BEST = epoch
@@ -246,32 +262,6 @@ for i in range(RUNS):
     print("Best epoch:", BEST)
     print("Mean at run", i, ":", round(mean(scores), 2))
     print("---")
-    family_results = defaultdict()
-    for data, labels in test_loader:
-        outputs = model(data)
-        _, predicted = torch.max(outputs.data, 1)
-
-        # Create list with labels
-        for i, label in enumerate(labels):
-            pred = int(predicted[i])
-            label = int(label)
-            if label in family_results:
-                family_results[label].append(pred)
-            else:
-                family_results[label] = [pred]
-    avg_fam = defaultdict()
-    fam_avg = []
-    print("---")
-    for fam in family_results:
-        CORR = 0
-        TOTAL = len(family_results[fam])
-        for pred in family_results[fam]:
-            if fam == pred:
-                CORR += 1
-        avg_fam[fam] = 100 * CORR / TOTAL
-        fam_avg.append(avg_fam[fam])
-        print(idx2fam[fam], ":", avg_fam[fam])
-    print("Average family accuracy:", round(mean(fam_avg), 2))
 
     # Long-distance test
     if UTOAZT is True:
