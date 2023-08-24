@@ -20,9 +20,9 @@ PANO = True
 ISOLATES = True
 
 # Hyperparameters
-RUNS = 100
-EPOCHS = 250
-BATCH = 8
+RUNS = 10
+EPOCHS = 200
+BATCH = 4
 HIDDEN = 3  # multiplier for length of fam
 LR = 0.0001
 
@@ -37,7 +37,8 @@ asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
 # wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
 wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
-bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
+bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3", db1="bpt").items()}
+
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
 panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
@@ -99,13 +100,13 @@ for i in range(RUNS):
         load="lexibank",
         threshold=5)
 
-    converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
     bpt_data = convert_data(
         bpt_wl,
         {k: v[0] for k, v in get_asjp().items()},
         converter,
         load="lexibank",
         threshold=3)
+
 
     # Split Pano-Tacanan
     for lang in bpt_data:
@@ -232,8 +233,8 @@ for i in range(RUNS):
                     # Get predictions from the maximum value
                     _, predicted = torch.max(outputs.data, 1)
                     # Labels per family
-                    for i, label in enumerate(labels):
-                        pred = int(predicted[i])
+                    for idx, label in enumerate(labels):
+                        pred = int(predicted[idx])
                         label = int(label)
                         if label in family_results:
                             family_results[label].append(pred)
@@ -262,7 +263,9 @@ for i in range(RUNS):
     print("Best epoch:", BEST)
     print("Mean at run", i, ":", round(mean(scores), 2))
     print("---")
-
+    # for lang in family_results:
+    #     print(lang, ":", family_results[lang])
+    # print(fam2idx)
     # Long-distance test
     if UTOAZT is True:
         for lang in southern_uto:
@@ -276,7 +279,6 @@ for i in range(RUNS):
         for lang in isolates:
             model.predict(isolates, lang, results)
     print("---------------")
-
 
 for item in results:
     print(item, Counter(results[item]))
