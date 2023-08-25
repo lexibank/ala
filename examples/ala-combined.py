@@ -23,7 +23,12 @@ HIDDEN = 4  # multiplier for length of fam
 LR = 0.0001
 
 # Switch on GPU if available
-device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+if torch.backends.mps.is_available():
+    device = "mps"  # MacOS
+elif torch.cuda.is_available():
+    device = "cuda"  # NVidia
+else:
+    device = "cpu"
 
 # Load databases
 asjp = get_asjp()
