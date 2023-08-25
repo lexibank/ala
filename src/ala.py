@@ -164,9 +164,6 @@ def get_bpt(path="blumpanotacana.sqlite3"):
     db.execute(BPT_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
-        print(db1)
-        print(family)
-        print("---")
 
     # retrieve best glottocodes
     all_wordlists = {}

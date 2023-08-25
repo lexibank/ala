@@ -1,20 +1,16 @@
-"""
-Part of this code is based on this tutorial:
-https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
-"""
 from collections import defaultdict, Counter
 from statistics import mean, stdev
 import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
-from ala import get_wl, get_asjp, get_gb, convert_data
-from ala import feature2vec, get_db
+from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
+from ala import concept2vec, feature2vec, get_db
 
 
 # Switches for tests - set only one to True!
-UTOAZT = True
-PANO = False
+UTOAZT = False
+PANO = True
 
 # Remove (True) or include (False) Isolates/"Unclassified"
 ISOLATES = True
@@ -22,41 +18,143 @@ ISOLATES = True
 # Hyperparameters
 RUNS = 10
 EPOCHS = 100
-BATCH = 4
-HIDDEN = 3  # multiplier for length of fam
+BATCH = 16
+HIDDEN = 4  # multiplier for length of fam
 LR = 0.0001
 
 # Switch on GPU if available
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 
-scores = []
-results = defaultdict()  # test cases
-
-lb = get_wl("lexibank.sqlite3")
+# Load databases
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items()}
+gb = {k: v for k, v in get_gb("grambank.sqlite3").items()}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
+bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items() if k in gb}
 
-# get converter for grambank data
-converter = feature2vec(get_db("grambank.sqlite3"))
-
-
+# Test lists
 tacanan = ["esee1248", "arao1248", "cavi1250"]
-panoan = ["yawa1260", "poya1241", "ship1254", "yami1256", 
-          "pano1255", "pano1254", "mats1244", "maru1252",
-          "amah1246", "capa1241", "chac1251", "isco1239"]
-pano_iso = ["mose1249"]
+panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
+          "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
+pano_iso = ["mose1249", "movi1243", "chip1262"]
 test_isolates = ["basq1248"]
 northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                 "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
                 "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
 
 # Dictionaries of data to be tested
+scores = []
+results = defaultdict()
 southern_uto = defaultdict()
 longdistance_test = defaultdict()
 isolates = defaultdict()
 
+# Load converters
+lb_converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
+gb_converter = feature2vec(get_db("grambank.sqlite3"))
+
+# Load Lexibank
+full_data = convert_data(
+    wordlists,
+    {k: v[0] for k, v in get_asjp().items()},
+    lb_converter,
+    load="lexibank",
+    threshold=5)
+
+# Load blumpanotacana
+bpt_data = convert_data(
+    bpt_wl,
+    {k: v[0] for k, v in get_asjp().items()},
+    lb_converter,
+    load="lexibank",
+    threshold=5)
+
+# Add Pano-Tacanan to lexibank
+for lang in bpt_data:
+    full_data[lang] = bpt_data[lang]
+
+# Load Grambank
+gb_wl = convert_data(
+    gb,
+    {k: v[0] for k, v in get_asjp().items()},
+    gb_converter,
+    load="grambank",
+    threshold=1)
+
+# Combine data vectors
+for lang in full_data:
+    full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
+
+# Create data and labels
+data = []
+labels = []
+idx2fam = defaultdict()
+fam2idx = defaultdict()
+IDX = 0
+
+for lang in full_data:
+    family = full_data[lang][0]
+    if family not in fam2idx:
+        idx2fam[IDX] = family
+        fam2idx[family] = IDX
+        IDX += 1
+
+    if PANO is True:
+        if lang in tacanan:
+            longdistance_test[lang] = full_data[lang]
+        elif lang in pano_iso:
+            longdistance_test[lang] = full_data[lang]
+        elif ISOLATES is True:
+            if lang in test_isolates:
+                isolates[lang] = full_data[lang]
+            elif family == "Unclassified":
+                pass
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+
+    elif UTOAZT is True:
+        if family == "Uto-Aztecan" and lang not in northern_uto:
+            southern_uto[lang] = full_data[lang]
+        elif ISOLATES is True:
+            if lang in test_isolates:
+                isolates[lang] = full_data[lang]
+            elif family == "Unclassified":
+                pass
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+
+    elif ISOLATES is True:
+        if lang in test_isolates:
+            isolates[lang] = full_data[lang]
+        elif family == "Unclassified":
+            pass
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+    else:
+        data.append(full_data[lang][2])
+        labels.append(fam2idx[family])
+
+data = torch.Tensor(np.array(data), device=device)
+labels = torch.LongTensor(np.array(labels), device=device)
+tensor_ds = TensorDataset(data, labels)
+input_dim = data.size()[1]  # Length of data tensor
+hidden_dim = HIDDEN*len(idx2fam)
+output_dim = len(idx2fam)
+
 
 class FF(nn.Module):
+    """
+    Parts of this model (__init__, forward) are based on this tutorial:
+    https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
+    """
     def __init__(self, input_dim, hidden_dim, output_dim):
         super(FF, self).__init__()
         # Linear function
@@ -70,17 +168,16 @@ class FF(nn.Module):
         # Linear function
         out = self.fc1(x)
 
-        # Non-linearity
+        # Non-linear activation function
         out = self.tanh(out)
-        # Linear function (readout)
+        # Linear function
         out = self.fc2(out)
 
         return out
 
     def predict(self, vector, language, storage):
         """Predicts based on new data, and stores results in dic."""
-        vector = torch.Tensor(np.array([vector[language][2]]))
-        vector = vector.to(device)
+        vector = torch.Tensor(np.array([vector[language][2]]), device=device)
 
         outs = model(vector)
         _, prediction = torch.max(outs.data, 1)
@@ -90,85 +187,19 @@ class FF(nn.Module):
         else:
             storage[lang] = [prediction]
 
+        # Output softmax probabilities
+        # Problem: No real probabilities!
+        if lang in tacanan:
+            prob = nn.functional.softmax(outs, dim=1)
+            top_p, top_class = prob.topk(5, dim=1)
+            print("Softmax prob. for:", lang)
+            for j, top in enumerate(top_class[0]):
+                print(idx2fam[int(top)], ":", round(float(top_p[0][j]), 2))
+            print("---")
         return storage
 
-
 for i in range(RUNS):
-    full_data = convert_data(
-        wordlists,
-        {k: v[0] for k, v in get_asjp().items()},
-        converter,
-        load="grambank",
-        threshold=5)
-
-    data = []
-    labels = []
-    idx2fam = defaultdict()
-    fam2idx = defaultdict()
-    IDX = 0
-
-    for lang in full_data:
-        family = full_data[lang][0]
-        if family not in fam2idx:
-            idx2fam[IDX] = family
-            fam2idx[family] = IDX
-            IDX += 1
-
-        if PANO is True:
-            if lang in tacanan:
-                longdistance_test[lang] = full_data[lang]
-            elif lang in pano_iso:
-                longdistance_test[lang] = full_data[lang]
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif UTOAZT is True:
-            if family == "Uto-Aztecan" and lang not in northern_uto:
-                southern_uto[lang] = full_data[lang]
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif ISOLATES is True:
-            if lang in test_isolates:
-                isolates[lang] = full_data[lang]
-            elif family == "Unclassified":
-                pass
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-        else:
-            data.append(full_data[lang][2])
-            labels.append(fam2idx[family])
-
-    data = torch.Tensor(np.array(data))
-    labels = torch.LongTensor(np.array(labels))
-    data = data.to(device)
-    labels = labels.to(device)
-    tensor_ds = TensorDataset(data, labels)
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
-
-    input_dim = data.size()[1]  # Length of data tensor
-    hidden_dim = HIDDEN*len(idx2fam)
-    output_dim = len(idx2fam)
-
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
                               shuffle=True)
@@ -190,10 +221,10 @@ for i in range(RUNS):
             # Clear gradients
             optimizer.zero_grad()
 
-            # Forward pass to get output/logits
+            # Get outputs
             outputs = model(data)
 
-            # Calculate Loss: softmax --> cross entropy loss
+            # Calculate Loss with softmax and crossentropyloss
             loss = criterion(outputs, labels)
 
             # Getting gradients w.r.t. parameters
@@ -211,10 +242,8 @@ for i in range(RUNS):
                 avg_fam = defaultdict()
                 fam_avg = []
                 for data, labels in test_loader:
-                    # Forward pass only to get logits/output
+                    # Run model on dev data
                     outputs = model(data)
-
-                    # Get predictions from the maximum value
                     _, predicted = torch.max(outputs.data, 1)
                     # Labels per family
                     for idx, label in enumerate(labels):
@@ -247,9 +276,7 @@ for i in range(RUNS):
     print("Best epoch:", BEST)
     print("Mean at run", i, ":", round(mean(scores), 2))
     print("---")
-    for lang in family_results:
-        print(idx2fam[lang], ":", family_results[lang])
-    print(fam2idx)
+
     # Long-distance test
     if UTOAZT is True:
         for lang in southern_uto:
