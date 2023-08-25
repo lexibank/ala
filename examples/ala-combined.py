@@ -16,9 +16,9 @@ PANO = True
 ISOLATES = True
 
 # Hyperparameters
-RUNS = 10
-EPOCHS = 100
-BATCH = 16
+RUNS = 100
+EPOCHS = 500
+BATCH = 32
 HIDDEN = 4  # multiplier for length of fam
 LR = 0.0001
 
@@ -65,8 +65,7 @@ bpt_data = convert_data(
     bpt_wl,
     {k: v[0] for k, v in get_asjp().items()},
     lb_converter,
-    load="lexibank",
-    threshold=5)
+    load="lexibank")
 
 # Add Pano-Tacanan to lexibank
 for lang in bpt_data:
@@ -142,8 +141,10 @@ for lang in full_data:
         data.append(full_data[lang][2])
         labels.append(fam2idx[family])
 
-data = torch.Tensor(np.array(data), device=device)
-labels = torch.LongTensor(np.array(labels), device=device)
+data = torch.Tensor(np.array(data))
+labels = torch.LongTensor(np.array(labels))
+data = data.to(device)
+labels = labels.to(device)
 tensor_ds = TensorDataset(data, labels)
 input_dim = data.size()[1]  # Length of data tensor
 hidden_dim = HIDDEN*len(idx2fam)
@@ -160,7 +161,7 @@ class FF(nn.Module):
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         # Non-linearity
-        self.tanh = nn.ReLU()
+        self.ReLU = nn.ReLU()
         # Linear function (readout)
         self.fc2 = nn.Linear(hidden_dim, output_dim)
 
@@ -169,7 +170,7 @@ class FF(nn.Module):
         out = self.fc1(x)
 
         # Non-linear activation function
-        out = self.tanh(out)
+        out = self.ReLU(out)
         # Linear function
         out = self.fc2(out)
 
@@ -177,8 +178,8 @@ class FF(nn.Module):
 
     def predict(self, vector, language, storage):
         """Predicts based on new data, and stores results in dic."""
-        vector = torch.Tensor(np.array([vector[language][2]]), device=device)
-
+        vector = torch.Tensor(np.array([vector[language][2]]))
+        vector = vector.to(device)
         outs = model(vector)
         _, prediction = torch.max(outs.data, 1)
         prediction = idx2fam[prediction.item()]
@@ -189,14 +190,15 @@ class FF(nn.Module):
 
         # Output softmax probabilities
         # Problem: No real probabilities!
-        if lang in tacanan:
-            prob = nn.functional.softmax(outs, dim=1)
-            top_p, top_class = prob.topk(5, dim=1)
-            print("Softmax prob. for:", lang)
-            for j, top in enumerate(top_class[0]):
-                print(idx2fam[int(top)], ":", round(float(top_p[0][j]), 2))
-            print("---")
+        # if lang in tacanan:
+        #     prob = nn.functional.softmax(outs, dim=1)
+        #     top_p, top_class = prob.topk(5, dim=1)
+        #     print("Softmax prob. for:", lang)
+        #     for j, top in enumerate(top_class[0]):
+        #         print(idx2fam[int(top)], ":", round(float(top_p[0][j]), 2))
+        #     print("---")
         return storage
+
 
 for i in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])

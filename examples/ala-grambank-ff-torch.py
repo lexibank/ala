@@ -56,13 +56,84 @@ longdistance_test = defaultdict()
 isolates = defaultdict()
 
 
+full_data = convert_data(
+    wordlists,
+    {k: v[0] for k, v in get_asjp().items()},
+    converter,
+    load="grambank",
+    threshold=5)
+
+data = []
+labels = []
+idx2fam = defaultdict()
+fam2idx = defaultdict()
+IDX = 0
+
+for lang in full_data:
+    family = full_data[lang][0]
+    if family not in fam2idx:
+        idx2fam[IDX] = family
+        fam2idx[family] = IDX
+        IDX += 1
+
+    if PANO is True:
+        if lang in tacanan:
+            longdistance_test[lang] = full_data[lang]
+        elif lang in pano_iso:
+            longdistance_test[lang] = full_data[lang]
+        elif ISOLATES is True:
+            if lang in test_isolates:
+                isolates[lang] = full_data[lang]
+            elif family == "Unclassified":
+                pass
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+
+    elif UTOAZT is True:
+        if family == "Uto-Aztecan" and lang not in northern_uto:
+            southern_uto[lang] = full_data[lang]
+        elif ISOLATES is True:
+            if lang in test_isolates:
+                isolates[lang] = full_data[lang]
+            elif family == "Unclassified":
+                pass
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+
+    elif ISOLATES is True:
+        if lang in test_isolates:
+            isolates[lang] = full_data[lang]
+        elif family == "Unclassified":
+            pass
+        else:
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+    else:
+        data.append(full_data[lang][2])
+        labels.append(fam2idx[family])
+
+data = torch.Tensor(np.array(data))
+labels = torch.LongTensor(np.array(labels))
+data = data.to(device)
+labels = labels.to(device)
+tensor_ds = TensorDataset(data, labels)
+
+
 class FF(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
         super(FF, self).__init__()
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         # Non-linearity
-        self.tanh = nn.ReLU()
+        self.ReLU = nn.ReLU()
         # Linear function (readout)
         self.fc2 = nn.Linear(hidden_dim, output_dim)
 
@@ -71,7 +142,7 @@ class FF(nn.Module):
         out = self.fc1(x)
 
         # Non-linearity
-        out = self.tanh(out)
+        out = self.ReLU(out)
         # Linear function (readout)
         out = self.fc2(out)
 
@@ -94,77 +165,7 @@ class FF(nn.Module):
 
 
 for i in range(RUNS):
-    full_data = convert_data(
-        wordlists,
-        {k: v[0] for k, v in get_asjp().items()},
-        converter,
-        load="grambank",
-        threshold=5)
-
-    data = []
-    labels = []
-    idx2fam = defaultdict()
-    fam2idx = defaultdict()
-    IDX = 0
-
-    for lang in full_data:
-        family = full_data[lang][0]
-        if family not in fam2idx:
-            idx2fam[IDX] = family
-            fam2idx[family] = IDX
-            IDX += 1
-
-        if PANO is True:
-            if lang in tacanan:
-                longdistance_test[lang] = full_data[lang]
-            elif lang in pano_iso:
-                longdistance_test[lang] = full_data[lang]
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif UTOAZT is True:
-            if family == "Uto-Aztecan" and lang not in northern_uto:
-                southern_uto[lang] = full_data[lang]
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif ISOLATES is True:
-            if lang in test_isolates:
-                isolates[lang] = full_data[lang]
-            elif family == "Unclassified":
-                pass
-            else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-        else:
-            data.append(full_data[lang][2])
-            labels.append(fam2idx[family])
-
-    data = torch.Tensor(np.array(data))
-    labels = torch.LongTensor(np.array(labels))
-    data = data.to(device)
-    labels = labels.to(device)
-    tensor_ds = TensorDataset(data, labels)
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
-
     input_dim = data.size()[1]  # Length of data tensor
     hidden_dim = HIDDEN*len(idx2fam)
     output_dim = len(idx2fam)
