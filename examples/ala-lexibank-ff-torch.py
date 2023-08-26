@@ -5,6 +5,7 @@ https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedf
 from collections import defaultdict, Counter
 from statistics import mean, stdev
 import numpy as np
+from scipy.spatial import distance
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
@@ -14,25 +15,21 @@ from ala import concept2vec, get_db
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = True
+PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 # Hyperparameters
-RUNS = 10
-EPOCHS = 500
-BATCH = 64
+RUNS = 1
+EPOCHS = 50
+BATCH = 32
 HIDDEN = 3  # multiplier for length of fam
-LR = 1e-4
+LR = 1e-3
 
 # Switch on GPU if available
-if torch.backends.mps.is_available():
-    device = "mps"  # MacOS
-elif torch.cuda.is_available():
-    device = "cuda"  # NVidia
-else:
-    device = "cpu"
+device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+print("Current device:", device)
 
 scores = []
 results = defaultdict()  # test cases
@@ -178,7 +175,7 @@ class FF(nn.Module):
         return storage
 
 
-for i in range(RUNS):
+for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
 
     input_dim = data.size()[1]  # Length of data tensor
@@ -260,8 +257,29 @@ for i in range(RUNS):
     # Summary for best epoch
     scores.append(int(HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
+
+    dist = [[0.0 for f in fam2idx] for f in fam2idx]
+    weights = list(model.parameters())
+    w = weights[2]  # Matrix with length fam2idx
+    for i, v in enumerate(w):
+        v = v.cpu()
+        v = v.detach().numpy()
+        for j, u in enumerate(w):
+            u = u.cpu()
+            u = u.detach().numpy()
+
+            dist[i][j] = dist[i][j] = distance.cosine(v, u)
+            # print("Distance", idx2fam[i], "to", idx2fam[j], ":", round(dist[i][j], 2))
+
+    with open("family-distances.tsv", "w", encoding="utf8") as f:
+        f.write("\t" + "\t".join(list(fam2idx)) + "\n")
+        for i, row in enumerate(dist):
+            f.write(idx2fam[i] + "\t")
+            f.write("\t".join(["{0:.4f}".format(cell) for cell in row])+"\n")
+
+    print("---")
     print("Best epoch:", BEST)
-    print("Mean at run", i, ":", round(mean(scores), 2))
+    print("Mean at run", run, ":", round(mean(scores), 2))
     print("---")
     # for lang in family_results:
     #     print(lang, ":", family_results[lang])
@@ -285,4 +303,4 @@ for item in results:
 print("---------------")
 print("FINAL:")
 print("Overall:", round(mean(scores), 2))
-print("Standard deviation:", round(stdev(scores), 2))
+# print("Standard deviation:", round(stdev(scores), 2))
