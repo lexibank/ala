@@ -11,11 +11,12 @@ import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, get_db
+from clldutils.misc import slug
 
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = False
+PANO = True
 
 # Remove (True) or include (False) Isolates/"Unclassified"
 ISOLATES = False
@@ -73,6 +74,10 @@ for lang in bpt_data:
     if PANO is True:
         if lang in panoan:
             full_data[lang] = bpt_data[lang]
+            full_data[lang][0] = "Panoan"
+        elif lang in tacanan:
+            full_data[lang] = bpt_data[lang]
+            full_data[lang][0] = "Tacanan"
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
@@ -93,7 +98,12 @@ for lang in full_data:
 
     if PANO is True:
         if lang in tacanan:
-            pass
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
+        elif lang in panoan:
+            family = "Panoan"
+            data.append(full_data[lang][2])
+            labels.append(fam2idx[family])
         elif lang in pano_iso:
             pass
         elif ISOLATES is True:
@@ -272,10 +282,11 @@ for run in range(RUNS):
             # print("Distance", idx2fam[i], "to", idx2fam[j], ":", round(dist[i][j], 2))
 
     with open("family-distances.tsv", "w", encoding="utf8") as f:
-        f.write("\t" + "\t".join(list(fam2idx)) + "\n")
+        # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
+        f.write(" "+str(len(fam2idx))+"\n")
         for i, row in enumerate(dist):
-            f.write(idx2fam[i] + "\t")
-            f.write("\t".join(["{0:.4f}".format(cell) for cell in row])+"\n")
+            f.write(slug(idx2fam[i], lowercase=False) + " ")
+            f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
 
     print("---")
     print("Best epoch:", BEST)
