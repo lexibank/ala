@@ -16,15 +16,15 @@ from clldutils.misc import slug
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = True
+PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
 ISOLATES = False
 
 # Hyperparameters
-RUNS = 1
+RUNS = 100
 EPOCHS = 50
-BATCH = 32
+BATCH = 64
 HIDDEN = 3  # multiplier for length of fam
 LR = 1e-3
 
@@ -33,6 +33,7 @@ device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is
 print("Current device:", device)
 
 scores = []
+fam_scores = []
 results = defaultdict()  # test cases
 
 gb = get_gb("grambank.sqlite3")
@@ -61,7 +62,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     converter,
     load="lexibank",
-    threshold=7)
+    threshold=5)
 
 bpt_data = convert_data(
     bpt_wl,
@@ -81,7 +82,7 @@ for lang in bpt_data:
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
-        full_data[lang] = bpt_data[lang]
+        pass
 
 data = []
 labels = []
@@ -207,6 +208,7 @@ for run in range(RUNS):
 
     ITER = 0
     HIGH = 0
+    FAM_HIGH = 0
     BEST = 0
     for epoch in range(EPOCHS):
         for idx, (data, labels) in enumerate(train_loader):
@@ -227,7 +229,7 @@ for run in range(RUNS):
 
             # Calculate Accuracy for test set
             ITER += 1
-            if ITER % 500 == 0:
+            if ITER % 10 == 0:
                 CORR = 0
                 TOTAL = 0
                 family_results = defaultdict()
@@ -247,51 +249,57 @@ for run in range(RUNS):
                             family_results[label].append(pred)
                         else:
                             family_results[label] = [pred]
-
+                CORR = 0
+                TOTAL = 0
                 for fam in family_results:
-                    CORR = 0
-                    TOTAL = len(family_results[fam])
+                    FAMCORR = 0
+                    FAMTOTAL = len(family_results[fam])
                     for pred in family_results[fam]:
+                        TOTAL += 1
                         if fam == pred:
                             CORR += 1
-                    fam_average = 100 * CORR / TOTAL
+                            FAMCORR += 1
+                    fam_average = 100 * FAMCORR / FAMTOTAL
                     fam_avg.append(fam_average)
-
-                acc = mean(fam_avg)
-                print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {acc}')
-                if acc > HIGH:
+                acc = 100 * CORR / TOTAL
+                fam_acc = mean(fam_avg)
+                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
+                if fam_acc > HIGH:
                     HIGH = acc
                     BEST = epoch
+                    FAM_HIGH = fam_acc
+                    # print("Total acc:", acc)
+                    # print("Family acc:", fam_acc)
                     torch.save(model.state_dict(), 'best-model-parameters.pt')
 
     # Summary for best epoch
     scores.append(int(HIGH))
+    fam_scores.append(int(FAM_HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
 
-    dist = [[0.0 for f in fam2idx] for f in fam2idx]
-    weights = list(model.parameters())
-    w = weights[2]  # Matrix with length fam2idx
-    for i, v in enumerate(w):
-        v = v.cpu()
-        v = v.detach().numpy()
-        for j, u in enumerate(w):
-            u = u.cpu()
-            u = u.detach().numpy()
+    # Compute cosine distances for families
+    # dist = [[0.0 for f in fam2idx] for f in fam2idx]
+    # weights = list(model.parameters())
+    # w = weights[2]  # Matrix with length fam2idx
+    # for i, v in enumerate(w):
+    #     v = v.cpu()
+    #     v = v.detach().numpy()
+    #     for j, u in enumerate(w):
+    #         u = u.cpu()
+    #         u = u.detach().numpy()
+    #         dist[i][j] = dist[i][j] = distance.cosine(v, u)
+    # 
+    # with open("family-distances.tsv", "w", encoding="utf8") as f:
+    #     # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
+    #     f.write(" "+str(len(fam2idx))+"\n")
+    #     for i, row in enumerate(dist):
+    #         f.write(slug(idx2fam[i], lowercase=False) + " ")
+    #         f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
 
-            dist[i][j] = dist[i][j] = distance.cosine(v, u)
-            # print("Distance", idx2fam[i], "to", idx2fam[j], ":", round(dist[i][j], 2))
-
-    with open("family-distances.tsv", "w", encoding="utf8") as f:
-        # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
-        f.write(" "+str(len(fam2idx))+"\n")
-        for i, row in enumerate(dist):
-            f.write(slug(idx2fam[i], lowercase=False) + " ")
-            f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
-
-    print("---")
-    print("Best epoch:", BEST)
-    print("Mean at run", run, ":", round(mean(scores), 2))
-    print("---")
+    # print("---")
+    # print("Best epoch:", BEST)
+    # print("Mean at run", run, ":", round(mean(scores), 2))
+    # print("---")
     # for lang in family_results:
     #     print(lang, ":", family_results[lang])
     # print(fam2idx)
@@ -312,6 +320,9 @@ for run in range(RUNS):
 for item in results:
     print(item, Counter(results[item]))
 print("---------------")
-print("FINAL:")
+print("FINAL LEXIBANK:")
 print("Overall:", round(mean(scores), 2))
-# print("Standard deviation:", round(stdev(scores), 2))
+print("Standard deviation:", round(stdev(scores), 2))
+print("---")
+print("Mean family accuracy:", round(mean(fam_scores), 2))
+print("Standard deviation:", round(stdev(fam_scores), 2))
