@@ -17,7 +17,7 @@ UTOAZT = False
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = False
+ISOLATES = True
 
 # Hyperparameters
 RUNS = 100
@@ -240,7 +240,7 @@ for run in range(RUNS):
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
                 # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
-                if fam_acc > HIGH:
+                if fam_acc > FAM_HIGH:
                     HIGH = acc
                     BEST = epoch
                     FAM_HIGH = fam_acc
@@ -291,7 +291,7 @@ for run in range(RUNS):
     if ISOLATES is True:
         for lang in isolates:
             model.predict(isolates, lang, results)
-    print("---------------")
+    # print("---------------")
 
 for item in results:
     print(item, Counter(results[item]))
