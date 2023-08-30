@@ -36,14 +36,14 @@ results = defaultdict()  # test cases
 
 lb = get_wl("lexibank.sqlite3")
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items() if k in lb}
+wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items()}
 
 # get converter for grambank data
 converter = feature2vec(get_db("grambank.sqlite3"))
 
 
 tacanan = ["esee1248", "arao1248", "cavi1250"]
-panoan = ["yawa1260", "poya1241", "ship1254", "yami1256", 
+panoan = ["yawa1260", "poya1241", "ship1254", "yami1256",
           "pano1255", "pano1254", "mats1244", "maru1252",
           "amah1246", "capa1241", "chac1251", "isco1239"]
 pano_iso = ["mose1249"]
