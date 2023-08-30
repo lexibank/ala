@@ -76,9 +76,6 @@ for lang in bpt_data:
         if lang in panoan:
             full_data[lang] = bpt_data[lang]
             full_data[lang][0] = "Panoan"
-        elif lang in tacanan:
-            full_data[lang] = bpt_data[lang]
-            full_data[lang][0] = "Tacanan"
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
