@@ -17,7 +17,7 @@ UTOAZT = True
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 # Hyperparameters
 RUNS = 100
