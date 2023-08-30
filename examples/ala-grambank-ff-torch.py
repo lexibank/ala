@@ -13,11 +13,11 @@ from ala import feature2vec, get_db
 
 
 # Switches for tests - set only one to True!
-UTOAZT = True
-PANO = False
+UTOAZT = False
+PANO = True
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = False
+ISOLATES = True
 
 # Hyperparameters
 RUNS = 100
