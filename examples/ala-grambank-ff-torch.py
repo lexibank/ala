@@ -27,7 +27,6 @@ LR = 1e-3
 
 # Switch on GPU if available
 device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-WORKERS = 16 if torch.cuda.is_available() else 0
 print("Current device:", device)
 
 scores = []
@@ -174,13 +173,11 @@ for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              shuffle=True,
-                              num_workers=WORKERS)
+                              shuffle=True)
 
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=BATCH,
-                             shuffle=False,
-                             num_workers=WORKERS)
+                             shuffle=False)
 
     model = FF(input_dim, hidden_dim, output_dim)
     model = model.to(device)

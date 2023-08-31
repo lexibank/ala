@@ -30,7 +30,6 @@ LR = 1e-3
 
 # Switch on GPU if available
 DEVICE = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-WORKERS = 16 if torch.cuda.is_available() else 0
 print("Current device:", DEVICE)
 
 scores = []
@@ -193,13 +192,11 @@ for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              shuffle=True,
-                              num_workers=WORKERS)
+                              shuffle=True)
 
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=BATCH,
-                             shuffle=False,
-                             num_workers=WORKERS)
+                             shuffle=False)
 
     model = FF(input_dim, hidden_dim, output_dim)
     model = model.to(DEVICE)
@@ -261,7 +258,6 @@ for run in range(RUNS):
                             CORR += 1
                             FAMCORR += 1
                     fam_average = 100 * FAMCORR / FAMTOTAL
-                    fam_avg.append(fam_average)
 
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
