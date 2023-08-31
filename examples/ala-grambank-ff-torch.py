@@ -14,10 +14,10 @@ from ala import feature2vec, get_db
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = True
+PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 # Hyperparameters
 RUNS = 100
@@ -33,6 +33,7 @@ print("Current device:", device)
 scores = []
 fam_scores = []
 results = defaultdict()  # test cases
+family_results = defaultdict()
 
 lb = get_wl("lexibank.sqlite3")
 asjp = get_asjp()
@@ -208,7 +209,6 @@ for run in range(RUNS):
             # Calculate Accuracy for test set
             ITER += 1
             if ITER % 10 == 0:
-                family_results = defaultdict()
                 avg_fam = defaultdict()
                 fam_avg = []
                 for data, labels in test_loader:
@@ -276,9 +276,7 @@ for run in range(RUNS):
     # print("Best epoch:", BEST)
     # print("Mean at run", run, ":", round(mean(scores), 2))
     # print("---")
-    # for lang in family_results:
-    #     print(lang, ":", family_results[lang])
-    # print(fam2idx)
+
     # Long-distance test
     if UTOAZT is True:
         for lang in southern_uto:
@@ -293,10 +291,14 @@ for run in range(RUNS):
             model.predict(isolates, lang, results)
     # print("---------------")
 
-for item in results:
-    print(item, Counter(results[item]))
 print("---------------")
 print("FINAL GRAMBANK:")
+for item in results:
+    print(item, Counter(results[item]))
+for lang in family_results:
+    print(lang, ":", family_results[lang])
+print(fam2idx)
+
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")
