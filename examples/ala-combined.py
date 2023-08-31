@@ -46,6 +46,8 @@ northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
 scores = []
 fam_scores = []
 results = defaultdict()
+family_results = defaultdict()
+
 southern_uto = defaultdict()
 longdistance_test = defaultdict()
 isolates = defaultdict()
@@ -241,7 +243,6 @@ for run in range(RUNS):
             # Calculate Accuracy for test set
             ITER += 1
             if ITER % 10 == 0:
-                family_results = defaultdict()
                 avg_fam = defaultdict()
                 fam_avg = []
                 for data, labels in test_loader:
@@ -307,9 +308,7 @@ for run in range(RUNS):
     # print("Best epoch:", BEST)
     # print("Mean at run", run, ":", round(mean(scores), 2))
     # print("---")
-    # for lang in family_results:
-    #     print(lang, ":", family_results[lang])
-    # print(fam2idx)
+
     # Long-distance test
     if UTOAZT is True:
         for lang in southern_uto:
@@ -328,6 +327,10 @@ for item in results:
     print(item, Counter(results[item]))
 print("---------------")
 print("FINAL COMBINED:")
+for lang in family_results:
+    print(lang, ":", family_results[lang])
+print(fam2idx)
+
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")
