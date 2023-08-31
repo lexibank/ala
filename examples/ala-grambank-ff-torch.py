@@ -19,21 +19,21 @@ PANO = False
 # Remove (True) or include (False) Isolates/"Unclassified"
 ISOLATES = False
 
-# Hyperparameters
 RUNS = 100
-EPOCHS = 50
-BATCH = 64
+EPOCHS = 500
+BATCH = 1024
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
 # Switch on GPU if available
 device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+WORKERS = 16 if torch.cuda.is_available() else 0
 print("Current device:", device)
 
 scores = []
 fam_scores = []
 results = defaultdict()  # test cases
-family_results = defaultdict()
+fam_confusion = defaultdict()
 
 lb = get_wl("lexibank.sqlite3")
 asjp = get_asjp()
@@ -128,6 +128,10 @@ data = data.to(device)
 labels = labels.to(device)
 tensor_ds = TensorDataset(data, labels)
 
+input_dim = data.size()[1]  # Length of data tensor
+hidden_dim = HIDDEN*len(idx2fam)
+output_dim = len(idx2fam)
+
 
 class FF(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
@@ -168,17 +172,15 @@ class FF(nn.Module):
 
 for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
-    input_dim = data.size()[1]  # Length of data tensor
-    hidden_dim = HIDDEN*len(idx2fam)
-    output_dim = len(idx2fam)
-
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              shuffle=True)
+                              shuffle=True,
+                              num_workers=WORKERS)
 
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=BATCH,
-                             shuffle=False)
+                             shuffle=False,
+                             num_workers=WORKERS)
 
     model = FF(input_dim, hidden_dim, output_dim)
     model = model.to(device)
@@ -208,8 +210,9 @@ for run in range(RUNS):
 
             # Calculate Accuracy for test set
             ITER += 1
-            if ITER % 10 == 0:
+            if ITER % 20 == 0:
                 avg_fam = defaultdict()
+                family_results = defaultdict()
                 fam_avg = []
                 for data, labels in test_loader:
                     # Forward pass only to get logits/output
@@ -295,8 +298,8 @@ print("---------------")
 print("FINAL GRAMBANK:")
 for item in results:
     print(item, Counter(results[item]))
-for lang in family_results:
-    print(lang, ":", family_results[lang])
+for lang in fam_confusion:
+    print(lang, ":", fam_confusion[lang])
 print(fam2idx)
 
 print("Overall:", round(mean(scores), 2))

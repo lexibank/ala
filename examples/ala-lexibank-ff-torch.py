@@ -23,19 +23,20 @@ ISOLATES = False
 
 # Hyperparameters
 RUNS = 100
-EPOCHS = 50
-BATCH = 64
-HIDDEN = 3  # multiplier for length of fam
+EPOCHS = 500
+BATCH = 1024
+HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
 # Switch on GPU if available
-device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-print("Current device:", device)
+DEVICE = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+WORKERS = 16 if torch.cuda.is_available() else 0
+print("Current device:", DEVICE)
 
 scores = []
 fam_scores = []
 results = defaultdict()  # test cases
-family_results = defaultdict()
+fam_confusion = defaultdict()
 
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
@@ -146,9 +147,13 @@ for lang in full_data:
 
 data = torch.Tensor(np.array(data))
 labels = torch.LongTensor(np.array(labels))
-data = data.to(device)
-labels = labels.to(device)
+data = data.to(DEVICE)
+labels = labels.to(DEVICE)
 tensor_ds = TensorDataset(data, labels)
+
+input_dim = data.size()[1]  # Length of data tensor
+hidden_dim = HIDDEN*len(idx2fam)
+output_dim = len(idx2fam)
 
 
 class FF(nn.Module):
@@ -171,7 +176,7 @@ class FF(nn.Module):
     def predict(self, vector, language, storage):
         """Predicts based on new data, and stores results in dic."""
         vector = torch.Tensor(np.array([vector[language][2]]))
-        vector = vector.to(device)
+        vector = vector.to(DEVICE)
 
         outs = model(vector)
         _, prediction = torch.max(outs.data, 1)
@@ -186,21 +191,18 @@ class FF(nn.Module):
 
 for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
-
-    input_dim = data.size()[1]  # Length of data tensor
-    hidden_dim = HIDDEN*len(idx2fam)
-    output_dim = len(idx2fam)
-
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              shuffle=True)
+                              shuffle=True,
+                              num_workers=WORKERS)
 
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=BATCH,
-                             shuffle=False)
+                             shuffle=False,
+                             num_workers=WORKERS)
 
     model = FF(input_dim, hidden_dim, output_dim)
-    model = model.to(device)
+    model = model.to(DEVICE)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
@@ -208,6 +210,7 @@ for run in range(RUNS):
     HIGH = 0
     FAM_HIGH = 0
     BEST = 0
+
     for epoch in range(EPOCHS):
         for idx, (data, labels) in enumerate(train_loader):
             # Clear gradients
@@ -227,10 +230,11 @@ for run in range(RUNS):
 
             # Calculate Accuracy for test set
             ITER += 1
-            if ITER % 10 == 0:
+            if ITER % 20 == 0:
                 CORR = 0
                 TOTAL = 0
                 avg_fam = defaultdict()
+                family_results = defaultdict()
                 fam_avg = []
                 for data, labels in test_loader:
                     # Forward pass only to get logits/output
@@ -258,8 +262,10 @@ for run in range(RUNS):
                             FAMCORR += 1
                     fam_average = 100 * FAMCORR / FAMTOTAL
                     fam_avg.append(fam_average)
+
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
+
                 # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
                 if fam_acc > FAM_HIGH:
                     HIGH = acc
@@ -314,8 +320,8 @@ for run in range(RUNS):
 
 print("---------------")
 print("FINAL LEXIBANK:")
-for lang in family_results:
-    print(lang, ":", family_results[lang])
+for lang in fam_confusion:
+    print(lang, ":", fam_confusion[lang])
 print(fam2idx)
 
 for item in results:
