@@ -275,7 +275,7 @@ for run in range(RUNS):
 
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
-                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Fam. Acc.: {fam_acc}')
+                print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Fam. Acc.: {fam_acc}')
                 if fam_acc > FAM_HIGH:
                     HIGH = acc
                     BEST = epoch
