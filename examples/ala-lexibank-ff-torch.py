@@ -12,7 +12,7 @@ from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, get_db
 from clldutils.misc import slug
-
+import csv
 
 # Switches for tests - set only one to True!
 UTOAZT = False
@@ -34,6 +34,7 @@ print("Current device:", DEVICE)
 
 scores = []
 fam_scores = []
+list_results = [["Model", "Run", "General", "Family"]]
 results = defaultdict()  # test cases
 
 gb = get_gb("grambank.sqlite3")
@@ -62,7 +63,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     converter,
     load="lexibank",
-    threshold=10)
+    threshold=5)
 
 bpt_data = convert_data(
     bpt_wl,
@@ -207,75 +208,82 @@ for run in range(RUNS):
     HIGH = 0
     FAM_HIGH = 0
     BEST = 0
+    NO_IMPROVE = 0
 
     for epoch in range(EPOCHS):
-        for idx, (data, labels) in enumerate(train_loader):
-            # Clear gradients
-            optimizer.zero_grad()
+        if NO_IMPROVE < 50:
+            for idx, (data, labels) in enumerate(train_loader):
+                # Clear gradients
+                optimizer.zero_grad()
 
-            # Forward pass to get output/logits
-            outputs = model(data)
+                # Forward pass to get output/logits
+                outputs = model(data)
 
-            # Calculate Loss: softmax --> cross entropy loss
-            loss = criterion(outputs, labels)
+                # Calculate Loss: softmax --> cross entropy loss
+                loss = criterion(outputs, labels)
 
-            # Getting gradients w.r.t. parameters
-            loss.backward()
+                # Getting gradients w.r.t. parameters
+                loss.backward()
 
-            # Updating parameters
-            optimizer.step()
+                # Updating parameters
+                optimizer.step()
 
-            # Calculate Accuracy for test set
-            ITER += 1
-            if ITER % 20 == 0:
-                CORR = 0
-                TOTAL = 0
-                avg_fam = defaultdict()
-                family_results = defaultdict()
-                fam_avg = []
-                for data, labels in test_loader:
-                    # Forward pass only to get logits/output
-                    outputs = model(data)
+                # Calculate Accuracy for test set
+                ITER += 1
+                if ITER % 20 == 0:
+                    CORR = 0
+                    TOTAL = 0
+                    avg_fam = defaultdict()
+                    family_results = defaultdict()
+                    fam_avg = []
+                    for data, labels in test_loader:
+                        # Forward pass only to get logits/output
+                        outputs = model(data)
 
-                    # Get predictions from the maximum value
-                    _, predicted = torch.max(outputs.data, 1)
-                    # Labels per family
-                    for idx, label in enumerate(labels):
-                        pred = int(predicted[idx])
-                        label = int(label)
-                        if label in family_results:
-                            family_results[label].append(pred)
-                        else:
-                            family_results[label] = [pred]
-                CORR = 0
-                TOTAL = 0
-                for fam in family_results:
-                    FAMCORR = 0
-                    FAMTOTAL = len(family_results[fam])
-                    for pred in family_results[fam]:
-                        TOTAL += 1
-                        if fam == pred:
-                            CORR += 1
-                            FAMCORR += 1
-                    fam_average = 100 * FAMCORR / FAMTOTAL
-                    fam_avg.append(fam_average)
-                    fam_confusion[idx2fam[fam]] = fam_average
+                        # Get predictions from the maximum value
+                        _, predicted = torch.max(outputs.data, 1)
+                        # Labels per family
+                        for idx, label in enumerate(labels):
+                            pred = int(predicted[idx])
+                            label = int(label)
+                            if label in family_results:
+                                family_results[label].append(pred)
+                            else:
+                                family_results[label] = [pred]
+                    CORR = 0
+                    TOTAL = 0
+                    for fam in family_results:
+                        FAMCORR = 0
+                        FAMTOTAL = len(family_results[fam])
+                        for pred in family_results[fam]:
+                            TOTAL += 1
+                            if fam == pred:
+                                CORR += 1
+                                FAMCORR += 1
+                        fam_average = 100 * FAMCORR / FAMTOTAL
+                        fam_avg.append(fam_average)
+                        fam_confusion[idx2fam[fam]] = fam_average
 
-                acc = 100 * CORR / TOTAL
-                fam_acc = mean(fam_avg)
+                    acc = 100 * CORR / TOTAL
+                    fam_acc = mean(fam_avg)
 
-                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
-                if fam_acc > FAM_HIGH:
-                    HIGH = acc
-                    BEST = epoch
-                    FAM_HIGH = fam_acc
-                    torch.save(model.state_dict(), 'best-model-parameters.pt')
-
+                    # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
+                    if fam_acc > FAM_HIGH:
+                        NO_IMPROVE = 0
+                        HIGH = acc
+                        BEST = epoch
+                        FAM_HIGH = fam_acc
+                        torch.save(model.state_dict(), 'best-model-parameters.pt')
+                    else:
+                        NO_IMPROVE += 1
     # Summary for best epoch
     scores.append(int(HIGH))
     fam_scores.append(int(FAM_HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
 
+    list_results.append([
+        "lexibank", run, HIGH, FAM_HIGH
+    ])
     # Compute cosine distances for families
     # dist = [[0.0 for f in fam2idx] for f in fam2idx]
     # weights = list(model.parameters())
@@ -320,8 +328,13 @@ for item in results:
     print(item, Counter(results[item]))
 for lang in fam_confusion:
     print(lang, ":", fam_confusion[lang])
-print("Overall:", round(mean(scores), 2))
+print("Overall accuracy:", round(mean(scores), 2))
 # print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
+print(len(fam2idx))
 # print("Standard deviation:", round(stdev(fam_scores), 2))
+
+with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
+    writer = csv.writer(csvfile, delimiter="\t")
+    writer.writerows(list_results)

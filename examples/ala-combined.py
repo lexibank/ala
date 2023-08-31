@@ -6,7 +6,7 @@ import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, feature2vec, get_db
-
+import csv
 
 # Switches for tests - set only one to True!
 UTOAZT = False
@@ -16,7 +16,7 @@ PANO = False
 ISOLATES = False
 
 # Hyperparameters
-RUNS = 100
+RUNS = 10
 EPOCHS = 500
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
@@ -47,6 +47,7 @@ scores = []
 fam_scores = []
 results = defaultdict()
 fam_confusion = defaultdict()
+list_results = [["Model", "Run", "General", "Family"]]
 
 southern_uto = defaultdict()
 longdistance_test = defaultdict()
@@ -62,7 +63,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     lb_converter,
     load="lexibank",
-    threshold=10)
+    threshold=5)
 
 # Load blumpanotacana
 bpt_data = convert_data(
@@ -288,7 +289,9 @@ for run in range(RUNS):
     scores.append(int(HIGH))
     fam_scores.append(int(FAM_HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
-
+    list_results.append([
+        "combined", run, HIGH, FAM_HIGH
+    ])
     # Compute cosine distances for families
     # dist = [[0.0 for f in fam2idx] for f in fam2idx]
     # weights = list(model.parameters())
@@ -339,3 +342,7 @@ print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
 print("Standard deviation:", round(stdev(fam_scores), 2))
+
+with open('combined_results.tsv', 'w', encoding="utf8") as csvfile:
+    writer = csv.writer(csvfile, delimiter="\t")
+    writer.writerows(list_results)
