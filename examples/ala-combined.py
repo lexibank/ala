@@ -10,10 +10,10 @@ from ala import concept2vec, feature2vec, get_db
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = True
+PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 # Hyperparameters
 RUNS = 100
@@ -23,8 +23,8 @@ HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
 # Switch on GPU if available
-device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-print("Current device:", device)
+DEVICE = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+print("Current device:", DEVICE)
 
 # Load databases
 asjp = get_asjp()
@@ -147,8 +147,8 @@ for lang in full_data:
 
 data = torch.Tensor(np.array(data))
 labels = torch.LongTensor(np.array(labels))
-data = data.to(device)
-labels = labels.to(device)
+data = data.to(DEVICE)
+labels = labels.to(DEVICE)
 tensor_ds = TensorDataset(data, labels)
 input_dim = data.size()[1]  # Length of data tensor
 hidden_dim = HIDDEN*len(idx2fam)
@@ -183,7 +183,7 @@ class FF(nn.Module):
     def predict(self, vector, language, storage):
         """Predicts based on new data, and stores results in dic."""
         vector = torch.Tensor(np.array([vector[language][2]]))
-        vector = vector.to(device)
+        vector = vector.to(DEVICE)
         outs = model(vector)
         _, prediction = torch.max(outs.data, 1)
         prediction = idx2fam[prediction.item()]
@@ -215,7 +215,7 @@ for run in range(RUNS):
                              shuffle=False)
 
     model = FF(input_dim, hidden_dim, output_dim)
-    model = model.to(device)
+    model = model.to(DEVICE)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
@@ -271,7 +271,7 @@ for run in range(RUNS):
                     fam_avg.append(fam_average)
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
-                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
+                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Fam. Acc.: {fam_acc}')
                 if fam_acc > FAM_HIGH:
                     HIGH = acc
                     BEST = epoch
@@ -325,6 +325,7 @@ for run in range(RUNS):
 
 for item in results:
     print(item, Counter(results[item]))
+
 print("---------------")
 print("FINAL COMBINED:")
 for lang in family_results:
