@@ -21,7 +21,7 @@ ISOLATES = False
 
 RUNS = 100
 EPOCHS = 500
-BATCH = 1024
+BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
@@ -62,7 +62,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     converter,
     load="grambank",
-    threshold=5)
+    threshold=10)
 
 data = []
 labels = []
@@ -237,6 +237,8 @@ for run in range(RUNS):
                             FAMCORR += 1
                     fam_average = 100 * FAMCORR / FAMTOTAL
                     fam_avg.append(fam_average)
+                    fam_confusion[idx2fam[fam]] = fam_average
+
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
                 # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
@@ -252,7 +254,6 @@ for run in range(RUNS):
     scores.append(int(HIGH))
     fam_scores.append(int(FAM_HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
-
     # Compute cosine distances for families
     # dist = [[0.0 for f in fam2idx] for f in fam2idx]
     # weights = list(model.parameters())
@@ -297,8 +298,6 @@ for item in results:
     print(item, Counter(results[item]))
 for lang in fam_confusion:
     print(lang, ":", fam_confusion[lang])
-print(fam2idx)
-
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")

@@ -18,7 +18,7 @@ ISOLATES = False
 # Hyperparameters
 RUNS = 100
 EPOCHS = 500
-BATCH = 1024
+BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
@@ -62,7 +62,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     lb_converter,
     load="lexibank",
-    threshold=5)
+    threshold=10)
 
 # Load blumpanotacana
 bpt_data = convert_data(
@@ -271,6 +271,8 @@ for run in range(RUNS):
                             FAMCORR += 1
                     fam_average = 100 * FAMCORR / FAMTOTAL
                     fam_avg.append(fam_average)
+                    fam_confusion[idx2fam[fam]] = fam_average
+
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
                 # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Fam. Acc.: {fam_acc}')
@@ -332,8 +334,6 @@ print("---------------")
 print("FINAL COMBINED:")
 for lang in fam_confusion:
     print(lang, ":", fam_confusion[lang])
-print(fam2idx)
-
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")

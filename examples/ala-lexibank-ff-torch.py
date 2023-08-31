@@ -24,7 +24,7 @@ ISOLATES = False
 # Hyperparameters
 RUNS = 100
 EPOCHS = 500
-BATCH = 1024
+BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
@@ -35,7 +35,6 @@ print("Current device:", DEVICE)
 scores = []
 fam_scores = []
 results = defaultdict()  # test cases
-fam_confusion = defaultdict()
 
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
@@ -63,7 +62,7 @@ full_data = convert_data(
     {k: v[0] for k, v in get_asjp().items()},
     converter,
     load="lexibank",
-    threshold=5)
+    threshold=10)
 
 bpt_data = convert_data(
     bpt_wl,
@@ -80,7 +79,7 @@ for lang in bpt_data:
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
-        pass
+        longdistance_test[lang] = bpt_data[lang]
 
 data = []
 labels = []
@@ -189,6 +188,7 @@ class FF(nn.Module):
 
 
 for run in range(RUNS):
+    fam_confusion = defaultdict()
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
@@ -258,6 +258,8 @@ for run in range(RUNS):
                             CORR += 1
                             FAMCORR += 1
                     fam_average = 100 * FAMCORR / FAMTOTAL
+                    fam_avg.append(fam_average)
+                    fam_confusion[idx2fam[fam]] = fam_average
 
                 acc = 100 * CORR / TOTAL
                 fam_acc = mean(fam_avg)
@@ -267,8 +269,6 @@ for run in range(RUNS):
                     HIGH = acc
                     BEST = epoch
                     FAM_HIGH = fam_acc
-                    # print("Total acc:", acc)
-                    # print("Family acc:", fam_acc)
                     torch.save(model.state_dict(), 'best-model-parameters.pt')
 
     # Summary for best epoch
@@ -312,18 +312,16 @@ for run in range(RUNS):
     if ISOLATES is True:
         for lang in isolates:
             model.predict(isolates, lang, results)
-    # print("---------------")
 
 print("---------------")
 print("FINAL LEXIBANK:")
-for lang in fam_confusion:
-    print(lang, ":", fam_confusion[lang])
-print(fam2idx)
 
 for item in results:
     print(item, Counter(results[item]))
+for lang in fam_confusion:
+    print(lang, ":", fam_confusion[lang])
 print("Overall:", round(mean(scores), 2))
-print("Standard deviation:", round(stdev(scores), 2))
+# print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
-print("Standard deviation:", round(stdev(fam_scores), 2))
+# print("Standard deviation:", round(stdev(fam_scores), 2))
