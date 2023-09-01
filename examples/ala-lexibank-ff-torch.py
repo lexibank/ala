@@ -40,8 +40,8 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
-bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
+bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items() if k in gb}
 
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
@@ -64,7 +64,6 @@ full_data = convert_data(
     converter,
     load="lexibank",
     threshold=5)
-
 bpt_data = convert_data(
     bpt_wl,
     {k: v[0] for k, v in get_asjp().items()},
@@ -80,7 +79,10 @@ for lang in bpt_data:
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
-        longdistance_test[lang] = bpt_data[lang]
+        # longdistance_test[lang] = bpt_data[lang]
+        pass
+print("Number of lengths in intersection:")
+print(len(full_data))
 
 data = []
 labels = []

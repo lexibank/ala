@@ -16,7 +16,7 @@ PANO = False
 ISOLATES = False
 
 # Hyperparameters
-RUNS = 10
+RUNS = 100
 EPOCHS = 500
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
