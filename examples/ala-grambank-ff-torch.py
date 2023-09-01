@@ -13,7 +13,7 @@ from ala import feature2vec, get_db
 import csv
 
 # Switches for tests - set only one to True!
-UTOAZT = False
+UTOAZT = True
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
