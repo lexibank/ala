@@ -1,4 +1,4 @@
-from ala import get_wordlists, get_gb, affiliate_by_grambank, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wl, get_gb, affiliate_by_grambank, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
 import random
 import statistics
 from tabulate import tabulate
@@ -14,7 +14,7 @@ TEST_SIZE = 250
 
 asjp = get_asjp()
 wordlists = get_gb("grambank.sqlite3")
-control = get_wordlists("lexibank.sqlite3")
+control = get_wl("lexibank.sqlite3")
 wordlists = {k: v for k, v in wordlists.items() if k in control}
 
 results = {"TOTAL": []}

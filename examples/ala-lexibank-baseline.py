@@ -1,4 +1,4 @@
-from ala import get_wordlists, get_gb, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wl, get_gb, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
 import random
 import statistics
 from tabulate import tabulate
@@ -10,11 +10,11 @@ min_classes = 3
 test_size = 10
 RUNS = 100
 tt_split = 0.8
-TEST_SIZE = 250
+TEST_SIZE = 2500
 
 # we need asjp for family information
 asjp = get_asjp()
-wordlists = get_wordlists("lexibank.sqlite3")
+wordlists = get_wl("lexibank.sqlite3")
 control = get_gb("grambank.sqlite3")
 # reduce to languages also found in grambank
 wordlists = {k: v for k, v in wordlists.items() if k in control}
