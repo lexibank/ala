@@ -13,7 +13,7 @@ UTOAZT = True
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 RUNS = 100
 EPOCHS = 500
@@ -296,8 +296,8 @@ print("---------------")
 print("FINAL GRAMBANK:")
 for item in results:
     print(item, Counter(results[item]))
-for lang in fam_confusion:
-    print(lang, ":", fam_confusion[lang])
+# for lang in fam_confusion:
+#     print(lang, ":", fam_confusion[lang])
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")
