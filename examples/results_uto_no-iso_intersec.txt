@@ -1,0 +1,140 @@
+Current device: cuda
+---------------
+FINAL GRAMBANK:
+cent2131 Counter({'Uto-Aztecan': 77, 'Uralic': 18, 'Indo-European': 4, 'Sino-Tibetan': 1})
+clas1250 Counter({'Austronesian': 100})
+elna1235 Counter({'Uto-Aztecan': 35, 'Indo-European': 27, 'Arawakan': 23, 'Austronesian': 11, 'Nuclear-Macro-Je': 2, 'Chibchan': 2})
+high1278 Counter({'Austronesian': 93, 'Atlantic-Congo': 6, 'Austroasiatic': 1})
+huar1255 Counter({'Uto-Aztecan': 72, 'Chibchan': 18, 'Indo-European': 4, 'Chocoan': 2, 'Quechuan': 2, 'Nuclear Trans New Guinea': 1, 'Austronesian': 1})
+huic1243 Counter({'Nuclear-Macro-Je': 44, 'Chibchan': 25, 'Chocoan': 11, 'Nuclear Trans New Guinea': 10, 'Tucanoan': 6, 'Uto-Aztecan': 3, 'Sino-Tibetan': 1})
+mayo1264 Counter({'Uto-Aztecan': 89, 'Indo-European': 7, 'Afro-Asiatic': 2, 'Austronesian': 2})
+nort2959 Counter({'Uto-Aztecan': 92, 'Austronesian': 4, 'Indo-European': 3, 'Atlantic-Congo': 1})
+opat1246 Counter({'Uto-Aztecan': 63, 'Indo-European': 24, 'Austronesian': 6, 'Chibchan': 3, 'Sino-Tibetan': 3, 'Nuclear Trans New Guinea': 1})
+pima1248 Counter({'Uto-Aztecan': 59, 'Austronesian': 41})
+pipi1250 Counter({'Austronesian': 85, 'Afro-Asiatic': 10, 'Atlantic-Congo': 3, 'Chibchan': 1, 'Arawakan': 1})
+sout2976 Counter({'Austronesian': 100})
+tete1251 Counter({'Indo-European': 89, 'Austronesian': 5, 'Atlantic-Congo': 3, 'Uto-Aztecan': 3})
+toho1245 Counter({'Austronesian': 100})
+yaqu1251 Counter({'Uto-Aztecan': 99, 'Pama-Nyungan': 1})
+bang1363 Counter({'Austronesian': 96, 'Sino-Tibetan': 3, 'Afro-Asiatic': 1})
+basq1248 Counter({'Sino-Tibetan': 87, 'Indo-European': 13})
+movi1243 Counter({'Austronesian': 100})
+savo1255 Counter({'Austronesian': 37, 'Pama-Nyungan': 32, 'Uto-Aztecan': 23, 'Sino-Tibetan': 6, 'Nuclear Trans New Guinea': 2})
+Sino-Tibetan : 100.0
+Indo-European : 90.0
+Austronesian : 100.0
+Uto-Aztecan : 100.0
+Pama-Nyungan : 100.0
+Nuclear Trans New Guinea : 100.0
+Afro-Asiatic : 83.33333333333333
+Hmong-Mien : 100.0
+Nakh-Daghestanian : 100.0
+Dravidian : 50.0
+Quechuan : 0.0
+Atlantic-Congo : 100.0
+Austroasiatic : 100.0
+Chibchan : 100.0
+Uralic : 100.0
+Chocoan : 100.0
+Nuclear-Macro-Je : 0.0
+Arawakan : 33.333333333333336
+Turkic : 100.0
+Tucanoan : 100.0
+Overall: 92.89
+Standard deviation: 2.01
+---
+Mean family accuracy: 83.57
+Standard deviation: 4.94
+Current device: cuda
+Number of lengths in intersection:
+769
+---------------
+FINAL LEXIBANK:
+clas1250 Counter({'Uto-Aztecan': 93, 'Pama-Nyungan': 2, 'Afro-Asiatic': 2, 'Austronesian': 1, 'Atlantic-Congo': 1, 'Dravidian': 1})
+yaqu1251 Counter({'Uto-Aztecan': 92, 'Sino-Tibetan': 3, 'Nuclear-Macro-Je': 2, 'Nuclear Trans New Guinea': 2, 'Afro-Asiatic': 1})
+toho1245 Counter({'Uto-Aztecan': 98, 'Afro-Asiatic': 2})
+pima1248 Counter({'Uto-Aztecan': 95, 'Afro-Asiatic': 2, 'Austronesian': 2, 'Nuclear Trans New Guinea': 1})
+nort2959 Counter({'Uto-Aztecan': 94, 'Nuclear Trans New Guinea': 6})
+opat1246 Counter({'Uto-Aztecan': 94, 'Austronesian': 5, 'Nuclear Trans New Guinea': 1})
+huar1255 Counter({'Uto-Aztecan': 100})
+cent2131 Counter({'Uto-Aztecan': 100})
+mayo1264 Counter({'Uto-Aztecan': 100})
+elna1235 Counter({'Uto-Aztecan': 100})
+huic1243 Counter({'Uto-Aztecan': 95, 'Nuclear Trans New Guinea': 4, 'Sino-Tibetan': 1})
+tete1251 Counter({'Uto-Aztecan': 86, 'Pama-Nyungan': 11, 'Dravidian': 1, 'Afro-Asiatic': 1, 'Atlantic-Congo': 1})
+high1278 Counter({'Uto-Aztecan': 98, 'Afro-Asiatic': 1, 'Atlantic-Congo': 1})
+pipi1250 Counter({'Uto-Aztecan': 99, 'Nuclear Trans New Guinea': 1})
+sout2976 Counter({'Uto-Aztecan': 88, 'Nuclear Trans New Guinea': 12})
+bang1363 Counter({'Sino-Tibetan': 50, 'Atlantic-Congo': 47, 'Nuclear Trans New Guinea': 3})
+basq1248 Counter({'Indo-European': 94, 'Austronesian': 3, 'Sino-Tibetan': 3})
+movi1243 Counter({'Austronesian': 88, 'Nuclear-Macro-Je': 9, 'Afro-Asiatic': 1, 'Austroasiatic': 1, 'Sino-Tibetan': 1})
+savo1255 Counter({'Austronesian': 100})
+Afro-Asiatic : 75.0
+Austronesian : 100.0
+Pama-Nyungan : 100.0
+Uto-Aztecan : 100.0
+Nakh-Daghestanian : 100.0
+Indo-European : 100.0
+Sino-Tibetan : 100.0
+Hmong-Mien : 100.0
+Arawakan : 100.0
+Uralic : 100.0
+Turkic : 100.0
+Austroasiatic : 100.0
+Atlantic-Congo : 100.0
+Nuclear-Macro-Je : 100.0
+Chocoan : 100.0
+Nuclear Trans New Guinea : 80.0
+Dravidian : 100.0
+Overall accuracy: 96.36
+---
+Mean family accuracy: 90.98
+21
+Current device: cuda
+clas1250 Counter({'Uto-Aztecan': 61, 'Austronesian': 35, 'Pama-Nyungan': 2, 'Dravidian': 1, 'Afro-Asiatic': 1})
+yaqu1251 Counter({'Uto-Aztecan': 98, 'Nuclear-Macro-Je': 1, 'Nuclear Trans New Guinea': 1})
+toho1245 Counter({'Uto-Aztecan': 62, 'Austronesian': 37, 'Afro-Asiatic': 1})
+pima1248 Counter({'Uto-Aztecan': 92, 'Austronesian': 7, 'Nuclear-Macro-Je': 1})
+nort2959 Counter({'Uto-Aztecan': 94, 'Nuclear Trans New Guinea': 3, 'Austronesian': 3})
+opat1246 Counter({'Uto-Aztecan': 97, 'Nuclear Trans New Guinea': 2, 'Austronesian': 1})
+huar1255 Counter({'Uto-Aztecan': 100})
+cent2131 Counter({'Uto-Aztecan': 99, 'Sino-Tibetan': 1})
+mayo1264 Counter({'Uto-Aztecan': 100})
+elna1235 Counter({'Uto-Aztecan': 97, 'Austronesian': 3})
+huic1243 Counter({'Uto-Aztecan': 95, 'Sino-Tibetan': 2, 'Nuclear Trans New Guinea': 2, 'Nuclear-Macro-Je': 1})
+tete1251 Counter({'Uto-Aztecan': 85, 'Pama-Nyungan': 7, 'Austronesian': 5, 'Nuclear-Macro-Je': 1, 'Sino-Tibetan': 1, 'Afro-Asiatic': 1})
+high1278 Counter({'Uto-Aztecan': 99, 'Nuclear Trans New Guinea': 1})
+pipi1250 Counter({'Uto-Aztecan': 89, 'Austronesian': 9, 'Nuclear Trans New Guinea': 2})
+sout2976 Counter({'Uto-Aztecan': 83, 'Austronesian': 15, 'Nuclear Trans New Guinea': 2})
+bang1363 Counter({'Sino-Tibetan': 40, 'Atlantic-Congo': 31, 'Nuclear Trans New Guinea': 15, 'Austronesian': 13, 'Afro-Asiatic': 1})
+basq1248 Counter({'Indo-European': 83, 'Sino-Tibetan': 8, 'Austronesian': 5, 'Nakh-Daghestanian': 2, 'Uralic': 1, 'Afro-Asiatic': 1})
+movi1243 Counter({'Austronesian': 100})
+savo1255 Counter({'Austronesian': 100})
+---------------
+FINAL COMBINED:
+Austronesian : 100.0
+Afro-Asiatic : 100.0
+Indo-European : 100.0
+Austroasiatic : 80.0
+Pama-Nyungan : 100.0
+Uto-Aztecan : 100.0
+Atlantic-Congo : 100.0
+Uralic : 100.0
+Nuclear Trans New Guinea : 100.0
+Nuclear-Macro-Je : 0.0
+Nakh-Daghestanian : 33.333333333333336
+Turkic : 100.0
+Hmong-Mien : 100.0
+Chocoan : 100.0
+Sino-Tibetan : 100.0
+Pano-Tacanan : 100.0
+Dravidian : 100.0
+Chibchan : 100.0
+Arawakan : 100.0
+Quechuan : 100.0
+Tucanoan : 100.0
+Overall: 96.97
+Standard deviation: 1.87
+---
+Mean family accuracy: 93.28
+Standard deviation: 4.3
