@@ -13,7 +13,7 @@ UTOAZT = True
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 RUNS = 100
 EPOCHS = 500
