@@ -44,7 +44,7 @@ panoan = ["yawa1260", "poya1241", "ship1254", "yami1256",
           "pano1255", "pano1254", "mats1244", "maru1252",
           "amah1246", "capa1241", "chac1251", "isco1239"]
 pano_iso = ["mose1249"]
-test_isolates = ["basq1248", "movi1243", "bang1363", "savo1255"]
+test_isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
 northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                 "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
                 "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]

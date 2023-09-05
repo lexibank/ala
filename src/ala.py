@@ -336,6 +336,8 @@ def convert_data(wordlists, families, converter, load, threshold=3):
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
 
+        elif gcode == "suan1234":
+            by_fam['Sino-Tibetan'] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
