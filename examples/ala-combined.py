@@ -335,8 +335,8 @@ for item in results:
 
 print("---------------")
 print("FINAL COMBINED:")
-for lang in fam_confusion:
-    print(lang, ":", fam_confusion[lang])
+# for lang in fam_confusion:
+#     print(lang, ":", fam_confusion[lang])
 print("Overall:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")

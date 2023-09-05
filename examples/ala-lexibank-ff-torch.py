@@ -40,8 +40,8 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
-bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items() if k in gb}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
+bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
 
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
