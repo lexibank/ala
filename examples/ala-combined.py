@@ -1,17 +1,11 @@
-"""
-Part of this code is based on this tutorial:
-https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
-"""
 from collections import defaultdict, Counter
 from statistics import mean, stdev
 import numpy as np
-from scipy.spatial import distance
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
-from ala import concept2vec, get_db
-from clldutils.misc import slug
+from ala import concept2vec, feature2vec, get_db
 import csv
 
 # Switches for tests - set only one to True!
@@ -32,19 +26,14 @@ LR = 1e-3
 DEVICE = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
 print("Current device:", DEVICE)
 
-scores = []
-fam_scores = []
-list_results = [["Model", "Run", "General", "Family"]]
-results = defaultdict()  # test cases
-
-gb = get_gb("grambank.sqlite3")
+# Load databases
 asjp = get_asjp()
-converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
-bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
+gb = {k: v for k, v in get_gb("grambank.sqlite3").items()}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
+bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items() if k in gb}
 
-
-tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
+# Test lists
+tacanan = ["esee1248", "arao1248", "cavi1250"]
 panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
           "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
 pano_iso = ["mose1249", "movi1243", "chip1262"]
@@ -54,34 +43,52 @@ northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                 "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
 
 # Dictionaries of data to be tested
+scores = []
+fam_scores = []
+results = defaultdict()
+fam_confusion = defaultdict()
+list_results = [["Model", "Run", "General", "Family"]]
+
 southern_uto = defaultdict()
 longdistance_test = defaultdict()
 isolates = defaultdict()
 
+# Load converters
+lb_converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
+gb_converter = feature2vec(get_db("grambank.sqlite3"))
+
+# Load Lexibank
 full_data = convert_data(
     wordlists,
     {k: v[0] for k, v in get_asjp().items()},
-    converter,
+    lb_converter,
     load="lexibank",
     threshold=5)
+
+# Load blumpanotacana
 bpt_data = convert_data(
     bpt_wl,
     {k: v[0] for k, v in get_asjp().items()},
-    converter,
+    lb_converter,
     load="lexibank")
 
-# Split Pano-Tacanan
+# Add Pano-Tacanan to lexibank
 for lang in bpt_data:
-    if PANO is True:
-        if lang in panoan:
-            full_data[lang] = bpt_data[lang]
-            full_data[lang][0] = "Panoan"
-        else:
-            longdistance_test[lang] = bpt_data[lang]
-    else:
-        # longdistance_test[lang] = bpt_data[lang]
-        pass
+    full_data[lang] = bpt_data[lang]
 
+# Load Grambank
+gb_wl = convert_data(
+    gb,
+    {k: v[0] for k, v in get_asjp().items()},
+    gb_converter,
+    load="grambank",
+    threshold=1)
+
+# Combine data vectors
+for lang in full_data:
+    full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
+
+# Create data and labels
 data = []
 labels = []
 idx2fam = defaultdict()
@@ -97,14 +104,9 @@ for lang in full_data:
 
     if PANO is True:
         if lang in tacanan:
-            data.append(full_data[lang][2])
-            labels.append(fam2idx[family])
-        elif lang in panoan:
-            family = "Panoan"
-            data.append(full_data[lang][2])
-            labels.append(fam2idx[family])
+            longdistance_test[lang] = full_data[lang]
         elif lang in pano_iso:
-            pass
+            longdistance_test[lang] = full_data[lang]
         elif ISOLATES is True:
             if lang in test_isolates:
                 isolates[lang] = full_data[lang]
@@ -149,13 +151,16 @@ labels = torch.LongTensor(np.array(labels))
 data = data.to(DEVICE)
 labels = labels.to(DEVICE)
 tensor_ds = TensorDataset(data, labels)
-
 input_dim = data.size()[1]  # Length of data tensor
 hidden_dim = HIDDEN*len(idx2fam)
 output_dim = len(idx2fam)
 
 
 class FF(nn.Module):
+    """
+    Parts of this model (__init__, forward) are based on this tutorial:
+    https://www.deeplearningwizard.com/deep_learning/practical_pytorch/pytorch_feedforward_neuralnetwork/
+    """
     def __init__(self, input_dim, hidden_dim, output_dim):
         super(FF, self).__init__()
         # Linear function
@@ -166,8 +171,12 @@ class FF(nn.Module):
         self.fc2 = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
+        # Linear function
         out = self.fc1(x)
+
+        # Non-linear activation function
         out = self.ReLU(out)
+        # Linear function
         out = self.fc2(out)
 
         return out
@@ -176,7 +185,6 @@ class FF(nn.Module):
         """Predicts based on new data, and stores results in dic."""
         vector = torch.Tensor(np.array([vector[language][2]]))
         vector = vector.to(DEVICE)
-
         outs = model(vector)
         _, prediction = torch.max(outs.data, 1)
         prediction = idx2fam[prediction.item()]
@@ -185,12 +193,21 @@ class FF(nn.Module):
         else:
             storage[lang] = [prediction]
 
+        # Output softmax probabilities
+        # Problem: No real probabilities!
+        # if lang in tacanan:
+        #     prob = nn.functional.softmax(outs, dim=1)
+        #     top_p, top_class = prob.topk(5, dim=1)
+        #     print("Softmax prob. for:", lang)
+        #     for j, top in enumerate(top_class[0]):
+        #         print(idx2fam[int(top)], ":", round(float(top_p[0][j]), 2))
+        #     print("---")
         return storage
 
 
 for run in range(RUNS):
-    fam_confusion = defaultdict()
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
+
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
                               shuffle=True)
@@ -208,81 +225,72 @@ for run in range(RUNS):
     HIGH = 0
     FAM_HIGH = 0
     BEST = 0
-    NO_IMPROVE = 0
-
     for epoch in range(EPOCHS):
-        if NO_IMPROVE < 50:
-            for idx, (data, labels) in enumerate(train_loader):
-                # Clear gradients
-                optimizer.zero_grad()
+        for idx, (data, labels) in enumerate(train_loader):
+            # Clear gradients
+            optimizer.zero_grad()
 
-                # Forward pass to get output/logits
-                outputs = model(data)
+            # Get outputs
+            outputs = model(data)
 
-                # Calculate Loss: softmax --> cross entropy loss
-                loss = criterion(outputs, labels)
+            # Calculate Loss with softmax and crossentropyloss
+            loss = criterion(outputs, labels)
 
-                # Getting gradients w.r.t. parameters
-                loss.backward()
+            # Getting gradients w.r.t. parameters
+            loss.backward()
 
-                # Updating parameters
-                optimizer.step()
+            # Updating parameters
+            optimizer.step()
 
-                # Calculate Accuracy for test set
-                ITER += 1
-                if ITER % 20 == 0:
-                    CORR = 0
-                    TOTAL = 0
-                    avg_fam = defaultdict()
-                    family_results = defaultdict()
-                    fam_avg = []
-                    for data, labels in test_loader:
-                        # Forward pass only to get logits/output
-                        outputs = model(data)
+            # Calculate Accuracy for test set
+            ITER += 1
+            if ITER % 20 == 0:
+                avg_fam = defaultdict()
+                family_results = defaultdict()
+                fam_avg = []
+                for data, labels in test_loader:
+                    # Run model on dev data
+                    outputs = model(data)
+                    _, predicted = torch.max(outputs.data, 1)
+                    # Labels per family
+                    for idx, label in enumerate(labels):
+                        pred = int(predicted[idx])
+                        label = int(label)
+                        if label in family_results:
+                            family_results[label].append(pred)
+                        else:
+                            family_results[label] = [pred]
+                CORR = 0
+                TOTAL = 0
+                for fam in family_results:
+                    FAMCORR = 0
+                    FAMTOTAL = len(family_results[fam])
+                    for pred in family_results[fam]:
+                        TOTAL += 1
+                        if fam == pred:
+                            CORR += 1
+                            FAMCORR += 1
+                    fam_average = 100 * FAMCORR / FAMTOTAL
+                    fam_avg.append(fam_average)
+                    fam_confusion[idx2fam[fam]] = fam_average
 
-                        # Get predictions from the maximum value
-                        _, predicted = torch.max(outputs.data, 1)
-                        # Labels per family
-                        for idx, label in enumerate(labels):
-                            pred = int(predicted[idx])
-                            label = int(label)
-                            if label in family_results:
-                                family_results[label].append(pred)
-                            else:
-                                family_results[label] = [pred]
-                    CORR = 0
-                    TOTAL = 0
-                    for fam in family_results:
-                        FAMCORR = 0
-                        FAMTOTAL = len(family_results[fam])
-                        for pred in family_results[fam]:
-                            TOTAL += 1
-                            if fam == pred:
-                                CORR += 1
-                                FAMCORR += 1
-                        fam_average = 100 * FAMCORR / FAMTOTAL
-                        fam_avg.append(fam_average)
-                        fam_confusion[idx2fam[fam]] = fam_average
+                acc = 100 * CORR / TOTAL
+                fam_acc = mean(fam_avg)
+                # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Fam. Acc.: {fam_acc}')
+                if fam_acc > FAM_HIGH:
+                    HIGH = acc
+                    BEST = epoch
+                    FAM_HIGH = fam_acc
+                    # print("Total acc:", acc)
+                    # print("Family acc:", fam_acc)
+                    torch.save(model.state_dict(), 'best-model-parameters.pt')
 
-                    acc = 100 * CORR / TOTAL
-                    fam_acc = mean(fam_avg)
-
-                    # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
-                    if fam_acc > FAM_HIGH:
-                        NO_IMPROVE = 0
-                        HIGH = acc
-                        BEST = epoch
-                        FAM_HIGH = fam_acc
-                        torch.save(model.state_dict(), 'best-model-parameters.pt')
-                    else:
-                        NO_IMPROVE += 1
     # Summary for best epoch
     scores.append(int(HIGH))
     fam_scores.append(int(FAM_HIGH))
     model.load_state_dict(torch.load('best-model-parameters.pt'))
-
     list_results.append([
-        "lexibank", run, HIGH, FAM_HIGH
+        "combined", run, HIGH, FAM_HIGH
     ])
     # Compute cosine distances for families
     # dist = [[0.0 for f in fam2idx] for f in fam2idx]
@@ -320,21 +328,21 @@ for run in range(RUNS):
     if ISOLATES is True:
         for lang in isolates:
             model.predict(isolates, lang, results)
-
-print("---------------")
-print("FINAL LEXIBANK:")
+    # print("---------------")
 
 for item in results:
     print(item, Counter(results[item]))
+
+print("---------------")
+print("FINAL COMBINED:")
 # for lang in fam_confusion:
 #     print(lang, ":", fam_confusion[lang])
-print("Overall accuracy:", round(mean(scores), 2))
-# print("Standard deviation:", round(stdev(scores), 2))
+print("Overall:", round(mean(scores), 2))
+print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
-print(len(fam2idx))
-# print("Standard deviation:", round(stdev(fam_scores), 2))
+print("Standard deviation:", round(stdev(fam_scores), 2))
 
-with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
+with open('combined_results.tsv', 'w', encoding="utf8") as csvfile:
     writer = csv.writer(csvfile, delimiter="\t")
     writer.writerows(list_results)

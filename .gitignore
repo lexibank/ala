@@ -133,3 +133,7 @@ dmypy.json
 examples/asjp/
 examples/grambank/
 examples/lexibank-analysed/
+examples/blumpanotacana/
+examples/best-model-parameters.pt
+*.err
+*.out
