@@ -33,7 +33,7 @@ list_results = [["Model", "Run", "General", "Family"]]
 
 lb = get_wl("lexibank.sqlite3")
 asjp = get_asjp()
-wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items() if k in lb}
+wordlists = {k: v for k, v in get_gb("grambank.sqlite3").items()}
 
 # get converter for grambank data
 converter = feature2vec(get_db("grambank.sqlite3"))
