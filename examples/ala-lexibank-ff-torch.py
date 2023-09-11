@@ -15,7 +15,7 @@ from clldutils.misc import slug
 import csv
 
 # Switches for tests - set only one to True!
-UTOAZT = True
+UTOAZT = False
 PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
@@ -40,7 +40,7 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
 bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
 
 
@@ -329,7 +329,7 @@ for item in results:
 # for lang in fam_confusion:
 #     print(lang, ":", fam_confusion[lang])
 print("Overall accuracy:", round(mean(scores), 2))
-# print("Standard deviation:", round(stdev(scores), 2))
+print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
 print(len(fam2idx))
