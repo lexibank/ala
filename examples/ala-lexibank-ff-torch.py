@@ -332,8 +332,7 @@ print("Overall accuracy:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
-print(len(fam2idx))
-# print("Standard deviation:", round(stdev(fam_scores), 2))
+print("Standard deviation:", round(stdev(fam_scores), 2))
 
 with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
     writer = csv.writer(csvfile, delimiter="\t")

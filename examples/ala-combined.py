@@ -303,7 +303,7 @@ for run in range(RUNS):
     #         u = u.cpu()
     #         u = u.detach().numpy()
     #         dist[i][j] = dist[i][j] = distance.cosine(v, u)
-    # 
+    #
     # with open("family-distances.tsv", "w", encoding="utf8") as f:
     #     # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
     #     f.write(" "+str(len(fam2idx))+"\n")
