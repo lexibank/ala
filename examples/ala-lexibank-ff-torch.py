@@ -178,10 +178,11 @@ class FF(nn.Module):
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
+        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
         # Non-linearity
         self.ReLU = nn.ReLU()
         # Linear function (readout)
-        self.fc3 = nn.Linear(hidden_dim, output_dim)
+        self.fc4 = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
         out = self.fc1(x)
@@ -190,7 +191,7 @@ class FF(nn.Module):
         out = self.ReLU(out)
         out = self.fc3(out)
         out = self.ReLU(out)
-        out = self.fc4w(out)
+        out = self.fc4(out)
 
         return out
 
