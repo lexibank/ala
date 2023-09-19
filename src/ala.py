@@ -12,6 +12,10 @@ ATTACH_BPT = """
 ATTACH 'blumpanotacana.sqlite3' AS db1;
 """
 
+ATTACH_ASJP = """
+ATTACH 'asjp.sqlite3' AS db1;
+"""
+
 
 ATTACH_LB = """
 ATTACH 'lexibank.sqlite3' AS db2;
@@ -487,9 +491,9 @@ def affiliate_by_consonant_class(
         scores = []
         for gcode, words in data.items():
             if gcode != language:
-                items_b =  set([row[5] for row in words.values()])
+                items_b = set([row[5] for row in words.values()])
                 commons = items.intersection(items_b)
-                matches = len(commons) / len(items)
+                matches = len(commons) / len(items_b)
                 scores += [matches]
         classes += [(
             fam,

@@ -8,7 +8,7 @@ THRESHOLD = 0.03
 LEVEL = 0  # either family or genus in ASJP / WALS
 min_classes = 3
 test_size = 10
-RUNS = 100
+RUNS = 1
 tt_split = 0.8
 TEST_SIZE = 2500
 
@@ -99,6 +99,8 @@ for family, rows in sorted(results.items()):
                 statistics.stdev([r[6] for r in rows])
                 ]
         table += [row]
+print(results["TOTAL"])
+print(len(results["TOTAL"]))
 table += [[
     "TOTAL",
     statistics.mean([row[0] for row in results["TOTAL"]]),

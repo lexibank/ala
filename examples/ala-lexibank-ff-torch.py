@@ -8,7 +8,7 @@ import numpy as np
 from scipy.spatial import distance
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader, random_split
+from torch.utils.data import TensorDataset, DataLoader, random_split, WeightedRandomSampler
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, get_db
 from clldutils.misc import slug
@@ -22,7 +22,7 @@ PANO = False
 ISOLATES = False
 
 # Hyperparameters
-RUNS = 100
+RUNS = 10
 EPOCHS = 500
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
@@ -40,7 +40,7 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
 bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
 
 
@@ -57,7 +57,6 @@ northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
 southern_uto = defaultdict()
 longdistance_test = defaultdict()
 isolates = defaultdict()
-
 full_data = convert_data(
     wordlists,
     {k: v[0] for k, v in get_asjp().items()},
@@ -86,6 +85,7 @@ data = []
 labels = []
 idx2fam = defaultdict()
 fam2idx = defaultdict()
+fam2weight = defaultdict()
 IDX = 0
 
 for lang in full_data:
@@ -93,7 +93,10 @@ for lang in full_data:
     if family not in fam2idx:
         idx2fam[IDX] = family
         fam2idx[family] = IDX
+        fam2weight[family] = 1
         IDX += 1
+    else:
+        fam2weight[family] += 1
 
     if PANO is True:
         if lang in tacanan:
@@ -144,12 +147,26 @@ for lang in full_data:
         data.append(full_data[lang][2])
         labels.append(fam2idx[family])
 
+
+# Weights
+largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
+weights = []
+for fam in fam2weight:
+    w = largest_class / fam2weight[fam]
+    weights.append(w)
+
+weights = torch.Tensor(weights)
+weights = weights.to(DEVICE)
+sampler = WeightedRandomSampler(weights, len(weights))
+
+# Data to tensor
 data = torch.Tensor(np.array(data))
 labels = torch.LongTensor(np.array(labels))
 data = data.to(DEVICE)
 labels = labels.to(DEVICE)
 tensor_ds = TensorDataset(data, labels)
 
+# Model hyperparameters
 input_dim = data.size()[1]  # Length of data tensor
 hidden_dim = HIDDEN*len(idx2fam)
 output_dim = len(idx2fam)
@@ -160,15 +177,18 @@ class FF(nn.Module):
         super(FF, self).__init__()
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)
         # Non-linearity
         self.ReLU = nn.ReLU()
         # Linear function (readout)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)
+        self.fc3 = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
         out = self.fc1(x)
         out = self.ReLU(out)
         out = self.fc2(out)
+        out = self.ReLU(out)
+        out = self.fc3(out)
 
         return out
 
@@ -193,15 +213,17 @@ for run in range(RUNS):
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              shuffle=True)
+                              sampler=sampler)
 
     test_loader = DataLoader(dataset=test_dataset,
                              batch_size=BATCH,
-                             shuffle=False)
+                             # shuffle=False,
+                             sampler=sampler)
 
     model = FF(input_dim, hidden_dim, output_dim)
     model = model.to(DEVICE)
     criterion = nn.CrossEntropyLoss()
+    # criterion = nn.CrossEntropyLoss(weight=weights)
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
     ITER = 0
@@ -211,7 +233,7 @@ for run in range(RUNS):
     NO_IMPROVE = 0
 
     for epoch in range(EPOCHS):
-        if NO_IMPROVE < 50:
+        if NO_IMPROVE < 100:
             for idx, (data, labels) in enumerate(train_loader):
                 # Clear gradients
                 optimizer.zero_grad()
@@ -267,7 +289,7 @@ for run in range(RUNS):
                     acc = 100 * CORR / TOTAL
                     fam_acc = mean(fam_avg)
 
-                    # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
+                    print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
                     if fam_acc > FAM_HIGH:
                         NO_IMPROVE = 0
                         HIGH = acc
@@ -295,7 +317,7 @@ for run in range(RUNS):
     #         u = u.cpu()
     #         u = u.detach().numpy()
     #         dist[i][j] = dist[i][j] = distance.cosine(v, u)
-    # 
+    #
     # with open("family-distances.tsv", "w", encoding="utf8") as f:
     #     # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
     #     f.write(" "+str(len(fam2idx))+"\n")
@@ -334,6 +356,6 @@ print("---")
 print("Mean family accuracy:", round(mean(fam_scores), 2))
 print("Standard deviation:", round(stdev(fam_scores), 2))
 
-with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
-    writer = csv.writer(csvfile, delimiter="\t")
-    writer.writerows(list_results)
+# with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
+#     writer = csv.writer(csvfile, delimiter="\t")
+#     writer.writerows(list_results)
