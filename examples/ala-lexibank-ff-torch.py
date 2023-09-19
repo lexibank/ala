@@ -157,7 +157,7 @@ for fam in fam2weight:
 
 weights = torch.Tensor(weights)
 weights = weights.to(DEVICE)
-sampler = WeightedRandomSampler(weights, len(weights))
+sampler = WeightedRandomSampler(weights, len(data))
 
 # Data to tensor
 data = torch.Tensor(np.array(data))
@@ -189,6 +189,8 @@ class FF(nn.Module):
         out = self.fc2(out)
         out = self.ReLU(out)
         out = self.fc3(out)
+        out = self.ReLU(out)
+        out = self.fc4w(out)
 
         return out
 
