@@ -7,10 +7,10 @@ from tqdm import tqdm
 THRESHOLD = 0.03
 LEVEL = 0  # either family or genus in ASJP / WALS
 min_classes = 5  # min number of languages
-test_size = 10  # ?
-RUNS = 3
+test_size = 100  # ?
+RUNS = 10
 tt_split = 0.8
-TEST_SIZE = 2500
+TEST_SIZE = 1000
 
 # we need asjp for family information
 asjp = get_asjp()
@@ -44,9 +44,10 @@ for i in range(RUNS):
         for gcode, itms in [(a, b) for a, b in data.items() if a in selected]:
             selected = {k: itms[k] for k in random.sample(
                 sorted(itms), TEST_SIZE if TEST_SIZE <= len(itms) else len(itms))}
+            # print(selected)
             wl = get_lingpy(
                 selected,
-                ["lid", "doculect", "family", "concept", "tokens", "cog"])
+                ["doculect", "family", "concept", "tokens", "cog", "lid"])
             fams = affiliate_by_consonant_class(
                     gcode,
                     wl,
@@ -75,6 +76,8 @@ for i in range(RUNS):
             statistics.mean([s for h, s in zip(fam_hits, fam_scores) if h == 1] or [0]),
             statistics.mean([s for h, s in zip(fam_hits, fam_scores) if h == 0] or [0]),
             statistics.mean(fam_hits)]]
+    print(statistics.mean(hits))
+    print(len(hits))
     results["TOTAL"] += [[
         train_count, test_count, len(hits), statistics.mean(scores),
         statistics.mean([s for h, s in zip(hits, scores) if h == 1]),
@@ -99,8 +102,7 @@ for family, rows in sorted(results.items()):
                 statistics.stdev([r[6] for r in rows])
                 ]
         table += [row]
-print(results["TOTAL"])
-print(len(results["TOTAL"]))
+
 table += [[
     "TOTAL",
     statistics.mean([row[0] for row in results["TOTAL"]]),
@@ -120,7 +122,7 @@ table += [[
 print(tabulate(
     table,
     headers=[
-        "Family", 
+        "Family",
         "Training",
         "Testing",
         "Samples",

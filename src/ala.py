@@ -437,10 +437,10 @@ def affiliate_by_grambank(
             "doculect", "concept", "tokens"):
         if doculect == language and tokens:
             items.add(
-                    "{0}-{1}".format(
-                    slug(concept),
-                    tokens[0])
-                    )
+                "{0}-{1}".format(
+                slug(concept),
+                tokens[0])
+                )
     matches = defaultdict(lambda : defaultdict(list))
 
     classes = []
@@ -448,7 +448,7 @@ def affiliate_by_grambank(
         scores = []
         for gcode, words in data.items():
             if gcode != language:
-                items_b = set([row[4] for row in words.values()])
+                items_b = set([row[5] for row in words.values()])
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
                 scores += [matches]
@@ -476,9 +476,9 @@ def affiliate_by_consonant_class(
     items = set()
     for idx, doculect, concept, tokens in wordlist.iter_rows(
             "doculect", "concept", "tokens"):
-        if doculect == language:
+        if doculect == language and tokens:
             items.add(
-                    "{0}-{1}".format(
+                "{0}-{1}".format(
                     slug(concept),
                     "".join(
                         lingpy.tokens2class(
@@ -493,7 +493,8 @@ def affiliate_by_consonant_class(
             if gcode != language:
                 items_b = set([row[5] for row in words.values()])
                 commons = items.intersection(items_b)
-                matches = len(commons) / len(items_b)
+                matches = len(commons) / len(items)
+                # print(matches)
                 scores += [matches]
         classes += [(
             fam,

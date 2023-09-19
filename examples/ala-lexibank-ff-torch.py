@@ -8,7 +8,7 @@ import numpy as np
 from scipy.spatial import distance
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader, random_split, WeightedRandomSampler
+from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_wl, get_asjp, get_gb, convert_data, get_bpt
 from ala import concept2vec, get_db
 from clldutils.misc import slug
@@ -16,14 +16,14 @@ import csv
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = True
+PANO = False
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = True
+ISOLATES = False
 
 # Hyperparameters
 RUNS = 10
-EPOCHS = 2000
+EPOCHS = 500
 BATCH = 1048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
@@ -156,7 +156,6 @@ for fam in fam2weight:
     w = round(largest_class / fam2weight[fam], 2)
     class_weights.append(w)
 
-
 # Data to tensor
 data = torch.Tensor(np.array(data))
 labels = torch.LongTensor(np.array(labels))
@@ -178,7 +177,6 @@ class FF(nn.Module):
         # Linear function
         self.fc1 = nn.Linear(input_dim, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-        self.fc3 = nn.Linear(hidden_dim, hidden_dim)
         # Non-linearity
         self.ReLU = nn.ReLU()
         # Linear function (readout)
@@ -189,8 +187,6 @@ class FF(nn.Module):
         out = self.ReLU(out)
         out = self.fc2(out)
         out = self.ReLU(out)
-        # out = self.fc3(out)
-        # out = self.ReLU(out)
         out = self.fc_out(out)
 
         return out
@@ -261,7 +257,7 @@ for run in range(RUNS):
 
                 # Calculate Accuracy for test set
                 ITER += 1
-                if ITER % 20 == 0:
+                if ITER % 50 == 0:
                     CORR = 0
                     TOTAL = 0
                     avg_fam = defaultdict()
@@ -357,8 +353,8 @@ print("FINAL LEXIBANK:")
 
 for item in results:
     print(item, Counter(results[item]))
-# for lang in fam_confusion:
-#     print(lang, ":", fam_confusion[lang])
+for lang in fam_confusion:
+    print(lang, ":", fam_confusion[lang])
 print("Overall accuracy:", round(mean(scores), 2))
 print("Standard deviation:", round(stdev(scores), 2))
 print("---")
