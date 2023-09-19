@@ -6,9 +6,9 @@ from tqdm import tqdm
 
 THRESHOLD = 0.03
 LEVEL = 0  # either family or genus in ASJP / WALS
-min_classes = 3
-test_size = 10
-RUNS = 1
+min_classes = 5  # min number of languages
+test_size = 10  # ?
+RUNS = 3
 tt_split = 0.8
 TEST_SIZE = 2500
 
@@ -35,7 +35,7 @@ for i in range(RUNS):
         if fam not in results:
             results[fam] = []
         selected = random.sample(
-                [gcode for gcode in data], 
+                [gcode for gcode in data],
                 test_size if test_size <= len(data) else len(data)
                 )
         fam_hits, fam_scores = [], []
@@ -70,13 +70,13 @@ for i in range(RUNS):
                 fam_scores += [best_fam_score]
                 scores += [best_fam_score]
         results[fam] += [[
-            len(train[fam]), len(data), len(selected), 
+            len(train[fam]), len(data), len(selected),
             statistics.mean(fam_scores),
             statistics.mean([s for h, s in zip(fam_hits, fam_scores) if h == 1] or [0]),
             statistics.mean([s for h, s in zip(fam_hits, fam_scores) if h == 0] or [0]),
             statistics.mean(fam_hits)]]
-    results["TOTAL"] += [[    
-        train_count, test_count, len(hits), statistics.mean(scores), 
+    results["TOTAL"] += [[
+        train_count, test_count, len(hits), statistics.mean(scores),
         statistics.mean([s for h, s in zip(hits, scores) if h == 1]),
         statistics.mean([s for h, s in zip(hits, scores) if h == 0]),
         statistics.mean(hits)]]

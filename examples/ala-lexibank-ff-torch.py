@@ -16,15 +16,15 @@ import csv
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = False
+PANO = True
 
 # Remove (True) or include (False) Isolates/"Unclassified"
-ISOLATES = False
+ISOLATES = True
 
 # Hyperparameters
 RUNS = 10
-EPOCHS = 5000
-BATCH = 2048
+EPOCHS = 2000
+BATCH = 1048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
@@ -150,14 +150,12 @@ for lang in full_data:
 
 # Weights
 largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
-weights = []
+class_weights = []
 for fam in fam2weight:
-    w = largest_class / fam2weight[fam]
-    weights.append(w)
+    # w = round(1/fam2weight[fam], 3)
+    w = round(largest_class / fam2weight[fam], 2)
+    class_weights.append(w)
 
-weights = torch.Tensor(weights)
-weights = weights.to(DEVICE)
-sampler = WeightedRandomSampler(weights, len(data))
 
 # Data to tensor
 data = torch.Tensor(np.array(data))
@@ -165,6 +163,8 @@ labels = torch.LongTensor(np.array(labels))
 data = data.to(DEVICE)
 labels = labels.to(DEVICE)
 tensor_ds = TensorDataset(data, labels)
+class_weights = torch.FloatTensor(class_weights)
+class_weights = class_weights.to(DEVICE)
 
 # Model hyperparameters
 input_dim = data.size()[1]  # Length of data tensor
@@ -182,16 +182,16 @@ class FF(nn.Module):
         # Non-linearity
         self.ReLU = nn.ReLU()
         # Linear function (readout)
-        self.fc4 = nn.Linear(hidden_dim, output_dim)
+        self.fc_out = nn.Linear(hidden_dim, output_dim)
 
     def forward(self, x):
         out = self.fc1(x)
         out = self.ReLU(out)
         out = self.fc2(out)
         out = self.ReLU(out)
-        out = self.fc3(out)
-        out = self.ReLU(out)
-        out = self.fc4(out)
+        # out = self.fc3(out)
+        # out = self.ReLU(out)
+        out = self.fc_out(out)
 
         return out
 
@@ -214,19 +214,25 @@ class FF(nn.Module):
 for run in range(RUNS):
     fam_confusion = defaultdict()
     train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
+    # weights = []
+    # for _, label in train_dataset:
+    #     weights.append(class_weights[label])
+    # weights = torch.Tensor(weights)
+    # weights = weights.to(DEVICE)
+    # sampler = WeightedRandomSampler(weights, len(train_dataset), replacement=True)
+
     train_loader = DataLoader(dataset=train_dataset,
                               batch_size=BATCH,
-                              sampler=sampler)
+                              shuffle=True
+                              )
 
     test_loader = DataLoader(dataset=test_dataset,
-                             batch_size=BATCH,
-                             # shuffle=False,
-                             sampler=sampler)
+                             batch_size=BATCH)
 
     model = FF(input_dim, hidden_dim, output_dim)
     model = model.to(DEVICE)
-    criterion = nn.CrossEntropyLoss()
-    # criterion = nn.CrossEntropyLoss(weight=weights)
+    # criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(weight=class_weights)
     optimizer = torch.optim.Adam(model.parameters(), lr=LR)
 
     ITER = 0
@@ -236,7 +242,7 @@ for run in range(RUNS):
     NO_IMPROVE = 0
 
     for epoch in range(EPOCHS):
-        if NO_IMPROVE < 100:
+        if NO_IMPROVE < 50:
             for idx, (data, labels) in enumerate(train_loader):
                 # Clear gradients
                 optimizer.zero_grad()
