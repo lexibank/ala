@@ -23,7 +23,7 @@ ISOLATES = False
 
 # Hyperparameters
 RUNS = 10
-EPOCHS = 500
+EPOCHS = 5000
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
