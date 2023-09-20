@@ -22,6 +22,52 @@ ATTACH 'lexibank.sqlite3' AS db2;
 """
 
 
+ASJP_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.gloss_in_source = p_2.cldf_id
+        AND
+      (
+        p_2.core_concept like "%Swadesh-1952-200%"
+          OR
+        p_2.core_concept like "%Swadesh-1955-100%"
+      )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  c.Word_Number >= 30;
+"""
+
 BPT_QUERY = """
 SELECT
   ROW_NUMBER() OVER(),
@@ -160,12 +206,17 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
-def get_bpt(path="blumpanotacana.sqlite3"):
+def get_bpt(mode="bpt", path="dummy.sqlite3"):
     db = get_db(path)
     wordlists = defaultdict(lambda : defaultdict(dict))
-    db.execute(ATTACH_BPT)
     db.execute(ATTACH_LB)
-    db.execute(BPT_QUERY)
+    if mode == "bpt":
+        db.execute(ATTACH_BPT)
+        db.execute(BPT_QUERY)
+    elif mode == "asjp":
+        db.execute(ATTACH_ASJP)
+        db.execute(ASJP_QUERY)
+
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
