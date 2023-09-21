@@ -65,7 +65,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 100;
+  c.Word_Number >= 50;
 """
 
 BPT_QUERY = """
@@ -159,12 +159,6 @@ WHERE
   f.cldf_languageReference = l.cldf_id
     AND
   c.Word_Number >= 50
-    AND
-  (
-    p.core_concept like "%Swadesh-1952-200%"
-      OR
-    p.core_concept like "%Swadesh-1955-100%"
-  )
 ;"""
 
 
@@ -206,8 +200,8 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
-def get_bpt(mode="bpt", path="dummy.sqlite3"):
-    db = get_db(path)
+def get_other(mode="bpt"):
+    db = get_db("dummy.sqlite3")
     wordlists = defaultdict(lambda : defaultdict(dict))
     db.execute(ATTACH_LB)
     if mode == "bpt":
@@ -344,7 +338,7 @@ def get_asjp(path="asjp.sqlite3"):
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_wl(path="lexibank.sqlite3"):
+def get_lb(path="lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
@@ -384,7 +378,7 @@ def get_families(wordlists, families, threshold=5):
     return {k: v for k, v in by_fam.items() if len(v) >= threshold}
 
 
-def convert_data(wordlists, families, converter, load, threshold=3):
+def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
     for gcode in wordlists:
@@ -418,7 +412,7 @@ def convert_data(wordlists, families, converter, load, threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load == "lexibank":
+            if load == "lexical":
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
