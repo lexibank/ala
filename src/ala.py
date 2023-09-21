@@ -65,7 +65,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 30;
+  c.Word_Number >= 100;
 """
 
 BPT_QUERY = """
@@ -111,7 +111,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 100;
+  c.Word_Number >= 50;
 """
 
 
@@ -158,7 +158,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 100
+  c.Word_Number >= 50
     AND
   (
     p.core_concept like "%Swadesh-1952-200%"

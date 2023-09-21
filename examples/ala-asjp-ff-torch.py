@@ -22,8 +22,8 @@ PANO = False
 ISOLATES = False
 
 # Hyperparameters
-RUNS = 2
-EPOCHS = 500
+RUNS = 5
+EPOCHS = 1000
 BATCH = 1048
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
@@ -40,10 +40,7 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-# wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
-wordlists = {k: v for k, v in get_bpt(mode="asjp").items() if k in gb}
-bpt_wl = {k: v for k, v in get_bpt(mode="bpt").items()}
-
+wordlists = {k: v for k, v in get_bpt(mode="asjp").items()}
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
 panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
@@ -64,23 +61,6 @@ full_data = convert_data(
     converter,
     load="lexibank",
     threshold=5)
-bpt_data = convert_data(
-    bpt_wl,
-    {k: v[0] for k, v in get_asjp().items()},
-    converter,
-    load="lexibank")
-
-# Split Pano-Tacanan
-for lang in bpt_data:
-    if PANO is True:
-        if lang in panoan:
-            full_data[lang] = bpt_data[lang]
-            full_data[lang][0] = "Panoan"
-        else:
-            longdistance_test[lang] = bpt_data[lang]
-    else:
-        # longdistance_test[lang] = bpt_data[lang]
-        pass
 
 data = []
 labels = []
@@ -149,9 +129,8 @@ for lang in full_data:
         data.append(full_data[lang][2])
         labels.append(fam2idx[family])
 
-print(len(full_data))
-print(len(fam2idx))
-
+print("Families in experiment:", len(fam2idx))
+print("Languages in experiment:", len(full_data))
 # Weights
 largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
 class_weights = []

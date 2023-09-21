@@ -16,7 +16,7 @@ import csv
 
 # Switches for tests - set only one to True!
 UTOAZT = False
-PANO = False
+PANO = True
 
 # Remove (True) or include (False) Isolates/"Unclassified"
 ISOLATES = False
@@ -24,7 +24,7 @@ ISOLATES = False
 # Hyperparameters
 RUNS = 10
 EPOCHS = 500
-BATCH = 1048
+BATCH = 2096
 HIDDEN = 4  # multiplier for length of fam
 LR = 1e-3
 
@@ -40,13 +40,13 @@ results = defaultdict()  # test cases
 gb = get_gb("grambank.sqlite3")
 asjp = get_asjp()
 converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items() if k in gb}
-bpt_wl = {k: v for k, v in get_bpt("bpt.sqlite3").items()}
-
+wordlists = {k: v for k, v in get_wl("lexibank.sqlite3").items()}
+bpt_wl = {k: v for k, v in get_bpt(mode="bpt").items()}
 
 tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
 panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
-          "capa1241", "mats1244", "shar1245", "isco1239", "chac1251"]
+          "capa1241", "mats1244", "shar1245", "isco1239", "chac1251",
+          "kaxa1239"]
 pano_iso = ["mose1249", "movi1243", "chip1262"]
 test_isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
 northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
@@ -63,6 +63,7 @@ full_data = convert_data(
     converter,
     load="lexibank",
     threshold=5)
+
 bpt_data = convert_data(
     bpt_wl,
     {k: v[0] for k, v in get_asjp().items()},
@@ -78,7 +79,6 @@ for lang in bpt_data:
         else:
             longdistance_test[lang] = bpt_data[lang]
     else:
-        # longdistance_test[lang] = bpt_data[lang]
         pass
 
 data = []
@@ -148,6 +148,8 @@ for lang in full_data:
         labels.append(fam2idx[family])
 
 
+print("Families in experiment:", len(fam2idx))
+print("Languages in experiment:", len(full_data))
 # Weights
 largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
 class_weights = []
@@ -294,7 +296,7 @@ for run in range(RUNS):
                     acc = 100 * CORR / TOTAL
                     fam_acc = mean(fam_avg)
 
-                    print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
+                    # print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
                     if fam_acc > FAM_HIGH:
                         NO_IMPROVE = 0
                         HIGH = acc
