@@ -17,7 +17,7 @@ def run_ala(data, setting="full", experiment=""):
     UTOAZT = False
     ISOLATES = False
 
-    if experiment == "Pano":
+    if experiment == "pano":
         PANO = True
         tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
         panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
@@ -26,14 +26,14 @@ def run_ala(data, setting="full", experiment=""):
         pano_iso = ["mose1249", "movi1243", "chip1262"]
         pano_test = defaultdict()
 
-    if experiment == "Uto":
+    if experiment == "uto":
         UTOAZT = True
         northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                         "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
                         "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
         southern_uto = defaultdict()
 
-    if experiment == "Isolates":
+    if experiment == "isolates":
         # Remove (True) or include (False) "Unclassified"
         ISOLATES = True
         test_isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
