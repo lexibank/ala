@@ -1,6 +1,7 @@
 import argparse
 from collections import defaultdict, Counter
 from statistics import mean, stdev
+from tabulate import tabulate
 import numpy as np
 from scipy.spatial import distance
 import torch
@@ -12,74 +13,62 @@ from clldutils.misc import slug
 import csv
 
 
-def run_ala(data, setting="full", experiment=""):
-    PANO = False
-    UTOAZT = False
-    ISOLATES = False
+def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test_longdistance=False, intersec="grambank"):
+    # Hyperparameters
+    runs = 10
+    epochs = 1000
+    batch = 2096
+    hidden = 4  # multiplier for length of fam
+    learning_rate = 1e-3
 
-    if experiment == "pano":
-        PANO = True
+    tests = defaultdict()
+    if test_pano is True:
         tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
         panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
                 "capa1241", "mats1244", "shar1245", "isco1239", "chac1251",
                 "kaxa1239"]
         pano_iso = ["mose1249", "movi1243", "chip1262"]
-        pano_test = defaultdict()
 
-    if experiment == "uto":
-        UTOAZT = True
+    if test_longdistance is True:
         northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
                         "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
                         "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
-        southern_uto = defaultdict()
 
-    if experiment == "isolates":
-        # Remove (True) or include (False) "Unclassified"
-        ISOLATES = True
-        test_isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
-        isolates = defaultdict()
-
-    # Hyperparameters
-    RUNS = 10
-    EPOCHS = 500
-    BATCH = 2096
-    HIDDEN = 4  # multiplier for length of fam
-    LR = 1e-3
+    # Remove (True) or include (False) "Unclassified"
+    if test_isolates is True:
+        isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
 
     # Switch on GPU if available
-    DEVICE = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-    print("Current device:", DEVICE)
+    device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
+    print("Current device:", device)
 
-    scores = []
+    table = []
     fam_scores = []
-    list_results = [["Model", "Run", "General", "Family"]]
-    results = defaultdict()  # test cases
+    list_results = [["Model", "Run", "Family"]]
+    results_per_fam = defaultdict()  # store family results
+    results = defaultdict()  # store experiment results
 
     asjp = get_asjp()
-    gb = get_gb()
-    lb = get_lb()
+    grambank = get_gb()
+    lexibank = get_lb()
+    gb_conv = feature2vec(get_db("grambank.sqlite3"))
+    lb_conv = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
+
+    load = "grammatical" if data == "grambank" else "lexical"
+    converter = gb_conv if data == "grambank" else lb_conv
 
     if data == "lexibank":
-        converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-        load = "lexical"
-        if setting == "intersection" or setting == "combined":
-            wordlists = {k: v for k, v in lb.items() if k in gb}
-        else:
-            wordlists = {k: v for k, v in lb.items()}
+        wordlists = dict(lexibank.items())
+    elif data == "lb_mod":
+        wordlists = dict(lexibank.items())
     elif data == "grambank":
-        converter = feature2vec(get_db("grambank.sqlite3"))
-        load = "grambank"
-        if setting == "intersection" or setting == "combined":
-            wordlists = {k: v for k, v in gb.items() if k in lb}
-        else:
-            wordlists = {k: v for k, v in gb.items()}
+        wordlists = dict(grambank.items())
     elif data == "asjp":
-        converter = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
-        load = "lexical"
-        if setting == "intersection" or setting == "combined":
-            wordlists = {k: v for k, v in get_other(mode="asjp").items() if k in gb}
-        else:
-            wordlists = {k: v for k, v in get_other(mode="asjp").items()}
+        wordlists = dict(get_other(mode="asjp").items())
+
+    if intersection is True:
+        intersec = asjp if intersec == "asjp" else grambank
+        wordlists = {k: wordlists[k] for k in wordlists if k in intersec}
 
     full_data = convert_data(
         wordlists,
@@ -88,142 +77,109 @@ def run_ala(data, setting="full", experiment=""):
         load=load,
         threshold=5)
 
-    # combined
-    if setting == "combined":
+    if intersec == "combined":
         converter = feature2vec(get_db("grambank.sqlite3"))
         gb_wl = convert_data(
-            gb,
-            {k: v[0] for k, v in get_asjp().items()},
-            converter,
+            grambank,
+            {k: v[0] for k, v in asjp.items()},
+            gb_conv,
             load="grambank",
             threshold=1)
         # Combine data vectors
         for lang in full_data:
             full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
 
-    if PANO == True:
-        bpt_wl = {k: v for k, v in get_other(mode="bpt").items() if k in gb}
+    if test_pano is True:
+        bpt_wl = dict(get_other(mode="bpt").items())
+        if intersection is True:
+            bpt_wl = {k: bpt_wl[k] for k in bpt_wl if k in intersec}
+
         bpt_data = convert_data(
             bpt_wl,
-            {k: v[0] for k, v in asjp().items()},
+            {k: v[0] for k, v in asjp.items()},
             converter,
             load="lexical")
         for lang in bpt_data:
-            if PANO is True:
-                if lang in panoan:
-                    full_data[lang] = bpt_data[lang]
-                    full_data[lang][0] = "Panoan"
-                else:
-                    pano_test[lang] = bpt_data[lang]
+            if lang in panoan:
+                full_data[lang] = bpt_data[lang]
+            else:
+                tests[lang] = bpt_data[lang]
 
     data = []
     labels = []
     idx2fam = defaultdict()
     fam2idx = defaultdict()
     fam2weight = defaultdict()
-    IDX = 0
+    idx = 0
 
     for lang in full_data:
         family = full_data[lang][0]
         if family not in fam2idx:
-            idx2fam[IDX] = family
-            fam2idx[family] = IDX
+            idx2fam[idx] = family
+            fam2idx[family] = idx
             fam2weight[family] = 1
-            IDX += 1
+            idx += 1
         else:
             fam2weight[family] += 1
 
-        if PANO is True:
-            if lang in tacanan:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-            elif lang in panoan:
-                family = "Panoan"
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-            elif lang in pano_iso:
-                pass
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
+        # Add Tacanan to test and Pano to data
+        if family == "Pano-Tacanan" and test_pano is True:
+            if lang in tacanan or lang in pano_iso:
+                tests[lang] = full_data[lang]
             else:
                 data.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
-        elif UTOAZT is True:
-            if family == "Uto-Aztecan" and lang not in northern_uto:
-                southern_uto[lang] = full_data[lang]
-            elif ISOLATES is True:
-                if lang in test_isolates:
-                    isolates[lang] = full_data[lang]
-                elif family == "Unclassified":
-                    pass
-                else:
-                    data.append(full_data[lang][2])
-                    labels.append(fam2idx[family])
+        # Add Southern to test and northern to data
+        elif family == "Uto-Aztecan" and test_longdistance is True:
+            if lang not in northern_uto:
+                tests[lang] = full_data[lang]
             else:
                 data.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
-        elif ISOLATES is True:
-            if lang in test_isolates:
-                isolates[lang] = full_data[lang]
-            elif family == "Unclassified":
-                pass
+        # Add test cases to test and others out
+        elif family == "Unclassified" and test_isolates is True:
+            if lang in isolates:
+                tests[lang] = full_data[lang]
             else:
-                data.append(full_data[lang][2])
-                labels.append(fam2idx[family])
+                pass
         else:
             data.append(full_data[lang][2])
             labels.append(fam2idx[family])
 
-
-    print("Families in experiment:", len(fam2idx))
-    print("Languages in experiment:", len(full_data))
-
     # Weights
     largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
-    class_weights = []
-    for fam in fam2weight:
-        w = round(largest_class / fam2weight[fam], 3)
-        class_weights.append(w)
+    class_weights = [round(largest_class / fam2weight[fam], 3) for fam in fam2weight]
+    class_weights = torch.FloatTensor(class_weights)
+    class_weights = class_weights.to(device)
 
     # Data to tensor
     data = torch.Tensor(np.array(data))
     labels = torch.LongTensor(np.array(labels))
-    data = data.to(DEVICE)
-    labels = labels.to(DEVICE)
+    data = data.to(device)
+    labels = labels.to(device)
     tensor_ds = TensorDataset(data, labels)
-    class_weights = torch.FloatTensor(class_weights)
-    class_weights = class_weights.to(DEVICE)
 
     # Model hyperparameters
     input_dim = data.size()[1]  # Length of data tensor
-    hidden_dim = HIDDEN*len(idx2fam)
+    hidden_dim = hidden*len(idx2fam)
     output_dim = len(idx2fam)
 
 
     class FF(nn.Module):
         def __init__(self, input_dim, hidden_dim, output_dim):
             super(FF, self).__init__()
-            # Linear function
             self.fc1 = nn.Linear(input_dim, hidden_dim)
             self.fc2 = nn.Linear(hidden_dim, hidden_dim)
-            # Non-linearity
-            self.ReLU = nn.ReLU()
-            # Linear function (readout)
             self.fc_out = nn.Linear(hidden_dim, output_dim)
+            self.relu = nn.ReLU()
 
         def forward(self, x):
             out = self.fc1(x)
-            out = self.ReLU(out)
+            out = self.relu(out)
             out = self.fc2(out)
-            out = self.ReLU(out)
+            out = self.relu(out)
             out = self.fc_out(out)
 
             return out
@@ -231,7 +187,7 @@ def run_ala(data, setting="full", experiment=""):
         def predict(self, vector, language, storage):
             """Predicts based on new data, and stores results in dic."""
             vector = torch.Tensor(np.array([vector[language][2]]))
-            vector = vector.to(DEVICE)
+            vector = vector.to(device)
 
             outs = model(vector)
             _, prediction = torch.max(outs.data, 1)
@@ -244,102 +200,83 @@ def run_ala(data, setting="full", experiment=""):
             return storage
 
 
-    for run in range(RUNS):
-        fam_confusion = defaultdict()
+    for run in range(runs):
+        print("--- New Run ---")
+        fam_final = defaultdict()
         train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
         # weights = []
         # for _, label in train_dataset:
         #     weights.append(class_weights[label])
         # weights = torch.Tensor(weights)
-        # weights = weights.to(DEVICE)
+        # weights = weights.to(device)
         # sampler = WeightedRandomSampler(weights, len(train_dataset), replacement=True)
 
-        train_loader = DataLoader(dataset=train_dataset,
-                                batch_size=BATCH,
-                                shuffle=True
-                                )
+        train_loader = DataLoader(
+            dataset=train_dataset,
+            batch_size=batch,
+            shuffle=True
+            )
 
-        test_loader = DataLoader(dataset=test_dataset,
-                                batch_size=BATCH)
+        test_loader = DataLoader(
+            dataset=test_dataset,
+            batch_size=batch
+            )
 
         model = FF(input_dim, hidden_dim, output_dim)
-        model = model.to(DEVICE)
+        model = model.to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
-        optimizer = torch.optim.Adam(model.parameters(), lr=LR)
+        optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
-        ITER = 0
-        HIGH = 0
-        FAM_HIGH = 0
-        NO_IMPROVE = 0
+        iters = 0
+        fam_high = 0
+        no_improve = 0
 
-        for epoch in range(EPOCHS):
-            if NO_IMPROVE < 50:
+        for _ in range(epochs):
+            if no_improve < 50:
                 for idx, (data, labels) in enumerate(train_loader):
-                    # Clear gradients
-                    optimizer.zero_grad()
-
-                    # Forward pass to get output/logits
-                    outputs = model(data)
-
-                    # Calculate loss
+                    optimizer.zero_grad()   # Clear gradients
+                    outputs = model(data)   # Forward pass to get output/logits
                     loss = criterion(outputs, labels)
-
-                    # Getting gradients w.r.t. parameters
-                    loss.backward()
-
-                    # Updating parameters
-                    optimizer.step()
+                    loss.backward()         # Getting gradients w.r.t. parameters
+                    optimizer.step()        # Updating parameters
 
                     # Calculate Accuracy for test set
-                    ITER += 1
-                    if ITER % 50 == 0:
-                        CORR = 0
-                        TOTAL = 0
+                    iters += 1
+                    if iters % 50 == 0:
                         family_results = defaultdict()
-                        fam_avg = []
+                        fam_avg = defaultdict()
                         for data, labels in test_loader:
                             outputs = model(data)
                             _, predicted = torch.max(outputs.data, 1)
-                            # Labels per family
                             for idx, label in enumerate(labels):
                                 pred = int(predicted[idx])
                                 label = int(label)
+                                # Labels per family
                                 if label in family_results:
                                     family_results[label].append(pred)
                                 else:
                                     family_results[label] = [pred]
-                        CORR = 0
-                        TOTAL = 0
+
                         for fam in family_results:
-                            FAMCORR = 0
-                            FAMTOTAL = len(family_results[fam])
-                            for pred in family_results[fam]:
-                                TOTAL += 1
-                                if fam == pred:
-                                    CORR += 1
-                                    FAMCORR += 1
-                            fam_average = round(100 * FAMCORR / FAMTOTAL, 2)
-                            fam_avg.append(fam_average)
-                            fam_confusion[idx2fam[fam]] = fam_average
+                            corr = sum([1 for pred in family_results[fam] if fam == pred])
+                            total = len(family_results[fam])
+                            fam_avg[idx2fam[fam]] = [100 * corr / total, total]
 
-                        acc = 100 * CORR / TOTAL
-                        fam_acc = mean(fam_avg)
-
-                        print(f'Iteration: {ITER}. Loss: {loss.item()}. Average Family Accuracy: {fam_acc}')
-                        if fam_acc > FAM_HIGH:
-                            NO_IMPROVE = 0
-                            HIGH = acc
-                            FAM_HIGH = fam_acc
+                        fam_acc = mean(fam_avg[k][0] for k in fam_avg)
+                        print(f'Iter: {iters}. Loss: {round(loss.item(), 9)}. Average family accuracy: {round(fam_acc, 3)}')
+                        if fam_acc > fam_high:
+                            fam_high = fam_acc
+                            fam_final = fam_avg
+                            no_improve = 0
                             torch.save(model.state_dict(), 'best-model-parameters.pt')
                         else:
-                            NO_IMPROVE += 1
+                            no_improve += 1
 
-        scores.append(int(HIGH))
-        fam_scores.append(int(FAM_HIGH))
+        fam_scores.append(int(fam_high))
         model.load_state_dict(torch.load('best-model-parameters.pt'))
 
         list_results.append([
-            "lexibank", run, HIGH, FAM_HIGH
+            "lexibank", run, fam_high
         ])
         # Compute cosine distances for families
         # dist = [[0.0 for f in fam2idx] for f in fam2idx]
@@ -359,49 +296,79 @@ def run_ala(data, setting="full", experiment=""):
         #     for i, row in enumerate(dist):
         #         f.write(slug(idx2fam[i], lowercase=False) + " ")
         #         f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
+        for fam in fam_final:
+            if fam in results_per_fam:
+                results_per_fam[fam].append([
+                    fam2weight[fam],    # Number of langs in fam
+                    fam_final[fam][1],  # Number of langs tested
+                    fam_final[fam][0]   # Accuracy
+                ])
 
-        # print("---")
-        # print("Best epoch:", BEST)
-        # print("Mean at run", run, ":", round(mean(scores), 2))
-        # print("---")
+            else:
+                results_per_fam[fam] = [[
+                    fam2weight[fam],    # Number of langs in fam
+                    fam_final[fam][1],  # Number of langs tested
+                    fam_final[fam][0]   # Accuracy
+                    ]]
 
-        # Long-distance test
-        if UTOAZT is True:
-            for lang in southern_uto:
-                model.predict(southern_uto, lang, results)
-
-        if PANO is True:
-            for lang in pano_test:
-                model.predict(pano_test, lang, results)
-
-        if ISOLATES is True:
-            for lang in isolates:
-                model.predict(isolates, lang, results)
+        # Test experiments
+        if [test_longdistance, test_pano, test_longdistance].count(True) > 0:
+            for lang in tests:
+                model.predict(tests, lang, results)
 
     print("---------------")
-    print("FINAL LEXIBANK:")
-
     for item in results:
         print(item, Counter(results[item]))
-    for lang in fam_confusion:
-        print(lang, ":", fam_confusion[lang])
-    print("Overall accuracy:", round(mean(scores), 2))
-    print("Standard deviation:", round(stdev(scores), 2))
-    print("---")
-    print("Mean family accuracy:", round(mean(fam_scores), 2))
-    print("Standard deviation:", round(stdev(fam_scores), 2))
 
-    # with open('lexibank_results.tsv', 'w', encoding="utf8") as csvfile:
-    #     writer = csv.writer(csvfile, delimiter="\t")
-    #     writer.writerows(list_results)
+    print("---------------")
+    for fam, rows in sorted(results_per_fam.items()):
+        table += [[
+            fam,
+            mean([r[0] for r in rows]),
+            round(mean([r[1] for r in rows]),1),  # Tested langs
+            round(mean([r[2] for r in rows]),2),  # Acc
+            round(stdev([r[2] for r in rows]),2),
+            ]]
+
+    table += [[
+        "TOTAL",
+        len(full_data),
+        len(test_dataset),
+        round(mean(fam_scores), 2),
+        round(stdev(fam_scores), 2)
+        ]]
+
+    print(tabulate(
+        table,
+        headers=[
+            "Family", 
+            "Languages",
+            "Tested",
+            "Avg. Fam. Accuracy",
+            "Fam-STD"
+            ],
+        floatfmt=".2f",
+        tablefmt="pipe"
+        ))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=str,
                     help="Choose the dataset for your experiment")
-    parser.add_argument("--setting", type=str,
-                    help="Full data, intersection, or combined")
-    parser.add_argument("--experiment", type=str,
-                    help="Additional test for isolates and long-distance relationships")
+    parser.add_argument("-intersection", action='store_true',
+                    help="Full data or intersection/combined")
+    parser.add_argument("--intersec", type=str,
+                    help="Choose dataset for intersection or combination")
+    parser.add_argument('-isolates', action='store_true')
+    parser.add_argument('-pano', action='store_true')
+    parser.add_argument('-longdistance', action='store_true')
+
     args = parser.parse_args()
-    run_ala(data=args.data, setting=args.setting, experiment=args.experiment)
+
+    run_ala(
+        data=args.data,
+        intersection=args.intersection,
+        test_isolates=args.isolates,
+        test_pano=args.pano,
+        test_longdistance=args.longdistance
+        )

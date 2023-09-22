@@ -49,12 +49,6 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       f_2.gloss_in_source = p_2.cldf_id
-        AND
-      (
-        p_2.core_concept like "%Swadesh-1952-200%"
-          OR
-        p_2.core_concept like "%Swadesh-1955-100%"
-      )
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -67,6 +61,7 @@ WHERE
     AND
   c.Word_Number >= 50;
 """
+
 
 BPT_QUERY = """
 SELECT
@@ -101,6 +96,48 @@ INNER JOIN
           OR
         p_2.core_concept like "%Swadesh-1955-100%"
       )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  c.Word_Number >= 50;
+"""
+
+
+LBMOD_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.cldf_name,
+  f.cldf_segments,
+  p.cldf_id || "-" || SUBSTR(
+    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
+  c.Word_Number
+FROM
+  db2.formtable as f,
+  db2.languagetable as l,
+  db2.parametertable as p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      p_2.cldf_id = f_2.gloss_in_source
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -158,8 +195,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50
-;"""
+  c.Word_Number >= 50;
+"""
 
 
 GB_QUERY = """SELECT
@@ -210,6 +247,10 @@ def get_other(mode="bpt"):
     elif mode == "asjp":
         db.execute(ATTACH_ASJP)
         db.execute(ASJP_QUERY)
+    
+    elif mode == "lb_mod":
+        db.execute(ATTACH_ASJP)
+        db.execute(LBMOD_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
