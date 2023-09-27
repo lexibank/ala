@@ -16,7 +16,7 @@ import csv
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test_longdistance=False, intersec="grambank"):
     # Hyperparameters
     runs = 10
-    epochs = 1000
+    epochs = 500
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -25,18 +25,22 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     if test_pano is True:
         tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
         panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
-                "capa1241", "mats1244", "shar1245", "isco1239", "chac1251",
-                "kaxa1239"]
+                  "capa1241", "mats1244", "shar1245", "isco1239", "chac1251",
+                  "kaxa1239"]
         pano_iso = ["mose1249", "movi1243", "chip1262"]
 
     if test_longdistance is True:
-        northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243", "luis1253",
-                        "cahu1264", "serr1255", "tong1329", "chem1251", "tuba1278",
-                        "pana1305", "kawa1283", "mono1275", "nort2954", "coma1245"]
+        northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243",
+                        "luis1253", "cahu1264", "serr1255", "tong1329",
+                        "chem1251", "tuba1278", "pana1305", "kawa1283",
+                        "mono1275", "nort2954", "coma1245"]
+        anatolian = ["hitt1242", "tokh1242", "tokh1243"]
+        chapacuran = ["kite1237", "nape1237"]
 
     # Remove (True) or include (False) "Unclassified"
     if test_isolates is True:
-        isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244", "suan1234"]
+        isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244",
+                    "suan1234"]
 
     # Switch on GPU if available
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
@@ -51,8 +55,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     asjp = get_asjp()
     grambank = get_gb()
     lexibank = get_lb()
-    gb_conv = feature2vec(get_db("grambank.sqlite3"))
-    lb_conv = concept2vec(get_db("lexibank.sqlite3"), model="dolgo")
+    gb_conv = feature2vec(get_db("data/grambank.sqlite3"))
+    lb_conv = concept2vec(get_db("data/lexibank.sqlite3"), model="dolgo")
 
     load = "grammatical" if data == "grambank" else "lexical"
     converter = gb_conv if data == "grambank" else lb_conv
@@ -104,6 +108,31 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
                 full_data[lang] = bpt_data[lang]
             else:
                 tests[lang] = bpt_data[lang]
+
+    if test_longdistance is True:
+        iecor_wl = dict(get_other(mode="iecor").items())
+        chap_wl = dict(get_other(mode="bc").items())
+        if intersection is True:
+            iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
+            chap_wl = {k: chap_wl[k] for k in chap_wl if k in intersec}
+
+        iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
+                                  converter, load="lexical")
+        chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
+                                  converter, load="lexical")
+        print(chapa_data)
+        for lang in iecor_data:
+            if lang in anatolian:
+                tests[lang] = iecor_data[lang]
+            else:
+                full_data[lang] = iecor_data[lang]
+        for lang in chapa_data:
+            if lang in chapacuran:
+                print("test lang")
+                tests[lang] = chapa_data[lang]
+            else:
+                print("data lang")
+                full_data[lang] = chapa_data[lang]
 
     data = []
     labels = []
@@ -325,9 +354,9 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         table += [[
             fam,
             mean([r[0] for r in rows]),
-            round(mean([r[1] for r in rows]),1),  # Tested langs
-            round(mean([r[2] for r in rows]),2),  # Acc
-            round(stdev([r[2] for r in rows]),2),
+            round(mean([r[1] for r in rows]), 1),  # Tested langs
+            round(mean([r[2] for r in rows]), 2),  # Acc
+            round(stdev([r[2] for r in rows]), 2),
             ]]
 
     table += [[
@@ -341,7 +370,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     print(tabulate(
         table,
         headers=[
-            "Family", 
+            "Family",
             "Languages",
             "Tested",
             "Avg. Fam. Accuracy",
