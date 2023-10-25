@@ -12,7 +12,7 @@ ATTACH_BPT = """ATTACH 'data/blumpanotacana.sqlite3' AS db1;"""
 ATTACH_IECOR = """ATTACH 'data/iecor.sqlite3' AS db1;"""
 ATTACH_GBE = """ATTACH 'data/grollemundbantu.sqlite3' AS db1;"""
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-
+ATTACH_BC = """ATTACH 'data/birchallchapacuran.sqlite3' AS db1;"""
 ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 
 IECOR_QUERY = """
@@ -302,7 +302,6 @@ def get_other(mode="bpt"):
         db.execute(IECOR_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
-        print(lidx, glottocode, family, concept, tokens, cog, size)
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
     # retrieve best glottocodes
@@ -478,6 +477,9 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
 
         elif gcode == "suan1234":
             by_fam['Sino-Tibetan'] += [gcode]
+
+        elif load == "chapacuran":
+            by_fam["Chapacuran"] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
@@ -503,7 +505,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load == "lexical":
+            if load in ("lexical", "chapacuran"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]

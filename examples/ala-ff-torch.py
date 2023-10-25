@@ -16,7 +16,7 @@ import csv
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test_longdistance=False, intersec="grambank"):
     # Hyperparameters
     runs = 10
-    epochs = 500
+    epochs = 1000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -36,6 +36,9 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
                         "mono1275", "nort2954", "coma1245"]
         anatolian = ["hitt1242", "tokh1242", "tokh1243"]
         chapacuran = ["kite1237", "nape1237"]
+        sinitic = ["lite1248", "ganc1239", "hakk1236", "midd1344", "jiny1235", "daoh1239", "hezh1244", "mand1415", "tang1373", "wutu1241", "dung1253", "quji1234", "gang1272", "huiz1242", "wuch1236", "xian1251", "yuec1235", "nort3268", "sout3250", "mind1253", "minn1241", "puxi1243", "minb1244", "minz1235", "oldc1244", "waxi1236"]
+        mien = ["yang1310", "dzao1238", "kimm1245", "iumi1238", "biao1256", "biao1254", "zaom1234"]
+
 
     # Remove (True) or include (False) "Unclassified"
     if test_isolates is True:
@@ -81,6 +84,15 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         load=load,
         threshold=5)
 
+    # test integration of ASJP Genus
+    # for item in full_data:
+    #     print(item)
+    #     print(full_data[item])
+
+    # test = {k: v[1] for k, v in get_asjp().items()}
+    # print(test)
+
+
     if intersec == "combined":
         converter = feature2vec(get_db("grambank.sqlite3"))
         gb_wl = convert_data(
@@ -112,6 +124,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode="iecor").items())
         chap_wl = dict(get_other(mode="bc").items())
+        for item in chap_wl:
+            print(item)
         if intersection is True:
             iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
             chap_wl = {k: chap_wl[k] for k in chap_wl if k in intersec}
@@ -119,8 +133,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
                                   converter, load="lexical")
         chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load="lexical")
-        print(chapa_data)
+                                  converter, load="chapacuran")
+
         for lang in iecor_data:
             if lang in anatolian:
                 tests[lang] = iecor_data[lang]
@@ -128,10 +142,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
                 full_data[lang] = iecor_data[lang]
         for lang in chapa_data:
             if lang in chapacuran:
-                print("test lang")
                 tests[lang] = chapa_data[lang]
             else:
-                print("data lang")
                 full_data[lang] = chapa_data[lang]
 
     data = []
@@ -162,6 +174,19 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         # Add Southern to test and northern to data
         elif family == "Uto-Aztecan" and test_longdistance is True:
             if lang not in northern_uto:
+                tests[lang] = full_data[lang]
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+        elif family == "Sino-Tibetan" and test_longdistance is True:
+            if lang in sinitic:
+                tests[lang] = full_data[lang]
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
+
+        elif family == "Hmong-Mien" and test_longdistance is True:
+            if lang in mien:
                 tests[lang] = full_data[lang]
             else:
                 data.append(full_data[lang][2])
@@ -213,20 +238,16 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
 
             return out
 
-        def predict(self, vector, language, storage):
-            """Predicts based on new data, and stores results in dic."""
+        def predict(self, vector, language):
+            """Predicts based on new data."""
             vector = torch.Tensor(np.array([vector[language][2]]))
             vector = vector.to(device)
 
             outs = model(vector)
             _, prediction = torch.max(outs.data, 1)
             prediction = idx2fam[prediction.item()]
-            if lang in storage:
-                storage[lang].append(prediction)
-            else:
-                storage[lang] = [prediction]
 
-            return storage
+            return prediction
 
 
     for run in range(runs):
@@ -343,7 +364,12 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         # Test experiments
         if [test_longdistance, test_pano, test_longdistance].count(True) > 0:
             for lang in tests:
-                model.predict(tests, lang, results)
+                results_id = (lang, tests[lang][0])
+                pred = model.predict(tests, lang)
+                if results_id in results:
+                    results[results_id].append(pred)
+                else:
+                    results[results_id] = [pred]
 
     print("---------------")
     for item in results:
