@@ -281,6 +281,15 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
+BRANCH_QUERY = """SELECT
+    cldf_languagereference
+FROM
+    valuetable
+WHERE
+    cldf_parameterreference = 'classification' and cldf_value like ?
+"""
+
+
 def get_other(mode="bpt"):
     db = get_db("data/dummy.sqlite3")
     wordlists = defaultdict(lambda : defaultdict(dict))
@@ -318,6 +327,21 @@ def get_other(mode="bpt"):
     return all_wordlists
 
 
+def extract_branch(gcode):
+    """
+    Retreives all glottocodes that are part of a certain branch
+    in Glottolog.
+    """
+    gcode = "%" + gcode + "%"
+    db = get_db("data/glottolog.sqlite3")
+    db.execute(BRANCH_QUERY, (gcode,))
+    gcodes = []
+    for glottocode in tqdm.tqdm(db.fetchall()):
+        gcodes.append(glottocode[0])
+
+    return gcodes
+
+
 def get_gb(path="data/grambank.sqlite3"):
     """
     Retrieve all wordlists from data.
@@ -345,7 +369,7 @@ def feature2vec(db):
     # query on grambank here
     keys = defaultdict(dict)
     idx = 0
-    for i, (param, code) in enumerate(db.fetchall()):
+    for _, (param, code) in enumerate(db.fetchall()):
         if code != "3":
             keys[param][code] = idx
             idx += 1
@@ -478,7 +502,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         elif gcode == "suan1234":
             by_fam['Sino-Tibetan'] += [gcode]
 
-        elif load == "chapacuran":
+        elif load == "tapakuric":
             by_fam["Chapacuran"] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
@@ -505,7 +529,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical", "chapacuran"):
+            if load in ("lexical", "tapakuric"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
@@ -612,7 +636,7 @@ def affiliate_by_consonant_class(
 
     # transform the language in the lingpy wordlist
     items = set()
-    for idx, doculect, concept, tokens in wordlist.iter_rows(
+    for _, doculect, concept, tokens in wordlist.iter_rows(
             "doculect", "concept", "tokens"):
         if doculect == language and tokens:
             items.add(
@@ -632,7 +656,6 @@ def affiliate_by_consonant_class(
                 items_b = set([row[5] for row in words.values()])
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
-                # print(matches)
                 scores += [matches]
         classes += [(
             fam,
@@ -658,13 +681,12 @@ def get_lingpy(data, header):
 
 
 class FF(object):
-
     def __init__(
             self,
             input_layer: int,
             hidden_layer: int,
             output_layer: int,
-            verbose: bool=False,
+            verbose: bool = False,
             ):
         self.input_layer = np.array(np.random.uniform(
                 -1,
@@ -681,13 +703,13 @@ class FF(object):
         self.epoch_loss = []
         self.verbose = verbose
 
-    def train(self, training_data, epochs, learning_rate=0.01):
+    def train(self, data, epochs, learning_rate=0.01):
         for i in range(epochs):
             losses = []
             for input_data, output_data in tqdm.tqdm(
-                    training_data, desc="epoch {0}".format(i+1)):
+                    data, desc="epoch {0}".format(i+1)):
                 # forward pass on the network
-                predicted, hidden_layer, output_layer = self.forward(
+                predicted, hidden_layer, _ = self.forward(
                         self.input_layer,
                         self.output_layer,
                         input_data)
@@ -762,6 +784,6 @@ class FF(object):
 
     def predict(self, x, weights_in, weights_out):
 
-        y, hidden, u = self.forward(weights_in, weights_out, x)
+        y, _, _ = self.forward(weights_in, weights_out, x)
 
         return np.argmax(y)

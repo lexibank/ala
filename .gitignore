@@ -130,7 +130,8 @@ dmypy.json
 
 # Databases
 *sqlite3
-examples/data/
-examples/best-model-parameters.pt
 *.err
 *.out
+examples/data/
+examples/best-model-parameters.pt
+examples/family-distances.tsv

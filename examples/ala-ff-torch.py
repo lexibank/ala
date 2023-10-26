@@ -1,49 +1,43 @@
 import argparse
 from collections import defaultdict, Counter
 from statistics import mean, stdev
-from tabulate import tabulate
+from tabulate import tabulate, SEPARATING_LINE
 import numpy as np
 from scipy.spatial import distance
 import torch
 import torch.nn as nn
 from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_lb, get_asjp, get_gb, convert_data, get_other
-from ala import concept2vec, feature2vec, get_db
+from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
-import csv
 
 
-def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test_longdistance=False, intersec="grambank"):
+def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
+            test_longdistance=False, distances=False, intersec="grambank"):
     # Hyperparameters
     runs = 10
-    epochs = 1000
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
 
     tests = defaultdict()
     if test_pano is True:
-        tacanan = ["esee1248", "taca1256", "arao1248", "cavi1250"]
-        panoan = ["cash1251", "pano1254", "ship1254", "yami1256", "amah1246",
-                  "capa1241", "mats1244", "shar1245", "isco1239", "chac1251",
-                  "kaxa1239"]
+        tacanan = extract_branch(gcode="taca1255")
+        panoan = extract_branch(gcode="pano1256")
         pano_iso = ["mose1249", "movi1243", "chip1262"]
 
     if test_longdistance is True:
-        northern_uto = ["hopi1249", "utee1244", "sout2969", "cupe1243",
-                        "luis1253", "cahu1264", "serr1255", "tong1329",
-                        "chem1251", "tuba1278", "pana1305", "kawa1283",
-                        "mono1275", "nort2954", "coma1245"]
-        anatolian = ["hitt1242", "tokh1242", "tokh1243"]
-        chapacuran = ["kite1237", "nape1237"]
-        sinitic = ["lite1248", "ganc1239", "hakk1236", "midd1344", "jiny1235", "daoh1239", "hezh1244", "mand1415", "tang1373", "wutu1241", "dung1253", "quji1234", "gang1272", "huiz1242", "wuch1236", "xian1251", "yuec1235", "nort3268", "sout3250", "mind1253", "minn1241", "puxi1243", "minb1244", "minz1235", "oldc1244", "waxi1236"]
-        mien = ["yang1310", "dzao1238", "kimm1245", "iumi1238", "biao1256", "biao1254", "zaom1234"]
-
+        northern_uto = extract_branch(gcode="nort2953")
+        anatolian = extract_branch(gcode="anat1257")
+        tocharian = extract_branch(gcode="tokh1241")
+        tapakuric = extract_branch(gcode="tapa1264")
+        sinitic = extract_branch(gcode="sini1245")
+        mien = extract_branch(gcode="mien1242")
 
     # Remove (True) or include (False) "Unclassified"
     if test_isolates is True:
-        isolates = ["basq1248", "movi1243", "bang1363", "savo1255", "kunz1244",
-                    "suan1234"]
+        isolates = ["basq1248", "movi1243", "bang1363", "kunz1244", "suan1234"]
 
     # Switch on GPU if available
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
@@ -92,7 +86,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     # test = {k: v[1] for k, v in get_asjp().items()}
     # print(test)
 
-
     if intersec == "combined":
         converter = feature2vec(get_db("grambank.sqlite3"))
         gb_wl = convert_data(
@@ -124,8 +117,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode="iecor").items())
         chap_wl = dict(get_other(mode="bc").items())
-        for item in chap_wl:
-            print(item)
         if intersection is True:
             iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
             chap_wl = {k: chap_wl[k] for k in chap_wl if k in intersec}
@@ -133,15 +124,15 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
                                   converter, load="lexical")
         chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load="chapacuran")
+                                  converter, load="tapakuric")
 
         for lang in iecor_data:
-            if lang in anatolian:
+            if lang in anatolian or lang in tocharian:
                 tests[lang] = iecor_data[lang]
             else:
                 full_data[lang] = iecor_data[lang]
         for lang in chapa_data:
-            if lang in chapacuran:
+            if lang in tapakuric:
                 tests[lang] = chapa_data[lang]
             else:
                 full_data[lang] = chapa_data[lang]
@@ -220,7 +211,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
     hidden_dim = hidden*len(idx2fam)
     output_dim = len(idx2fam)
 
-
     class FF(nn.Module):
         def __init__(self, input_dim, hidden_dim, output_dim):
             super(FF, self).__init__()
@@ -248,7 +238,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
             prediction = idx2fam[prediction.item()]
 
             return prediction
-
 
     for run in range(runs):
         print("--- New Run ---")
@@ -282,10 +271,10 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         no_improve = 0
 
         for _ in range(epochs):
-            if no_improve < 50:
-                for idx, (data, labels) in enumerate(train_loader):
+            if no_improve < 10:
+                for idx, (train_data, labels) in enumerate(train_loader):
                     optimizer.zero_grad()   # Clear gradients
-                    outputs = model(data)   # Forward pass to get output/logits
+                    outputs = model(train_data)   # Forward pass to get output/logits
                     loss = criterion(outputs, labels)
                     loss.backward()         # Getting gradients w.r.t. parameters
                     optimizer.step()        # Updating parameters
@@ -295,8 +284,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
                     if iters % 50 == 0:
                         family_results = defaultdict()
                         fam_avg = defaultdict()
-                        for data, labels in test_loader:
-                            outputs = model(data)
+                        for test_data, labels in test_loader:
+                            outputs = model(test_data)
                             _, predicted = torch.max(outputs.data, 1)
                             for idx, label in enumerate(labels):
                                 pred = int(predicted[idx])
@@ -328,24 +317,27 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         list_results.append([
             "lexibank", run, fam_high
         ])
+
         # Compute cosine distances for families
-        # dist = [[0.0 for f in fam2idx] for f in fam2idx]
-        # weights = list(model.parameters())
-        # w = weights[2]  # Matrix with length fam2idx
-        # for i, v in enumerate(w):
-        #     v = v.cpu()
-        #     v = v.detach().numpy()
-        #     for j, u in enumerate(w):
-        #         u = u.cpu()
-        #         u = u.detach().numpy()
-        #         dist[i][j] = dist[i][j] = distance.cosine(v, u)
-        #
-        # with open("family-distances.tsv", "w", encoding="utf8") as f:
-        #     # f.write("\t" + "\t".join(list(fam2idx)) + "\n")
-        #     f.write(" "+str(len(fam2idx))+"\n")
-        #     for i, row in enumerate(dist):
-        #         f.write(slug(idx2fam[i], lowercase=False) + " ")
-        #         f.write(" ".join(["{0:.4f}".format(cell) for cell in row])+"\n")
+        if distances is True:
+            dist = [[0.0 for f in fam2idx] for f in fam2idx]
+            weights = list(model.parameters())
+            w = weights[4]  # Matrix with length fam2idx
+            # print(w.shape)  # first dimension must be len(fam2idx)
+
+            for i, v in enumerate(w):
+                v = v.cpu().detach().numpy()
+                for j, u in enumerate(w):
+                    u = u.cpu().detach().numpy()
+                    dist[i][j] = distance.cosine(v, u)
+
+            with open("family-distances.tsv", "w", encoding="utf8") as f:
+                f.write(" "+str(len(fam2idx))+"\n")
+                for i, row in enumerate(dist):
+                    f.write(slug(idx2fam[i], lowercase=False) + " ")
+                    f.write(" ".join([f"{cell}" for cell in row])+"\n")
+
+        # Add family results
         for fam in fam_final:
             if fam in results_per_fam:
                 results_per_fam[fam].append([
@@ -372,8 +364,30 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
                     results[results_id] = [pred]
 
     print("---------------")
+    results_table = []
     for item in results:
-        print(item, Counter(results[item]))
+        results_str = ""
+        for i, (k, v) in enumerate(Counter(results[item]).items()):
+            sep = "" if i < 0 else "\n"
+            if v > (len(results[item])*0.1):
+                results_str = results_str + k + ": " + str(v) + sep
+        results_table.append([
+            item[0],
+            item[1],
+            results_str
+            ])
+        # Used for grid output
+        # results_table.append(SEPARATING_LINE)
+
+    print(tabulate(
+        results_table,
+        headers=[
+            "Language",
+            "Family",
+            "Predictions"
+            ],
+        tablefmt="pipe"
+        ))
 
     print("---------------")
     for fam, rows in sorted(results_per_fam.items()):
@@ -406,17 +420,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False, test
         tablefmt="pipe"
         ))
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=str,
-                    help="Choose the dataset for your experiment")
+                        help="Choose the dataset for your experiment")
     parser.add_argument("-intersection", action='store_true',
-                    help="Full data or intersection/combined")
+                        help="Full data or intersection/combined")
     parser.add_argument("--intersec", type=str,
-                    help="Choose dataset for intersection or combination")
+                        help="Choose dataset for intersection or combination")
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-pano', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
+    parser.add_argument('-distances', action='store_true',
+                        help="Adds the cosine distances of the model weights for each family")
 
     args = parser.parse_args()
 
@@ -425,5 +442,6 @@ if __name__ == '__main__':
         intersection=args.intersection,
         test_isolates=args.isolates,
         test_pano=args.pano,
-        test_longdistance=args.longdistance
+        test_longdistance=args.longdistance,
+        distances=args.distances
         )
