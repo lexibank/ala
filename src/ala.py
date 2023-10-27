@@ -336,7 +336,7 @@ def extract_branch(gcode):
     db = get_db("data/glottolog.sqlite3")
     db.execute(BRANCH_QUERY, (gcode,))
     gcodes = []
-    for glottocode in tqdm.tqdm(db.fetchall()):
+    for glottocode in db.fetchall():
         gcodes.append(glottocode[0])
 
     return gcodes

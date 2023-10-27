@@ -15,8 +15,8 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False, intersec="grambank"):
     # Hyperparameters
-    runs = 10
-    epochs = 50
+    runs = 100
+    epochs = 2000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -240,7 +240,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             return prediction
 
     for run in range(runs):
-        print("--- New Run ---")
+        print("--- New Run: ", run, "/", runs, "---")
         fam_final = defaultdict()
         train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
         # weights = []
@@ -271,7 +271,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         no_improve = 0
 
         for _ in range(epochs):
-            if no_improve < 10:
+            if no_improve < 20:
                 for idx, (train_data, labels) in enumerate(train_loader):
                     optimizer.zero_grad()   # Clear gradients
                     outputs = model(train_data)   # Forward pass to get output/logits
