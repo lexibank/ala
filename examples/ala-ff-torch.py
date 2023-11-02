@@ -15,11 +15,12 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False, intersec="grambank"):
     # Hyperparameters
-    runs = 10
-    epochs = 50
+    runs = 100
+    epochs = 2000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
+    min_langs = 5
 
     tests = defaultdict()
     if test_pano is True:
@@ -75,7 +76,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         {k: v[0] for k, v in asjp.items()},
         converter,
         load=load,
-        threshold=5)
+        threshold=min_langs)
 
     # test integration of ASJP Genus
     # for item in full_data:

@@ -7,5 +7,3 @@
 #SBATCH --error=%x.%j.err
 
 python3 ala-grambank-ff-torch.py
-python3 ala-lexibank-ff-torch.py
-python3 ala-combined.py
