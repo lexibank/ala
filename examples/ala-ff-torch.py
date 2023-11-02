@@ -15,8 +15,8 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False, intersec="grambank"):
     # Hyperparameters
-    runs = 100
-    epochs = 2000
+    runs = 10
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -36,8 +36,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         mien = extract_branch(gcode="mien1242")
 
     # Remove (True) or include (False) "Unclassified"
-    if test_isolates is True:
-        isolates = ["basq1248", "movi1243", "bang1363", "kunz1244", "suan1234"]
+    isolates = ["basq1248", "movi1243", "bang1363", "kunz1244", "suan1234", "mapu1245"]
 
     # Switch on GPU if available
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
@@ -55,7 +54,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     gb_conv = feature2vec(get_db("data/grambank.sqlite3"))
     lb_conv = concept2vec(get_db("data/lexibank.sqlite3"), model="dolgo")
 
-    load = "grammatical" if data == "grambank" else "lexical"
+    load = "grambank" if data == "grambank" else "lexical"
     converter = gb_conv if data == "grambank" else lb_conv
 
     if data == "lexibank":
@@ -189,6 +188,13 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 tests[lang] = full_data[lang]
             else:
                 pass
+
+        elif family == "Unclassified" and test_isolates is False:
+            if lang in isolates:
+                tests[lang] = full_data[lang]
+            else:
+                data.append(full_data[lang][2])
+                labels.append(fam2idx[family])
         else:
             data.append(full_data[lang][2])
             labels.append(fam2idx[family])
@@ -354,14 +360,13 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                     ]]
 
         # Test experiments
-        if [test_longdistance, test_pano, test_longdistance].count(True) > 0:
-            for lang in tests:
-                results_id = (lang, tests[lang][0])
-                pred = model.predict(tests, lang)
-                if results_id in results:
-                    results[results_id].append(pred)
-                else:
-                    results[results_id] = [pred]
+        for lang in tests:
+            results_id = (lang, tests[lang][0])
+            pred = model.predict(tests, lang)
+            if results_id in results:
+                results[results_id].append(pred)
+            else:
+                results[results_id] = [pred]
 
     print("---------------")
     results_table = []
