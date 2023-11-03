@@ -15,8 +15,8 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False, intersec="grambank"):
     # Hyperparameters
-    runs = 100
-    epochs = 2000
+    runs = 10
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -35,9 +35,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         tapakuric = extract_branch(gcode="tapa1264")
         sinitic = extract_branch(gcode="sini1245")
         mien = extract_branch(gcode="mien1242")
+        matacoan = extract_branch(gcode="mata1289")
 
     # Remove (True) or include (False) "Unclassified"
-    isolates = ["basq1248", "movi1243", "bang1363", "kunz1244", "suan1234", "mapu1245"]
+    # isolates = ["basq1248", "movi1243", "bang1363", "kunz1244", "suan1234", "mapu1245"]
+    isolates = []
 
     # Switch on GPU if available
     device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
@@ -117,14 +119,19 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode="iecor").items())
         chap_wl = dict(get_other(mode="bc").items())
+        mata_wl = dict(get_other(mode="vbc").items())
+
         if intersection is True:
             iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
             chap_wl = {k: chap_wl[k] for k in chap_wl if k in intersec}
+            mata_wl = {k: mata_wl[k] for k in mata_wl if k in intersec}
 
         iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
                                   converter, load="lexical")
         chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
                                   converter, load="tapakuric")
+        mata_data = convert_data(mata_wl, {k: v[0] for k, v in asjp.items()},
+                                 converter, load="mataguayan")
 
         for lang in iecor_data:
             if lang in anatolian or lang in tocharian:
@@ -136,6 +143,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 tests[lang] = chapa_data[lang]
             else:
                 full_data[lang] = chapa_data[lang]
+        for lang in mata_data:
+            if lang in matacoan:
+                tests[lang] = mata_data[lang]
+            else:
+                full_data[lang] = mata_data[lang]
 
     data = []
     labels = []

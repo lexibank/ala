@@ -10,6 +10,7 @@ import numpy as np
 
 ATTACH_BPT = """ATTACH 'data/blumpanotacana.sqlite3' AS db1;"""
 ATTACH_IECOR = """ATTACH 'data/iecor.sqlite3' AS db1;"""
+ATTACH_VBC = """ATTACH 'data/viegasbarroschaco.sqlite3' AS db1;"""
 ATTACH_GBE = """ATTACH 'data/grollemundbantu.sqlite3' AS db1;"""
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
 ATTACH_BC = """ATTACH 'data/birchallchapacuran.sqlite3' AS db1;"""
@@ -309,6 +310,9 @@ def get_other(mode="bpt"):
     elif mode == "bc":
         db.execute(ATTACH_BC)
         db.execute(IECOR_QUERY)
+    elif mode == "vbc":
+        db.execute(ATTACH_VBC)
+        db.execute(IECOR_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
@@ -316,6 +320,7 @@ def get_other(mode="bpt"):
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
+        print(glottocode)
         if len(wordlists[glottocode]) == 1:
             best_key = list(wordlists[glottocode].keys())[0]
         else:
@@ -504,6 +509,9 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
 
         elif load == "tapakuric":
             by_fam["Chapacuran"] += [gcode]
+
+        elif load == "mataguayan":
+            by_fam["Mataguayan"] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
@@ -529,7 +537,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical", "tapakuric"):
+            if load in ("lexical", "tapakuric", "mataguayan"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
