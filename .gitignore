@@ -130,10 +130,8 @@ dmypy.json
 
 # Databases
 *sqlite3
-examples/asjp/
-examples/grambank/
-examples/lexibank-analysed/
-examples/blumpanotacana/
-examples/best-model-parameters.pt
 *.err
 *.out
+examples/data/
+examples/best-model-parameters.pt
+examples/family-distances.tsv

@@ -8,17 +8,103 @@ import statistics
 import numpy as np
 
 
-ATTACH_BPT = """
-ATTACH 'blumpanotacana.sqlite3' AS db1;
+ATTACH_BPT = """ATTACH 'data/blumpanotacana.sqlite3' AS db1;"""
+ATTACH_IECOR = """ATTACH 'data/iecor.sqlite3' AS db1;"""
+ATTACH_VBC = """ATTACH 'data/viegasbarroschaco.sqlite3' AS db1;"""
+ATTACH_GBE = """ATTACH 'data/grollemundbantu.sqlite3' AS db1;"""
+ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
+ATTACH_BC = """ATTACH 'data/birchallchapacuran.sqlite3' AS db1;"""
+ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
+
+IECOR_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_2a,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      lower(p_2a.cldf_name) = p_2.cldf_id
+        AND
+      f_2.cldf_parameterReference = p_2a.cldf_id
+        AND
+      (
+        p_2.core_concept like "%Swadesh-1952-200%"
+          OR
+        p_2.core_concept like "%Swadesh-1955-100%"
+      )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  length(f.cldf_segments) > 1
+    AND
+  c.Word_Number >= 50;
 """
 
-ATTACH_ASJP = """
-ATTACH 'asjp.sqlite3' AS db1;
-"""
-
-
-ATTACH_LB = """
-ATTACH 'lexibank.sqlite3' AS db2;
+ASJP_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.gloss_in_source = p_2.cldf_id
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  c.Word_Number >= 50;
 """
 
 
@@ -65,7 +151,49 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 100;
+  c.Word_Number >= 50;
+"""
+
+
+LBMOD_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.cldf_name,
+  f.cldf_segments,
+  p.cldf_id || "-" || SUBSTR(
+    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
+  c.Word_Number
+FROM
+  db2.formtable as f,
+  db2.languagetable as l,
+  db2.parametertable as p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      p_2.cldf_id = f_2.gloss_in_source
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  c.Word_Number >= 50;
 """
 
 
@@ -112,14 +240,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 100
-    AND
-  (
-    p.core_concept like "%Swadesh-1952-200%"
-      OR
-    p.core_concept like "%Swadesh-1955-100%"
-  )
-;"""
+  c.Word_Number >= 50;
+"""
 
 
 GB_QUERY = """SELECT
@@ -160,18 +282,45 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
-def get_bpt(path="blumpanotacana.sqlite3"):
-    db = get_db(path)
+BRANCH_QUERY = """SELECT
+    cldf_languagereference
+FROM
+    valuetable
+WHERE
+    cldf_parameterreference = 'classification' and cldf_value like ?
+"""
+
+
+def get_other(mode="bpt"):
+    db = get_db("data/dummy.sqlite3")
     wordlists = defaultdict(lambda : defaultdict(dict))
-    db.execute(ATTACH_BPT)
     db.execute(ATTACH_LB)
-    db.execute(BPT_QUERY)
+    if mode == "bpt":
+        db.execute(ATTACH_BPT)
+        db.execute(BPT_QUERY)
+    elif mode == "asjp":
+        db.execute(ATTACH_ASJP)
+        db.execute(ASJP_QUERY)
+    elif mode == "lb_mod":
+        db.execute(ATTACH_ASJP)
+        db.execute(LBMOD_QUERY)
+    elif mode == "iecor":
+        db.execute(ATTACH_IECOR)
+        db.execute(IECOR_QUERY)
+    elif mode == "bc":
+        db.execute(ATTACH_BC)
+        db.execute(IECOR_QUERY)
+    elif mode == "vbc":
+        db.execute(ATTACH_VBC)
+        db.execute(IECOR_QUERY)
+
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
+        print(glottocode)
         if len(wordlists[glottocode]) == 1:
             best_key = list(wordlists[glottocode].keys())[0]
         else:
@@ -183,7 +332,22 @@ def get_bpt(path="blumpanotacana.sqlite3"):
     return all_wordlists
 
 
-def get_gb(path="grambank.sqlite3"):
+def extract_branch(gcode):
+    """
+    Retreives all glottocodes that are part of a certain branch
+    in Glottolog.
+    """
+    gcode = "%" + gcode + "%"
+    db = get_db("data/glottolog.sqlite3")
+    db.execute(BRANCH_QUERY, (gcode,))
+    gcodes = []
+    for glottocode in db.fetchall():
+        gcodes.append(glottocode[0])
+
+    return gcodes
+
+
+def get_gb(path="data/grambank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
@@ -210,7 +374,7 @@ def feature2vec(db):
     # query on grambank here
     keys = defaultdict(dict)
     idx = 0
-    for i, (param, code) in enumerate(db.fetchall()):
+    for _, (param, code) in enumerate(db.fetchall()):
         if code != "3":
             keys[param][code] = idx
             idx += 1
@@ -287,13 +451,13 @@ def get_languages(db):
     return list(db.fetchall())
 
 
-def get_asjp(path="asjp.sqlite3"):
+def get_asjp(path="data/asjp.sqlite3"):
     db = get_db(path)
     db.execute("select distinct cldf_glottocode, family, classification_wals from languagetable;")
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_wl(path="lexibank.sqlite3"):
+def get_lb(path="data/lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
@@ -333,7 +497,7 @@ def get_families(wordlists, families, threshold=5):
     return {k: v for k, v in by_fam.items() if len(v) >= threshold}
 
 
-def convert_data(wordlists, families, converter, load, threshold=3):
+def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
     for gcode in wordlists:
@@ -342,6 +506,12 @@ def convert_data(wordlists, families, converter, load, threshold=3):
 
         elif gcode == "suan1234":
             by_fam['Sino-Tibetan'] += [gcode]
+
+        elif load == "tapakuric":
+            by_fam["Chapacuran"] += [gcode]
+
+        elif load == "mataguayan":
+            by_fam["Mataguayan"] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
@@ -367,7 +537,7 @@ def convert_data(wordlists, families, converter, load, threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load == "lexibank":
+            if load in ("lexical", "tapakuric", "mataguayan"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
@@ -474,7 +644,7 @@ def affiliate_by_consonant_class(
 
     # transform the language in the lingpy wordlist
     items = set()
-    for idx, doculect, concept, tokens in wordlist.iter_rows(
+    for _, doculect, concept, tokens in wordlist.iter_rows(
             "doculect", "concept", "tokens"):
         if doculect == language and tokens:
             items.add(
@@ -494,7 +664,6 @@ def affiliate_by_consonant_class(
                 items_b = set([row[5] for row in words.values()])
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
-                # print(matches)
                 scores += [matches]
         classes += [(
             fam,
@@ -520,13 +689,12 @@ def get_lingpy(data, header):
 
 
 class FF(object):
-
     def __init__(
             self,
             input_layer: int,
             hidden_layer: int,
             output_layer: int,
-            verbose: bool=False,
+            verbose: bool = False,
             ):
         self.input_layer = np.array(np.random.uniform(
                 -1,
@@ -543,13 +711,13 @@ class FF(object):
         self.epoch_loss = []
         self.verbose = verbose
 
-    def train(self, training_data, epochs, learning_rate=0.01):
+    def train(self, data, epochs, learning_rate=0.01):
         for i in range(epochs):
             losses = []
             for input_data, output_data in tqdm.tqdm(
-                    training_data, desc="epoch {0}".format(i+1)):
+                    data, desc="epoch {0}".format(i+1)):
                 # forward pass on the network
-                predicted, hidden_layer, output_layer = self.forward(
+                predicted, hidden_layer, _ = self.forward(
                         self.input_layer,
                         self.output_layer,
                         input_data)
@@ -624,6 +792,6 @@ class FF(object):
 
     def predict(self, x, weights_in, weights_out):
 
-        y, hidden, u = self.forward(weights_in, weights_out, x)
+        y, _, _ = self.forward(weights_in, weights_out, x)
 
         return np.argmax(y)
