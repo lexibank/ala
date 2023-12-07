@@ -1,0 +1,26 @@
+Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
+Afro-Asiatic	30	6.5	78.85	14.93
+Arawakan	10	2	75.49	32.87
+Atlantic-Congo	47	8.9	91.21	9.12
+Austroasiatic	35	7.8	88.51	14.96
+Austronesian	258	52.5	98.92	1.43
+Chibchan	16	2.9	62.68	31.9
+Chocoan	5	1.3	85.9	30.31
+Dravidian	8	1.9	80.0	41.4
+Hmong-Mien	9	2.5	100.0	0.0
+Indo-European	33	7.3	92.81	6.85
+Koiarian	6	1.6	90.0	20.7
+Mande	7	1.4	95.0	15.81
+Nakh-Daghestanian	7	1.8	0.0	0.0
+Nuclear Trans New Guinea	34	6.8	68.84	19.25
+Nuclear-Macro-Je	6	1.5	0.0	0.0
+Pama-Nyungan	57	10.8	98.62	3.67
+Quechuan	6	1.8	100.0	0.0
+Sino-Tibetan	75	14.2	97.41	3.77
+Tucanoan	10	1.9	92.98	23.78
+Tupian	13	2.7	100.0	0.0
+Turkic	14	2.8	89.22	25.65
+Unclassified	158	32.6	95.04	2.47
+Uralic	19	3.5	92.81	15.16
+Uto-Aztecan	26	5.6	99.38	2.8
+TOTAL	889	177	82.9	4.77

@@ -13,9 +13,9 @@ from clldutils.misc import slug
 
 
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
-            test_longdistance=False, distances=False, intersec="grambank"):
+            test_longdistance=False, distances=False):
     # Hyperparameters
-    runs = 10
+    runs = 20
     epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
@@ -47,6 +47,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 
     table = []
     fam_scores = []
+
     list_results = [["Model", "Run", "Family"]]
     results_per_fam = defaultdict()  # store family results
     results = defaultdict()  # store experiment results
@@ -60,18 +61,21 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     load = "grambank" if data == "grambank" else "lexical"
     converter = gb_conv if data == "grambank" else lb_conv
 
-    if data == "lexibank":
-        wordlists = dict(lexibank.items())
-    elif data == "lb_mod":
+    if data in ("lexibank", "lb_mod", "combined"):
         wordlists = dict(lexibank.items())
     elif data == "grambank":
         wordlists = dict(grambank.items())
     elif data == "asjp":
         wordlists = dict(get_other(mode="asjp").items())
 
+    mod = "_no"
     if intersection is True:
-        intersec = asjp if intersec == "asjp" else grambank
+        intersec = grambank if data == "lexibank" else lexibank
         wordlists = {k: wordlists[k] for k in wordlists if k in intersec}
+        mod = "_intersec"
+
+    # We could call output as an additional argument
+    output = "results/results_" + data + mod + ".tsv"
 
     full_data = convert_data(
         wordlists,
@@ -81,18 +85,14 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         threshold=min_langs)
 
     # test integration of ASJP Genus
-    # for item in full_data:
-    #     print(item)
-    #     print(full_data[item])
-
     # test = {k: v[1] for k, v in get_asjp().items()}
     # print(test)
 
-    if intersec == "combined":
+    if data == "combined":
         converter = feature2vec(get_db("grambank.sqlite3"))
         gb_wl = convert_data(
             grambank,
-            {k: v[0] for k, v in asjp.items()},
+            {k: v[0] for k, v in lexibank.items()},
             gb_conv,
             load="grambank",
             threshold=1)
@@ -424,16 +424,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         round(mean(fam_scores), 2),
         round(stdev(fam_scores), 2)
         ]]
+    for item in table:
+        print(table)
+
+    header = ["Family", "Languages", "Tested", "Avg. Fam. Accuracy", "Fam-STD"]
+    import csv
+
+    with open(output, 'w', encoding="utf8", newline='') as f:
+        writer = csv.writer(f, delimiter="\t")
+        writer.writerow(header)
+        writer.writerows(table)
 
     print(tabulate(
         table,
-        headers=[
-            "Family",
-            "Languages",
-            "Tested",
-            "Avg. Fam. Accuracy",
-            "Fam-STD"
-            ],
+        headers=header,
         floatfmt=".2f",
         tablefmt="pipe"
         ))
@@ -442,11 +446,9 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", type=str,
-                        help="Choose the dataset for your experiment")
+                        help="Choose the dataset for your experiment: lexibank, grambank, or combined")
     parser.add_argument("-intersection", action='store_true',
-                        help="Full data or intersection/combined")
-    parser.add_argument("--intersec", type=str,
-                        help="Choose dataset for intersection or combination")
+                        help="Choose if intersect with another dataset")
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-pano', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
