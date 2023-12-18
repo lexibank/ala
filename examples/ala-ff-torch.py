@@ -1,4 +1,5 @@
 import argparse
+import csv
 from collections import defaultdict, Counter
 from statistics import mean, stdev
 from tabulate import tabulate, SEPARATING_LINE
@@ -16,7 +17,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False):
     # Hyperparameters
     runs = 20
-    epochs = 50
+    epochs = 2000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -175,6 +176,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 labels.append(fam2idx[family])
 
         # Add Southern to test and northern to data
+            
         elif family == "Uto-Aztecan" and test_longdistance is True:
             if lang not in northern_uto:
                 tests[lang] = full_data[lang]
@@ -428,7 +430,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         print(table)
 
     header = ["Family", "Languages", "Tested", "Avg. Fam. Accuracy", "Fam-STD"]
-    import csv
 
     with open(output, 'w', encoding="utf8", newline='') as f:
         writer = csv.writer(f, delimiter="\t")

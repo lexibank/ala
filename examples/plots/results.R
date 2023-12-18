@@ -5,16 +5,19 @@ library(viridis)
 library(gghalves)
 library(ggdist)
 
-data <- read_tsv("lexibank_results.tsv") %>% 
-  rbind(read_tsv("grambank_results.tsv")) %>% 
-  rbind(read_tsv("combined_results.tsv"))
+data <- read_tsv("../results/results_grambank_intersec.tsv") %>%
+  mutate(Model='Grambank')
+  
+  # rbind(read_tsv("../results/results_lexibank_intersec.tsv"))
+  # rbind(read_tsv("../results/results_grambank_intersec.tsv"))
 
 violin <- data %>% 
+  filter(Family=='TOTAL') %>% 
   ggplot(aes(y=Model, x=Family)) +
   geom_violin(aes(fill=Model)) +
   geom_boxplot(width=0.3, 
                outlier.size=1, outlier.color="black", outlier.alpha=0.3) +
-  # facet_wrap(~Language, ncol=3) +
+  # facet_wrap(~Language, ncol=3) 
   scale_fill_viridis(discrete=TRUE, end=0.9) +
   scale_x_continuous(limits=c(52, 100), breaks=c(50, 60, 70, 80, 90, 100), 
                 name="Average Family Accuracy") +
