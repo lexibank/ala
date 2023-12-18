@@ -136,3 +136,4 @@ examples/data/
 examples/best-model-parameters.pt
 examples/family-distances.tsv
 .Rproj.user
+*.Rproj
