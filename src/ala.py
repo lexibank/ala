@@ -94,6 +94,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       f_2.gloss_in_source = p_2.cldf_id
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -104,7 +106,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
 
 
@@ -183,6 +185,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       p_2.cldf_id = f_2.gloss_in_source
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -193,7 +197,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
 
 
@@ -320,7 +324,6 @@ def get_other(mode="bpt"):
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
-        print(glottocode)
         if len(wordlists[glottocode]) == 1:
             best_key = list(wordlists[glottocode].keys())[0]
         else:
@@ -503,9 +506,6 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
-
-        elif gcode == "suan1234":
-            by_fam['Sino-Tibetan'] += [gcode]
 
         elif load == "tapakuric":
             by_fam["Chapacuran"] += [gcode]
