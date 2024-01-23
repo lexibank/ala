@@ -2,7 +2,7 @@ import argparse
 import csv
 from collections import defaultdict, Counter
 from statistics import mean, stdev
-from tabulate import tabulate, SEPARATING_LINE
+from tabulate import tabulate 
 import numpy as np
 from scipy.spatial import distance
 import torch
