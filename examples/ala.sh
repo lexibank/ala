@@ -6,5 +6,5 @@
 #SBATCH --output=%x.%j.out
 #SBATCH --error=%x.%j.err
 
-python3 -u ala-ff-torch.py --data=combined
+python3 -u ala-ff-torch.py --data=asjp -intersection
 
