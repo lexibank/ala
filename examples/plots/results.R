@@ -1,80 +1,76 @@
 library(readr)
 library(dplyr)
-library(ggplot2)
-library(viridis)
-library(gghalves)
+library(forcats)
 library(ggdist)
+library(ggExtra)
+library(gghalves)
+library(ggplot2)
+library(ggrepel)
+library(viridis)
 
-data <- read_tsv("../results/results_grambank_intersec.tsv") %>%
-  mutate(Model='Grambank')
-  
-  # rbind(read_tsv("../results/results_lexibank_intersec.tsv"))
-  # rbind(read_tsv("../results/results_grambank_intersec.tsv"))
+gb_all <- read_tsv("../results/results_grambank_no_detailed.tsv") %>%
+  mutate(Model='Grambank_all')
 
-violin <- data %>% 
-  filter(Family=='TOTAL') %>% 
-  ggplot(aes(y=Model, x=Family)) +
-  geom_violin(aes(fill=Model)) +
-  geom_boxplot(width=0.3, 
-               outlier.size=1, outlier.color="black", outlier.alpha=0.3) +
-  # facet_wrap(~Language, ncol=3) 
-  scale_fill_viridis(discrete=TRUE, end=0.9) +
-  scale_x_continuous(limits=c(52, 100), breaks=c(50, 60, 70, 80, 90, 100), 
-                name="Average Family Accuracy") +
-  scale_y_discrete(label=NULL, name=NULL) +
-  theme_grey(base_size=14) +
-  theme(legend.position='bottom', legend.title=element_blank())
-violin
-ggsave("intersection_violin.png", plot=violin)
+lb_all <- read_tsv("../results/results_lexibank_no_detailed.tsv") %>%
+  mutate(Model='Lexibank_all')
+
+gb_intersec <- read_tsv("../results/results_grambank_intersec_detailed.tsv") %>%
+  mutate(Model='Grambank_intersec')
+
+lb_intersec <- read_tsv("../results/results_lexibank_intersec_detailed.tsv") %>%
+  mutate(Model='Lexibank_intersec')
+
+asjp_all <- read_tsv("../results/results_asjp_no_detailed.tsv") %>%
+  mutate(Model='ASJP_all')
+
+asjp_intersec <- read_tsv("../results/results_asjp_intersec_detailed.tsv") %>%
+  mutate(Model='ASJP_intersec')
+
+combined <- read_tsv("../results/results_combined_no_detailed.tsv") %>%
+  mutate(Model='LexiGram_combined')
 
 
-violin_complex <- data %>% 
-  ggplot(aes(y=Family, x=Model)) +
+full_data <- rbind(gb_all, lb_all, gb_intersec, lb_intersec, asjp_all, asjp_intersec, combined)
+
+per_model<- full_data %>% group_by(Model, Run) %>% 
+  summarise(Accuracy = mean(Accuracy))
+
+violin_complex <- per_model %>% 
+  ggplot(aes(x=reorder(Model, Accuracy), y=Accuracy)) +
   geom_boxplot(aes(fill=Model), width=.2, size=0.3, outlier.shape=NA) +
-  geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.1) +
-  stat_halfeye(aes(fill=Model), adjust=1, width=.5, color=NA, position=position_nudge(x=.15)) +
+  geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.2) +
+  stat_halfeye(aes(fill=Model), adjust=1, width=.6, color=NA, position=position_nudge(x=.15)) +
   coord_flip() +
-  scale_fill_viridis(discrete=TRUE, end=0.9) +
-  scale_y_continuous(limits=c(53, 100), breaks=c(60, 70, 80, 90, 100), 
+  scale_fill_viridis(discrete=TRUE) +
+  scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
                      name="Average Family Accuracy") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
   theme(legend.position='bottom', legend.title=element_blank())
+
 violin_complex
-ggsave("intersection_violin_complex.png", plot=violin_complex)
+ggsave("violin_complex.png", plot=violin_complex, dpi=300,
+       width=3000, height=1500, units="px")
 
 
-full_data <- read_tsv("lexibank_results_ind.tsv") %>% 
-  rbind(read_tsv("grambank_results_ind.tsv")) %>% 
-  rbind(read_tsv("combined_results.tsv"))
+#####################
+per_family <- full_data %>% group_by(Family, Model) %>%
+  summarise(Accuracy = mean(Accuracy), Languages= mean(Languages))
 
-violin <- full_data %>% 
-  ggplot(aes(y=Model, x=Family)) +
-  geom_violin(aes(fill=Model)) +
-  geom_boxplot(width=0.3, 
-               outlier.size=1, outlier.color="black", outlier.alpha=0.3) +
-  # facet_wrap(~Language, ncol=3) +
-  scale_fill_viridis(discrete=TRUE, end=0.9) +
-  scale_x_continuous(limits=c(52, 100), breaks=c(50, 60, 70, 80, 90, 100), 
-                     name="Average Family Accuracy") +
-  scale_y_discrete(label=NULL, name=NULL) +
-  theme_grey(base_size=14) +
-  theme(legend.position='bottom', legend.title=element_blank())
-violin
-ggsave("full_data_violin.png", plot=violin)
+scatter <-  per_family %>% 
+  ggplot(aes(x=Accuracy, y=Languages, fill=Family, label=Family)) +
+  geom_point(aes(size=1), shape=21) +
+  geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
+                   box.padding = unit(2, "lines")) +
+  scale_y_log10(limits = c(3, 500)) + 
+  scale_fill_viridis(discrete=TRUE, option="D", begin=0.3) +
+  # geom_smooth(method=lm , color="red", fill="#69b3a2", se=FALSE) +
+  theme(legend.position="none") +
+  facet_wrap(~Model)
 
+scatter
+# marginal boxplot
+# scatter <- ggMarginal(scatter, type="boxplot")
+ggsave("scatter.png", plot=scatter, dpi=300,
+       width=3000, height=2000, units="px")
 
-violin_complex <- full_data %>% 
-  ggplot(aes(y=Family, x=Model)) +
-  geom_boxplot(aes(fill=Model), width=.2, size=0.3, outlier.shape=NA) +
-  geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.1) +
-  stat_halfeye(aes(fill=Model), adjust=1, width=.5, color=NA, position=position_nudge(x=.15)) +
-  coord_flip() +
-  scale_fill_viridis(discrete=TRUE, end=0.9) +
-  scale_y_continuous(limits=c(53, 100), breaks=c(60, 70, 80, 90, 100), 
-                     name="Average Family Accuracy") +
-  scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
-  theme_grey(base_size=14) +
-  theme(legend.position='bottom', legend.title=element_blank())
-violin_complex
-ggsave("full_data_violin_complex.png", plot=violin_complex)
