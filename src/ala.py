@@ -395,7 +395,7 @@ def feature2vec(db):
     return converter
 
 
-def concept2vec(db, model="dolgo"):
+def concept2vec(db, model="SCA"):
     """
     Function returns a function that converts data from one language to a vector.
 
