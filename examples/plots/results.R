@@ -10,7 +10,7 @@ library(viridis)
 gb_all <- read_tsv("../results/results_grambank_no_detailed.tsv") %>%
   mutate(Model='Grambank_all')
 
-lb_all <- read_tsv("../results/results_lexibank_no_detailed_dolgo.tsv") %>%
+lb_all <- read_tsv("../results/results_lexibank_no_detailed.tsv") %>%
   mutate(Model='Lexibank_all')
 
 gb_intersec <- read_tsv("../results/results_grambank_intersec_detailed.tsv") %>%

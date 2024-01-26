@@ -51,8 +51,6 @@ INNER JOIN
         p_2.core_concept like "%Swadesh-1952-200%"
           OR
         p_2.core_concept like "%Swadesh-1955-100%"
-          OR
-        p_2.core_concept like "%Tadmor-2009-100%"
       )
     GROUP BY
       l_2.cldf_glottocode
