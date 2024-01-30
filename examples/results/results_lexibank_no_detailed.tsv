@@ -1,3095 +1,1544 @@
 Run	Family	Languages	Tested	Accuracy
-0	Mande	16	3	100.0
-1	Mande	16	3	100.0
-2	Mande	16	4	100.0
-3	Mande	16	3	66.667
-4	Mande	16	3	66.667
-5	Mande	16	2	100.0
-6	Mande	16	3	66.667
-8	Mande	16	4	100.0
-9	Mande	16	3	100.0
-10	Mande	16	2	50.0
-11	Mande	16	2	50.0
-12	Mande	16	4	100.0
-13	Mande	16	5	100.0
-14	Mande	16	2	50.0
-15	Mande	16	4	75.0
-16	Mande	16	3	66.667
-17	Mande	16	4	100.0
-18	Mande	16	5	80.0
-19	Mande	16	3	100.0
-20	Mande	16	6	83.333
-21	Mande	16	1	100.0
-22	Mande	16	1	100.0
-23	Mande	16	4	75.0
-24	Mande	16	4	100.0
-25	Mande	16	2	50.0
-26	Mande	16	2	100.0
-27	Mande	16	4	75.0
-28	Mande	16	2	100.0
-29	Mande	16	4	75.0
-30	Mande	16	2	100.0
-31	Mande	16	4	50.0
-32	Mande	16	2	100.0
-33	Mande	16	5	80.0
-34	Mande	16	4	100.0
-35	Mande	16	1	100.0
-36	Mande	16	6	83.333
-37	Mande	16	1	100.0
-38	Mande	16	1	100.0
-39	Mande	16	4	50.0
-40	Mande	16	3	100.0
-42	Mande	16	2	100.0
-43	Mande	16	1	100.0
-44	Mande	16	2	100.0
-45	Mande	16	2	100.0
-46	Mande	16	2	100.0
-47	Mande	16	3	100.0
-48	Mande	16	2	100.0
-49	Mande	16	1	100.0
-50	Mande	16	1	100.0
-51	Mande	16	1	100.0
-52	Mande	16	1	0.0
-53	Mande	16	3	100.0
-54	Mande	16	2	100.0
-55	Mande	16	2	100.0
-56	Mande	16	2	50.0
-58	Mande	16	4	100.0
-59	Mande	16	3	66.667
-60	Mande	16	3	66.667
-61	Mande	16	3	66.667
-62	Mande	16	2	100.0
-63	Mande	16	2	100.0
-64	Mande	16	5	60.0
-65	Mande	16	5	100.0
-66	Mande	16	2	50.0
-67	Mande	16	4	75.0
-68	Mande	16	4	100.0
-69	Mande	16	2	50.0
-70	Mande	16	6	83.333
-71	Mande	16	5	100.0
-72	Mande	16	1	100.0
-73	Mande	16	5	80.0
-74	Mande	16	2	100.0
-75	Mande	16	6	83.333
-76	Mande	16	2	50.0
-77	Mande	16	2	100.0
-78	Mande	16	4	75.0
-79	Mande	16	3	66.667
-80	Mande	16	1	100.0
-81	Mande	16	2	100.0
-82	Mande	16	1	100.0
-83	Mande	16	1	100.0
-84	Mande	16	5	80.0
-85	Mande	16	2	100.0
-86	Mande	16	1	100.0
-87	Mande	16	4	75.0
-88	Mande	16	8	87.5
-89	Mande	16	2	100.0
-90	Mande	16	6	83.333
-91	Mande	16	1	100.0
-92	Mande	16	6	100.0
-93	Mande	16	2	100.0
-94	Mande	16	3	100.0
-95	Mande	16	3	66.667
-96	Mande	16	2	100.0
-97	Mande	16	2	100.0
-98	Mande	16	5	80.0
-99	Mande	16	1	100.0
-0	Nuclear Trans New Guinea	182	40	100.0
-1	Nuclear Trans New Guinea	182	39	100.0
-2	Nuclear Trans New Guinea	182	40	97.5
-3	Nuclear Trans New Guinea	182	41	100.0
-4	Nuclear Trans New Guinea	182	40	95.0
-5	Nuclear Trans New Guinea	182	39	100.0
-6	Nuclear Trans New Guinea	182	37	97.297
-7	Nuclear Trans New Guinea	182	38	100.0
-8	Nuclear Trans New Guinea	182	40	100.0
-9	Nuclear Trans New Guinea	182	39	100.0
-10	Nuclear Trans New Guinea	182	38	100.0
-11	Nuclear Trans New Guinea	182	27	100.0
-12	Nuclear Trans New Guinea	182	47	100.0
-13	Nuclear Trans New Guinea	182	31	100.0
-14	Nuclear Trans New Guinea	182	35	97.143
-15	Nuclear Trans New Guinea	182	51	100.0
-16	Nuclear Trans New Guinea	182	33	93.939
-17	Nuclear Trans New Guinea	182	38	97.368
-18	Nuclear Trans New Guinea	182	35	100.0
+0	Austronesian	382	81	100.0
+1	Austronesian	382	72	100.0
+2	Austronesian	382	76	100.0
+3	Austronesian	382	67	100.0
+4	Austronesian	382	82	98.78
+5	Austronesian	382	79	100.0
+6	Austronesian	382	65	98.462
+7	Austronesian	382	73	98.63
+8	Austronesian	382	73	100.0
+9	Austronesian	382	85	100.0
+10	Austronesian	382	84	100.0
+11	Austronesian	382	83	100.0
+12	Austronesian	382	67	100.0
+13	Austronesian	382	69	100.0
+14	Austronesian	382	78	100.0
+15	Austronesian	382	75	100.0
+16	Austronesian	382	74	97.297
+17	Austronesian	382	67	100.0
+18	Austronesian	382	81	98.765
+19	Austronesian	382	75	100.0
+20	Austronesian	382	84	100.0
+21	Austronesian	382	70	100.0
+22	Austronesian	382	83	98.795
+23	Austronesian	382	75	100.0
+24	Austronesian	382	87	100.0
+25	Austronesian	382	65	96.923
+26	Austronesian	382	85	100.0
+27	Austronesian	382	81	98.765
+28	Austronesian	382	67	100.0
+29	Austronesian	382	76	100.0
+30	Austronesian	382	80	100.0
+31	Austronesian	382	67	98.507
+32	Austronesian	382	80	100.0
+33	Austronesian	382	77	100.0
+34	Austronesian	382	75	100.0
+35	Austronesian	382	74	100.0
+36	Austronesian	382	77	100.0
+37	Austronesian	382	79	100.0
+38	Austronesian	382	65	98.462
+39	Austronesian	382	79	97.468
+40	Austronesian	382	73	100.0
+41	Austronesian	382	64	100.0
+42	Austronesian	382	89	100.0
+43	Austronesian	382	80	98.75
+44	Austronesian	382	72	100.0
+45	Austronesian	382	66	98.485
+46	Austronesian	382	82	98.78
+47	Austronesian	382	80	98.75
+48	Austronesian	382	76	100.0
+49	Austronesian	382	69	100.0
+0	Nuclear Trans New Guinea	182	31	100.0
+1	Nuclear Trans New Guinea	182	32	96.875
+2	Nuclear Trans New Guinea	182	45	100.0
+3	Nuclear Trans New Guinea	182	46	100.0
+4	Nuclear Trans New Guinea	182	36	100.0
+5	Nuclear Trans New Guinea	182	36	100.0
+6	Nuclear Trans New Guinea	182	39	100.0
+7	Nuclear Trans New Guinea	182	36	100.0
+8	Nuclear Trans New Guinea	182	25	100.0
+9	Nuclear Trans New Guinea	182	40	97.5
+10	Nuclear Trans New Guinea	182	35	100.0
+11	Nuclear Trans New Guinea	182	38	100.0
+12	Nuclear Trans New Guinea	182	36	100.0
+13	Nuclear Trans New Guinea	182	33	100.0
+14	Nuclear Trans New Guinea	182	34	97.059
+15	Nuclear Trans New Guinea	182	42	95.238
+16	Nuclear Trans New Guinea	182	37	97.297
+17	Nuclear Trans New Guinea	182	41	100.0
+18	Nuclear Trans New Guinea	182	30	96.667
 19	Nuclear Trans New Guinea	182	34	97.059
-20	Nuclear Trans New Guinea	182	36	100.0
-21	Nuclear Trans New Guinea	182	27	100.0
-22	Nuclear Trans New Guinea	182	39	97.436
-23	Nuclear Trans New Guinea	182	45	100.0
-24	Nuclear Trans New Guinea	182	29	100.0
-25	Nuclear Trans New Guinea	182	33	100.0
-26	Nuclear Trans New Guinea	182	43	97.674
-27	Nuclear Trans New Guinea	182	46	100.0
-28	Nuclear Trans New Guinea	182	40	100.0
-29	Nuclear Trans New Guinea	182	41	97.561
-30	Nuclear Trans New Guinea	182	39	100.0
+20	Nuclear Trans New Guinea	182	27	100.0
+21	Nuclear Trans New Guinea	182	38	97.368
+22	Nuclear Trans New Guinea	182	35	100.0
+23	Nuclear Trans New Guinea	182	37	94.595
+24	Nuclear Trans New Guinea	182	38	100.0
+25	Nuclear Trans New Guinea	182	46	97.826
+26	Nuclear Trans New Guinea	182	31	100.0
+27	Nuclear Trans New Guinea	182	37	100.0
+28	Nuclear Trans New Guinea	182	39	100.0
+29	Nuclear Trans New Guinea	182	40	100.0
+30	Nuclear Trans New Guinea	182	29	100.0
 31	Nuclear Trans New Guinea	182	38	100.0
-32	Nuclear Trans New Guinea	182	38	94.737
-33	Nuclear Trans New Guinea	182	32	100.0
-34	Nuclear Trans New Guinea	182	35	100.0
-35	Nuclear Trans New Guinea	182	38	100.0
-36	Nuclear Trans New Guinea	182	34	100.0
-37	Nuclear Trans New Guinea	182	27	96.296
-38	Nuclear Trans New Guinea	182	39	97.436
-39	Nuclear Trans New Guinea	182	33	100.0
-40	Nuclear Trans New Guinea	182	27	100.0
-41	Nuclear Trans New Guinea	182	40	97.5
-42	Nuclear Trans New Guinea	182	39	100.0
-43	Nuclear Trans New Guinea	182	47	100.0
-44	Nuclear Trans New Guinea	182	45	97.778
-45	Nuclear Trans New Guinea	182	44	97.727
-46	Nuclear Trans New Guinea	182	41	97.561
+32	Nuclear Trans New Guinea	182	37	100.0
+33	Nuclear Trans New Guinea	182	41	97.561
+34	Nuclear Trans New Guinea	182	38	100.0
+35	Nuclear Trans New Guinea	182	30	100.0
+36	Nuclear Trans New Guinea	182	46	100.0
+37	Nuclear Trans New Guinea	182	36	100.0
+38	Nuclear Trans New Guinea	182	44	97.727
+39	Nuclear Trans New Guinea	182	36	97.222
+40	Nuclear Trans New Guinea	182	34	100.0
+41	Nuclear Trans New Guinea	182	39	97.436
+42	Nuclear Trans New Guinea	182	34	97.059
+43	Nuclear Trans New Guinea	182	32	93.75
+44	Nuclear Trans New Guinea	182	37	100.0
+45	Nuclear Trans New Guinea	182	34	100.0
+46	Nuclear Trans New Guinea	182	40	100.0
 47	Nuclear Trans New Guinea	182	30	100.0
-48	Nuclear Trans New Guinea	182	33	100.0
-49	Nuclear Trans New Guinea	182	35	97.143
-50	Nuclear Trans New Guinea	182	30	100.0
-51	Nuclear Trans New Guinea	182	38	100.0
-52	Nuclear Trans New Guinea	182	37	100.0
-53	Nuclear Trans New Guinea	182	38	100.0
-54	Nuclear Trans New Guinea	182	38	100.0
-55	Nuclear Trans New Guinea	182	37	100.0
-56	Nuclear Trans New Guinea	182	33	100.0
-57	Nuclear Trans New Guinea	182	29	100.0
-58	Nuclear Trans New Guinea	182	46	97.826
-59	Nuclear Trans New Guinea	182	37	100.0
-60	Nuclear Trans New Guinea	182	34	100.0
-61	Nuclear Trans New Guinea	182	39	100.0
-62	Nuclear Trans New Guinea	182	35	97.143
-63	Nuclear Trans New Guinea	182	40	100.0
-64	Nuclear Trans New Guinea	182	38	100.0
-65	Nuclear Trans New Guinea	182	31	100.0
-66	Nuclear Trans New Guinea	182	39	100.0
-67	Nuclear Trans New Guinea	182	30	96.667
-68	Nuclear Trans New Guinea	182	41	100.0
-69	Nuclear Trans New Guinea	182	33	96.97
-70	Nuclear Trans New Guinea	182	37	97.297
-71	Nuclear Trans New Guinea	182	29	100.0
-72	Nuclear Trans New Guinea	182	42	100.0
-73	Nuclear Trans New Guinea	182	35	100.0
-74	Nuclear Trans New Guinea	182	35	100.0
-75	Nuclear Trans New Guinea	182	30	96.667
-76	Nuclear Trans New Guinea	182	32	100.0
-77	Nuclear Trans New Guinea	182	33	100.0
-78	Nuclear Trans New Guinea	182	41	100.0
-79	Nuclear Trans New Guinea	182	34	97.059
-80	Nuclear Trans New Guinea	182	39	100.0
-81	Nuclear Trans New Guinea	182	40	97.5
-82	Nuclear Trans New Guinea	182	32	96.875
-83	Nuclear Trans New Guinea	182	34	100.0
-84	Nuclear Trans New Guinea	182	35	97.143
-85	Nuclear Trans New Guinea	182	30	100.0
-86	Nuclear Trans New Guinea	182	38	100.0
-87	Nuclear Trans New Guinea	182	43	100.0
-88	Nuclear Trans New Guinea	182	35	100.0
-89	Nuclear Trans New Guinea	182	38	100.0
-90	Nuclear Trans New Guinea	182	41	100.0
-91	Nuclear Trans New Guinea	182	31	100.0
-92	Nuclear Trans New Guinea	182	30	100.0
-93	Nuclear Trans New Guinea	182	40	100.0
-94	Nuclear Trans New Guinea	182	34	100.0
-95	Nuclear Trans New Guinea	182	39	94.872
-96	Nuclear Trans New Guinea	182	38	100.0
-97	Nuclear Trans New Guinea	182	37	100.0
-98	Nuclear Trans New Guinea	182	27	100.0
-99	Nuclear Trans New Guinea	182	35	100.0
-0	Austronesian	382	70	100.0
-1	Austronesian	382	67	100.0
-2	Austronesian	382	83	100.0
-3	Austronesian	382	70	98.571
-4	Austronesian	382	60	100.0
-5	Austronesian	382	71	100.0
-6	Austronesian	382	68	100.0
-7	Austronesian	382	78	98.718
-8	Austronesian	382	64	100.0
-9	Austronesian	382	61	100.0
-10	Austronesian	382	73	100.0
-11	Austronesian	382	82	100.0
-12	Austronesian	382	65	100.0
-13	Austronesian	382	71	100.0
-14	Austronesian	382	71	100.0
-15	Austronesian	382	70	100.0
-16	Austronesian	382	80	98.75
-17	Austronesian	382	70	100.0
-18	Austronesian	382	75	98.667
-19	Austronesian	382	64	100.0
-20	Austronesian	382	64	100.0
-21	Austronesian	382	85	98.824
-22	Austronesian	382	68	100.0
-23	Austronesian	382	81	100.0
-24	Austronesian	382	79	100.0
-25	Austronesian	382	79	97.468
-26	Austronesian	382	81	100.0
-27	Austronesian	382	74	100.0
-28	Austronesian	382	91	98.901
-29	Austronesian	382	82	100.0
-30	Austronesian	382	77	100.0
-31	Austronesian	382	76	100.0
-32	Austronesian	382	78	98.718
-33	Austronesian	382	73	100.0
-34	Austronesian	382	67	100.0
-35	Austronesian	382	77	100.0
-36	Austronesian	382	69	100.0
-37	Austronesian	382	89	100.0
-38	Austronesian	382	69	98.551
-39	Austronesian	382	79	100.0
-40	Austronesian	382	66	100.0
-41	Austronesian	382	68	100.0
-42	Austronesian	382	70	100.0
-43	Austronesian	382	68	100.0
-44	Austronesian	382	70	100.0
-45	Austronesian	382	79	100.0
-46	Austronesian	382	79	100.0
-47	Austronesian	382	75	100.0
-48	Austronesian	382	81	100.0
-49	Austronesian	382	68	100.0
-50	Austronesian	382	67	100.0
-51	Austronesian	382	77	100.0
-52	Austronesian	382	74	98.649
-53	Austronesian	382	69	98.551
-54	Austronesian	382	73	100.0
-55	Austronesian	382	88	98.864
-56	Austronesian	382	83	100.0
-57	Austronesian	382	90	100.0
-58	Austronesian	382	74	100.0
-59	Austronesian	382	84	98.81
-60	Austronesian	382	70	100.0
-61	Austronesian	382	74	98.649
-62	Austronesian	382	61	100.0
-63	Austronesian	382	64	100.0
-64	Austronesian	382	91	100.0
-65	Austronesian	382	73	100.0
-66	Austronesian	382	81	100.0
-67	Austronesian	382	75	98.667
-68	Austronesian	382	80	98.75
-69	Austronesian	382	69	100.0
-70	Austronesian	382	75	100.0
-71	Austronesian	382	76	100.0
-72	Austronesian	382	82	100.0
-73	Austronesian	382	76	100.0
-74	Austronesian	382	78	98.718
-75	Austronesian	382	91	100.0
-76	Austronesian	382	68	100.0
-77	Austronesian	382	78	100.0
-78	Austronesian	382	86	98.837
-79	Austronesian	382	79	98.734
-80	Austronesian	382	78	100.0
-81	Austronesian	382	68	100.0
-82	Austronesian	382	69	100.0
-83	Austronesian	382	71	98.592
-84	Austronesian	382	71	100.0
-85	Austronesian	382	72	98.611
-86	Austronesian	382	85	98.824
-87	Austronesian	382	82	100.0
-88	Austronesian	382	77	100.0
-89	Austronesian	382	76	100.0
-90	Austronesian	382	71	98.592
-91	Austronesian	382	83	100.0
-92	Austronesian	382	79	100.0
-93	Austronesian	382	74	100.0
-94	Austronesian	382	65	100.0
-95	Austronesian	382	73	100.0
-96	Austronesian	382	63	100.0
-97	Austronesian	382	87	98.851
-98	Austronesian	382	86	100.0
-99	Austronesian	382	69	100.0
-0	Indo-European	58	13	100.0
-1	Indo-European	58	12	100.0
-2	Indo-European	58	14	100.0
-3	Indo-European	58	11	100.0
-4	Indo-European	58	14	100.0
-5	Indo-European	58	9	100.0
-6	Indo-European	58	16	100.0
-7	Indo-European	58	9	100.0
-8	Indo-European	58	17	100.0
-9	Indo-European	58	9	100.0
-10	Indo-European	58	11	100.0
-11	Indo-European	58	13	100.0
-12	Indo-European	58	10	100.0
-13	Indo-European	58	14	100.0
-14	Indo-European	58	8	100.0
-15	Indo-European	58	9	100.0
-16	Indo-European	58	11	100.0
-17	Indo-European	58	12	100.0
-18	Indo-European	58	10	90.0
-19	Indo-European	58	16	93.75
-20	Indo-European	58	10	100.0
-21	Indo-European	58	14	100.0
-22	Indo-European	58	12	100.0
-23	Indo-European	58	14	100.0
-24	Indo-European	58	7	100.0
-25	Indo-European	58	14	100.0
-26	Indo-European	58	15	100.0
-27	Indo-European	58	14	100.0
-28	Indo-European	58	13	100.0
-29	Indo-European	58	12	100.0
-30	Indo-European	58	9	100.0
-31	Indo-European	58	7	100.0
-32	Indo-European	58	11	100.0
-33	Indo-European	58	11	100.0
-34	Indo-European	58	16	93.75
-35	Indo-European	58	8	100.0
-36	Indo-European	58	10	100.0
-37	Indo-European	58	15	100.0
-38	Indo-European	58	8	100.0
-39	Indo-European	58	8	87.5
-40	Indo-European	58	14	100.0
-41	Indo-European	58	17	88.235
-42	Indo-European	58	15	100.0
-43	Indo-European	58	13	100.0
-44	Indo-European	58	11	100.0
-45	Indo-European	58	5	100.0
-46	Indo-European	58	16	100.0
-47	Indo-European	58	9	100.0
-48	Indo-European	58	6	100.0
-49	Indo-European	58	9	100.0
-50	Indo-European	58	15	100.0
-51	Indo-European	58	13	100.0
-52	Indo-European	58	9	100.0
-53	Indo-European	58	10	100.0
-54	Indo-European	58	9	100.0
-55	Indo-European	58	8	100.0
-56	Indo-European	58	11	100.0
-57	Indo-European	58	12	100.0
-58	Indo-European	58	10	100.0
-59	Indo-European	58	13	100.0
-60	Indo-European	58	9	100.0
-61	Indo-European	58	11	100.0
-62	Indo-European	58	13	100.0
-63	Indo-European	58	12	100.0
-64	Indo-European	58	6	100.0
-65	Indo-European	58	11	100.0
-66	Indo-European	58	15	100.0
-67	Indo-European	58	19	94.737
-68	Indo-European	58	13	92.308
-69	Indo-European	58	11	100.0
-70	Indo-European	58	12	100.0
-71	Indo-European	58	11	100.0
-72	Indo-European	58	8	100.0
-73	Indo-European	58	7	100.0
-74	Indo-European	58	12	100.0
-75	Indo-European	58	10	100.0
-76	Indo-European	58	17	100.0
-77	Indo-European	58	5	100.0
-78	Indo-European	58	9	100.0
-79	Indo-European	58	12	100.0
-80	Indo-European	58	12	100.0
-81	Indo-European	58	12	100.0
-82	Indo-European	58	16	100.0
-83	Indo-European	58	14	100.0
-84	Indo-European	58	17	100.0
-85	Indo-European	58	16	100.0
-86	Indo-European	58	8	100.0
-87	Indo-European	58	11	100.0
-88	Indo-European	58	8	100.0
-89	Indo-European	58	14	100.0
-90	Indo-European	58	9	100.0
-91	Indo-European	58	9	100.0
-92	Indo-European	58	11	100.0
-93	Indo-European	58	6	100.0
-94	Indo-European	58	14	100.0
-95	Indo-European	58	8	100.0
-96	Indo-European	58	17	94.118
-97	Indo-European	58	11	100.0
-98	Indo-European	58	15	100.0
-99	Indo-European	58	14	100.0
-0	Uralic	27	6	100.0
-1	Uralic	27	5	100.0
-2	Uralic	27	4	100.0
-3	Uralic	27	7	100.0
-4	Uralic	27	3	100.0
-5	Uralic	27	8	100.0
-6	Uralic	27	7	100.0
-7	Uralic	27	5	100.0
-8	Uralic	27	8	100.0
-9	Uralic	27	2	100.0
-10	Uralic	27	9	100.0
-11	Uralic	27	5	100.0
-12	Uralic	27	5	100.0
-13	Uralic	27	7	100.0
-14	Uralic	27	7	100.0
-15	Uralic	27	8	100.0
-16	Uralic	27	6	100.0
-17	Uralic	27	4	100.0
-18	Uralic	27	7	100.0
-19	Uralic	27	5	100.0
-20	Uralic	27	9	100.0
-21	Uralic	27	4	100.0
-22	Uralic	27	5	100.0
-23	Uralic	27	6	100.0
-24	Uralic	27	10	100.0
-25	Uralic	27	7	100.0
-26	Uralic	27	5	100.0
-27	Uralic	27	9	100.0
-28	Uralic	27	4	100.0
-29	Uralic	27	6	100.0
-30	Uralic	27	5	100.0
-31	Uralic	27	4	100.0
-32	Uralic	27	6	100.0
-33	Uralic	27	9	100.0
-34	Uralic	27	4	100.0
-35	Uralic	27	7	100.0
-36	Uralic	27	5	100.0
-37	Uralic	27	2	100.0
-38	Uralic	27	6	100.0
-39	Uralic	27	5	100.0
-40	Uralic	27	4	100.0
-41	Uralic	27	7	100.0
-42	Uralic	27	5	100.0
-43	Uralic	27	4	100.0
-44	Uralic	27	6	100.0
-45	Uralic	27	8	100.0
-46	Uralic	27	7	100.0
-47	Uralic	27	8	100.0
-48	Uralic	27	3	100.0
-49	Uralic	27	3	100.0
-50	Uralic	27	7	100.0
-51	Uralic	27	3	100.0
-52	Uralic	27	6	100.0
-53	Uralic	27	13	100.0
-54	Uralic	27	3	100.0
-55	Uralic	27	8	100.0
-56	Uralic	27	7	100.0
-57	Uralic	27	9	100.0
-58	Uralic	27	8	100.0
-59	Uralic	27	1	100.0
-60	Uralic	27	10	100.0
-61	Uralic	27	8	100.0
-62	Uralic	27	7	100.0
-63	Uralic	27	3	100.0
-64	Uralic	27	9	100.0
-65	Uralic	27	9	100.0
-66	Uralic	27	3	100.0
-67	Uralic	27	5	100.0
-68	Uralic	27	5	100.0
-69	Uralic	27	5	100.0
-70	Uralic	27	3	100.0
-71	Uralic	27	6	100.0
-72	Uralic	27	10	100.0
-73	Uralic	27	5	100.0
-74	Uralic	27	6	100.0
-75	Uralic	27	4	100.0
-76	Uralic	27	6	100.0
-77	Uralic	27	7	100.0
-78	Uralic	27	2	100.0
-79	Uralic	27	7	100.0
-80	Uralic	27	3	100.0
-81	Uralic	27	5	100.0
-82	Uralic	27	5	100.0
-83	Uralic	27	4	100.0
-84	Uralic	27	5	100.0
-85	Uralic	27	1	100.0
-86	Uralic	27	5	100.0
-87	Uralic	27	2	100.0
-88	Uralic	27	4	100.0
-89	Uralic	27	4	100.0
-90	Uralic	27	2	100.0
-91	Uralic	27	9	100.0
-92	Uralic	27	4	100.0
-93	Uralic	27	4	100.0
-94	Uralic	27	7	100.0
-95	Uralic	27	5	100.0
-96	Uralic	27	7	100.0
-97	Uralic	27	4	100.0
-98	Uralic	27	3	100.0
-99	Uralic	27	5	100.0
-0	Tupian	33	10	100.0
-1	Tupian	33	5	100.0
-2	Tupian	33	5	100.0
-3	Tupian	33	4	100.0
-4	Tupian	33	6	100.0
-5	Tupian	33	10	90.0
-6	Tupian	33	2	100.0
-7	Tupian	33	9	88.889
-8	Tupian	33	3	100.0
-9	Tupian	33	7	100.0
-10	Tupian	33	6	100.0
-11	Tupian	33	6	100.0
-12	Tupian	33	6	100.0
-13	Tupian	33	10	100.0
-14	Tupian	33	5	100.0
-15	Tupian	33	6	100.0
-16	Tupian	33	9	100.0
-17	Tupian	33	9	100.0
-18	Tupian	33	6	100.0
-19	Tupian	33	7	100.0
-20	Tupian	33	5	100.0
-21	Tupian	33	11	100.0
-22	Tupian	33	6	100.0
-23	Tupian	33	9	100.0
-24	Tupian	33	6	100.0
-25	Tupian	33	7	100.0
-26	Tupian	33	2	100.0
-27	Tupian	33	9	88.889
-28	Tupian	33	3	100.0
-29	Tupian	33	7	100.0
-30	Tupian	33	5	100.0
-31	Tupian	33	8	100.0
-32	Tupian	33	7	100.0
-33	Tupian	33	7	100.0
-34	Tupian	33	9	100.0
-35	Tupian	33	5	100.0
-36	Tupian	33	6	100.0
-37	Tupian	33	3	100.0
-38	Tupian	33	8	87.5
-39	Tupian	33	7	100.0
-40	Tupian	33	8	100.0
-41	Tupian	33	4	100.0
-42	Tupian	33	5	100.0
-43	Tupian	33	7	100.0
-44	Tupian	33	7	100.0
-45	Tupian	33	6	100.0
-46	Tupian	33	4	100.0
-47	Tupian	33	6	100.0
-48	Tupian	33	3	100.0
-49	Tupian	33	9	100.0
-50	Tupian	33	11	100.0
-51	Tupian	33	10	100.0
-52	Tupian	33	5	100.0
-53	Tupian	33	6	100.0
-54	Tupian	33	6	100.0
-55	Tupian	33	9	100.0
-56	Tupian	33	6	100.0
-57	Tupian	33	7	100.0
-58	Tupian	33	6	100.0
-59	Tupian	33	8	100.0
-60	Tupian	33	9	100.0
-61	Tupian	33	3	100.0
-62	Tupian	33	10	100.0
-63	Tupian	33	6	100.0
-64	Tupian	33	3	100.0
-65	Tupian	33	6	100.0
-66	Tupian	33	7	85.714
-67	Tupian	33	7	85.714
-68	Tupian	33	6	100.0
-69	Tupian	33	2	100.0
-70	Tupian	33	5	100.0
-71	Tupian	33	9	100.0
-72	Tupian	33	5	100.0
-73	Tupian	33	11	100.0
-74	Tupian	33	2	100.0
-75	Tupian	33	7	100.0
-76	Tupian	33	5	100.0
-77	Tupian	33	6	100.0
-78	Tupian	33	3	100.0
-79	Tupian	33	8	100.0
-80	Tupian	33	7	100.0
-81	Tupian	33	7	100.0
-82	Tupian	33	6	100.0
-83	Tupian	33	5	100.0
-84	Tupian	33	5	100.0
-85	Tupian	33	8	100.0
-86	Tupian	33	8	100.0
-87	Tupian	33	5	100.0
-88	Tupian	33	5	100.0
-89	Tupian	33	11	100.0
-90	Tupian	33	3	100.0
-91	Tupian	33	9	100.0
-92	Tupian	33	9	100.0
-93	Tupian	33	4	100.0
-94	Tupian	33	4	100.0
-95	Tupian	33	3	100.0
-96	Tupian	33	6	100.0
-97	Tupian	33	4	100.0
-98	Tupian	33	6	100.0
-99	Tupian	33	7	100.0
-0	East Strickland	5	2	100.0
-1	East Strickland	5	2	100.0
-2	East Strickland	5	1	100.0
-3	East Strickland	5	2	50.0
-4	East Strickland	5	2	100.0
-7	East Strickland	5	1	100.0
-8	East Strickland	5	1	100.0
-9	East Strickland	5	1	100.0
-13	East Strickland	5	1	0.0
-14	East Strickland	5	1	0.0
-15	East Strickland	5	1	100.0
-18	East Strickland	5	2	50.0
-20	East Strickland	5	2	100.0
-21	East Strickland	5	1	100.0
-23	East Strickland	5	1	100.0
-24	East Strickland	5	1	0.0
-25	East Strickland	5	2	50.0
-26	East Strickland	5	1	100.0
-27	East Strickland	5	1	100.0
-28	East Strickland	5	1	100.0
-29	East Strickland	5	2	50.0
-31	East Strickland	5	1	100.0
-32	East Strickland	5	2	50.0
-33	East Strickland	5	2	100.0
-35	East Strickland	5	1	100.0
-36	East Strickland	5	1	100.0
-38	East Strickland	5	2	100.0
-39	East Strickland	5	2	100.0
-40	East Strickland	5	2	100.0
-41	East Strickland	5	1	100.0
-42	East Strickland	5	1	100.0
-44	East Strickland	5	1	100.0
-45	East Strickland	5	1	0.0
-48	East Strickland	5	2	100.0
-49	East Strickland	5	1	100.0
-50	East Strickland	5	2	100.0
-52	East Strickland	5	1	100.0
-53	East Strickland	5	1	100.0
-54	East Strickland	5	1	0.0
-55	East Strickland	5	1	0.0
-56	East Strickland	5	1	100.0
-57	East Strickland	5	2	100.0
-58	East Strickland	5	2	50.0
-59	East Strickland	5	3	100.0
-60	East Strickland	5	3	100.0
-61	East Strickland	5	1	100.0
-64	East Strickland	5	2	100.0
-67	East Strickland	5	1	100.0
-69	East Strickland	5	1	100.0
-70	East Strickland	5	1	100.0
-71	East Strickland	5	2	50.0
-72	East Strickland	5	2	50.0
-74	East Strickland	5	1	0.0
-76	East Strickland	5	1	100.0
-78	East Strickland	5	1	100.0
-80	East Strickland	5	1	100.0
-82	East Strickland	5	2	50.0
-85	East Strickland	5	2	100.0
-87	East Strickland	5	1	100.0
-89	East Strickland	5	2	100.0
-91	East Strickland	5	1	0.0
-94	East Strickland	5	2	50.0
-98	East Strickland	5	1	100.0
-99	East Strickland	5	1	0.0
-0	Tucanoan	18	4	100.0
-1	Tucanoan	18	2	100.0
-2	Tucanoan	18	1	100.0
-3	Tucanoan	18	4	100.0
-4	Tucanoan	18	5	100.0
-5	Tucanoan	18	4	75.0
-6	Tucanoan	18	4	100.0
-7	Tucanoan	18	7	100.0
-8	Tucanoan	18	2	100.0
-9	Tucanoan	18	4	100.0
-10	Tucanoan	18	3	100.0
-11	Tucanoan	18	7	100.0
-12	Tucanoan	18	6	100.0
-13	Tucanoan	18	4	100.0
-14	Tucanoan	18	2	100.0
-15	Tucanoan	18	4	100.0
-16	Tucanoan	18	4	100.0
-17	Tucanoan	18	7	100.0
-18	Tucanoan	18	2	100.0
-19	Tucanoan	18	6	100.0
-20	Tucanoan	18	3	100.0
-21	Tucanoan	18	3	66.667
-22	Tucanoan	18	5	100.0
-23	Tucanoan	18	6	100.0
-24	Tucanoan	18	5	100.0
-25	Tucanoan	18	5	100.0
-26	Tucanoan	18	5	100.0
-27	Tucanoan	18	1	100.0
-28	Tucanoan	18	5	100.0
-29	Tucanoan	18	3	100.0
-30	Tucanoan	18	2	100.0
-31	Tucanoan	18	5	100.0
-32	Tucanoan	18	3	100.0
-33	Tucanoan	18	3	100.0
-34	Tucanoan	18	4	100.0
-35	Tucanoan	18	3	100.0
-36	Tucanoan	18	2	100.0
-37	Tucanoan	18	5	100.0
-38	Tucanoan	18	6	100.0
-39	Tucanoan	18	4	100.0
-40	Tucanoan	18	6	100.0
-41	Tucanoan	18	6	100.0
-42	Tucanoan	18	5	100.0
-43	Tucanoan	18	4	100.0
-44	Tucanoan	18	2	100.0
-45	Tucanoan	18	2	100.0
-46	Tucanoan	18	2	100.0
-47	Tucanoan	18	3	100.0
-48	Tucanoan	18	6	100.0
-49	Tucanoan	18	5	100.0
-50	Tucanoan	18	3	100.0
-51	Tucanoan	18	4	100.0
-52	Tucanoan	18	2	100.0
-53	Tucanoan	18	6	100.0
-54	Tucanoan	18	1	100.0
-55	Tucanoan	18	1	100.0
-57	Tucanoan	18	2	100.0
-58	Tucanoan	18	2	100.0
-59	Tucanoan	18	7	100.0
-60	Tucanoan	18	4	100.0
-61	Tucanoan	18	3	100.0
-63	Tucanoan	18	1	100.0
-64	Tucanoan	18	4	100.0
-65	Tucanoan	18	6	100.0
-66	Tucanoan	18	5	100.0
-67	Tucanoan	18	5	100.0
-68	Tucanoan	18	2	100.0
-69	Tucanoan	18	5	100.0
-70	Tucanoan	18	5	100.0
-71	Tucanoan	18	9	100.0
-72	Tucanoan	18	2	100.0
-73	Tucanoan	18	2	100.0
-74	Tucanoan	18	6	100.0
-75	Tucanoan	18	4	100.0
-76	Tucanoan	18	2	100.0
-77	Tucanoan	18	4	100.0
-78	Tucanoan	18	7	100.0
-79	Tucanoan	18	6	100.0
-80	Tucanoan	18	2	100.0
-81	Tucanoan	18	2	100.0
-82	Tucanoan	18	6	83.333
-83	Tucanoan	18	6	100.0
-84	Tucanoan	18	6	100.0
-85	Tucanoan	18	5	100.0
-86	Tucanoan	18	4	100.0
-88	Tucanoan	18	5	100.0
-89	Tucanoan	18	7	100.0
-90	Tucanoan	18	6	100.0
-91	Tucanoan	18	5	100.0
-92	Tucanoan	18	2	100.0
-93	Tucanoan	18	2	100.0
-94	Tucanoan	18	5	100.0
-95	Tucanoan	18	6	100.0
-96	Tucanoan	18	5	100.0
-97	Tucanoan	18	3	100.0
-98	Tucanoan	18	5	100.0
-99	Tucanoan	18	6	100.0
-0	Turkic	27	8	100.0
+48	Nuclear Trans New Guinea	182	37	100.0
+49	Nuclear Trans New Guinea	182	32	100.0
+0	Turkic	27	7	100.0
 1	Turkic	27	4	100.0
 2	Turkic	27	5	100.0
-3	Turkic	27	5	100.0
+3	Turkic	27	2	100.0
 4	Turkic	27	4	100.0
-5	Turkic	27	5	100.0
-6	Turkic	27	5	100.0
-7	Turkic	27	6	100.0
+5	Turkic	27	8	100.0
+6	Turkic	27	4	100.0
+7	Turkic	27	7	100.0
 8	Turkic	27	3	100.0
-9	Turkic	27	8	100.0
-10	Turkic	27	3	100.0
-11	Turkic	27	7	100.0
-12	Turkic	27	7	100.0
-13	Turkic	27	11	100.0
-14	Turkic	27	5	100.0
-15	Turkic	27	2	100.0
-16	Turkic	27	6	100.0
-17	Turkic	27	3	100.0
-18	Turkic	27	8	100.0
-19	Turkic	27	3	100.0
-20	Turkic	27	6	100.0
-21	Turkic	27	4	100.0
-22	Turkic	27	6	100.0
-23	Turkic	27	5	80.0
-24	Turkic	27	8	100.0
+9	Turkic	27	6	100.0
+10	Turkic	27	7	100.0
+11	Turkic	27	4	100.0
+12	Turkic	27	3	100.0
+13	Turkic	27	3	100.0
+14	Turkic	27	11	100.0
+15	Turkic	27	5	100.0
+16	Turkic	27	3	100.0
+17	Turkic	27	5	100.0
+18	Turkic	27	4	100.0
+19	Turkic	27	6	100.0
+20	Turkic	27	7	100.0
+21	Turkic	27	6	100.0
+22	Turkic	27	4	100.0
+23	Turkic	27	7	100.0
+24	Turkic	27	4	100.0
 25	Turkic	27	5	100.0
 26	Turkic	27	6	100.0
-27	Turkic	27	5	100.0
-28	Turkic	27	7	100.0
-29	Turkic	27	3	100.0
-30	Turkic	27	6	100.0
-31	Turkic	27	3	100.0
-32	Turkic	27	7	100.0
-33	Turkic	27	4	100.0
-34	Turkic	27	7	100.0
-35	Turkic	27	6	100.0
-36	Turkic	27	6	100.0
-37	Turkic	27	8	100.0
-38	Turkic	27	4	100.0
-39	Turkic	27	3	100.0
-40	Turkic	27	4	100.0
-41	Turkic	27	10	100.0
-42	Turkic	27	8	100.0
-43	Turkic	27	4	100.0
-44	Turkic	27	2	100.0
-45	Turkic	27	7	100.0
-46	Turkic	27	6	100.0
-47	Turkic	27	5	100.0
-48	Turkic	27	5	100.0
-49	Turkic	27	6	100.0
-50	Turkic	27	6	100.0
-51	Turkic	27	8	100.0
-52	Turkic	27	6	100.0
-53	Turkic	27	5	100.0
-54	Turkic	27	2	100.0
-55	Turkic	27	2	100.0
-56	Turkic	27	6	100.0
-57	Turkic	27	4	100.0
-58	Turkic	27	4	100.0
-60	Turkic	27	7	100.0
-61	Turkic	27	8	100.0
-62	Turkic	27	9	100.0
-63	Turkic	27	4	100.0
-64	Turkic	27	6	100.0
-65	Turkic	27	9	100.0
-66	Turkic	27	6	100.0
-67	Turkic	27	3	100.0
-68	Turkic	27	7	100.0
-69	Turkic	27	7	100.0
-70	Turkic	27	2	100.0
-71	Turkic	27	5	100.0
-72	Turkic	27	3	100.0
-73	Turkic	27	5	100.0
-74	Turkic	27	7	100.0
-75	Turkic	27	5	100.0
-76	Turkic	27	5	100.0
-77	Turkic	27	2	100.0
-78	Turkic	27	4	100.0
-79	Turkic	27	9	100.0
-80	Turkic	27	4	100.0
-81	Turkic	27	3	100.0
-82	Turkic	27	3	100.0
-83	Turkic	27	5	100.0
-84	Turkic	27	3	100.0
-85	Turkic	27	8	100.0
-86	Turkic	27	6	100.0
-87	Turkic	27	6	100.0
-88	Turkic	27	7	100.0
-89	Turkic	27	9	100.0
-90	Turkic	27	6	100.0
-91	Turkic	27	8	100.0
-92	Turkic	27	10	100.0
-93	Turkic	27	4	100.0
-94	Turkic	27	8	100.0
-95	Turkic	27	7	100.0
-96	Turkic	27	5	100.0
-97	Turkic	27	5	100.0
-98	Turkic	27	8	100.0
-99	Turkic	27	7	100.0
-0	Afro-Asiatic	79	19	94.737
-1	Afro-Asiatic	79	17	100.0
-2	Afro-Asiatic	79	10	90.0
-3	Afro-Asiatic	79	19	89.474
-4	Afro-Asiatic	79	15	100.0
-5	Afro-Asiatic	79	17	94.118
-6	Afro-Asiatic	79	16	93.75
-7	Afro-Asiatic	79	12	91.667
-8	Afro-Asiatic	79	20	85.0
-9	Afro-Asiatic	79	15	93.333
-10	Afro-Asiatic	79	17	100.0
-11	Afro-Asiatic	79	10	80.0
-12	Afro-Asiatic	79	20	100.0
-13	Afro-Asiatic	79	18	100.0
-14	Afro-Asiatic	79	11	100.0
-15	Afro-Asiatic	79	18	100.0
-16	Afro-Asiatic	79	11	100.0
-17	Afro-Asiatic	79	14	85.714
-18	Afro-Asiatic	79	15	93.333
-19	Afro-Asiatic	79	17	100.0
-20	Afro-Asiatic	79	17	94.118
-21	Afro-Asiatic	79	13	92.308
-22	Afro-Asiatic	79	17	94.118
-23	Afro-Asiatic	79	12	83.333
-24	Afro-Asiatic	79	15	100.0
-25	Afro-Asiatic	79	17	88.235
-26	Afro-Asiatic	79	18	83.333
-27	Afro-Asiatic	79	20	85.0
-28	Afro-Asiatic	79	18	94.444
-29	Afro-Asiatic	79	17	100.0
-30	Afro-Asiatic	79	12	91.667
-31	Afro-Asiatic	79	13	100.0
-32	Afro-Asiatic	79	17	94.118
-33	Afro-Asiatic	79	9	88.889
-34	Afro-Asiatic	79	14	100.0
-35	Afro-Asiatic	79	17	88.235
-36	Afro-Asiatic	79	13	92.308
-37	Afro-Asiatic	79	15	100.0
-38	Afro-Asiatic	79	19	84.211
-39	Afro-Asiatic	79	19	84.211
-40	Afro-Asiatic	79	15	93.333
-41	Afro-Asiatic	79	20	90.0
-42	Afro-Asiatic	79	19	89.474
-43	Afro-Asiatic	79	19	94.737
-44	Afro-Asiatic	79	13	100.0
-45	Afro-Asiatic	79	21	90.476
-46	Afro-Asiatic	79	17	88.235
-47	Afro-Asiatic	79	22	86.364
-48	Afro-Asiatic	79	16	81.25
-49	Afro-Asiatic	79	20	90.0
-50	Afro-Asiatic	79	13	100.0
-51	Afro-Asiatic	79	13	92.308
-52	Afro-Asiatic	79	14	100.0
-53	Afro-Asiatic	79	11	100.0
-54	Afro-Asiatic	79	19	100.0
-55	Afro-Asiatic	79	15	86.667
-56	Afro-Asiatic	79	15	86.667
-57	Afro-Asiatic	79	12	100.0
-58	Afro-Asiatic	79	12	83.333
-59	Afro-Asiatic	79	18	100.0
-60	Afro-Asiatic	79	11	100.0
-61	Afro-Asiatic	79	19	94.737
-62	Afro-Asiatic	79	18	83.333
-63	Afro-Asiatic	79	14	100.0
-64	Afro-Asiatic	79	13	100.0
-65	Afro-Asiatic	79	17	100.0
-66	Afro-Asiatic	79	16	100.0
-67	Afro-Asiatic	79	23	91.304
-68	Afro-Asiatic	79	13	92.308
-69	Afro-Asiatic	79	16	93.75
-70	Afro-Asiatic	79	12	100.0
-71	Afro-Asiatic	79	17	100.0
-72	Afro-Asiatic	79	14	85.714
-73	Afro-Asiatic	79	15	86.667
-74	Afro-Asiatic	79	16	87.5
-75	Afro-Asiatic	79	15	86.667
-76	Afro-Asiatic	79	17	94.118
-77	Afro-Asiatic	79	18	83.333
-78	Afro-Asiatic	79	17	94.118
-79	Afro-Asiatic	79	15	100.0
-80	Afro-Asiatic	79	18	94.444
-81	Afro-Asiatic	79	20	90.0
-82	Afro-Asiatic	79	17	94.118
-83	Afro-Asiatic	79	22	95.455
-84	Afro-Asiatic	79	18	100.0
-85	Afro-Asiatic	79	17	88.235
-86	Afro-Asiatic	79	12	100.0
-87	Afro-Asiatic	79	16	81.25
-88	Afro-Asiatic	79	15	93.333
-89	Afro-Asiatic	79	15	93.333
-90	Afro-Asiatic	79	12	91.667
-91	Afro-Asiatic	79	16	100.0
-92	Afro-Asiatic	79	16	93.75
-93	Afro-Asiatic	79	27	100.0
-94	Afro-Asiatic	79	19	89.474
-95	Afro-Asiatic	79	22	86.364
-96	Afro-Asiatic	79	13	84.615
-97	Afro-Asiatic	79	13	92.308
-98	Afro-Asiatic	79	11	100.0
-99	Afro-Asiatic	79	12	83.333
-0	Atlantic-Congo	136	25	100.0
-1	Atlantic-Congo	136	21	100.0
-2	Atlantic-Congo	136	34	97.059
-3	Atlantic-Congo	136	32	100.0
-4	Atlantic-Congo	136	27	100.0
-5	Atlantic-Congo	136	26	96.154
-6	Atlantic-Congo	136	33	93.939
-7	Atlantic-Congo	136	23	95.652
-8	Atlantic-Congo	136	26	100.0
-9	Atlantic-Congo	136	33	96.97
-10	Atlantic-Congo	136	29	96.552
-11	Atlantic-Congo	136	35	100.0
-12	Atlantic-Congo	136	20	100.0
-13	Atlantic-Congo	136	25	100.0
-14	Atlantic-Congo	136	28	100.0
-15	Atlantic-Congo	136	19	100.0
-16	Atlantic-Congo	136	26	96.154
-17	Atlantic-Congo	136	24	100.0
-18	Atlantic-Congo	136	29	100.0
-19	Atlantic-Congo	136	31	100.0
-20	Atlantic-Congo	136	33	100.0
-21	Atlantic-Congo	136	26	100.0
-22	Atlantic-Congo	136	35	100.0
-23	Atlantic-Congo	136	27	100.0
-24	Atlantic-Congo	136	26	100.0
-25	Atlantic-Congo	136	24	100.0
-26	Atlantic-Congo	136	23	95.652
-27	Atlantic-Congo	136	25	100.0
-28	Atlantic-Congo	136	20	100.0
-29	Atlantic-Congo	136	26	96.154
-30	Atlantic-Congo	136	27	96.296
-31	Atlantic-Congo	136	28	96.429
-32	Atlantic-Congo	136	26	96.154
-33	Atlantic-Congo	136	35	91.429
-34	Atlantic-Congo	136	34	97.059
-35	Atlantic-Congo	136	29	100.0
-36	Atlantic-Congo	136	29	100.0
-37	Atlantic-Congo	136	26	100.0
-38	Atlantic-Congo	136	30	96.667
-39	Atlantic-Congo	136	30	96.667
-40	Atlantic-Congo	136	24	100.0
-41	Atlantic-Congo	136	26	100.0
-42	Atlantic-Congo	136	22	95.455
-43	Atlantic-Congo	136	23	100.0
-44	Atlantic-Congo	136	27	100.0
-45	Atlantic-Congo	136	28	100.0
-46	Atlantic-Congo	136	26	100.0
-47	Atlantic-Congo	136	30	100.0
-48	Atlantic-Congo	136	34	97.059
-49	Atlantic-Congo	136	24	95.833
-50	Atlantic-Congo	136	24	100.0
-51	Atlantic-Congo	136	25	92.0
-52	Atlantic-Congo	136	32	96.875
-53	Atlantic-Congo	136	25	100.0
-54	Atlantic-Congo	136	24	95.833
-55	Atlantic-Congo	136	21	100.0
-56	Atlantic-Congo	136	29	96.552
-57	Atlantic-Congo	136	22	100.0
-58	Atlantic-Congo	136	24	95.833
-59	Atlantic-Congo	136	26	100.0
-60	Atlantic-Congo	136	27	96.296
-61	Atlantic-Congo	136	24	100.0
-62	Atlantic-Congo	136	30	96.667
-63	Atlantic-Congo	136	25	96.0
-64	Atlantic-Congo	136	23	100.0
-65	Atlantic-Congo	136	32	96.875
-66	Atlantic-Congo	136	30	96.667
-67	Atlantic-Congo	136	26	88.462
-68	Atlantic-Congo	136	34	97.059
-69	Atlantic-Congo	136	28	100.0
-70	Atlantic-Congo	136	22	100.0
-71	Atlantic-Congo	136	28	100.0
-72	Atlantic-Congo	136	20	95.0
-73	Atlantic-Congo	136	23	100.0
-74	Atlantic-Congo	136	26	100.0
-75	Atlantic-Congo	136	26	100.0
-76	Atlantic-Congo	136	31	100.0
-77	Atlantic-Congo	136	18	100.0
-78	Atlantic-Congo	136	29	100.0
-79	Atlantic-Congo	136	16	100.0
-80	Atlantic-Congo	136	23	100.0
-81	Atlantic-Congo	136	32	93.75
-82	Atlantic-Congo	136	18	100.0
-83	Atlantic-Congo	136	25	96.0
-84	Atlantic-Congo	136	26	96.154
-85	Atlantic-Congo	136	32	100.0
-86	Atlantic-Congo	136	30	96.667
-87	Atlantic-Congo	136	26	100.0
-88	Atlantic-Congo	136	27	96.296
-89	Atlantic-Congo	136	33	100.0
-90	Atlantic-Congo	136	25	100.0
-91	Atlantic-Congo	136	29	100.0
-92	Atlantic-Congo	136	21	100.0
-93	Atlantic-Congo	136	26	100.0
-94	Atlantic-Congo	136	22	100.0
-95	Atlantic-Congo	136	25	100.0
-96	Atlantic-Congo	136	22	95.455
-97	Atlantic-Congo	136	26	100.0
-98	Atlantic-Congo	136	33	96.97
-99	Atlantic-Congo	136	26	100.0
-0	Chibchan	17	2	100.0
-1	Chibchan	17	3	66.667
-2	Chibchan	17	6	83.333
-3	Chibchan	17	4	75.0
-4	Chibchan	17	6	83.333
-5	Chibchan	17	3	100.0
-6	Chibchan	17	5	80.0
-7	Chibchan	17	4	75.0
-8	Chibchan	17	3	66.667
-9	Chibchan	17	6	83.333
-10	Chibchan	17	4	75.0
-11	Chibchan	17	3	66.667
-12	Chibchan	17	3	66.667
-13	Chibchan	17	4	100.0
-14	Chibchan	17	4	75.0
-15	Chibchan	17	3	66.667
-16	Chibchan	17	3	100.0
-17	Chibchan	17	7	85.714
-18	Chibchan	17	2	100.0
-19	Chibchan	17	5	60.0
-20	Chibchan	17	1	100.0
-21	Chibchan	17	2	100.0
-22	Chibchan	17	3	100.0
-23	Chibchan	17	3	100.0
-24	Chibchan	17	1	100.0
-25	Chibchan	17	5	100.0
-26	Chibchan	17	6	83.333
-27	Chibchan	17	3	100.0
-28	Chibchan	17	4	100.0
-29	Chibchan	17	3	66.667
-30	Chibchan	17	5	100.0
-31	Chibchan	17	3	100.0
-32	Chibchan	17	4	75.0
-33	Chibchan	17	6	83.333
-34	Chibchan	17	6	83.333
-35	Chibchan	17	3	66.667
-36	Chibchan	17	2	50.0
-37	Chibchan	17	3	66.667
-38	Chibchan	17	2	100.0
-39	Chibchan	17	7	71.429
-40	Chibchan	17	3	100.0
-41	Chibchan	17	3	100.0
-42	Chibchan	17	6	100.0
-43	Chibchan	17	2	100.0
-44	Chibchan	17	5	80.0
-45	Chibchan	17	2	50.0
-46	Chibchan	17	4	100.0
-47	Chibchan	17	2	50.0
-48	Chibchan	17	2	50.0
-49	Chibchan	17	3	100.0
-50	Chibchan	17	5	100.0
-51	Chibchan	17	1	0.0
-52	Chibchan	17	4	100.0
-53	Chibchan	17	1	100.0
-54	Chibchan	17	1	100.0
-55	Chibchan	17	4	75.0
-56	Chibchan	17	4	75.0
-57	Chibchan	17	1	100.0
-58	Chibchan	17	2	100.0
-59	Chibchan	17	1	100.0
-60	Chibchan	17	2	100.0
-61	Chibchan	17	4	100.0
-62	Chibchan	17	2	50.0
-63	Chibchan	17	7	71.429
-64	Chibchan	17	3	66.667
-65	Chibchan	17	1	100.0
-66	Chibchan	17	3	100.0
-67	Chibchan	17	5	100.0
-68	Chibchan	17	1	100.0
-69	Chibchan	17	4	100.0
-70	Chibchan	17	1	100.0
-71	Chibchan	17	2	100.0
-72	Chibchan	17	5	80.0
-73	Chibchan	17	2	0.0
-74	Chibchan	17	3	100.0
-75	Chibchan	17	3	100.0
-76	Chibchan	17	4	75.0
-77	Chibchan	17	5	80.0
-78	Chibchan	17	1	100.0
-79	Chibchan	17	2	50.0
-80	Chibchan	17	7	71.429
-81	Chibchan	17	1	100.0
-82	Chibchan	17	3	100.0
-83	Chibchan	17	3	100.0
-84	Chibchan	17	5	80.0
-85	Chibchan	17	1	100.0
-86	Chibchan	17	2	100.0
-87	Chibchan	17	7	28.571
-88	Chibchan	17	4	100.0
-90	Chibchan	17	1	100.0
-91	Chibchan	17	6	66.667
-92	Chibchan	17	3	33.333
-93	Chibchan	17	1	100.0
-94	Chibchan	17	7	57.143
-95	Chibchan	17	2	100.0
-96	Chibchan	17	4	50.0
-97	Chibchan	17	5	60.0
-98	Chibchan	17	3	100.0
-99	Chibchan	17	4	50.0
-0	Pama-Nyungan	99	22	100.0
-1	Pama-Nyungan	99	20	100.0
-2	Pama-Nyungan	99	18	100.0
-3	Pama-Nyungan	99	17	100.0
-4	Pama-Nyungan	99	24	100.0
-5	Pama-Nyungan	99	23	100.0
-6	Pama-Nyungan	99	21	95.238
-7	Pama-Nyungan	99	21	100.0
-8	Pama-Nyungan	99	20	100.0
-9	Pama-Nyungan	99	9	100.0
-10	Pama-Nyungan	99	15	93.333
-11	Pama-Nyungan	99	18	100.0
-12	Pama-Nyungan	99	21	95.238
-13	Pama-Nyungan	99	18	100.0
-14	Pama-Nyungan	99	26	100.0
-15	Pama-Nyungan	99	20	100.0
-16	Pama-Nyungan	99	18	94.444
-17	Pama-Nyungan	99	24	100.0
-18	Pama-Nyungan	99	17	100.0
-19	Pama-Nyungan	99	27	100.0
-20	Pama-Nyungan	99	19	100.0
-21	Pama-Nyungan	99	18	100.0
-22	Pama-Nyungan	99	25	100.0
-23	Pama-Nyungan	99	20	100.0
-24	Pama-Nyungan	99	23	95.652
-25	Pama-Nyungan	99	20	100.0
-26	Pama-Nyungan	99	22	100.0
-27	Pama-Nyungan	99	24	100.0
-28	Pama-Nyungan	99	20	100.0
-29	Pama-Nyungan	99	18	100.0
-30	Pama-Nyungan	99	19	100.0
-31	Pama-Nyungan	99	23	95.652
-32	Pama-Nyungan	99	20	100.0
-33	Pama-Nyungan	99	21	100.0
-34	Pama-Nyungan	99	19	100.0
-35	Pama-Nyungan	99	21	100.0
-36	Pama-Nyungan	99	26	100.0
-37	Pama-Nyungan	99	22	100.0
-38	Pama-Nyungan	99	17	100.0
-39	Pama-Nyungan	99	15	100.0
-40	Pama-Nyungan	99	19	100.0
-41	Pama-Nyungan	99	13	100.0
-42	Pama-Nyungan	99	22	95.455
-43	Pama-Nyungan	99	18	100.0
-44	Pama-Nyungan	99	17	100.0
-45	Pama-Nyungan	99	16	100.0
-46	Pama-Nyungan	99	22	100.0
-47	Pama-Nyungan	99	24	100.0
-48	Pama-Nyungan	99	17	100.0
-49	Pama-Nyungan	99	23	95.652
-50	Pama-Nyungan	99	21	95.238
-51	Pama-Nyungan	99	18	100.0
-52	Pama-Nyungan	99	23	95.652
-53	Pama-Nyungan	99	25	100.0
-54	Pama-Nyungan	99	16	100.0
-55	Pama-Nyungan	99	21	100.0
-56	Pama-Nyungan	99	23	100.0
-57	Pama-Nyungan	99	19	100.0
-58	Pama-Nyungan	99	19	100.0
-59	Pama-Nyungan	99	22	100.0
-60	Pama-Nyungan	99	19	100.0
-61	Pama-Nyungan	99	20	100.0
-62	Pama-Nyungan	99	26	100.0
-63	Pama-Nyungan	99	19	100.0
-64	Pama-Nyungan	99	24	95.833
-65	Pama-Nyungan	99	19	94.737
-66	Pama-Nyungan	99	23	100.0
-67	Pama-Nyungan	99	20	100.0
-68	Pama-Nyungan	99	12	100.0
-69	Pama-Nyungan	99	19	100.0
-70	Pama-Nyungan	99	15	100.0
-71	Pama-Nyungan	99	21	95.238
-72	Pama-Nyungan	99	18	94.444
-73	Pama-Nyungan	99	22	100.0
-74	Pama-Nyungan	99	23	100.0
-75	Pama-Nyungan	99	12	100.0
-76	Pama-Nyungan	99	16	100.0
-77	Pama-Nyungan	99	23	100.0
-78	Pama-Nyungan	99	20	100.0
-79	Pama-Nyungan	99	23	100.0
-80	Pama-Nyungan	99	25	100.0
-81	Pama-Nyungan	99	23	100.0
-82	Pama-Nyungan	99	20	95.0
-83	Pama-Nyungan	99	23	100.0
-84	Pama-Nyungan	99	20	95.0
-85	Pama-Nyungan	99	21	100.0
-86	Pama-Nyungan	99	20	90.0
-87	Pama-Nyungan	99	16	93.75
-88	Pama-Nyungan	99	24	95.833
-89	Pama-Nyungan	99	19	100.0
-90	Pama-Nyungan	99	24	100.0
-91	Pama-Nyungan	99	22	100.0
-92	Pama-Nyungan	99	25	96.0
-93	Pama-Nyungan	99	25	100.0
-94	Pama-Nyungan	99	21	100.0
-95	Pama-Nyungan	99	27	96.296
-96	Pama-Nyungan	99	27	100.0
-97	Pama-Nyungan	99	16	100.0
-98	Pama-Nyungan	99	18	100.0
-99	Pama-Nyungan	99	21	100.0
-0	Sino-Tibetan	97	25	100.0
-1	Sino-Tibetan	97	18	100.0
-2	Sino-Tibetan	97	20	100.0
-3	Sino-Tibetan	97	23	95.652
-4	Sino-Tibetan	97	17	94.118
-5	Sino-Tibetan	97	27	96.296
-6	Sino-Tibetan	97	17	100.0
-7	Sino-Tibetan	97	26	96.154
-8	Sino-Tibetan	97	21	100.0
-9	Sino-Tibetan	97	22	100.0
-10	Sino-Tibetan	97	27	100.0
-11	Sino-Tibetan	97	20	100.0
-12	Sino-Tibetan	97	19	94.737
-13	Sino-Tibetan	97	20	100.0
-14	Sino-Tibetan	97	21	100.0
-15	Sino-Tibetan	97	14	100.0
-16	Sino-Tibetan	97	14	100.0
-17	Sino-Tibetan	97	21	95.238
-18	Sino-Tibetan	97	21	100.0
-19	Sino-Tibetan	97	17	100.0
-20	Sino-Tibetan	97	19	100.0
-21	Sino-Tibetan	97	20	100.0
-22	Sino-Tibetan	97	17	100.0
-23	Sino-Tibetan	97	13	100.0
-24	Sino-Tibetan	97	20	100.0
-25	Sino-Tibetan	97	24	100.0
-26	Sino-Tibetan	97	16	100.0
-27	Sino-Tibetan	97	11	100.0
-28	Sino-Tibetan	97	13	100.0
-29	Sino-Tibetan	97	20	100.0
-30	Sino-Tibetan	97	23	100.0
-31	Sino-Tibetan	97	23	100.0
-32	Sino-Tibetan	97	17	100.0
-33	Sino-Tibetan	97	22	95.455
-34	Sino-Tibetan	97	19	100.0
-35	Sino-Tibetan	97	23	100.0
-36	Sino-Tibetan	97	22	100.0
-37	Sino-Tibetan	97	18	100.0
-38	Sino-Tibetan	97	22	90.909
-39	Sino-Tibetan	97	17	94.118
-40	Sino-Tibetan	97	24	95.833
-41	Sino-Tibetan	97	19	100.0
-42	Sino-Tibetan	97	18	100.0
-43	Sino-Tibetan	97	22	100.0
-44	Sino-Tibetan	97	25	100.0
-45	Sino-Tibetan	97	23	95.652
-46	Sino-Tibetan	97	21	100.0
-47	Sino-Tibetan	97	16	100.0
-48	Sino-Tibetan	97	22	100.0
-49	Sino-Tibetan	97	20	100.0
-50	Sino-Tibetan	97	22	100.0
-51	Sino-Tibetan	97	23	95.652
-52	Sino-Tibetan	97	16	100.0
-53	Sino-Tibetan	97	20	100.0
-54	Sino-Tibetan	97	22	100.0
-55	Sino-Tibetan	97	18	100.0
-56	Sino-Tibetan	97	21	100.0
-57	Sino-Tibetan	97	18	94.444
-58	Sino-Tibetan	97	21	100.0
-59	Sino-Tibetan	97	15	86.667
-60	Sino-Tibetan	97	20	95.0
-61	Sino-Tibetan	97	24	95.833
-62	Sino-Tibetan	97	19	100.0
-63	Sino-Tibetan	97	27	100.0
-64	Sino-Tibetan	97	18	100.0
-65	Sino-Tibetan	97	22	95.455
-66	Sino-Tibetan	97	22	100.0
-67	Sino-Tibetan	97	21	100.0
-68	Sino-Tibetan	97	15	100.0
-69	Sino-Tibetan	97	17	100.0
-70	Sino-Tibetan	97	18	100.0
-71	Sino-Tibetan	97	18	94.444
-72	Sino-Tibetan	97	26	100.0
-73	Sino-Tibetan	97	21	100.0
-74	Sino-Tibetan	97	18	100.0
-75	Sino-Tibetan	97	15	93.333
-76	Sino-Tibetan	97	14	100.0
-77	Sino-Tibetan	97	12	100.0
-78	Sino-Tibetan	97	22	100.0
-79	Sino-Tibetan	97	20	100.0
-80	Sino-Tibetan	97	13	100.0
-81	Sino-Tibetan	97	18	94.444
-82	Sino-Tibetan	97	22	95.455
-83	Sino-Tibetan	97	25	96.0
-84	Sino-Tibetan	97	16	100.0
-85	Sino-Tibetan	97	14	100.0
-86	Sino-Tibetan	97	12	100.0
-87	Sino-Tibetan	97	20	95.0
-88	Sino-Tibetan	97	15	100.0
-89	Sino-Tibetan	97	13	100.0
-90	Sino-Tibetan	97	22	100.0
-91	Sino-Tibetan	97	15	100.0
-92	Sino-Tibetan	97	14	100.0
-93	Sino-Tibetan	97	15	100.0
-94	Sino-Tibetan	97	21	95.238
-95	Sino-Tibetan	97	24	95.833
-96	Sino-Tibetan	97	27	92.593
-97	Sino-Tibetan	97	18	100.0
-98	Sino-Tibetan	97	13	84.615
-99	Sino-Tibetan	97	22	100.0
-0	Chocoan	6	2	100.0
-1	Chocoan	6	1	100.0
-3	Chocoan	6	2	100.0
-4	Chocoan	6	1	100.0
-6	Chocoan	6	2	100.0
-7	Chocoan	6	1	100.0
-9	Chocoan	6	1	0.0
-10	Chocoan	6	2	100.0
-11	Chocoan	6	1	0.0
-12	Chocoan	6	2	100.0
-14	Chocoan	6	1	100.0
-15	Chocoan	6	2	100.0
-16	Chocoan	6	1	100.0
-17	Chocoan	6	1	100.0
-18	Chocoan	6	1	100.0
-19	Chocoan	6	2	100.0
-20	Chocoan	6	2	50.0
-22	Chocoan	6	2	100.0
-23	Chocoan	6	1	100.0
-24	Chocoan	6	2	100.0
-25	Chocoan	6	1	100.0
-26	Chocoan	6	2	50.0
-27	Chocoan	6	2	100.0
-28	Chocoan	6	1	100.0
-29	Chocoan	6	1	100.0
-30	Chocoan	6	1	100.0
-31	Chocoan	6	2	100.0
-33	Chocoan	6	2	100.0
-35	Chocoan	6	3	66.667
-37	Chocoan	6	3	100.0
-38	Chocoan	6	2	50.0
-39	Chocoan	6	1	100.0
-40	Chocoan	6	2	100.0
-42	Chocoan	6	1	100.0
-43	Chocoan	6	1	100.0
-44	Chocoan	6	2	100.0
-45	Chocoan	6	1	100.0
-46	Chocoan	6	1	100.0
-48	Chocoan	6	1	100.0
-49	Chocoan	6	2	100.0
-50	Chocoan	6	2	50.0
-52	Chocoan	6	2	100.0
-54	Chocoan	6	3	100.0
-55	Chocoan	6	3	100.0
-56	Chocoan	6	1	0.0
-57	Chocoan	6	1	100.0
-58	Chocoan	6	2	100.0
-59	Chocoan	6	1	100.0
-60	Chocoan	6	2	100.0
-61	Chocoan	6	2	100.0
-62	Chocoan	6	2	100.0
-63	Chocoan	6	2	100.0
-64	Chocoan	6	2	100.0
-65	Chocoan	6	3	100.0
-66	Chocoan	6	1	100.0
-67	Chocoan	6	2	100.0
-68	Chocoan	6	2	100.0
-69	Chocoan	6	1	100.0
-70	Chocoan	6	1	100.0
-71	Chocoan	6	1	100.0
-72	Chocoan	6	1	100.0
-75	Chocoan	6	1	100.0
-76	Chocoan	6	2	100.0
-77	Chocoan	6	2	100.0
-82	Chocoan	6	1	100.0
-83	Chocoan	6	1	100.0
-85	Chocoan	6	1	100.0
-86	Chocoan	6	2	50.0
-88	Chocoan	6	2	100.0
-90	Chocoan	6	5	80.0
-91	Chocoan	6	1	100.0
-92	Chocoan	6	2	100.0
-93	Chocoan	6	3	100.0
-94	Chocoan	6	2	50.0
-98	Chocoan	6	3	66.667
-99	Chocoan	6	1	100.0
-0	Kru	5	2	100.0
-1	Kru	5	1	100.0
-5	Kru	5	2	100.0
-7	Kru	5	3	100.0
-8	Kru	5	1	100.0
-10	Kru	5	2	100.0
-11	Kru	5	3	100.0
-13	Kru	5	1	100.0
-14	Kru	5	4	75.0
-15	Kru	5	2	100.0
-16	Kru	5	1	100.0
-17	Kru	5	1	100.0
-19	Kru	5	2	100.0
-21	Kru	5	2	100.0
-22	Kru	5	1	100.0
-23	Kru	5	1	100.0
-25	Kru	5	3	100.0
-28	Kru	5	2	100.0
-30	Kru	5	1	100.0
-32	Kru	5	1	100.0
-33	Kru	5	1	100.0
-35	Kru	5	1	100.0
-37	Kru	5	1	100.0
-38	Kru	5	1	100.0
-39	Kru	5	1	100.0
-40	Kru	5	3	100.0
-42	Kru	5	2	100.0
-43	Kru	5	1	100.0
-45	Kru	5	1	100.0
-47	Kru	5	1	100.0
-49	Kru	5	2	100.0
-53	Kru	5	2	100.0
-54	Kru	5	2	100.0
-55	Kru	5	1	100.0
-57	Kru	5	2	100.0
-58	Kru	5	1	100.0
-59	Kru	5	1	100.0
-60	Kru	5	1	100.0
-61	Kru	5	1	100.0
-63	Kru	5	1	100.0
-64	Kru	5	2	100.0
-66	Kru	5	1	100.0
-67	Kru	5	1	100.0
-68	Kru	5	1	100.0
-69	Kru	5	1	100.0
-70	Kru	5	2	100.0
-72	Kru	5	1	100.0
-74	Kru	5	2	100.0
-76	Kru	5	1	100.0
-77	Kru	5	1	100.0
-78	Kru	5	1	100.0
-79	Kru	5	1	100.0
-80	Kru	5	2	100.0
-81	Kru	5	2	100.0
-82	Kru	5	1	100.0
-83	Kru	5	1	100.0
-85	Kru	5	2	100.0
-87	Kru	5	1	100.0
-88	Kru	5	2	100.0
-89	Kru	5	1	100.0
-91	Kru	5	1	100.0
-94	Kru	5	1	100.0
-95	Kru	5	2	100.0
-96	Kru	5	1	100.0
-98	Kru	5	2	100.0
-0	Unclassified	183	29	93.103
-1	Unclassified	183	41	90.244
-2	Unclassified	183	33	90.909
-3	Unclassified	183	37	91.892
-4	Unclassified	183	39	92.308
-5	Unclassified	183	35	97.143
-6	Unclassified	183	36	86.111
-7	Unclassified	183	31	83.871
-8	Unclassified	183	37	89.189
-9	Unclassified	183	44	84.091
-10	Unclassified	183	34	85.294
-11	Unclassified	183	40	97.5
-12	Unclassified	183	33	81.818
-13	Unclassified	183	44	86.364
-14	Unclassified	183	38	89.474
-15	Unclassified	183	36	77.778
-16	Unclassified	183	35	100.0
-17	Unclassified	183	34	88.235
-18	Unclassified	183	38	86.842
-19	Unclassified	183	34	79.412
-20	Unclassified	183	36	80.556
-21	Unclassified	183	35	85.714
-22	Unclassified	183	37	83.784
-23	Unclassified	183	30	86.667
-24	Unclassified	183	39	89.744
-25	Unclassified	183	23	82.609
-26	Unclassified	183	24	91.667
-27	Unclassified	183	35	88.571
-28	Unclassified	183	29	93.103
-29	Unclassified	183	33	93.939
-30	Unclassified	183	43	76.744
-31	Unclassified	183	33	87.879
-32	Unclassified	183	37	89.189
-33	Unclassified	183	34	85.294
-34	Unclassified	183	37	89.189
-35	Unclassified	183	36	88.889
-36	Unclassified	183	43	90.698
-37	Unclassified	183	38	92.105
-38	Unclassified	183	37	83.784
-39	Unclassified	183	43	93.023
-40	Unclassified	183	38	92.105
-41	Unclassified	183	34	94.118
-42	Unclassified	183	41	87.805
-43	Unclassified	183	34	82.353
-44	Unclassified	183	35	88.571
-45	Unclassified	183	27	77.778
-46	Unclassified	183	31	90.323
-47	Unclassified	183	36	91.667
-48	Unclassified	183	35	82.857
-49	Unclassified	183	34	91.176
-50	Unclassified	183	39	84.615
-51	Unclassified	183	44	81.818
-52	Unclassified	183	34	91.176
-53	Unclassified	183	42	85.714
-54	Unclassified	183	46	84.783
-55	Unclassified	183	30	93.333
-56	Unclassified	183	33	78.788
-57	Unclassified	183	40	90.0
-58	Unclassified	183	36	86.111
-59	Unclassified	183	40	92.5
-60	Unclassified	183	33	93.939
-61	Unclassified	183	27	70.37
-62	Unclassified	183	44	86.364
-63	Unclassified	183	47	80.851
-64	Unclassified	183	33	90.909
-65	Unclassified	183	38	89.474
-66	Unclassified	183	25	92.0
-67	Unclassified	183	34	91.176
-68	Unclassified	183	30	93.333
-69	Unclassified	183	46	95.652
-70	Unclassified	183	42	92.857
-71	Unclassified	183	29	79.31
-72	Unclassified	183	35	94.286
-73	Unclassified	183	43	83.721
-74	Unclassified	183	34	82.353
-75	Unclassified	183	35	85.714
-76	Unclassified	183	42	85.714
-77	Unclassified	183	49	81.633
-78	Unclassified	183	33	90.909
-79	Unclassified	183	33	84.848
-80	Unclassified	183	31	90.323
-81	Unclassified	183	37	83.784
-82	Unclassified	183	39	84.615
-83	Unclassified	183	37	75.676
-84	Unclassified	183	41	75.61
-85	Unclassified	183	35	94.286
-86	Unclassified	183	46	86.957
-87	Unclassified	183	40	90.0
-88	Unclassified	183	34	85.294
-89	Unclassified	183	40	80.0
-90	Unclassified	183	33	93.939
-91	Unclassified	183	31	96.774
-92	Unclassified	183	38	92.105
-93	Unclassified	183	35	100.0
-94	Unclassified	183	41	87.805
-95	Unclassified	183	31	93.548
-96	Unclassified	183	38	89.474
-97	Unclassified	183	51	90.196
-98	Unclassified	183	33	93.939
-99	Unclassified	183	39	87.179
-0	Sepik	8	3	100.0
-1	Sepik	8	2	50.0
-2	Sepik	8	1	100.0
-5	Sepik	8	3	100.0
-6	Sepik	8	2	100.0
-8	Sepik	8	2	0.0
-9	Sepik	8	3	66.667
-10	Sepik	8	2	100.0
-12	Sepik	8	3	100.0
-14	Sepik	8	2	100.0
-15	Sepik	8	1	0.0
-17	Sepik	8	1	0.0
-18	Sepik	8	1	100.0
-20	Sepik	8	2	50.0
-21	Sepik	8	3	100.0
-22	Sepik	8	1	100.0
-23	Sepik	8	3	66.667
-24	Sepik	8	1	100.0
-26	Sepik	8	2	50.0
-27	Sepik	8	2	100.0
-28	Sepik	8	1	0.0
-29	Sepik	8	1	100.0
-30	Sepik	8	1	100.0
-31	Sepik	8	1	0.0
-34	Sepik	8	3	66.667
-35	Sepik	8	1	100.0
-36	Sepik	8	2	100.0
-37	Sepik	8	1	100.0
-38	Sepik	8	2	50.0
-39	Sepik	8	2	100.0
-40	Sepik	8	5	60.0
-41	Sepik	8	1	100.0
-43	Sepik	8	3	100.0
-44	Sepik	8	4	75.0
-45	Sepik	8	4	75.0
-46	Sepik	8	3	100.0
-47	Sepik	8	1	0.0
-48	Sepik	8	1	100.0
-49	Sepik	8	1	100.0
-50	Sepik	8	1	0.0
-51	Sepik	8	3	33.333
-52	Sepik	8	1	100.0
-53	Sepik	8	1	100.0
-54	Sepik	8	4	50.0
-55	Sepik	8	2	50.0
-56	Sepik	8	2	50.0
-57	Sepik	8	1	0.0
-58	Sepik	8	3	100.0
-59	Sepik	8	2	0.0
-60	Sepik	8	2	100.0
-61	Sepik	8	2	0.0
-62	Sepik	8	1	100.0
-63	Sepik	8	1	100.0
-65	Sepik	8	3	66.667
-66	Sepik	8	2	50.0
-69	Sepik	8	4	100.0
-70	Sepik	8	1	100.0
-71	Sepik	8	2	50.0
-72	Sepik	8	3	66.667
-73	Sepik	8	2	100.0
-74	Sepik	8	2	100.0
-75	Sepik	8	3	66.667
-76	Sepik	8	1	0.0
-77	Sepik	8	1	100.0
-78	Sepik	8	1	100.0
-79	Sepik	8	1	100.0
-81	Sepik	8	4	50.0
-82	Sepik	8	4	50.0
-83	Sepik	8	3	33.333
-84	Sepik	8	2	100.0
-85	Sepik	8	2	50.0
-86	Sepik	8	2	100.0
-87	Sepik	8	2	100.0
-88	Sepik	8	1	100.0
-89	Sepik	8	1	0.0
-90	Sepik	8	1	0.0
-91	Sepik	8	1	100.0
-92	Sepik	8	2	100.0
-93	Sepik	8	1	0.0
-94	Sepik	8	1	100.0
-95	Sepik	8	1	0.0
-98	Sepik	8	3	100.0
-99	Sepik	8	2	100.0
-0	Hmong-Mien	12	3	100.0
-2	Hmong-Mien	12	2	100.0
-3	Hmong-Mien	12	3	100.0
-4	Hmong-Mien	12	4	100.0
-5	Hmong-Mien	12	1	100.0
-6	Hmong-Mien	12	2	50.0
-7	Hmong-Mien	12	3	100.0
-8	Hmong-Mien	12	3	100.0
-9	Hmong-Mien	12	2	100.0
-10	Hmong-Mien	12	2	100.0
-11	Hmong-Mien	12	2	100.0
-12	Hmong-Mien	12	1	100.0
-13	Hmong-Mien	12	1	100.0
-14	Hmong-Mien	12	1	100.0
-15	Hmong-Mien	12	2	100.0
-16	Hmong-Mien	12	4	100.0
-17	Hmong-Mien	12	2	100.0
-18	Hmong-Mien	12	2	100.0
-19	Hmong-Mien	12	1	100.0
-20	Hmong-Mien	12	5	100.0
-21	Hmong-Mien	12	3	100.0
-22	Hmong-Mien	12	1	100.0
-23	Hmong-Mien	12	3	100.0
-24	Hmong-Mien	12	2	100.0
-25	Hmong-Mien	12	2	100.0
-26	Hmong-Mien	12	4	100.0
-28	Hmong-Mien	12	4	100.0
-29	Hmong-Mien	12	1	100.0
-30	Hmong-Mien	12	2	100.0
-31	Hmong-Mien	12	4	100.0
-32	Hmong-Mien	12	2	100.0
-33	Hmong-Mien	12	3	100.0
-34	Hmong-Mien	12	2	100.0
-36	Hmong-Mien	12	3	100.0
-37	Hmong-Mien	12	1	100.0
-38	Hmong-Mien	12	2	100.0
-39	Hmong-Mien	12	2	100.0
-40	Hmong-Mien	12	2	100.0
-41	Hmong-Mien	12	4	100.0
-42	Hmong-Mien	12	1	100.0
-43	Hmong-Mien	12	1	100.0
-44	Hmong-Mien	12	1	100.0
-45	Hmong-Mien	12	1	100.0
-47	Hmong-Mien	12	3	100.0
-48	Hmong-Mien	12	5	100.0
-49	Hmong-Mien	12	1	100.0
-50	Hmong-Mien	12	1	100.0
-51	Hmong-Mien	12	3	100.0
-52	Hmong-Mien	12	3	100.0
-53	Hmong-Mien	12	1	100.0
-54	Hmong-Mien	12	2	100.0
-55	Hmong-Mien	12	1	100.0
-56	Hmong-Mien	12	3	100.0
-57	Hmong-Mien	12	4	75.0
-58	Hmong-Mien	12	2	100.0
-59	Hmong-Mien	12	2	100.0
-60	Hmong-Mien	12	2	100.0
-61	Hmong-Mien	12	3	100.0
-62	Hmong-Mien	12	1	100.0
-63	Hmong-Mien	12	2	100.0
-64	Hmong-Mien	12	3	100.0
-65	Hmong-Mien	12	1	100.0
-67	Hmong-Mien	12	3	100.0
-68	Hmong-Mien	12	3	100.0
-69	Hmong-Mien	12	4	100.0
-70	Hmong-Mien	12	2	100.0
-71	Hmong-Mien	12	4	75.0
-72	Hmong-Mien	12	2	100.0
-73	Hmong-Mien	12	3	100.0
-74	Hmong-Mien	12	4	100.0
-75	Hmong-Mien	12	6	83.333
-77	Hmong-Mien	12	3	100.0
-78	Hmong-Mien	12	1	100.0
-79	Hmong-Mien	12	4	100.0
-80	Hmong-Mien	12	3	66.667
-81	Hmong-Mien	12	1	100.0
-82	Hmong-Mien	12	2	100.0
-83	Hmong-Mien	12	1	100.0
-84	Hmong-Mien	12	2	50.0
-85	Hmong-Mien	12	3	100.0
-86	Hmong-Mien	12	3	100.0
-87	Hmong-Mien	12	2	100.0
-88	Hmong-Mien	12	2	100.0
-89	Hmong-Mien	12	2	100.0
-90	Hmong-Mien	12	2	100.0
-91	Hmong-Mien	12	1	100.0
-92	Hmong-Mien	12	3	100.0
-93	Hmong-Mien	12	2	100.0
-94	Hmong-Mien	12	2	100.0
-95	Hmong-Mien	12	2	100.0
-96	Hmong-Mien	12	4	75.0
-97	Hmong-Mien	12	2	100.0
-98	Hmong-Mien	12	2	100.0
-99	Hmong-Mien	12	2	100.0
-0	Timor-Alor-Pantar	17	3	100.0
-1	Timor-Alor-Pantar	17	5	100.0
-2	Timor-Alor-Pantar	17	4	100.0
-3	Timor-Alor-Pantar	17	3	100.0
-4	Timor-Alor-Pantar	17	4	100.0
-5	Timor-Alor-Pantar	17	5	100.0
-6	Timor-Alor-Pantar	17	3	100.0
-7	Timor-Alor-Pantar	17	5	100.0
-8	Timor-Alor-Pantar	17	5	60.0
-9	Timor-Alor-Pantar	17	3	100.0
-10	Timor-Alor-Pantar	17	4	100.0
-11	Timor-Alor-Pantar	17	5	100.0
-12	Timor-Alor-Pantar	17	4	75.0
-14	Timor-Alor-Pantar	17	4	75.0
-15	Timor-Alor-Pantar	17	3	100.0
-16	Timor-Alor-Pantar	17	6	83.333
-17	Timor-Alor-Pantar	17	3	100.0
-18	Timor-Alor-Pantar	17	3	100.0
-19	Timor-Alor-Pantar	17	3	100.0
-20	Timor-Alor-Pantar	17	4	100.0
-21	Timor-Alor-Pantar	17	2	50.0
-23	Timor-Alor-Pantar	17	5	60.0
-24	Timor-Alor-Pantar	17	3	66.667
-25	Timor-Alor-Pantar	17	4	100.0
-26	Timor-Alor-Pantar	17	4	100.0
-27	Timor-Alor-Pantar	17	1	100.0
-28	Timor-Alor-Pantar	17	3	66.667
-29	Timor-Alor-Pantar	17	2	100.0
-30	Timor-Alor-Pantar	17	4	75.0
-31	Timor-Alor-Pantar	17	4	100.0
-32	Timor-Alor-Pantar	17	5	100.0
-33	Timor-Alor-Pantar	17	4	100.0
-34	Timor-Alor-Pantar	17	4	100.0
-35	Timor-Alor-Pantar	17	2	100.0
-36	Timor-Alor-Pantar	17	1	100.0
-37	Timor-Alor-Pantar	17	5	100.0
-38	Timor-Alor-Pantar	17	3	66.667
-39	Timor-Alor-Pantar	17	4	100.0
-40	Timor-Alor-Pantar	17	3	100.0
-41	Timor-Alor-Pantar	17	5	100.0
-42	Timor-Alor-Pantar	17	3	100.0
-43	Timor-Alor-Pantar	17	3	100.0
-44	Timor-Alor-Pantar	17	2	100.0
-47	Timor-Alor-Pantar	17	5	100.0
-48	Timor-Alor-Pantar	17	6	100.0
-49	Timor-Alor-Pantar	17	2	100.0
-50	Timor-Alor-Pantar	17	4	100.0
-51	Timor-Alor-Pantar	17	3	100.0
-52	Timor-Alor-Pantar	17	5	100.0
-53	Timor-Alor-Pantar	17	2	100.0
-54	Timor-Alor-Pantar	17	3	100.0
-55	Timor-Alor-Pantar	17	3	100.0
-56	Timor-Alor-Pantar	17	4	75.0
-57	Timor-Alor-Pantar	17	5	100.0
-58	Timor-Alor-Pantar	17	3	100.0
-59	Timor-Alor-Pantar	17	3	100.0
-60	Timor-Alor-Pantar	17	5	100.0
-61	Timor-Alor-Pantar	17	2	100.0
-62	Timor-Alor-Pantar	17	5	80.0
-63	Timor-Alor-Pantar	17	3	33.333
-64	Timor-Alor-Pantar	17	4	100.0
-65	Timor-Alor-Pantar	17	3	100.0
-66	Timor-Alor-Pantar	17	6	100.0
-67	Timor-Alor-Pantar	17	6	100.0
-68	Timor-Alor-Pantar	17	4	100.0
-69	Timor-Alor-Pantar	17	7	85.714
-70	Timor-Alor-Pantar	17	6	100.0
-71	Timor-Alor-Pantar	17	4	100.0
-72	Timor-Alor-Pantar	17	3	100.0
-73	Timor-Alor-Pantar	17	5	100.0
-74	Timor-Alor-Pantar	17	3	100.0
-75	Timor-Alor-Pantar	17	1	100.0
-76	Timor-Alor-Pantar	17	4	50.0
-77	Timor-Alor-Pantar	17	4	100.0
-78	Timor-Alor-Pantar	17	2	100.0
-79	Timor-Alor-Pantar	17	6	83.333
-80	Timor-Alor-Pantar	17	6	100.0
-81	Timor-Alor-Pantar	17	4	100.0
-82	Timor-Alor-Pantar	17	5	100.0
-83	Timor-Alor-Pantar	17	4	100.0
-84	Timor-Alor-Pantar	17	3	66.667
-85	Timor-Alor-Pantar	17	4	100.0
-86	Timor-Alor-Pantar	17	4	75.0
-87	Timor-Alor-Pantar	17	4	100.0
-88	Timor-Alor-Pantar	17	5	100.0
-89	Timor-Alor-Pantar	17	3	100.0
-90	Timor-Alor-Pantar	17	2	100.0
-91	Timor-Alor-Pantar	17	7	100.0
-92	Timor-Alor-Pantar	17	2	100.0
-93	Timor-Alor-Pantar	17	4	75.0
-94	Timor-Alor-Pantar	17	4	100.0
-95	Timor-Alor-Pantar	17	2	100.0
-96	Timor-Alor-Pantar	17	4	100.0
-97	Timor-Alor-Pantar	17	4	100.0
-98	Timor-Alor-Pantar	17	3	100.0
-99	Timor-Alor-Pantar	17	1	100.0
-0	Austroasiatic	46	4	100.0
-1	Austroasiatic	46	12	100.0
-2	Austroasiatic	46	9	100.0
-3	Austroasiatic	46	1	100.0
-4	Austroasiatic	46	10	100.0
-5	Austroasiatic	46	8	100.0
-6	Austroasiatic	46	9	100.0
-7	Austroasiatic	46	9	88.889
-8	Austroasiatic	46	6	100.0
-9	Austroasiatic	46	10	90.0
-10	Austroasiatic	46	8	100.0
-11	Austroasiatic	46	5	100.0
-12	Austroasiatic	46	5	100.0
-13	Austroasiatic	46	7	85.714
-14	Austroasiatic	46	6	83.333
-15	Austroasiatic	46	8	87.5
-16	Austroasiatic	46	11	90.909
-17	Austroasiatic	46	8	100.0
-18	Austroasiatic	46	9	100.0
-19	Austroasiatic	46	12	100.0
-20	Austroasiatic	46	10	100.0
-21	Austroasiatic	46	11	100.0
-22	Austroasiatic	46	8	87.5
-23	Austroasiatic	46	9	100.0
-24	Austroasiatic	46	8	100.0
-25	Austroasiatic	46	7	100.0
-26	Austroasiatic	46	10	90.0
-27	Austroasiatic	46	9	100.0
-28	Austroasiatic	46	8	100.0
-29	Austroasiatic	46	8	87.5
-30	Austroasiatic	46	6	100.0
-31	Austroasiatic	46	11	90.909
-32	Austroasiatic	46	7	100.0
-33	Austroasiatic	46	9	88.889
-34	Austroasiatic	46	10	100.0
-35	Austroasiatic	46	12	100.0
-36	Austroasiatic	46	9	100.0
-37	Austroasiatic	46	6	100.0
-38	Austroasiatic	46	9	100.0
-39	Austroasiatic	46	10	100.0
-40	Austroasiatic	46	14	100.0
-41	Austroasiatic	46	12	83.333
-42	Austroasiatic	46	7	85.714
-43	Austroasiatic	46	9	100.0
-44	Austroasiatic	46	11	100.0
-45	Austroasiatic	46	12	91.667
-46	Austroasiatic	46	12	100.0
-47	Austroasiatic	46	10	100.0
-48	Austroasiatic	46	8	100.0
-49	Austroasiatic	46	15	100.0
-50	Austroasiatic	46	12	91.667
-51	Austroasiatic	46	5	100.0
-52	Austroasiatic	46	9	100.0
-53	Austroasiatic	46	8	100.0
-54	Austroasiatic	46	7	100.0
-55	Austroasiatic	46	10	100.0
-56	Austroasiatic	46	4	100.0
-57	Austroasiatic	46	12	100.0
-58	Austroasiatic	46	11	100.0
-59	Austroasiatic	46	7	100.0
-60	Austroasiatic	46	10	100.0
-61	Austroasiatic	46	5	100.0
-62	Austroasiatic	46	11	100.0
-63	Austroasiatic	46	11	90.909
-64	Austroasiatic	46	8	100.0
-65	Austroasiatic	46	5	100.0
-66	Austroasiatic	46	7	100.0
-67	Austroasiatic	46	6	100.0
-68	Austroasiatic	46	10	100.0
-69	Austroasiatic	46	14	92.857
-70	Austroasiatic	46	13	92.308
-71	Austroasiatic	46	9	88.889
-72	Austroasiatic	46	11	90.909
-73	Austroasiatic	46	6	83.333
-74	Austroasiatic	46	8	75.0
-75	Austroasiatic	46	11	100.0
-76	Austroasiatic	46	13	69.231
-77	Austroasiatic	46	9	100.0
-78	Austroasiatic	46	12	100.0
-79	Austroasiatic	46	6	83.333
-80	Austroasiatic	46	9	100.0
-81	Austroasiatic	46	6	100.0
-82	Austroasiatic	46	8	87.5
-83	Austroasiatic	46	9	88.889
-84	Austroasiatic	46	10	80.0
-85	Austroasiatic	46	6	100.0
-86	Austroasiatic	46	8	87.5
-87	Austroasiatic	46	5	80.0
-88	Austroasiatic	46	8	100.0
-89	Austroasiatic	46	6	100.0
-90	Austroasiatic	46	13	100.0
-91	Austroasiatic	46	10	100.0
-92	Austroasiatic	46	11	100.0
-93	Austroasiatic	46	10	90.0
-94	Austroasiatic	46	10	90.0
-95	Austroasiatic	46	6	100.0
-96	Austroasiatic	46	9	100.0
-97	Austroasiatic	46	5	80.0
-98	Austroasiatic	46	10	100.0
-99	Austroasiatic	46	15	100.0
-0	Lower Sepik-Ramu	7	2	0.0
-1	Lower Sepik-Ramu	7	2	50.0
-3	Lower Sepik-Ramu	7	3	33.333
-4	Lower Sepik-Ramu	7	1	100.0
-5	Lower Sepik-Ramu	7	1	100.0
-7	Lower Sepik-Ramu	7	1	100.0
-8	Lower Sepik-Ramu	7	3	66.667
-9	Lower Sepik-Ramu	7	1	100.0
-10	Lower Sepik-Ramu	7	1	0.0
-11	Lower Sepik-Ramu	7	1	100.0
-12	Lower Sepik-Ramu	7	2	50.0
-14	Lower Sepik-Ramu	7	1	100.0
-15	Lower Sepik-Ramu	7	2	100.0
-16	Lower Sepik-Ramu	7	3	66.667
-17	Lower Sepik-Ramu	7	2	50.0
-18	Lower Sepik-Ramu	7	2	100.0
-20	Lower Sepik-Ramu	7	2	100.0
-21	Lower Sepik-Ramu	7	1	0.0
-23	Lower Sepik-Ramu	7	1	100.0
-24	Lower Sepik-Ramu	7	1	100.0
-25	Lower Sepik-Ramu	7	2	50.0
-26	Lower Sepik-Ramu	7	2	50.0
-28	Lower Sepik-Ramu	7	2	100.0
-29	Lower Sepik-Ramu	7	3	33.333
-30	Lower Sepik-Ramu	7	4	0.0
-32	Lower Sepik-Ramu	7	1	0.0
-36	Lower Sepik-Ramu	7	2	50.0
-37	Lower Sepik-Ramu	7	1	0.0
-38	Lower Sepik-Ramu	7	1	100.0
-40	Lower Sepik-Ramu	7	3	33.333
-41	Lower Sepik-Ramu	7	1	100.0
-42	Lower Sepik-Ramu	7	1	100.0
-43	Lower Sepik-Ramu	7	2	50.0
-44	Lower Sepik-Ramu	7	2	50.0
-45	Lower Sepik-Ramu	7	2	100.0
-46	Lower Sepik-Ramu	7	1	100.0
-47	Lower Sepik-Ramu	7	3	0.0
-48	Lower Sepik-Ramu	7	1	100.0
-49	Lower Sepik-Ramu	7	4	25.0
-50	Lower Sepik-Ramu	7	2	50.0
-51	Lower Sepik-Ramu	7	3	33.333
-52	Lower Sepik-Ramu	7	2	50.0
-53	Lower Sepik-Ramu	7	1	0.0
-54	Lower Sepik-Ramu	7	1	100.0
-55	Lower Sepik-Ramu	7	1	100.0
-56	Lower Sepik-Ramu	7	2	50.0
-57	Lower Sepik-Ramu	7	1	0.0
-58	Lower Sepik-Ramu	7	2	0.0
-59	Lower Sepik-Ramu	7	2	50.0
-60	Lower Sepik-Ramu	7	3	33.333
-61	Lower Sepik-Ramu	7	3	0.0
-63	Lower Sepik-Ramu	7	1	100.0
-64	Lower Sepik-Ramu	7	1	0.0
-65	Lower Sepik-Ramu	7	2	100.0
-66	Lower Sepik-Ramu	7	1	100.0
-67	Lower Sepik-Ramu	7	1	100.0
-69	Lower Sepik-Ramu	7	2	50.0
-70	Lower Sepik-Ramu	7	3	33.333
-71	Lower Sepik-Ramu	7	1	100.0
-72	Lower Sepik-Ramu	7	2	0.0
-73	Lower Sepik-Ramu	7	1	100.0
-74	Lower Sepik-Ramu	7	1	100.0
-76	Lower Sepik-Ramu	7	3	33.333
-77	Lower Sepik-Ramu	7	2	50.0
-78	Lower Sepik-Ramu	7	1	100.0
-79	Lower Sepik-Ramu	7	1	100.0
-80	Lower Sepik-Ramu	7	2	100.0
-81	Lower Sepik-Ramu	7	1	100.0
-82	Lower Sepik-Ramu	7	1	100.0
-84	Lower Sepik-Ramu	7	1	100.0
-85	Lower Sepik-Ramu	7	4	0.0
-86	Lower Sepik-Ramu	7	2	0.0
-87	Lower Sepik-Ramu	7	1	0.0
-88	Lower Sepik-Ramu	7	1	0.0
-89	Lower Sepik-Ramu	7	2	50.0
-90	Lower Sepik-Ramu	7	3	0.0
-92	Lower Sepik-Ramu	7	3	33.333
-93	Lower Sepik-Ramu	7	2	50.0
-94	Lower Sepik-Ramu	7	2	0.0
-95	Lower Sepik-Ramu	7	1	100.0
-96	Lower Sepik-Ramu	7	4	50.0
-97	Lower Sepik-Ramu	7	1	100.0
-98	Lower Sepik-Ramu	7	1	100.0
-99	Lower Sepik-Ramu	7	2	50.0
-0	Mixe-Zoque	9	2	100.0
-3	Mixe-Zoque	9	1	100.0
-4	Mixe-Zoque	9	2	50.0
-6	Mixe-Zoque	9	1	100.0
-7	Mixe-Zoque	9	1	100.0
-8	Mixe-Zoque	9	1	100.0
-9	Mixe-Zoque	9	3	100.0
-10	Mixe-Zoque	9	2	50.0
-12	Mixe-Zoque	9	1	100.0
-13	Mixe-Zoque	9	1	0.0
-14	Mixe-Zoque	9	1	100.0
-15	Mixe-Zoque	9	3	100.0
-16	Mixe-Zoque	9	3	100.0
-17	Mixe-Zoque	9	3	100.0
-18	Mixe-Zoque	9	1	0.0
-19	Mixe-Zoque	9	1	100.0
-21	Mixe-Zoque	9	1	100.0
-22	Mixe-Zoque	9	1	100.0
-23	Mixe-Zoque	9	1	100.0
-24	Mixe-Zoque	9	2	50.0
-26	Mixe-Zoque	9	2	50.0
-28	Mixe-Zoque	9	2	50.0
-29	Mixe-Zoque	9	1	100.0
-30	Mixe-Zoque	9	2	100.0
-31	Mixe-Zoque	9	3	100.0
-32	Mixe-Zoque	9	1	100.0
-33	Mixe-Zoque	9	3	66.667
-34	Mixe-Zoque	9	1	0.0
-35	Mixe-Zoque	9	1	100.0
-36	Mixe-Zoque	9	2	100.0
-37	Mixe-Zoque	9	2	100.0
-38	Mixe-Zoque	9	3	66.667
-40	Mixe-Zoque	9	1	100.0
-41	Mixe-Zoque	9	2	100.0
-42	Mixe-Zoque	9	1	100.0
-43	Mixe-Zoque	9	4	75.0
-44	Mixe-Zoque	9	1	100.0
-45	Mixe-Zoque	9	1	100.0
-46	Mixe-Zoque	9	2	100.0
-48	Mixe-Zoque	9	3	100.0
-49	Mixe-Zoque	9	2	100.0
-50	Mixe-Zoque	9	1	100.0
-51	Mixe-Zoque	9	2	50.0
-52	Mixe-Zoque	9	2	100.0
-53	Mixe-Zoque	9	2	100.0
-55	Mixe-Zoque	9	2	100.0
-56	Mixe-Zoque	9	3	100.0
-57	Mixe-Zoque	9	2	100.0
-58	Mixe-Zoque	9	1	100.0
-59	Mixe-Zoque	9	1	100.0
-60	Mixe-Zoque	9	1	100.0
-61	Mixe-Zoque	9	1	0.0
-62	Mixe-Zoque	9	3	100.0
-63	Mixe-Zoque	9	1	100.0
-64	Mixe-Zoque	9	1	100.0
-65	Mixe-Zoque	9	1	100.0
-66	Mixe-Zoque	9	1	100.0
-67	Mixe-Zoque	9	3	100.0
-68	Mixe-Zoque	9	4	100.0
-69	Mixe-Zoque	9	3	66.667
-70	Mixe-Zoque	9	3	100.0
-71	Mixe-Zoque	9	1	100.0
-72	Mixe-Zoque	9	1	0.0
-74	Mixe-Zoque	9	2	100.0
-75	Mixe-Zoque	9	4	75.0
-76	Mixe-Zoque	9	4	75.0
-77	Mixe-Zoque	9	1	100.0
-78	Mixe-Zoque	9	3	66.667
-79	Mixe-Zoque	9	1	100.0
-80	Mixe-Zoque	9	1	100.0
-81	Mixe-Zoque	9	5	80.0
-82	Mixe-Zoque	9	4	75.0
-83	Mixe-Zoque	9	3	100.0
-85	Mixe-Zoque	9	3	100.0
-86	Mixe-Zoque	9	1	100.0
-87	Mixe-Zoque	9	4	100.0
-88	Mixe-Zoque	9	2	100.0
-89	Mixe-Zoque	9	2	50.0
-90	Mixe-Zoque	9	1	100.0
-91	Mixe-Zoque	9	1	0.0
-92	Mixe-Zoque	9	3	66.667
-93	Mixe-Zoque	9	2	100.0
-94	Mixe-Zoque	9	1	100.0
-95	Mixe-Zoque	9	1	100.0
-96	Mixe-Zoque	9	2	100.0
-97	Mixe-Zoque	9	4	75.0
-98	Mixe-Zoque	9	2	100.0
-99	Mixe-Zoque	9	1	100.0
-0	Quechuan	20	3	100.0
-1	Quechuan	20	6	100.0
-2	Quechuan	20	6	100.0
-3	Quechuan	20	8	100.0
-4	Quechuan	20	5	100.0
-5	Quechuan	20	4	100.0
-6	Quechuan	20	4	100.0
-7	Quechuan	20	1	100.0
-8	Quechuan	20	1	100.0
-9	Quechuan	20	4	100.0
+27	Turkic	27	7	100.0
+28	Turkic	27	6	100.0
+29	Turkic	27	8	100.0
+30	Turkic	27	8	100.0
+31	Turkic	27	2	100.0
+32	Turkic	27	8	100.0
+33	Turkic	27	11	100.0
+34	Turkic	27	3	100.0
+35	Turkic	27	7	100.0
+36	Turkic	27	3	100.0
+37	Turkic	27	5	100.0
+38	Turkic	27	3	100.0
+39	Turkic	27	5	100.0
+40	Turkic	27	6	100.0
+41	Turkic	27	5	100.0
+42	Turkic	27	5	100.0
+43	Turkic	27	5	100.0
+44	Turkic	27	9	100.0
+45	Turkic	27	3	100.0
+46	Turkic	27	7	100.0
+47	Turkic	27	11	100.0
+48	Turkic	27	3	100.0
+49	Turkic	27	5	100.0
+0	Quechuan	20	8	100.0
+1	Quechuan	20	3	100.0
+2	Quechuan	20	4	100.0
+3	Quechuan	20	2	100.0
+4	Quechuan	20	4	100.0
+5	Quechuan	20	2	100.0
+6	Quechuan	20	3	100.0
+7	Quechuan	20	6	100.0
+8	Quechuan	20	5	100.0
+9	Quechuan	20	5	100.0
 10	Quechuan	20	4	100.0
-11	Quechuan	20	3	100.0
-12	Quechuan	20	8	100.0
-13	Quechuan	20	3	100.0
-14	Quechuan	20	6	100.0
-15	Quechuan	20	5	100.0
-16	Quechuan	20	9	100.0
-17	Quechuan	20	5	100.0
-18	Quechuan	20	7	100.0
-19	Quechuan	20	5	100.0
-20	Quechuan	20	8	100.0
-21	Quechuan	20	6	100.0
-22	Quechuan	20	4	100.0
-24	Quechuan	20	5	100.0
-25	Quechuan	20	6	100.0
-26	Quechuan	20	2	100.0
+11	Quechuan	20	6	100.0
+12	Quechuan	20	3	100.0
+13	Quechuan	20	5	100.0
+14	Quechuan	20	1	100.0
+15	Quechuan	20	2	100.0
+16	Quechuan	20	3	100.0
+17	Quechuan	20	3	100.0
+18	Quechuan	20	5	100.0
+19	Quechuan	20	4	100.0
+20	Quechuan	20	2	100.0
+21	Quechuan	20	5	100.0
+22	Quechuan	20	3	100.0
+23	Quechuan	20	6	100.0
+24	Quechuan	20	1	100.0
+26	Quechuan	20	3	100.0
 27	Quechuan	20	4	100.0
-28	Quechuan	20	2	100.0
-29	Quechuan	20	5	100.0
-30	Quechuan	20	4	100.0
-31	Quechuan	20	4	100.0
-32	Quechuan	20	5	100.0
-33	Quechuan	20	3	100.0
-34	Quechuan	20	4	100.0
-35	Quechuan	20	2	100.0
+28	Quechuan	20	4	100.0
+29	Quechuan	20	2	100.0
+30	Quechuan	20	6	100.0
+31	Quechuan	20	3	100.0
+32	Quechuan	20	3	100.0
+33	Quechuan	20	1	100.0
+34	Quechuan	20	1	100.0
+35	Quechuan	20	5	100.0
 36	Quechuan	20	4	100.0
-37	Quechuan	20	5	100.0
-38	Quechuan	20	3	100.0
+37	Quechuan	20	2	100.0
+38	Quechuan	20	6	100.0
 39	Quechuan	20	5	100.0
-40	Quechuan	20	7	100.0
-41	Quechuan	20	5	100.0
-42	Quechuan	20	5	100.0
-43	Quechuan	20	6	100.0
-44	Quechuan	20	7	100.0
-45	Quechuan	20	7	100.0
-46	Quechuan	20	3	100.0
-47	Quechuan	20	7	100.0
-48	Quechuan	20	3	100.0
-49	Quechuan	20	3	100.0
-50	Quechuan	20	3	100.0
-51	Quechuan	20	4	100.0
-52	Quechuan	20	6	100.0
-53	Quechuan	20	5	100.0
-54	Quechuan	20	7	100.0
-55	Quechuan	20	3	100.0
-56	Quechuan	20	4	100.0
-57	Quechuan	20	4	100.0
-58	Quechuan	20	5	100.0
-59	Quechuan	20	3	100.0
-60	Quechuan	20	3	100.0
-61	Quechuan	20	6	100.0
-62	Quechuan	20	2	100.0
-63	Quechuan	20	2	100.0
-64	Quechuan	20	3	100.0
-65	Quechuan	20	3	100.0
-66	Quechuan	20	2	100.0
-67	Quechuan	20	6	100.0
-68	Quechuan	20	5	100.0
-69	Quechuan	20	2	100.0
-70	Quechuan	20	7	100.0
-71	Quechuan	20	4	100.0
-72	Quechuan	20	2	100.0
-73	Quechuan	20	7	100.0
-74	Quechuan	20	7	100.0
-75	Quechuan	20	4	100.0
-76	Quechuan	20	5	100.0
-77	Quechuan	20	4	100.0
-78	Quechuan	20	3	100.0
-79	Quechuan	20	4	100.0
-80	Quechuan	20	9	100.0
-81	Quechuan	20	1	100.0
-82	Quechuan	20	5	100.0
-83	Quechuan	20	1	100.0
-84	Quechuan	20	9	100.0
-85	Quechuan	20	3	100.0
-86	Quechuan	20	3	100.0
-87	Quechuan	20	5	100.0
-88	Quechuan	20	2	100.0
-89	Quechuan	20	5	100.0
-90	Quechuan	20	7	100.0
-91	Quechuan	20	4	100.0
-92	Quechuan	20	2	100.0
-93	Quechuan	20	5	100.0
-94	Quechuan	20	2	100.0
-95	Quechuan	20	3	100.0
-97	Quechuan	20	3	100.0
-98	Quechuan	20	5	100.0
-99	Quechuan	20	5	100.0
-0	Nakh-Daghestanian	8	1	0.0
-1	Nakh-Daghestanian	8	1	100.0
-2	Nakh-Daghestanian	8	2	100.0
-3	Nakh-Daghestanian	8	3	0.0
-4	Nakh-Daghestanian	8	3	33.333
-5	Nakh-Daghestanian	8	2	0.0
-6	Nakh-Daghestanian	8	1	0.0
-7	Nakh-Daghestanian	8	1	100.0
-8	Nakh-Daghestanian	8	1	0.0
-9	Nakh-Daghestanian	8	3	66.667
-10	Nakh-Daghestanian	8	3	0.0
-11	Nakh-Daghestanian	8	4	0.0
-13	Nakh-Daghestanian	8	2	100.0
-14	Nakh-Daghestanian	8	3	0.0
-15	Nakh-Daghestanian	8	1	100.0
-16	Nakh-Daghestanian	8	4	25.0
-17	Nakh-Daghestanian	8	1	0.0
-18	Nakh-Daghestanian	8	1	100.0
-19	Nakh-Daghestanian	8	4	25.0
-21	Nakh-Daghestanian	8	1	0.0
-22	Nakh-Daghestanian	8	1	0.0
-23	Nakh-Daghestanian	8	2	50.0
-24	Nakh-Daghestanian	8	1	0.0
-25	Nakh-Daghestanian	8	3	33.333
-26	Nakh-Daghestanian	8	3	0.0
-28	Nakh-Daghestanian	8	2	50.0
-31	Nakh-Daghestanian	8	1	100.0
-32	Nakh-Daghestanian	8	1	100.0
-33	Nakh-Daghestanian	8	2	0.0
-34	Nakh-Daghestanian	8	3	33.333
-35	Nakh-Daghestanian	8	1	100.0
-36	Nakh-Daghestanian	8	4	25.0
-37	Nakh-Daghestanian	8	1	100.0
-38	Nakh-Daghestanian	8	2	0.0
-39	Nakh-Daghestanian	8	1	0.0
-40	Nakh-Daghestanian	8	1	100.0
-41	Nakh-Daghestanian	8	1	100.0
-42	Nakh-Daghestanian	8	3	33.333
-43	Nakh-Daghestanian	8	2	50.0
-44	Nakh-Daghestanian	8	2	50.0
-45	Nakh-Daghestanian	8	2	0.0
-46	Nakh-Daghestanian	8	2	0.0
-48	Nakh-Daghestanian	8	3	33.333
-49	Nakh-Daghestanian	8	1	0.0
-50	Nakh-Daghestanian	8	3	0.0
-51	Nakh-Daghestanian	8	1	0.0
-52	Nakh-Daghestanian	8	1	0.0
-53	Nakh-Daghestanian	8	2	50.0
-54	Nakh-Daghestanian	8	2	50.0
-55	Nakh-Daghestanian	8	2	0.0
-56	Nakh-Daghestanian	8	3	33.333
-57	Nakh-Daghestanian	8	2	0.0
-58	Nakh-Daghestanian	8	3	0.0
-59	Nakh-Daghestanian	8	2	100.0
-60	Nakh-Daghestanian	8	2	0.0
-61	Nakh-Daghestanian	8	1	0.0
-62	Nakh-Daghestanian	8	2	50.0
-63	Nakh-Daghestanian	8	1	100.0
-64	Nakh-Daghestanian	8	2	100.0
-65	Nakh-Daghestanian	8	2	100.0
-66	Nakh-Daghestanian	8	3	66.667
-67	Nakh-Daghestanian	8	1	0.0
-68	Nakh-Daghestanian	8	1	100.0
-69	Nakh-Daghestanian	8	2	0.0
-70	Nakh-Daghestanian	8	2	50.0
-71	Nakh-Daghestanian	8	1	100.0
-72	Nakh-Daghestanian	8	1	0.0
-75	Nakh-Daghestanian	8	1	100.0
-76	Nakh-Daghestanian	8	2	50.0
-77	Nakh-Daghestanian	8	2	50.0
-79	Nakh-Daghestanian	8	3	33.333
-80	Nakh-Daghestanian	8	2	50.0
-82	Nakh-Daghestanian	8	1	100.0
-83	Nakh-Daghestanian	8	4	0.0
-84	Nakh-Daghestanian	8	3	33.333
-86	Nakh-Daghestanian	8	1	0.0
-87	Nakh-Daghestanian	8	2	50.0
-88	Nakh-Daghestanian	8	2	100.0
-89	Nakh-Daghestanian	8	3	0.0
-90	Nakh-Daghestanian	8	4	25.0
-91	Nakh-Daghestanian	8	1	100.0
-92	Nakh-Daghestanian	8	1	0.0
-95	Nakh-Daghestanian	8	2	0.0
-96	Nakh-Daghestanian	8	4	0.0
-98	Nakh-Daghestanian	8	1	0.0
-99	Nakh-Daghestanian	8	4	25.0
-0	Lakes Plain	16	2	100.0
-1	Lakes Plain	16	6	100.0
-2	Lakes Plain	16	1	100.0
-3	Lakes Plain	16	2	100.0
-4	Lakes Plain	16	8	87.5
-6	Lakes Plain	16	9	77.778
-7	Lakes Plain	16	5	100.0
-8	Lakes Plain	16	3	100.0
-9	Lakes Plain	16	5	100.0
-10	Lakes Plain	16	2	100.0
-11	Lakes Plain	16	4	100.0
-12	Lakes Plain	16	3	100.0
-13	Lakes Plain	16	2	100.0
-14	Lakes Plain	16	5	80.0
-15	Lakes Plain	16	6	100.0
-16	Lakes Plain	16	3	100.0
-17	Lakes Plain	16	3	100.0
-18	Lakes Plain	16	1	100.0
-19	Lakes Plain	16	5	100.0
-20	Lakes Plain	16	3	100.0
-21	Lakes Plain	16	3	100.0
-22	Lakes Plain	16	6	100.0
-23	Lakes Plain	16	4	100.0
-24	Lakes Plain	16	2	100.0
-25	Lakes Plain	16	3	100.0
-26	Lakes Plain	16	3	100.0
-27	Lakes Plain	16	6	66.667
-28	Lakes Plain	16	5	100.0
-29	Lakes Plain	16	1	100.0
-30	Lakes Plain	16	4	100.0
-31	Lakes Plain	16	2	100.0
-32	Lakes Plain	16	3	100.0
-33	Lakes Plain	16	1	100.0
-34	Lakes Plain	16	4	100.0
-35	Lakes Plain	16	6	83.333
-36	Lakes Plain	16	2	100.0
-37	Lakes Plain	16	2	100.0
-38	Lakes Plain	16	5	100.0
-40	Lakes Plain	16	1	100.0
-41	Lakes Plain	16	5	100.0
-42	Lakes Plain	16	1	100.0
-43	Lakes Plain	16	2	100.0
-44	Lakes Plain	16	3	100.0
-45	Lakes Plain	16	1	100.0
-46	Lakes Plain	16	2	100.0
-47	Lakes Plain	16	3	100.0
-48	Lakes Plain	16	2	100.0
-49	Lakes Plain	16	5	100.0
-50	Lakes Plain	16	4	100.0
-52	Lakes Plain	16	5	100.0
-53	Lakes Plain	16	6	100.0
-54	Lakes Plain	16	5	100.0
-55	Lakes Plain	16	4	100.0
-56	Lakes Plain	16	3	100.0
-57	Lakes Plain	16	3	100.0
-58	Lakes Plain	16	1	100.0
-59	Lakes Plain	16	2	100.0
-60	Lakes Plain	16	2	100.0
-61	Lakes Plain	16	3	100.0
-62	Lakes Plain	16	1	100.0
-63	Lakes Plain	16	2	100.0
-64	Lakes Plain	16	2	100.0
-65	Lakes Plain	16	3	100.0
-66	Lakes Plain	16	3	100.0
-67	Lakes Plain	16	4	100.0
-68	Lakes Plain	16	3	100.0
-69	Lakes Plain	16	2	100.0
-70	Lakes Plain	16	6	100.0
-71	Lakes Plain	16	2	100.0
-72	Lakes Plain	16	2	100.0
-73	Lakes Plain	16	2	100.0
-74	Lakes Plain	16	2	100.0
-75	Lakes Plain	16	5	80.0
-76	Lakes Plain	16	3	100.0
-77	Lakes Plain	16	5	60.0
-78	Lakes Plain	16	3	100.0
-79	Lakes Plain	16	5	100.0
-80	Lakes Plain	16	4	100.0
-81	Lakes Plain	16	1	100.0
-82	Lakes Plain	16	5	100.0
-83	Lakes Plain	16	3	100.0
-84	Lakes Plain	16	3	100.0
-85	Lakes Plain	16	5	80.0
-86	Lakes Plain	16	1	100.0
-87	Lakes Plain	16	3	100.0
-88	Lakes Plain	16	2	100.0
-89	Lakes Plain	16	1	100.0
-90	Lakes Plain	16	4	100.0
-91	Lakes Plain	16	2	100.0
-92	Lakes Plain	16	5	100.0
-93	Lakes Plain	16	5	100.0
-94	Lakes Plain	16	6	100.0
-95	Lakes Plain	16	3	100.0
-96	Lakes Plain	16	2	100.0
-97	Lakes Plain	16	1	100.0
-98	Lakes Plain	16	7	100.0
-99	Lakes Plain	16	5	100.0
-0	Barbacoan	5	2	50.0
-1	Barbacoan	5	1	100.0
-2	Barbacoan	5	1	100.0
-4	Barbacoan	5	1	0.0
-5	Barbacoan	5	1	100.0
-8	Barbacoan	5	2	50.0
-9	Barbacoan	5	1	100.0
-10	Barbacoan	5	1	100.0
-12	Barbacoan	5	1	100.0
-14	Barbacoan	5	2	100.0
-15	Barbacoan	5	1	100.0
-16	Barbacoan	5	1	100.0
-17	Barbacoan	5	1	100.0
-20	Barbacoan	5	1	100.0
-21	Barbacoan	5	2	100.0
-22	Barbacoan	5	1	100.0
-24	Barbacoan	5	2	50.0
-25	Barbacoan	5	1	100.0
-27	Barbacoan	5	1	100.0
-28	Barbacoan	5	1	100.0
-29	Barbacoan	5	2	100.0
-31	Barbacoan	5	2	100.0
-32	Barbacoan	5	1	100.0
-33	Barbacoan	5	2	100.0
-34	Barbacoan	5	1	100.0
-35	Barbacoan	5	1	100.0
-36	Barbacoan	5	2	50.0
-37	Barbacoan	5	2	50.0
-38	Barbacoan	5	1	100.0
-39	Barbacoan	5	1	100.0
-40	Barbacoan	5	1	100.0
-43	Barbacoan	5	1	100.0
-44	Barbacoan	5	1	100.0
-45	Barbacoan	5	1	100.0
-47	Barbacoan	5	1	100.0
-48	Barbacoan	5	3	33.333
-49	Barbacoan	5	2	100.0
-51	Barbacoan	5	1	0.0
-52	Barbacoan	5	1	100.0
-53	Barbacoan	5	1	100.0
-54	Barbacoan	5	3	33.333
-55	Barbacoan	5	2	100.0
-57	Barbacoan	5	1	100.0
-58	Barbacoan	5	1	100.0
-61	Barbacoan	5	1	100.0
-63	Barbacoan	5	1	100.0
-69	Barbacoan	5	1	100.0
-71	Barbacoan	5	3	66.667
-73	Barbacoan	5	3	33.333
-74	Barbacoan	5	2	50.0
-75	Barbacoan	5	2	50.0
-77	Barbacoan	5	1	100.0
-79	Barbacoan	5	1	100.0
-80	Barbacoan	5	2	0.0
-81	Barbacoan	5	1	100.0
-85	Barbacoan	5	2	100.0
-86	Barbacoan	5	1	100.0
-88	Barbacoan	5	1	100.0
-89	Barbacoan	5	2	100.0
-90	Barbacoan	5	2	50.0
-91	Barbacoan	5	1	100.0
-92	Barbacoan	5	1	100.0
-93	Barbacoan	5	2	50.0
-94	Barbacoan	5	1	100.0
-95	Barbacoan	5	1	100.0
-97	Barbacoan	5	1	100.0
-0	Nuclear-Macro-Je	6	2	0.0
-1	Nuclear-Macro-Je	6	3	0.0
-3	Nuclear-Macro-Je	6	1	0.0
-4	Nuclear-Macro-Je	6	2	0.0
-5	Nuclear-Macro-Je	6	2	0.0
-6	Nuclear-Macro-Je	6	3	0.0
-7	Nuclear-Macro-Je	6	1	0.0
-8	Nuclear-Macro-Je	6	1	0.0
-9	Nuclear-Macro-Je	6	1	0.0
-10	Nuclear-Macro-Je	6	1	0.0
-11	Nuclear-Macro-Je	6	2	0.0
-12	Nuclear-Macro-Je	6	2	0.0
-13	Nuclear-Macro-Je	6	1	0.0
-14	Nuclear-Macro-Je	6	1	0.0
-15	Nuclear-Macro-Je	6	1	0.0
-18	Nuclear-Macro-Je	6	1	0.0
-21	Nuclear-Macro-Je	6	2	0.0
-22	Nuclear-Macro-Je	6	2	0.0
-23	Nuclear-Macro-Je	6	1	0.0
-24	Nuclear-Macro-Je	6	2	0.0
-25	Nuclear-Macro-Je	6	2	0.0
-27	Nuclear-Macro-Je	6	2	0.0
-28	Nuclear-Macro-Je	6	1	0.0
-29	Nuclear-Macro-Je	6	2	0.0
-30	Nuclear-Macro-Je	6	1	0.0
-32	Nuclear-Macro-Je	6	1	0.0
-34	Nuclear-Macro-Je	6	1	0.0
-35	Nuclear-Macro-Je	6	3	0.0
-36	Nuclear-Macro-Je	6	1	0.0
-37	Nuclear-Macro-Je	6	1	0.0
-39	Nuclear-Macro-Je	6	1	0.0
-41	Nuclear-Macro-Je	6	1	0.0
-42	Nuclear-Macro-Je	6	1	0.0
-43	Nuclear-Macro-Je	6	1	0.0
-44	Nuclear-Macro-Je	6	1	0.0
-45	Nuclear-Macro-Je	6	2	0.0
-46	Nuclear-Macro-Je	6	1	0.0
-47	Nuclear-Macro-Je	6	2	0.0
-48	Nuclear-Macro-Je	6	2	0.0
-49	Nuclear-Macro-Je	6	1	0.0
-50	Nuclear-Macro-Je	6	3	0.0
-51	Nuclear-Macro-Je	6	1	0.0
-53	Nuclear-Macro-Je	6	1	0.0
-55	Nuclear-Macro-Je	6	2	0.0
-56	Nuclear-Macro-Je	6	1	0.0
-57	Nuclear-Macro-Je	6	2	0.0
-59	Nuclear-Macro-Je	6	1	0.0
-60	Nuclear-Macro-Je	6	2	0.0
-62	Nuclear-Macro-Je	6	1	0.0
-63	Nuclear-Macro-Je	6	1	0.0
-65	Nuclear-Macro-Je	6	3	0.0
-66	Nuclear-Macro-Je	6	1	0.0
-68	Nuclear-Macro-Je	6	4	0.0
-69	Nuclear-Macro-Je	6	1	0.0
-70	Nuclear-Macro-Je	6	1	0.0
-71	Nuclear-Macro-Je	6	1	0.0
-73	Nuclear-Macro-Je	6	1	0.0
-74	Nuclear-Macro-Je	6	1	0.0
-75	Nuclear-Macro-Je	6	1	0.0
-76	Nuclear-Macro-Je	6	3	0.0
-77	Nuclear-Macro-Je	6	2	0.0
-78	Nuclear-Macro-Je	6	1	0.0
-79	Nuclear-Macro-Je	6	2	0.0
-80	Nuclear-Macro-Je	6	2	0.0
-81	Nuclear-Macro-Je	6	1	0.0
-83	Nuclear-Macro-Je	6	1	0.0
-84	Nuclear-Macro-Je	6	2	0.0
-90	Nuclear-Macro-Je	6	1	0.0
-91	Nuclear-Macro-Je	6	1	0.0
-92	Nuclear-Macro-Je	6	2	0.0
-94	Nuclear-Macro-Je	6	1	0.0
-96	Nuclear-Macro-Je	6	1	0.0
-97	Nuclear-Macro-Je	6	1	0.0
-98	Nuclear-Macro-Je	6	2	0.0
-99	Nuclear-Macro-Je	6	1	0.0
-0	Uto-Aztecan	28	3	100.0
-1	Uto-Aztecan	28	7	100.0
-2	Uto-Aztecan	28	5	100.0
+40	Quechuan	20	5	100.0
+41	Quechuan	20	2	100.0
+42	Quechuan	20	1	100.0
+43	Quechuan	20	5	100.0
+44	Quechuan	20	4	100.0
+45	Quechuan	20	3	100.0
+46	Quechuan	20	4	100.0
+47	Quechuan	20	5	100.0
+48	Quechuan	20	4	100.0
+49	Quechuan	20	5	100.0
+0	Afro-Asiatic	79	14	92.857
+1	Afro-Asiatic	79	15	93.333
+2	Afro-Asiatic	79	12	91.667
+3	Afro-Asiatic	79	17	82.353
+4	Afro-Asiatic	79	13	84.615
+5	Afro-Asiatic	79	13	92.308
+6	Afro-Asiatic	79	23	95.652
+7	Afro-Asiatic	79	8	100.0
+8	Afro-Asiatic	79	13	92.308
+9	Afro-Asiatic	79	22	100.0
+10	Afro-Asiatic	79	20	100.0
+11	Afro-Asiatic	79	12	100.0
+12	Afro-Asiatic	79	24	95.833
+13	Afro-Asiatic	79	18	94.444
+14	Afro-Asiatic	79	19	94.737
+15	Afro-Asiatic	79	23	91.304
+16	Afro-Asiatic	79	16	93.75
+17	Afro-Asiatic	79	16	81.25
+18	Afro-Asiatic	79	14	85.714
+19	Afro-Asiatic	79	11	90.909
+20	Afro-Asiatic	79	12	100.0
+21	Afro-Asiatic	79	18	94.444
+22	Afro-Asiatic	79	15	100.0
+23	Afro-Asiatic	79	14	100.0
+24	Afro-Asiatic	79	8	100.0
+25	Afro-Asiatic	79	17	94.118
+26	Afro-Asiatic	79	15	80.0
+27	Afro-Asiatic	79	17	94.118
+28	Afro-Asiatic	79	20	100.0
+29	Afro-Asiatic	79	20	90.0
+30	Afro-Asiatic	79	20	90.0
+31	Afro-Asiatic	79	15	86.667
+32	Afro-Asiatic	79	14	92.857
+33	Afro-Asiatic	79	16	100.0
+34	Afro-Asiatic	79	20	100.0
+35	Afro-Asiatic	79	13	92.308
+36	Afro-Asiatic	79	14	92.857
+37	Afro-Asiatic	79	16	100.0
+38	Afro-Asiatic	79	14	92.857
+39	Afro-Asiatic	79	10	90.0
+40	Afro-Asiatic	79	19	84.211
+41	Afro-Asiatic	79	9	100.0
+42	Afro-Asiatic	79	13	100.0
+43	Afro-Asiatic	79	18	94.444
+44	Afro-Asiatic	79	17	100.0
+45	Afro-Asiatic	79	18	83.333
+46	Afro-Asiatic	79	12	83.333
+47	Afro-Asiatic	79	20	90.0
+48	Afro-Asiatic	79	15	93.333
+49	Afro-Asiatic	79	16	100.0
+0	Pama-Nyungan	99	24	95.833
+1	Pama-Nyungan	99	29	100.0
+2	Pama-Nyungan	99	26	96.154
+3	Pama-Nyungan	99	26	100.0
+4	Pama-Nyungan	99	19	100.0
+5	Pama-Nyungan	99	12	100.0
+6	Pama-Nyungan	99	19	94.737
+7	Pama-Nyungan	99	19	100.0
+8	Pama-Nyungan	99	26	100.0
+9	Pama-Nyungan	99	18	94.444
+10	Pama-Nyungan	99	19	94.737
+11	Pama-Nyungan	99	23	95.652
+12	Pama-Nyungan	99	19	100.0
+13	Pama-Nyungan	99	19	100.0
+14	Pama-Nyungan	99	22	100.0
+15	Pama-Nyungan	99	24	95.833
+16	Pama-Nyungan	99	13	100.0
+17	Pama-Nyungan	99	21	100.0
+18	Pama-Nyungan	99	19	94.737
+19	Pama-Nyungan	99	21	95.238
+20	Pama-Nyungan	99	17	94.118
+21	Pama-Nyungan	99	14	100.0
+22	Pama-Nyungan	99	18	100.0
+23	Pama-Nyungan	99	19	94.737
+24	Pama-Nyungan	99	16	93.75
+25	Pama-Nyungan	99	14	92.857
+26	Pama-Nyungan	99	17	100.0
+27	Pama-Nyungan	99	19	100.0
+28	Pama-Nyungan	99	19	100.0
+29	Pama-Nyungan	99	22	100.0
+30	Pama-Nyungan	99	20	100.0
+31	Pama-Nyungan	99	25	100.0
+32	Pama-Nyungan	99	22	100.0
+33	Pama-Nyungan	99	10	100.0
+34	Pama-Nyungan	99	27	100.0
+35	Pama-Nyungan	99	23	95.652
+36	Pama-Nyungan	99	22	100.0
+37	Pama-Nyungan	99	21	100.0
+38	Pama-Nyungan	99	11	100.0
+39	Pama-Nyungan	99	22	95.455
+40	Pama-Nyungan	99	20	100.0
+41	Pama-Nyungan	99	25	96.0
+42	Pama-Nyungan	99	22	95.455
+43	Pama-Nyungan	99	19	100.0
+44	Pama-Nyungan	99	15	100.0
+45	Pama-Nyungan	99	17	100.0
+46	Pama-Nyungan	99	16	100.0
+47	Pama-Nyungan	99	22	100.0
+48	Pama-Nyungan	99	17	100.0
+49	Pama-Nyungan	99	19	100.0
+0	Sino-Tibetan	96	21	100.0
+1	Sino-Tibetan	96	20	100.0
+2	Sino-Tibetan	96	24	100.0
+3	Sino-Tibetan	96	17	100.0
+4	Sino-Tibetan	96	25	100.0
+5	Sino-Tibetan	96	25	100.0
+6	Sino-Tibetan	96	28	96.429
+7	Sino-Tibetan	96	21	100.0
+8	Sino-Tibetan	96	15	100.0
+9	Sino-Tibetan	96	22	100.0
+10	Sino-Tibetan	96	19	100.0
+11	Sino-Tibetan	96	18	100.0
+12	Sino-Tibetan	96	29	96.552
+13	Sino-Tibetan	96	21	95.238
+14	Sino-Tibetan	96	13	100.0
+15	Sino-Tibetan	96	13	100.0
+16	Sino-Tibetan	96	16	93.75
+17	Sino-Tibetan	96	18	100.0
+18	Sino-Tibetan	96	19	100.0
+19	Sino-Tibetan	96	23	100.0
+20	Sino-Tibetan	96	24	95.833
+21	Sino-Tibetan	96	21	100.0
+22	Sino-Tibetan	96	16	100.0
+23	Sino-Tibetan	96	18	100.0
+24	Sino-Tibetan	96	18	100.0
+25	Sino-Tibetan	96	21	100.0
+26	Sino-Tibetan	96	16	100.0
+27	Sino-Tibetan	96	14	100.0
+28	Sino-Tibetan	96	23	100.0
+29	Sino-Tibetan	96	18	94.444
+30	Sino-Tibetan	96	17	94.118
+31	Sino-Tibetan	96	23	100.0
+32	Sino-Tibetan	96	25	100.0
+33	Sino-Tibetan	96	16	100.0
+34	Sino-Tibetan	96	20	100.0
+35	Sino-Tibetan	96	18	100.0
+36	Sino-Tibetan	96	15	100.0
+37	Sino-Tibetan	96	24	95.833
+38	Sino-Tibetan	96	22	100.0
+39	Sino-Tibetan	96	27	100.0
+40	Sino-Tibetan	96	19	100.0
+41	Sino-Tibetan	96	24	100.0
+42	Sino-Tibetan	96	19	100.0
+43	Sino-Tibetan	96	18	100.0
+44	Sino-Tibetan	96	17	100.0
+45	Sino-Tibetan	96	20	95.0
+46	Sino-Tibetan	96	19	100.0
+47	Sino-Tibetan	96	20	100.0
+48	Sino-Tibetan	96	21	100.0
+49	Sino-Tibetan	96	11	100.0
+0	Atlantic-Congo	136	30	96.667
+1	Atlantic-Congo	136	19	94.737
+2	Atlantic-Congo	136	25	100.0
+3	Atlantic-Congo	136	30	96.667
+4	Atlantic-Congo	136	23	95.652
+5	Atlantic-Congo	136	26	96.154
+6	Atlantic-Congo	136	29	100.0
+7	Atlantic-Congo	136	26	96.154
+8	Atlantic-Congo	136	28	100.0
+9	Atlantic-Congo	136	18	100.0
+10	Atlantic-Congo	136	27	96.296
+11	Atlantic-Congo	136	20	100.0
+12	Atlantic-Congo	136	20	100.0
+13	Atlantic-Congo	136	30	100.0
+14	Atlantic-Congo	136	24	100.0
+15	Atlantic-Congo	136	27	100.0
+16	Atlantic-Congo	136	27	100.0
+17	Atlantic-Congo	136	21	100.0
+18	Atlantic-Congo	136	32	100.0
+19	Atlantic-Congo	136	29	100.0
+20	Atlantic-Congo	136	30	96.667
+21	Atlantic-Congo	136	23	100.0
+22	Atlantic-Congo	136	29	96.552
+23	Atlantic-Congo	136	28	100.0
+24	Atlantic-Congo	136	28	100.0
+25	Atlantic-Congo	136	16	93.75
+26	Atlantic-Congo	136	32	96.875
+27	Atlantic-Congo	136	26	100.0
+28	Atlantic-Congo	136	26	100.0
+29	Atlantic-Congo	136	27	100.0
+30	Atlantic-Congo	136	30	100.0
+31	Atlantic-Congo	136	23	100.0
+32	Atlantic-Congo	136	29	93.103
+33	Atlantic-Congo	136	30	96.667
+34	Atlantic-Congo	136	26	96.154
+35	Atlantic-Congo	136	30	96.667
+36	Atlantic-Congo	136	27	100.0
+37	Atlantic-Congo	136	28	100.0
+38	Atlantic-Congo	136	36	94.444
+39	Atlantic-Congo	136	27	100.0
+40	Atlantic-Congo	136	31	100.0
+41	Atlantic-Congo	136	29	96.552
+42	Atlantic-Congo	136	25	100.0
+43	Atlantic-Congo	136	31	100.0
+44	Atlantic-Congo	136	28	100.0
+45	Atlantic-Congo	136	27	100.0
+46	Atlantic-Congo	136	23	100.0
+47	Atlantic-Congo	136	24	100.0
+48	Atlantic-Congo	136	38	97.368
+49	Atlantic-Congo	136	29	100.0
+0	Unclassified	182	29	89.655
+1	Unclassified	182	36	83.333
+2	Unclassified	182	36	91.667
+3	Unclassified	182	35	82.857
+4	Unclassified	182	37	86.486
+5	Unclassified	182	39	92.308
+6	Unclassified	182	29	89.655
+7	Unclassified	182	44	88.636
+8	Unclassified	182	42	88.095
+9	Unclassified	182	27	100.0
+10	Unclassified	182	40	75.0
+11	Unclassified	182	39	92.308
+12	Unclassified	182	39	92.308
+13	Unclassified	182	36	94.444
+14	Unclassified	182	34	91.176
+15	Unclassified	182	31	90.323
+16	Unclassified	182	38	86.842
+17	Unclassified	182	38	76.316
+18	Unclassified	182	33	90.909
+19	Unclassified	182	38	84.211
+20	Unclassified	182	36	83.333
+21	Unclassified	182	30	96.667
+22	Unclassified	182	42	85.714
+23	Unclassified	182	31	87.097
+24	Unclassified	182	33	81.818
+25	Unclassified	182	49	89.796
+26	Unclassified	182	39	97.436
+27	Unclassified	182	36	94.444
+28	Unclassified	182	38	76.316
+29	Unclassified	182	33	81.818
+30	Unclassified	182	40	90.0
+31	Unclassified	182	40	87.5
+32	Unclassified	182	32	71.875
+33	Unclassified	182	42	83.333
+34	Unclassified	182	41	85.366
+35	Unclassified	182	34	94.118
+36	Unclassified	182	33	84.848
+37	Unclassified	182	36	88.889
+38	Unclassified	182	36	88.889
+39	Unclassified	182	33	90.909
+40	Unclassified	182	32	87.5
+41	Unclassified	182	47	85.106
+42	Unclassified	182	39	92.308
+43	Unclassified	182	36	88.889
+44	Unclassified	182	39	87.179
+45	Unclassified	182	48	89.583
+46	Unclassified	182	37	86.486
+47	Unclassified	182	34	91.176
+48	Unclassified	182	30	83.333
+49	Unclassified	182	33	81.818
+0	Uto-Aztecan	28	7	100.0
+1	Uto-Aztecan	28	8	100.0
+2	Uto-Aztecan	28	4	100.0
 3	Uto-Aztecan	28	5	100.0
-4	Uto-Aztecan	28	7	100.0
-5	Uto-Aztecan	28	4	100.0
-6	Uto-Aztecan	28	5	100.0
-7	Uto-Aztecan	28	6	100.0
-8	Uto-Aztecan	28	9	100.0
-9	Uto-Aztecan	28	11	100.0
-10	Uto-Aztecan	28	5	100.0
+4	Uto-Aztecan	28	8	100.0
+5	Uto-Aztecan	28	7	100.0
+6	Uto-Aztecan	28	6	100.0
+7	Uto-Aztecan	28	4	100.0
+8	Uto-Aztecan	28	5	100.0
+9	Uto-Aztecan	28	7	100.0
+10	Uto-Aztecan	28	6	100.0
 11	Uto-Aztecan	28	5	100.0
-12	Uto-Aztecan	28	4	100.0
-13	Uto-Aztecan	28	2	100.0
-14	Uto-Aztecan	28	6	100.0
+12	Uto-Aztecan	28	1	100.0
+13	Uto-Aztecan	28	5	100.0
+14	Uto-Aztecan	28	4	100.0
 15	Uto-Aztecan	28	8	100.0
 16	Uto-Aztecan	28	4	100.0
-17	Uto-Aztecan	28	6	100.0
-18	Uto-Aztecan	28	7	100.0
-19	Uto-Aztecan	28	8	100.0
-20	Uto-Aztecan	28	5	100.0
-21	Uto-Aztecan	28	8	100.0
-22	Uto-Aztecan	28	8	100.0
-23	Uto-Aztecan	28	3	100.0
+17	Uto-Aztecan	28	9	100.0
+18	Uto-Aztecan	28	5	100.0
+19	Uto-Aztecan	28	7	100.0
+20	Uto-Aztecan	28	7	100.0
+21	Uto-Aztecan	28	5	100.0
+22	Uto-Aztecan	28	4	100.0
+23	Uto-Aztecan	28	9	100.0
 24	Uto-Aztecan	28	4	100.0
-25	Uto-Aztecan	28	5	100.0
-26	Uto-Aztecan	28	5	100.0
+25	Uto-Aztecan	28	4	100.0
+26	Uto-Aztecan	28	4	100.0
 27	Uto-Aztecan	28	6	100.0
-28	Uto-Aztecan	28	4	100.0
+28	Uto-Aztecan	28	6	100.0
 29	Uto-Aztecan	28	5	100.0
-30	Uto-Aztecan	28	8	100.0
-31	Uto-Aztecan	28	7	100.0
-32	Uto-Aztecan	28	6	100.0
-33	Uto-Aztecan	28	6	100.0
-34	Uto-Aztecan	28	5	100.0
-35	Uto-Aztecan	28	3	100.0
-36	Uto-Aztecan	28	5	100.0
-37	Uto-Aztecan	28	8	100.0
-38	Uto-Aztecan	28	7	100.0
-39	Uto-Aztecan	28	6	100.0
-40	Uto-Aztecan	28	4	100.0
-41	Uto-Aztecan	28	7	100.0
-42	Uto-Aztecan	28	8	100.0
-43	Uto-Aztecan	28	5	100.0
-44	Uto-Aztecan	28	5	100.0
-45	Uto-Aztecan	28	5	100.0
-46	Uto-Aztecan	28	6	100.0
-47	Uto-Aztecan	28	5	100.0
-48	Uto-Aztecan	28	4	100.0
-49	Uto-Aztecan	28	8	100.0
-50	Uto-Aztecan	28	5	100.0
-51	Uto-Aztecan	28	4	100.0
-52	Uto-Aztecan	28	8	100.0
-53	Uto-Aztecan	28	3	100.0
-54	Uto-Aztecan	28	6	100.0
-55	Uto-Aztecan	28	11	100.0
-56	Uto-Aztecan	28	4	100.0
-57	Uto-Aztecan	28	2	100.0
-58	Uto-Aztecan	28	7	100.0
-59	Uto-Aztecan	28	7	100.0
-60	Uto-Aztecan	28	6	100.0
-61	Uto-Aztecan	28	8	100.0
-62	Uto-Aztecan	28	4	100.0
-63	Uto-Aztecan	28	8	100.0
-64	Uto-Aztecan	28	7	100.0
-65	Uto-Aztecan	28	3	100.0
-66	Uto-Aztecan	28	5	100.0
-67	Uto-Aztecan	28	4	100.0
-68	Uto-Aztecan	28	5	100.0
-69	Uto-Aztecan	28	3	100.0
-70	Uto-Aztecan	28	7	100.0
-71	Uto-Aztecan	28	6	100.0
-72	Uto-Aztecan	28	4	100.0
-73	Uto-Aztecan	28	5	100.0
-74	Uto-Aztecan	28	7	100.0
-75	Uto-Aztecan	28	8	100.0
-76	Uto-Aztecan	28	7	100.0
-77	Uto-Aztecan	28	7	100.0
-78	Uto-Aztecan	28	5	100.0
-79	Uto-Aztecan	28	5	100.0
-80	Uto-Aztecan	28	4	100.0
-81	Uto-Aztecan	28	9	100.0
-82	Uto-Aztecan	28	7	100.0
-83	Uto-Aztecan	28	4	100.0
-84	Uto-Aztecan	28	5	100.0
-85	Uto-Aztecan	28	7	100.0
-86	Uto-Aztecan	28	7	100.0
-87	Uto-Aztecan	28	2	100.0
-88	Uto-Aztecan	28	9	100.0
-89	Uto-Aztecan	28	5	100.0
-90	Uto-Aztecan	28	6	100.0
-91	Uto-Aztecan	28	6	100.0
-92	Uto-Aztecan	28	5	100.0
-93	Uto-Aztecan	28	5	100.0
-94	Uto-Aztecan	28	4	100.0
-95	Uto-Aztecan	28	8	100.0
-96	Uto-Aztecan	28	7	100.0
-97	Uto-Aztecan	28	6	100.0
-98	Uto-Aztecan	28	6	100.0
-99	Uto-Aztecan	28	3	100.0
-0	Dravidian	10	2	100.0
-1	Dravidian	10	1	100.0
-2	Dravidian	10	2	100.0
-3	Dravidian	10	1	100.0
-4	Dravidian	10	2	100.0
-5	Dravidian	10	2	50.0
-6	Dravidian	10	1	100.0
-7	Dravidian	10	3	100.0
-8	Dravidian	10	1	100.0
-9	Dravidian	10	1	100.0
-10	Dravidian	10	5	100.0
-11	Dravidian	10	1	100.0
-12	Dravidian	10	5	100.0
-13	Dravidian	10	2	100.0
-14	Dravidian	10	3	100.0
-16	Dravidian	10	1	100.0
-17	Dravidian	10	3	100.0
-19	Dravidian	10	2	100.0
-20	Dravidian	10	3	100.0
-21	Dravidian	10	1	100.0
-23	Dravidian	10	1	100.0
-24	Dravidian	10	3	100.0
-25	Dravidian	10	5	80.0
-26	Dravidian	10	4	100.0
-28	Dravidian	10	2	100.0
-29	Dravidian	10	2	100.0
-30	Dravidian	10	1	100.0
-31	Dravidian	10	1	100.0
-32	Dravidian	10	2	100.0
-33	Dravidian	10	2	100.0
-34	Dravidian	10	1	100.0
-35	Dravidian	10	2	100.0
-36	Dravidian	10	1	100.0
-37	Dravidian	10	2	100.0
-38	Dravidian	10	1	100.0
-39	Dravidian	10	6	83.333
-40	Dravidian	10	2	100.0
-41	Dravidian	10	2	100.0
-42	Dravidian	10	1	100.0
-43	Dravidian	10	5	100.0
-44	Dravidian	10	2	100.0
-45	Dravidian	10	2	100.0
-46	Dravidian	10	2	100.0
-48	Dravidian	10	1	100.0
-49	Dravidian	10	1	100.0
-50	Dravidian	10	2	100.0
-51	Dravidian	10	2	100.0
-52	Dravidian	10	4	100.0
-53	Dravidian	10	3	100.0
-54	Dravidian	10	4	100.0
-55	Dravidian	10	1	100.0
-56	Dravidian	10	6	100.0
-57	Dravidian	10	2	50.0
-59	Dravidian	10	2	100.0
-60	Dravidian	10	7	71.429
-61	Dravidian	10	2	100.0
-62	Dravidian	10	2	50.0
-64	Dravidian	10	2	100.0
-65	Dravidian	10	2	100.0
-66	Dravidian	10	1	100.0
-67	Dravidian	10	2	100.0
-68	Dravidian	10	4	75.0
-69	Dravidian	10	1	100.0
-70	Dravidian	10	2	100.0
-71	Dravidian	10	1	100.0
-72	Dravidian	10	3	100.0
-73	Dravidian	10	4	100.0
-74	Dravidian	10	2	100.0
-75	Dravidian	10	1	100.0
-76	Dravidian	10	1	100.0
-77	Dravidian	10	3	66.667
-78	Dravidian	10	1	100.0
-79	Dravidian	10	1	100.0
-80	Dravidian	10	3	100.0
-81	Dravidian	10	4	75.0
-82	Dravidian	10	4	100.0
-83	Dravidian	10	2	100.0
-84	Dravidian	10	3	100.0
-85	Dravidian	10	2	100.0
-86	Dravidian	10	1	100.0
-87	Dravidian	10	3	100.0
-88	Dravidian	10	3	100.0
-89	Dravidian	10	1	100.0
-90	Dravidian	10	1	100.0
-91	Dravidian	10	1	100.0
-92	Dravidian	10	1	100.0
-93	Dravidian	10	2	100.0
-94	Dravidian	10	1	100.0
-95	Dravidian	10	3	100.0
-96	Dravidian	10	2	100.0
-97	Dravidian	10	2	50.0
-0	Dogon	12	3	100.0
+30	Uto-Aztecan	28	4	100.0
+31	Uto-Aztecan	28	5	100.0
+32	Uto-Aztecan	28	3	100.0
+33	Uto-Aztecan	28	5	100.0
+34	Uto-Aztecan	28	6	100.0
+35	Uto-Aztecan	28	8	100.0
+36	Uto-Aztecan	28	7	100.0
+37	Uto-Aztecan	28	2	100.0
+38	Uto-Aztecan	28	8	100.0
+39	Uto-Aztecan	28	4	100.0
+40	Uto-Aztecan	28	5	100.0
+41	Uto-Aztecan	28	8	100.0
+42	Uto-Aztecan	28	2	100.0
+43	Uto-Aztecan	28	10	100.0
+44	Uto-Aztecan	28	7	100.0
+45	Uto-Aztecan	28	6	100.0
+46	Uto-Aztecan	28	7	100.0
+47	Uto-Aztecan	28	10	100.0
+48	Uto-Aztecan	28	7	100.0
+49	Uto-Aztecan	28	3	100.0
+0	Austroasiatic	46	9	88.889
+1	Austroasiatic	46	7	100.0
+2	Austroasiatic	46	11	90.909
+3	Austroasiatic	46	6	100.0
+4	Austroasiatic	46	11	90.909
+5	Austroasiatic	46	4	100.0
+6	Austroasiatic	46	15	93.333
+7	Austroasiatic	46	8	100.0
+8	Austroasiatic	46	7	100.0
+9	Austroasiatic	46	8	100.0
+10	Austroasiatic	46	5	100.0
+11	Austroasiatic	46	5	100.0
+12	Austroasiatic	46	8	100.0
+13	Austroasiatic	46	11	100.0
+14	Austroasiatic	46	12	91.667
+15	Austroasiatic	46	8	75.0
+16	Austroasiatic	46	15	93.333
+17	Austroasiatic	46	9	100.0
+18	Austroasiatic	46	6	83.333
+19	Austroasiatic	46	12	91.667
+20	Austroasiatic	46	15	86.667
+21	Austroasiatic	46	12	91.667
+22	Austroasiatic	46	8	87.5
+23	Austroasiatic	46	9	88.889
+24	Austroasiatic	46	9	100.0
+25	Austroasiatic	46	13	100.0
+26	Austroasiatic	46	13	100.0
+27	Austroasiatic	46	12	91.667
+28	Austroasiatic	46	7	100.0
+29	Austroasiatic	46	9	100.0
+30	Austroasiatic	46	10	100.0
+31	Austroasiatic	46	6	83.333
+32	Austroasiatic	46	7	100.0
+33	Austroasiatic	46	4	100.0
+34	Austroasiatic	46	7	85.714
+35	Austroasiatic	46	15	93.333
+36	Austroasiatic	46	9	88.889
+37	Austroasiatic	46	15	93.333
+38	Austroasiatic	46	8	100.0
+39	Austroasiatic	46	7	100.0
+40	Austroasiatic	46	4	100.0
+41	Austroasiatic	46	7	100.0
+42	Austroasiatic	46	11	90.909
+43	Austroasiatic	46	7	85.714
+44	Austroasiatic	46	7	100.0
+45	Austroasiatic	46	7	100.0
+46	Austroasiatic	46	9	100.0
+47	Austroasiatic	46	6	83.333
+48	Austroasiatic	46	10	90.0
+49	Austroasiatic	46	11	90.909
+0	Indo-European	58	12	91.667
+1	Indo-European	58	14	100.0
+2	Indo-European	58	8	87.5
+3	Indo-European	58	11	100.0
+4	Indo-European	58	11	100.0
+5	Indo-European	58	11	100.0
+6	Indo-European	58	9	88.889
+7	Indo-European	58	11	90.909
+8	Indo-European	58	13	92.308
+9	Indo-European	58	11	100.0
+10	Indo-European	58	10	100.0
+11	Indo-European	58	14	100.0
+12	Indo-European	58	12	91.667
+13	Indo-European	58	14	100.0
+14	Indo-European	58	11	100.0
+15	Indo-European	58	11	100.0
+16	Indo-European	58	13	100.0
+17	Indo-European	58	15	100.0
+18	Indo-European	58	15	93.333
+19	Indo-European	58	13	92.308
+20	Indo-European	58	12	100.0
+21	Indo-European	58	17	100.0
+22	Indo-European	58	10	100.0
+23	Indo-European	58	15	100.0
+24	Indo-European	58	17	100.0
+25	Indo-European	58	13	100.0
+26	Indo-European	58	10	100.0
+27	Indo-European	58	14	100.0
+28	Indo-European	58	8	87.5
+29	Indo-European	58	12	91.667
+30	Indo-European	58	9	100.0
+31	Indo-European	58	17	94.118
+32	Indo-European	58	8	100.0
+33	Indo-European	58	14	100.0
+34	Indo-European	58	10	90.0
+35	Indo-European	58	13	100.0
+36	Indo-European	58	9	100.0
+37	Indo-European	58	10	100.0
+38	Indo-European	58	15	93.333
+39	Indo-European	58	15	100.0
+40	Indo-European	58	13	100.0
+41	Indo-European	58	10	100.0
+42	Indo-European	58	12	100.0
+43	Indo-European	58	9	100.0
+44	Indo-European	58	11	100.0
+45	Indo-European	58	10	100.0
+46	Indo-European	58	8	87.5
+47	Indo-European	58	9	100.0
+48	Indo-European	58	11	100.0
+49	Indo-European	58	20	90.0
+0	Lower Sepik-Ramu	7	1	100.0
+1	Lower Sepik-Ramu	7	2	50.0
+3	Lower Sepik-Ramu	7	3	33.333
+4	Lower Sepik-Ramu	7	3	33.333
+5	Lower Sepik-Ramu	7	2	50.0
+6	Lower Sepik-Ramu	7	1	100.0
+10	Lower Sepik-Ramu	7	2	50.0
+11	Lower Sepik-Ramu	7	3	33.333
+12	Lower Sepik-Ramu	7	1	100.0
+13	Lower Sepik-Ramu	7	2	100.0
+14	Lower Sepik-Ramu	7	2	50.0
+15	Lower Sepik-Ramu	7	1	0.0
+16	Lower Sepik-Ramu	7	2	0.0
+17	Lower Sepik-Ramu	7	3	66.667
+18	Lower Sepik-Ramu	7	2	50.0
+20	Lower Sepik-Ramu	7	1	100.0
+21	Lower Sepik-Ramu	7	1	100.0
+22	Lower Sepik-Ramu	7	2	0.0
+24	Lower Sepik-Ramu	7	1	100.0
+25	Lower Sepik-Ramu	7	1	100.0
+28	Lower Sepik-Ramu	7	3	66.667
+29	Lower Sepik-Ramu	7	2	50.0
+30	Lower Sepik-Ramu	7	3	33.333
+32	Lower Sepik-Ramu	7	1	100.0
+33	Lower Sepik-Ramu	7	1	100.0
+34	Lower Sepik-Ramu	7	1	100.0
+35	Lower Sepik-Ramu	7	2	100.0
+36	Lower Sepik-Ramu	7	1	100.0
+37	Lower Sepik-Ramu	7	1	100.0
+39	Lower Sepik-Ramu	7	1	100.0
+41	Lower Sepik-Ramu	7	2	50.0
+42	Lower Sepik-Ramu	7	1	0.0
+43	Lower Sepik-Ramu	7	1	100.0
+44	Lower Sepik-Ramu	7	2	50.0
+45	Lower Sepik-Ramu	7	1	100.0
+46	Lower Sepik-Ramu	7	1	100.0
+48	Lower Sepik-Ramu	7	1	100.0
+49	Lower Sepik-Ramu	7	3	33.333
+0	Timor-Alor-Pantar	17	3	100.0
+1	Timor-Alor-Pantar	17	7	100.0
+2	Timor-Alor-Pantar	17	3	100.0
+3	Timor-Alor-Pantar	17	5	100.0
+4	Timor-Alor-Pantar	17	1	100.0
+5	Timor-Alor-Pantar	17	3	100.0
+6	Timor-Alor-Pantar	17	5	100.0
+7	Timor-Alor-Pantar	17	3	100.0
+8	Timor-Alor-Pantar	17	4	100.0
+9	Timor-Alor-Pantar	17	3	100.0
+10	Timor-Alor-Pantar	17	2	50.0
+11	Timor-Alor-Pantar	17	1	100.0
+12	Timor-Alor-Pantar	17	2	100.0
+13	Timor-Alor-Pantar	17	3	100.0
+14	Timor-Alor-Pantar	17	2	100.0
+15	Timor-Alor-Pantar	17	4	100.0
+16	Timor-Alor-Pantar	17	1	100.0
+17	Timor-Alor-Pantar	17	6	100.0
+18	Timor-Alor-Pantar	17	4	100.0
+19	Timor-Alor-Pantar	17	2	100.0
+20	Timor-Alor-Pantar	17	1	100.0
+21	Timor-Alor-Pantar	17	5	100.0
+22	Timor-Alor-Pantar	17	2	50.0
+23	Timor-Alor-Pantar	17	4	100.0
+24	Timor-Alor-Pantar	17	5	100.0
+25	Timor-Alor-Pantar	17	5	80.0
+26	Timor-Alor-Pantar	17	3	100.0
+27	Timor-Alor-Pantar	17	5	100.0
+28	Timor-Alor-Pantar	17	3	100.0
+29	Timor-Alor-Pantar	17	3	100.0
+30	Timor-Alor-Pantar	17	3	100.0
+31	Timor-Alor-Pantar	17	3	100.0
+32	Timor-Alor-Pantar	17	2	100.0
+33	Timor-Alor-Pantar	17	3	100.0
+34	Timor-Alor-Pantar	17	2	50.0
+35	Timor-Alor-Pantar	17	3	100.0
+36	Timor-Alor-Pantar	17	3	100.0
+37	Timor-Alor-Pantar	17	4	100.0
+38	Timor-Alor-Pantar	17	1	100.0
+39	Timor-Alor-Pantar	17	5	100.0
+40	Timor-Alor-Pantar	17	5	80.0
+41	Timor-Alor-Pantar	17	2	100.0
+42	Timor-Alor-Pantar	17	7	85.714
+43	Timor-Alor-Pantar	17	3	100.0
+44	Timor-Alor-Pantar	17	4	100.0
+45	Timor-Alor-Pantar	17	6	83.333
+46	Timor-Alor-Pantar	17	3	100.0
+47	Timor-Alor-Pantar	17	1	100.0
+48	Timor-Alor-Pantar	17	3	100.0
+49	Timor-Alor-Pantar	17	4	100.0
+0	Mande	16	5	100.0
+1	Mande	16	2	100.0
+2	Mande	16	3	100.0
+3	Mande	16	4	100.0
+4	Mande	16	3	100.0
+5	Mande	16	3	66.667
+6	Mande	16	3	100.0
+7	Mande	16	7	100.0
+8	Mande	16	3	66.667
+9	Mande	16	2	100.0
+10	Mande	16	2	100.0
+11	Mande	16	5	80.0
+12	Mande	16	3	100.0
+13	Mande	16	5	100.0
+14	Mande	16	5	80.0
+15	Mande	16	5	80.0
+16	Mande	16	4	100.0
+17	Mande	16	1	100.0
+18	Mande	16	3	100.0
+19	Mande	16	3	66.667
+20	Mande	16	4	100.0
+21	Mande	16	4	100.0
+22	Mande	16	4	75.0
+23	Mande	16	2	100.0
+24	Mande	16	1	100.0
+25	Mande	16	4	100.0
+26	Mande	16	2	50.0
+28	Mande	16	4	100.0
+29	Mande	16	4	100.0
+31	Mande	16	3	100.0
+32	Mande	16	2	50.0
+33	Mande	16	2	100.0
+34	Mande	16	3	100.0
+35	Mande	16	6	83.333
+36	Mande	16	5	100.0
+37	Mande	16	6	83.333
+38	Mande	16	3	100.0
+39	Mande	16	7	85.714
+40	Mande	16	6	83.333
+41	Mande	16	4	100.0
+42	Mande	16	4	100.0
+43	Mande	16	6	83.333
+44	Mande	16	3	100.0
+45	Mande	16	5	100.0
+46	Mande	16	4	75.0
+47	Mande	16	4	25.0
+48	Mande	16	6	100.0
+49	Mande	16	4	75.0
+0	Arawakan	12	5	100.0
+1	Arawakan	12	1	100.0
+2	Arawakan	12	2	50.0
+4	Arawakan	12	2	100.0
+5	Arawakan	12	5	80.0
+6	Arawakan	12	1	100.0
+7	Arawakan	12	2	100.0
+8	Arawakan	12	4	75.0
+9	Arawakan	12	2	100.0
+10	Arawakan	12	3	100.0
+11	Arawakan	12	1	100.0
+13	Arawakan	12	2	50.0
+14	Arawakan	12	3	100.0
+15	Arawakan	12	2	50.0
+16	Arawakan	12	3	33.333
+17	Arawakan	12	2	100.0
+18	Arawakan	12	2	100.0
+19	Arawakan	12	2	100.0
+20	Arawakan	12	4	75.0
+21	Arawakan	12	4	100.0
+22	Arawakan	12	5	60.0
+23	Arawakan	12	3	66.667
+24	Arawakan	12	2	50.0
+25	Arawakan	12	2	100.0
+27	Arawakan	12	2	100.0
+28	Arawakan	12	1	100.0
+29	Arawakan	12	2	50.0
+30	Arawakan	12	3	33.333
+31	Arawakan	12	4	75.0
+32	Arawakan	12	2	100.0
+33	Arawakan	12	4	75.0
+34	Arawakan	12	1	100.0
+35	Arawakan	12	3	100.0
+36	Arawakan	12	1	100.0
+37	Arawakan	12	1	100.0
+38	Arawakan	12	1	100.0
+40	Arawakan	12	3	66.667
+41	Arawakan	12	2	100.0
+42	Arawakan	12	4	75.0
+43	Arawakan	12	2	100.0
+44	Arawakan	12	3	100.0
+45	Arawakan	12	4	75.0
+46	Arawakan	12	2	100.0
+47	Arawakan	12	3	100.0
+48	Arawakan	12	2	100.0
+49	Arawakan	12	5	40.0
+0	Lakes Plain	16	5	100.0
+1	Lakes Plain	16	5	100.0
+2	Lakes Plain	16	5	100.0
+3	Lakes Plain	16	2	100.0
+4	Lakes Plain	16	2	100.0
+5	Lakes Plain	16	2	100.0
+6	Lakes Plain	16	3	100.0
+7	Lakes Plain	16	6	100.0
+8	Lakes Plain	16	3	100.0
+9	Lakes Plain	16	3	100.0
+10	Lakes Plain	16	3	100.0
+11	Lakes Plain	16	3	100.0
+12	Lakes Plain	16	3	100.0
+13	Lakes Plain	16	2	100.0
+14	Lakes Plain	16	2	100.0
+15	Lakes Plain	16	3	100.0
+16	Lakes Plain	16	3	100.0
+17	Lakes Plain	16	3	100.0
+18	Lakes Plain	16	2	100.0
+19	Lakes Plain	16	1	100.0
+20	Lakes Plain	16	3	100.0
+21	Lakes Plain	16	3	100.0
+22	Lakes Plain	16	2	100.0
+23	Lakes Plain	16	5	100.0
+24	Lakes Plain	16	2	100.0
+25	Lakes Plain	16	4	100.0
+26	Lakes Plain	16	4	100.0
+27	Lakes Plain	16	5	100.0
+28	Lakes Plain	16	3	100.0
+29	Lakes Plain	16	7	100.0
+30	Lakes Plain	16	2	100.0
+31	Lakes Plain	16	1	100.0
+32	Lakes Plain	16	4	100.0
+33	Lakes Plain	16	5	100.0
+34	Lakes Plain	16	4	100.0
+35	Lakes Plain	16	7	100.0
+36	Lakes Plain	16	4	100.0
+37	Lakes Plain	16	3	100.0
+38	Lakes Plain	16	6	100.0
+39	Lakes Plain	16	2	100.0
+40	Lakes Plain	16	3	100.0
+41	Lakes Plain	16	5	80.0
+42	Lakes Plain	16	3	100.0
+43	Lakes Plain	16	1	100.0
+44	Lakes Plain	16	4	100.0
+45	Lakes Plain	16	2	100.0
+46	Lakes Plain	16	5	100.0
+47	Lakes Plain	16	3	100.0
+48	Lakes Plain	16	3	100.0
+49	Lakes Plain	16	4	100.0
+0	Nakh-Daghestanian	8	3	66.667
+1	Nakh-Daghestanian	8	1	0.0
+2	Nakh-Daghestanian	8	1	0.0
+3	Nakh-Daghestanian	8	5	20.0
+4	Nakh-Daghestanian	8	2	50.0
+5	Nakh-Daghestanian	8	4	0.0
+6	Nakh-Daghestanian	8	2	0.0
+7	Nakh-Daghestanian	8	1	0.0
+8	Nakh-Daghestanian	8	5	0.0
+9	Nakh-Daghestanian	8	5	0.0
+10	Nakh-Daghestanian	8	1	0.0
+12	Nakh-Daghestanian	8	3	0.0
+13	Nakh-Daghestanian	8	3	33.333
+14	Nakh-Daghestanian	8	1	100.0
+15	Nakh-Daghestanian	8	1	100.0
+16	Nakh-Daghestanian	8	4	0.0
+17	Nakh-Daghestanian	8	2	50.0
+18	Nakh-Daghestanian	8	2	0.0
+19	Nakh-Daghestanian	8	4	25.0
+20	Nakh-Daghestanian	8	1	0.0
+21	Nakh-Daghestanian	8	2	50.0
+22	Nakh-Daghestanian	8	2	50.0
+23	Nakh-Daghestanian	8	2	0.0
+24	Nakh-Daghestanian	8	2	100.0
+25	Nakh-Daghestanian	8	3	66.667
+26	Nakh-Daghestanian	8	2	100.0
+27	Nakh-Daghestanian	8	1	100.0
+28	Nakh-Daghestanian	8	1	0.0
+30	Nakh-Daghestanian	8	1	100.0
+31	Nakh-Daghestanian	8	1	0.0
+32	Nakh-Daghestanian	8	1	0.0
+33	Nakh-Daghestanian	8	1	100.0
+34	Nakh-Daghestanian	8	1	0.0
+36	Nakh-Daghestanian	8	2	100.0
+37	Nakh-Daghestanian	8	1	100.0
+38	Nakh-Daghestanian	8	3	33.333
+39	Nakh-Daghestanian	8	1	0.0
+40	Nakh-Daghestanian	8	2	0.0
+41	Nakh-Daghestanian	8	1	0.0
+42	Nakh-Daghestanian	8	1	100.0
+43	Nakh-Daghestanian	8	2	50.0
+44	Nakh-Daghestanian	8	4	25.0
+45	Nakh-Daghestanian	8	1	100.0
+46	Nakh-Daghestanian	8	3	0.0
+47	Nakh-Daghestanian	8	1	0.0
+48	Nakh-Daghestanian	8	1	100.0
+49	Nakh-Daghestanian	8	2	50.0
+0	Dogon	12	2	100.0
 1	Dogon	12	3	100.0
-2	Dogon	12	3	100.0
+2	Dogon	12	1	100.0
 3	Dogon	12	2	100.0
 4	Dogon	12	2	100.0
-5	Dogon	12	1	0.0
-6	Dogon	12	2	100.0
-7	Dogon	12	5	100.0
-8	Dogon	12	5	100.0
+5	Dogon	12	1	100.0
+6	Dogon	12	4	75.0
+7	Dogon	12	1	100.0
+8	Dogon	12	1	100.0
 9	Dogon	12	1	100.0
-10	Dogon	12	1	100.0
+10	Dogon	12	4	100.0
 11	Dogon	12	3	100.0
-12	Dogon	12	4	75.0
-13	Dogon	12	5	100.0
-14	Dogon	12	3	100.0
-15	Dogon	12	5	100.0
-16	Dogon	12	1	100.0
-17	Dogon	12	2	100.0
-18	Dogon	12	7	85.714
-19	Dogon	12	2	100.0
-20	Dogon	12	4	100.0
+12	Dogon	12	2	100.0
+13	Dogon	12	3	100.0
+14	Dogon	12	4	75.0
+15	Dogon	12	3	66.667
+16	Dogon	12	4	100.0
+17	Dogon	12	1	100.0
+18	Dogon	12	3	100.0
+19	Dogon	12	3	100.0
+20	Dogon	12	1	100.0
 21	Dogon	12	2	100.0
-22	Dogon	12	2	100.0
-23	Dogon	12	3	66.667
-24	Dogon	12	3	100.0
-25	Dogon	12	3	100.0
+23	Dogon	12	4	100.0
+24	Dogon	12	2	100.0
+25	Dogon	12	4	100.0
 26	Dogon	12	3	66.667
-27	Dogon	12	2	100.0
-28	Dogon	12	4	100.0
+28	Dogon	12	1	100.0
 29	Dogon	12	2	100.0
-30	Dogon	12	2	100.0
+30	Dogon	12	1	100.0
 31	Dogon	12	2	100.0
-32	Dogon	12	4	100.0
-33	Dogon	12	3	100.0
-34	Dogon	12	2	100.0
+32	Dogon	12	2	100.0
+34	Dogon	12	4	75.0
 35	Dogon	12	3	100.0
-36	Dogon	12	4	75.0
+36	Dogon	12	2	100.0
 37	Dogon	12	2	100.0
-38	Dogon	12	2	100.0
 39	Dogon	12	1	100.0
-40	Dogon	12	4	100.0
+40	Dogon	12	2	100.0
 41	Dogon	12	2	100.0
-42	Dogon	12	1	100.0
-43	Dogon	12	2	100.0
-44	Dogon	12	2	100.0
+44	Dogon	12	1	100.0
 45	Dogon	12	2	100.0
-46	Dogon	12	1	100.0
-47	Dogon	12	1	0.0
-48	Dogon	12	3	100.0
-49	Dogon	12	3	100.0
-50	Dogon	12	2	100.0
-51	Dogon	12	3	100.0
-52	Dogon	12	3	100.0
-53	Dogon	12	2	100.0
-54	Dogon	12	1	100.0
-55	Dogon	12	3	100.0
-56	Dogon	12	4	75.0
-57	Dogon	12	3	66.667
-58	Dogon	12	4	100.0
-59	Dogon	12	2	100.0
-60	Dogon	12	3	100.0
-61	Dogon	12	4	100.0
-62	Dogon	12	4	75.0
-63	Dogon	12	5	80.0
-64	Dogon	12	2	100.0
-65	Dogon	12	1	100.0
-66	Dogon	12	4	75.0
-67	Dogon	12	1	100.0
-68	Dogon	12	3	100.0
-71	Dogon	12	4	75.0
-72	Dogon	12	3	100.0
-73	Dogon	12	4	100.0
-74	Dogon	12	4	100.0
-75	Dogon	12	3	66.667
-76	Dogon	12	2	100.0
-77	Dogon	12	1	100.0
-78	Dogon	12	2	100.0
-79	Dogon	12	3	100.0
-80	Dogon	12	1	100.0
-81	Dogon	12	3	100.0
-82	Dogon	12	3	100.0
-83	Dogon	12	4	75.0
-84	Dogon	12	1	100.0
-85	Dogon	12	4	75.0
-86	Dogon	12	1	0.0
-87	Dogon	12	3	100.0
-88	Dogon	12	1	100.0
-89	Dogon	12	1	100.0
-90	Dogon	12	1	100.0
-91	Dogon	12	1	100.0
-92	Dogon	12	4	100.0
-93	Dogon	12	6	100.0
-94	Dogon	12	3	100.0
-95	Dogon	12	4	100.0
-96	Dogon	12	2	100.0
-97	Dogon	12	3	100.0
-98	Dogon	12	1	100.0
-99	Dogon	12	2	100.0
-0	Arawakan	12	2	0.0
-1	Arawakan	12	5	80.0
-2	Arawakan	12	4	75.0
-3	Arawakan	12	1	100.0
-4	Arawakan	12	1	100.0
-5	Arawakan	12	2	100.0
-6	Arawakan	12	3	66.667
-7	Arawakan	12	1	100.0
-8	Arawakan	12	4	75.0
-9	Arawakan	12	1	100.0
-10	Arawakan	12	3	100.0
-11	Arawakan	12	4	100.0
-12	Arawakan	12	4	50.0
-13	Arawakan	12	4	50.0
-14	Arawakan	12	2	50.0
-15	Arawakan	12	3	100.0
-16	Arawakan	12	4	75.0
-17	Arawakan	12	3	100.0
-18	Arawakan	12	2	100.0
-19	Arawakan	12	1	100.0
-20	Arawakan	12	2	50.0
-21	Arawakan	12	2	100.0
-22	Arawakan	12	2	100.0
-23	Arawakan	12	3	100.0
-24	Arawakan	12	2	100.0
-25	Arawakan	12	2	100.0
-26	Arawakan	12	2	100.0
-27	Arawakan	12	2	100.0
-28	Arawakan	12	3	100.0
-29	Arawakan	12	2	100.0
-30	Arawakan	12	4	75.0
-31	Arawakan	12	3	100.0
-32	Arawakan	12	2	50.0
-33	Arawakan	12	2	100.0
-34	Arawakan	12	1	100.0
-35	Arawakan	12	1	100.0
-36	Arawakan	12	1	100.0
-37	Arawakan	12	4	75.0
-38	Arawakan	12	2	100.0
-40	Arawakan	12	7	42.857
-41	Arawakan	12	2	0.0
-42	Arawakan	12	2	100.0
-43	Arawakan	12	2	100.0
-44	Arawakan	12	2	100.0
-45	Arawakan	12	1	100.0
-46	Arawakan	12	3	66.667
-47	Arawakan	12	4	75.0
-48	Arawakan	12	4	50.0
-49	Arawakan	12	3	100.0
-50	Arawakan	12	2	100.0
-51	Arawakan	12	3	100.0
-52	Arawakan	12	2	100.0
-53	Arawakan	12	4	100.0
-54	Arawakan	12	3	33.333
-55	Arawakan	12	2	100.0
-56	Arawakan	12	1	100.0
-57	Arawakan	12	1	100.0
-58	Arawakan	12	2	50.0
-59	Arawakan	12	3	66.667
-60	Arawakan	12	5	100.0
-61	Arawakan	12	5	80.0
-62	Arawakan	12	3	100.0
-63	Arawakan	12	2	100.0
-65	Arawakan	12	2	100.0
-66	Arawakan	12	1	100.0
-68	Arawakan	12	5	80.0
-69	Arawakan	12	5	60.0
-70	Arawakan	12	4	100.0
-71	Arawakan	12	2	100.0
-72	Arawakan	12	3	66.667
-73	Arawakan	12	1	100.0
-74	Arawakan	12	1	100.0
-75	Arawakan	12	4	75.0
-76	Arawakan	12	5	60.0
-77	Arawakan	12	5	60.0
-78	Arawakan	12	2	100.0
-79	Arawakan	12	4	75.0
-80	Arawakan	12	2	100.0
-81	Arawakan	12	4	75.0
-82	Arawakan	12	4	75.0
-83	Arawakan	12	3	100.0
-84	Arawakan	12	1	100.0
-85	Arawakan	12	3	100.0
-86	Arawakan	12	3	100.0
-87	Arawakan	12	1	100.0
-88	Arawakan	12	6	66.667
-89	Arawakan	12	1	100.0
-90	Arawakan	12	3	66.667
-91	Arawakan	12	4	100.0
-92	Arawakan	12	2	50.0
-94	Arawakan	12	2	100.0
-95	Arawakan	12	2	100.0
-96	Arawakan	12	1	100.0
-97	Arawakan	12	3	100.0
-98	Arawakan	12	3	66.667
-99	Arawakan	12	3	100.0
-1	Guahiboan	5	2	100.0
-3	Guahiboan	5	3	66.667
-6	Guahiboan	5	1	100.0
-7	Guahiboan	5	1	100.0
-8	Guahiboan	5	1	100.0
-9	Guahiboan	5	3	100.0
-12	Guahiboan	5	2	100.0
-13	Guahiboan	5	3	66.667
-14	Guahiboan	5	1	100.0
-16	Guahiboan	5	2	100.0
-17	Guahiboan	5	3	66.667
-18	Guahiboan	5	1	100.0
-19	Guahiboan	5	1	100.0
-20	Guahiboan	5	1	100.0
-21	Guahiboan	5	3	100.0
-22	Guahiboan	5	1	100.0
-23	Guahiboan	5	2	50.0
-24	Guahiboan	5	2	100.0
-25	Guahiboan	5	2	50.0
-26	Guahiboan	5	1	100.0
-27	Guahiboan	5	1	100.0
-29	Guahiboan	5	3	66.667
-31	Guahiboan	5	2	100.0
-32	Guahiboan	5	1	100.0
-33	Guahiboan	5	1	100.0
-34	Guahiboan	5	2	100.0
-35	Guahiboan	5	1	100.0
-36	Guahiboan	5	1	100.0
-38	Guahiboan	5	3	33.333
-39	Guahiboan	5	2	100.0
-40	Guahiboan	5	1	100.0
-41	Guahiboan	5	1	100.0
-43	Guahiboan	5	2	50.0
-45	Guahiboan	5	2	100.0
-46	Guahiboan	5	1	100.0
-47	Guahiboan	5	2	100.0
-48	Guahiboan	5	1	100.0
-49	Guahiboan	5	2	100.0
-50	Guahiboan	5	3	66.667
-51	Guahiboan	5	1	100.0
-52	Guahiboan	5	1	100.0
-54	Guahiboan	5	1	100.0
-55	Guahiboan	5	1	100.0
-57	Guahiboan	5	3	66.667
-58	Guahiboan	5	1	100.0
-60	Guahiboan	5	2	100.0
-63	Guahiboan	5	1	100.0
-66	Guahiboan	5	2	100.0
-68	Guahiboan	5	1	100.0
-69	Guahiboan	5	1	100.0
-70	Guahiboan	5	1	100.0
-71	Guahiboan	5	4	25.0
-72	Guahiboan	5	2	100.0
-73	Guahiboan	5	2	100.0
-75	Guahiboan	5	1	100.0
-77	Guahiboan	5	2	100.0
-78	Guahiboan	5	1	100.0
-79	Guahiboan	5	2	50.0
-80	Guahiboan	5	2	100.0
-82	Guahiboan	5	2	100.0
-84	Guahiboan	5	1	100.0
-85	Guahiboan	5	1	100.0
-86	Guahiboan	5	2	50.0
-87	Guahiboan	5	1	100.0
-88	Guahiboan	5	1	100.0
-90	Guahiboan	5	2	100.0
-91	Guahiboan	5	1	100.0
-92	Guahiboan	5	1	100.0
-93	Guahiboan	5	2	100.0
-94	Guahiboan	5	1	100.0
-95	Guahiboan	5	1	0.0
-96	Guahiboan	5	1	100.0
-97	Guahiboan	5	1	100.0
-98	Guahiboan	5	1	100.0
-99	Guahiboan	5	3	66.667
-1	Koiarian	6	2	100.0
-2	Koiarian	6	1	100.0
+46	Dogon	12	2	100.0
+47	Dogon	12	1	100.0
+48	Dogon	12	4	100.0
+49	Dogon	12	4	100.0
+0	Hmong-Mien	12	3	66.667
+1	Hmong-Mien	12	3	100.0
+3	Hmong-Mien	12	1	100.0
+4	Hmong-Mien	12	1	100.0
+5	Hmong-Mien	12	3	100.0
+6	Hmong-Mien	12	2	100.0
+7	Hmong-Mien	12	2	100.0
+8	Hmong-Mien	12	4	100.0
+9	Hmong-Mien	12	4	100.0
+10	Hmong-Mien	12	1	100.0
+11	Hmong-Mien	12	4	100.0
+12	Hmong-Mien	12	2	100.0
+13	Hmong-Mien	12	3	100.0
+14	Hmong-Mien	12	3	100.0
+15	Hmong-Mien	12	4	100.0
+16	Hmong-Mien	12	4	75.0
+17	Hmong-Mien	12	3	100.0
+18	Hmong-Mien	12	2	100.0
+19	Hmong-Mien	12	3	100.0
+20	Hmong-Mien	12	2	100.0
+21	Hmong-Mien	12	2	100.0
+23	Hmong-Mien	12	5	100.0
+24	Hmong-Mien	12	2	100.0
+25	Hmong-Mien	12	1	100.0
+26	Hmong-Mien	12	4	100.0
+27	Hmong-Mien	12	3	100.0
+28	Hmong-Mien	12	4	75.0
+29	Hmong-Mien	12	2	50.0
+30	Hmong-Mien	12	2	100.0
+31	Hmong-Mien	12	2	100.0
+32	Hmong-Mien	12	2	100.0
+33	Hmong-Mien	12	3	100.0
+34	Hmong-Mien	12	1	100.0
+35	Hmong-Mien	12	3	100.0
+37	Hmong-Mien	12	1	100.0
+38	Hmong-Mien	12	2	100.0
+39	Hmong-Mien	12	3	100.0
+40	Hmong-Mien	12	1	100.0
+41	Hmong-Mien	12	3	100.0
+42	Hmong-Mien	12	3	100.0
+43	Hmong-Mien	12	2	100.0
+44	Hmong-Mien	12	1	100.0
+45	Hmong-Mien	12	3	100.0
+46	Hmong-Mien	12	2	100.0
+47	Hmong-Mien	12	3	100.0
+48	Hmong-Mien	12	1	100.0
+49	Hmong-Mien	12	2	50.0
+0	Koiarian	6	1	0.0
+1	Koiarian	6	1	100.0
 3	Koiarian	6	1	100.0
 4	Koiarian	6	1	100.0
-5	Koiarian	6	2	50.0
-6	Koiarian	6	1	100.0
+5	Koiarian	6	1	100.0
+6	Koiarian	6	3	100.0
 7	Koiarian	6	2	100.0
-8	Koiarian	6	1	100.0
-9	Koiarian	6	2	100.0
-11	Koiarian	6	1	100.0
-12	Koiarian	6	2	100.0
-13	Koiarian	6	2	100.0
-14	Koiarian	6	3	100.0
-15	Koiarian	6	1	100.0
-16	Koiarian	6	2	100.0
-18	Koiarian	6	1	100.0
-19	Koiarian	6	1	100.0
-20	Koiarian	6	1	0.0
-21	Koiarian	6	2	100.0
-22	Koiarian	6	2	50.0
+8	Koiarian	6	2	100.0
+11	Koiarian	6	1	0.0
+12	Koiarian	6	1	100.0
+13	Koiarian	6	3	66.667
+14	Koiarian	6	2	100.0
+16	Koiarian	6	1	100.0
+17	Koiarian	6	1	0.0
+20	Koiarian	6	1	100.0
+21	Koiarian	6	1	0.0
+22	Koiarian	6	2	100.0
+23	Koiarian	6	3	33.333
 24	Koiarian	6	1	100.0
-25	Koiarian	6	1	100.0
-26	Koiarian	6	1	0.0
-28	Koiarian	6	2	100.0
-29	Koiarian	6	1	100.0
-31	Koiarian	6	1	100.0
-32	Koiarian	6	1	100.0
-33	Koiarian	6	2	100.0
+25	Koiarian	6	2	100.0
+27	Koiarian	6	1	100.0
+28	Koiarian	6	1	100.0
+33	Koiarian	6	2	50.0
+34	Koiarian	6	1	0.0
 35	Koiarian	6	1	100.0
-36	Koiarian	6	1	100.0
+36	Koiarian	6	2	50.0
+37	Koiarian	6	2	100.0
+39	Koiarian	6	1	0.0
 40	Koiarian	6	1	100.0
-42	Koiarian	6	3	100.0
-43	Koiarian	6	1	0.0
-44	Koiarian	6	3	66.667
-45	Koiarian	6	1	0.0
+41	Koiarian	6	2	100.0
+42	Koiarian	6	1	0.0
+43	Koiarian	6	2	50.0
+44	Koiarian	6	2	100.0
+45	Koiarian	6	2	50.0
 46	Koiarian	6	1	100.0
-47	Koiarian	6	2	100.0
-48	Koiarian	6	1	0.0
-50	Koiarian	6	3	33.333
-51	Koiarian	6	2	100.0
-54	Koiarian	6	2	100.0
-57	Koiarian	6	1	100.0
-61	Koiarian	6	2	100.0
-62	Koiarian	6	1	100.0
-63	Koiarian	6	3	100.0
-64	Koiarian	6	2	100.0
-65	Koiarian	6	3	33.333
-66	Koiarian	6	1	100.0
-67	Koiarian	6	1	100.0
-68	Koiarian	6	1	100.0
-70	Koiarian	6	2	100.0
-71	Koiarian	6	2	100.0
-72	Koiarian	6	2	50.0
-73	Koiarian	6	1	100.0
-74	Koiarian	6	2	100.0
-76	Koiarian	6	1	100.0
-77	Koiarian	6	2	100.0
-78	Koiarian	6	1	100.0
-79	Koiarian	6	2	100.0
-80	Koiarian	6	1	100.0
-81	Koiarian	6	2	100.0
-82	Koiarian	6	3	100.0
-85	Koiarian	6	3	100.0
-87	Koiarian	6	1	100.0
-88	Koiarian	6	1	100.0
-92	Koiarian	6	1	100.0
-93	Koiarian	6	3	100.0
-94	Koiarian	6	2	100.0
-95	Koiarian	6	2	100.0
-96	Koiarian	6	1	100.0
+47	Koiarian	6	1	100.0
+48	Koiarian	6	1	100.0
+49	Koiarian	6	1	100.0
+0	Chibchan	17	1	100.0
+1	Chibchan	17	6	83.333
+2	Chibchan	17	3	100.0
+3	Chibchan	17	3	100.0
+4	Chibchan	17	4	100.0
+5	Chibchan	17	3	100.0
+6	Chibchan	17	3	100.0
+7	Chibchan	17	3	66.667
+8	Chibchan	17	4	100.0
+9	Chibchan	17	1	100.0
+10	Chibchan	17	3	66.667
+11	Chibchan	17	5	80.0
+12	Chibchan	17	2	100.0
+13	Chibchan	17	4	100.0
+14	Chibchan	17	4	100.0
+15	Chibchan	17	1	100.0
+16	Chibchan	17	5	100.0
+17	Chibchan	17	5	100.0
+18	Chibchan	17	5	100.0
+19	Chibchan	17	3	66.667
+20	Chibchan	17	1	100.0
+21	Chibchan	17	5	80.0
+22	Chibchan	17	8	75.0
+23	Chibchan	17	1	100.0
+24	Chibchan	17	4	100.0
+25	Chibchan	17	6	83.333
+26	Chibchan	17	2	100.0
+27	Chibchan	17	3	100.0
+28	Chibchan	17	4	25.0
+29	Chibchan	17	2	50.0
+30	Chibchan	17	2	100.0
+31	Chibchan	17	4	100.0
+32	Chibchan	17	3	100.0
+33	Chibchan	17	3	66.667
+34	Chibchan	17	3	100.0
+36	Chibchan	17	1	100.0
+37	Chibchan	17	2	50.0
+38	Chibchan	17	4	100.0
+39	Chibchan	17	4	100.0
+40	Chibchan	17	7	71.429
+41	Chibchan	17	4	50.0
+42	Chibchan	17	4	75.0
+43	Chibchan	17	4	100.0
+44	Chibchan	17	2	100.0
+45	Chibchan	17	2	100.0
+46	Chibchan	17	7	71.429
+47	Chibchan	17	5	80.0
+48	Chibchan	17	5	80.0
+49	Chibchan	17	7	85.714
+0	Chocoan	6	3	66.667
+4	Chocoan	6	3	66.667
+5	Chocoan	6	3	100.0
+6	Chocoan	6	2	100.0
+7	Chocoan	6	1	100.0
+8	Chocoan	6	2	50.0
+9	Chocoan	6	2	100.0
+10	Chocoan	6	2	100.0
+11	Chocoan	6	2	100.0
+12	Chocoan	6	1	100.0
+13	Chocoan	6	1	100.0
+14	Chocoan	6	1	100.0
+15	Chocoan	6	3	100.0
+16	Chocoan	6	1	100.0
+17	Chocoan	6	2	100.0
+18	Chocoan	6	1	100.0
+19	Chocoan	6	1	100.0
+21	Chocoan	6	2	50.0
+22	Chocoan	6	1	0.0
+23	Chocoan	6	1	100.0
+25	Chocoan	6	1	100.0
+29	Chocoan	6	1	100.0
+30	Chocoan	6	2	100.0
+31	Chocoan	6	2	100.0
+33	Chocoan	6	1	100.0
+36	Chocoan	6	1	100.0
+37	Chocoan	6	1	100.0
+39	Chocoan	6	2	100.0
+43	Chocoan	6	1	100.0
+44	Chocoan	6	3	100.0
+45	Chocoan	6	1	100.0
+46	Chocoan	6	1	100.0
+48	Chocoan	6	2	100.0
+49	Chocoan	6	1	100.0
+0	Uralic	27	5	100.0
+1	Uralic	27	4	100.0
+2	Uralic	27	4	100.0
+3	Uralic	27	6	100.0
+4	Uralic	27	4	100.0
+5	Uralic	27	6	100.0
+6	Uralic	27	6	100.0
+7	Uralic	27	7	100.0
+8	Uralic	27	8	100.0
+9	Uralic	27	7	100.0
+10	Uralic	27	5	100.0
+11	Uralic	27	7	100.0
+12	Uralic	27	12	100.0
+13	Uralic	27	2	100.0
+14	Uralic	27	3	100.0
+15	Uralic	27	6	100.0
+16	Uralic	27	5	100.0
+17	Uralic	27	10	100.0
+18	Uralic	27	8	100.0
+19	Uralic	27	6	100.0
+20	Uralic	27	8	100.0
+21	Uralic	27	9	100.0
+22	Uralic	27	7	100.0
+23	Uralic	27	8	100.0
+24	Uralic	27	6	100.0
+25	Uralic	27	7	100.0
+26	Uralic	27	7	100.0
+27	Uralic	27	7	100.0
+28	Uralic	27	7	85.714
+29	Uralic	27	4	100.0
+30	Uralic	27	5	100.0
+31	Uralic	27	7	100.0
+32	Uralic	27	7	100.0
+33	Uralic	27	3	100.0
+34	Uralic	27	7	100.0
+35	Uralic	27	7	100.0
+36	Uralic	27	9	100.0
+37	Uralic	27	6	100.0
+38	Uralic	27	5	100.0
+39	Uralic	27	3	100.0
+40	Uralic	27	5	100.0
+41	Uralic	27	7	100.0
+42	Uralic	27	3	100.0
+43	Uralic	27	5	100.0
+44	Uralic	27	5	100.0
+45	Uralic	27	10	100.0
+46	Uralic	27	4	100.0
+47	Uralic	27	4	100.0
+48	Uralic	27	7	100.0
+49	Uralic	27	6	100.0
+0	Tucanoan	18	1	100.0
+1	Tucanoan	18	1	100.0
+2	Tucanoan	18	3	100.0
+3	Tucanoan	18	3	100.0
+4	Tucanoan	18	3	100.0
+5	Tucanoan	18	2	100.0
+6	Tucanoan	18	2	100.0
+7	Tucanoan	18	2	100.0
+8	Tucanoan	18	3	100.0
+9	Tucanoan	18	5	100.0
+10	Tucanoan	18	2	100.0
+11	Tucanoan	18	2	100.0
+12	Tucanoan	18	5	100.0
+13	Tucanoan	18	7	100.0
+14	Tucanoan	18	3	100.0
+15	Tucanoan	18	1	100.0
+17	Tucanoan	18	2	100.0
+18	Tucanoan	18	2	100.0
+19	Tucanoan	18	4	100.0
+20	Tucanoan	18	4	100.0
+21	Tucanoan	18	4	100.0
+22	Tucanoan	18	3	100.0
+23	Tucanoan	18	4	100.0
+24	Tucanoan	18	8	87.5
+25	Tucanoan	18	3	100.0
+26	Tucanoan	18	2	100.0
+27	Tucanoan	18	3	100.0
+28	Tucanoan	18	3	100.0
+29	Tucanoan	18	2	100.0
+30	Tucanoan	18	2	100.0
+31	Tucanoan	18	5	100.0
+32	Tucanoan	18	2	100.0
+33	Tucanoan	18	3	100.0
+34	Tucanoan	18	2	100.0
+35	Tucanoan	18	3	100.0
+36	Tucanoan	18	1	100.0
+37	Tucanoan	18	3	100.0
+38	Tucanoan	18	7	100.0
+39	Tucanoan	18	5	100.0
+40	Tucanoan	18	1	100.0
+41	Tucanoan	18	1	100.0
+42	Tucanoan	18	5	100.0
+43	Tucanoan	18	2	100.0
+44	Tucanoan	18	6	100.0
+45	Tucanoan	18	7	100.0
+46	Tucanoan	18	3	100.0
+47	Tucanoan	18	3	100.0
+48	Tucanoan	18	2	100.0
+49	Tucanoan	18	2	100.0
+0	Tupian	33	3	100.0
+1	Tupian	33	10	100.0
+2	Tupian	33	7	100.0
+3	Tupian	33	6	100.0
+4	Tupian	33	4	100.0
+5	Tupian	33	9	100.0
+6	Tupian	33	7	100.0
+7	Tupian	33	3	100.0
+8	Tupian	33	5	100.0
+9	Tupian	33	8	100.0
+10	Tupian	33	6	100.0
+11	Tupian	33	4	100.0
+12	Tupian	33	9	100.0
+13	Tupian	33	6	100.0
+14	Tupian	33	7	100.0
+15	Tupian	33	4	100.0
+16	Tupian	33	8	100.0
+17	Tupian	33	9	100.0
+18	Tupian	33	11	100.0
+19	Tupian	33	4	100.0
+20	Tupian	33	4	100.0
+21	Tupian	33	2	100.0
+22	Tupian	33	4	100.0
+23	Tupian	33	7	100.0
+24	Tupian	33	9	100.0
+25	Tupian	33	8	100.0
+26	Tupian	33	6	100.0
+27	Tupian	33	6	100.0
+28	Tupian	33	8	100.0
+29	Tupian	33	7	100.0
+30	Tupian	33	10	100.0
+31	Tupian	33	6	100.0
+32	Tupian	33	11	100.0
+33	Tupian	33	11	100.0
+34	Tupian	33	6	100.0
+35	Tupian	33	3	66.667
+36	Tupian	33	8	100.0
+37	Tupian	33	2	100.0
+38	Tupian	33	8	100.0
+39	Tupian	33	6	100.0
+40	Tupian	33	8	100.0
+41	Tupian	33	6	100.0
+42	Tupian	33	5	100.0
+43	Tupian	33	9	100.0
+44	Tupian	33	5	100.0
+45	Tupian	33	6	100.0
+46	Tupian	33	11	100.0
+47	Tupian	33	6	100.0
+48	Tupian	33	4	100.0
+49	Tupian	33	4	100.0
+0	Nuclear-Macro-Je	6	2	0.0
+1	Nuclear-Macro-Je	6	3	0.0
+2	Nuclear-Macro-Je	6	3	0.0
+3	Nuclear-Macro-Je	6	3	0.0
+4	Nuclear-Macro-Je	6	1	0.0
+6	Nuclear-Macro-Je	6	1	0.0
+7	Nuclear-Macro-Je	6	3	0.0
+8	Nuclear-Macro-Je	6	2	0.0
+9	Nuclear-Macro-Je	6	1	0.0
+11	Nuclear-Macro-Je	6	1	0.0
+12	Nuclear-Macro-Je	6	2	0.0
+14	Nuclear-Macro-Je	6	3	0.0
+15	Nuclear-Macro-Je	6	2	0.0
+16	Nuclear-Macro-Je	6	1	0.0
+19	Nuclear-Macro-Je	6	1	0.0
+20	Nuclear-Macro-Je	6	1	0.0
+21	Nuclear-Macro-Je	6	3	0.0
+22	Nuclear-Macro-Je	6	2	0.0
+24	Nuclear-Macro-Je	6	1	0.0
+26	Nuclear-Macro-Je	6	2	0.0
+27	Nuclear-Macro-Je	6	2	0.0
+28	Nuclear-Macro-Je	6	2	0.0
+30	Nuclear-Macro-Je	6	2	0.0
+31	Nuclear-Macro-Je	6	1	0.0
+32	Nuclear-Macro-Je	6	2	0.0
+33	Nuclear-Macro-Je	6	1	0.0
+34	Nuclear-Macro-Je	6	2	0.0
+36	Nuclear-Macro-Je	6	1	0.0
+37	Nuclear-Macro-Je	6	3	0.0
+39	Nuclear-Macro-Je	6	1	0.0
+41	Nuclear-Macro-Je	6	1	0.0
+43	Nuclear-Macro-Je	6	1	0.0
+44	Nuclear-Macro-Je	6	1	0.0
+46	Nuclear-Macro-Je	6	1	0.0
+47	Nuclear-Macro-Je	6	2	0.0
+48	Nuclear-Macro-Je	6	1	0.0
+49	Nuclear-Macro-Je	6	2	0.0
+0	East Strickland	5	1	100.0
+1	East Strickland	5	1	100.0
+2	East Strickland	5	1	0.0
+3	East Strickland	5	1	100.0
+4	East Strickland	5	2	50.0
+5	East Strickland	5	1	100.0
+10	East Strickland	5	1	100.0
+11	East Strickland	5	1	100.0
+12	East Strickland	5	1	100.0
+16	East Strickland	5	3	66.667
+18	East Strickland	5	1	0.0
+19	East Strickland	5	1	0.0
+20	East Strickland	5	1	100.0
+21	East Strickland	5	1	0.0
+22	East Strickland	5	1	100.0
+25	East Strickland	5	1	100.0
+28	East Strickland	5	2	100.0
+30	East Strickland	5	1	100.0
+31	East Strickland	5	3	33.333
+32	East Strickland	5	1	100.0
+37	East Strickland	5	2	50.0
+39	East Strickland	5	1	0.0
+43	East Strickland	5	1	100.0
+44	East Strickland	5	1	100.0
+47	East Strickland	5	2	100.0
+49	East Strickland	5	1	0.0
+0	Mixe-Zoque	9	2	100.0
+1	Mixe-Zoque	9	1	0.0
+2	Mixe-Zoque	9	1	100.0
+3	Mixe-Zoque	9	1	100.0
+4	Mixe-Zoque	9	1	100.0
+5	Mixe-Zoque	9	1	100.0
+6	Mixe-Zoque	9	1	100.0
+7	Mixe-Zoque	9	1	100.0
+8	Mixe-Zoque	9	3	100.0
+9	Mixe-Zoque	9	1	100.0
+10	Mixe-Zoque	9	2	100.0
+11	Mixe-Zoque	9	1	100.0
+12	Mixe-Zoque	9	4	75.0
+13	Mixe-Zoque	9	1	100.0
+14	Mixe-Zoque	9	2	100.0
+15	Mixe-Zoque	9	2	100.0
+16	Mixe-Zoque	9	4	75.0
+18	Mixe-Zoque	9	2	100.0
+19	Mixe-Zoque	9	2	100.0
+21	Mixe-Zoque	9	2	100.0
+22	Mixe-Zoque	9	1	100.0
+25	Mixe-Zoque	9	1	100.0
+26	Mixe-Zoque	9	2	100.0
+27	Mixe-Zoque	9	1	100.0
+28	Mixe-Zoque	9	1	100.0
+29	Mixe-Zoque	9	3	100.0
+30	Mixe-Zoque	9	1	0.0
+31	Mixe-Zoque	9	4	100.0
+32	Mixe-Zoque	9	2	50.0
+33	Mixe-Zoque	9	2	100.0
+35	Mixe-Zoque	9	1	100.0
+36	Mixe-Zoque	9	4	100.0
+37	Mixe-Zoque	9	2	100.0
+38	Mixe-Zoque	9	1	100.0
+39	Mixe-Zoque	9	2	100.0
+40	Mixe-Zoque	9	1	100.0
+41	Mixe-Zoque	9	3	66.667
+42	Mixe-Zoque	9	1	100.0
+44	Mixe-Zoque	9	1	100.0
+45	Mixe-Zoque	9	1	100.0
+46	Mixe-Zoque	9	1	100.0
+48	Mixe-Zoque	9	2	50.0
+49	Mixe-Zoque	9	3	66.667
+1	Sepik	8	3	66.667
+2	Sepik	8	4	50.0
+3	Sepik	8	1	100.0
+4	Sepik	8	2	0.0
+6	Sepik	8	1	100.0
+7	Sepik	8	3	100.0
+8	Sepik	8	2	100.0
+9	Sepik	8	3	66.667
+10	Sepik	8	2	100.0
+11	Sepik	8	1	0.0
+12	Sepik	8	2	50.0
+14	Sepik	8	2	50.0
+17	Sepik	8	1	100.0
+18	Sepik	8	3	33.333
+19	Sepik	8	2	50.0
+20	Sepik	8	4	50.0
+21	Sepik	8	3	66.667
+22	Sepik	8	1	100.0
+23	Sepik	8	1	100.0
+24	Sepik	8	1	100.0
+25	Sepik	8	1	100.0
+26	Sepik	8	3	66.667
+27	Sepik	8	3	66.667
+28	Sepik	8	1	100.0
+29	Sepik	8	1	100.0
+30	Sepik	8	4	50.0
+31	Sepik	8	4	50.0
+32	Sepik	8	1	100.0
+33	Sepik	8	2	100.0
+34	Sepik	8	2	100.0
+36	Sepik	8	1	100.0
+37	Sepik	8	2	100.0
+38	Sepik	8	3	33.333
+39	Sepik	8	1	100.0
+40	Sepik	8	5	40.0
+41	Sepik	8	2	50.0
+42	Sepik	8	1	100.0
+43	Sepik	8	3	66.667
+44	Sepik	8	3	66.667
+45	Sepik	8	1	100.0
+47	Sepik	8	2	50.0
+49	Sepik	8	3	66.667
+1	Kru	5	3	66.667
+2	Kru	5	1	100.0
+3	Kru	5	1	100.0
+4	Kru	5	1	100.0
+5	Kru	5	1	100.0
+7	Kru	5	3	100.0
+8	Kru	5	2	100.0
+14	Kru	5	2	100.0
+15	Kru	5	1	100.0
+16	Kru	5	1	100.0
+18	Kru	5	1	100.0
+20	Kru	5	3	100.0
+24	Kru	5	2	100.0
+26	Kru	5	1	100.0
+27	Kru	5	1	100.0
+28	Kru	5	1	100.0
+29	Kru	5	1	100.0
+31	Kru	5	2	100.0
+32	Kru	5	1	100.0
+34	Kru	5	2	100.0
+35	Kru	5	1	100.0
+36	Kru	5	2	100.0
+40	Kru	5	3	100.0
+42	Kru	5	1	100.0
+44	Kru	5	2	100.0
+45	Kru	5	1	100.0
+46	Kru	5	2	100.0
+47	Kru	5	1	100.0
+48	Kru	5	1	100.0
+1	Barbacoan	5	1	100.0
+3	Barbacoan	5	1	0.0
+4	Barbacoan	5	2	50.0
+5	Barbacoan	5	3	66.667
+6	Barbacoan	5	2	50.0
+7	Barbacoan	5	1	100.0
+8	Barbacoan	5	2	100.0
+11	Barbacoan	5	1	100.0
+12	Barbacoan	5	1	100.0
+13	Barbacoan	5	2	100.0
+15	Barbacoan	5	1	100.0
+16	Barbacoan	5	2	50.0
+17	Barbacoan	5	2	100.0
+20	Barbacoan	5	1	100.0
+21	Barbacoan	5	1	100.0
+22	Barbacoan	5	1	100.0
+24	Barbacoan	5	2	100.0
+26	Barbacoan	5	1	100.0
+28	Barbacoan	5	1	100.0
+29	Barbacoan	5	1	100.0
+31	Barbacoan	5	1	0.0
+32	Barbacoan	5	1	0.0
+33	Barbacoan	5	1	0.0
+35	Barbacoan	5	1	100.0
+38	Barbacoan	5	1	100.0
+39	Barbacoan	5	1	100.0
+40	Barbacoan	5	2	100.0
+41	Barbacoan	5	1	100.0
+42	Barbacoan	5	1	100.0
+43	Barbacoan	5	1	100.0
+45	Barbacoan	5	1	100.0
+46	Barbacoan	5	2	50.0
+47	Barbacoan	5	2	0.0
+48	Barbacoan	5	1	0.0
+49	Barbacoan	5	2	50.0
+1	Dravidian	10	1	100.0
+2	Dravidian	10	1	100.0
+3	Dravidian	10	4	100.0
+5	Dravidian	10	1	100.0
+7	Dravidian	10	4	100.0
+8	Dravidian	10	3	100.0
+11	Dravidian	10	3	100.0
+12	Dravidian	10	1	100.0
+13	Dravidian	10	5	80.0
+14	Dravidian	10	3	100.0
+15	Dravidian	10	5	80.0
+16	Dravidian	10	2	100.0
+17	Dravidian	10	2	100.0
+18	Dravidian	10	1	100.0
+19	Dravidian	10	4	100.0
+21	Dravidian	10	2	100.0
+22	Dravidian	10	4	100.0
+24	Dravidian	10	2	100.0
+25	Dravidian	10	1	100.0
+26	Dravidian	10	3	100.0
+27	Dravidian	10	1	100.0
+28	Dravidian	10	3	100.0
+29	Dravidian	10	2	100.0
+30	Dravidian	10	1	100.0
+32	Dravidian	10	3	66.667
+33	Dravidian	10	2	100.0
+34	Dravidian	10	2	100.0
+35	Dravidian	10	1	100.0
+36	Dravidian	10	3	100.0
+37	Dravidian	10	1	100.0
+38	Dravidian	10	5	80.0
+39	Dravidian	10	2	100.0
+40	Dravidian	10	2	100.0
+41	Dravidian	10	2	100.0
+43	Dravidian	10	2	100.0
+45	Dravidian	10	4	100.0
+47	Dravidian	10	2	100.0
+48	Dravidian	10	1	100.0
+49	Dravidian	10	3	100.0
+1	Guahiboan	5	1	100.0
+3	Guahiboan	5	1	100.0
+4	Guahiboan	5	2	100.0
+5	Guahiboan	5	3	100.0
+6	Guahiboan	5	1	100.0
+9	Guahiboan	5	2	100.0
+10	Guahiboan	5	1	100.0
+11	Guahiboan	5	2	100.0
+12	Guahiboan	5	1	100.0
+13	Guahiboan	5	1	100.0
+14	Guahiboan	5	2	100.0
+16	Guahiboan	5	2	100.0
+17	Guahiboan	5	1	100.0
+18	Guahiboan	5	1	100.0
+20	Guahiboan	5	1	100.0
+21	Guahiboan	5	1	100.0
+23	Guahiboan	5	1	100.0
+24	Guahiboan	5	1	100.0
+25	Guahiboan	5	1	100.0
+26	Guahiboan	5	1	100.0
+27	Guahiboan	5	1	100.0
+28	Guahiboan	5	1	100.0
+29	Guahiboan	5	1	100.0
+30	Guahiboan	5	1	100.0
+32	Guahiboan	5	1	100.0
+33	Guahiboan	5	1	100.0
+35	Guahiboan	5	2	100.0
+36	Guahiboan	5	2	100.0
+38	Guahiboan	5	1	0.0
+42	Guahiboan	5	1	100.0
+43	Guahiboan	5	1	100.0
+44	Guahiboan	5	2	100.0
+47	Guahiboan	5	2	0.0
+48	Guahiboan	5	1	100.0
+49	Guahiboan	5	2	100.0
+3	Chicham	3	1	100.0
+7	Chicham	3	1	100.0
+8	Chicham	3	2	50.0
+10	Chicham	3	1	100.0
+11	Chicham	3	1	0.0
+15	Chicham	3	1	100.0
+21	Chicham	3	1	100.0
+24	Chicham	3	2	50.0
+27	Chicham	3	1	0.0
+28	Chicham	3	1	100.0
+33	Chicham	3	1	100.0
+34	Chicham	3	1	0.0
+35	Chicham	3	2	50.0
+40	Chicham	3	1	100.0
+42	Chicham	3	1	0.0
+44	Chicham	3	1	100.0
+48	Chicham	3	1	100.0
+49	Chicham	3	1	100.0

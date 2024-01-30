@@ -14,10 +14,10 @@ from clldutils.misc import slug
 
 
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
-            test_longdistance=False, distances=False):
+            test_longdistance=False, distances=False, test_np=False):
     # Hyperparameters
-    runs = 100
-    epochs = 5000
+    runs = 50
+    epochs = 2000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -121,6 +121,23 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 full_data[lang] = bpt_data[lang]
             else:
                 tests[lang] = bpt_data[lang]
+
+    # Add NorthPeruLex training data + Evaluation, including Uru-Chipaya
+    if test_np is True:
+        train_np = ['achu1248', 'shua1257', 'agua1253', 'huam1247', 'bora1263', 'muin1242']
+        np_wl = dict(get_other(mode="np").items())
+        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load="lexical")
+        for lang in np_data:
+            if lang in train_np:
+                full_data[lang] = np_data[lang]
+            else:
+                tests[lang] = np_data[lang]
+
+        ca_wl = dict(get_other(mode="crossandean").items())
+        ca_data = convert_data(ca_wl, {k: v[0] for k, v in asjp.items()}, converter, load="lexical", threshold=1)
+        for lang in ca_data:
+            tests[lang] = ca_data[lang]
+
 
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode="iecor").items())
@@ -261,7 +278,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             vector = vector.to(device)
 
             outs = model(vector)
-            _, prediction = torch.max(outs.features, 1)
+            _, prediction = torch.max(outs.data, 1)
             prediction = idx2fam[prediction.item()]
 
             return prediction
@@ -398,6 +415,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             sep = "" if i < 0 else "\n"
             if v > (len(results[item])*0.1):
                 results_str = results_str + k + ": " + str(v) + sep
+
         results_table.append([
             item[0],
             item[1],
@@ -433,8 +451,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         round(mean(fam_scores), 2),
         round(stdev(fam_scores), 2)
         ]]
-    for item in table:
-        print(table)
 
     header = ["Family", "Languages", "Tested", "Avg. Fam. Accuracy", "Fam-STD"]
     output = "results/results_" + data + mod + ".tsv"
@@ -470,6 +486,7 @@ if __name__ == '__main__':
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-pano', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
+    parser.add_argument('-test_np', action='store_true')
     parser.add_argument('-distances', action='store_true',
                         help="Adds the cosine distances of the model weights for each family")
 
@@ -481,5 +498,6 @@ if __name__ == '__main__':
         test_isolates=args.isolates,
         test_pano=args.pano,
         test_longdistance=args.longdistance,
-        distances=args.distances
+        distances=args.distances,
+        test_np=args.test_np
         )

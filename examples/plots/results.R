@@ -49,7 +49,7 @@ violin_complex <- per_model %>%
 
 violin_complex
 ggsave("violin_complex.png", plot=violin_complex, dpi=300,
-       width=3000, height=1500, units="px")
+       width=2000, height=1500, units="px")
 
 
 #####################
