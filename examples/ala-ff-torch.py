@@ -25,24 +25,24 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 
     tests = defaultdict()
     if test_pano is True:
-        tacanan = extract_branch(gcode="taca1255")
-        panoan = extract_branch(gcode="pano1256")
-        pano_iso = ["mose1249", "movi1243", "chip1262"]
+        tacanan = extract_branch(gcode='taca1255')
+        panoan = extract_branch(gcode='pano1256')
+        pano_iso = ['mose1249', 'movi1243', 'chip1262']
 
     if test_longdistance is True:
-        northern_uto = extract_branch(gcode="nort2953")
-        anatolian = extract_branch(gcode="anat1257")
-        tocharian = extract_branch(gcode="tokh1241")
-        tapakuric = extract_branch(gcode="tapa1264")
-        sinitic = extract_branch(gcode="sini1245")
-        mien = extract_branch(gcode="mien1242")
-        matacoan = extract_branch(gcode="mata1289")
+        northern_uto = extract_branch(gcode='nort2953')
+        anatolian = extract_branch(gcode='anat1257')
+        tocharian = extract_branch(gcode='tokh1241')
+        tapakuric = extract_branch(gcode='tapa1264')
+        sinitic = extract_branch(gcode='sini1245')
+        mien = extract_branch(gcode='mien1242')
+        matacoan = extract_branch(gcode='mata1289')
 
-    isolates = ["bang1363", "basq1248", "mapu1245"] if test_isolates is True else []
+    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250'] if test_isolates is True else []
 
     # Switch on GPU if available
-    device = "mps" if torch.backends.mps.is_available() else "cuda" if torch.cuda.is_available() else "cpu"
-    print("Current device:", device)
+    device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
+    print('Current device:', device)
 
     # Empty lists and dicts for results
     table = []
@@ -55,25 +55,25 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     asjp = get_asjp()
     grambank = get_gb()
     lexibank = get_lb()
-    gb_conv = feature2vec(get_db("data/grambank.sqlite3"))
-    lb_conv = concept2vec(get_db("data/lexibank.sqlite3"), model="dolgo")
+    gb_conv = feature2vec(get_db('data/grambank.sqlite3'))
+    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
 
-    load = "grambank" if data == "grambank" else "lexical"
-    converter = gb_conv if data == "grambank" else lb_conv
+    load = 'grambank' if data == 'grambank' else 'lexical'
+    converter = gb_conv if data == 'grambank' else lb_conv
 
-    if data in ("lexibank", "lb_mod", "combined"):
+    if data in ('lexibank', 'lb_mod', 'combined'):
         wordlists = dict(lexibank.items())
-    elif data == "grambank":
+    elif data == 'grambank':
         wordlists = dict(grambank.items())
-    elif data == "asjp":
-        wordlists = dict(get_other(mode="asjp").items())
+    elif data == 'asjp':
+        wordlists = dict(get_other(mode='asjp').items())
 
     if intersection is True:
-        intersec = lexibank if data == "grambank" else grambank
+        intersec = lexibank if data == 'grambank' else grambank
         wordlists = {k: wordlists[k] for k in wordlists if k in intersec}
-        mod = "_intersec"
+        mod = '_intersec'
     else:
-        mod = "_no"
+        mod = '_no'
 
     if data != 'combined':
         full_data = convert_data(
@@ -100,14 +100,14 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             gb_dic,
             {k: v[0] for k, v in asjp.items()},
             gb_conv,
-            load="grambank",
+            load='grambank',
             threshold=1)
         # Combine data vectors
         for lang in full_data:
             full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
 
     if test_pano is True:
-        bpt_wl = dict(get_other(mode="bpt").items())
+        bpt_wl = dict(get_other(mode='bpt').items())
         if intersection is True:
             bpt_wl = {k: bpt_wl[k] for k in bpt_wl if k in intersec}
 
@@ -115,7 +115,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             bpt_wl,
             {k: v[0] for k, v in asjp.items()},
             converter,
-            load="lexical")
+            load='lexical')
         for lang in bpt_data:
             if lang in panoan:
                 full_data[lang] = bpt_data[lang]
@@ -125,24 +125,24 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     # Add NorthPeruLex training data + Evaluation, including Uru-Chipaya
     if test_np is True:
         train_np = ['achu1248', 'shua1257', 'agua1253', 'huam1247', 'bora1263', 'muin1242']
-        np_wl = dict(get_other(mode="np").items())
-        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load="lexical")
+        np_wl = dict(get_other(mode='np').items())
+        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical')
         for lang in np_data:
             if lang in train_np:
                 full_data[lang] = np_data[lang]
             else:
                 tests[lang] = np_data[lang]
 
-        ca_wl = dict(get_other(mode="crossandean").items())
-        ca_data = convert_data(ca_wl, {k: v[0] for k, v in asjp.items()}, converter, load="lexical", threshold=1)
+        ca_wl = dict(get_other(mode='crossandean').items())
+        ca_data = convert_data(ca_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical', threshold=1)
         for lang in ca_data:
             tests[lang] = ca_data[lang]
 
 
     if test_longdistance is True:
-        iecor_wl = dict(get_other(mode="iecor").items())
-        chap_wl = dict(get_other(mode="bc").items())
-        mata_wl = dict(get_other(mode="vbc").items())
+        iecor_wl = dict(get_other(mode='iecor').items())
+        chap_wl = dict(get_other(mode='bc').items())
+        mata_wl = dict(get_other(mode='vbc').items())
 
         if intersection is True:
             iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
@@ -150,11 +150,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             mata_wl = {k: mata_wl[k] for k in mata_wl if k in intersec}
 
         iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load="lexical")
+                                  converter, load='lexical')
         chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load="tapakuric")
+                                  converter, load='tapakuric')
         mata_data = convert_data(mata_wl, {k: v[0] for k, v in asjp.items()},
-                                 converter, load="mataguayan")
+                                 converter, load='mataguayan')
 
         for lang in iecor_data:
             if lang in anatolian or lang in tocharian:
@@ -190,7 +190,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             fam2weight[family] += 1
 
         # Add Tacanan to test and Pano to data
-        if family == "Pano-Tacanan" and test_pano is True:
+        if family == 'Pano-Tacanan' and test_pano is True:
             if lang in tacanan or lang in pano_iso:
                 tests[lang] = full_data[lang]
             else:
@@ -198,20 +198,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 labels.append(fam2idx[family])
 
         # Add Southern to test and northern to data            
-        elif family == "Uto-Aztecan" and test_longdistance is True:
+        elif family == 'Uto-Aztecan' and test_longdistance is True:
             if lang not in northern_uto:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
-        elif family == "Sino-Tibetan" and test_longdistance is True:
+        elif family == 'Sino-Tibetan' and test_longdistance is True:
             if lang in sinitic:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
-        elif family == "Hmong-Mien" and test_longdistance is True:
+        elif family == 'Hmong-Mien' and test_longdistance is True:
             if lang in mien:
                 tests[lang] = full_data[lang]
             else:
@@ -219,13 +219,14 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 labels.append(fam2idx[family])
 
         # Add test cases to test and others out
-        elif family == "Unclassified" and test_isolates is True:
+        elif family == 'Unclassified' and test_isolates is True:
             if lang in isolates:
                 tests[lang] = full_data[lang]
             else:
-                pass
+                features.append(full_data[lang][2])
+                labels.append(fam2idx[family])
 
-        elif family == "Unclassified" and test_isolates is False:
+        elif family == 'Unclassified' and test_isolates is False:
             if lang in isolates:
                 tests[lang] = full_data[lang]
             else:
@@ -284,7 +285,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             return prediction
 
     for run in range(runs):
-        print("--- New Run: ", run, "/", runs, "---")
+        print('--- New Run: ', run, '/', runs, '---')
         fam_final = defaultdict()
         train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
         # Alternative to weighted loss function: Weighted Sampler; however, this works less well
@@ -372,11 +373,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                     u = u.cpu().detach().numpy()
                     dist[i][j] = distance.cosine(v, u)
 
-            with open("family-distances.tsv", "w", encoding="utf8") as f:
-                f.write(" "+str(len(fam2idx))+"\n")
+            with open('family-distances.tsv', 'w', encoding='utf8') as f:
+                f.write(' '+str(len(fam2idx))+'\n')
                 for i, row in enumerate(dist):
-                    f.write(slug(idx2fam[i], lowercase=False) + " ")
-                    f.write(" ".join([f"{cell}" for cell in row])+"\n")
+                    f.write(slug(idx2fam[i], lowercase=False) + ' ')
+                    f.write(' '.join([f'{cell}' for cell in row])+'\n')
 
         # Add family results
         for fam in fam_final:
@@ -407,14 +408,14 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             else:
                 results[results_id] = [pred]
 
-    print("---------------")
+    print('---------------')
     results_table = []
     for item in results:
-        results_str = ""
+        results_str = ''
         for i, (k, v) in enumerate(Counter(results[item]).items()):
-            sep = "" if i < 0 else "\n"
+            sep = '' if i < 0 else '\n'
             if v > (len(results[item])*0.1):
-                results_str = results_str + k + ": " + str(v) + sep
+                results_str = results_str + k + ': ' + str(v) + sep
 
         results_table.append([
             item[0],
@@ -427,14 +428,14 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     print(tabulate(
         results_table,
         headers=[
-            "Language",
-            "Family",
-            "Predictions"
+            'Language',
+            'Family',
+            'Predictions'
             ],
-        tablefmt="pipe"
+        tablefmt='pipe'
         ))
 
-    print("---------------")
+    print('---------------')
     for fam, rows in sorted(results_per_fam.items()):
         table += [[
             fam,
@@ -445,25 +446,25 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             ]]
 
     table += [[
-        "TOTAL",
+        'TOTAL',
         len(full_data),
         len(test_dataset),
         round(mean(fam_scores), 2),
         round(stdev(fam_scores), 2)
         ]]
 
-    header = ["Family", "Languages", "Tested", "Avg. Fam. Accuracy", "Fam-STD"]
-    output = "results/results_" + data + mod + ".tsv"
-    with open(output, 'w', encoding="utf8", newline='') as f:
-        writer = csv.writer(f, delimiter="\t")
+    header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
+    output = 'results/results_' + data + mod + '.tsv'
+    with open(output, 'w', encoding='utf8', newline='') as f:
+        writer = csv.writer(f, delimiter='\t')
         writer.writerow(header)
         writer.writerows(table)
 
     # Detailed results per run
-    output_detailed = output.replace(".tsv", "_detailed.tsv")
-    with open(output_detailed, 'w', encoding="utf8", newline='') as f:
-        writer = csv.writer(f, delimiter="\t")
-        writer.writerow(["Run", "Family", "Languages", "Tested", "Accuracy"])
+    output_detailed = output.replace('.tsv', '_detailed.tsv')
+    with open(output_detailed, 'w', encoding='utf8', newline='') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
         for family in results_per_fam:
             for run in results_per_fam[family]:
                 writer.writerow(run)
@@ -471,24 +472,24 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     print(tabulate(
         table,
         headers=header,
-        floatfmt=".2f",
-        tablefmt="pipe"
+        floatfmt='.2f',
+        tablefmt='pipe'
         ))
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data", type=str,
-                        help="Choose the dataset for your experiment: \
-                            lexibank, grambank, or combined")
-    parser.add_argument("-intersection", action='store_true',
-                        help="Choose if intersect with another dataset")
+    parser.add_argument('--data', type=str,
+                        help='Choose the dataset for your experiment: \
+                            lexibank, grambank, or combined')
+    parser.add_argument('-intersection', action='store_true',
+                        help='Choose if intersect with another dataset')
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-pano', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
     parser.add_argument('-test_np', action='store_true')
     parser.add_argument('-distances', action='store_true',
-                        help="Adds the cosine distances of the model weights for each family")
+                        help='Adds the cosine distances of the model weights for each family')
 
     args = parser.parse_args()
 

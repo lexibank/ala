@@ -36,8 +36,11 @@ per_model<- full_data %>% group_by(Model, Run) %>%
 
 violin_complex <- per_model %>% 
   ggplot(aes(x=reorder(Model, Accuracy), y=Accuracy)) +
-  geom_boxplot(aes(fill=Model), width=.2, size=0.3, outlier.shape=NA) +
   geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.2) +
+  stat_summary(fun = "mean",
+               geom = "crossbar", 
+               width = 0.5,
+               colour = "red") +
   stat_halfeye(aes(fill=Model), adjust=1, width=.6, color=NA, position=position_nudge(x=.15)) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.9) +
