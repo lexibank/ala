@@ -1,0 +1,9 @@
+Language	Model	Prediction 1	Prediction 2	Prediction 3
+kusu1250	lb_full	NTNG 20	Sino-Tibetan 20	Austroasiatic 7
+bang1363	lb_full	Atlantic-Congo 20	Dogon 28	
+basq1248	lb_full	Indo-european 47		
+mapu1245	lb_full	Unclassified 46		
+kusu1250	combined	Sino-Tibetan 27	Unclassified 22
+bang1363	combined	Unclassified 30	Atlantic-Congo 12	Mande 7	
+basq1248	combined	Indo-European 30	Unclassified 18	
+mapu1245	combined	Unclassified 50		

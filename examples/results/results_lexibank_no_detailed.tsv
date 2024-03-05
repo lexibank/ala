@@ -1,0 +1,632 @@
+Run	Family	Languages	Tested	Accuracy
+0	Sino-Tibetan	96	24	100.0
+1	Sino-Tibetan	96	24	100.0
+2	Sino-Tibetan	96	15	100.0
+3	Sino-Tibetan	96	18	100.0
+4	Sino-Tibetan	96	18	100.0
+5	Sino-Tibetan	96	20	100.0
+6	Sino-Tibetan	96	19	100.0
+7	Sino-Tibetan	96	23	95.652
+8	Sino-Tibetan	96	18	100.0
+9	Sino-Tibetan	96	20	100.0
+10	Sino-Tibetan	96	16	100.0
+11	Sino-Tibetan	96	26	96.154
+12	Sino-Tibetan	96	20	100.0
+13	Sino-Tibetan	96	22	100.0
+14	Sino-Tibetan	96	16	100.0
+15	Sino-Tibetan	96	19	100.0
+16	Sino-Tibetan	96	23	100.0
+17	Sino-Tibetan	96	24	100.0
+18	Sino-Tibetan	96	11	100.0
+19	Sino-Tibetan	96	25	96.0
+0	Atlantic-Congo	136	30	96.667
+1	Atlantic-Congo	136	25	100.0
+2	Atlantic-Congo	136	32	100.0
+3	Atlantic-Congo	136	16	100.0
+4	Atlantic-Congo	136	27	96.296
+5	Atlantic-Congo	136	20	95.0
+6	Atlantic-Congo	136	31	96.774
+7	Atlantic-Congo	136	25	96.0
+8	Atlantic-Congo	136	18	100.0
+9	Atlantic-Congo	136	30	96.667
+10	Atlantic-Congo	136	32	100.0
+11	Atlantic-Congo	136	28	96.429
+12	Atlantic-Congo	136	28	100.0
+13	Atlantic-Congo	136	21	100.0
+14	Atlantic-Congo	136	27	100.0
+15	Atlantic-Congo	136	35	100.0
+16	Atlantic-Congo	136	24	100.0
+17	Atlantic-Congo	136	30	96.667
+18	Atlantic-Congo	136	24	95.833
+19	Atlantic-Congo	136	26	100.0
+0	Unclassified	182	29	79.31
+1	Unclassified	182	41	97.561
+2	Unclassified	182	35	97.143
+3	Unclassified	182	40	85.0
+4	Unclassified	182	25	92.0
+5	Unclassified	182	40	92.5
+6	Unclassified	182	39	79.487
+7	Unclassified	182	38	97.368
+8	Unclassified	182	41	90.244
+9	Unclassified	182	37	91.892
+10	Unclassified	182	30	83.333
+11	Unclassified	182	33	90.909
+12	Unclassified	182	32	84.375
+13	Unclassified	182	35	97.143
+14	Unclassified	182	40	92.5
+15	Unclassified	182	33	81.818
+16	Unclassified	182	37	86.486
+17	Unclassified	182	35	88.571
+18	Unclassified	182	26	88.462
+19	Unclassified	182	42	95.238
+0	Guahiboan	5	3	66.667
+2	Guahiboan	5	1	100.0
+3	Guahiboan	5	1	100.0
+5	Guahiboan	5	2	100.0
+6	Guahiboan	5	2	50.0
+7	Guahiboan	5	1	100.0
+8	Guahiboan	5	2	100.0
+9	Guahiboan	5	2	100.0
+11	Guahiboan	5	1	100.0
+12	Guahiboan	5	1	100.0
+13	Guahiboan	5	1	100.0
+15	Guahiboan	5	1	100.0
+16	Guahiboan	5	4	50.0
+17	Guahiboan	5	1	100.0
+18	Guahiboan	5	1	100.0
+0	Austronesian	382	83	100.0
+1	Austronesian	382	74	100.0
+2	Austronesian	382	76	100.0
+3	Austronesian	382	86	98.837
+4	Austronesian	382	79	100.0
+5	Austronesian	382	87	97.701
+6	Austronesian	382	73	100.0
+7	Austronesian	382	77	100.0
+8	Austronesian	382	67	100.0
+9	Austronesian	382	70	98.571
+10	Austronesian	382	70	98.571
+11	Austronesian	382	71	100.0
+12	Austronesian	382	87	98.851
+13	Austronesian	382	69	98.551
+14	Austronesian	382	75	100.0
+15	Austronesian	382	76	100.0
+16	Austronesian	382	71	100.0
+17	Austronesian	382	80	98.75
+18	Austronesian	382	80	100.0
+19	Austronesian	382	77	100.0
+0	Mande	16	5	100.0
+2	Mande	16	2	100.0
+4	Mande	16	6	100.0
+5	Mande	16	3	100.0
+6	Mande	16	3	66.667
+7	Mande	16	2	100.0
+8	Mande	16	5	100.0
+9	Mande	16	4	75.0
+10	Mande	16	2	50.0
+11	Mande	16	3	100.0
+12	Mande	16	2	100.0
+13	Mande	16	8	75.0
+14	Mande	16	3	100.0
+15	Mande	16	5	60.0
+16	Mande	16	4	100.0
+17	Mande	16	2	100.0
+18	Mande	16	3	66.667
+19	Mande	16	1	100.0
+0	Nuclear Trans New Guinea	182	29	96.552
+1	Nuclear Trans New Guinea	182	45	97.778
+2	Nuclear Trans New Guinea	182	32	96.875
+3	Nuclear Trans New Guinea	182	38	97.368
+4	Nuclear Trans New Guinea	182	51	100.0
+5	Nuclear Trans New Guinea	182	40	100.0
+6	Nuclear Trans New Guinea	182	33	96.97
+7	Nuclear Trans New Guinea	182	30	96.667
+8	Nuclear Trans New Guinea	182	45	97.778
+9	Nuclear Trans New Guinea	182	32	100.0
+10	Nuclear Trans New Guinea	182	37	100.0
+11	Nuclear Trans New Guinea	182	25	100.0
+12	Nuclear Trans New Guinea	182	28	100.0
+13	Nuclear Trans New Guinea	182	37	100.0
+14	Nuclear Trans New Guinea	182	41	100.0
+15	Nuclear Trans New Guinea	182	31	100.0
+16	Nuclear Trans New Guinea	182	34	100.0
+17	Nuclear Trans New Guinea	182	36	100.0
+18	Nuclear Trans New Guinea	182	47	100.0
+19	Nuclear Trans New Guinea	182	31	100.0
+0	Turkic	27	7	100.0
+1	Turkic	27	2	100.0
+2	Turkic	27	7	100.0
+3	Turkic	27	2	100.0
+4	Turkic	27	2	100.0
+5	Turkic	27	6	100.0
+6	Turkic	27	3	100.0
+7	Turkic	27	6	100.0
+8	Turkic	27	3	100.0
+9	Turkic	27	7	100.0
+10	Turkic	27	8	100.0
+11	Turkic	27	2	100.0
+12	Turkic	27	3	100.0
+13	Turkic	27	5	100.0
+14	Turkic	27	1	100.0
+15	Turkic	27	3	100.0
+16	Turkic	27	7	100.0
+17	Turkic	27	6	100.0
+18	Turkic	27	4	100.0
+19	Turkic	27	2	100.0
+0	Tupian	33	9	100.0
+1	Tupian	33	7	100.0
+2	Tupian	33	6	100.0
+3	Tupian	33	7	100.0
+4	Tupian	33	3	100.0
+5	Tupian	33	9	100.0
+6	Tupian	33	8	100.0
+7	Tupian	33	4	100.0
+8	Tupian	33	6	83.333
+9	Tupian	33	7	100.0
+10	Tupian	33	6	100.0
+11	Tupian	33	6	100.0
+12	Tupian	33	9	88.889
+13	Tupian	33	2	100.0
+14	Tupian	33	7	100.0
+15	Tupian	33	5	100.0
+16	Tupian	33	13	100.0
+17	Tupian	33	9	100.0
+18	Tupian	33	8	87.5
+19	Tupian	33	9	100.0
+0	Afro-Asiatic	79	11	63.636
+1	Afro-Asiatic	79	14	92.857
+2	Afro-Asiatic	79	19	100.0
+3	Afro-Asiatic	79	15	100.0
+4	Afro-Asiatic	79	15	100.0
+5	Afro-Asiatic	79	14	92.857
+6	Afro-Asiatic	79	13	92.308
+7	Afro-Asiatic	79	14	92.857
+8	Afro-Asiatic	79	25	96.0
+9	Afro-Asiatic	79	19	94.737
+10	Afro-Asiatic	79	16	81.25
+11	Afro-Asiatic	79	21	90.476
+12	Afro-Asiatic	79	17	94.118
+13	Afro-Asiatic	79	16	100.0
+14	Afro-Asiatic	79	14	100.0
+15	Afro-Asiatic	79	13	92.308
+16	Afro-Asiatic	79	14	92.857
+17	Afro-Asiatic	79	11	90.909
+18	Afro-Asiatic	79	20	100.0
+19	Afro-Asiatic	79	17	94.118
+0	Uto-Aztecan	28	3	100.0
+1	Uto-Aztecan	28	6	100.0
+2	Uto-Aztecan	28	5	100.0
+3	Uto-Aztecan	28	5	100.0
+4	Uto-Aztecan	28	3	100.0
+5	Uto-Aztecan	28	8	100.0
+6	Uto-Aztecan	28	5	100.0
+7	Uto-Aztecan	28	9	100.0
+8	Uto-Aztecan	28	5	100.0
+9	Uto-Aztecan	28	5	100.0
+10	Uto-Aztecan	28	9	100.0
+11	Uto-Aztecan	28	6	100.0
+12	Uto-Aztecan	28	8	100.0
+13	Uto-Aztecan	28	8	100.0
+14	Uto-Aztecan	28	8	100.0
+15	Uto-Aztecan	28	3	100.0
+16	Uto-Aztecan	28	3	100.0
+17	Uto-Aztecan	28	6	100.0
+18	Uto-Aztecan	28	7	100.0
+19	Uto-Aztecan	28	6	100.0
+0	Hmong-Mien	12	2	100.0
+1	Hmong-Mien	12	3	100.0
+2	Hmong-Mien	12	1	100.0
+3	Hmong-Mien	12	3	100.0
+4	Hmong-Mien	12	1	100.0
+5	Hmong-Mien	12	2	100.0
+6	Hmong-Mien	12	3	66.667
+7	Hmong-Mien	12	1	100.0
+8	Hmong-Mien	12	6	83.333
+9	Hmong-Mien	12	2	100.0
+10	Hmong-Mien	12	1	100.0
+11	Hmong-Mien	12	5	100.0
+12	Hmong-Mien	12	1	100.0
+13	Hmong-Mien	12	1	100.0
+14	Hmong-Mien	12	2	100.0
+16	Hmong-Mien	12	2	100.0
+19	Hmong-Mien	12	2	100.0
+0	Uralic	27	7	100.0
+1	Uralic	27	5	100.0
+2	Uralic	27	2	100.0
+3	Uralic	27	4	100.0
+4	Uralic	27	5	100.0
+5	Uralic	27	7	100.0
+6	Uralic	27	5	100.0
+7	Uralic	27	6	100.0
+8	Uralic	27	5	100.0
+9	Uralic	27	6	100.0
+10	Uralic	27	4	100.0
+11	Uralic	27	8	100.0
+12	Uralic	27	7	100.0
+13	Uralic	27	8	100.0
+14	Uralic	27	3	100.0
+15	Uralic	27	5	100.0
+16	Uralic	27	6	100.0
+17	Uralic	27	9	100.0
+18	Uralic	27	6	100.0
+19	Uralic	27	5	100.0
+0	Pama-Nyungan	99	24	100.0
+1	Pama-Nyungan	99	12	100.0
+2	Pama-Nyungan	99	21	95.238
+3	Pama-Nyungan	99	24	100.0
+4	Pama-Nyungan	99	20	100.0
+5	Pama-Nyungan	99	8	87.5
+6	Pama-Nyungan	99	19	94.737
+7	Pama-Nyungan	99	26	100.0
+8	Pama-Nyungan	99	12	100.0
+9	Pama-Nyungan	99	18	100.0
+10	Pama-Nyungan	99	27	96.296
+11	Pama-Nyungan	99	16	93.75
+12	Pama-Nyungan	99	16	100.0
+13	Pama-Nyungan	99	21	100.0
+14	Pama-Nyungan	99	23	100.0
+15	Pama-Nyungan	99	25	100.0
+16	Pama-Nyungan	99	17	100.0
+17	Pama-Nyungan	99	14	100.0
+18	Pama-Nyungan	99	24	95.833
+19	Pama-Nyungan	99	17	100.0
+0	East Strickland	5	2	100.0
+1	East Strickland	5	2	100.0
+3	East Strickland	5	1	100.0
+4	East Strickland	5	1	100.0
+6	East Strickland	5	1	100.0
+7	East Strickland	5	1	100.0
+8	East Strickland	5	1	100.0
+9	East Strickland	5	2	100.0
+10	East Strickland	5	3	100.0
+11	East Strickland	5	2	100.0
+12	East Strickland	5	1	0.0
+13	East Strickland	5	1	100.0
+14	East Strickland	5	1	0.0
+16	East Strickland	5	1	100.0
+18	East Strickland	5	3	66.667
+0	Quechuan	20	7	100.0
+1	Quechuan	20	4	100.0
+2	Quechuan	20	4	100.0
+3	Quechuan	20	6	100.0
+4	Quechuan	20	4	100.0
+5	Quechuan	20	1	100.0
+6	Quechuan	20	3	100.0
+7	Quechuan	20	3	100.0
+8	Quechuan	20	2	100.0
+9	Quechuan	20	4	100.0
+10	Quechuan	20	2	100.0
+11	Quechuan	20	5	100.0
+12	Quechuan	20	4	100.0
+13	Quechuan	20	3	100.0
+14	Quechuan	20	4	100.0
+15	Quechuan	20	5	100.0
+16	Quechuan	20	4	100.0
+17	Quechuan	20	2	100.0
+18	Quechuan	20	6	100.0
+19	Quechuan	20	4	100.0
+0	Indo-European	58	7	100.0
+1	Indo-European	58	8	100.0
+2	Indo-European	58	16	100.0
+3	Indo-European	58	8	100.0
+4	Indo-European	58	11	90.909
+5	Indo-European	58	12	100.0
+6	Indo-European	58	11	100.0
+7	Indo-European	58	7	100.0
+8	Indo-European	58	14	100.0
+9	Indo-European	58	8	100.0
+10	Indo-European	58	14	100.0
+11	Indo-European	58	15	100.0
+12	Indo-European	58	10	90.0
+13	Indo-European	58	12	100.0
+14	Indo-European	58	11	100.0
+15	Indo-European	58	4	100.0
+16	Indo-European	58	13	100.0
+17	Indo-European	58	14	100.0
+18	Indo-European	58	12	100.0
+19	Indo-European	58	11	100.0
+0	Austroasiatic	46	12	100.0
+1	Austroasiatic	46	9	100.0
+2	Austroasiatic	46	10	100.0
+3	Austroasiatic	46	11	100.0
+4	Austroasiatic	46	13	92.308
+5	Austroasiatic	46	11	90.909
+6	Austroasiatic	46	10	100.0
+7	Austroasiatic	46	8	100.0
+8	Austroasiatic	46	8	100.0
+9	Austroasiatic	46	13	92.308
+10	Austroasiatic	46	8	100.0
+11	Austroasiatic	46	10	90.0
+12	Austroasiatic	46	8	62.5
+13	Austroasiatic	46	8	100.0
+14	Austroasiatic	46	8	87.5
+15	Austroasiatic	46	15	93.333
+16	Austroasiatic	46	7	100.0
+17	Austroasiatic	46	8	87.5
+18	Austroasiatic	46	4	100.0
+19	Austroasiatic	46	12	100.0
+0	Dravidian	10	3	100.0
+1	Dravidian	10	2	50.0
+2	Dravidian	10	1	100.0
+3	Dravidian	10	4	75.0
+4	Dravidian	10	1	100.0
+5	Dravidian	10	3	100.0
+6	Dravidian	10	4	100.0
+7	Dravidian	10	4	100.0
+8	Dravidian	10	3	100.0
+9	Dravidian	10	4	75.0
+10	Dravidian	10	3	100.0
+11	Dravidian	10	1	100.0
+12	Dravidian	10	2	100.0
+13	Dravidian	10	4	75.0
+14	Dravidian	10	4	75.0
+15	Dravidian	10	1	100.0
+16	Dravidian	10	1	100.0
+17	Dravidian	10	3	66.667
+18	Dravidian	10	2	100.0
+19	Dravidian	10	3	100.0
+0	Kru	5	1	100.0
+1	Kru	5	1	100.0
+3	Kru	5	1	100.0
+4	Kru	5	3	100.0
+6	Kru	5	2	100.0
+7	Kru	5	1	100.0
+9	Kru	5	1	100.0
+11	Kru	5	1	100.0
+12	Kru	5	2	100.0
+14	Kru	5	1	100.0
+18	Kru	5	1	100.0
+19	Kru	5	2	100.0
+0	Chibchan	17	4	100.0
+1	Chibchan	17	3	100.0
+2	Chibchan	17	4	100.0
+3	Chibchan	17	3	100.0
+4	Chibchan	17	1	100.0
+5	Chibchan	17	3	100.0
+6	Chibchan	17	1	100.0
+7	Chibchan	17	3	33.333
+8	Chibchan	17	3	100.0
+9	Chibchan	17	1	0.0
+10	Chibchan	17	4	75.0
+11	Chibchan	17	6	83.333
+12	Chibchan	17	3	100.0
+13	Chibchan	17	4	75.0
+14	Chibchan	17	4	100.0
+15	Chibchan	17	6	83.333
+16	Chibchan	17	6	83.333
+17	Chibchan	17	3	100.0
+18	Chibchan	17	2	100.0
+19	Chibchan	17	4	75.0
+0	Arawakan	12	5	100.0
+1	Arawakan	12	4	75.0
+2	Arawakan	12	3	66.667
+4	Arawakan	12	3	100.0
+5	Arawakan	12	1	100.0
+6	Arawakan	12	2	100.0
+7	Arawakan	12	3	100.0
+8	Arawakan	12	1	100.0
+9	Arawakan	12	2	100.0
+10	Arawakan	12	1	100.0
+12	Arawakan	12	1	100.0
+13	Arawakan	12	2	100.0
+14	Arawakan	12	1	100.0
+15	Arawakan	12	1	100.0
+16	Arawakan	12	4	75.0
+17	Arawakan	12	1	0.0
+18	Arawakan	12	1	0.0
+19	Arawakan	12	2	50.0
+0	Timor-Alor-Pantar	17	2	100.0
+1	Timor-Alor-Pantar	17	2	100.0
+2	Timor-Alor-Pantar	17	4	100.0
+3	Timor-Alor-Pantar	17	2	100.0
+4	Timor-Alor-Pantar	17	3	33.333
+6	Timor-Alor-Pantar	17	5	100.0
+7	Timor-Alor-Pantar	17	3	100.0
+8	Timor-Alor-Pantar	17	2	100.0
+9	Timor-Alor-Pantar	17	2	100.0
+10	Timor-Alor-Pantar	17	2	100.0
+11	Timor-Alor-Pantar	17	5	80.0
+12	Timor-Alor-Pantar	17	3	33.333
+13	Timor-Alor-Pantar	17	5	100.0
+14	Timor-Alor-Pantar	17	3	66.667
+15	Timor-Alor-Pantar	17	5	60.0
+16	Timor-Alor-Pantar	17	2	50.0
+17	Timor-Alor-Pantar	17	5	100.0
+18	Timor-Alor-Pantar	17	4	50.0
+19	Timor-Alor-Pantar	17	6	83.333
+0	Lower Sepik-Ramu	7	1	100.0
+1	Lower Sepik-Ramu	7	3	66.667
+2	Lower Sepik-Ramu	7	3	66.667
+3	Lower Sepik-Ramu	7	4	25.0
+4	Lower Sepik-Ramu	7	4	50.0
+5	Lower Sepik-Ramu	7	1	100.0
+6	Lower Sepik-Ramu	7	2	100.0
+7	Lower Sepik-Ramu	7	1	100.0
+8	Lower Sepik-Ramu	7	2	0.0
+9	Lower Sepik-Ramu	7	1	100.0
+10	Lower Sepik-Ramu	7	1	0.0
+11	Lower Sepik-Ramu	7	2	50.0
+12	Lower Sepik-Ramu	7	2	50.0
+13	Lower Sepik-Ramu	7	1	100.0
+14	Lower Sepik-Ramu	7	2	0.0
+15	Lower Sepik-Ramu	7	3	33.333
+16	Lower Sepik-Ramu	7	3	0.0
+17	Lower Sepik-Ramu	7	2	100.0
+18	Lower Sepik-Ramu	7	1	100.0
+19	Lower Sepik-Ramu	7	3	66.667
+0	Dogon	12	2	100.0
+1	Dogon	12	3	66.667
+2	Dogon	12	2	100.0
+3	Dogon	12	1	100.0
+4	Dogon	12	4	75.0
+5	Dogon	12	1	100.0
+6	Dogon	12	3	100.0
+7	Dogon	12	3	100.0
+8	Dogon	12	4	100.0
+9	Dogon	12	3	100.0
+10	Dogon	12	2	100.0
+11	Dogon	12	2	100.0
+12	Dogon	12	4	100.0
+13	Dogon	12	3	100.0
+14	Dogon	12	4	100.0
+15	Dogon	12	5	80.0
+16	Dogon	12	1	100.0
+17	Dogon	12	2	100.0
+18	Dogon	12	1	0.0
+19	Dogon	12	2	100.0
+0	Sepik	8	2	0.0
+1	Sepik	8	1	0.0
+2	Sepik	8	1	100.0
+3	Sepik	8	2	50.0
+4	Sepik	8	1	100.0
+5	Sepik	8	3	66.667
+6	Sepik	8	2	100.0
+7	Sepik	8	2	100.0
+8	Sepik	8	2	50.0
+9	Sepik	8	3	66.667
+10	Sepik	8	1	100.0
+11	Sepik	8	3	66.667
+13	Sepik	8	3	66.667
+14	Sepik	8	4	50.0
+15	Sepik	8	3	100.0
+16	Sepik	8	2	50.0
+17	Sepik	8	1	100.0
+18	Sepik	8	3	100.0
+0	Tucanoan	18	1	100.0
+1	Tucanoan	18	3	100.0
+2	Tucanoan	18	3	100.0
+3	Tucanoan	18	5	100.0
+4	Tucanoan	18	2	100.0
+5	Tucanoan	18	2	100.0
+6	Tucanoan	18	3	100.0
+7	Tucanoan	18	7	100.0
+8	Tucanoan	18	2	100.0
+9	Tucanoan	18	2	100.0
+10	Tucanoan	18	7	100.0
+11	Tucanoan	18	4	100.0
+12	Tucanoan	18	5	100.0
+13	Tucanoan	18	2	100.0
+14	Tucanoan	18	3	100.0
+15	Tucanoan	18	5	100.0
+16	Tucanoan	18	3	100.0
+17	Tucanoan	18	4	100.0
+18	Tucanoan	18	7	100.0
+19	Tucanoan	18	3	100.0
+0	Lakes Plain	16	2	100.0
+1	Lakes Plain	16	5	100.0
+2	Lakes Plain	16	3	100.0
+3	Lakes Plain	16	2	100.0
+4	Lakes Plain	16	2	100.0
+5	Lakes Plain	16	4	100.0
+6	Lakes Plain	16	5	100.0
+7	Lakes Plain	16	4	100.0
+8	Lakes Plain	16	3	100.0
+9	Lakes Plain	16	4	100.0
+10	Lakes Plain	16	3	66.667
+11	Lakes Plain	16	4	100.0
+12	Lakes Plain	16	4	100.0
+13	Lakes Plain	16	6	100.0
+14	Lakes Plain	16	2	100.0
+15	Lakes Plain	16	2	100.0
+16	Lakes Plain	16	2	100.0
+17	Lakes Plain	16	3	100.0
+18	Lakes Plain	16	2	100.0
+19	Lakes Plain	16	3	100.0
+0	Nakh-Daghestanian	8	1	100.0
+2	Nakh-Daghestanian	8	1	0.0
+3	Nakh-Daghestanian	8	2	50.0
+4	Nakh-Daghestanian	8	4	0.0
+5	Nakh-Daghestanian	8	3	33.333
+6	Nakh-Daghestanian	8	2	50.0
+7	Nakh-Daghestanian	8	2	0.0
+8	Nakh-Daghestanian	8	3	0.0
+9	Nakh-Daghestanian	8	1	0.0
+10	Nakh-Daghestanian	8	2	0.0
+11	Nakh-Daghestanian	8	2	100.0
+12	Nakh-Daghestanian	8	3	33.333
+13	Nakh-Daghestanian	8	1	0.0
+14	Nakh-Daghestanian	8	2	0.0
+15	Nakh-Daghestanian	8	1	0.0
+17	Nakh-Daghestanian	8	2	50.0
+18	Nakh-Daghestanian	8	1	100.0
+19	Nakh-Daghestanian	8	1	100.0
+1	Mixe-Zoque	9	4	100.0
+2	Mixe-Zoque	9	1	100.0
+3	Mixe-Zoque	9	2	100.0
+4	Mixe-Zoque	9	3	100.0
+5	Mixe-Zoque	9	2	100.0
+6	Mixe-Zoque	9	2	100.0
+8	Mixe-Zoque	9	5	80.0
+9	Mixe-Zoque	9	2	100.0
+10	Mixe-Zoque	9	2	100.0
+11	Mixe-Zoque	9	1	100.0
+12	Mixe-Zoque	9	1	100.0
+13	Mixe-Zoque	9	4	75.0
+15	Mixe-Zoque	9	3	66.667
+16	Mixe-Zoque	9	1	100.0
+17	Mixe-Zoque	9	2	100.0
+18	Mixe-Zoque	9	4	100.0
+1	Nuclear-Macro-Je	6	2	0.0
+3	Nuclear-Macro-Je	6	3	0.0
+6	Nuclear-Macro-Je	6	1	0.0
+8	Nuclear-Macro-Je	6	1	0.0
+9	Nuclear-Macro-Je	6	1	0.0
+10	Nuclear-Macro-Je	6	1	0.0
+12	Nuclear-Macro-Je	6	1	0.0
+13	Nuclear-Macro-Je	6	1	0.0
+14	Nuclear-Macro-Je	6	2	0.0
+15	Nuclear-Macro-Je	6	2	0.0
+16	Nuclear-Macro-Je	6	1	0.0
+17	Nuclear-Macro-Je	6	1	0.0
+1	Koiarian	6	2	100.0
+2	Koiarian	6	2	100.0
+5	Koiarian	6	1	100.0
+6	Koiarian	6	1	100.0
+8	Koiarian	6	1	100.0
+9	Koiarian	6	2	50.0
+10	Koiarian	6	2	100.0
+11	Koiarian	6	2	50.0
+12	Koiarian	6	2	100.0
+13	Koiarian	6	2	50.0
+14	Koiarian	6	2	50.0
+15	Koiarian	6	1	100.0
+16	Koiarian	6	3	100.0
+17	Koiarian	6	1	100.0
+18	Koiarian	6	1	100.0
+19	Koiarian	6	1	100.0
+1	Zaparoan	3	1	100.0
+2	Zaparoan	3	2	0.0
+7	Zaparoan	3	1	100.0
+8	Zaparoan	3	1	100.0
+9	Zaparoan	3	1	100.0
+12	Zaparoan	3	1	0.0
+13	Zaparoan	3	1	0.0
+16	Zaparoan	3	2	0.0
+17	Zaparoan	3	1	0.0
+18	Zaparoan	3	1	100.0
+1	Chocoan	6	1	100.0
+2	Chocoan	6	1	0.0
+3	Chocoan	6	2	100.0
+4	Chocoan	6	1	100.0
+5	Chocoan	6	1	100.0
+6	Chocoan	6	1	100.0
+7	Chocoan	6	2	100.0
+9	Chocoan	6	1	100.0
+10	Chocoan	6	2	100.0
+11	Chocoan	6	1	100.0
+12	Chocoan	6	1	100.0
+13	Chocoan	6	1	100.0
+15	Chocoan	6	1	100.0
+16	Chocoan	6	2	50.0
+18	Chocoan	6	1	100.0
+2	Barbacoan	5	3	0.0
+4	Barbacoan	5	2	50.0
+5	Barbacoan	5	3	66.667
+6	Barbacoan	5	1	100.0
+7	Barbacoan	5	1	100.0
+8	Barbacoan	5	2	0.0
+9	Barbacoan	5	1	0.0
+11	Barbacoan	5	1	100.0
+12	Barbacoan	5	1	100.0
+15	Barbacoan	5	1	100.0
+16	Barbacoan	5	1	100.0
+19	Barbacoan	5	1	100.0

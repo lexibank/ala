@@ -8,6 +8,7 @@ download:
 	git clone https://github.com/lexibank/grollemundbantu data/grollemundbantu
 	git clone https://github.com/lexibank/birchallchapacuran data/birchallchapacuran
 	git clone https://github.com/lexibank/viegasbarroschaco	data/viegasbarroschaco
+	git clone https://github.com/lexibank/crossandean data/crossandean
 
 prepare:
 	pip install pycldf, scipy, torch
@@ -27,3 +28,4 @@ prepare:
 	cldf createdb data/iecor/cldf/cldf-metadata.json data/iecor.sqlite3
 	cldf createdb data/grollemundbantu/cldf/cldf-metadata.json data/grollemundbantu.sqlite3
 	cldf createdb data/viegasbarroschaco/cldf/cldf-metadata.json data/viegasbarroschaco.sqlite3
+	cldf createdb data/crossandean/cldf/cldf-metadata.json data/crossandean.sqlite3

@@ -14,6 +14,8 @@ ATTACH_VBC = """ATTACH 'data/viegasbarroschaco.sqlite3' AS db1;"""
 ATTACH_GBE = """ATTACH 'data/grollemundbantu.sqlite3' AS db1;"""
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
 ATTACH_BC = """ATTACH 'data/birchallchapacuran.sqlite3' AS db1;"""
+ATTACH_NP = """ATTACH 'data/northperulex.sqlite3' AS db1;"""
+ATTACH_CA = """ATTACH 'data/crossandean.sqlite3' as db1;"""
 ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 
 IECOR_QUERY = """
@@ -94,6 +96,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       f_2.gloss_in_source = p_2.cldf_id
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -104,7 +108,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
 
 
@@ -155,6 +159,108 @@ WHERE
 """
 
 
+CA_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_1,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      p_1.concepticon_gloss = p_2.concepticon_gloss
+        AND
+      f_2.cldf_parameterReference = p_1.cldf_id
+        AND
+      (
+        p_2.core_concept like "%Swadesh-1952-200%"
+          OR
+        p_2.core_concept like "%Swadesh-1955-100%"
+      )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  l.cldf_glottocode IN ('chip1262', 'uruu1244')
+    AND
+  c.Word_Number >= 10
+;
+"""
+
+NP_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.Word_Number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_1,
+      db2.parametertable as p_2
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      p_1.concepticon_gloss = p_2.concepticon_gloss
+        AND
+      f_2.cldf_parameterReference = p_1.cldf_id
+        AND
+      (
+        p_2.core_concept like "%Swadesh-1952-200%"
+          OR
+        p_2.core_concept like "%Swadesh-1955-100%"
+      )
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+      AND
+  c.Word_Number >= 50;
+"""
+
+
 LBMOD_QUERY = """
 SELECT
   ROW_NUMBER() OVER(),
@@ -183,6 +289,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       p_2.cldf_id = f_2.gloss_in_source
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -193,7 +301,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
 
 
@@ -313,6 +421,12 @@ def get_other(mode="bpt"):
     elif mode == "vbc":
         db.execute(ATTACH_VBC)
         db.execute(IECOR_QUERY)
+    elif mode == 'np':
+        db.execute(ATTACH_NP)
+        db.execute(NP_QUERY)
+    elif mode == 'crossandean':
+        db.execute(ATTACH_CA)
+        db.execute(CA_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
@@ -320,7 +434,6 @@ def get_other(mode="bpt"):
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
-        print(glottocode)
         if len(wordlists[glottocode]) == 1:
             best_key = list(wordlists[glottocode].keys())[0]
         else:
@@ -503,9 +616,6 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
-
-        elif gcode == "suan1234":
-            by_fam['Sino-Tibetan'] += [gcode]
 
         elif load == "tapakuric":
             by_fam["Chapacuran"] += [gcode]
