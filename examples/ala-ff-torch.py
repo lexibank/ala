@@ -16,8 +16,8 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             test_longdistance=False, distances=False, test_np=False):
     # Hyperparameters
-    runs = 50
-    epochs = 2000
+    runs = 20
+    epochs = 1000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -124,7 +124,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 
     # Add NorthPeruLex training data + Evaluation, including Uru-Chipaya
     if test_np is True:
-        train_np = ['achu1248', 'shua1257', 'agua1253', 'huam1247', 'bora1263', 'muin1242']
+        train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'bora1263', 'muin1242']
         np_wl = dict(get_other(mode='np').items())
         np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical')
         for lang in np_data:
@@ -137,7 +137,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         ca_data = convert_data(ca_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical', threshold=1)
         for lang in ca_data:
             tests[lang] = ca_data[lang]
-
 
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode='iecor').items())
