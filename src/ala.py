@@ -467,7 +467,7 @@ def get_gb(path="data/grambank.sqlite3"):
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
-    wordlists = defaultdict(lambda : defaultdict(dict))
+    wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(GB_QUERY)
     for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
         if tokens:
@@ -614,7 +614,11 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
     for gcode in wordlists:
-        if gcode in families:
+
+        if load == 'np' and gcode in ['yagu1244', 'bora1263', 'muin1242', 'abis1238']:
+            by_fam['northernperu'] += [gcode]
+
+        elif gcode in families:
             by_fam[families[gcode]] += [gcode]
 
         elif load == "tapakuric":
@@ -622,6 +626,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
 
         elif load == "mataguayan":
             by_fam["Mataguayan"] += [gcode]
+
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
@@ -647,7 +652,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical", "tapakuric", "mataguayan"):
+            if load in ("lexical", "tapakuric", "mataguayan", 'np'):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]

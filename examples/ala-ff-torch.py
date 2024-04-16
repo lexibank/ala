@@ -124,10 +124,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 
     # Add NorthPeruLex training data + Evaluation, including Uru-Chipaya
     if test_np is True:
-        train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'bora1263', 'muin1242']
+        train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'agua1253', 'achu1248', 'shua1257']
         np_wl = dict(get_other(mode='np').items())
-        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical')
+        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='np')
         for lang in np_data:
+            print(lang)
             if lang in train_np:
                 full_data[lang] = np_data[lang]
             else:
@@ -196,7 +197,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
-        # Add Southern to test and northern to data            
+        # Add Southern to test and northern to data
         elif family == 'Uto-Aztecan' and test_longdistance is True:
             if lang not in northern_uto:
                 tests[lang] = full_data[lang]

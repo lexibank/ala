@@ -1,37 +1,37 @@
 Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
-Afro-Asiatic	79	15.9	93.06	8.34
-Arawakan	12	2.1	81.48	33.16
-Atlantic-Congo	136	26.4	98.32	1.95
-Austroasiatic	46	9.7	94.82	8.97
-Austronesian	382	76.4	99.49	0.74
-Barbacoan	5	1.5	68.06	44.07
-Chibchan	17	3.4	85.42	26.06
-Chocoan	6	1.3	90.0	28.03
-Dogon	12	2.6	91.08	23.56
-Dravidian	10	2.6	90.83	15.27
-East Strickland	5	1.5	84.44	35.34
-Guahiboan	5	1.6	91.11	18.76
-Hmong-Mien	12	2.2	97.06	8.81
-Indo-European	58	10.9	99.05	2.94
-Koiarian	6	1.6	87.5	22.36
-Kru	5	1.4	100.0	0.0
-Lakes Plain	16	3.2	98.33	7.45
-Lower Sepik-Ramu	7	2.1	60.42	39.45
-Mande	16	3.5	88.52	17.49
-Mixe-Zoque	9	2.4	95.1	10.81
-Nakh-Daghestanian	8	1.9	34.26	41.01
-Nuclear Trans New Guinea	182	36.1	99.0	1.43
-Nuclear-Macro-Je	6	1.4	0.0	0.0
-Pama-Nyungan	99	19.2	98.17	3.32
-Quechuan	20	3.9	100.0	0.0
-Sepik	8	2.2	70.37	33.11
-Sino-Tibetan	96	20.1	99.39	1.49
-Timor-Alor-Pantar	17	3.4	81.93	24.8
-Tucanoan	18	3.6	100.0	0.0
-Tupian	33	7	97.99	5.01
-Turkic	27	4.3	100.0	0.0
-Unclassified	182	35.4	89.57	5.93
-Uralic	27	5.7	100.0	0.0
-Uto-Aztecan	28	5.9	100.0	0.0
-Zaparoan	3	1.2	50.0	52.7
-TOTAL	1598	318	87.6	4.45
+Afro-Asiatic	79	15.4	91.46	3.97
+Arawakan	12	2.7	91.05	17.11
+Atlantic-Congo	136	27.8	98.43	2.09
+Austroasiatic	46	9.2	95.94	5.5
+Austronesian	382	79.2	99.39	0.83
+Barbacoan	5	1.6	56.77	46.67
+Chibchan	17	3.2	88.33	20.3
+Chocoan	6	1.8	82.14	37.25
+Dogon	12	2.6	90.28	25.92
+Dravidian	10	2.1	92.0	25.97
+East Strickland	5	2.1	76.39	30.53
+Guahiboan	5	1.4	94.12	16.61
+Hmong-Mien	12	2.5	96.25	12.23
+Indo-European	58	11.8	98.61	2.9
+Koiarian	6	1.6	78.12	36.37
+Kru	5	1.3	100.0	0.0
+Lakes Plain	16	2.7	100.0	0.0
+Lower Sepik-Ramu	7	2.1	53.33	35.75
+Mande	16	4	75.6	31.36
+Mixe-Zoque	9	2.5	96.43	9.08
+Nakh-Daghestanian	8	1.8	41.67	42.87
+Nuclear Trans New Guinea	182	34.8	99.49	1.05
+Nuclear-Macro-Je	6	1.2	0.0	0.0
+Pama-Nyungan	99	18.4	98.44	2.58
+Pano-Tacanan	11	2.5	96.35	10.08
+Quechuan	20	4.5	100.0	0.0
+Sepik	8	1.8	84.8	22.87
+Sino-Tibetan	96	20.6	98.13	2.84
+Timor-Alor-Pantar	17	3.0	96.67	10.26
+Tucanoan	18	2.8	100.0	0.0
+Tupian	33	5.8	99.17	3.73
+Turkic	27	5.2	100.0	0.0
+Unclassified	183	36.5	88.46	6.69
+Uralic	27	5.5	100.0	0.0
+Uto-Aztecan	28	5.6	100.0	0.0
+TOTAL	1607	321	88.5	2.86
