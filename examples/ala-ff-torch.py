@@ -33,12 +33,9 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         northern_uto = extract_branch(gcode='nort2953')
         anatolian = extract_branch(gcode='anat1257')
         tocharian = extract_branch(gcode='tokh1241')
-        tapakuric = extract_branch(gcode='tapa1264')
         sinitic = extract_branch(gcode='sini1245')
-        mien = extract_branch(gcode='mien1242')
-        matacoan = extract_branch(gcode='mata1289')
 
-    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250'] if test_isolates is True else []
+    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250', 'cand1248'] if test_isolates is True else []
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -226,12 +223,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
-        elif family == 'Unclassified' and test_isolates is False:
-            if lang in isolates:
-                tests[lang] = full_data[lang]
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
         else:
             features.append(full_data[lang][2])
             labels.append(fam2idx[family])
