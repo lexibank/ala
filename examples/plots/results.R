@@ -56,8 +56,8 @@ per_family <- full_data %>% group_by(Family, Model) %>%
 
 fams <- per_family %>% group_by(Family) %>% count() %>% arrange(-n)
 
-FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 
-                 'Indo-European', 'Koiarian')
+FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian')
+
 scatter <-  per_family %>% 
   ggplot(aes(x=Accuracy, y=Languages, fill=Family)) +
   geom_point(aes(size=1), shape=21) +
