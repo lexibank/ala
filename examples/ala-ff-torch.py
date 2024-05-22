@@ -2,7 +2,7 @@ import argparse
 import csv
 from collections import defaultdict, Counter
 from statistics import mean, stdev
-from tabulate import tabulate 
+from tabulate import tabulate
 import numpy as np
 from scipy.spatial import distance
 import torch
@@ -21,7 +21,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
-    min_langs = 5
+    min_langs = 4
 
     tests = defaultdict()
     if test_pano is True:
@@ -148,26 +148,12 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
 
         iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
                                   converter, load='lexical')
-        chapa_data = convert_data(chap_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load='tapakuric')
-        mata_data = convert_data(mata_wl, {k: v[0] for k, v in asjp.items()},
-                                 converter, load='mataguayan')
 
         for lang in iecor_data:
             if lang in anatolian or lang in tocharian:
                 tests[lang] = iecor_data[lang]
             else:
                 full_data[lang] = iecor_data[lang]
-        for lang in chapa_data:
-            if lang in tapakuric:
-                tests[lang] = chapa_data[lang]
-            else:
-                full_data[lang] = chapa_data[lang]
-        for lang in mata_data:
-            if lang in matacoan:
-                tests[lang] = mata_data[lang]
-            else:
-                full_data[lang] = mata_data[lang]
 
     features = []
     labels = []
@@ -203,13 +189,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
                 labels.append(fam2idx[family])
         elif family == 'Sino-Tibetan' and test_longdistance is True:
             if lang in sinitic:
-                tests[lang] = full_data[lang]
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif family == 'Hmong-Mien' and test_longdistance is True:
-            if lang in mien:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
@@ -405,7 +384,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         results_str = ''
         for i, (k, v) in enumerate(Counter(results[item]).items()):
             sep = '' if i < 0 else '\n'
-            if v > (len(results[item])*0.1):
+            if v > (len(results[item])*0.05):
                 results_str = results_str + k + ': ' + str(v) + sep
 
         results_table.append([
