@@ -13,29 +13,25 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
 
 
-def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
-            test_longdistance=False, distances=False, test_np=False):
+def run_ala(data, intersection=False, test_isolates=False, test_np=False,
+            test_longdistance=False, distances=False):
+    """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 20
-    epochs = 1000
+    runs = 10
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
-    min_langs = 4
+    min_langs = 5
 
     tests = defaultdict()
-    if test_pano is True:
-        tacanan = extract_branch(gcode='taca1255')
-        panoan = extract_branch(gcode='pano1256')
-        pano_iso = ['mose1249', 'movi1243', 'chip1262']
-
     if test_longdistance is True:
         northern_uto = extract_branch(gcode='nort2953')
         anatolian = extract_branch(gcode='anat1257')
         tocharian = extract_branch(gcode='tokh1241')
         sinitic = extract_branch(gcode='sini1245')
 
-    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250', 'cand1248'] if test_isolates is True else []
+    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250'] if test_isolates is True else []
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -103,23 +99,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         for lang in full_data:
             full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
 
-    if test_pano is True:
-        bpt_wl = dict(get_other(mode='bpt').items())
-        if intersection is True:
-            bpt_wl = {k: bpt_wl[k] for k in bpt_wl if k in intersec}
-
-        bpt_data = convert_data(
-            bpt_wl,
-            {k: v[0] for k, v in asjp.items()},
-            converter,
-            load='lexical')
-        for lang in bpt_data:
-            if lang in panoan:
-                full_data[lang] = bpt_data[lang]
-            else:
-                tests[lang] = bpt_data[lang]
-
-    # Add NorthPeruLex training data + Evaluation, including Uru-Chipaya
     if test_np is True:
         train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'agua1253', 'achu1248', 'shua1257']
         np_wl = dict(get_other(mode='np').items())
@@ -131,29 +110,11 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
             else:
                 tests[lang] = np_data[lang]
 
-        ca_wl = dict(get_other(mode='crossandean').items())
-        ca_data = convert_data(ca_wl, {k: v[0] for k, v in asjp.items()}, converter, load='lexical', threshold=1)
-        for lang in ca_data:
-            tests[lang] = ca_data[lang]
-
     if test_longdistance is True:
         iecor_wl = dict(get_other(mode='iecor').items())
-        chap_wl = dict(get_other(mode='bc').items())
-        mata_wl = dict(get_other(mode='vbc').items())
 
         if intersection is True:
             iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
-            chap_wl = {k: chap_wl[k] for k in chap_wl if k in intersec}
-            mata_wl = {k: mata_wl[k] for k in mata_wl if k in intersec}
-
-        iecor_data = convert_data(iecor_wl, {k: v[0] for k, v in asjp.items()},
-                                  converter, load='lexical')
-
-        for lang in iecor_data:
-            if lang in anatolian or lang in tocharian:
-                tests[lang] = iecor_data[lang]
-            else:
-                full_data[lang] = iecor_data[lang]
 
     features = []
     labels = []
@@ -172,23 +133,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         else:
             fam2weight[family] += 1
 
-        # Add Tacanan to test and Pano to data
-        if family == 'Pano-Tacanan' and test_pano is True:
-            if lang in tacanan or lang in pano_iso:
-                tests[lang] = full_data[lang]
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        # Add Southern to test and northern to data
-        elif family == 'Uto-Aztecan' and test_longdistance is True:
-            if lang not in northern_uto:
-                tests[lang] = full_data[lang]
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-        elif family == 'Sino-Tibetan' and test_longdistance is True:
-            if lang in sinitic:
+        if test_longdistance is True and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European']:
+            if lang in sinitic or lang in northern_uto or lang in anatolian or lang in tocharian:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
@@ -353,20 +299,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_pano=False,
         for fam in fam_final:
             if fam in results_per_fam:
                 results_per_fam[fam].append([
-                    run,                        # Number of run
-                    fam,                        # Language Family
-                    fam2weight[fam],            # Number of langs in fam
-                    fam_final[fam][1],          # Number of langs tested
-                    round(fam_final[fam][0], 3) # Accuracy
+                    run,                            # Number of run
+                    fam,                            # Language Family
+                    fam2weight[fam],                # Number of langs in fam
+                    fam_final[fam][1],              # Number of langs tested
+                    round(fam_final[fam][0], 3)     # Accuracy
                 ])
 
             else:
                 results_per_fam[fam] = [[
-                    run,                        # Number of run
-                    fam,                        # Language Family
-                    fam2weight[fam],            # Number of langs in fam
-                    fam_final[fam][1],          # Number of langs tested
-                    round(fam_final[fam][0], 3) # Accuracy
+                    run,                            # Number of run
+                    fam,                            # Language Family
+                    fam2weight[fam],                # Number of langs in fam
+                    fam_final[fam][1],              # Number of langs tested
+                    round(fam_final[fam][0], 3)     # Accuracy
                     ]]
 
         # Test experiments
@@ -455,7 +401,6 @@ if __name__ == '__main__':
     parser.add_argument('-intersection', action='store_true',
                         help='Choose if intersect with another dataset')
     parser.add_argument('-isolates', action='store_true')
-    parser.add_argument('-pano', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
     parser.add_argument('-test_np', action='store_true')
     parser.add_argument('-distances', action='store_true',
@@ -467,7 +412,6 @@ if __name__ == '__main__':
         data=args.data,
         intersection=args.intersection,
         test_isolates=args.isolates,
-        test_pano=args.pano,
         test_longdistance=args.longdistance,
         distances=args.distances,
         test_np=args.test_np
