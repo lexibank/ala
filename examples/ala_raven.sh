@@ -11,6 +11,10 @@
 #SBATCH --mem=500000
 #SBATCH --time=24:00:00
 
+module load intel/21.2.0 impi/2021.2 cuda/11.2
+
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
+
 python3 -u ala-ff-torch.py --data=lexibank
 python3 -u ala-ff-torch.py --data=grambank
 python3 -u ala-ff-torch.py --data=combined
