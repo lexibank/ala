@@ -1,0 +1,602 @@
+Current device: cuda
+--- New Run:  0 / 10 ---
+Iter: 50. Loss: 0.00479199. Average family accuracy: 83.465
+--- New Run:  1 / 10 ---
+Iter: 50. Loss: 0.004233399. Average family accuracy: 84.321
+--- New Run:  2 / 10 ---
+Iter: 50. Loss: 0.005029263. Average family accuracy: 82.032
+--- New Run:  3 / 10 ---
+Iter: 50. Loss: 0.005282173. Average family accuracy: 81.879
+--- New Run:  4 / 10 ---
+Iter: 50. Loss: 0.004583867. Average family accuracy: 74.57
+--- New Run:  5 / 10 ---
+Iter: 50. Loss: 0.005810523. Average family accuracy: 85.766
+--- New Run:  6 / 10 ---
+Iter: 50. Loss: 0.005204879. Average family accuracy: 86.029
+--- New Run:  7 / 10 ---
+Iter: 50. Loss: 0.004995789. Average family accuracy: 87.043
+--- New Run:  8 / 10 ---
+Iter: 50. Loss: 0.005229516. Average family accuracy: 84.837
+--- New Run:  9 / 10 ---
+Iter: 50. Loss: 0.004572376. Average family accuracy: 76.992
+---------------
+| Language   | Family   | Predictions   |
+|------------|----------|---------------|
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Afro-Asiatic             |          79 |    15.30 |                93.02 |      6.73 |
+| Arawakan                 |          12 |     2.80 |                60.19 |     26.93 |
+| Atlantic-Congo           |         136 |    24.60 |                96.80 |      3.09 |
+| Austroasiatic            |          46 |     9.80 |                88.10 |     12.48 |
+| Austronesian             |         382 |    76.00 |                99.18 |      1.00 |
+| Barbacoan                |           5 |     1.80 |                33.33 |     40.82 |
+| Chibchan                 |          17 |     2.90 |                52.67 |     36.26 |
+| Chocoan                  |           6 |     2.10 |                69.79 |     33.91 |
+| Dogon                    |          12 |     2.20 |                94.44 |     16.67 |
+| Dravidian                |          10 |     1.80 |                91.67 |     18.00 |
+| East Strickland          |           5 |     1.70 |                78.57 |     26.73 |
+| Guahiboan                |           5 |     1.60 |                70.00 |     44.72 |
+| Hmong-Mien               |          12 |     2.60 |                96.43 |      9.45 |
+| Indo-European            |          58 |    11.20 |                96.44 |      6.01 |
+| Koiarian                 |           6 |     1.70 |                94.44 |     13.61 |
+| Kru                      |           5 |     1.30 |               100.00 |      0.00 |
+| Lakes Plain              |          16 |     2.90 |                93.33 |     14.05 |
+| Lower Sepik-Ramu         |           7 |     1.80 |                66.67 |     38.83 |
+| Mande                    |          16 |     3.50 |                86.00 |     16.96 |
+| Mixe-Zoque               |           9 |     2.10 |                91.67 |     18.00 |
+| Nakh-Daghestanian        |           8 |     1.70 |                20.00 |     42.16 |
+| Nuclear Trans New Guinea |         182 |    39.10 |                98.22 |      2.16 |
+| Nuclear-Macro-Je         |           6 |     1.60 |                 0.00 |      0.00 |
+| Pama-Nyungan             |          99 |    20.20 |                99.00 |      2.11 |
+| Quechuan                 |          20 |     3.90 |                98.00 |      6.32 |
+| Sepik                    |           8 |     2.20 |                26.67 |     27.89 |
+| Sino-Tibetan             |          96 |    19.00 |                97.85 |      2.87 |
+| Timor-Alor-Pantar        |          17 |     3.70 |                86.67 |     26.11 |
+| Tucanoan                 |          18 |     4.00 |                96.90 |      6.55 |
+| Tupian                   |          33 |     7.60 |                97.32 |      5.66 |
+| Turkic                   |          27 |     5.30 |                98.57 |      4.52 |
+| Unclassified             |         183 |    37.30 |                90.88 |      6.23 |
+| Uralic                   |          27 |     4.80 |                95.00 |     15.81 |
+| Uto-Aztecan              |          28 |     5.40 |                96.67 |      7.03 |
+| TOTAL                    |        1596 |   319.00 |                82.20 |      4.21 |
+Current device: cuda
+--- New Run:  0 / 10 ---
+Iter: 50. Loss: 0.247877672. Average family accuracy: 75.481
+--- New Run:  1 / 10 ---
+Iter: 50. Loss: 0.243810773. Average family accuracy: 71.351
+--- New Run:  2 / 10 ---
+Iter: 50. Loss: 0.251682043. Average family accuracy: 83.042
+--- New Run:  3 / 10 ---
+Iter: 50. Loss: 0.241143391. Average family accuracy: 67.169
+--- New Run:  4 / 10 ---
+Iter: 50. Loss: 0.226689234. Average family accuracy: 78.523
+--- New Run:  5 / 10 ---
+Iter: 50. Loss: 0.228113145. Average family accuracy: 72.911
+--- New Run:  6 / 10 ---
+Iter: 50. Loss: 0.238010347. Average family accuracy: 71.244
+--- New Run:  7 / 10 ---
+Iter: 50. Loss: 0.229075685. Average family accuracy: 66.739
+--- New Run:  8 / 10 ---
+Iter: 50. Loss: 0.245084316. Average family accuracy: 63.532
+--- New Run:  9 / 10 ---
+Iter: 50. Loss: 0.230305031. Average family accuracy: 73.329
+---------------
+| Language   | Family   | Predictions   |
+|------------|----------|---------------|
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Afro-Asiatic             |         115 |    22.30 |                77.50 |     10.82 |
+| Algic                    |          15 |     2.40 |                96.00 |     12.65 |
+| Arawakan                 |          38 |     6.90 |                91.48 |      7.61 |
+| Athabaskan-Eyak-Tlingit  |          10 |     2.20 |                66.67 |     33.33 |
+| Atlantic-Congo           |         293 |    55.30 |                81.02 |      4.86 |
+| Austroasiatic            |          70 |    14.30 |                53.95 |     14.10 |
+| Austronesian             |         455 |    94.40 |                72.43 |      5.25 |
+| Cariban                  |          12 |     2.20 |                38.33 |     43.07 |
+| Central Sudanic          |          25 |     5.40 |                73.96 |     15.60 |
+| Chibchan                 |          17 |     2.90 |                92.50 |     16.87 |
+| Chocoan                  |           5 |     1.20 |                60.00 |     54.77 |
+| Dravidian                |          25 |     5.10 |                90.00 |     12.69 |
+| Gunwinyguan              |           5 |     1.50 |                72.22 |     44.31 |
+| Hmong-Mien               |          10 |     3.00 |                88.81 |     14.49 |
+| Indo-European            |          73 |    14.40 |                78.74 |      5.44 |
+| Iroquoian                |           6 |     1.30 |                58.33 |     49.16 |
+| Koiarian                 |           6 |     2.20 |                30.56 |     40.02 |
+| Mande                    |          16 |     4.20 |                88.50 |     19.44 |
+| Mayan                    |          15 |     3.20 |                85.83 |     24.86 |
+| Mongolic-Khitan          |           7 |     1.40 |                85.71 |     37.80 |
+| Muskogean                |           5 |     1.70 |                72.22 |     44.31 |
+| Nakh-Daghestanian        |          20 |     4.90 |                88.42 |     13.80 |
+| Nilotic                  |          14 |     2.50 |                53.17 |     42.04 |
+| North Halmahera          |           7 |     1.40 |                30.00 |     44.72 |
+| Nuclear Torricelli       |           7 |     2.00 |                66.67 |     34.50 |
+| Nuclear Trans New Guinea |          64 |    11.10 |                83.82 |     14.08 |
+| Nuclear-Macro-Je         |          13 |     2.10 |                52.50 |     42.32 |
+| Nyulnyulan               |           5 |     1.40 |                40.00 |     54.77 |
+| Otomanguean              |          23 |     4.20 |                83.75 |     20.45 |
+| Pama-Nyungan             |          72 |    16.50 |                88.17 |      6.40 |
+| Pano-Tacanan             |          15 |     3.00 |                68.33 |     27.44 |
+| Quechuan                 |           9 |     2.20 |                79.17 |     23.15 |
+| Salishan                 |          13 |     3.30 |                84.26 |     22.99 |
+| Sepik                    |           9 |     1.60 |                81.48 |     37.68 |
+| Sino-Tibetan             |         153 |    31.50 |                80.89 |      4.49 |
+| Siouan                   |           6 |     1.80 |                44.44 |     39.09 |
+| Surmic                   |           5 |     1.50 |                38.89 |     49.07 |
+| Ta-Ne-Omotic             |          15 |     3.90 |                48.05 |     27.73 |
+| Tai-Kadai                |          13 |     2.20 |                65.83 |     42.03 |
+| Timor-Alor-Pantar        |           5 |     1.60 |                83.33 |     35.36 |
+| Totonacan                |           5 |     1.60 |                93.75 |     17.68 |
+| Tucanoan                 |          10 |     2.30 |                57.50 |     38.18 |
+| Tungusic                 |           8 |     1.90 |                84.38 |     35.20 |
+| Tupian                   |          18 |     3.50 |                62.71 |     17.54 |
+| Turkic                   |          14 |     2.60 |                97.50 |      7.91 |
+| Unclassified             |         189 |    37.30 |                32.29 |      6.85 |
+| Uralic                   |          20 |     4.20 |               100.00 |      0.00 |
+| Uto-Aztecan              |          39 |     8.10 |                73.48 |     16.02 |
+| Yam                      |           5 |     1.30 |                50.00 |     44.72 |
+| TOTAL                    |        1999 |   399.00 |                71.90 |      5.88 |
+Current device: cuda
+--- New Run:  0 / 10 ---
+Iter: 50. Loss: 0.003844842. Average family accuracy: 85.289
+--- New Run:  1 / 10 ---
+Iter: 50. Loss: 0.003475699. Average family accuracy: 82.914
+--- New Run:  2 / 10 ---
+Iter: 50. Loss: 0.0033503. Average family accuracy: 78.748
+--- New Run:  3 / 10 ---
+Iter: 50. Loss: 0.003697636. Average family accuracy: 86.52
+--- New Run:  4 / 10 ---
+Iter: 50. Loss: 0.003665322. Average family accuracy: 86.309
+--- New Run:  5 / 10 ---
+Iter: 50. Loss: 0.003571714. Average family accuracy: 91.9
+--- New Run:  6 / 10 ---
+Iter: 50. Loss: 0.003681401. Average family accuracy: 69.246
+--- New Run:  7 / 10 ---
+Iter: 50. Loss: 0.004273758. Average family accuracy: 81.565
+--- New Run:  8 / 10 ---
+Iter: 50. Loss: 0.002939222. Average family accuracy: 85.693
+--- New Run:  9 / 10 ---
+Iter: 50. Loss: 0.003653262. Average family accuracy: 98.315
+---------------
+| Language   | Family   | Predictions   |
+|------------|----------|---------------|
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Afro-Asiatic             |          30 |     5.80 |                78.75 |     30.00 |
+| Arawakan                 |          10 |     2.90 |                63.70 |     38.31 |
+| Atlantic-Congo           |          47 |    10.90 |               100.00 |      0.00 |
+| Austroasiatic            |          35 |     7.70 |                92.82 |      9.71 |
+| Austronesian             |         258 |    48.70 |                99.40 |      0.97 |
+| Chibchan                 |          16 |     2.80 |                86.67 |     28.11 |
+| Chocoan                  |           5 |     1.40 |                80.95 |     37.80 |
+| Dravidian                |           8 |     1.90 |                89.58 |     19.80 |
+| Hmong-Mien               |           9 |     2.60 |               100.00 |      0.00 |
+| Indo-European            |          33 |     6.90 |                95.08 |      8.11 |
+| Koiarian                 |           6 |     1.80 |                81.25 |     37.20 |
+| Mande                    |           7 |     1.60 |                87.50 |     23.15 |
+| Nakh-Daghestanian        |           7 |     1.90 |                25.00 |     37.80 |
+| Nuclear Trans New Guinea |          34 |     7.10 |                67.47 |     20.87 |
+| Nuclear-Macro-Je         |           6 |     1.40 |                 0.00 |      0.00 |
+| Pama-Nyungan             |          57 |    11.80 |                99.33 |      2.11 |
+| Quechuan                 |           6 |     1.70 |               100.00 |      0.00 |
+| Sino-Tibetan             |          75 |    15.70 |                98.04 |      4.15 |
+| Tucanoan                 |          10 |     1.40 |                68.75 |     45.81 |
+| Tupian                   |          13 |     2.70 |                98.00 |      6.32 |
+| Turkic                   |          14 |     2.20 |               100.00 |      0.00 |
+| Unclassified             |         158 |    31.30 |                94.52 |      3.06 |
+| Uralic                   |          19 |     3.80 |                92.17 |     13.01 |
+| Uto-Aztecan              |          26 |     4.90 |               100.00 |      0.00 |
+| TOTAL                    |         889 |   177.00 |                84.10 |      7.67 |
+Current device: cuda
+--- New Run:  0 / 10 ---
+Iter: 50. Loss: 0.062677555. Average family accuracy: 72.026
+Iter: 100. Loss: 0.010142701. Average family accuracy: 71.541
+--- New Run:  1 / 10 ---
+Iter: 50. Loss: 0.077739984. Average family accuracy: 75.077
+Iter: 100. Loss: 0.00821194. Average family accuracy: 73.876
+--- New Run:  2 / 10 ---
+Iter: 50. Loss: 0.060860522. Average family accuracy: 79.442
+Iter: 100. Loss: 0.010483572. Average family accuracy: 80.697
+--- New Run:  3 / 10 ---
+Iter: 50. Loss: 0.054759085. Average family accuracy: 78.075
+Iter: 100. Loss: 0.008922378. Average family accuracy: 76.701
+--- New Run:  4 / 10 ---
+Iter: 50. Loss: 0.064135313. Average family accuracy: 77.549
+Iter: 100. Loss: 0.009451999. Average family accuracy: 79.625
+--- New Run:  5 / 10 ---
+Iter: 50. Loss: 0.067394242. Average family accuracy: 74.246
+Iter: 100. Loss: 0.009184853. Average family accuracy: 74.314
+--- New Run:  6 / 10 ---
+Iter: 50. Loss: 0.054930061. Average family accuracy: 79.867
+Iter: 100. Loss: 0.008558866. Average family accuracy: 79.235
+--- New Run:  7 / 10 ---
+Iter: 50. Loss: 0.062255073. Average family accuracy: 78.045
+Iter: 100. Loss: 0.008215304. Average family accuracy: 78.148
+--- New Run:  8 / 10 ---
+Iter: 50. Loss: 0.072765298. Average family accuracy: 74.698
+Iter: 100. Loss: 0.00894685. Average family accuracy: 74.357
+--- New Run:  9 / 10 ---
+Iter: 50. Loss: 0.066762872. Average family accuracy: 74.784
+Iter: 100. Loss: 0.008643853. Average family accuracy: 75.942
+---------------
+| Language   | Family   | Predictions   |
+|------------|----------|---------------|
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Abkhaz-Adyge             |           5 |     1.30 |               100.00 |      0.00 |
+| Afro-Asiatic             |         283 |    57.50 |                92.95 |      3.95 |
+| Algic                    |          35 |     7.50 |                78.41 |      9.75 |
+| Angan                    |          12 |     2.60 |                60.00 |     31.62 |
+| Anim                     |          13 |     2.70 |                17.50 |     23.72 |
+| Arawakan                 |          50 |    11.00 |                92.11 |      6.52 |
+| Athabaskan-Eyak-Tlingit  |          33 |     5.70 |                91.56 |     13.44 |
+| Atlantic-Congo           |        1007 |   198.70 |                92.08 |      4.28 |
+| Austroasiatic            |         105 |    22.40 |                96.15 |      4.39 |
+| Austronesian             |         861 |   169.70 |                96.04 |      2.79 |
+| Barbacoan                |           5 |     1.10 |                37.50 |     51.75 |
+| Border                   |          12 |     2.20 |                70.83 |     35.84 |
+| Bosavi                   |           7 |     1.10 |               100.00 |      0.00 |
+| Caddoan                  |           5 |     1.60 |                35.71 |     47.56 |
+| Cariban                  |          22 |     4.70 |                89.90 |     11.12 |
+| Central Sudanic          |          52 |    10.50 |                92.83 |      8.53 |
+| Chibchan                 |          18 |     4.20 |                60.10 |     26.37 |
+| Chocoan                  |           6 |     1.70 |                96.30 |     11.11 |
+| Cochimi-Yuman            |           9 |     2.20 |                83.00 |     23.59 |
+| Dagan                    |           7 |     2.20 |                 0.00 |      0.00 |
+| Dajuic                   |           6 |     1.30 |                75.00 |     42.49 |
+| Dogon                    |          19 |     4.40 |                96.67 |     10.54 |
+| Dravidian                |          39 |     8.80 |                94.32 |      7.73 |
+| East Strickland          |           6 |     1.20 |                93.75 |     17.68 |
+| Eleman                   |           5 |     1.20 |                80.00 |     44.72 |
+| Eskimo-Aleut             |           9 |     2.60 |                67.78 |     35.90 |
+| Geelvink Bay             |           7 |     1.40 |                46.67 |     50.55 |
+| Goilalan                 |           5 |     1.50 |                 0.00 |      0.00 |
+| Great Andamanese         |          10 |     2.40 |                81.25 |     29.12 |
+| Greater Kwerba           |           5 |     1.10 |                 0.00 |      0.00 |
+| Guahiboan                |           5 |     1.40 |                95.83 |     11.78 |
+| Guaicuruan               |           5 |     1.70 |                 0.00 |      0.00 |
+| Gunwinyguan              |          10 |     3.10 |                21.67 |     20.08 |
+| Heibanic                 |          10 |     2.30 |                94.44 |     16.67 |
+| Hmong-Mien               |          17 |     3.30 |                80.00 |     34.96 |
+| Huitotoan                |           5 |     1.70 |                41.67 |     49.16 |
+| Ijoid                    |          10 |     2.00 |               100.00 |      0.00 |
+| Indo-European            |         273 |    56.60 |                98.77 |      1.56 |
+| Iroquoian                |           9 |     2.00 |                90.62 |     18.60 |
+| Japonic                  |          10 |     2.20 |               100.00 |      0.00 |
+| Kadugli-Krongo           |           6 |     1.50 |               100.00 |      0.00 |
+| Keram                    |           5 |     1.70 |                11.90 |     20.89 |
+| Khoe-Kwadi               |          10 |     2.40 |                94.00 |     18.97 |
+| Kiowa-Tanoan             |           5 |     1.50 |                52.08 |     46.66 |
+| Kiwaian                  |           6 |     1.40 |                75.00 |     37.80 |
+| Koiarian                 |           7 |     1.80 |                50.00 |     50.00 |
+| Kru                      |          17 |     3.10 |                97.78 |      6.67 |
+| Lakes Plain              |          19 |     3.80 |                79.63 |     24.69 |
+| Left May                 |           6 |     2.40 |                60.42 |     33.26 |
+| Lower Sepik-Ramu         |          28 |     5.40 |                67.00 |     15.81 |
+| Mailuan                  |           6 |     1.50 |                83.33 |     36.00 |
+| Mande                    |          62 |    12.60 |                94.76 |      7.29 |
+| Matacoan                 |           6 |     1.40 |                33.33 |     47.14 |
+| Mayan                    |          31 |     6.90 |                95.64 |      7.21 |
+| Miwok-Costanoan          |           7 |     2.00 |                77.08 |     25.10 |
+| Mixe-Zoque               |          16 |     3.20 |                76.33 |     22.41 |
+| Mongolic-Khitan          |          10 |     2.10 |                87.50 |     23.15 |
+| Muskogean                |           6 |     1.30 |                50.00 |     50.00 |
+| Nakh-Daghestanian        |          29 |     5.90 |               100.00 |      0.00 |
+| Narrow Talodi            |           5 |     2.70 |                61.11 |      9.62 |
+| Ndu                      |          10 |     2.10 |                92.50 |     16.87 |
+| Nilotic                  |          46 |     9.20 |                97.01 |      4.93 |
+| North Halmahera          |          10 |     1.60 |                72.22 |     44.10 |
+| Nubian                   |           9 |     2.40 |                90.62 |     18.60 |
+| Nuclear Torricelli       |          50 |    10.40 |                83.58 |     13.43 |
+| Nuclear Trans New Guinea |         266 |    51.40 |                89.32 |      6.55 |
+| Nuclear-Macro-Je         |          20 |     4.30 |                49.19 |     26.86 |
+| Nyulnyulan               |           5 |     1.20 |                31.25 |     45.81 |
+| Otomanguean              |          86 |    16.90 |                88.16 |      9.60 |
+| Pama-Nyungan             |         129 |    24.10 |                89.74 |      5.04 |
+| Pano-Tacanan             |          21 |     5.00 |                82.67 |     19.60 |
+| Pauwasi                  |           5 |     1.30 |                 0.00 |      0.00 |
+| Pomoan                   |           7 |     1.60 |                90.00 |     22.36 |
+| Quechuan                 |          35 |     7.40 |               100.00 |      0.00 |
+| Saharan                  |           7 |     1.70 |                22.22 |     44.10 |
+| Salishan                 |          23 |     5.10 |                78.50 |     14.69 |
+| Sepik                    |          28 |     6.20 |                84.02 |     20.33 |
+| Sino-Tibetan             |         231 |    45.80 |                96.06 |      4.78 |
+| Siouan                   |          17 |     3.30 |                75.50 |     30.47 |
+| Sko                      |          10 |     1.90 |                43.33 |     43.89 |
+| Songhay                  |           8 |     2.00 |               100.00 |      0.00 |
+| South Bird's Head Family |           6 |     1.30 |                57.14 |     53.45 |
+| South Omotic             |           5 |     1.10 |               100.00 |      0.00 |
+| Surmic                   |          10 |     2.60 |               100.00 |      0.00 |
+| Ta-Ne-Omotic             |          19 |     4.10 |                91.81 |     13.57 |
+| Tai-Kadai                |          53 |    10.90 |                93.74 |      8.70 |
+| Timor-Alor-Pantar        |          22 |     4.60 |                87.11 |     11.35 |
+| Tor-Orya                 |          13 |     2.30 |                95.00 |     15.81 |
+| Totonacan                |           9 |     2.40 |               100.00 |      0.00 |
+| Tucanoan                 |          19 |     4.10 |                90.24 |     13.38 |
+| Tungusic                 |          12 |     3.00 |                84.17 |     16.87 |
+| Tupian                   |          54 |     9.80 |                95.47 |      6.11 |
+| Turkic                   |          33 |     5.10 |                97.50 |      7.91 |
+| Tuu                      |           5 |     1.40 |               100.00 |      0.00 |
+| Unclassified             |         163 |    30.90 |                61.71 |     10.58 |
+| Uralic                   |          32 |     5.60 |                93.47 |      9.17 |
+| Uto-Aztecan              |          52 |    10.70 |                97.07 |      6.40 |
+| Wakashan                 |           6 |     1.90 |                80.95 |     37.80 |
+| Western Daly             |           9 |     2.40 |               100.00 |      0.00 |
+| Worrorran                |           5 |     1.50 |                88.89 |     27.22 |
+| Yam                      |          17 |     3.90 |                86.11 |     16.67 |
+| Yareban                  |           5 |     1.50 |                47.22 |     45.24 |
+| Yeniseian                |           5 |     1.90 |                70.37 |     37.99 |
+| Yuat                     |           5 |     1.60 |                55.00 |     36.89 |
+| TOTAL                    |        4881 |   976.00 |                76.40 |      2.72 |
+Current device: cuda
+--- New Run:  0 / 10 ---
+Iter: 50. Loss: 0.006292334. Average family accuracy: 79.6
+--- New Run:  1 / 10 ---
+Iter: 50. Loss: 0.005956952. Average family accuracy: 93.604
+--- New Run:  2 / 10 ---
+Iter: 50. Loss: 0.004461639. Average family accuracy: 79.71
+--- New Run:  3 / 10 ---
+Iter: 50. Loss: 0.005755815. Average family accuracy: 78.434
+--- New Run:  4 / 10 ---
+Iter: 50. Loss: 0.006401326. Average family accuracy: 73.839
+--- New Run:  5 / 10 ---
+Iter: 50. Loss: 0.005307674. Average family accuracy: 81.46
+--- New Run:  6 / 10 ---
+Iter: 50. Loss: 0.004556188. Average family accuracy: 80.827
+--- New Run:  7 / 10 ---
+Iter: 50. Loss: 0.005326669. Average family accuracy: 79.386
+--- New Run:  8 / 10 ---
+Iter: 50. Loss: 0.005887846. Average family accuracy: 84.784
+--- New Run:  9 / 10 ---
+Iter: 50. Loss: 0.005852762. Average family accuracy: 80.152
+---------------
+| Language   | Family   | Predictions   |
+|------------|----------|---------------|
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Afro-Asiatic             |          30 |     5.80 |                76.79 |     21.05 |
+| Arawakan                 |          10 |     1.90 |                75.93 |     38.29 |
+| Atlantic-Congo           |          47 |    10.00 |                96.42 |      4.64 |
+| Austroasiatic            |          35 |     6.60 |                88.87 |     10.77 |
+| Austronesian             |         258 |    49.80 |                99.02 |      1.43 |
+| Chibchan                 |          16 |     3.30 |                65.71 |     31.57 |
+| Chocoan                  |           5 |     1.10 |                75.00 |     46.29 |
+| Dravidian                |           8 |     1.60 |                91.67 |     18.00 |
+| Hmong-Mien               |           9 |     2.10 |               100.00 |      0.00 |
+| Indo-European            |          33 |     5.60 |                86.31 |     14.59 |
+| Koiarian                 |           6 |     1.40 |                61.11 |     48.59 |
+| Mande                    |           7 |     1.80 |                66.67 |     25.82 |
+| Nakh-Daghestanian        |           7 |     1.30 |                11.11 |     33.33 |
+| Nuclear Trans New Guinea |          34 |     7.60 |                66.21 |     20.11 |
+| Nuclear-Macro-Je         |           6 |     1.60 |                 0.00 |      0.00 |
+| Pama-Nyungan             |          57 |    10.90 |                98.67 |      2.81 |
+| Quechuan                 |           6 |     1.40 |               100.00 |      0.00 |
+| Sino-Tibetan             |          75 |    14.30 |               100.00 |      0.00 |
+| Tucanoan                 |          10 |     3.00 |                87.50 |     23.15 |
+| Tupian                   |          13 |     2.60 |                94.17 |     12.45 |
+| Turkic                   |          14 |     2.60 |                97.50 |      7.91 |
+| Unclassified             |         158 |    33.40 |                94.68 |      3.57 |
+| Uralic                   |          19 |     5.00 |                92.82 |      9.83 |
+| Uto-Aztecan              |          26 |     5.50 |               100.00 |      0.00 |
+| TOTAL                    |         889 |   177.00 |                80.60 |      5.15 |
+Current device: cuda
+--- New Run:  0 / 100 ---
+Iter: 50. Loss: 0.054133028. Average family accuracy: 67.085
+Iter: 100. Loss: 0.005204476. Average family accuracy: 69.048
+Iter: 150. Loss: 0.002069367. Average family accuracy: 74.751
+Iter: 200. Loss: 0.001182706. Average family accuracy: 76.402
+Iter: 250. Loss: 0.000783095. Average family accuracy: 76.538
+Iter: 300. Loss: 0.000563748. Average family accuracy: 78.57
+Iter: 350. Loss: 0.000428578. Average family accuracy: 78.57
+Iter: 400. Loss: 0.000338558. Average family accuracy: 78.629
+Iter: 450. Loss: 0.000275205. Average family accuracy: 78.629
+Iter: 500. Loss: 0.000228712. Average family accuracy: 78.588
+Iter: 550. Loss: 0.000193446. Average family accuracy: 78.588
+Iter: 600. Loss: 0.000165971. Average family accuracy: 78.703
+Iter: 650. Loss: 0.000144115. Average family accuracy: 78.703
+Iter: 700. Loss: 0.000126394. Average family accuracy: 78.703
+Iter: 750. Loss: 0.000111813. Average family accuracy: 78.703
+Iter: 800. Loss: 9.9655e-05. Average family accuracy: 78.634
+Iter: 850. Loss: 8.9384e-05. Average family accuracy: 78.634
+Iter: 900. Loss: 8.0633e-05. Average family accuracy: 78.634
+Iter: 950. Loss: 7.3107e-05. Average family accuracy: 78.676
+Iter: 1000. Loss: 6.6594e-05. Average family accuracy: 78.676
+Iter: 1050. Loss: 6.0896e-05. Average family accuracy: 78.676
+Iter: 1100. Loss: 5.5898e-05. Average family accuracy: 78.676
+Iter: 1150. Loss: 5.148e-05. Average family accuracy: 78.676
+Iter: 1200. Loss: 4.7553e-05. Average family accuracy: 78.676
+Iter: 1250. Loss: 4.4046e-05. Average family accuracy: 78.676
+Iter: 1300. Loss: 4.0909e-05. Average family accuracy: 78.676
+Iter: 1350. Loss: 3.8072e-05. Average family accuracy: 78.676
+Iter: 1400. Loss: 3.5519e-05. Average family accuracy: 78.676
+Iter: 1450. Loss: 3.3201e-05. Average family accuracy: 78.676
+Iter: 1500. Loss: 3.1093e-05. Average family accuracy: 78.676
+Iter: 1550. Loss: 2.9174e-05. Average family accuracy: 78.676
+Iter: 1600. Loss: 2.7414e-05. Average family accuracy: 78.676
+--- New Run:  1 / 100 ---
+Iter: 50. Loss: 0.057009805. Average family accuracy: 77.352
+Iter: 100. Loss: 0.005768527. Average family accuracy: 75.573
+Iter: 150. Loss: 0.002341433. Average family accuracy: 78.03
+Iter: 200. Loss: 0.001337272. Average family accuracy: 78.001
+Iter: 250. Loss: 0.000881685. Average family accuracy: 78.729
+Iter: 300. Loss: 0.000631625. Average family accuracy: 78.757
+Iter: 350. Loss: 0.000478049. Average family accuracy: 79.288
+Iter: 400. Loss: 0.000376192. Average family accuracy: 80.803
+Iter: 450. Loss: 0.000304803. Average family accuracy: 80.686
+Iter: 500. Loss: 0.000252599. Average family accuracy: 80.628
+Iter: 550. Loss: 0.000213139. Average family accuracy: 81.386
+Iter: 600. Loss: 0.000182485. Average family accuracy: 80.249
+Iter: 650. Loss: 0.000158146. Average family accuracy: 81.1
+Iter: 700. Loss: 0.000138474. Average family accuracy: 81.042
+Iter: 750. Loss: 0.000122318. Average family accuracy: 81.042
+Iter: 800. Loss: 0.000108865. Average family accuracy: 81.042
+Iter: 850. Loss: 9.7539e-05. Average family accuracy: 80.984
+Iter: 900. Loss: 8.7893e-05. Average family accuracy: 80.984
+Iter: 950. Loss: 7.9614e-05. Average family accuracy: 80.984
+Iter: 1000. Loss: 7.245e-05. Average family accuracy: 80.605
+Iter: 1050. Loss: 6.6204e-05. Average family accuracy: 80.605
+Iter: 1100. Loss: 6.0721e-05. Average family accuracy: 80.605
+Iter: 1150. Loss: 5.5881e-05. Average family accuracy: 80.605
+Iter: 1200. Loss: 5.1588e-05. Average family accuracy: 80.605
+Iter: 1250. Loss: 4.7762e-05. Average family accuracy: 80.605
+Iter: 1300. Loss: 4.434e-05. Average family accuracy: 80.605
+Iter: 1350. Loss: 4.1247e-05. Average family accuracy: 80.605
+Iter: 1400. Loss: 3.8465e-05. Average family accuracy: 80.605
+Iter: 1450. Loss: 3.5943e-05. Average family accuracy: 80.605
+Iter: 1500. Loss: 3.3648e-05. Average family accuracy: 80.605
+Iter: 1550. Loss: 3.1551e-05. Average family accuracy: 80.605
+Current device: cuda
+--- New Run:  0 / 100 ---
+Iter: 50. Loss: 0.382991076. Average family accuracy: 77.63
+Iter: 100. Loss: 0.045549385. Average family accuracy: 78.98
+Iter: 150. Loss: 0.013026557. Average family accuracy: 81.333
+Iter: 200. Loss: 0.005565739. Average family accuracy: 80.256
+Iter: 250. Loss: 0.003014426. Average family accuracy: 80.07
+Iter: 300. Loss: 0.001868085. Average family accuracy: 81.585
+Iter: 350. Loss: 0.001273924. Average family accuracy: 81.585
+Iter: 400. Loss: 0.000931588. Average family accuracy: 81.585
+Iter: 450. Loss: 0.000714658. Average family accuracy: 81.08
+Iter: 500. Loss: 0.000567503. Average family accuracy: 81.08
+Iter: 550. Loss: 0.000462661. Average family accuracy: 80.95
+Iter: 600. Loss: 0.000384741. Average family accuracy: 81.023
+Iter: 650. Loss: 0.000325385. Average family accuracy: 81.023
+Iter: 700. Loss: 0.000278938. Average family accuracy: 81.023
+Iter: 750. Loss: 0.000241578. Average family accuracy: 81.023
+Iter: 800. Loss: 0.000211291. Average family accuracy: 81.023
+Iter: 850. Loss: 0.000186252. Average family accuracy: 81.097
+Iter: 900. Loss: 0.000165291. Average family accuracy: 81.097
+Iter: 950. Loss: 0.000147503. Average family accuracy: 81.097
+Iter: 1000. Loss: 0.000132162. Average family accuracy: 81.17
+Iter: 1050. Loss: 0.000118416. Average family accuracy: 81.17
+Iter: 1100. Loss: 0.000106412. Average family accuracy: 81.17
+Iter: 1150. Loss: 9.5875e-05. Average family accuracy: 81.17
+Iter: 1200. Loss: 8.6556e-05. Average family accuracy: 81.17
+Iter: 1250. Loss: 7.84e-05. Average family accuracy: 80.261
+Iter: 1300. Loss: 7.1271e-05. Average family accuracy: 80.188
+--- New Run:  1 / 100 ---
+Iter: 50. Loss: 0.339737326. Average family accuracy: 80.489
+Iter: 100. Loss: 0.046118457. Average family accuracy: 81.035
+Iter: 150. Loss: 0.015670775. Average family accuracy: 81.934
+Iter: 200. Loss: 0.007253237. Average family accuracy: 81.471
+Iter: 250. Loss: 0.004019719. Average family accuracy: 81.471
+Iter: 300. Loss: 0.002523845. Average family accuracy: 81.471
+Iter: 350. Loss: 0.0017385. Average family accuracy: 79.387
+Iter: 400. Loss: 0.001277097. Average family accuracy: 79.387
+Iter: 450. Loss: 0.000981762. Average family accuracy: 79.387
+Iter: 500. Loss: 0.000780281. Average family accuracy: 79.387
+Iter: 550. Loss: 0.000636179. Average family accuracy: 78.802
+Iter: 600. Loss: 0.000529177. Average family accuracy: 78.339
+Iter: 650. Loss: 0.000447368. Average family accuracy: 78.339
+Iter: 700. Loss: 0.000383202. Average family accuracy: 78.339
+Iter: 750. Loss: 0.000332067. Average family accuracy: 78.339
+Iter: 800. Loss: 0.000290499. Average family accuracy: 78.339
+Iter: 850. Loss: 0.000256283. Average family accuracy: 78.339
+Iter: 900. Loss: 0.000227736. Average family accuracy: 77.818
+Iter: 950. Loss: 0.000203692. Average family accuracy: 77.891
+Iter: 1000. Loss: 0.00018321. Average family accuracy: 77.818
+Iter: 1050. Loss: 0.000165624. Average family accuracy: 77.818
+Iter: 1100. Loss: 0.000150406. Average family accuracy: 77.818
+Iter: 1150. Loss: 0.000137134. Average family accuracy: 77.818
+--- New Run:  2 / 100 ---
+Iter: 50. Loss: 0.369054019. Average family accuracy: 72.907
+Iter: 100. Loss: 0.047073334. Average family accuracy: 72.902
+Iter: 150. Loss: 0.015670815. Average family accuracy: 73.789
+Iter: 200. Loss: 0.007135757. Average family accuracy: 73.194
+Iter: 250. Loss: 0.003990761. Average family accuracy: 72.916
+Iter: 300. Loss: 0.002543081. Average family accuracy: 72.671
+Iter: 350. Loss: 0.001770375. Average family accuracy: 72.992
+Iter: 400. Loss: 0.001309298. Average family accuracy: 72.992
+Iter: 450. Loss: 0.001011045. Average family accuracy: 73.077
+Iter: 500. Loss: 0.00080605. Average family accuracy: 73.077
+Iter: 550. Loss: 0.000658687. Average family accuracy: 73.077
+Iter: 600. Loss: 0.000548884. Average family accuracy: 73.077
+Iter: 650. Loss: 0.00046465. Average family accuracy: 73.077
+Iter: 700. Loss: 0.000398524. Average family accuracy: 73.322
+Iter: 750. Loss: 0.000345521. Average family accuracy: 71.239
+Iter: 800. Loss: 0.00030243. Average family accuracy: 71.239
+Iter: 850. Loss: 0.000266851. Average family accuracy: 71.239
+Iter: 900. Loss: 0.000237117. Average family accuracy: 71.239
+Iter: 950. Loss: 0.000212021. Average family accuracy: 71.239
+Iter: 1000. Loss: 0.000190653. Average family accuracy: 71.239
+Iter: 1050. Loss: 0.000172282. Average family accuracy: 71.239
+Iter: 1100. Loss: 0.00015637. Average family accuracy: 71.239
+Iter: 1150. Loss: 0.000142485. Average family accuracy: 71.239
+--- New Run:  3 / 100 ---
+Iter: 50. Loss: 0.403928071. Average family accuracy: 84.537
+Iter: 100. Loss: 0.051280312. Average family accuracy: 81.864
+Iter: 150. Loss: 0.015446722. Average family accuracy: 79.526
+Iter: 200. Loss: 0.006550131. Average family accuracy: 79.203
+Iter: 250. Loss: 0.003592604. Average family accuracy: 79.203
+Iter: 300. Loss: 0.002293114. Average family accuracy: 79.203
+Iter: 350. Loss: 0.001603667. Average family accuracy: 79.917
+Iter: 400. Loss: 0.001189757. Average family accuracy: 79.917
+Iter: 450. Loss: 0.000919856. Average family accuracy: 79.917
+Iter: 500. Loss: 0.000727876. Average family accuracy: 79.917
+Iter: 550. Loss: 0.000584433. Average family accuracy: 80.751
+Iter: 600. Loss: 0.000476772. Average family accuracy: 80.751
+Iter: 650. Loss: 0.000395281. Average family accuracy: 80.751
+Iter: 700. Loss: 0.000332843. Average family accuracy: 80.751
+Iter: 750. Loss: 0.000284029. Average family accuracy: 80.751
+Iter: 800. Loss: 0.00024502. Average family accuracy: 80.751
+Iter: 850. Loss: 0.000211834. Average family accuracy: 80.751
+Iter: 900. Loss: 0.000181295. Average family accuracy: 81.108
+Iter: 950. Loss: 0.000155942. Average family accuracy: 81.108
+Iter: 1000. Loss: 0.000134945. Average family accuracy: 81.108
+Iter: 1050. Loss: 0.000117654. Average family accuracy: 81.108
+--- New Run:  4 / 100 ---
+Iter: 50. Loss: 0.328569889. Average family accuracy: 76.753
+Iter: 100. Loss: 0.041604258. Average family accuracy: 80.971
+Iter: 150. Loss: 0.014457921. Average family accuracy: 82.123
+Iter: 200. Loss: 0.006974785. Average family accuracy: 81.864
+Iter: 250. Loss: 0.003875406. Average family accuracy: 81.036
+Iter: 300. Loss: 0.002382354. Average family accuracy: 81.075
+Iter: 350. Loss: 0.001596773. Average family accuracy: 81.075
+Iter: 400. Loss: 0.001144518. Average family accuracy: 81.282
+Iter: 450. Loss: 0.000861643. Average family accuracy: 79.108
+Iter: 500. Loss: 0.000672954. Average family accuracy: 77.659
+Iter: 550. Loss: 0.000540334. Average family accuracy: 77.749
+Iter: 600. Loss: 0.000443246. Average family accuracy: 77.206
+Iter: 650. Loss: 0.000363126. Average family accuracy: 77.051
+Iter: 700. Loss: 0.000301517. Average family accuracy: 76.986
+Iter: 750. Loss: 0.000254991. Average family accuracy: 79.16
+Iter: 800. Loss: 0.00021846. Average family accuracy: 79.069
+Iter: 850. Loss: 0.000189455. Average family accuracy: 77.982
+Iter: 900. Loss: 0.00016589. Average family accuracy: 77.827
+Iter: 950. Loss: 0.000146478. Average family accuracy: 77.672
+Iter: 1000. Loss: 0.00013023. Average family accuracy: 77.672
+Iter: 1050. Loss: 0.000116474. Average family accuracy: 77.672
+Iter: 1100. Loss: 0.000104749. Average family accuracy: 77.672
+Iter: 1150. Loss: 9.4708e-05. Average family accuracy: 77.672
+Current device: cuda
+Current device: cuda
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: fblum(51669)
+Job name:  ALA
+Node list: ravg1013
+Job start: Thu Jun  6 07:04:39 CEST 2024
+Job end:   Thu Jun  6 07:11:40 CEST 2024
+Work dir:  /u/fblum/ala/examples/./
+Command:   /raven/u/fblum/ala/examples/ala_raven.sh
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+11194385             ALA      1           144                             00:07:01      1:0
+  
+Maximum memory per node: 1.996357 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 0.9 %
+  

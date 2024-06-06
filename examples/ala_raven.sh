@@ -24,4 +24,3 @@ python3 -u ala-ff-torch.py --data=asjp -intersection
 python3 -u ala-ff-torch.py --data=grambank -intersection
 python3 -u ala-ff-torch.py --data=lexibank -isolates -longdistance -test_np
 python3 -u ala-ff-torch.py --data=combined -isolates -longdistance -test_np
-

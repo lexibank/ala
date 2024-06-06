@@ -1,106 +1,106 @@
 Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
-Abkhaz-Adyge	5	1.5	86.79	31.03
-Afro-Asiatic	283	56.1	97.29	2.3
-Algic	35	6.7	86.91	14.43
-Angan	12	2.6	60.59	33.95
-Anim	13	2.7	32.66	28.52
-Arawakan	50	10.9	92.27	8.37
-Athabaskan-Eyak-Tlingit	33	6.5	95.85	9.22
-Atlantic-Congo	1007	199	98.22	1.29
-Austroasiatic	105	21.4	97.77	3.46
-Austronesian	861	173.4	98.9	0.91
-Barbacoan	5	1.5	37.88	43.61
-Border	12	2.7	90.79	17.9
-Bosavi	7	1.7	79.11	34.02
-Caddoan	5	1.5	32.35	42.99
-Cariban	22	4.5	96.08	9.22
-Central Sudanic	52	10.3	91.84	10.1
-Chibchan	18	3.8	69.69	25.44
-Chocoan	6	1.5	88.73	28.28
-Cochimi-Yuman	9	2.0	73.19	34.92
-Dagan	7	1.8	3.8	17.49
-Dajuic	6	1.7	90.64	23.73
-Dogon	19	4.1	98.74	5.97
-Dravidian	39	7.4	95.67	8.98
-East Strickland	6	1.5	90.41	27.35
-Eleman	5	1.4	96.19	17.53
-Eskimo-Aleut	9	2.4	86.44	24.81
-Geelvink Bay	7	1.6	70.31	39.78
-Goilalan	5	1.5	2.03	12.93
-Great Andamanese	10	2.3	91.12	18.28
-Greater Kwerba	5	1.4	9.7	29.18
-Guahiboan	5	1.6	97.34	10.93
-Guaicuruan	5	1.5	24.36	38.54
-Gunwinyguan	10	2.2	45.7	37.96
-Heibanic	10	2.4	91.01	20.46
-Hmong-Mien	17	3.4	98.21	5.71
-Huitotoan	5	1.6	77.02	37.95
-Ijoid	10	2.2	99.61	3.59
-Indo-European	273	54.2	99.22	1.17
-Iroquoian	9	1.8	78.59	31.87
-Japonic	10	2.2	99.63	3.49
-Kadugli-Krongo	6	1.7	100.0	0.0
-Keram	5	1.6	19.19	32.32
-Khoe-Kwadi	10	2.4	84.42	28.63
-Kiowa-Tanoan	5	1.5	81.94	35.13
-Kiwaian	6	1.8	82.99	33.7
-Koiarian	7	1.9	71.03	38.88
-Kru	17	3.5	89.77	17.24
-Lakes Plain	19	4.1	82.65	19.04
-Left May	6	1.6	64.06	41.61
-Lower Sepik-Ramu	28	5.8	82.71	16.95
-Mailuan	6	1.4	78.0	36.78
-Mande	62	12.4	95.03	6.64
-Matacoan	6	1.6	84.42	30.51
-Mayan	31	6.5	96.28	8.71
-Miwok-Costanoan	7	1.8	74.55	34.45
-Mixe-Zoque	16	3.4	90.55	17.55
-Mongolic-Khitan	10	2.2	91.97	21.27
-Muskogean	6	1.6	90.6	22.41
-Nakh-Daghestanian	29	5.8	99.71	2.07
-Narrow Talodi	5	1.6	85.29	30.14
-Ndu	10	2.2	92.95	21.35
-Nilotic	46	8.9	98.14	3.95
-North Halmahera	10	2.3	91.54	18.04
-Nubian	9	1.9	88.49	26.92
-Nuclear Torricelli	50	10.0	81.38	11.89
-Nuclear Trans New Guinea	266	52.1	91.43	4.22
-Nuclear-Macro-Je	20	3.9	54.51	29.31
-Nyulnyulan	5	1.5	80.51	34.81
-Otomanguean	86	16.9	92.81	6.02
-Pama-Nyungan	129	25.9	94.29	4.59
-Pano-Tacanan	21	4.2	94.18	13.22
-Pauwasi	5	1.4	36.61	44.6
-Pomoan	7	1.8	93.07	18.75
-Quechuan	35	7.1	100.0	0.0
-Saharan	7	1.7	48.11	43.05
-Salishan	23	4.8	89.53	14.1
-Sepik	28	5.6	81.96	16.88
-Sino-Tibetan	231	48	98.43	1.78
-Siouan	17	3.7	82.7	21.23
-Sko	10	2.3	42.02	36.76
-Songhay	8	2.0	100.0	0.0
-South Bird's Head Family	6	1.6	61.11	41.06
-South Omotic	5	1.4	100.0	0.0
-Surmic	10	2.4	97.91	8.19
-Ta-Ne-Omotic	19	4.0	92.49	16.28
-Tai-Kadai	53	11	95.85	6.35
-Timor-Alor-Pantar	22	4.5	91.64	14.24
-Tor-Orya	13	2.5	90.46	18.08
-Totonacan	9	2.0	97.38	12.41
-Tucanoan	19	3.7	87.22	17.87
-Tungusic	12	2.7	97.3	9.46
-Tupian	54	10.9	94.06	7.5
-Turkic	33	7.0	96.92	6.08
-Tuu	5	1.5	100.0	0.0
-Unclassified	163	31.8	51.48	9.2
-Uralic	32	6.5	97.19	5.96
-Uto-Aztecan	52	10.1	98.79	3.55
-Wakashan	6	1.6	94.0	22.62
-Western Daly	9	2.0	100.0	0.0
-Worrorran	5	1.5	67.71	41.82
-Yam	17	3.3	87.65	21.98
-Yareban	5	1.6	89.14	26.39
-Yeniseian	5	1.4	93.14	22.72
-Yuat	5	1.4	75.47	37.82
-TOTAL	4881	976	82.27	2.59
+Abkhaz-Adyge	5	1.3	100.0	0.0
+Afro-Asiatic	283	57.5	92.95	3.95
+Algic	35	7.5	78.41	9.75
+Angan	12	2.6	60.0	31.62
+Anim	13	2.7	17.5	23.72
+Arawakan	50	11	92.11	6.52
+Athabaskan-Eyak-Tlingit	33	5.7	91.56	13.44
+Atlantic-Congo	1007	198.7	92.08	4.28
+Austroasiatic	105	22.4	96.15	4.39
+Austronesian	861	169.7	96.04	2.79
+Barbacoan	5	1.1	37.5	51.75
+Border	12	2.2	70.83	35.84
+Bosavi	7	1.1	100.0	0.0
+Caddoan	5	1.6	35.71	47.56
+Cariban	22	4.7	89.9	11.12
+Central Sudanic	52	10.5	92.83	8.53
+Chibchan	18	4.2	60.1	26.37
+Chocoan	6	1.7	96.3	11.11
+Cochimi-Yuman	9	2.2	83.0	23.59
+Dagan	7	2.2	0.0	0.0
+Dajuic	6	1.3	75.0	42.49
+Dogon	19	4.4	96.67	10.54
+Dravidian	39	8.8	94.32	7.73
+East Strickland	6	1.2	93.75	17.68
+Eleman	5	1.2	80.0	44.72
+Eskimo-Aleut	9	2.6	67.78	35.9
+Geelvink Bay	7	1.4	46.67	50.55
+Goilalan	5	1.5	0.0	0.0
+Great Andamanese	10	2.4	81.25	29.12
+Greater Kwerba	5	1.1	0.0	0.0
+Guahiboan	5	1.4	95.83	11.78
+Guaicuruan	5	1.7	0.0	0.0
+Gunwinyguan	10	3.1	21.67	20.08
+Heibanic	10	2.3	94.44	16.67
+Hmong-Mien	17	3.3	80.0	34.96
+Huitotoan	5	1.7	41.67	49.16
+Ijoid	10	2	100.0	0.0
+Indo-European	273	56.6	98.77	1.56
+Iroquoian	9	2	90.62	18.6
+Japonic	10	2.2	100.0	0.0
+Kadugli-Krongo	6	1.5	100.0	0.0
+Keram	5	1.7	11.9	20.89
+Khoe-Kwadi	10	2.4	94.0	18.97
+Kiowa-Tanoan	5	1.5	52.08	46.66
+Kiwaian	6	1.4	75.0	37.8
+Koiarian	7	1.8	50.0	50.0
+Kru	17	3.1	97.78	6.67
+Lakes Plain	19	3.8	79.63	24.69
+Left May	6	2.4	60.42	33.26
+Lower Sepik-Ramu	28	5.4	67.0	15.81
+Mailuan	6	1.5	83.33	36.0
+Mande	62	12.6	94.76	7.29
+Matacoan	6	1.4	33.33	47.14
+Mayan	31	6.9	95.64	7.21
+Miwok-Costanoan	7	2	77.08	25.1
+Mixe-Zoque	16	3.2	76.33	22.41
+Mongolic-Khitan	10	2.1	87.5	23.15
+Muskogean	6	1.3	50.0	50.0
+Nakh-Daghestanian	29	5.9	100.0	0.0
+Narrow Talodi	5	2.7	61.11	9.62
+Ndu	10	2.1	92.5	16.87
+Nilotic	46	9.2	97.01	4.93
+North Halmahera	10	1.6	72.22	44.1
+Nubian	9	2.4	90.62	18.6
+Nuclear Torricelli	50	10.4	83.58	13.43
+Nuclear Trans New Guinea	266	51.4	89.32	6.55
+Nuclear-Macro-Je	20	4.3	49.19	26.86
+Nyulnyulan	5	1.2	31.25	45.81
+Otomanguean	86	16.9	88.16	9.6
+Pama-Nyungan	129	24.1	89.74	5.04
+Pano-Tacanan	21	5	82.67	19.6
+Pauwasi	5	1.3	0.0	0.0
+Pomoan	7	1.6	90.0	22.36
+Quechuan	35	7.4	100.0	0.0
+Saharan	7	1.7	22.22	44.1
+Salishan	23	5.1	78.5	14.69
+Sepik	28	6.2	84.02	20.33
+Sino-Tibetan	231	45.8	96.06	4.78
+Siouan	17	3.3	75.5	30.47
+Sko	10	1.9	43.33	43.89
+Songhay	8	2	100.0	0.0
+South Bird's Head Family	6	1.3	57.14	53.45
+South Omotic	5	1.1	100.0	0.0
+Surmic	10	2.6	100.0	0.0
+Ta-Ne-Omotic	19	4.1	91.81	13.57
+Tai-Kadai	53	10.9	93.74	8.7
+Timor-Alor-Pantar	22	4.6	87.11	11.35
+Tor-Orya	13	2.3	95.0	15.81
+Totonacan	9	2.4	100.0	0.0
+Tucanoan	19	4.1	90.24	13.38
+Tungusic	12	3	84.17	16.87
+Tupian	54	9.8	95.47	6.11
+Turkic	33	5.1	97.5	7.91
+Tuu	5	1.4	100.0	0.0
+Unclassified	163	30.9	61.71	10.58
+Uralic	32	5.6	93.47	9.17
+Uto-Aztecan	52	10.7	97.07	6.4
+Wakashan	6	1.9	80.95	37.8
+Western Daly	9	2.4	100.0	0.0
+Worrorran	5	1.5	88.89	27.22
+Yam	17	3.9	86.11	16.67
+Yareban	5	1.5	47.22	45.24
+Yeniseian	5	1.9	70.37	37.99
+Yuat	5	1.6	55.0	36.89
+TOTAL	4881	976	76.4	2.72
