@@ -1,11 +1,11 @@
 import sqlite3
-import lingpy
 from collections import defaultdict
-import tqdm
-from clldutils.misc import slug
 import random
 import statistics
 import numpy as np
+import lingpy
+import tqdm
+from clldutils.misc import slug
 
 
 ATTACH_BPT = """ATTACH 'data/blumpanotacana.sqlite3' AS db1;"""

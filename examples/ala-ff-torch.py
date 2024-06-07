@@ -80,7 +80,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
     # test = {k: v[1] for k, v in get_asjp().items()}
     # print(test)
 
-    else:
+    elif data == 'combined':
         full_data = convert_data(
             wordlists,
             {k: v[0] for k, v in asjp.items() if k in grambank},
@@ -102,9 +102,9 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
     if test_np is True:
         train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'agua1253', 'achu1248', 'shua1257']
         np_wl = dict(get_other(mode='np').items())
+
         np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='np')
         for lang in np_data:
-            print(lang)
             if lang in train_np:
                 full_data[lang] = np_data[lang]
             else:
@@ -370,20 +370,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
         ]]
 
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
-    output = 'results/results_' + data + mod + '.tsv'
-    with open(output, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(header)
-        writer.writerows(table)
+    # output = 'results/results_' + data + mod + '.tsv'
+    # with open(output, 'w', encoding='utf8', newline='') as f:
+    #     writer = csv.writer(f, delimiter='\t')
+    #     writer.writerow(header)
+    #     writer.writerows(table)
 
-    # Detailed results per run
-    output_detailed = output.replace('.tsv', '_detailed.tsv')
-    with open(output_detailed, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
-        for family in results_per_fam:
-            for run in results_per_fam[family]:
-                writer.writerow(run)
+    # # Detailed results per run
+    # output_detailed = output.replace('.tsv', '_detailed.tsv')
+    # with open(output_detailed, 'w', encoding='utf8', newline='') as f:
+    #     writer = csv.writer(f, delimiter='\t')
+    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
+    #     for family in results_per_fam:
+    #         for run in results_per_fam[family]:
+    #             writer.writerow(run)
 
     print(tabulate(
         table,

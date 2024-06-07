@@ -1,6 +1,5 @@
 library(readr)
 library(dplyr)
-library(forcats)
 library(ggdist)
 library(gghalves)
 library(ggplot2)

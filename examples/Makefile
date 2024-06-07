@@ -5,7 +5,7 @@ download:
 	git clone https://github.com/grambank/grambank.git data/grambank
 	git clone https://github.com/pano-tacanan-history/blumpanotacana data/blumpanotacana
 	git clone https://github.com/lexibank/iecor data/iecor
-	git clone https://github.com/lexibank/crossandean data/crossandean
+	git clone https://github.com/lexibank/northernperu data/northernperu
 
 prepare:
 	pip install pycldf, scipy, torch
