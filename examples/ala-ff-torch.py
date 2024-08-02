@@ -13,8 +13,7 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
 
 
-def run_ala(data, intersection=False, test_isolates=False, test_np=False,
-            test_longdistance=False, distances=False):
+def run_ala(data, intersection=False, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
     runs = 100
@@ -26,7 +25,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
 
     tests = defaultdict()
     if test_longdistance is True:
-        northern_uto = extract_branch(gcode='nort2953')
+        northern_uto = extract_branch(gcode='sout3136')
         anatolian = extract_branch(gcode='anat1257')
         tocharian = extract_branch(gcode='tokh1241')
         sinitic = extract_branch(gcode='sini1245')
@@ -99,23 +98,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
         for lang in full_data:
             full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
 
-    if test_np is True:
-        train_np = ['zapa1253', 'iqui1243', 'ando1255', 'arab1268', 'agua1253', 'achu1248', 'shua1257']
-        np_wl = dict(get_other(mode='np').items())
-
-        np_data = convert_data(np_wl, {k: v[0] for k, v in asjp.items()}, converter, load='np')
-        for lang in np_data:
-            if lang in train_np:
-                full_data[lang] = np_data[lang]
-            else:
-                tests[lang] = np_data[lang]
-
-    if test_longdistance is True:
-        iecor_wl = dict(get_other(mode='iecor').items())
-
-        if intersection is True:
-            iecor_wl = {k: iecor_wl[k] for k in iecor_wl if k in intersec}
-
     features = []
     labels = []
     idx2fam = defaultdict()
@@ -151,6 +133,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
         else:
             features.append(full_data[lang][2])
             labels.append(fam2idx[family])
+    print('Size of vector:', len(full_data[lang][2]))
+    print('Number of concepts:', len(full_data[lang][2])/22)
 
     # Weights
     largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
@@ -264,7 +248,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_np=False,
                             fam_avg[idx2fam[fam]] = [100 * corr / total, total]
 
                         fam_acc = mean(fam_avg[k][0] for k in fam_avg)
-                        print(f'Iter: {iters}. Loss: {round(loss.item(), 9)}. Average family accuracy: {round(fam_acc, 3)}')
+                        print(f'Iter: {iters}. Loss: {round(loss.item(), 9)}. Avg. fam. acc.: {round(fam_acc, 3)}')
                         if fam_acc > fam_high:
                             fam_high = fam_acc
                             fam_final = fam_avg
@@ -402,7 +386,6 @@ if __name__ == '__main__':
                         help='Choose if intersect with another dataset')
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
-    parser.add_argument('-test_np', action='store_true')
     parser.add_argument('-distances', action='store_true',
                         help='Adds the cosine distances of the model weights for each family')
 
@@ -413,6 +396,5 @@ if __name__ == '__main__':
         intersection=args.intersection,
         test_isolates=args.isolates,
         test_longdistance=args.longdistance,
-        distances=args.distances,
-        test_np=args.test_np
+        distances=args.distances
         )
