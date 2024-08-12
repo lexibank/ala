@@ -127,12 +127,11 @@ INNER JOIN
       f_2.cldf_parameterReference = p_2.cldf_id
         AND
       (
-      --p_2.core_concept like "%Swadesh-1952-200%"
-      -- OR
+      p_2.core_concept like "%Swadesh-1952-200%"
+        OR
       p_2.core_concept like "%Swadesh-1955-100%"
         OR
       p_2.core_concept like "%Tadmor-2009-100%"
-      --p_2.core_concept like "%Holman-2008-40%"
       )
     GROUP BY
       l_2.cldf_glottocode
@@ -144,7 +143,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 20;
+  c.Word_Number >= 50;
 """
 
 
@@ -172,8 +171,8 @@ FROM
   parametertable as p
 WHERE
   (
-   --p.core_concept like "%Swadesh-1952-200%"
-   --   OR
+   p.core_concept like "%Swadesh-1952-200%"
+    OR
    --p.core_concept like "%Swadesh-1955-100%"
    -- OR
   p.core_concept like "%Tadmor-2009-100%"
@@ -307,6 +306,7 @@ def concept2vec(db, model="dolgo"):
     cls2idx = {c: i for i, c in enumerate(sound_classes)}
 
     unique = []
+
     def converter(words):
         nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
         for concept, tokens in words:
@@ -314,12 +314,12 @@ def concept2vec(db, model="dolgo"):
                 class_string = lingpy.tokens2class(tokens, model)
                 reduced_string = [t for t in class_string if t in sound_classes][:2]
                 if not reduced_string:
-                    first, second = "?", "?"
+                    first, second = "H", "H"
                 elif len(reduced_string) == 1:
                     if class_string[0] in sc_model.vowels:
-                        first, second = "?", reduced_string[0]
+                        first, second = "H", reduced_string[0]
                     else:
-                        first, second = reduced_string[0], "?"
+                        first, second = reduced_string[0], "H"
                 else:
                     first, second = reduced_string
 
@@ -329,7 +329,6 @@ def concept2vec(db, model="dolgo"):
                     unique.append(second)
                 nested_vector[concepts[concept]][0][cls2idx[first]] = 1
                 nested_vector[concepts[concept]][1][cls2idx[second]] = 1
-        print(unique)
         vector = []
         for a, b in nested_vector:
             vector += a + b
@@ -399,17 +398,11 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     by_fam = defaultdict(list)
     for gcode in wordlists:
 
-        if load == 'np' and gcode in ['yagu1244', 'bora1263', 'muin1242', 'abis1238']:
+        if gcode in ['peba1243', 'juri1235', 'muin1242', 'bora1263', 'yagu1244', 'huam1247', 'achu1248', 'shua1257']:
             by_fam['northernperu'] += [gcode]
 
         elif gcode in families:
             by_fam[families[gcode]] += [gcode]
-
-        elif load == "tapakuric":
-            by_fam["Chapacuran"] += [gcode]
-
-        elif load == "mataguayan":
-            by_fam["Mataguayan"] += [gcode]
 
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)

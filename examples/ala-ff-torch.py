@@ -16,7 +16,7 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 100
+    runs = 20
     epochs = 5000
     batch = 2096
     hidden = 4  # multiplier for length of fam
@@ -30,7 +30,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         tocharian = extract_branch(gcode='tokh1241')
         sinitic = extract_branch(gcode='sini1245')
 
-    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250'] if test_isolates is True else []
+    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250']
+    peru = ['cani1243', 'urar1246', 'omur1241', 'abis1238', 'waor1240', 'cand1248', 'muni1258', 'taus1253']
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -125,6 +126,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         # Add test cases to test and others out
         elif family == 'Unclassified' and test_isolates is True:
             if lang in isolates:
+                tests[lang] = full_data[lang]
+            elif lang in peru:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])

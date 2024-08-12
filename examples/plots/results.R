@@ -12,22 +12,23 @@ gb_all <- read_tsv("../results/results_grambank_no_detailed.tsv") %>%
 lb_all <- read_tsv("../results/results_lexibank_no_detailed.tsv") %>%
   mutate(Model='Lexibank_all')
 
-gb_intersec <- read_tsv("../results/results_grambank_intersec_detailed.tsv") %>%
-  mutate(Model='Grambank_intersec')
-
-lb_intersec <- read_tsv("../results/results_lexibank_intersec_detailed.tsv") %>%
-  mutate(Model='Lexibank_intersec')
+# gb_intersec <- read_tsv("../results/results_grambank_intersec_detailed.tsv") %>%
+#   mutate(Model='Grambank_intersec')
+# 
+# lb_intersec <- read_tsv("../results/results_lexibank_intersec_detailed.tsv") %>%
+#   mutate(Model='Lexibank_intersec')
 
 asjp_all <- read_tsv("../results/results_asjp_no_detailed.tsv") %>%
   mutate(Model='ASJP_all')
 
-asjp_intersec <- read_tsv("../results/results_asjp_intersec_detailed.tsv") %>%
-  mutate(Model='ASJP_intersec')
+# asjp_intersec <- read_tsv("../results/results_asjp_intersec_detailed.tsv") %>%
+#   mutate(Model='ASJP_intersec')
 
 combined <- read_tsv("../results/results_combined_no_detailed.tsv") %>%
   mutate(Model='LexiGram_combined')
 
-full_data <- rbind(gb_all, lb_all, gb_intersec, lb_intersec, asjp_all, asjp_intersec, combined)
+full_data <- rbind(gb_all, lb_all, asjp_all, combined)
+                   # gb_intersec, lb_intersec, asjp_intersec,
 
 per_model<- full_data %>% group_by(Model, Run) %>% 
   summarise(Accuracy = mean(Accuracy))
@@ -37,7 +38,7 @@ violin_complex <- per_model %>%
   geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.2) +
   stat_halfeye(aes(fill=Model), adjust=1, width=0.75, color=NA, position=position_nudge(x=0)) +
   coord_flip() +
-  scale_fill_viridis(discrete=TRUE, end=0.9) +
+  scale_fill_viridis(discrete=TRUE, end=0.95) +
   scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
                      name="Average Family Accuracy") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
@@ -47,7 +48,6 @@ violin_complex <- per_model %>%
 violin_complex
 ggsave("violin_complex.png", plot=violin_complex, dpi=300,
        width=2000, height=1500, units="px")
-
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
@@ -63,16 +63,22 @@ scatter <-  per_family %>%
   # geom_label() +
   geom_label_repel(aes(label=Family), data = per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding = unit(1.5, "lines")) +
+                   box.padding = unit(1.5, "lines"), size=6) +
   scale_y_log10(limits = c(3, 1000)) + 
-  scale_fill_viridis(discrete=TRUE, option="D", begin=0.3) +
+  scale_fill_viridis(discrete=TRUE, option="D", begin=0.2) +
   # geom_smooth(method=lm , color="red", fill="#69b3a2", se=FALSE) +
-  theme(legend.position="none") +
+  theme(
+    legend.position="none", 
+    strip.text = element_text(size=20),
+    axis.text = element_text(size=16),
+    axis.title.x = element_text(size=18),
+    axis.title.y = element_text(size=18),
+    
+    ) +
   facet_wrap(~Model)
 scatter
 
-ggsave("scatter.png", plot=scatter, dpi=300,
-       width=3000, height=2000, units="px")
+ggsave("scatter.png", plot=scatter, dpi=300,  width=3000, height=2000, units="px")
 
 #####################
 scope <- per_family %>% group_by(Model) %>%
@@ -84,7 +90,9 @@ scope_plot <- scope %>%
   scale_y_log10(limits = c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding = unit(0.7, "lines")) +
-  theme(legend.position="none") +
+  theme(
+    legend.position="none",
+    ) +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
 scope_plot
 ggsave("scope.png", plot=scope_plot, dpi=300,
