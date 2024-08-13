@@ -1,36 +1,50 @@
 Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
-Afro-Asiatic	79	17.8	92.44	4.99
-Arawakan	12	2.8	65.74	41.34
-Atlantic-Congo	136	27	96.53	3.74
-Austroasiatic	46	9.1	93.79	5.65
-Austronesian	382	71.8	99.33	1.14
-Barbacoan	5	1.3	33.33	40.82
-Chibchan	17	2.9	83.0	23.59
-Chocoan	6	1.3	88.89	33.33
-Dogon	12	2.1	91.67	17.68
-Dravidian	10	2.5	79.67	33.13
-East Strickland	5	1.3	85.71	37.8
-Guahiboan	5	2	79.63	30.93
-Hmong-Mien	12	3.1	97.5	7.07
-Indo-European	58	11.3	96.9	4.08
-Koiarian	6	1.5	75.0	41.83
-Kru	5	1	100.0	0.0
-Lakes Plain	16	3.2	91.67	13.61
-Lower Sepik-Ramu	7	1.7	35.71	47.56
-Mande	16	3	84.17	32.02
-Mixe-Zoque	9	2	94.44	13.61
-Nakh-Daghestanian	8	1.9	10.0	31.62
-Nuclear Trans New Guinea	182	37.4	98.68	1.4
-Nuclear-Macro-Je	6	1.4	0.0	0.0
-Pama-Nyungan	99	19.3	95.81	5.2
-Quechuan	20	5.4	100.0	0.0
-Sepik	8	2	61.11	41.67
-Sino-Tibetan	96	18.4	97.86	2.85
-Timor-Alor-Pantar	17	4.1	88.83	14.91
-Tucanoan	18	5.1	98.0	6.32
-Tupian	33	5.4	98.33	5.27
-Turkic	27	5.5	100.0	0.0
-Unclassified	183	38	92.11	3.78
-Uralic	27	5.3	98.0	6.32
-Uto-Aztecan	28	6	100.0	0.0
-TOTAL	1596	319	82.9	4.25
+Afro-Asiatic	100	20.1	96.18	4.23
+Arawakan	33	6.6	91.48	11.85
+Athabaskan-Eyak-Tlingit	5	1.3	57.69	46.34
+Atlantic-Congo	231	46.6	99.12	1.5
+Austroasiatic	55	11.1	97.09	5.08
+Austronesian	468	92.1	99.36	0.69
+Barbacoan	5	1.7	71.37	37.65
+Cariban	15	3.1	89.59	17.6
+Chibchan	17	3.4	85.12	22.63
+Chocoan	6	1.5	93.48	20.04
+Chumashan	5	1.6	89.86	26.43
+Cochimi-Yuman	6	1.7	97.26	11.25
+Dogon	17	3.4	100.0	0.0
+Dravidian	10	2.2	97.22	12.55
+East Strickland	5	1.4	79.11	35.04
+Guahiboan	5	1.5	98.26	8.27
+Guaicuruan	5	1.5	61.35	42.44
+Hmong-Mien	12	2.7	99.16	4.74
+Indo-European	103	20.5	99.95	0.45
+Koiarian	6	1.7	81.81	30.67
+Kru	5	1.5	99.58	3.23
+Lakes Plain	16	3.4	98.22	6.17
+Lower Sepik-Ramu	7	1.9	61.89	39.22
+Mande	19	4.0	86.68	17.29
+Matacoan	5	1.5	42.0	42.21
+Miwok-Costanoan	6	1.4	73.67	38.18
+Mixe-Zoque	9	2.3	87.91	18.73
+Nakh-Daghestanian	29	5.9	100.0	0.0
+Nuclear Trans New Guinea	182	36.0	99.49	1.06
+Nuclear-Macro-Je	8	1.9	13.73	29.87
+Nyulnyulan	5	1.4	97.22	14.54
+Otomanguean	15	3.0	82.52	23.91
+Pama-Nyungan	101	20.8	99.09	2.25
+Pano-Tacanan	15	3.0	90.23	17.87
+Quechuan	20	3.9	100.0	0.0
+Salishan	7	1.7	53.44	38.17
+Sepik	8	2.0	75.82	35.52
+Sino-Tibetan	106	21.3	98.4	2.83
+Tai-Kadai	21	4.4	90.4	16.13
+Timor-Alor-Pantar	17	3.2	94.01	11.72
+Tucanoan	19	3.9	95.64	13.02
+Tungusic	12	2.5	100.0	0.0
+Tupian	37	7.5	95.21	7.79
+Turkic	27	5.3	100.0	0.0
+Unclassified	168	33.0	83.29	5.99
+Uralic	27	5.5	99.71	1.68
+Uto-Aztecan	29	5.9	99.15	3.83
+northernperu	5	1.4	38.31	45.04
+TOTAL	2034	406	87.14	3.29

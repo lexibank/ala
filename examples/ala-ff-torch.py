@@ -16,7 +16,7 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 20
+    runs = 100
     epochs = 5000
     batch = 2096
     hidden = 4  # multiplier for length of fam
@@ -357,20 +357,20 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         ]]
 
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
-    # output = 'results/results_' + data + mod + '.tsv'
-    # with open(output, 'w', encoding='utf8', newline='') as f:
-    #     writer = csv.writer(f, delimiter='\t')
-    #     writer.writerow(header)
-    #     writer.writerows(table)
+    output = 'results/results_' + data + mod + '.tsv'
+    #with open(output, 'w', encoding='utf8', newline='') as f:
+    #    writer = csv.writer(f, delimiter='\t')
+    #    writer.writerow(header)
+    #    writer.writerows(table)
 
-    # # Detailed results per run
-    # output_detailed = output.replace('.tsv', '_detailed.tsv')
-    # with open(output_detailed, 'w', encoding='utf8', newline='') as f:
-    #     writer = csv.writer(f, delimiter='\t')
-    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
-    #     for family in results_per_fam:
-    #         for run in results_per_fam[family]:
-    #             writer.writerow(run)
+    ## Detailed results per run
+    #output_detailed = output.replace('.tsv', '_detailed.tsv')
+    #with open(output_detailed, 'w', encoding='utf8', newline='') as f:
+    #    writer = csv.writer(f, delimiter='\t')
+    #    writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
+    #    for family in results_per_fam:
+    #        for run in results_per_fam[family]:
+    #            writer.writerow(run)
 
     print(tabulate(
         table,

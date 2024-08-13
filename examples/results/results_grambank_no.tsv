@@ -1,51 +1,52 @@
 Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
-Afro-Asiatic	115	22.8	77.03	10.32
-Algic	15	3.1	85.46	23.45
-Arawakan	38	7.2	87.0	12.36
-Athabaskan-Eyak-Tlingit	10	2.0	72.98	34.8
-Atlantic-Congo	293	58.7	84.42	6.2
-Austroasiatic	70	14.6	63.73	14.97
-Austronesian	455	90.5	81.79	10.27
-Cariban	12	2.6	53.61	36.42
-Central Sudanic	25	5.1	68.86	24.38
-Chibchan	17	3.4	89.71	15.34
-Chocoan	5	1.5	83.33	35.67
-Dravidian	25	4.8	89.37	18.49
-Gunwinyguan	5	1.3	50.23	47.91
-Hmong-Mien	10	2.2	70.24	34.95
-Indo-European	73	15.1	82.97	9.67
-Iroquoian	6	1.6	65.48	40.86
-Koiarian	6	1.5	27.24	43.07
-Mande	16	3.4	85.26	24.41
-Mayan	15	3.2	92.25	20.06
-Mongolic-Khitan	7	1.7	67.25	39.21
-Muskogean	5	1.4	91.37	26.16
-Nakh-Daghestanian	20	4.0	87.1	17.52
-Nilotic	14	3.1	74.64	29.34
-North Halmahera	7	1.8	54.27	40.24
-Nuclear Torricelli	7	1.8	57.88	41.76
-Nuclear Trans New Guinea	64	12.8	89.24	8.23
-Nuclear-Macro-Je	13	3.0	52.38	33.26
-Nyulnyulan	5	1.6	42.65	43.99
-Otomanguean	23	4.6	85.7	19.48
-Pama-Nyungan	72	15.0	88.96	8.63
-Pano-Tacanan	15	3.0	72.72	29.2
-Quechuan	9	2.1	84.39	25.09
-Salishan	13	2.7	84.51	24.28
-Sepik	9	2.0	51.3	39.04
-Sino-Tibetan	153	30.9	84.46	7.16
-Siouan	6	1.6	51.0	43.32
-Surmic	5	1.5	41.94	45.87
-Ta-Ne-Omotic	15	3.0	65.09	32.96
-Tai-Kadai	13	2.6	79.03	29.95
-Timor-Alor-Pantar	5	1.6	75.51	33.62
-Totonacan	5	1.4	72.55	40.7
-Tucanoan	10	2.3	84.27	24.65
-Tungusic	8	2.1	89.24	22.09
-Tupian	18	3.5	70.76	26.38
-Turkic	14	2.9	98.69	6.56
-Unclassified	189	36.9	41.67	15.6
-Uralic	20	3.9	96.35	11.45
-Uto-Aztecan	39	7.6	74.86	17.49
-Yam	5	1.5	45.96	44.15
-TOTAL	1999	399	73.31	4.13
+Afro-Asiatic	115	22.8	78.49	9.34
+Algic	15	3.3	83.45	25.5
+Arawakan	38	7.5	87.63	13.83
+Athabaskan-Eyak-Tlingit	10	2.2	73.79	34.81
+Atlantic-Congo	293	58.7	85.11	6.7
+Austroasiatic	70	14.2	62.6	15.92
+Austronesian	455	90.8	82.35	10.18
+Cariban	12	2.6	47.7	38.15
+Central Sudanic	25	4.7	64.65	26.75
+Chibchan	17	3.2	84.55	23.22
+Chocoan	5	1.3	90.55	27.56
+Dravidian	25	5.0	90.82	12.51
+Gunwinyguan	5	1.3	62.61	46.23
+Hmong-Mien	10	2.2	74.58	30.83
+Indo-European	73	15.0	82.5	11.37
+Iroquoian	6	1.7	59.44	40.92
+Koiarian	6	1.7	25.3	39.16
+Mande	16	2.9	88.66	18.01
+Mayan	15	3.0	88.48	21.05
+Mongolic-Khitan	7	1.7	74.9	37.83
+Muskogean	5	1.5	86.23	30.38
+Nakh-Daghestanian	20	4.0	86.47	21.83
+Nilotic	14	3.0	72.86	27.74
+North Halmahera	7	1.7	64.09	41.93
+Nuclear Torricelli	7	1.8	53.76	42.7
+Nuclear Trans New Guinea	64	12.7	87.09	9.57
+Nuclear-Macro-Je	13	2.7	53.38	37.5
+Nyulnyulan	5	1.4	44.68	47.95
+Otomanguean	23	4.8	88.18	15.02
+Pama-Nyungan	72	14.6	90.19	7.68
+Pano-Tacanan	15	3.2	72.4	29.57
+Quechuan	9	2.2	81.0	31.37
+Salishan	13	2.8	81.55	25.2
+Sepik	9	2.1	55.45	40.15
+Sino-Tibetan	153	30.1	84.79	6.78
+Siouan	6	1.5	50.11	45.39
+Surmic	5	1.4	48.31	44.57
+Ta-Ne-Omotic	15	3.1	64.66	33.2
+Tai-Kadai	13	2.9	67.02	30.79
+Timor-Alor-Pantar	5	1.4	77.19	36.8
+Totonacan	5	1.5	80.0	35.17
+Tucanoan	10	2.3	81.59	28.31
+Tungusic	8	1.9	85.71	28.32
+Tupian	18	3.5	70.96	26.04
+Turkic	14	2.9	98.94	5.14
+Unclassified	188	37.6	42.26	14.93
+Uralic	20	4.2	96.78	9.34
+Uto-Aztecan	39	7.7	76.04	17.34
+Yam	5	1.5	57.91	44.03
+northernperu	5	1.5	21.21	39.93
+TOTAL	2003	400	72.61	3.81
