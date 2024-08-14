@@ -12,23 +12,13 @@ gb_all <- read_tsv("../results/results_grambank_no_detailed.tsv") %>%
 lb_all <- read_tsv("../results/results_lexibank_no_detailed.tsv") %>%
   mutate(Model='Lexibank_all')
 
-# gb_intersec <- read_tsv("../results/results_grambank_intersec_detailed.tsv") %>%
-#   mutate(Model='Grambank_intersec')
-# 
-# lb_intersec <- read_tsv("../results/results_lexibank_intersec_detailed.tsv") %>%
-#   mutate(Model='Lexibank_intersec')
-
 asjp_all <- read_tsv("../results/results_asjp_no_detailed.tsv") %>%
   mutate(Model='ASJP_all')
-
-# asjp_intersec <- read_tsv("../results/results_asjp_intersec_detailed.tsv") %>%
-#   mutate(Model='ASJP_intersec')
 
 combined <- read_tsv("../results/results_combined_no_detailed.tsv") %>%
   mutate(Model='LexiGram_combined')
 
 full_data <- rbind(gb_all, lb_all, asjp_all, combined)
-                   # gb_intersec, lb_intersec, asjp_intersec,
 
 per_model<- full_data %>% group_by(Model, Run) %>% 
   summarise(Accuracy = mean(Accuracy))
@@ -86,14 +76,13 @@ scope <- per_family %>% group_by(Model) %>%
 
 scope_plot <- scope %>% 
   ggplot(aes(x=fams, y=langs, fill=Model, label=Model)) +
-  geom_point(aes(size=5), shape=c(21, 23, 23, 22, 22, 24, 22), alpha=0.8, position=position_dodge(width=3)) +
+  geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8, position=position_dodge(width=3)) +
   scale_y_log10(limits = c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding = unit(0.7, "lines")) +
-  theme(
-    legend.position="none",
-    ) +
+  theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
+
 scope_plot
 ggsave("scope.png", plot=scope_plot, dpi=300,
        width=3000, height=2000, units="px")
@@ -102,12 +91,13 @@ ggsave("scope.png", plot=scope_plot, dpi=300,
 lang_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
   summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
 ggplot(aes(x=Accuracy, y=langs, fill=Model, label=Model)) +
-  geom_point(aes(size=5), shape=c(21, 23, 23, 22, 22, 24, 22), alpha=0.8) +
+  geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   scale_y_log10(limits = c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding = unit(0.7, "lines")) +
   theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
+
 lang_acc
 ggsave("lang_acc.png", plot=lang_acc, dpi=300,
        width=3000, height=2000, units="px")
@@ -115,11 +105,12 @@ ggsave("lang_acc.png", plot=lang_acc, dpi=300,
 fam_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
   summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
   ggplot(aes(x=Accuracy, y=fams, fill=Model, label=Model)) +
-  geom_point(aes(size=5), shape=c(21, 23, 23, 22, 22, 24, 22), alpha=0.8) +
+  geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding = unit(0.7, "lines")) +
   theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
+
 fam_acc
 ggsave("fam_acc.png", plot=fam_acc, dpi=300,
        width=3000, height=2000, units="px")
