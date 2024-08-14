@@ -397,11 +397,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
     for gcode in wordlists:
-
-        if gcode in ['peba1243', 'juri1235', 'muin1242', 'bora1263', 'yagu1244', 'huam1247', 'achu1248', 'shua1257']:
-            by_fam['northernperu'] += [gcode]
-
-        elif gcode in families:
+        if gcode in families:
             by_fam[families[gcode]] += [gcode]
 
     # assemble languages belonging to one family alone to form the group of
