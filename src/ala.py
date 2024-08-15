@@ -396,17 +396,25 @@ def get_families(wordlists, families, threshold=5):
 def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
+    add_iso = ['cani1243', 'jebe1250', 'abis1238', 'hibi1242', 'waor1240', 'chay1248', 'juri1235', 'ando1254', 'peba1243', 'yagu1244']
+    orphans = []
+
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
+        if gcode in add_iso:
+            orphans.append(families[gcode])
 
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
+    save = ['Chicham', 'Zaparoan', 'Boran']
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)
             delis.append(fam)
+        elif fam in save:
+            pass
         elif len(set(gcodes)) < threshold:
             delis.append(fam)
     for fam in delis:
@@ -425,7 +433,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical", "tapakuric", "mataguayan", 'np'):
+            if load in ("lexical"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
