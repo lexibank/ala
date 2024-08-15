@@ -127,10 +127,10 @@ INNER JOIN
       f_2.cldf_parameterReference = p_2.cldf_id
         AND
       (
-      p_2.core_concept like "%Swadesh-1952-200%"
-        OR
-      p_2.core_concept like "%Swadesh-1955-100%"
-        OR
+      --p_2.core_concept like "%Swadesh-1952-200%"
+      --  OR
+      --p_2.core_concept like "%Swadesh-1955-100%"
+      --  OR
       p_2.core_concept like "%Tadmor-2009-100%"
       )
     GROUP BY
@@ -143,7 +143,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 35;
 """
 
 
@@ -171,8 +171,8 @@ FROM
   parametertable as p
 WHERE
   (
-   p.core_concept like "%Swadesh-1952-200%"
-    OR
+   --p.core_concept like "%Swadesh-1952-200%"
+   -- OR
    --p.core_concept like "%Swadesh-1955-100%"
    -- OR
   p.core_concept like "%Tadmor-2009-100%"
