@@ -4467,3 +4467,712 @@ Iter: 3100. Loss: 1.1065e-05. Avg. fam. acc.: 77.374
 Iter: 3150. Loss: 1.1697e-05. Avg. fam. acc.: 77.374
 Iter: 3200. Loss: 1.1139e-05. Avg. fam. acc.: 77.374
 Iter: 3250. Loss: 1.0023e-05. Avg. fam. acc.: 77.374
+Iter: 3300. Loss: 1.0401e-05. Avg. fam. acc.: 77.374
+Iter: 3350. Loss: 1.0459e-05. Avg. fam. acc.: 77.374
+Iter: 3400. Loss: 8.8e-06. Avg. fam. acc.: 77.374
+Iter: 3450. Loss: 9.237e-06. Avg. fam. acc.: 77.374
+Iter: 3500. Loss: 8.862e-06. Avg. fam. acc.: 77.374
+Iter: 3550. Loss: 8.275e-06. Avg. fam. acc.: 77.374
+Iter: 3600. Loss: 8.616e-06. Avg. fam. acc.: 77.374
+Iter: 3650. Loss: 7.769e-06. Avg. fam. acc.: 77.374
+Iter: 3700. Loss: 7.261e-06. Avg. fam. acc.: 77.374
+Iter: 3750. Loss: 6.989e-06. Avg. fam. acc.: 77.374
+Iter: 3800. Loss: 6.798e-06. Avg. fam. acc.: 77.374
+Iter: 3850. Loss: 6.573e-06. Avg. fam. acc.: 77.374
+Iter: 3900. Loss: 6.386e-06. Avg. fam. acc.: 77.374
+Iter: 3950. Loss: 6.342e-06. Avg. fam. acc.: 77.374
+Iter: 4000. Loss: 5.959e-06. Avg. fam. acc.: 77.374
+--- New Run:  89 / 100 ---
+Iter: 50. Loss: 0.099776663. Avg. fam. acc.: 78.691
+Iter: 100. Loss: 0.014346911. Avg. fam. acc.: 79.662
+Iter: 150. Loss: 0.005625437. Avg. fam. acc.: 80.063
+Iter: 200. Loss: 0.002987067. Avg. fam. acc.: 80.877
+Iter: 250. Loss: 0.002191157. Avg. fam. acc.: 80.834
+Iter: 300. Loss: 0.001496951. Avg. fam. acc.: 79.726
+Iter: 350. Loss: 0.001136907. Avg. fam. acc.: 80.034
+Iter: 400. Loss: 0.000836314. Avg. fam. acc.: 80.008
+Iter: 450. Loss: 0.000614771. Avg. fam. acc.: 80.008
+Iter: 500. Loss: 0.000507309. Avg. fam. acc.: 80.008
+Iter: 550. Loss: 0.000431643. Avg. fam. acc.: 80.131
+Iter: 600. Loss: 0.000325874. Avg. fam. acc.: 80.148
+Iter: 650. Loss: 0.000329026. Avg. fam. acc.: 80.246
+Iter: 700. Loss: 0.000267786. Avg. fam. acc.: 80.246
+Iter: 750. Loss: 0.000236533. Avg. fam. acc.: 80.246
+Iter: 800. Loss: 0.000214103. Avg. fam. acc.: 80.491
+Iter: 850. Loss: 0.000165933. Avg. fam. acc.: 80.491
+Iter: 900. Loss: 0.0001629. Avg. fam. acc.: 80.491
+Iter: 950. Loss: 0.00013668. Avg. fam. acc.: 80.491
+Iter: 1000. Loss: 0.000138184. Avg. fam. acc.: 80.485
+Iter: 1050. Loss: 0.000118673. Avg. fam. acc.: 80.725
+Iter: 1100. Loss: 0.000110513. Avg. fam. acc.: 80.48
+Iter: 1150. Loss: 9.8436e-05. Avg. fam. acc.: 80.48
+Iter: 1200. Loss: 9.8023e-05. Avg. fam. acc.: 80.603
+--- New Run:  90 / 100 ---
+Iter: 50. Loss: 0.0932355. Avg. fam. acc.: 73.005
+Iter: 100. Loss: 0.016143039. Avg. fam. acc.: 72.027
+Iter: 150. Loss: 0.005810104. Avg. fam. acc.: 74.456
+Iter: 200. Loss: 0.003143827. Avg. fam. acc.: 74.591
+Iter: 250. Loss: 0.002196078. Avg. fam. acc.: 76.803
+Iter: 300. Loss: 0.001464257. Avg. fam. acc.: 77.959
+Iter: 350. Loss: 0.000981755. Avg. fam. acc.: 78.141
+Iter: 400. Loss: 0.000725128. Avg. fam. acc.: 78.136
+Iter: 450. Loss: 0.000541866. Avg. fam. acc.: 78.13
+Iter: 500. Loss: 0.000477319. Avg. fam. acc.: 78.1
+Iter: 550. Loss: 0.000426933. Avg. fam. acc.: 77.751
+Iter: 600. Loss: 0.000348685. Avg. fam. acc.: 77.845
+Iter: 650. Loss: 0.000293589. Avg. fam. acc.: 77.759
+Iter: 700. Loss: 0.000262867. Avg. fam. acc.: 77.759
+Iter: 750. Loss: 0.000221515. Avg. fam. acc.: 77.759
+Iter: 800. Loss: 0.000193167. Avg. fam. acc.: 77.698
+Iter: 850. Loss: 0.000189119. Avg. fam. acc.: 77.905
+Iter: 900. Loss: 0.000160914. Avg. fam. acc.: 78.085
+Iter: 950. Loss: 0.000142858. Avg. fam. acc.: 78.085
+Iter: 1000. Loss: 0.000134026. Avg. fam. acc.: 78.085
+Iter: 1050. Loss: 0.000129476. Avg. fam. acc.: 78.085
+Iter: 1100. Loss: 0.000109014. Avg. fam. acc.: 78.292
+Iter: 1150. Loss: 0.000103502. Avg. fam. acc.: 78.519
+Iter: 1200. Loss: 9.0054e-05. Avg. fam. acc.: 78.519
+Iter: 1250. Loss: 8.6618e-05. Avg. fam. acc.: 78.502
+Iter: 1300. Loss: 7.9531e-05. Avg. fam. acc.: 79.018
+Iter: 1350. Loss: 7.1368e-05. Avg. fam. acc.: 79.018
+Iter: 1400. Loss: 6.6958e-05. Avg. fam. acc.: 79.018
+Iter: 1450. Loss: 6.1464e-05. Avg. fam. acc.: 79.018
+Iter: 1500. Loss: 5.9355e-05. Avg. fam. acc.: 79.018
+Iter: 1550. Loss: 5.2286e-05. Avg. fam. acc.: 79.018
+Iter: 1600. Loss: 5.0761e-05. Avg. fam. acc.: 79.018
+Iter: 1650. Loss: 4.5675e-05. Avg. fam. acc.: 79.018
+Iter: 1700. Loss: 4.6068e-05. Avg. fam. acc.: 79.018
+Iter: 1750. Loss: 4.4241e-05. Avg. fam. acc.: 79.018
+Iter: 1800. Loss: 3.8137e-05. Avg. fam. acc.: 78.982
+Iter: 1850. Loss: 3.7406e-05. Avg. fam. acc.: 78.982
+Iter: 1900. Loss: 3.5983e-05. Avg. fam. acc.: 78.982
+Iter: 1950. Loss: 3.2406e-05. Avg. fam. acc.: 78.982
+Iter: 2000. Loss: 3.264e-05. Avg. fam. acc.: 78.982
+Iter: 2050. Loss: 3.0894e-05. Avg. fam. acc.: 78.982
+Iter: 2100. Loss: 2.7309e-05. Avg. fam. acc.: 78.982
+Iter: 2150. Loss: 2.9267e-05. Avg. fam. acc.: 78.982
+Iter: 2200. Loss: 2.5231e-05. Avg. fam. acc.: 78.982
+Iter: 2250. Loss: 2.5716e-05. Avg. fam. acc.: 78.977
+Iter: 2300. Loss: 2.3724e-05. Avg. fam. acc.: 78.977
+--- New Run:  91 / 100 ---
+Iter: 50. Loss: 0.092699639. Avg. fam. acc.: 71.963
+Iter: 100. Loss: 0.012617064. Avg. fam. acc.: 69.369
+Iter: 150. Loss: 0.005970455. Avg. fam. acc.: 71.115
+Iter: 200. Loss: 0.003154089. Avg. fam. acc.: 71.493
+Iter: 250. Loss: 0.002114179. Avg. fam. acc.: 71.751
+Iter: 300. Loss: 0.001560982. Avg. fam. acc.: 71.907
+Iter: 350. Loss: 0.000971487. Avg. fam. acc.: 71.96
+Iter: 400. Loss: 0.000775633. Avg. fam. acc.: 71.917
+Iter: 450. Loss: 0.000656623. Avg. fam. acc.: 72.196
+Iter: 500. Loss: 0.000529687. Avg. fam. acc.: 72.09
+Iter: 550. Loss: 0.000425353. Avg. fam. acc.: 72.007
+Iter: 600. Loss: 0.000333491. Avg. fam. acc.: 72.002
+Iter: 650. Loss: 0.000323532. Avg. fam. acc.: 72.478
+Iter: 700. Loss: 0.000251416. Avg. fam. acc.: 72.523
+Iter: 750. Loss: 0.000224857. Avg. fam. acc.: 72.478
+Iter: 800. Loss: 0.000181043. Avg. fam. acc.: 72.742
+Iter: 850. Loss: 0.000180141. Avg. fam. acc.: 72.424
+Iter: 900. Loss: 0.000166483. Avg. fam. acc.: 72.56
+Iter: 950. Loss: 0.000147886. Avg. fam. acc.: 72.762
+Iter: 1000. Loss: 0.00013429. Avg. fam. acc.: 72.724
+Iter: 1050. Loss: 0.000122774. Avg. fam. acc.: 72.724
+Iter: 1100. Loss: 0.000109717. Avg. fam. acc.: 72.724
+Iter: 1150. Loss: 9.3825e-05. Avg. fam. acc.: 72.769
+Iter: 1200. Loss: 9.3701e-05. Avg. fam. acc.: 72.769
+Iter: 1250. Loss: 8.575e-05. Avg. fam. acc.: 72.769
+Iter: 1300. Loss: 8.3443e-05. Avg. fam. acc.: 72.769
+Iter: 1350. Loss: 7.2015e-05. Avg. fam. acc.: 72.769
+Iter: 1400. Loss: 6.6166e-05. Avg. fam. acc.: 72.769
+Iter: 1450. Loss: 5.9542e-05. Avg. fam. acc.: 72.769
+Iter: 1500. Loss: 5.8635e-05. Avg. fam. acc.: 72.769
+Iter: 1550. Loss: 5.6407e-05. Avg. fam. acc.: 72.769
+Iter: 1600. Loss: 4.9123e-05. Avg. fam. acc.: 72.769
+Iter: 1650. Loss: 5.175e-05. Avg. fam. acc.: 72.769
+Iter: 1700. Loss: 4.1313e-05. Avg. fam. acc.: 71.817
+Iter: 1750. Loss: 4.0814e-05. Avg. fam. acc.: 71.817
+Iter: 1800. Loss: 3.8687e-05. Avg. fam. acc.: 71.779
+Iter: 1850. Loss: 3.9298e-05. Avg. fam. acc.: 71.779
+Iter: 1900. Loss: 3.5878e-05. Avg. fam. acc.: 71.779
+Iter: 1950. Loss: 3.6326e-05. Avg. fam. acc.: 71.792
+Iter: 2000. Loss: 3.0539e-05. Avg. fam. acc.: 71.792
+Iter: 2050. Loss: 2.9905e-05. Avg. fam. acc.: 71.792
+Iter: 2100. Loss: 2.9887e-05. Avg. fam. acc.: 71.774
+Iter: 2150. Loss: 2.9355e-05. Avg. fam. acc.: 71.774
+--- New Run:  92 / 100 ---
+Iter: 50. Loss: 0.093448535. Avg. fam. acc.: 75.751
+Iter: 100. Loss: 0.014097774. Avg. fam. acc.: 74.315
+Iter: 150. Loss: 0.00589818. Avg. fam. acc.: 75.028
+Iter: 200. Loss: 0.003001479. Avg. fam. acc.: 75.668
+Iter: 250. Loss: 0.001935315. Avg. fam. acc.: 75.407
+Iter: 300. Loss: 0.001285961. Avg. fam. acc.: 75.411
+Iter: 350. Loss: 0.000899579. Avg. fam. acc.: 75.411
+Iter: 400. Loss: 0.000736842. Avg. fam. acc.: 75.609
+Iter: 450. Loss: 0.000554661. Avg. fam. acc.: 76.526
+Iter: 500. Loss: 0.000447386. Avg. fam. acc.: 76.526
+Iter: 550. Loss: 0.000438424. Avg. fam. acc.: 76.526
+Iter: 600. Loss: 0.00035059. Avg. fam. acc.: 77.673
+Iter: 650. Loss: 0.000281942. Avg. fam. acc.: 77.646
+Iter: 700. Loss: 0.000265155. Avg. fam. acc.: 77.627
+Iter: 750. Loss: 0.0002068. Avg. fam. acc.: 77.6
+Iter: 800. Loss: 0.000194837. Avg. fam. acc.: 77.654
+Iter: 850. Loss: 0.000160681. Avg. fam. acc.: 78.544
+Iter: 900. Loss: 0.00014894. Avg. fam. acc.: 78.544
+Iter: 950. Loss: 0.000136002. Avg. fam. acc.: 78.544
+Iter: 1000. Loss: 0.000129209. Avg. fam. acc.: 78.774
+Iter: 1050. Loss: 0.000103852. Avg. fam. acc.: 78.774
+Iter: 1100. Loss: 0.000100158. Avg. fam. acc.: 78.801
+Iter: 1150. Loss: 9.3149e-05. Avg. fam. acc.: 78.806
+Iter: 1200. Loss: 8.7043e-05. Avg. fam. acc.: 78.806
+Iter: 1250. Loss: 8.0235e-05. Avg. fam. acc.: 78.806
+Iter: 1300. Loss: 7.4387e-05. Avg. fam. acc.: 78.806
+Iter: 1350. Loss: 7.5156e-05. Avg. fam. acc.: 78.806
+Iter: 1400. Loss: 6.3781e-05. Avg. fam. acc.: 78.806
+Iter: 1450. Loss: 6.4286e-05. Avg. fam. acc.: 78.959
+Iter: 1500. Loss: 5.5655e-05. Avg. fam. acc.: 78.932
+Iter: 1550. Loss: 5.5558e-05. Avg. fam. acc.: 78.932
+Iter: 1600. Loss: 5.0628e-05. Avg. fam. acc.: 78.932
+Iter: 1650. Loss: 4.8297e-05. Avg. fam. acc.: 79.238
+Iter: 1700. Loss: 4.3149e-05. Avg. fam. acc.: 79.008
+Iter: 1750. Loss: 4.1267e-05. Avg. fam. acc.: 79.028
+Iter: 1800. Loss: 3.8147e-05. Avg. fam. acc.: 79.028
+Iter: 1850. Loss: 3.7394e-05. Avg. fam. acc.: 79.023
+Iter: 1900. Loss: 3.5089e-05. Avg. fam. acc.: 79.023
+Iter: 1950. Loss: 3.1021e-05. Avg. fam. acc.: 79.023
+Iter: 2000. Loss: 2.9038e-05. Avg. fam. acc.: 79.023
+Iter: 2050. Loss: 3.0277e-05. Avg. fam. acc.: 79.023
+Iter: 2100. Loss: 2.6388e-05. Avg. fam. acc.: 79.023
+Iter: 2150. Loss: 2.62e-05. Avg. fam. acc.: 79.023
+Iter: 2200. Loss: 2.6085e-05. Avg. fam. acc.: 79.023
+Iter: 2250. Loss: 2.5174e-05. Avg. fam. acc.: 79.023
+Iter: 2300. Loss: 2.4182e-05. Avg. fam. acc.: 79.023
+Iter: 2350. Loss: 2.0781e-05. Avg. fam. acc.: 79.023
+Iter: 2400. Loss: 2.0483e-05. Avg. fam. acc.: 79.023
+Iter: 2450. Loss: 2.1486e-05. Avg. fam. acc.: 79.023
+Iter: 2500. Loss: 2.0027e-05. Avg. fam. acc.: 79.023
+Iter: 2550. Loss: 1.8513e-05. Avg. fam. acc.: 79.023
+Iter: 2600. Loss: 1.8074e-05. Avg. fam. acc.: 79.023
+Iter: 2650. Loss: 1.7316e-05. Avg. fam. acc.: 79.023
+--- New Run:  93 / 100 ---
+Iter: 50. Loss: 0.100710988. Avg. fam. acc.: 79.59
+Iter: 100. Loss: 0.01541815. Avg. fam. acc.: 78.278
+Iter: 150. Loss: 0.005981043. Avg. fam. acc.: 79.05
+Iter: 200. Loss: 0.003646322. Avg. fam. acc.: 80.335
+Iter: 250. Loss: 0.002185759. Avg. fam. acc.: 80.33
+Iter: 300. Loss: 0.001434324. Avg. fam. acc.: 80.012
+Iter: 350. Loss: 0.000991116. Avg. fam. acc.: 79.994
+Iter: 400. Loss: 0.000874484. Avg. fam. acc.: 80.624
+Iter: 450. Loss: 0.00064311. Avg. fam. acc.: 80.624
+Iter: 500. Loss: 0.000548404. Avg. fam. acc.: 81.105
+Iter: 550. Loss: 0.000448664. Avg. fam. acc.: 81.165
+Iter: 600. Loss: 0.000364291. Avg. fam. acc.: 81.558
+Iter: 650. Loss: 0.000345342. Avg. fam. acc.: 81.563
+Iter: 700. Loss: 0.000244343. Avg. fam. acc.: 82.286
+Iter: 750. Loss: 0.000237078. Avg. fam. acc.: 82.286
+Iter: 800. Loss: 0.000223016. Avg. fam. acc.: 82.286
+Iter: 850. Loss: 0.000200045. Avg. fam. acc.: 82.286
+Iter: 900. Loss: 0.0001679. Avg. fam. acc.: 82.286
+Iter: 950. Loss: 0.000149622. Avg. fam. acc.: 82.286
+Iter: 1000. Loss: 0.000135352. Avg. fam. acc.: 82.286
+Iter: 1050. Loss: 0.00013189. Avg. fam. acc.: 81.801
+Iter: 1100. Loss: 0.000107635. Avg. fam. acc.: 81.801
+Iter: 1150. Loss: 0.000101612. Avg. fam. acc.: 81.801
+Iter: 1200. Loss: 9.6021e-05. Avg. fam. acc.: 81.732
+Iter: 1250. Loss: 8.0478e-05. Avg. fam. acc.: 81.732
+Iter: 1300. Loss: 8.3724e-05. Avg. fam. acc.: 81.732
+Iter: 1350. Loss: 7.6692e-05. Avg. fam. acc.: 81.893
+Iter: 1400. Loss: 7.0704e-05. Avg. fam. acc.: 81.893
+Iter: 1450. Loss: 6.4029e-05. Avg. fam. acc.: 81.755
+Iter: 1500. Loss: 6.4011e-05. Avg. fam. acc.: 81.755
+Iter: 1550. Loss: 5.4363e-05. Avg. fam. acc.: 81.755
+Iter: 1600. Loss: 5.1278e-05. Avg. fam. acc.: 81.755
+Iter: 1650. Loss: 4.6778e-05. Avg. fam. acc.: 81.755
+Iter: 1700. Loss: 4.6287e-05. Avg. fam. acc.: 81.893
+--- New Run:  94 / 100 ---
+Iter: 50. Loss: 0.090637781. Avg. fam. acc.: 74.592
+Iter: 100. Loss: 0.016633801. Avg. fam. acc.: 75.277
+Iter: 150. Loss: 0.005267983. Avg. fam. acc.: 74.77
+Iter: 200. Loss: 0.003652333. Avg. fam. acc.: 74.508
+Iter: 250. Loss: 0.002070148. Avg. fam. acc.: 76.251
+Iter: 300. Loss: 0.001455202. Avg. fam. acc.: 76.741
+Iter: 350. Loss: 0.001060316. Avg. fam. acc.: 76.414
+Iter: 400. Loss: 0.000838268. Avg. fam. acc.: 77.885
+Iter: 450. Loss: 0.000647814. Avg. fam. acc.: 77.853
+Iter: 500. Loss: 0.000490582. Avg. fam. acc.: 77.83
+Iter: 550. Loss: 0.000408296. Avg. fam. acc.: 77.83
+Iter: 600. Loss: 0.000337408. Avg. fam. acc.: 78.32
+Iter: 650. Loss: 0.000319568. Avg. fam. acc.: 78.32
+Iter: 700. Loss: 0.000235862. Avg. fam. acc.: 78.32
+Iter: 750. Loss: 0.000218052. Avg. fam. acc.: 78.32
+Iter: 800. Loss: 0.000203633. Avg. fam. acc.: 78.418
+Iter: 850. Loss: 0.000177887. Avg. fam. acc.: 78.418
+Iter: 900. Loss: 0.00016596. Avg. fam. acc.: 78.418
+Iter: 950. Loss: 0.000134742. Avg. fam. acc.: 78.391
+Iter: 1000. Loss: 0.000129081. Avg. fam. acc.: 78.364
+Iter: 1050. Loss: 0.000120978. Avg. fam. acc.: 78.27
+Iter: 1100. Loss: 0.000103479. Avg. fam. acc.: 78.27
+Iter: 1150. Loss: 9.3933e-05. Avg. fam. acc.: 78.433
+Iter: 1200. Loss: 9.5386e-05. Avg. fam. acc.: 78.433
+Iter: 1250. Loss: 8.5282e-05. Avg. fam. acc.: 78.433
+Iter: 1300. Loss: 7.5448e-05. Avg. fam. acc.: 78.433
+Iter: 1350. Loss: 7.0591e-05. Avg. fam. acc.: 78.433
+Iter: 1400. Loss: 6.8986e-05. Avg. fam. acc.: 78.433
+Iter: 1450. Loss: 6.2021e-05. Avg. fam. acc.: 78.237
+Iter: 1500. Loss: 5.9098e-05. Avg. fam. acc.: 78.237
+Iter: 1550. Loss: 5.6092e-05. Avg. fam. acc.: 78.335
+Iter: 1600. Loss: 5.4451e-05. Avg. fam. acc.: 78.335
+Iter: 1650. Loss: 4.9198e-05. Avg. fam. acc.: 78.335
+Iter: 1700. Loss: 4.3436e-05. Avg. fam. acc.: 78.335
+Iter: 1750. Loss: 4.6271e-05. Avg. fam. acc.: 78.335
+Iter: 1800. Loss: 4.0259e-05. Avg. fam. acc.: 78.335
+Iter: 1850. Loss: 3.8463e-05. Avg. fam. acc.: 78.335
+Iter: 1900. Loss: 3.4712e-05. Avg. fam. acc.: 78.34
+Iter: 1950. Loss: 3.5608e-05. Avg. fam. acc.: 78.34
+Iter: 2000. Loss: 3.2949e-05. Avg. fam. acc.: 78.34
+Iter: 2050. Loss: 2.9475e-05. Avg. fam. acc.: 78.34
+Iter: 2100. Loss: 2.9898e-05. Avg. fam. acc.: 78.34
+Iter: 2150. Loss: 2.6552e-05. Avg. fam. acc.: 78.34
+--- New Run:  95 / 100 ---
+Iter: 50. Loss: 0.094957471. Avg. fam. acc.: 78.243
+Iter: 100. Loss: 0.016181465. Avg. fam. acc.: 75.83
+Iter: 150. Loss: 0.006284376. Avg. fam. acc.: 76.073
+Iter: 200. Loss: 0.003413218. Avg. fam. acc.: 77.336
+Iter: 250. Loss: 0.002071125. Avg. fam. acc.: 77.611
+Iter: 300. Loss: 0.001347792. Avg. fam. acc.: 78.83
+Iter: 350. Loss: 0.001068649. Avg. fam. acc.: 78.825
+Iter: 400. Loss: 0.000737647. Avg. fam. acc.: 79.099
+Iter: 450. Loss: 0.000670354. Avg. fam. acc.: 79.099
+Iter: 500. Loss: 0.000507512. Avg. fam. acc.: 79.541
+Iter: 550. Loss: 0.0004073. Avg. fam. acc.: 79.541
+Iter: 600. Loss: 0.000349359. Avg. fam. acc.: 80.507
+Iter: 650. Loss: 0.000306422. Avg. fam. acc.: 79.536
+Iter: 700. Loss: 0.000259232. Avg. fam. acc.: 80.507
+Iter: 750. Loss: 0.000218798. Avg. fam. acc.: 80.507
+Iter: 800. Loss: 0.00021392. Avg. fam. acc.: 80.507
+Iter: 850. Loss: 0.000171895. Avg. fam. acc.: 80.507
+Iter: 900. Loss: 0.000160482. Avg. fam. acc.: 80.992
+Iter: 950. Loss: 0.000143889. Avg. fam. acc.: 81.08
+Iter: 1000. Loss: 0.000129334. Avg. fam. acc.: 81.08
+Iter: 1050. Loss: 0.000119449. Avg. fam. acc.: 80.982
+Iter: 1100. Loss: 0.000116845. Avg. fam. acc.: 80.982
+Iter: 1150. Loss: 9.613e-05. Avg. fam. acc.: 80.982
+Iter: 1200. Loss: 8.4567e-05. Avg. fam. acc.: 80.982
+Iter: 1250. Loss: 8.6545e-05. Avg. fam. acc.: 80.982
+Iter: 1300. Loss: 8.0006e-05. Avg. fam. acc.: 80.982
+Iter: 1350. Loss: 7.611e-05. Avg. fam. acc.: 80.844
+Iter: 1400. Loss: 6.5546e-05. Avg. fam. acc.: 80.844
+Iter: 1450. Loss: 6.1702e-05. Avg. fam. acc.: 80.844
+Iter: 1500. Loss: 5.6262e-05. Avg. fam. acc.: 80.844
+Iter: 1550. Loss: 5.4627e-05. Avg. fam. acc.: 80.978
+Iter: 1600. Loss: 4.8139e-05. Avg. fam. acc.: 80.978
+Iter: 1650. Loss: 4.7713e-05. Avg. fam. acc.: 80.998
+Iter: 1700. Loss: 4.6698e-05. Avg. fam. acc.: 80.998
+Iter: 1750. Loss: 4.6525e-05. Avg. fam. acc.: 80.998
+Iter: 1800. Loss: 4.0113e-05. Avg. fam. acc.: 80.998
+Iter: 1850. Loss: 3.9933e-05. Avg. fam. acc.: 80.513
+Iter: 1900. Loss: 3.4998e-05. Avg. fam. acc.: 80.513
+Iter: 1950. Loss: 3.2153e-05. Avg. fam. acc.: 80.513
+--- New Run:  96 / 100 ---
+Iter: 50. Loss: 0.097529218. Avg. fam. acc.: 78.215
+Iter: 100. Loss: 0.013532893. Avg. fam. acc.: 76.75
+Iter: 150. Loss: 0.005934563. Avg. fam. acc.: 76.216
+Iter: 200. Loss: 0.00353897. Avg. fam. acc.: 77.027
+Iter: 250. Loss: 0.002191737. Avg. fam. acc.: 77.609
+Iter: 300. Loss: 0.001240598. Avg. fam. acc.: 77.106
+Iter: 350. Loss: 0.001039658. Avg. fam. acc.: 77.573
+Iter: 400. Loss: 0.000712315. Avg. fam. acc.: 77.422
+Iter: 450. Loss: 0.000617766. Avg. fam. acc.: 77.422
+Iter: 500. Loss: 0.000512034. Avg. fam. acc.: 78.13
+Iter: 550. Loss: 0.00040966. Avg. fam. acc.: 77.941
+Iter: 600. Loss: 0.000388522. Avg. fam. acc.: 77.93
+Iter: 650. Loss: 0.000299464. Avg. fam. acc.: 76.987
+Iter: 700. Loss: 0.00024718. Avg. fam. acc.: 76.954
+Iter: 750. Loss: 0.000222267. Avg. fam. acc.: 76.954
+Iter: 800. Loss: 0.000188825. Avg. fam. acc.: 76.954
+Iter: 850. Loss: 0.000178514. Avg. fam. acc.: 76.954
+Iter: 900. Loss: 0.000169553. Avg. fam. acc.: 76.954
+Iter: 950. Loss: 0.000147443. Avg. fam. acc.: 77.123
+Iter: 1000. Loss: 0.00012755. Avg. fam. acc.: 77.123
+Iter: 1050. Loss: 0.000118989. Avg. fam. acc.: 77.123
+--- New Run:  97 / 100 ---
+Iter: 50. Loss: 0.096728437. Avg. fam. acc.: 75.412
+Iter: 100. Loss: 0.011197547. Avg. fam. acc.: 72.781
+Iter: 150. Loss: 0.005306329. Avg. fam. acc.: 73.631
+Iter: 200. Loss: 0.003369092. Avg. fam. acc.: 72.589
+Iter: 250. Loss: 0.002026146. Avg. fam. acc.: 73.672
+Iter: 300. Loss: 0.001315154. Avg. fam. acc.: 73.672
+Iter: 350. Loss: 0.001027987. Avg. fam. acc.: 73.667
+Iter: 400. Loss: 0.000831369. Avg. fam. acc.: 74.371
+Iter: 450. Loss: 0.000588073. Avg. fam. acc.: 75.622
+Iter: 500. Loss: 0.000486723. Avg. fam. acc.: 75.115
+Iter: 550. Loss: 0.000419518. Avg. fam. acc.: 75.358
+Iter: 600. Loss: 0.000341768. Avg. fam. acc.: 75.722
+Iter: 650. Loss: 0.000301616. Avg. fam. acc.: 76.587
+Iter: 700. Loss: 0.000263044. Avg. fam. acc.: 77.073
+Iter: 750. Loss: 0.000225661. Avg. fam. acc.: 76.097
+Iter: 800. Loss: 0.000177455. Avg. fam. acc.: 76.583
+Iter: 850. Loss: 0.000171561. Avg. fam. acc.: 76.583
+Iter: 900. Loss: 0.000162349. Avg. fam. acc.: 76.583
+Iter: 950. Loss: 0.000144612. Avg. fam. acc.: 77.068
+Iter: 1000. Loss: 0.000120942. Avg. fam. acc.: 77.068
+Iter: 1050. Loss: 0.000123811. Avg. fam. acc.: 76.097
+Iter: 1100. Loss: 0.000104348. Avg. fam. acc.: 76.583
+Iter: 1150. Loss: 0.000101027. Avg. fam. acc.: 76.583
+Iter: 1200. Loss: 9.441e-05. Avg. fam. acc.: 76.558
+Iter: 1250. Loss: 8.5027e-05. Avg. fam. acc.: 76.558
+Iter: 1300. Loss: 7.1056e-05. Avg. fam. acc.: 76.558
+Iter: 1350. Loss: 7.3784e-05. Avg. fam. acc.: 76.558
+Iter: 1400. Loss: 6.3863e-05. Avg. fam. acc.: 77.529
+Iter: 1450. Loss: 6.5567e-05. Avg. fam. acc.: 77.529
+Iter: 1500. Loss: 5.8626e-05. Avg. fam. acc.: 77.529
+Iter: 1550. Loss: 5.7281e-05. Avg. fam. acc.: 77.529
+Iter: 1600. Loss: 5.1533e-05. Avg. fam. acc.: 77.529
+Iter: 1650. Loss: 4.6646e-05. Avg. fam. acc.: 77.529
+Iter: 1700. Loss: 4.2947e-05. Avg. fam. acc.: 78.5
+Iter: 1750. Loss: 4.1551e-05. Avg. fam. acc.: 78.5
+Iter: 1800. Loss: 4.0314e-05. Avg. fam. acc.: 78.5
+Iter: 1850. Loss: 3.9339e-05. Avg. fam. acc.: 78.5
+Iter: 1900. Loss: 3.4511e-05. Avg. fam. acc.: 78.443
+Iter: 1950. Loss: 3.1074e-05. Avg. fam. acc.: 78.443
+Iter: 2000. Loss: 3.1194e-05. Avg. fam. acc.: 78.443
+Iter: 2050. Loss: 2.9254e-05. Avg. fam. acc.: 78.443
+Iter: 2100. Loss: 2.7428e-05. Avg. fam. acc.: 78.443
+Iter: 2150. Loss: 2.7256e-05. Avg. fam. acc.: 78.443
+Iter: 2200. Loss: 2.4787e-05. Avg. fam. acc.: 78.443
+Iter: 2250. Loss: 2.5549e-05. Avg. fam. acc.: 78.46
+Iter: 2300. Loss: 2.5562e-05. Avg. fam. acc.: 78.46
+Iter: 2350. Loss: 2.2982e-05. Avg. fam. acc.: 78.46
+Iter: 2400. Loss: 2.2797e-05. Avg. fam. acc.: 78.46
+Iter: 2450. Loss: 1.9413e-05. Avg. fam. acc.: 78.265
+Iter: 2500. Loss: 1.8631e-05. Avg. fam. acc.: 78.265
+Iter: 2550. Loss: 1.8041e-05. Avg. fam. acc.: 78.265
+Iter: 2600. Loss: 1.7755e-05. Avg. fam. acc.: 78.265
+Iter: 2650. Loss: 1.6343e-05. Avg. fam. acc.: 78.265
+Iter: 2700. Loss: 1.5983e-05. Avg. fam. acc.: 78.265
+--- New Run:  98 / 100 ---
+Iter: 50. Loss: 0.083917335. Avg. fam. acc.: 72.668
+Iter: 100. Loss: 0.014691377. Avg. fam. acc.: 67.174
+Iter: 150. Loss: 0.00623364. Avg. fam. acc.: 67.32
+Iter: 200. Loss: 0.002983231. Avg. fam. acc.: 69.355
+Iter: 250. Loss: 0.001895674. Avg. fam. acc.: 69.953
+Iter: 300. Loss: 0.001324747. Avg. fam. acc.: 70.21
+Iter: 350. Loss: 0.001095421. Avg. fam. acc.: 71.13
+Iter: 400. Loss: 0.000743533. Avg. fam. acc.: 71.527
+Iter: 450. Loss: 0.000634282. Avg. fam. acc.: 72.52
+Iter: 500. Loss: 0.00048979. Avg. fam. acc.: 72.645
+Iter: 550. Loss: 0.000414188. Avg. fam. acc.: 72.955
+Iter: 600. Loss: 0.00032318. Avg. fam. acc.: 72.479
+Iter: 650. Loss: 0.000301406. Avg. fam. acc.: 72.378
+Iter: 700. Loss: 0.000251251. Avg. fam. acc.: 72.378
+Iter: 750. Loss: 0.000219449. Avg. fam. acc.: 72.346
+Iter: 800. Loss: 0.000190386. Avg. fam. acc.: 72.346
+Iter: 850. Loss: 0.000166417. Avg. fam. acc.: 72.346
+Iter: 900. Loss: 0.000147526. Avg. fam. acc.: 72.666
+Iter: 950. Loss: 0.000146579. Avg. fam. acc.: 72.666
+Iter: 1000. Loss: 0.000123709. Avg. fam. acc.: 72.902
+Iter: 1050. Loss: 0.000118093. Avg. fam. acc.: 72.897
+Iter: 1100. Loss: 0.000102933. Avg. fam. acc.: 72.902
+Iter: 1150. Loss: 9.2872e-05. Avg. fam. acc.: 72.87
+Iter: 1200. Loss: 9.4725e-05. Avg. fam. acc.: 72.87
+Iter: 1250. Loss: 8.2438e-05. Avg. fam. acc.: 72.806
+Iter: 1300. Loss: 7.6717e-05. Avg. fam. acc.: 72.806
+Iter: 1350. Loss: 7.0931e-05. Avg. fam. acc.: 72.806
+Iter: 1400. Loss: 6.5022e-05. Avg. fam. acc.: 72.783
+Iter: 1450. Loss: 6.1482e-05. Avg. fam. acc.: 72.783
+Iter: 1500. Loss: 5.6008e-05. Avg. fam. acc.: 72.783
+Iter: 1550. Loss: 4.9965e-05. Avg. fam. acc.: 72.82
+--- New Run:  99 / 100 ---
+Iter: 50. Loss: 0.096055515. Avg. fam. acc.: 76.177
+Iter: 100. Loss: 0.013496091. Avg. fam. acc.: 74.844
+Iter: 150. Loss: 0.005450756. Avg. fam. acc.: 75.327
+Iter: 200. Loss: 0.002822365. Avg. fam. acc.: 74.835
+Iter: 250. Loss: 0.001836675. Avg. fam. acc.: 74.614
+Iter: 300. Loss: 0.001143186. Avg. fam. acc.: 75.53
+Iter: 350. Loss: 0.000888794. Avg. fam. acc.: 75.686
+Iter: 400. Loss: 0.000710263. Avg. fam. acc.: 75.664
+Iter: 450. Loss: 0.000569835. Avg. fam. acc.: 75.465
+Iter: 500. Loss: 0.000444607. Avg. fam. acc.: 75.72
+Iter: 550. Loss: 0.000377807. Avg. fam. acc.: 75.72
+Iter: 600. Loss: 0.000323899. Avg. fam. acc.: 76.231
+Iter: 650. Loss: 0.000274271. Avg. fam. acc.: 76.198
+Iter: 700. Loss: 0.000222648. Avg. fam. acc.: 77.218
+Iter: 750. Loss: 0.000210646. Avg. fam. acc.: 77.223
+Iter: 800. Loss: 0.000195571. Avg. fam. acc.: 77.051
+Iter: 850. Loss: 0.000159866. Avg. fam. acc.: 77.057
+Iter: 900. Loss: 0.000145361. Avg. fam. acc.: 77.057
+Iter: 950. Loss: 0.000130336. Avg. fam. acc.: 77.057
+Iter: 1000. Loss: 0.000122816. Avg. fam. acc.: 77.057
+Iter: 1050. Loss: 0.000114028. Avg. fam. acc.: 77.057
+Iter: 1100. Loss: 9.2126e-05. Avg. fam. acc.: 77.057
+Iter: 1150. Loss: 9.1118e-05. Avg. fam. acc.: 78.078
+Iter: 1200. Loss: 8.3087e-05. Avg. fam. acc.: 78.151
+Iter: 1250. Loss: 8.3552e-05. Avg. fam. acc.: 78.151
+Iter: 1300. Loss: 7.1633e-05. Avg. fam. acc.: 78.151
+Iter: 1350. Loss: 6.4977e-05. Avg. fam. acc.: 78.118
+Iter: 1400. Loss: 5.996e-05. Avg. fam. acc.: 77.608
+Iter: 1450. Loss: 5.6907e-05. Avg. fam. acc.: 77.608
+Iter: 1500. Loss: 5.0016e-05. Avg. fam. acc.: 77.608
+Iter: 1550. Loss: 5.0709e-05. Avg. fam. acc.: 77.608
+Iter: 1600. Loss: 4.8498e-05. Avg. fam. acc.: 77.608
+Iter: 1650. Loss: 4.3251e-05. Avg. fam. acc.: 77.608
+Iter: 1700. Loss: 4.1744e-05. Avg. fam. acc.: 77.097
+Iter: 1750. Loss: 3.6702e-05. Avg. fam. acc.: 77.097
+Iter: 1800. Loss: 3.6e-05. Avg. fam. acc.: 77.097
+Iter: 1850. Loss: 3.425e-05. Avg. fam. acc.: 77.097
+Iter: 1900. Loss: 3.3514e-05. Avg. fam. acc.: 77.097
+Iter: 1950. Loss: 3.015e-05. Avg. fam. acc.: 77.097
+Iter: 2000. Loss: 2.9931e-05. Avg. fam. acc.: 77.608
+Iter: 2050. Loss: 2.8388e-05. Avg. fam. acc.: 77.608
+Iter: 2100. Loss: 2.6142e-05. Avg. fam. acc.: 77.608
+Iter: 2150. Loss: 2.5751e-05. Avg. fam. acc.: 77.608
+Iter: 2200. Loss: 2.2254e-05. Avg. fam. acc.: 77.608
+---------------
+| Language   | Family        | Predictions                  |
+|:-----------|:--------------|:-----------------------------|
+| minn1241   | Sino-Tibetan  | Sino-Tibetan: 98             |
+| yuec1235   | Sino-Tibetan  | Otomanguean: 17              |
+|            |               | Sino-Tibetan: 73             |
+| dung1253   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| mind1253   | Sino-Tibetan  | Sino-Tibetan: 87             |
+|            |               | Unclassified: 11             |
+| ganc1239   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| hakk1236   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| huiz1242   | Sino-Tibetan  | Sino-Tibetan: 84             |
+|            |               | Unclassified: 15             |
+| mand1415   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| jiny1235   | Sino-Tibetan  | Hmong-Mien: 54               |
+|            |               | Sino-Tibetan: 44             |
+| xian1251   | Sino-Tibetan  | Sino-Tibetan: 99             |
+| midd1344   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| minb1244   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| oldc1244   | Sino-Tibetan  | Sino-Tibetan: 99             |
+| puxi1243   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| wuch1236   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| wutu1241   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| minz1235   | Sino-Tibetan  | Sino-Tibetan: 100            |
+| hitt1242   | Indo-European | Indo-European: 100           |
+| tokh1242   | Indo-European | Indo-European: 100           |
+| tokh1243   | Indo-European | Indo-European: 100           |
+| cahu1264   | Uto-Aztecan   | Uto-Aztecan: 88              |
+|            |               | Atlantic-Congo: 7            |
+| coma1245   | Uto-Aztecan   | Unclassified: 98             |
+| cupe1243   | Uto-Aztecan   | Uto-Aztecan: 68              |
+|            |               | Unclassified: 31             |
+| serr1255   | Uto-Aztecan   | Atlantic-Congo: 52           |
+|            |               | Uto-Aztecan: 20              |
+|            |               | Pama-Nyungan: 10             |
+|            |               | Indo-European: 10            |
+| hopi1249   | Uto-Aztecan   | Uto-Aztecan: 71              |
+|            |               | Unclassified: 28             |
+| kawa1283   | Uto-Aztecan   | Lakes Plain: 29              |
+|            |               | Sko: 30                      |
+|            |               | Unclassified: 17             |
+|            |               | Siouan: 6                    |
+| luis1253   | Uto-Aztecan   | Unclassified: 50             |
+|            |               | Pama-Nyungan: 19             |
+|            |               | Uto-Aztecan: 9               |
+|            |               | Atlantic-Congo: 6            |
+|            |               | Algic: 12                    |
+| nort2954   | Uto-Aztecan   | Unclassified: 75             |
+|            |               | Lakes Plain: 15              |
+|            |               | Uto-Aztecan: 8               |
+| pana1305   | Uto-Aztecan   | Unclassified: 79             |
+|            |               | Uto-Aztecan: 10              |
+|            |               | Lakes Plain: 8               |
+| shos1248   | Uto-Aztecan   | Unclassified: 93             |
+| utes1238   | Uto-Aztecan   | Atlantic-Congo: 79           |
+|            |               | Unclassified: 17             |
+| tuba1278   | Uto-Aztecan   | Atlantic-Congo: 41           |
+|            |               | Uto-Aztecan: 17              |
+|            |               | Unclassified: 33             |
+| mono1275   | Uto-Aztecan   | Uto-Aztecan: 41              |
+|            |               | Indo-European: 10            |
+|            |               | Siouan: 11                   |
+|            |               | Pano-Tacanan: 7              |
+|            |               | Unclassified: 12             |
+|            |               | Atlantic-Congo: 11           |
+| bang1363   | Unclassified  | Atlantic-Congo: 84           |
+|            |               | Nuclear Trans New Guinea: 12 |
+| basq1248   | Unclassified  | Unclassified: 93             |
+| cand1248   | Unclassified  | Unclassified: 83             |
+|            |               | Nuclear Trans New Guinea: 11 |
+| cani1243   | Unclassified  | Unclassified: 73             |
+|            |               | Nuclear Trans New Guinea: 19 |
+|            |               | Chibchan: 6                  |
+| kusu1250   | Unclassified  | Unclassified: 57             |
+|            |               | Chibchan: 13                 |
+|            |               | Nuclear-Macro-Je: 16         |
+|            |               | Nuclear Trans New Guinea: 10 |
+| mapu1245   | Unclassified  | Unclassified: 100            |
+| muni1258   | Unclassified  | Unclassified: 53             |
+|            |               | Tucanoan: 20                 |
+|            |               | Lakes Plain: 6               |
+| taus1253   | Unclassified  | Unclassified: 82             |
+|            |               | Pano-Tacanan: 8              |
+|            |               | Tupian: 7                    |
+| urar1246   | Unclassified  | Unclassified: 43             |
+|            |               | Nilotic: 35                  |
+|            |               | Austronesian: 9              |
+| waor1240   | Unclassified  | Arawakan: 62                 |
+|            |               | Tupian: 12                   |
+|            |               | Unclassified: 13             |
+| yagu1244   | Unclassified  | Unclassified: 16             |
+|            |               | Nilotic: 47                  |
+|            |               | Otomanguean: 26              |
+---------------
+| Family                   |   Languages |   Tested |   Avg. Fam. Accuracy |   Fam-STD |
+|:-------------------------|------------:|---------:|---------------------:|----------:|
+| Abkhaz-Adyge             |           5 |     1.40 |                93.92 |     21.65 |
+| Afro-Asiatic             |         283 |    56.60 |                95.87 |      2.48 |
+| Algic                    |          35 |     7.00 |                84.63 |     12.59 |
+| Angan                    |          12 |     2.30 |                63.96 |     35.84 |
+| Anim                     |          13 |     2.80 |                35.22 |     34.58 |
+| Arawakan                 |          50 |    10.00 |                91.88 |      8.61 |
+| Arawan                   |           4 |     1.20 |                80.05 |     38.23 |
+| Athabaskan-Eyak-Tlingit  |          33 |     6.50 |                94.29 |      9.66 |
+| Atlantic-Congo           |        1007 |   201.40 |                96.03 |      4.57 |
+| Austroasiatic            |         105 |    21.30 |                97.46 |      3.66 |
+| Austronesian             |         861 |   172.40 |                98.06 |      1.66 |
+| Barbacoan                |           5 |     1.50 |                37.37 |     43.06 |
+| Blue Nile Mao            |           4 |     1.30 |                70.90 |     41.94 |
+| Boran                    |           2 |     1.20 |                20.00 |     40.51 |
+| Border                   |          12 |     2.70 |                85.66 |     24.33 |
+| Bosavi                   |           7 |     1.90 |                88.01 |     27.25 |
+| Caddoan                  |           5 |     1.50 |                42.27 |     47.19 |
+| Cariban                  |          22 |     4.40 |                85.53 |     20.88 |
+| Central Sudanic          |          52 |    10.70 |                90.71 |      8.85 |
+| Chibchan                 |          18 |     3.60 |                73.18 |     28.22 |
+| Chicham                  |           4 |     1.20 |                71.79 |     43.19 |
+| Chocoan                  |           6 |     1.60 |                91.20 |     23.44 |
+| Chukotko-Kamchatkan      |           4 |     1.30 |                66.95 |     40.52 |
+| Chumashan                |           4 |     1.30 |                61.00 |     43.33 |
+| Cochimi-Yuman            |           9 |     2.00 |                71.37 |     33.91 |
+| Dagan                    |           7 |     1.70 |                14.67 |     32.65 |
+| Dajuic                   |           6 |     1.60 |                91.65 |     20.60 |
+| Dogon                    |          19 |     3.80 |                96.74 |      9.76 |
+| Dravidian                |          39 |     8.00 |                96.80 |      6.20 |
+| East Strickland          |           6 |     1.60 |                89.93 |     24.38 |
+| Eastern Trans-Fly        |           4 |     1.20 |                31.97 |     46.58 |
+| Eleman                   |           5 |     1.50 |                82.49 |     33.34 |
+| Eskimo-Aleut             |           9 |     2.00 |                89.48 |     24.62 |
+| Geelvink Bay             |           7 |     1.80 |                63.19 |     42.00 |
+| Goilalan                 |           5 |     1.50 |                 7.03 |     24.99 |
+| Great Andamanese         |          10 |     2.30 |                88.13 |     22.41 |
+| Greater Kwerba           |           5 |     1.50 |                32.84 |     42.42 |
+| Guahiboan                |           5 |     1.60 |                98.57 |      8.86 |
+| Guaicuruan               |           5 |     1.40 |                39.39 |     45.16 |
+| Gunwinyguan              |          10 |     2.20 |                36.25 |     39.65 |
+| Heibanic                 |          10 |     2.10 |                95.81 |     12.32 |
+| Hmong-Mien               |          17 |     3.30 |                91.60 |     17.28 |
+| Huitotoan                |           5 |     1.30 |                83.33 |     34.91 |
+| Ijoid                    |          10 |     2.30 |                99.78 |      2.12 |
+| Indo-European            |         273 |    55.80 |                98.80 |      1.42 |
+| Iroquoian                |           9 |     2.00 |                75.43 |     33.53 |
+| Japonic                  |          10 |     2.10 |                97.22 |     12.22 |
+| Kadugli-Krongo           |           6 |     1.40 |               100.00 |      0.00 |
+| Kartvelian               |           4 |     1.40 |                68.89 |     40.06 |
+| Keram                    |           5 |     1.50 |                20.51 |     37.24 |
+| Khoe-Kwadi               |          10 |     2.10 |                86.29 |     27.20 |
+| Kiowa-Tanoan             |           5 |     1.50 |                62.37 |     45.66 |
+| Kiwaian                  |           6 |     1.70 |                89.29 |     23.40 |
+| Koiarian                 |           7 |     1.80 |                78.27 |     31.36 |
+| Koman                    |           4 |     1.40 |                53.62 |     46.43 |
+| Kru                      |          17 |     3.60 |                84.48 |     21.16 |
+| Kxa                      |           4 |     1.50 |                52.50 |     41.72 |
+| Lakes Plain              |          19 |     4.10 |                79.78 |     23.60 |
+| Left May                 |           6 |     1.50 |                62.17 |     41.80 |
+| Lengua-Mascoy            |           4 |     1.30 |                59.23 |     44.98 |
+| Lower Sepik-Ramu         |          28 |     5.50 |                78.06 |     18.13 |
+| Maban                    |           4 |     1.30 |                83.69 |     33.60 |
+| Mailuan                  |           6 |     1.80 |                72.70 |     35.46 |
+| Mande                    |          62 |    11.80 |                95.03 |      6.47 |
+| Mangarrayi-Maran         |           4 |     1.30 |                17.42 |     35.62 |
+| Maningrida               |           4 |     1.40 |                20.18 |     38.80 |
+| Matacoan                 |           6 |     1.60 |                82.44 |     31.46 |
+| Mayan                    |          31 |     6.00 |                93.51 |     10.54 |
+| Mirndi                   |           4 |     1.40 |                 4.62 |     21.15 |
+| Misumalpan               |           4 |     1.40 |                35.45 |     45.48 |
+| Miwok-Costanoan          |           7 |     1.60 |                75.67 |     35.52 |
+| Mixe-Zoque               |          16 |     3.20 |                92.47 |     13.83 |
+| Mongolic-Khitan          |          10 |     2.10 |                96.60 |     11.07 |
+| Muskogean                |           6 |     1.60 |                90.38 |     24.55 |
+| Naduhup                  |           4 |     1.20 |                80.33 |     40.08 |
+| Nakh-Daghestanian        |          29 |     6.00 |                96.21 |      7.59 |
+| Narrow Talodi            |           5 |     1.60 |                95.70 |     12.77 |
+| Ndu                      |          10 |     2.40 |                91.74 |     19.27 |
+| Nilotic                  |          46 |     9.40 |                97.03 |      5.18 |
+| North Halmahera          |          10 |     2.00 |                78.59 |     32.59 |
+| Nubian                   |           9 |     2.00 |                72.80 |     36.47 |
+| Nuclear Torricelli       |          50 |     9.50 |                83.77 |     13.18 |
+| Nuclear Trans New Guinea |         266 |    53.50 |                88.67 |      5.50 |
+| Nuclear-Macro-Je         |          20 |     3.90 |                67.25 |     25.32 |
+| Nyulnyulan               |           5 |     1.50 |                70.83 |     40.52 |
+| Otomanguean              |          86 |    17.00 |                91.64 |      8.09 |
+| Pama-Nyungan             |         129 |    25.50 |                90.24 |      6.31 |
+| Pano-Tacanan             |          21 |     4.20 |                85.71 |     20.52 |
+| Pauwasi                  |           5 |     1.50 |                22.22 |     40.15 |
+| Pomoan                   |           7 |     1.70 |                96.37 |     12.50 |
+| Quechuan                 |          35 |     7.00 |               100.00 |      0.00 |
+| Saharan                  |           7 |     1.70 |                59.07 |     42.24 |
+| Salishan                 |          23 |     4.40 |                86.85 |     17.72 |
+| Sepik                    |          28 |     5.20 |                83.56 |     15.51 |
+| Sino-Tibetan             |         231 |    43.10 |                95.94 |      3.34 |
+| Siouan                   |          17 |     3.20 |                78.39 |     25.98 |
+| Sko                      |          10 |     2.10 |                51.03 |     39.80 |
+| Songhay                  |           8 |     1.80 |                98.29 |      8.74 |
+| South Bird's Head Family |           6 |     1.50 |                78.05 |     36.08 |
+| South Omotic             |           5 |     1.50 |                96.64 |     16.22 |
+| Speech Register          |           4 |     1.40 |                15.25 |     32.50 |
+| Suki-Gogodala            |           4 |     1.30 |                18.64 |     39.28 |
+| Surmic                   |          10 |     2.30 |                95.49 |     15.25 |
+| Ta-Ne-Omotic             |          19 |     3.80 |                94.05 |     14.29 |
+| Tai-Kadai                |          53 |    11.00 |                94.73 |      6.50 |
+| Timor-Alor-Pantar        |          22 |     4.30 |                92.59 |     14.79 |
+| Tor-Orya                 |          13 |     3.00 |                93.14 |     16.27 |
+| Totonacan                |           9 |     2.00 |                96.58 |     12.61 |
+| Tucanoan                 |          19 |     3.70 |                95.05 |     11.89 |
+| Tungusic                 |          12 |     2.50 |                98.70 |     10.61 |
+| Tupian                   |          54 |    10.90 |                93.91 |      7.63 |
+| Turama-Kikori            |           4 |     1.40 |                42.95 |     47.53 |
+| Turkic                   |          33 |     6.70 |                96.65 |      6.51 |
+| Tuu                      |           5 |     1.50 |                99.53 |      3.96 |
+| Unclassified             |         163 |    30.70 |                44.80 |      8.70 |
+| Uralic                   |          32 |     6.50 |                92.96 |     14.00 |
+| Uto-Aztecan              |          52 |     8.20 |                98.93 |      3.80 |
+| Wakashan                 |           6 |     1.60 |                94.09 |     19.02 |
+| Walioic                  |           4 |     1.20 |                16.39 |     37.33 |
+| Western Daly             |           9 |     2.20 |               100.00 |      0.00 |
+| Worrorran                |           5 |     1.50 |                72.14 |     40.97 |
+| Yam                      |          17 |     3.30 |                90.39 |     16.76 |
+| Yanomamic                |           4 |     1.40 |                94.01 |     18.63 |
+| Yareban                  |           5 |     1.40 |                98.96 |      5.85 |
+| Yeniseian                |           5 |     1.30 |                72.46 |     40.81 |
+| Yuat                     |           5 |     1.50 |                67.61 |     41.93 |
+| Zaparoan                 |           4 |     1.40 |                79.03 |     35.83 |
+| TOTAL                    |        4971 |   985.00 |                77.87 |      2.93 |
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: fblum(51669)
+Job name:  ALA
+Node list: ravg1103
+Job start: Thu Aug 15 14:47:48 CEST 2024
+Job end:   Thu Aug 15 16:10:44 CEST 2024
+Work dir:  /u/fblum/ala/examples/./
+Command:   /raven/u/fblum/ala/examples/ala_raven.sh
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+12361210             ALA      1           144                             01:22:56      0:0
+  
+Maximum memory per node: 2.248018 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 1.4 %
+  
