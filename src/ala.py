@@ -331,6 +331,7 @@ def concept2vec(db, model="dolgo"):
                 nested_vector[concepts[concept]][0][cls2idx[first]] = 1
                 nested_vector[concepts[concept]][1][cls2idx[second]] = 1
         vector = []
+
         for a, b in nested_vector:
             vector += a + b
         return vector
