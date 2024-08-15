@@ -403,15 +403,13 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
-        if gcode in add_iso:
-            orphans.append(families[gcode])
-        if gcode in ['hibi1242', 'juri1235', 'peba1243', 'cani1243', 'omur1241', 'abis1238']:
-            print(gcode)
+            if gcode in add_iso:
+                orphans.append(families[gcode])
 
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
-    save = ['Chicham', 'Zaparoan', 'Boran']
+    save = ['Chicham', 'Zaparoan', 'Boran', 'Huitotoan']
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)

@@ -13,7 +13,7 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
 
 
-def run_ala(data, intersection=False, test_isolates=False, test_longdistance=False, distances=False):
+def run_ala(data, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
     runs = 10
@@ -61,13 +61,6 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         wordlists = dict(grambank.items())
     elif data == 'asjp':
         wordlists = dict(get_other(mode='asjp').items())
-
-    if intersection is True:
-        intersec = lexibank if data == 'grambank' else grambank
-        wordlists = {k: wordlists[k] for k in wordlists if k in intersec}
-        mod = '_intersec'
-    else:
-        mod = '_no'
 
     if data != 'combined':
         full_data = convert_data(
@@ -387,8 +380,6 @@ if __name__ == '__main__':
     parser.add_argument('--data', type=str,
                         help='Choose the dataset for your experiment: \
                             lexibank, grambank, or combined')
-    parser.add_argument('-intersection', action='store_true',
-                        help='Choose if intersect with another dataset')
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
     parser.add_argument('-distances', action='store_true',
@@ -398,7 +389,6 @@ if __name__ == '__main__':
 
     run_ala(
         data=args.data,
-        intersection=args.intersection,
         test_isolates=args.isolates,
         test_longdistance=args.longdistance,
         distances=args.distances
