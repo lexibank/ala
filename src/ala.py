@@ -9,7 +9,7 @@ from clldutils.misc import slug
 
 
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
+ATTACH_LB = """ATTACH 'data/lexibank2.sqlite3' AS db2;"""
 
 
 ASJP_QUERY = """
@@ -143,7 +143,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 35;
+  c.Word_Number >= 35
+;
 """
 
 
@@ -396,7 +397,7 @@ def get_families(wordlists, families, threshold=5):
 def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
-    add_iso = ['cani1243', 'jebe1250', 'abis1238', 'hibi1242', 'waor1240', 'chay1248', 'juri1235', 'ando1254', 'peba1243', 'yagu1244']
+    add_iso = ['chay1248', 'hibi1242', 'juri1235', 'peba1243', 'yagu1244']
     orphans = []
 
     for gcode in wordlists:
@@ -404,6 +405,8 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
             by_fam[families[gcode]] += [gcode]
         if gcode in add_iso:
             orphans.append(families[gcode])
+        if gcode in ['hibi1242', 'juri1235', 'peba1243', 'cani1243', 'omur1241', 'abis1238']:
+            print(gcode)
 
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)

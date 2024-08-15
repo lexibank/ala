@@ -16,8 +16,8 @@ from clldutils.misc import slug
 def run_ala(data, intersection=False, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 100
-    epochs = 5000
+    runs = 10
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -31,7 +31,8 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         sinitic = extract_branch(gcode='sini1245')
 
     isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250']
-    peru = ['cani1243', 'urar1246', 'omur1241', 'abis1238', 'waor1240', 'cand1248', 'muni1258', 'taus1253']
+    peru = ['cani1243', 'urar1246', 'omur1241', 'waor1240', 'cand1248', 'muni1258', 'taus1253']
+    orph = ['chay1248', 'yagu1244']
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -127,7 +128,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         elif family == 'Unclassified' and test_isolates is True:
             if lang in isolates:
                 tests[lang] = full_data[lang]
-            elif lang in peru:
+            elif lang in peru or lang in orph:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
@@ -136,6 +137,7 @@ def run_ala(data, intersection=False, test_isolates=False, test_longdistance=Fal
         else:
             features.append(full_data[lang][2])
             labels.append(fam2idx[family])
+
     print('Size of vector:', len(full_data[lang][2]))
     print('Number of concepts:', len(full_data[lang][2])/22)
 
