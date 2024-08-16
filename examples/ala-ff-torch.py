@@ -64,20 +64,19 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     elif data == 'asjp':
         wordlists = dict(get_other(mode='asjp').items())
 
-    if test_isolates is True and data == 'lexibank':
+    if test_isolates is True and data in ('lexibank', 'combined'):
         np_wl = dict(get_other(mode="np").items())
 
-        np_data = convert_data(
-            np_wl,
-            {k: v[0] for k, v in asjp.items()},
-            converter,
-            threshold=1,
-            load="lexical")
-
-        for lang in np_data:
-            if lang in orphans:
-                print(lang)
-                tests[lang] = np_data[lang]
+        if data == 'lexical':
+            np_data = convert_data(
+                np_wl,
+                {k: v[0] for k, v in asjp.items()},
+                converter,
+                threshold=1,
+                load="lexical")
+            for lang in np_data:
+                if lang in orphans:
+                    tests[lang] = np_data[lang]
 
     if data != 'combined':
         full_data = convert_data(
@@ -98,7 +97,6 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             converter,
             load=load,
             threshold=min_langs)
-
         gb_dic = dict(grambank.items())
         gb_wl = convert_data(
             gb_dic,
@@ -106,6 +104,16 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             gb_conv,
             load='grambank',
             threshold=1)
+
+        np_data = convert_data(
+                np_wl,
+                {k: v[0] for k, v in asjp.items() if k in grambank},
+                converter,
+                threshold=1,
+                load="lexical")
+        for lang in np_data:
+            full_data[lang] = np_data[lang]
+
         # Combine data vectors
         for lang in full_data:
             full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
@@ -129,6 +137,8 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
 
         if test_longdistance is True and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European']:
             if lang in sinitic or lang in northern_uto or lang in anatolian or lang in tocharian:
+                tests[lang] = full_data[lang]
+            elif data == 'combined' and lang in orphans:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
