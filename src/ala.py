@@ -10,7 +10,7 @@ from clldutils.misc import slug
 
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
 ATTACH_LB = """ATTACH 'data/lexibank2.sqlite3' AS db2;"""
-
+ATTACH_NP = """ATTACH 'data/northernperu.sqlite3' AS db1;"""
 
 ASJP_QUERY = """
 SELECT
@@ -95,6 +95,50 @@ WHERE
   f.cldf_languageReference = l.cldf_id
     AND
   c.Word_Number >= 25;
+"""
+
+NP_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.word_number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_2,
+      db2.parametertable as cc
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.cldf_parameterReference = p_2.cldf_id
+        AND
+      p_2.cldf_concepticonReference = cc.cldf_concepticonReference
+        AND
+      cc.core_concept like '%Tadmor-2009-100%'
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+;
 """
 
 
@@ -198,7 +242,7 @@ WHERE
 """
 
 
-def get_other(mode="bpt"):
+def get_other(mode="np"):
     db = get_db("data/dummy.sqlite3")
     wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(ATTACH_LB)
@@ -208,6 +252,9 @@ def get_other(mode="bpt"):
     elif mode == "lb_mod":
         db.execute(ATTACH_ASJP)
         db.execute(LBMOD_QUERY)
+    elif mode == 'np':
+        db.execute(ATTACH_NP)
+        db.execute(NP_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
@@ -398,14 +445,9 @@ def get_families(wordlists, families, threshold=5):
 def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
-    add_iso = ['chay1248', 'hibi1242', 'juri1235', 'peba1243', 'yagu1244']
-    orphans = []
-
     for gcode in wordlists:
         if gcode in families:
             by_fam[families[gcode]] += [gcode]
-            if gcode in add_iso:
-                orphans.append(families[gcode])
 
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)

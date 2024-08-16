@@ -16,8 +16,8 @@ from clldutils.misc import slug
 def run_ala(data, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 10
-    epochs = 50
+    runs = 100
+    epochs = 5000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -31,8 +31,10 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         sinitic = extract_branch(gcode='sini1245')
 
     isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250']
-    peru = ['cani1243', 'urar1246', 'omur1241', 'waor1240', 'cand1248', 'muni1258', 'taus1253']
-    orph = ['chay1248', 'yagu1244']
+    orphans = [
+        'cani1243', 'urar1246', 'omur1241', 'waor1240', 'cand1248', 'muni1258', 'taus1253',
+        'chay1248', 'yagu1244', 'abis1238', 'hibi1242', 'yame1242', 'juri1235', 'peba1243'
+        ]
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -61,6 +63,21 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         wordlists = dict(grambank.items())
     elif data == 'asjp':
         wordlists = dict(get_other(mode='asjp').items())
+
+    if test_isolates is True and data == 'lexibank':
+        np_wl = dict(get_other(mode="np").items())
+
+        np_data = convert_data(
+            np_wl,
+            {k: v[0] for k, v in asjp.items()},
+            converter,
+            threshold=1,
+            load="lexical")
+
+        for lang in np_data:
+            if lang in orphans:
+                print(lang)
+                tests[lang] = np_data[lang]
 
     if data != 'combined':
         full_data = convert_data(
@@ -120,8 +137,6 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         # Add test cases to test and others out
         elif family == 'Unclassified' and test_isolates is True:
             if lang in isolates:
-                tests[lang] = full_data[lang]
-            elif lang in peru or lang in orph:
                 tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
