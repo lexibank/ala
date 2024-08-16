@@ -138,6 +138,8 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         elif family == 'Unclassified' and test_isolates is True:
             if lang in isolates:
                 tests[lang] = full_data[lang]
+            elif lang in orphans and data != 'lexibank':
+                tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
