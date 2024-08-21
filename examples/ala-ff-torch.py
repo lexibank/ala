@@ -33,7 +33,8 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250']
     orphans = [
         'cani1243', 'urar1246', 'omur1241', 'waor1240', 'cand1248', 'muni1258', 'taus1253',
-        'chay1248', 'yagu1244', 'abis1238', 'hibi1242', 'yame1242', 'juri1235', 'peba1243'
+        'chay1248', 'yagu1244', 'abis1238', 'hibi1242', 'yame1242', 'juri1235', 'peba1243',
+        'cara1273'
         ]
 
     # Switch on GPU if available
@@ -66,17 +67,22 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
 
     if test_isolates is True and data in ('lexibank', 'combined'):
         np_wl = dict(get_other(mode="np").items())
+        car_wl = dict(get_other(mode="carari").items())
 
-        if data == 'lexical':
-            np_data = convert_data(
-                np_wl,
-                {k: v[0] for k, v in asjp.items()},
-                converter,
-                threshold=1,
-                load="lexical")
-            for lang in np_data:
-                if lang in orphans:
-                    tests[lang] = np_data[lang]
+        np_data = convert_data(
+            np_wl,
+            {k: v[0] for k, v in asjp.items()},
+            converter,
+            threshold=1,
+            load="lexical")
+
+        car_data = convert_data(
+            car_wl,
+            {k: v[0] for k, v in asjp.items()},
+            converter,
+            threshold=1,
+            load="lexical"
+            )
 
     if data != 'combined':
         full_data = convert_data(
@@ -85,6 +91,13 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             converter,
             load=load,
             threshold=min_langs)
+
+        for lang in np_data:
+            if lang in orphans:
+                full_data[lang] = np_data[lang]
+
+        for lang in car_data:
+            full_data[lang] = car_data[lang]
 
     # test integration of ASJP Genus
     # test = {k: v[1] for k, v in get_asjp().items()}
@@ -104,15 +117,6 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             gb_conv,
             load='grambank',
             threshold=1)
-
-        np_data = convert_data(
-                np_wl,
-                {k: v[0] for k, v in asjp.items() if k in grambank},
-                converter,
-                threshold=1,
-                load="lexical")
-        for lang in np_data:
-            full_data[lang] = np_data[lang]
 
         # Combine data vectors
         for lang in full_data:
@@ -138,26 +142,27 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         if test_longdistance is True and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European']:
             if lang in sinitic or lang in northern_uto or lang in anatolian or lang in tocharian:
                 tests[lang] = full_data[lang]
-            elif data == 'combined' and lang in orphans:
-                tests[lang] = full_data[lang]
             else:
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
 
         # Add test cases to test and others out
         elif family == 'Unclassified' and test_isolates is True:
-            if lang in isolates:
+            if lang in isolates or lang in orphans:
                 tests[lang] = full_data[lang]
-            elif lang in orphans and data != 'lexibank':
-                tests[lang] = full_data[lang]
+
             else:
                 features.append(full_data[lang][2])
                 labels.append(fam2idx[family])
+
+        elif lang in orphans:
+            tests[lang] = full_data[lang]
 
         else:
             features.append(full_data[lang][2])
             labels.append(fam2idx[family])
 
+    print('Number of families:', len(fam2idx))
     print('Size of vector:', len(full_data[lang][2]))
     print('Number of concepts:', len(full_data[lang][2])/22)
 

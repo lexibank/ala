@@ -3,9 +3,6 @@ download:
 	git clone https://github.com/lexibank/lexibank-analysed.git data/lexibank-analysed
 	git clone https://github.com/lexibank/asjp.git data/asjp
 	git clone https://github.com/grambank/grambank.git data/grambank
-	git clone https://github.com/pano-tacanan-history/blumpanotacana data/blumpanotacana
-	git clone https://github.com/lexibank/iecor data/iecor
-	git clone https://github.com/lexibank/northernperu data/northernperu
 
 prepare:
 	pip install pycldf, scipy, torch
@@ -18,5 +15,3 @@ prepare:
 	cldf createdb data/lexibank-analysed/cldf/wordlist-metadata.json data/lexibank.sqlite3
 	cldf createdb data/asjp/cldf/cldf-metadata.json data/asjp.sqlite3
 	cldf createdb data/grambank/cldf/StructureDataset-metadata.json data/grambank.sqlite3
-	cldf createdb data/blumpanotacana/cldf/cldf-metadata.json data/blumpanotacana.sqlite3
-	cldf createdb data/iecor/cldf/cldf-metadata.json data/iecor.sqlite3
