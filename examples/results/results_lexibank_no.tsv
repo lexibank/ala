@@ -1,0 +1,48 @@
+Family	Languages	Tested	Avg. Fam. Accuracy	Fam-STD
+Afro-Asiatic	87	17.6	94.62	4.72
+Arawakan	32	6.2	92.67	11.11
+Atlantic-Congo	231	45.0	98.41	1.77
+Austroasiatic	55	10.8	97.97	3.98
+Austronesian	468	94.0	99.38	0.7
+Barbacoan	5	1.5	62.73	42.31
+Cariban	15	3	87.9	20.75
+Chibchan	17	3.4	82.44	25.6
+Chocoan	6	1.7	94.48	16.68
+Chumashan	5	1.5	98.65	6.62
+Cochimi-Yuman	6	1.6	96.62	12.05
+Dogon	17	3.5	100.0	0.0
+Dravidian	10	2.3	91.85	18.12
+East Strickland	5	1.6	80.48	32.35
+Guahiboan	5	1.6	98.77	5.81
+Guaicuruan	5	1.5	68.26	39.88
+Hmong-Mien	12	2.5	99.78	2.07
+Indo-European	103	20.4	99.47	1.72
+Koiarian	6	1.8	77.17	31.61
+Kru	5	1.4	99.21	6.3
+Lakes Plain	16	3.7	95.04	11.83
+Lower Sepik-Ramu	7	1.6	61.25	40.55
+Mande	19	3.9	92.48	13.21
+Matacoan	5	1.4	71.61	40.03
+Miwok-Costanoan	6	1.5	70.67	38.44
+Mixe-Zoque	9	2.2	94.26	16.56
+Nakh-Daghestanian	29	5.7	99.69	2.28
+Nuclear Trans New Guinea	182	36.0	99.12	1.6
+Nuclear-Macro-Je	8	1.9	16.87	28.18
+Nyulnyulan	5	1.5	96.92	15.28
+Otomanguean	14	2.9	84.97	21.61
+Pama-Nyungan	101	20.4	98.31	2.54
+Pano-Tacanan	15	3.1	92.31	15.5
+Quechuan	20	4.2	100.0	0.0
+Salishan	7	1.6	55.69	42.33
+Sepik	8	2.2	66.47	35.5
+Sino-Tibetan	106	21.3	98.1	2.77
+Tai-Kadai	21	4.4	90.67	14.01
+Timor-Alor-Pantar	17	3.4	92.13	15.75
+Tucanoan	19	3.5	98.26	6.96
+Tungusic	12	2.6	99.85	1.46
+Tupian	36	7.2	91.8	11.07
+Turkic	27	5.0	100.0	0.0
+Unclassified	168	34.2	79.85	6.79
+Uralic	27	5.9	100.0	0.0
+Uto-Aztecan	29	5.6	99.52	2.8
+TOTAL	2008	401	88.91	3.43

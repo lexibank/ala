@@ -1,71 +1,17 @@
 import sqlite3
-import lingpy
 from collections import defaultdict
-import tqdm
-from clldutils.misc import slug
 import random
 import statistics
 import numpy as np
+import lingpy
+import tqdm
+from clldutils.misc import slug
 
 
-ATTACH_BPT = """ATTACH 'data/blumpanotacana.sqlite3' AS db1;"""
-ATTACH_IECOR = """ATTACH 'data/iecor.sqlite3' AS db1;"""
-ATTACH_VBC = """ATTACH 'data/viegasbarroschaco.sqlite3' AS db1;"""
-ATTACH_GBE = """ATTACH 'data/grollemundbantu.sqlite3' AS db1;"""
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_BC = """ATTACH 'data/birchallchapacuran.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
-
-IECOR_QUERY = """
-SELECT
-  ROW_NUMBER() OVER(),
-  l.cldf_id,
-  l.cldf_glottocode,
-  l.family,
-  p.concepticon_gloss,
-  f.cldf_segments,
-  p.cldf_id,
-  c.Word_Number
-FROM
-  db1.formtable AS f,
-  db1.languagetable AS l,
-  db1.parametertable AS p
-INNER JOIN
-  (
-    SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      db1.formtable as f_2,
-      db1.languagetable as l_2,
-      db1.parametertable as p_2a,
-      db2.parametertable as p_2
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      lower(p_2a.cldf_name) = p_2.cldf_id
-        AND
-      f_2.cldf_parameterReference = p_2a.cldf_id
-        AND
-      (
-        p_2.core_concept like "%Swadesh-1952-200%"
-          OR
-        p_2.core_concept like "%Swadesh-1955-100%"
-      )
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-    AND
-  length(f.cldf_segments) > 1
-    AND
-  c.Word_Number >= 50;
-"""
+ATTACH_LB = """ATTACH 'data/lexibank2.sqlite3' AS db2;"""
+ATTACH_NP = """ATTACH 'data/northernperu.sqlite3' AS db1;"""
+ATTACH_CAR = """ATTACH 'data/carari.sqlite3' AS db1;"""
 
 ASJP_QUERY = """
 SELECT
@@ -94,6 +40,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       f_2.gloss_in_source = p_2.cldf_id
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -104,56 +52,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
-
-
-BPT_QUERY = """
-SELECT
-  ROW_NUMBER() OVER(),
-  l.cldf_id,
-  l.cldf_glottocode,
-  l.family,
-  p.concepticon_gloss,
-  f.cldf_segments,
-  p.cldf_id,
-  c.Word_Number
-FROM
-  db1.formtable AS f,
-  db1.languagetable AS l,
-  db1.parametertable AS p
-INNER JOIN
-  (
-    SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      db1.formtable as f_2,
-      db1.languagetable as l_2,
-      db2.parametertable as p_2
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      f_2.cldf_parameterReference = p_2.cldf_id
-        AND
-      (
-        p_2.core_concept like "%Swadesh-1952-200%"
-          OR
-        p_2.core_concept like "%Swadesh-1955-100%"
-      )
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-    AND
-  c.Word_Number >= 50;
-"""
-
 
 LBMOD_QUERY = """
 SELECT
@@ -183,6 +83,8 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       p_2.cldf_id = f_2.gloss_in_source
+        AND
+      p_2.core_concept like "%Holman-2008-40%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -193,9 +95,98 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 25;
 """
 
+NP_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.word_number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_2,
+      db2.parametertable as cc
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.cldf_parameterReference = p_2.cldf_id
+        AND
+      p_2.cldf_concepticonReference = cc.cldf_concepticonReference
+        AND
+      cc.core_concept like '%Tadmor-2009-100%'
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+;
+"""
+
+CAR_QUERY = """
+SELECT
+  ROW_NUMBER() OVER(),
+  l.cldf_id,
+  l.cldf_glottocode,
+  l.family,
+  p.concepticon_gloss,
+  f.cldf_segments,
+  p.cldf_id,
+  c.word_number
+FROM
+  db1.formtable AS f,
+  db1.languagetable AS l,
+  db1.parametertable AS p
+INNER JOIN
+  (
+    SELECT
+      l_2.cldf_glottocode,
+      COUNT (*) as Word_Number
+    FROM
+      db1.formtable as f_2,
+      db1.languagetable as l_2,
+      db1.parametertable as p_2,
+      db2.parametertable as cc
+    WHERE
+      f_2.cldf_languageReference = l_2.cldf_id
+        AND
+      f_2.cldf_parameterReference = p_2.cldf_id
+        AND
+      p_2.cldf_concepticonReference = cc.cldf_concepticonReference
+        AND
+      cc.core_concept like '%Tadmor-2009-100%'
+    GROUP BY
+      l_2.cldf_glottocode
+  ) as c
+ON
+  c.cldf_glottocode = l.cldf_glottocode
+WHERE
+  f.cldf_parameterReference = p.cldf_id
+    AND
+  f.cldf_languageReference = l.cldf_id
+    AND
+  l.cldf_glottocode = 'cara1273'
+;
+"""
 
 WL_QUERY = """SELECT
   ROW_NUMBER() OVER(),
@@ -226,9 +217,11 @@ INNER JOIN
       f_2.cldf_parameterReference = p_2.cldf_id
         AND
       (
-        p_2.core_concept like "%Swadesh-1952-200%"
-          OR
-        p_2.core_concept like "%Swadesh-1955-100%"
+      --p_2.core_concept like "%Swadesh-1952-200%"
+      --  OR
+      --p_2.core_concept like "%Swadesh-1955-100%"
+      --  OR
+      p_2.core_concept like "%Tadmor-2009-100%"
       )
     GROUP BY
       l_2.cldf_glottocode
@@ -240,7 +233,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50;
+  c.Word_Number >= 35
+;
 """
 
 
@@ -265,12 +259,15 @@ WHERE
 CONCEPT_QUERY = """SELECT
   cldf_name
 FROM
-  parametertable
+  parametertable as p
 WHERE
   (
-    core_concept like "%Swadesh-1952-200%"
-      OR
-    core_concept like "%Swadesh-1955-100%"
+   --p.core_concept like "%Swadesh-1952-200%"
+   -- OR
+   --p.core_concept like "%Swadesh-1955-100%"
+   -- OR
+  p.core_concept like "%Tadmor-2009-100%"
+  --p.core_concept like "%Holman-2008-40%"
   );"""
 
 
@@ -291,28 +288,22 @@ WHERE
 """
 
 
-def get_other(mode="bpt"):
+def get_other(mode="np"):
     db = get_db("data/dummy.sqlite3")
-    wordlists = defaultdict(lambda : defaultdict(dict))
+    wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(ATTACH_LB)
-    if mode == "bpt":
-        db.execute(ATTACH_BPT)
-        db.execute(BPT_QUERY)
-    elif mode == "asjp":
+    if mode == "asjp":
         db.execute(ATTACH_ASJP)
         db.execute(ASJP_QUERY)
     elif mode == "lb_mod":
         db.execute(ATTACH_ASJP)
         db.execute(LBMOD_QUERY)
-    elif mode == "iecor":
-        db.execute(ATTACH_IECOR)
-        db.execute(IECOR_QUERY)
-    elif mode == "bc":
-        db.execute(ATTACH_BC)
-        db.execute(IECOR_QUERY)
-    elif mode == "vbc":
-        db.execute(ATTACH_VBC)
-        db.execute(IECOR_QUERY)
+    elif mode == 'np':
+        db.execute(ATTACH_NP)
+        db.execute(NP_QUERY)
+    elif mode == 'carari':
+        db.execute(ATTACH_CAR)
+        db.execute(CAR_QUERY)
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
@@ -320,7 +311,6 @@ def get_other(mode="bpt"):
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
-        print(glottocode)
         if len(wordlists[glottocode]) == 1:
             best_key = list(wordlists[glottocode].keys())[0]
         else:
@@ -354,7 +344,7 @@ def get_gb(path="data/grambank.sqlite3"):
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
-    wordlists = defaultdict(lambda : defaultdict(dict))
+    wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(GB_QUERY)
     for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
         if tokens:
@@ -412,28 +402,32 @@ def concept2vec(db, model="dolgo"):
                      in "+_" + sc_model.vowels + sc_model.tones] + ["?"]
     cls2idx = {c: i for i, c in enumerate(sound_classes)}
 
+    unique = []
+
     def converter(words):
         nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
-
         for concept, tokens in words:
-            # Addition for BPT to only add parameters that are in lexibank
-            # At least one case: MUD
             if concept in concepts:
                 class_string = lingpy.tokens2class(tokens, model)
-                reduced_string = [t for t in class_string if t in
-                                sound_classes][:2]
+                reduced_string = [t for t in class_string if t in sound_classes][:2]
                 if not reduced_string:
-                    first, second = "?", "?"
+                    first, second = "H", "H"
                 elif len(reduced_string) == 1:
                     if class_string[0] in sc_model.vowels:
-                        first, second = "?", reduced_string[0]
+                        first, second = "H", reduced_string[0]
                     else:
-                        first, second = reduced_string[0], "?"
+                        first, second = reduced_string[0], "H"
                 else:
                     first, second = reduced_string
+
+                if first not in unique:
+                    unique.append(first)
+                if second not in unique:
+                    unique.append(second)
                 nested_vector[concepts[concept]][0][cls2idx[first]] = 1
                 nested_vector[concepts[concept]][1][cls2idx[second]] = 1
         vector = []
+
         for a, b in nested_vector:
             vector += a + b
         return vector
@@ -464,7 +458,7 @@ def get_lb(path="data/lexibank.sqlite3"):
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
-    wordlists = defaultdict(lambda : defaultdict(dict))
+    wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(WL_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
@@ -489,7 +483,7 @@ def get_families(wordlists, families, threshold=5):
     """
 
     # order by family
-    by_fam = defaultdict(lambda : defaultdict(dict))
+    by_fam = defaultdict(lambda: defaultdict(dict))
     for gcode, items in wordlists.items():
         if gcode in families:
             by_fam[families[gcode]][gcode] = items
@@ -501,24 +495,21 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
     for gcode in wordlists:
-        if gcode in families:
+        if gcode == 'cara1273':
+            by_fam['Arawakan'] += [gcode]
+        elif gcode in families:
             by_fam[families[gcode]] += [gcode]
 
-        elif gcode == "suan1234":
-            by_fam['Sino-Tibetan'] += [gcode]
-
-        elif load == "tapakuric":
-            by_fam["Chapacuran"] += [gcode]
-
-        elif load == "mataguayan":
-            by_fam["Mataguayan"] += [gcode]
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
+    save = ['Chicham', 'Zaparoan', 'Boran', 'Huitotoan']
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)
             delis.append(fam)
+        elif fam in save:
+            pass
         elif len(set(gcodes)) < threshold:
             delis.append(fam)
     for fam in delis:
@@ -537,7 +528,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical", "tapakuric", "mataguayan"):
+            if load in ("lexical"):
                 features = [[row[2], row[3].split()] for row in data.values()]
             if load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
@@ -611,7 +602,7 @@ def affiliate_by_grambank(
                 slug(concept),
                 tokens[0])
                 )
-    matches = defaultdict(lambda : defaultdict(list))
+    matches = defaultdict(lambda: defaultdict(list))
 
     classes = []
     for fam, data in wordlists.items():
@@ -654,7 +645,7 @@ def affiliate_by_consonant_class(
                         lingpy.tokens2class(
                             tokens, "dolgo")).replace("V", "")[:2])
                         )
-    matches = defaultdict(lambda : defaultdict(list))
+    matches = defaultdict(lambda: defaultdict(list))
 
     classes = []
     for fam, data in wordlists.items():
