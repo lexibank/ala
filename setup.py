@@ -11,10 +11,10 @@ setup(
     classifiers=[
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
     author='Johann-Mattis List',
     author_email='mattis.list@uni-passau.de',
@@ -26,8 +26,8 @@ setup(
     include_package_data=True,
     zip_safe=False,
     platforms='any',
-    python_requires='>=3.8',
-    install_requires=["lingpy"],
+    python_requires='>=3.9',
+    install_requires=["lingpy", "scipy", "torch"],
     extras_require={
         'dev': ['wheel', 'twine'],
         'test': [
