@@ -133,7 +133,7 @@ dmypy.json
 *.err
 *.out
 examples/data/
-examples/best-model-parameters.pt
+*.pt
 examples/family-distances.tsv
 .Rproj.user
 *.Rproj

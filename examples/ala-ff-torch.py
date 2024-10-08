@@ -16,8 +16,8 @@ from clldutils.misc import slug
 def run_ala(data, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 100
-    epochs = 5000
+    runs = 10
+    epochs = 50
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
@@ -65,24 +65,15 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     elif data == 'asjp':
         wordlists = dict(get_other(mode='asjp').items())
 
-    if test_isolates is True and data in ('lexibank', 'combined'):
-        np_wl = dict(get_other(mode="np").items())
-        car_wl = dict(get_other(mode="carari").items())
-
-        np_data = convert_data(
-            np_wl,
-            {k: v[0] for k, v in asjp.items()},
-            converter,
-            threshold=1,
-            load="lexical")
-
-        car_data = convert_data(
-            car_wl,
-            {k: v[0] for k, v in asjp.items()},
-            converter,
-            threshold=1,
-            load="lexical"
-            )
+    #if test_isolates is True and data in ('lexibank', 'combined'):
+        #car_wl = dict(get_other(mode="carari").items())
+        #car_data = convert_data(
+        #    car_wl,
+        #    {k: v[0] for k, v in asjp.items()},
+        #    converter,
+        #    threshold=1,
+        #    load="lexical"
+        #    )
 
     if data != 'combined':
         full_data = convert_data(
@@ -92,12 +83,8 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             load=load,
             threshold=min_langs)
 
-        for lang in np_data:
-            if lang in orphans:
-                full_data[lang] = np_data[lang]
-
-        for lang in car_data:
-            full_data[lang] = car_data[lang]
+        #for lang in car_data:
+        #    full_data[lang] = car_data[lang]
 
     # test integration of ASJP Genus
     # test = {k: v[1] for k, v in get_asjp().items()}
@@ -208,7 +195,7 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             vector = torch.Tensor(np.array([vector[language][2]]))
             vector = vector.to(device)
 
-            outs = model(vector)
+            outs = self(vector)
             _, prediction = torch.max(outs.data, 1)
             prediction = idx2fam[prediction.item()]
 
@@ -283,12 +270,12 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
                             fam_high = fam_acc
                             fam_final = fam_avg
                             no_improve = 0
-                            torch.save(model.state_dict(), 'best-model-parameters.pt')
+                            torch.save(model.state_dict(), 'best-mpar.pt')
                         else:
                             no_improve += 1
 
         fam_scores.append(int(fam_high))
-        model.load_state_dict(torch.load('best-model-parameters.pt'))
+        model.load_state_dict(torch.load('best-mpar.pt', weights_only=True))
 
         # Compute cosine distances for families
         if distances is True:
@@ -332,6 +319,7 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         # Test experiments
         for lang in tests:
             results_id = (lang, tests[lang][0])
+            #print(tests, lang)
             pred = model.predict(tests, lang)
             if results_id in results:
                 results[results_id].append(pred)
