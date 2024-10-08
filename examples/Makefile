@@ -5,7 +5,7 @@ download:
 	git clone https://github.com/grambank/grambank.git data/grambank
 
 prepare:
-	pip install pycldf, scipy, torch
+	pip install pycldf scipy torch
 	cd data/glottolog; git checkout v4.8; cd ../../
 	cd data/lexibank-analysed; git checkout bliss2; cd ../../
 	cd data/asjp; git checkout v20; cd ../../
