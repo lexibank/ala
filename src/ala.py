@@ -98,49 +98,6 @@ WHERE
   c.Word_Number >= 25;
 """
 
-NP_QUERY = """
-SELECT
-  ROW_NUMBER() OVER(),
-  l.cldf_id,
-  l.cldf_glottocode,
-  l.family,
-  p.concepticon_gloss,
-  f.cldf_segments,
-  p.cldf_id,
-  c.word_number
-FROM
-  db1.formtable AS f,
-  db1.languagetable AS l,
-  db1.parametertable AS p
-INNER JOIN
-  (
-    SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      db1.formtable as f_2,
-      db1.languagetable as l_2,
-      db1.parametertable as p_2,
-      db2.parametertable as cc
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      f_2.cldf_parameterReference = p_2.cldf_id
-        AND
-      p_2.cldf_concepticonReference = cc.cldf_concepticonReference
-        AND
-      cc.core_concept like '%Tadmor-2009-100%'
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-;
-"""
 
 CAR_QUERY = """
 SELECT
@@ -289,7 +246,7 @@ WHERE
 
 
 def get_other(mode="np"):
-    db = get_db("data/dummy.sqlite3")
+    db = get_db("")
     wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(ATTACH_LB)
     if mode == "asjp":
@@ -298,9 +255,6 @@ def get_other(mode="np"):
     elif mode == "lb_mod":
         db.execute(ATTACH_ASJP)
         db.execute(LBMOD_QUERY)
-    elif mode == 'np':
-        db.execute(ATTACH_NP)
-        db.execute(NP_QUERY)
     elif mode == 'carari':
         db.execute(ATTACH_CAR)
         db.execute(CAR_QUERY)
@@ -451,7 +405,7 @@ def get_asjp(path="data/asjp.sqlite3"):
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_lb(path="data/lexibank.sqlite3"):
+def get_lb(path="data/lexibank2.sqlite3"):
     """
     Retrieve all wordlists from data.
 

@@ -53,7 +53,7 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     grambank = get_gb()
     lexibank = get_lb()
     gb_conv = feature2vec(get_db('data/grambank.sqlite3'))
-    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
+    lb_conv = concept2vec(get_db('data/lexibank2.sqlite3'), model='dolgo')
 
     load = 'grambank' if data == 'grambank' else 'lexical'
     converter = gb_conv if data == 'grambank' else lb_conv
