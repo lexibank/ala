@@ -16,8 +16,8 @@ from clldutils.misc import slug
 def run_ala(data, test_isolates=False, test_longdistance=False, distances=False):
     """Defines the workflow for data loading in the different settings."""
     # Hyperparameters
-    runs = 10
-    epochs = 50
+    runs = 100
+    epochs = 5000
     batch = 2096
     hidden = 4  # multiplier for length of fam
     learning_rate = 1e-3
