@@ -6,17 +6,17 @@ library(ggplot2)
 library(ggrepel)
 library(viridis)
 
-gb_all <- read_tsv("../results/results_grambank_no_detailed.tsv") %>%
-  mutate(Model='Grambank_all')
+gb_all <- read_tsv("../results/results_grambank.tsv") %>%
+  mutate(Model='Grambank')
 
-lb_all <- read_tsv("../results/results_lexibank_no_detailed.tsv") %>%
-  mutate(Model='Lexibank_all')
+lb_all <- read_tsv("../results/results_lexibank.tsv") %>%
+  mutate(Model='Lexibank')
 
-asjp_all <- read_tsv("../results/results_asjp_no_detailed.tsv") %>%
-  mutate(Model='ASJP_all')
+asjp_all <- read_tsv("../results/results_asjp.tsv") %>%
+  mutate(Model='ASJP')
 
-combined <- read_tsv("../results/results_combined_no_detailed.tsv") %>%
-  mutate(Model='LexiGram_combined')
+combined <- read_tsv("../results/results_combined.tsv") %>%
+  mutate(Model='Combined')
 
 full_data <- rbind(gb_all, lb_all, asjp_all, combined)
 
@@ -63,7 +63,6 @@ scatter <-  per_family %>%
     axis.text = element_text(size=16),
     axis.title.x = element_text(size=18),
     axis.title.y = element_text(size=18),
-    
     ) +
   facet_wrap(~Model)
 scatter

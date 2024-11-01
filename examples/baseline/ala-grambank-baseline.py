@@ -1,4 +1,5 @@
-from ala import get_wl, get_gb, affiliate_by_grambank, affiliate_by_consonant_class, get_asjp, training_data, get_lingpy
+from ala import get_wl, get_gb, get_asjp
+from baseline import affiliate_by_grambank, affiliate_by_consonant_class, training_data, get_lingpy
 import random
 import statistics
 from tabulate import tabulate
