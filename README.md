@@ -8,4 +8,18 @@ If you make use of the code presented here, please cite us in the following way:
 
 ## Downloading SQLITE Data for Lexibank, ASJP, and Grambank
 
+In order to download the data necessary for the experiments, you can run the Makefile:
+
+```shell
+make download
+make prepare
+```
+
 ## Installation Instructions
+
+In order to run all the code, you can install the packages from the requirements.txt file:
+
+```shell
+pip install -r requirements.txt
+pip install .
+```
