@@ -5,6 +5,9 @@ library(gghalves)
 library(ggplot2)
 library(ggrepel)
 library(viridis)
+library(brms)
+library(tidybayes)
+
 
 gb_all <- read_tsv("../results/results_grambank.tsv") %>%
   mutate(Model='Grambank')
@@ -21,12 +24,13 @@ combined <- read_tsv("../results/results_combined.tsv") %>%
 full_data <- rbind(gb_all, lb_all, asjp_all, combined)
 
 per_model<- full_data %>% group_by(Model, Run) %>% 
-  summarise(Accuracy = mean(Accuracy))
+  summarise(Accuracy=mean(Accuracy))
 
 violin_complex <- per_model %>% 
   ggplot(aes(x=reorder(Model, Accuracy), y=Accuracy)) +
-  geom_half_point(aes(fill=Model),side="l", range_scale=.25, alpha=.5, size=0.2) +
-  stat_halfeye(aes(fill=Model), adjust=1, width=0.75, color=NA, position=position_nudge(x=0)) +
+  geom_half_point(aes(fill=Model), side="l", range_scale=.25, alpha=.5, size=0.2) +
+  stat_halfeye(aes(fill=Model), adjust=1, width=0.75, color=NA, position=position_nudge(x=0.06)) +
+  geom_boxplot(width=0.1, color="grey", alpha=0.5) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
   scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
@@ -36,12 +40,11 @@ violin_complex <- per_model %>%
   theme(legend.position='bottom', legend.title=element_blank())
 
 violin_complex
-ggsave("violin_complex.png", plot=violin_complex, dpi=300,
-       width=2000, height=1500, units="px")
+ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1500, units="px")
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
-  summarise(Accuracy = mean(Accuracy), Languages= mean(Languages))
+  summarise(Accuracy=mean(Accuracy), Languages= mean(Languages))
 
 fams <- per_family %>% group_by(Family) %>% count() %>% arrange(-n)
 
@@ -51,18 +54,18 @@ scatter <-  per_family %>%
   ggplot(aes(x=Accuracy, y=Languages, fill=Family)) +
   geom_point(aes(size=1), shape=21) +
   # geom_label() +
-  geom_label_repel(aes(label=Family), data = per_family[per_family$Family %in% FamsToLabel,],
+  geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding = unit(1.5, "lines"), size=6) +
-  scale_y_log10(limits = c(3, 1000)) + 
+                   box.padding=unit(1.5, "lines"), size=6) +
+  scale_y_log10(limits=c(3, 1000)) + 
   scale_fill_viridis(discrete=TRUE, option="D", begin=0.2) +
   # geom_smooth(method=lm , color="red", fill="#69b3a2", se=FALSE) +
   theme(
     legend.position="none", 
-    strip.text = element_text(size=20),
-    axis.text = element_text(size=16),
-    axis.title.x = element_text(size=18),
-    axis.title.y = element_text(size=18),
+    strip.text=element_text(size=20),
+    axis.text=element_text(size=16),
+    axis.title.x=element_text(size=18),
+    axis.title.y=element_text(size=18),
     ) +
   facet_wrap(~Model)
 scatter
@@ -76,9 +79,9 @@ scope <- per_family %>% group_by(Model) %>%
 scope_plot <- scope %>% 
   ggplot(aes(x=fams, y=langs, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8, position=position_dodge(width=3)) +
-  scale_y_log10(limits = c(800, 5000), breaks=c(1000, 2000, 5000)) + 
+  scale_y_log10(limits=c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding = unit(0.7, "lines")) +
+                   box.padding=unit(0.7, "lines")) +
   theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
 
@@ -91,9 +94,9 @@ lang_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
   summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
 ggplot(aes(x=Accuracy, y=langs, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
-  scale_y_log10(limits = c(800, 5000), breaks=c(1000, 2000, 5000)) + 
+  scale_y_log10(limits=c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding = unit(0.7, "lines")) +
+                   box.padding=unit(0.7, "lines")) +
   theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
 
@@ -106,10 +109,37 @@ fam_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
   ggplot(aes(x=Accuracy, y=fams, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding = unit(0.7, "lines")) +
+                   box.padding=unit(0.7, "lines")) +
   theme(legend.position="none") +
   scale_fill_viridis(discrete=TRUE, begin=0.3)
 
 fam_acc
-ggsave("fam_acc.png", plot=fam_acc, dpi=300,
-       width=3000, height=2000, units="px")
+ggsave("fam_acc.png", plot=fam_acc, dpi=300, width=3000, height=2000, units="px")
+
+################################
+### Statistical model       ####
+################################
+mod_robust <- brm(
+  bf(Accuracy ~ Model, sigma ~ Model),
+  family=student,
+  data=per_model,
+  cores=4,
+  iter=2000,
+  warmup=1000
+)
+
+predictions <- add_epred_draws(newdata=per_model, object=mod_robust)
+
+model_comp <- predictions %>% 
+  ggplot(aes(x=reorder(Model, .epred), y=.epred)) +
+  stat_halfeye(aes(fill=Model), adjust=5) +
+  coord_flip() +
+  scale_fill_viridis(discrete=TRUE, end=0.95) +
+  scale_y_continuous(limits=c(70, 99.5), breaks=c(70, 80, 90, 100), 
+                     name="Estimated Family Accuracy") +
+  scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
+  theme_grey(base_size=14) +
+  theme(legend.position='bottom', legend.title=element_blank())
+model_comp
+
+ggsave("model_est.png", plot=model_comp, dpi=300, width=3000, height=2000, units="px")
