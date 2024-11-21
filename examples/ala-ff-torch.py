@@ -1,5 +1,6 @@
 import argparse
 import csv
+import sys
 from collections import defaultdict, Counter
 from statistics import mean, stdev
 from tabulate import tabulate
@@ -12,30 +13,29 @@ from ala import get_lb, get_asjp, get_gb, convert_data, get_other
 from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
 
+# Hyperparameters
+EPOCHS = 50
+BATCH = 2096
+HIDDEN = 4  # multiplier for length of fam
+LEARNING_RATE = 1e-3
+MIN_LANGS = 5
 
-def run_ala(data, test_isolates=False, test_longdistance=False, distances=False):
+
+def run_ala(input, test_isolates=False, test_longdistance=False, distances=False, runs=100):
     """Defines the workflow for data loading in the different settings."""
-    # Hyperparameters
-    runs = 10
-    epochs = 50
-    batch = 2096
-    hidden = 4  # multiplier for length of fam
-    learning_rate = 1e-3
-    min_langs = 4
+    # Check number of runs
+    if runs < 10:
+        print(f'The current number of runs is {runs}. We recommend a value higher than 10 to\
+              ensure that all language families are well represented in the results.')
 
+    # Load data for testing
     tests = defaultdict()
-    if test_longdistance is True:
-        northern_uto = extract_branch(gcode='nort2953')
-        anatolian = extract_branch(gcode='anat1257')
-        tocharian = extract_branch(gcode='tokh1241')
-        sinitic = extract_branch(gcode='sini1245')
+    northern_uto = extract_branch(gcode='nort2953')
+    anatolian = extract_branch(gcode='anat1257')
+    tocharian = extract_branch(gcode='tokh1241')
+    sinitic = extract_branch(gcode='sini1245')
 
-    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250']
-    orphans = [
-        'cani1243', 'urar1246', 'omur1241', 'waor1240', 'cand1248', 'muni1258', 'taus1253',
-        'chay1248', 'yagu1244', 'abis1238', 'hibi1242', 'yame1242', 'juri1235', 'peba1243',
-        'cara1273'
-        ]
+    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250', 'cara1273']
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -44,7 +44,6 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     # Empty lists and dicts for results
     table = []
     fam_scores = []
-
     results_per_fam = defaultdict()  # store family results
     results = defaultdict()  # store experiment results
 
@@ -52,51 +51,49 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
     asjp = get_asjp()
     grambank = get_gb()
     lexibank = get_lb()
-    gb_conv = feature2vec(get_db('data/grambank.sqlite3'))
-    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
+    gb_conv, gb_keys = feature2vec(get_db('data/grambank.sqlite3'))
+    lb_conv, lb_keys = concept2vec(get_db('data/lexibank2.sqlite3'), model='dolgo')
+    load = 'grambank' if input == 'grambank' else 'lexical'
+    converter = gb_conv if input == 'grambank' else lb_conv
 
-    load = 'grambank' if data == 'grambank' else 'lexical'
-    converter = gb_conv if data == 'grambank' else lb_conv
+    # Load main data
+    data_map = {
+        'lexibank': dict(lexibank.items()),
+        'lb_mod': dict(lexibank.items()),
+        'combined': dict(lexibank.items()),
+        'grambank': dict(grambank.items()),
+        'asjp': dict(get_other(mode='asjp').items())
+    }
 
-    if data in ('lexibank', 'lb_mod', 'combined'):
-        wordlists = dict(lexibank.items())
-    elif data == 'grambank':
-        wordlists = dict(grambank.items())
-    elif data == 'asjp':
-        wordlists = dict(get_other(mode='asjp').items())
+    if input not in data_map:
+        print("Invalid data selection. Please choose 'lexibank', 'grambank', 'combined' or 'asjp'")
+        sys.exit()
 
-    #if test_isolates is True and data in ('lexibank', 'combined'):
-        #car_wl = dict(get_other(mode="carari").items())
-        #car_data = convert_data(
-        #    car_wl,
-        #    {k: v[0] for k, v in asjp.items()},
-        #    converter,
-        #    threshold=1,
-        #    load="lexical"
-        #    )
+    wordlists = data_map[input]
+    n_pars = gb_keys if input == 'grambank' else gb_keys + lb_keys if input == 'combined' else lb_keys
 
-    if data != 'combined':
-        full_data = convert_data(
+    if input != 'combined':
+        data = convert_data(
             wordlists,
             {k: v[0] for k, v in asjp.items()},
             converter,
             load=load,
-            threshold=min_langs)
-
-        #for lang in car_data:
-        #    full_data[lang] = car_data[lang]
+            threshold=MIN_LANGS
+            )
 
     # test integration of ASJP Genus
     # test = {k: v[1] for k, v in get_asjp().items()}
     # print(test)
 
-    elif data == 'combined':
-        full_data = convert_data(
+    # Set up combination of LB and GB
+    elif input == 'combined':
+        data = convert_data(
             wordlists,
             {k: v[0] for k, v in asjp.items() if k in grambank},
             converter,
             load=load,
-            threshold=min_langs)
+            threshold=MIN_LANGS)
+
         gb_dic = dict(grambank.items())
         gb_wl = convert_data(
             gb_dic,
@@ -106,56 +103,50 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             threshold=1)
 
         # Combine data vectors
-        for lang in full_data:
-            full_data[lang][2] = full_data[lang][2] + gb_wl[lang][2]
+        for lang in data:
+            data[lang][2] = data[lang][2] + gb_wl[lang][2]
 
+    # Add Carari
+    if test_isolates and input == 'lexibank':
+        data['cara1273'] = convert_data(
+           dict(get_other(mode="carari").items()),
+           {k: v[0] for k, v in asjp.items()},
+           converter,
+           threshold=1,
+           load="lexical"
+           )
+
+    # Prepare split
     features = []
     labels = []
-    idx2fam = defaultdict()
-    fam2idx = defaultdict()
-    fam2weight = defaultdict()
     idx = 0
 
-    for lang in full_data:
-        family = full_data[lang][0]
-        if family not in fam2idx:
-            idx2fam[idx] = family
-            fam2idx[family] = idx
-            fam2weight[family] = 1
-            idx += 1
+    fam2w = defaultdict(int)
+    idx2fam = dict(enumerate(set((data[lang][0] for lang in data))))
+    fam2idx = {family: idx for idx, family in enumerate(set(data[lang][0] for lang in data))}
+
+    for lang in data:
+        family = data[lang][0]
+        fam2w[family] = fam2w.get(family, 0) + 1
+        # Add test cases to test list
+        if (test_longdistance and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
+                any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian])) or \
+                test_isolates and lang in isolates:
+            tests[lang] = data[lang]
         else:
-            fam2weight[family] += 1
-
-        if test_longdistance is True and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European']:
-            if lang in sinitic or lang in northern_uto or lang in anatolian or lang in tocharian:
-                tests[lang] = full_data[lang]
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        # Add test cases to test and others out
-        elif family == 'Unclassified' and test_isolates is True:
-            if lang in isolates or lang in orphans:
-                tests[lang] = full_data[lang]
-
-            else:
-                features.append(full_data[lang][2])
-                labels.append(fam2idx[family])
-
-        elif lang in orphans:
-            tests[lang] = full_data[lang]
-
-        else:
-            features.append(full_data[lang][2])
+            features.append(data[lang][2])
             labels.append(fam2idx[family])
 
-    print('Number of families:', len(fam2idx))
-    print('Size of vector:', len(full_data[lang][2]))
-    print('Number of concepts:', len(full_data[lang][2])/22)
+    # Summary stats
+    summary_stats = {
+        'Number of families': len(fam2idx),
+        'Size of vector': len(data[lang][2]),
+        'Number of concepts': len(data[lang][2]) / n_pars
+    }
+    print(summary_stats)
 
     # Weights
-    largest_class = fam2weight[max(fam2weight, key=fam2weight.get)]
-    class_weights = [round(largest_class / fam2weight[fam], 3) for fam in fam2weight]
+    class_weights = [round(fam2w[max(fam2w, key=fam2w.get)] / fam2w[fam], 3) for fam in fam2w]
     class_weights = torch.FloatTensor(class_weights)
     class_weights = class_weights.to(device)
 
@@ -168,7 +159,7 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
 
     # Model hyperparameters
     input_dim = features.size()[1]  # Length of data tensor
-    hidden_dim = hidden*len(idx2fam)
+    hidden_dim = HIDDEN*len(idx2fam)
     output_dim = len(idx2fam)
 
     class FF(nn.Module):
@@ -213,27 +204,18 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
         # weights = weights.to(device)
         # sampler = WeightedRandomSampler(weights, len(train_dataset), replacement=True)
 
-        train_loader = DataLoader(
-            dataset=train_dataset,
-            batch_size=batch,
-            shuffle=True
-            )
-
-        test_loader = DataLoader(
-            dataset=test_dataset,
-            batch_size=batch
-            )
+        train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
+        test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
 
         model = FF(input_dim, hidden_dim, output_dim)
         model = model.to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
-        optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-
-        iters = 0
-        fam_high = 0
+        optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
         no_improve = 0
+        fam_high = 0
+        iters = 0
 
-        for _ in range(epochs):
+        for _ in range(EPOCHS):
             if no_improve < 20:
                 for idx, (train_data, labels) in enumerate(train_loader):
                     optimizer.zero_grad()   # Clear gradients
@@ -298,48 +280,28 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
 
         # Add family results
         for fam in fam_final:
-            if fam in results_per_fam:
-                results_per_fam[fam].append([
-                    run,                            # Number of run
-                    fam,                            # Language Family
-                    fam2weight[fam],                # Number of langs in fam
-                    fam_final[fam][1],              # Number of langs tested
-                    round(fam_final[fam][0], 3)     # Accuracy
-                ])
-
-            else:
-                results_per_fam[fam] = [[
-                    run,                            # Number of run
-                    fam,                            # Language Family
-                    fam2weight[fam],                # Number of langs in fam
-                    fam_final[fam][1],              # Number of langs tested
-                    round(fam_final[fam][0], 3)     # Accuracy
-                    ]]
+            results_per_fam.setdefault(fam, []).append([
+                run,
+                fam,
+                fam2w[fam],
+                fam_final[fam][1],
+                round(fam_final[fam][0], 3)
+            ])
 
         # Test experiments
         for lang in tests:
-            results_id = (lang, tests[lang][0])
-            #print(tests, lang)
-            pred = model.predict(tests, lang)
-            if results_id in results:
-                results[results_id].append(pred)
-            else:
-                results[results_id] = [pred]
+            results[lang, tests[lang][0]] = [model.predict(tests, lang)]
 
     print('---------------')
     results_table = []
     for item in results:
-        results_str = ''
-        for i, (k, v) in enumerate(Counter(results[item]).items()):
-            sep = '' if i < 0 else '\n'
-            if v > (len(results[item])*0.05):
-                results_str = results_str + k + ': ' + str(v) + sep
+        results_str = '\n'.join(
+            f"{k}: {v}"
+            for k, v in Counter(results[item]).items()
+            if v > (len(results[item])*0.05)
+        )
+        results_table.append([item[0], item[1], results_str])
 
-        results_table.append([
-            item[0],
-            item[1],
-            results_str
-            ])
         # Used for grid output
         # results_table.append(SEPARATING_LINE)
 
@@ -360,32 +322,25 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
             mean([r[2] for r in rows]),
             round(mean([r[3] for r in rows]), 1),   # Tested langs
             round(mean([r[4] for r in rows]), 2),   # Acc
-            round(stdev([r[4] for r in rows]), 2),  # SD of accuracy
+            0 if len(rows) < 2 else round(stdev([r[4] for r in rows]), 2)  # SD of accuracy
             ]]
 
     table += [[
         'TOTAL',
-        len(full_data),
+        len(data),
         len(test_dataset),
         round(mean(fam_scores), 2),
         round(stdev(fam_scores), 2)
         ]]
 
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
-    #output = 'results/results_' + data + mod + '.tsv'
-    #with open(output, 'w', encoding='utf8', newline='') as f:
-    #    writer = csv.writer(f, delimiter='\t')
-    #    writer.writerow(header)
-    #    writer.writerows(table)
-
-    ## Detailed results per run
-    #output_detailed = output.replace('.tsv', '_detailed.tsv')
-    #with open(output_detailed, 'w', encoding='utf8', newline='') as f:
-    #    writer = csv.writer(f, delimiter='\t')
-    #    writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
-    #    for family in results_per_fam:
-    #        for run in results_per_fam[family]:
-    #            writer.writerow(run)
+    # Detailed results per run
+    output = 'results/results_' + data + '.tsv'
+    with open(output, 'w', encoding='utf8', newline='') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
+        for family, run in results_per_fam.items():
+            writer.writerows(run)
 
     print(tabulate(
         table,
@@ -397,9 +352,10 @@ def run_ala(data, test_isolates=False, test_longdistance=False, distances=False)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str,
-                        help='Choose the dataset for your experiment: \
-                            lexibank, grambank, or combined')
+    parser.add_argument('--runs', type=int,
+                        help='The number of iterations the model should run. We recommend n>10')
+    parser.add_argument('--input', type=str,
+                        help='Choose the dataset: lexibank, grambank, or combined')
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
     parser.add_argument('-distances', action='store_true',
@@ -408,7 +364,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     run_ala(
-        data=args.data,
+        input=args.input,
+        runs=args.runs,
         test_isolates=args.isolates,
         test_longdistance=args.longdistance,
         distances=args.distances
