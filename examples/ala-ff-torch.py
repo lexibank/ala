@@ -16,14 +16,14 @@ from torchmetrics import F1Score
 
 
 # Hyperparameters
-EPOCHS = 200
+EPOCHS = 5000
 BATCH = 2096
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
 MIN_LANGS = 5
 
 
-def run_ala(input, test_isolates=False, test_longdistance=False, distances=False, runs=100):
+def run_ala(database, test_isolates=False, test_longdistance=False, distances=False, runs=100):
     """Defines the workflow for data loading in the different settings."""
     # Check number of runs
     if runs < 10:
@@ -56,8 +56,8 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     lexibank = get_lb()
     gb_conv, gb_keys = feature2vec(get_db('data/grambank.sqlite3'))
     lb_conv, lb_keys = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
-    load = 'grambank' if input == 'grambank' else 'lexical'
-    converter = gb_conv if input == 'grambank' else lb_conv
+    load = 'grambank' if database == 'grambank' else 'lexical'
+    converter = gb_conv if database == 'grambank' else lb_conv
 
     # Load main data
     data_map = {
@@ -68,14 +68,14 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
         'asjp': dict(get_other(mode='asjp').items())
     }
 
-    if input not in data_map:
+    if database not in data_map:
         print("Invalid data selection. Please choose 'lexibank', 'grambank', 'combined' or 'asjp'")
         sys.exit()
 
-    wordlists = data_map[input]
-    n_pars = gb_keys if input == 'grambank' else gb_keys + lb_keys if input == 'combined' else lb_keys
+    wordlists = data_map[database]
+    n_pars = gb_keys if database == 'grambank' else gb_keys + lb_keys if database == 'combined' else lb_keys
 
-    if input != 'combined':
+    if database != 'combined':
         data = convert_data(
             wordlists,
             {k: v[0] for k, v in asjp.items()},
@@ -89,7 +89,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     # print(test)
 
     # Set up combination of LB and GB
-    elif input == 'combined':
+    elif database == 'combined':
         data = convert_data(
             wordlists,
             {k: v[0] for k, v in asjp.items() if k in grambank},
@@ -110,7 +110,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
             data[lang][2] = data[lang][2] + gb_wl[lang][2]
 
     # Add Carari
-    if test_isolates and input == 'lexibank':
+    if test_isolates and database == 'lexibank':
         data['cara1273'] = convert_data(
            dict(get_other(mode="carari").items()),
            {k: v[0] for k, v in asjp.items()},
@@ -164,15 +164,15 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     tensor_ds = TensorDataset(features, labels)
 
     # Model hyperparameters
-    input_dim = features.size()[1]  # Length of data tensor
+    database_dim = features.size()[1]  # Length of data tensor
     hidden_dim = HIDDEN*len(idx2fam)
     output_dim = len(idx2fam)
 
     class FF(nn.Module):
         """Network model with functions for forward-pass and predictions."""
-        def __init__(self, input_dim, hidden_dim, output_dim):
+        def __init__(self, database_dim, hidden_dim, output_dim):
             super().__init__()
-            self.fc1 = nn.Linear(input_dim, hidden_dim)
+            self.fc1 = nn.Linear(database_dim, hidden_dim)
             self.fc2 = nn.Linear(hidden_dim, hidden_dim)
             self.fc_out = nn.Linear(hidden_dim, output_dim)
             self.relu = nn.ReLU()
@@ -213,7 +213,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
         train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
         test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
 
-        model = FF(input_dim, hidden_dim, output_dim)
+        model = FF(database_dim, hidden_dim, output_dim)
         model = model.to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
         optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -372,7 +372,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
 
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
     # Detailed results per run
-    output = 'results/results_' + input + '.tsv'
+    output = 'results/results_' + database + '.tsv'
     with open(output, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
@@ -391,7 +391,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--runs', type=int, default=100,
                         help='The number of iterations the model should run. We recommend n>10')
-    parser.add_argument('--input', type=str,
+    parser.add_argument('--database', type=str,
                         help='Choose the dataset: lexibank, grambank, or combined')
     parser.add_argument('-isolates', action='store_true')
     parser.add_argument('-longdistance', action='store_true')
@@ -401,7 +401,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     run_ala(
-        input=args.input,
+        database=args.database,
         runs=args.runs,
         test_isolates=args.isolates,
         test_longdistance=args.longdistance,
