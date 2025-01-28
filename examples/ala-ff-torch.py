@@ -278,8 +278,6 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
 
         fam_scores.append(int(fam_high))
         f1_scores.append(100*best_macro)
-        print(best_macro)
-        print(f1_scores)
 
         model.load_state_dict(torch.load('best-mpar.pt', weights_only=True))
 
