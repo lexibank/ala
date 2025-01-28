@@ -12,9 +12,11 @@ from torch.utils.data import TensorDataset, DataLoader, random_split
 from ala import get_lb, get_asjp, get_gb, convert_data, get_other
 from ala import concept2vec, feature2vec, get_db, extract_branch
 from clldutils.misc import slug
+from torchmetrics import F1Score
+
 
 # Hyperparameters
-EPOCHS = 50
+EPOCHS = 200
 BATCH = 2096
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
@@ -44,6 +46,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     # Empty lists and dicts for results
     table = []
     fam_scores = []
+    f1_scores = []
     results_per_fam = defaultdict()  # store family results
     results = defaultdict()  # store experiment results
 
@@ -52,7 +55,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     grambank = get_gb()
     lexibank = get_lb()
     gb_conv, gb_keys = feature2vec(get_db('data/grambank.sqlite3'))
-    lb_conv, lb_keys = concept2vec(get_db('data/lexibank2.sqlite3'), model='dolgo')
+    lb_conv, lb_keys = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
     load = 'grambank' if input == 'grambank' else 'lexical'
     converter = gb_conv if input == 'grambank' else lb_conv
 
@@ -124,6 +127,9 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
     fam2w = defaultdict(int)
     idx2fam = dict(enumerate(set((data[lang][0] for lang in data))))
     fam2idx = {family: idx for idx, family in enumerate(set(data[lang][0] for lang in data))}
+
+    f1_macro = F1Score(num_classes=len(idx2fam), average='macro', task="multiclass")
+    f1_micro = F1Score(num_classes=len(idx2fam), average='micro', task="multiclass")
 
     for lang in data:
         family = data[lang][0]
@@ -213,6 +219,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
         optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
         no_improve = 0
         fam_high = 0
+        best_macro = 0
         iters = 0
 
         for _ in range(EPOCHS):
@@ -232,6 +239,13 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
                         for test_data, labels in test_loader:
                             outputs = model(test_data)
                             _, predicted = torch.max(outputs.data, 1)
+
+                            macro = round(f1_macro(predicted.cpu(), labels.cpu()).item(), 10)
+                            micro = round(f1_micro(predicted.cpu(), labels.cpu()).item(), 10)
+
+                            print('F1-Score macro: ', macro)
+                            print('F1-Score micro: ', micro)
+
                             for idx, label in enumerate(labels):
                                 pred = int(predicted[idx])
                                 label = int(label)
@@ -247,8 +261,14 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
                             fam_avg[idx2fam[fam]] = [100 * corr / total, total]
 
                         fam_acc = mean(fam_avg[k][0] for k in fam_avg)
-                        print(f'Iter: {iters}. Loss: {round(loss.item(), 9)}. Avg. fam. acc.: {round(fam_acc, 3)}')
-                        if fam_acc > fam_high:
+                        print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. F1 Macro: {round(macro, 5)}.')
+                        # if fam_acc > fam_high:
+                        #     fam_high = fam_acc
+                        #     fam_final = fam_avg
+                        #     no_improve = 0
+                        #     torch.save(model.state_dict(), 'best-mpar.pt')
+                        if macro > best_macro:
+                            best_macro = macro
                             fam_high = fam_acc
                             fam_final = fam_avg
                             no_improve = 0
@@ -257,6 +277,10 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
                             no_improve += 1
 
         fam_scores.append(int(fam_high))
+        f1_scores.append(100*best_macro)
+        print(best_macro)
+        print(f1_scores)
+
         model.load_state_dict(torch.load('best-mpar.pt', weights_only=True))
 
         # Compute cosine distances for families
@@ -267,9 +291,9 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
             # print(w.shape)  # first dimension must be len(fam2idx)
 
             for i, v in enumerate(w):
-                v = v.cpu().detach().numpy()
+                v = v.cpu().detach()
                 for j, u in enumerate(w):
-                    u = u.cpu().detach().numpy()
+                    u = u.cpu().detach()
                     dist[i][j] = distance.cosine(v, u)
 
             with open('family-distances.tsv', 'w', encoding='utf8') as f:
@@ -287,6 +311,13 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
                 fam_final[fam][1],
                 round(fam_final[fam][0], 3)
             ])
+        results_per_fam.setdefault(fam, []).append([
+                run,
+                'Total',
+                len(data[lang][2]),
+                len(labels),
+                best_macro
+        ])
 
         # Test experiments
         for lang in tests:
@@ -333,9 +364,17 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
         round(stdev(fam_scores), 2)
         ]]
 
+    table += [[
+        'TOTAL f1',
+        len(data),
+        len(test_dataset),
+        round(mean(f1_scores), 2),
+        round(stdev(f1_scores), 2)
+        ]]
+
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
     # Detailed results per run
-    output = 'results/results_' + data + '.tsv'
+    output = 'results/results_' + input + '.tsv'
     with open(output, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
@@ -352,7 +391,7 @@ def run_ala(input, test_isolates=False, test_longdistance=False, distances=False
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--runs', type=int,
+    parser.add_argument('--runs', type=int, default=100,
                         help='The number of iterations the model should run. We recommend n>10')
     parser.add_argument('--input', type=str,
                         help='Choose the dataset: lexibank, grambank, or combined')

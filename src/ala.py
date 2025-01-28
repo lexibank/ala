@@ -6,8 +6,7 @@ from clldutils.misc import slug
 
 
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank2.sqlite3' AS db2;"""
-ATTACH_NP = """ATTACH 'data/northernperu.sqlite3' AS db1;"""
+ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 ATTACH_CAR = """ATTACH 'data/carari.sqlite3' AS db1;"""
 
 ASJP_QUERY = """
@@ -392,7 +391,7 @@ def get_asjp(path="data/asjp.sqlite3"):
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_lb(path="data/lexibank2.sqlite3"):
+def get_lb(path="data/lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
