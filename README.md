@@ -11,8 +11,8 @@ If you make use of the code presented here, please cite us in the following way:
 In order to run all the code, you can install the packages from the requirements.txt file:
 
 ```shell
-pip install -r requirements.txt
-pip install .
+python3 -m pip install -r requirements.txt
+python3 -m pip install .
 ```
 
 ## Downloading SQLITE Data for Lexibank, ASJP, and Grambank

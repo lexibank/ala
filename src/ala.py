@@ -1,6 +1,6 @@
 import sqlite3
 from collections import defaultdict
-import lingpy
+from lingpy import rc, tokens2class
 import tqdm
 from clldutils.misc import slug
 
@@ -348,7 +348,7 @@ def concept2vec(db, model="dolgo"):
     of concepts. For each concept, two slots of n sound classes each are
     provided.
     """
-    sc_model = lingpy.rc(model)
+    sc_model = rc(model)
     # ugly hack, must refine dolgo-model in lingpy!
     sc_model.tones = "1"
 
@@ -364,7 +364,7 @@ def concept2vec(db, model="dolgo"):
         nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
         for concept, tokens in words:
             if concept in concepts:
-                class_string = lingpy.tokens2class(tokens, model)
+                class_string = tokens2class(tokens, model)
                 reduced_string = [t for t in class_string if t in sound_classes][:2]
                 first = "H" if len(reduced_string) == 0 else reduced_string[0]
                 second = "H" if len(reduced_string) < 2 else reduced_string[1]
