@@ -8,11 +8,11 @@ import numpy as np
 from scipy.spatial import distance
 import torch
 import torch.nn as nn
-from torch.utils.data import TensorDataset, DataLoader, random_split
+from torchmetrics import F1Score
+from sklearn.model_selection import train_test_split
+from torch.utils.data import TensorDataset, DataLoader
 from ala import get_lb, get_asjp, get_gb, convert_data, get_other
 from ala import concept2vec, feature2vec, get_db, extract_branch
-from clldutils.misc import slug
-from torchmetrics import F1Score
 
 
 # Hyperparameters
@@ -158,10 +158,9 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
 
     # Data to tensor
     features = torch.Tensor(np.array(features))
-    labels = torch.LongTensor(np.array(labels))
-    features = features.to(device)
-    labels = labels.to(device)
-    tensor_ds = TensorDataset(features, labels)
+    all_labels = torch.LongTensor(np.array(labels))
+
+    tensor_ds = TensorDataset(features, all_labels)
 
     # Model hyperparameters
     database_dim = features.size()[1]  # Length of data tensor
@@ -201,14 +200,12 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
     for run in range(runs):
         print('--- New Run: ', run, '/', runs, '---')
         fam_final = defaultdict()
-        train_dataset, test_dataset = random_split(tensor_ds, [0.80, 0.20])
-        # Alternative to weighted loss function: Weighted Sampler; however, this works less well
-        # weights = []
-        # for _, label in train_dataset:
-        #     weights.append(class_weights[label])
-        # weights = torch.Tensor(weights)
-        # weights = weights.to(device)
-        # sampler = WeightedRandomSampler(weights, len(train_dataset), replacement=True)
+        train_dataset, test_dataset = train_test_split(
+            tensor_ds, test_size=0.2, stratify=all_labels, random_state=42
+            )
+
+        train_dataset = [(item[0].to(device), item[1].to(device)) for item in train_dataset]
+        test_dataset = [(item[0].to(device), item[1].to(device)) for item in test_dataset]
 
         train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
         test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
@@ -262,11 +259,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
 
                         fam_acc = mean(fam_avg[k][0] for k in fam_avg)
                         print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. F1 Macro: {round(macro, 5)}.')
-                        # if fam_acc > fam_high:
-                        #     fam_high = fam_acc
-                        #     fam_final = fam_avg
-                        #     no_improve = 0
-                        #     torch.save(model.state_dict(), 'best-mpar.pt')
+
                         if macro > best_macro:
                             best_macro = macro
                             fam_high = fam_acc
@@ -297,7 +290,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
             with open('family-distances.tsv', 'w', encoding='utf8') as f:
                 f.write(' '+str(len(fam2idx))+'\n')
                 for i, row in enumerate(dist):
-                    f.write(slug(idx2fam[i], lowercase=False) + ' ')
+                    f.write(idx2fam[i], lowercase=False + ' ')
                     f.write(' '.join([f'{cell}' for cell in row])+'\n')
 
         # Add family results
