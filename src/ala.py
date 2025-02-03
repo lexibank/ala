@@ -6,8 +6,8 @@ from clldutils.misc import slug
 
 
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 ATTACH_CAR = """ATTACH 'data/carari.sqlite3' AS db1;"""
+ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 
 ASJP_QUERY = """
 SELECT
@@ -48,52 +48,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 25;
+  c.Word_Number >= 20;
 """
-
-LBMOD_QUERY = """
-SELECT
-  ROW_NUMBER() OVER(),
-  l.cldf_id,
-  l.cldf_glottocode,
-  l.family,
-  p.cldf_name,
-  f.cldf_segments,
-  p.cldf_id || "-" || SUBSTR(
-    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
-  c.Word_Number
-FROM
-  db2.formtable as f,
-  db2.languagetable as l,
-  db2.parametertable as p
-INNER JOIN
-  (
-    SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      db1.formtable as f_2,
-      db1.languagetable as l_2,
-      db2.parametertable as p_2
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      p_2.cldf_id = f_2.gloss_in_source
-        AND
-      p_2.core_concept like "%Holman-2008-40%"
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-    AND
-  c.Word_Number >= 25;
-"""
-
 
 CAR_QUERY = """
 SELECT
@@ -169,13 +125,7 @@ INNER JOIN
         AND
       f_2.cldf_parameterReference = p_2.cldf_id
         AND
-      (
-      --p_2.core_concept like "%Swadesh-1952-200%"
-      --  OR
-      --p_2.core_concept like "%Swadesh-1955-100%"
-      --  OR
       p_2.core_concept like "%Tadmor-2009-100%"
-      )
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -188,7 +138,7 @@ WHERE
     AND
   and l.Selexion = 1
     AND
-  c.Word_Number >= 35
+  c.Word_Number >= 50
 ;
 """
 
@@ -216,14 +166,9 @@ CONCEPT_QUERY = """SELECT
 FROM
   parametertable as p
 WHERE
-  (
-   --p.core_concept like "%Swadesh-1952-200%"
-   -- OR
-   --p.core_concept like "%Swadesh-1955-100%"
-   -- OR
   p.core_concept like "%Tadmor-2009-100%"
-  --p.core_concept like "%Holman-2008-40%"
-  );"""
+;
+"""
 
 
 GB_PARAMS = """SELECT
@@ -263,7 +208,6 @@ def get_other(mode):
     }
     select_queries = {
         "asjp": ASJP_QUERY,
-        "lb_mod": LBMOD_QUERY,
         "carari": CAR_QUERY
     }
     db.execute(attach_queries[mode])
