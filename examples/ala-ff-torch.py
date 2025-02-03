@@ -16,8 +16,8 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 
 
 # Hyperparameters
-EPOCHS = 5000
-BATCH = 2096
+EPOCHS = 10000
+BATCH = 512
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
 MIN_LANGS = 5
@@ -220,7 +220,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
         iters = 0
 
         for _ in range(EPOCHS):
-            if no_improve < 20:
+            if no_improve < 50:
                 for idx, (train_data, labels) in enumerate(train_loader):
                     optimizer.zero_grad()   # Clear gradients
                     outputs = model(train_data)   # Forward pass to get output/logits
@@ -230,7 +230,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
 
                     # Calculate Accuracy for test set
                     iters += 1
-                    if iters % 50 == 0:
+                    if iters % 100 == 0:
                         family_results = defaultdict()
                         fam_avg = defaultdict()
                         for test_data, labels in test_loader:
