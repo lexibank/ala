@@ -135,7 +135,7 @@ model_comp <- predictions %>%
   stat_halfeye(aes(fill=Model), adjust=5) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
-  scale_y_continuous(limits=c(70, 99.5), breaks=c(70, 80, 90, 100), 
+  scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
                      name="Estimated Family Accuracy") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
