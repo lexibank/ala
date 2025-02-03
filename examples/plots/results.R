@@ -44,7 +44,7 @@ ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=15
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
-  summarise(Accuracy=mean(Accuracy), Languages= mean(Languages))
+  summarise(Accuracy=mean(Accuracy), Languages= sum(Languages)/100)
 
 fams <- per_family %>% group_by(Family) %>% count() %>% arrange(-n)
 

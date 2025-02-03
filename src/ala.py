@@ -186,6 +186,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
+  and l.Selexion = 1
+    AND
   c.Word_Number >= 35
 ;
 """

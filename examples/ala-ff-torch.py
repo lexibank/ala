@@ -16,8 +16,8 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 
 
 # Hyperparameters
-EPOCHS = 10000
-BATCH = 512
+EPOCHS = 5000
+BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
 MIN_LANGS = 5
@@ -117,7 +117,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
            converter,
            threshold=1,
            load="lexical"
-           )
+           )['cara1273']
 
     # Prepare split
     features = []
@@ -146,6 +146,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
     # Summary stats
     summary_stats = {
         'Number of families': len(fam2idx),
+        'Number of languages': len(data),
         'Size of vector': len(data[lang][2]),
         'Number of concepts': len(data[lang][2]) / n_pars
     }
@@ -220,7 +221,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
         iters = 0
 
         for _ in range(EPOCHS):
-            if no_improve < 50:
+            if no_improve < 20:
                 for idx, (train_data, labels) in enumerate(train_loader):
                     optimizer.zero_grad()   # Clear gradients
                     outputs = model(train_data)   # Forward pass to get output/logits
@@ -238,10 +239,7 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
                             _, predicted = torch.max(outputs.data, 1)
 
                             macro = round(f1_macro(predicted.cpu(), labels.cpu()).item(), 10)
-                            micro = round(f1_micro(predicted.cpu(), labels.cpu()).item(), 10)
-
-                            print('F1-Score macro: ', macro)
-                            print('F1-Score micro: ', micro)
+                            # micro = round(f1_micro(predicted.cpu(), labels.cpu()).item(), 10)
 
                             for idx, label in enumerate(labels):
                                 pred = int(predicted[idx])
@@ -302,13 +300,6 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
                 fam_final[fam][1],
                 round(fam_final[fam][0], 3)
             ])
-        results_per_fam.setdefault(fam, []).append([
-                run,
-                'Total',
-                len(data[lang][2]),
-                len(labels),
-                best_macro
-        ])
 
         # Test experiments
         for lang in tests:
@@ -323,9 +314,6 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
             if v > (len(results[item])*0.05)
         )
         results_table.append([item[0], item[1], results_str])
-
-        # Used for grid output
-        # results_table.append(SEPARATING_LINE)
 
     print(tabulate(
         results_table,
@@ -347,6 +335,15 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
             0 if len(rows) < 2 else round(stdev([r[4] for r in rows]), 2)  # SD of accuracy
             ]]
 
+    header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
+    # Detailed results per run
+    output = 'results/results_' + database + '.tsv'
+    with open(output, 'w', encoding='utf8', newline='') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
+        for family, run in results_per_fam.items():
+            writer.writerows(run)
+
     table += [[
         'TOTAL',
         len(data),
@@ -362,15 +359,6 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
         round(mean(f1_scores), 2),
         round(stdev(f1_scores), 2)
         ]]
-
-    header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
-    # Detailed results per run
-    # output = 'results/results_' + database + '.tsv'
-    # with open(output, 'w', encoding='utf8', newline='') as f:
-    #     writer = csv.writer(f, delimiter='\t')
-    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
-    #     for family, run in results_per_fam.items():
-    #         writer.writerows(run)
 
     print(tabulate(
         table,
