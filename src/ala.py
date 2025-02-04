@@ -136,7 +136,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  and l.Selexion = 1
+  l.Selexion = 1
     AND
   c.Word_Number >= 50
 ;
@@ -233,9 +233,7 @@ def extract_branch(gcode):
     gcode = "%" + gcode + "%"
     db = get_db("data/glottolog.sqlite3")
     db.execute(BRANCH_QUERY, (gcode,))
-    gcodes = []
-    for glottocode in db.fetchall():
-        gcodes.append(glottocode[0])
+    gcodes = [glottocode[0] for glottocode in db.fetchall()]
 
     return gcodes
 
@@ -344,16 +342,13 @@ def get_lb(path="data/lexibank.sqlite3"):
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
-    wordlists = defaultdict(lambda: defaultdict(dict))
+    wl = defaultdict(lambda: defaultdict(dict))
     db.execute(WL_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
-        wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
+        wl[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
-    # retrieve best glottocodeis
-    all_wordlists = {}
-    for glottocode in wordlists:
-        best_key = get_best_key(wordlists, glottocode)
-        all_wordlists[glottocode] = wordlists[glottocode][best_key]
+    # retrieve best glottocodes
+    all_wordlists = {glottocode: wl[glottocode][get_best_key(wl, glottocode)] for glottocode in wl}
     return all_wordlists
 
 

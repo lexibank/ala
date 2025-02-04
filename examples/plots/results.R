@@ -34,7 +34,7 @@ violin_complex <- per_model %>%
   geom_boxplot(width=0.1, color="grey", alpha=0.5) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
-  scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
+  scale_y_continuous(limits=c(50, 99.5), breaks=c(60, 70, 80, 90, 100), 
                      name="F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
@@ -46,13 +46,13 @@ ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=15
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
   filter(Family != 'TOTAL') %>% 
-  summarise(Accuracy=mean(Accuracy), Languages=mean(Languages)) %>% 
+  summarise(Score=mean(Score), Languages=mean(Languages)) %>% 
   group_by(Family) %>% count() %>% arrange(-n)
 
 FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian')
 
 scatter <-  per_family %>% 
-  ggplot(aes(x=Accuracy, y=Languages, fill=Family)) +
+  ggplot(aes(x=Score, y=Languages, fill=Family)) +
   geom_point(aes(size=1), shape=21) +
   geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
@@ -93,8 +93,8 @@ ggsave("scope.png", plot=scope_plot, dpi=300,
        width=3000, height=2000, units="px")
 
 lang_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
-  summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
-  ggplot(aes(x=Accuracy, y=langs, fill=Model, label=Model)) +
+  summarise(Score=mean(Score), langs=mean(langs), fams=mean(fams)) %>% 
+  ggplot(aes(x=Score, y=langs, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   scale_y_log10(limits=c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
@@ -107,8 +107,8 @@ ggsave("lang_acc.png", plot=lang_acc, dpi=300,
        width=3000, height=2000, units="px")
 
 fam_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
-  summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
-  ggplot(aes(x=Accuracy, y=fams, fill=Model, label=Model)) +
+  summarise(Score=mean(Score), langs=mean(langs), fams=mean(fams)) %>% 
+  ggplot(aes(x=Score, y=fams, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding=unit(0.7, "lines")) +
@@ -122,7 +122,7 @@ ggsave("fam_acc.png", plot=fam_acc, dpi=300, width=3000, height=2000, units="px"
 ### Statistical model       ####
 ################################
 mod_robust <- brm(
-  bf(Accuracy ~ Model, sigma ~ Model),
+  bf(Score ~ Model, sigma ~ Model),
   family=student,
   data=per_model,
   cores=4,
@@ -138,7 +138,7 @@ model_comp <- predictions %>%
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
   scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
-                     name="Estimated Family Accuracy") +
+                     name="Estimated Family Score") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
   theme(legend.position='bottom', legend.title=element_blank())

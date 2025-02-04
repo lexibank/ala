@@ -1,3 +1,6 @@
+"""
+Module for running the experiments for Automated Language Affiliation.
+"""
 import argparse
 import csv
 import sys
@@ -9,13 +12,13 @@ import torch.nn as nn
 from torchmetrics import F1Score
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import train_test_split
+from clldutils.clilib import add_format, Table
 from ala import get_lb, get_asjp, get_gb, convert_data, get_other
 from ala import concept2vec, feature2vec, get_db, extract_branch
-from clldutils.clilib import add_format, Table
 
 
 # Hyperparameters
-EPOCHS = 500
+EPOCHS = 5000
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
@@ -25,7 +28,6 @@ MIN_LANGS = 5
 def run_ala(args):
     """Defines the workflow for data loading in the different settings."""
     # Load data for testing
-    tests = defaultdict()
     northern_uto = extract_branch(gcode='nort2953')
     anatolian = extract_branch(gcode='anat1257')
     tocharian = extract_branch(gcode='tokh1241')
@@ -42,19 +44,19 @@ def run_ala(args):
 
     # Setup for databases
     asjp = get_asjp()
-    grambank = get_gb()
-    lexibank = get_lb()
+    gb = get_gb()
+    lb = get_lb()
     gb_conv, gb_keys = feature2vec(get_db('data/grambank.sqlite3'))
     lb_conv, lb_keys = concept2vec(get_db('data/lexibank.sqlite3'), model='dolgo')
     load = 'grambank' if args.database == 'grambank' else 'lexical'
-    converter = gb_conv if args.database == 'grambank' else lb_conv
+    conv = gb_conv if args.database == 'grambank' else lb_conv
 
     # Load main data
     data_map = {
-        'lexibank': dict(lexibank.items()),
-        'lb_mod': dict(lexibank.items()),
-        'combined': dict(lexibank.items()),
-        'grambank': dict(grambank.items()),
+        'lexibank': dict(lb.items()),
+        'lb_mod': dict(lb.items()),
+        'combined': dict(lb.items()),
+        'grambank': dict(gb.items()),
         'asjp': dict(get_other(mode='asjp').items())
     }
 
@@ -62,31 +64,20 @@ def run_ala(args):
         print("Invalid data selection. Please choose 'lexibank', 'grambank', 'combined' or 'asjp'")
         sys.exit()
 
-    wordlists = data_map[args.database]
+    wl = data_map[args.database]
     n_pars = gb_keys if args.database == 'grambank' else gb_keys + lb_keys if args.database == 'combined' else lb_keys
 
     if args.database != 'combined':
-        data = convert_data(
-            wordlists,
-            {k: v[0] for k, v in asjp.items()},
-            converter,
-            load=load,
-            threshold=MIN_LANGS
-            )
+        data = convert_data(wl, {k: v[0] for k, v in asjp.items()},
+                            conv, load=load, threshold=MIN_LANGS)
 
-    # Set up combination of LB and GB, default values for convert_data
+    # Set up combination of LB and GB
     elif args.database == 'combined':
-        data = convert_data(
-            wordlists,
-            {k: v[0] for k, v in asjp.items() if k in grambank},
-            threshold=MIN_LANGS)
+        data = convert_data(wl, {k: v[0] for k, v in asjp.items() if k in gb},
+                            conv, load=load, threshold=MIN_LANGS)
 
-        gb_wl = convert_data(
-            data_map['grambank'],
-            {k: v[0] for k, v in asjp.items()},
-            gb_conv,
-            load='grambank',
-            threshold=1)
+        gb_wl = convert_data(data_map['grambank'], {k: v[0] for k, v in asjp.items()},
+                             gb_conv, load='grambank', threshold=1)
 
         # Combine data vectors
         for lang in data:
@@ -94,50 +85,37 @@ def run_ala(args):
 
     # Add Carari
     if args.experiment and args.database == 'lexibank':
-        data['cara1273'] = convert_data(
-           dict(get_other(mode="carari").items()),
-           {k: v[0] for k, v in asjp.items()},
-           converter,
-           threshold=1,
-           )['cara1273']
+        data['cara1273'] = convert_data(dict(get_other(mode="carari").items()),
+                                        {k: v[0] for k, v in asjp.items()},
+                                        conv, threshold=1)['cara1273']
 
-    features = []
-    labels = []
-
-    fam2w = defaultdict(int)
     idx2fam = dict(enumerate(set((data[lang][0] for lang in data))))
     fam2idx = {family: idx for idx, family in enumerate(set(data[lang][0] for lang in data))}
-
     f1_macro = F1Score(num_classes=len(idx2fam), average='macro', task="multiclass")
 
-    for lang in data:
-        family = data[lang][0]
-        fam2w[family] = fam2w.get(family, 0) + 1
-        # Add test cases to test list
-        if (args.experiment and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
-                any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian])) or \
-                args.experiment and lang in isolates:
-            tests[lang] = data[lang]
-        else:
-            features.append(data[lang][2])
-            labels.append(fam2idx[family])
-    include_langs = (args.experiment and data[lang][0] not in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] or
-                    data[lang][0] not in [sinitic, northern_uto, anatolian, tocharian]) and
-                    args.experiment and data[lang][0] not in isolates
+    test_langs = {lang: data[lang] for lang in data if (args.experiment and (
+        (data[lang][0] in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
+         any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian]))
+        or lang in isolates))}
 
-    features = [data[lang][2] for lang in data if include_langs]
-    labels = [fam2idx[data[lang][0]] for lang in data if include_langs]
+    tests = [data[lang] for lang in data if lang in test_langs]
+    features = [data[lang][2] for lang in data if lang not in test_langs]
+    labels = [fam2idx[data[lang][0]] for lang in data if lang not in test_langs]
 
     # Summary stats
     summary_stats = {
         'Number of families': len(fam2idx),
         'Number of languages': len(data),
-        'Size of vector': len(data[lang][2]),
-        'Number of concepts': len(data[lang][2]) / n_pars
+        'Size of vector': len(features[0]),
+        'Number of concepts': len(features[0]) / n_pars
     }
     print(summary_stats)
 
-    # Weights
+    # Weights for CrossEntropy
+    fam2w = defaultdict(int)
+    for family in [data[lang][0] for lang in data if lang not in test_langs]:
+        fam2w[family] += 1
+
     class_weights = [round(fam2w[max(fam2w, key=fam2w.get)] / fam2w[fam], 3) for fam in fam2w]
     class_weights = torch.FloatTensor(class_weights).to(device)
 
@@ -177,7 +155,7 @@ def run_ala(args):
             return prediction
 
     for run in range(args.runs):
-        print('--- New Run: ', run, '/', args.runs, '---')
+        print('--- New Run: ', run+1, '/', args.runs+1, '---')
         fam_final = defaultdict()
         train_dataset, test_dataset = train_test_split(
             tensor_ds, test_size=0.2, stratify=all_labels, random_state=42
@@ -189,8 +167,7 @@ def run_ala(args):
         train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
         test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
 
-        model = FF(features.size()[1], HIDDEN*len(idx2fam), len(idx2fam))
-        model = model.to(device)
+        model = FF(features.size()[1], HIDDEN*len(idx2fam), len(idx2fam)).to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
         optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
         no_improve = 0
@@ -215,11 +192,9 @@ def run_ala(args):
                             _, predicted = torch.max(outputs.data, 1)
                             macro = round(f1_macro(predicted.cpu(), labels.cpu()).item(), 10)
 
+                            # Labels per family
                             for idx, label in enumerate(labels):
-                                pred = int(predicted[idx])
-                                label = int(label)
-                                # Labels per family
-                                family_results.setdefault(label, []).append(pred)
+                                family_results.setdefault(int(label), []).append(int(predicted[idx]))
 
                         for fam in family_results:
                             corr = sum(1 for pred in family_results[fam] if fam == pred)
@@ -285,8 +260,7 @@ def run_ala(args):
 
     # Summary table for command line
     table = [[
-        fam,
-        mean([r[2] for r in rows]),
+        fam, mean([r[2] for r in rows]),
         round(mean([r[3] for r in rows]), 1),   # Tested langs
         round(mean([r[4] for r in rows]), 2),   # Acc
         0 if len(rows) < 2 else round(stdev([r[4] for r in rows]), 2)]
