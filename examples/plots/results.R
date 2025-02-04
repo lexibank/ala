@@ -24,17 +24,18 @@ combined <- read_tsv("../results/results_combined.tsv") %>%
 full_data <- rbind(gb_all, lb_all, asjp_all, combined)
 
 per_model<- full_data %>% group_by(Model, Run) %>% 
-  summarise(Accuracy=mean(Accuracy))
+  filter(Family=='TOTAL') %>% 
+  summarise(Score=mean(Score))
 
 violin_complex <- per_model %>% 
-  ggplot(aes(x=reorder(Model, Accuracy), y=Accuracy)) +
+  ggplot(aes(x=reorder(Model, Score), y=Score)) +
   geom_half_point(aes(fill=Model), side="l", range_scale=.25, alpha=.5, size=0.2) +
   stat_halfeye(aes(fill=Model), adjust=1, width=0.75, color=NA, position=position_nudge(x=0.06)) +
   geom_boxplot(width=0.1, color="grey", alpha=0.5) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
   scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
-                     name="Average Family Accuracy") +
+                     name="F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
   theme(legend.position='bottom', legend.title=element_blank())
@@ -44,16 +45,15 @@ ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=15
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
-  summarise(Accuracy=mean(Accuracy), Languages=mean(Languages))
-
-fams <- per_family %>% group_by(Family) %>% count() %>% arrange(-n)
+  filter(Family != 'TOTAL') %>% 
+  summarise(Accuracy=mean(Accuracy), Languages=mean(Languages)) %>% 
+  group_by(Family) %>% count() %>% arrange(-n)
 
 FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian')
 
 scatter <-  per_family %>% 
   ggplot(aes(x=Accuracy, y=Languages, fill=Family)) +
   geom_point(aes(size=1), shape=21) +
-  # geom_label() +
   geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding=unit(1.5, "lines"), size=6) +
@@ -74,6 +74,7 @@ ggsave("scatter.png", plot=scatter, dpi=300,  width=3000, height=2000, units="px
 
 #####################
 scope <- full_data %>% distinct(Model, Languages, Family) %>%
+  filter(family != 'TOTAL') %>% 
   group_by(Model) %>%
   summarise(langs=sum(Languages), fams=length(unique(Family)))
 scope
@@ -91,10 +92,9 @@ scope_plot
 ggsave("scope.png", plot=scope_plot, dpi=300,
        width=3000, height=2000, units="px")
 
-
 lang_acc <- scope %>% left_join(per_model) %>% group_by(Model) %>%
   summarise(Accuracy=mean(Accuracy), langs=mean(langs), fams=mean(fams)) %>% 
-ggplot(aes(x=Accuracy, y=langs, fill=Model, label=Model)) +
+  ggplot(aes(x=Accuracy, y=langs, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8) +
   scale_y_log10(limits=c(800, 5000), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",

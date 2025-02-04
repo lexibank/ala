@@ -8,7 +8,6 @@ import torch
 import torch.nn as nn
 from torchmetrics import F1Score
 from torch.utils.data import TensorDataset, DataLoader
-from scipy.spatial import distance
 from sklearn.model_selection import train_test_split
 from ala import get_lb, get_asjp, get_gb, convert_data, get_other
 from ala import concept2vec, feature2vec, get_db, extract_branch
@@ -16,7 +15,7 @@ from clldutils.clilib import add_format, Table
 
 
 # Hyperparameters
-EPOCHS = 5000
+EPOCHS = 500
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
@@ -38,9 +37,8 @@ def run_ala(args):
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
     print('Current device:', device)
 
-    results_per_fam = defaultdict(list)  # store family results
-    # results_per_fam['TOTAL'] = []
-    results = defaultdict()  # store experiment results
+    result_per_fam = defaultdict(list)  # store family results
+    results = defaultdict()
 
     # Setup for databases
     asjp = get_asjp()
@@ -92,10 +90,10 @@ def run_ala(args):
 
         # Combine data vectors
         for lang in data:
-            data[lang][2] = data[lang][2] + gb_wl[lang][2]
+            data[lang][2] += gb_wl[lang][2]
 
     # Add Carari
-    if args.test_isolates and args.database == 'lexibank':
+    if args.experiment and args.database == 'lexibank':
         data['cara1273'] = convert_data(
            dict(get_other(mode="carari").items()),
            {k: v[0] for k, v in asjp.items()},
@@ -103,10 +101,8 @@ def run_ala(args):
            threshold=1,
            )['cara1273']
 
-    # Prepare split
     features = []
     labels = []
-    idx = 0
 
     fam2w = defaultdict(int)
     idx2fam = dict(enumerate(set((data[lang][0] for lang in data))))
@@ -118,13 +114,19 @@ def run_ala(args):
         family = data[lang][0]
         fam2w[family] = fam2w.get(family, 0) + 1
         # Add test cases to test list
-        if (args.longdistance and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
+        if (args.experiment and family in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
                 any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian])) or \
-                args.test_isolates and lang in isolates:
+                args.experiment and lang in isolates:
             tests[lang] = data[lang]
         else:
             features.append(data[lang][2])
             labels.append(fam2idx[family])
+    include_langs = (args.experiment and data[lang][0] not in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] or
+                    data[lang][0] not in [sinitic, northern_uto, anatolian, tocharian]) and
+                    args.experiment and data[lang][0] not in isolates
+
+    features = [data[lang][2] for lang in data if include_langs]
+    labels = [fam2idx[data[lang][0]] for lang in data if include_langs]
 
     # Summary stats
     summary_stats = {
@@ -137,19 +139,12 @@ def run_ala(args):
 
     # Weights
     class_weights = [round(fam2w[max(fam2w, key=fam2w.get)] / fam2w[fam], 3) for fam in fam2w]
-    class_weights = torch.FloatTensor(class_weights)
-    class_weights = class_weights.to(device)
+    class_weights = torch.FloatTensor(class_weights).to(device)
 
     # Data to tensor
     features = torch.Tensor(np.array(features))
     all_labels = torch.LongTensor(np.array(labels))
-
     tensor_ds = TensorDataset(features, all_labels)
-
-    # Model hyperparameters
-    database_dim = features.size()[1]  # Length of data tensor
-    hidden_dim = HIDDEN*len(idx2fam)
-    output_dim = len(idx2fam)
 
     class FF(nn.Module):
         """Network model with functions for forward-pass and predictions."""
@@ -194,7 +189,7 @@ def run_ala(args):
         train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
         test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
 
-        model = FF(database_dim, hidden_dim, output_dim)
+        model = FF(features.size()[1], HIDDEN*len(idx2fam), len(idx2fam))
         model = model.to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
         optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE)
@@ -224,10 +219,7 @@ def run_ala(args):
                                 pred = int(predicted[idx])
                                 label = int(label)
                                 # Labels per family
-                                if label in family_results:
-                                    family_results[label].append(pred)
-                                else:
-                                    family_results[label] = [pred]
+                                family_results.setdefault(label, []).append(pred)
 
                         for fam in family_results:
                             corr = sum(1 for pred in family_results[fam] if fam == pred)
@@ -252,39 +244,23 @@ def run_ala(args):
 
         # Compute cosine distances for families
         if args.distances is True:
-            dist = [[0.0 for f in fam2idx] for f in fam2idx]
-            weights = list(model.parameters())
-            w = weights[4]  # Matrix with length fam2idx
-
-            for i, v in enumerate(w):
-                v = v.cpu().detach()
-                for j, u in enumerate(w):
-                    u = u.cpu().detach()
-                    dist[i][j] = distance.cosine(v, u)
+            dist = [[0.0 for _ in fam2idx] for _ in fam2idx]
+            w = list(model.parameters())[4].cpu().detach().numpy()  # Matrix with length fam2idx
+            dist = 1 - np.dot(w, w.T)
 
             with open('family-distances.tsv', 'w', encoding='utf8') as f:
-                f.write(' '+str(len(fam2idx))+'\n')
+                writer = csv.writer(f, delimiter='\t')
+                writer.writerow([len(fam2idx)])
                 for i, row in enumerate(dist):
-                    f.write(idx2fam[i], lowercase=False + ' ')
-                    f.write(' '.join([f'{cell}' for cell in row])+'\n')
+                    writer.writerow([idx2fam[i]] + row.tolist())
 
         # Add family results
         for fam in fam_final:
-            results_per_fam[fam].append([
-                run,
-                fam,
-                fam2w[fam],
-                fam_final[fam][1],
-                round(fam_final[fam][0], 3)
-            ])
+            result_per_fam[fam].append(
+                [run, fam, fam2w[fam], fam_final[fam][1], round(fam_final[fam][0], 3)]
+                )
 
-        results_per_fam['TOTAL'].append([
-            run,
-            'TOTAL',
-            len(data),
-            len(test_dataset),
-            best_macro
-            ])
+        result_per_fam['TOTAL'].append([run, 'TOTAL', len(data), len(test_dataset), 100*best_macro])
 
     print('---------------')
 
@@ -293,36 +269,35 @@ def run_ala(args):
     with open(output, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f, delimiter='\t')
         writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-        for fam, rows in results_per_fam.items():
+        for fam, rows in result_per_fam.items():
             writer.writerows(rows)
 
     # Summary table for experiments
-    results_table = []
-    for item in results:
-        results_str = '\n'.join(
-            f"{k}: {v}"
-            for k, v in Counter(results[item]).items()
-            if v > (len(results[item])*0.10)
-        )
-        results_table.append([item[0], item[1], results_str])
+    results_table = [
+        [item[0], item[1], '\n'.join(
+            f"{k}: {v}" for k, v in Counter(results[item]).items() if v > (len(results[item])*0.1))]
+        for item in results
+        ]
 
-    header = ['Language', 'Family', 'Predictions']
-    with Table(args, *header) as t:
+    with Table(args, *['Language', 'Family', 'Predictions']) as t:
         t.extend(results_table)
+    print('---------------')
 
     # Summary table for command line
-    table = [['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']]
-    for fam, rows in sorted(results_per_fam.items()):
-        table += [[
-            fam,
-            mean([r[2] for r in rows]),
-            round(mean([r[3] for r in rows]), 1),   # Tested langs
-            round(mean([r[4] for r in rows]), 2),   # Acc
-            0 if len(rows) < 2 else round(stdev([r[4] for r in rows]), 2)  # SD of accuracy
-            ]]
+    table = [[
+        fam,
+        mean([r[2] for r in rows]),
+        round(mean([r[3] for r in rows]), 1),   # Tested langs
+        round(mean([r[4] for r in rows]), 2),   # Acc
+        0 if len(rows) < 2 else round(stdev([r[4] for r in rows]), 2)]
+        for fam, rows in sorted(result_per_fam.items())
+    ]
 
-    with Table(args) as t:
-        t.extend(table)
+    total = [fam for fam in table if fam[0] == 'TOTAL']
+    new_table = [fam for fam in table if fam[0] != 'TOTAL'] + total
+
+    with Table(args, *['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']) as t:
+        t.extend(new_table)
 
 
 if __name__ == '__main__':
@@ -331,8 +306,7 @@ if __name__ == '__main__':
                         help='The number of iterations the model should run. We recommend n>10')
     parser.add_argument('--database', type=str,
                         help='Choose the dataset: lexibank, grambank, or combined')
-    parser.add_argument('-test_isolates', action='store_true')
-    parser.add_argument('-longdistance', action='store_true')
+    parser.add_argument('-experiment', action='store_true')
     parser.add_argument('-distances', action='store_true',
                         help='Adds the cosine distances of the model weights for each family')
     add_format(parser, default='simple')
