@@ -44,7 +44,7 @@ ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=15
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
-  summarise(Accuracy=mean(Accuracy), Languages= sum(Languages)/100)
+  summarise(Accuracy=mean(Accuracy), Languages=mean(Languages))
 
 fams <- per_family %>% group_by(Family) %>% count() %>% arrange(-n)
 
@@ -73,8 +73,10 @@ scatter
 ggsave("scatter.png", plot=scatter, dpi=300,  width=3000, height=2000, units="px")
 
 #####################
-scope <- per_family %>% group_by(Model) %>%
+scope <- full_data %>% distinct(Model, Languages, Family) %>%
+  group_by(Model) %>%
   summarise(langs=sum(Languages), fams=length(unique(Family)))
+scope
 
 scope_plot <- scope %>% 
   ggplot(aes(x=fams, y=langs, fill=Model, label=Model)) +

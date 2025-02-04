@@ -337,12 +337,12 @@ def run_ala(database, test_isolates=False, test_longdistance=False, distances=Fa
 
     header = ['Family', 'Languages', 'Tested', 'Avg. Fam. Accuracy', 'Fam-STD']
     # Detailed results per run
-    output = 'results/results_' + database + '.tsv'
-    with open(output, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
-        for family, run in results_per_fam.items():
-            writer.writerows(run)
+    # output = 'results/results_' + database + '.tsv'
+    # with open(output, 'w', encoding='utf8', newline='') as f:
+    #     writer = csv.writer(f, delimiter='\t')
+    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Accuracy'])
+    #     for family, run in results_per_fam.items():
+    #         writer.writerows(run)
 
     table += [[
         'TOTAL',
