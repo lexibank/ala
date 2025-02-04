@@ -292,6 +292,7 @@ def run_ala(args):
     output = 'results/results_' + args.database + '.tsv'
     with open(output, 'w', encoding='utf8', newline='') as f:
         writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
         for fam, rows in results_per_fam.items():
             writer.writerows(rows)
 
