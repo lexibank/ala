@@ -18,7 +18,7 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 
 
 # Hyperparameters
-EPOCHS = 500
+EPOCHS = 200
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
@@ -39,8 +39,8 @@ def run_ala(args):
     device = 'mps' if torch.backends.mps.is_available() else 'cuda' if torch.cuda.is_available() else 'cpu'
     print('Current device:', device)
 
-    result_per_fam = defaultdict(list)  # store family results
-    results = defaultdict()
+    result_per_fam = defaultdict(list)
+    results = defaultdict(list)
 
     # Setup for databases
     asjp = get_asjp()
@@ -93,14 +93,10 @@ def run_ala(args):
     f1_macro = F1Score(num_classes=len(idx2fam), average='macro', task="multiclass")
 
     test_langs = {lang: data[lang] for lang in data if (args.experiment and (
-        (data[lang][0] in ['Sino-Tibetan', 'Uto-Aztecan', 'Indo-European'] and
-         any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian]))
+        any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian])
         or lang in isolates))}
 
-    tests = defaultdict(list)
-    for lang in data:
-        if lang in test_langs:
-            tests[lang] = data[lang]
+    tests = {lang: data[lang] for lang in data if lang in test_langs}
     features = [data[lang][2] for lang in data if lang not in test_langs]
     labels = [fam2idx[data[lang][0]] for lang in data if lang not in test_langs]
 
@@ -216,7 +212,8 @@ def run_ala(args):
         model.load_state_dict(torch.load('best-mpar.pt', weights_only=True))
 
         # Test experiments
-        results[lang, tests[lang][0]] = [model.predict(tests, lang)]
+        for lang in tests:
+            results[lang, tests[lang][0]].append(model.predict(tests, lang))
 
         # Compute cosine distances for families
         if args.distances is True:

@@ -38,10 +38,14 @@ violin_complex <- per_model %>%
                      name="F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
-  theme(legend.position='bottom', legend.title=element_blank())
+  theme(legend.position='bottom', legend.title=element_blank(),
+          axis.text=element_text(size=16),
+          axis.title.x=element_text(size=18),
+          axis.title.y=element_text(size=18),
+        )
 
 violin_complex
-ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1000, units="px")
+ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1500, units="px")
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
@@ -52,7 +56,7 @@ FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian'
 
 scatter <-  per_family %>% 
   ggplot(aes(x=Score, y=Languages, fill=Family)) +
-  geom_point(aes(size=1), shape=21) +
+  geom_point(aes(size=0.5), alpha=0.9, shape=21) +
   geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding=unit(1.5, "lines"), size=4) +
@@ -62,14 +66,14 @@ scatter <-  per_family %>%
   theme(
     legend.position="none", 
     strip.text=element_text(size=18),
-    axis.text=element_text(size=14),
-    axis.title.x=element_text(size=16),
-    axis.title.y=element_text(size=16),
+    axis.text=element_text(size=16),
+    axis.title.x=element_text(size=18),
+    axis.title.y=element_text(size=18), 
     ) +
   facet_wrap(~Model)
 scatter
 
-ggsave("scatter.png", plot=scatter, dpi=300,  width=3000, height=2000, units="px")
+ggsave("scatter.png", plot=scatter, dpi=300,  width=2000, height=1500, units="px")
 
 #####################
 scope <- full_data %>% distinct(Model, Languages, Family) %>%
