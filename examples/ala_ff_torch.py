@@ -18,7 +18,7 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 
 
 # Hyperparameters
-EPOCHS = 5000
+EPOCHS = 500
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
@@ -75,7 +75,6 @@ def run_ala(args):
     elif args.database == 'combined':
         data = convert_data(wl, {k: v[0] for k, v in asjp.items() if k in gb},
                             conv, load=load, threshold=MIN_LANGS)
-
         gb_wl = convert_data(data_map['grambank'], {k: v[0] for k, v in asjp.items()},
                              gb_conv, load='grambank', threshold=1)
 
@@ -98,7 +97,10 @@ def run_ala(args):
          any(lang in x for x in [sinitic, northern_uto, anatolian, tocharian]))
         or lang in isolates))}
 
-    tests = [data[lang] for lang in data if lang in test_langs]
+    tests = defaultdict(list)
+    for lang in data:
+        if lang in test_langs:
+            tests[lang] = data[lang]
     features = [data[lang][2] for lang in data if lang not in test_langs]
     labels = [fam2idx[data[lang][0]] for lang in data if lang not in test_langs]
 
@@ -155,17 +157,17 @@ def run_ala(args):
             return prediction
 
     for run in range(args.runs):
-        print('--- New Run: ', run+1, '/', args.runs+1, '---')
+        print('--- New Run: ', run+1, '/', args.runs, '---')
         fam_final = defaultdict()
-        train_dataset, test_dataset = train_test_split(
+        train_ds, test_ds = train_test_split(
             tensor_ds, test_size=0.2, stratify=all_labels, random_state=42
             )
 
-        train_dataset = [(item[0].to(device), item[1].to(device)) for item in train_dataset]
-        test_dataset = [(item[0].to(device), item[1].to(device)) for item in test_dataset]
+        train_ds = [(item[0].to(device), item[1].to(device)) for item in train_ds]
+        test_ds = [(item[0].to(device), item[1].to(device)) for item in test_ds]
 
-        train_loader = DataLoader(dataset=train_dataset, batch_size=BATCH, shuffle=True)
-        test_loader = DataLoader(dataset=test_dataset, batch_size=BATCH)
+        train_loader = DataLoader(dataset=train_ds, batch_size=BATCH, shuffle=True)
+        test_loader = DataLoader(dataset=test_ds, batch_size=BATCH)
 
         model = FF(features.size()[1], HIDDEN*len(idx2fam), len(idx2fam)).to(device)
         criterion = nn.CrossEntropyLoss(weight=class_weights)
@@ -189,19 +191,19 @@ def run_ala(args):
                         fam_avg = defaultdict()
                         for test_data, labels in test_loader:
                             outputs = model(test_data)
-                            _, predicted = torch.max(outputs.data, 1)
-                            macro = round(f1_macro(predicted.cpu(), labels.cpu()).item(), 10)
+                            _, preds = torch.max(outputs.data, 1)
+                            macro = round(f1_macro(preds.cpu(), labels.cpu()).item(), 10)
 
                             # Labels per family
                             for idx, label in enumerate(labels):
-                                family_results.setdefault(int(label), []).append(int(predicted[idx]))
+                                family_results.setdefault(int(label), []).append(int(preds[idx]))
 
                         for fam in family_results:
                             corr = sum(1 for pred in family_results[fam] if fam == pred)
                             total = len(family_results[fam])
                             fam_avg[idx2fam[fam]] = [100 * corr / total, total]
 
-                        print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. F1 Macro: {round(macro, 5)}.')
+                        print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. F1: {macro}.')
 
                         if macro > best_macro:
                             best_macro = macro
@@ -214,8 +216,7 @@ def run_ala(args):
         model.load_state_dict(torch.load('best-mpar.pt', weights_only=True))
 
         # Test experiments
-        for lang in tests:
-            results[lang, tests[lang][0]] = [model.predict(tests, lang)]
+        results[lang, tests[lang][0]] = [model.predict(tests, lang)]
 
         # Compute cosine distances for families
         if args.distances is True:
@@ -232,20 +233,18 @@ def run_ala(args):
         # Add family results
         for fam in fam_final:
             result_per_fam[fam].append(
-                [run, fam, fam2w[fam], fam_final[fam][1], round(fam_final[fam][0], 3)]
+                [run+1, fam, fam2w[fam], fam_final[fam][1], round(fam_final[fam][0], 3)]
                 )
 
-        result_per_fam['TOTAL'].append([run, 'TOTAL', len(data), len(test_dataset), 100*best_macro])
-
-    print('---------------')
+        result_per_fam['TOTAL'].append([run+1, 'TOTAL', len(data), len(test_ds), 100*best_macro])
 
     # Detailed results per run
-    output = 'results/results_' + args.database + '.tsv'
-    with open(output, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-        for fam, rows in result_per_fam.items():
-            writer.writerows(rows)
+    # output = 'results/results_' + args.database + '.tsv'
+    # with open(output, 'w', encoding='utf8', newline='') as f:
+    #     writer = csv.writer(f, delimiter='\t')
+    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
+    #     for fam, rows in result_per_fam.items():
+    #         writer.writerows(rows)
 
     # Summary table for experiments
     results_table = [
@@ -254,6 +253,7 @@ def run_ala(args):
         for item in results
         ]
 
+    print('---------------')
     with Table(args, *['Language', 'Family', 'Predictions']) as t:
         t.extend(results_table)
     print('---------------')

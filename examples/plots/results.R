@@ -30,24 +30,23 @@ per_model<- full_data %>% group_by(Model, Run) %>%
 violin_complex <- per_model %>% 
   ggplot(aes(x=reorder(Model, Score), y=Score)) +
   geom_half_point(aes(fill=Model), side="l", range_scale=.25, alpha=.5, size=0.2) +
-  stat_halfeye(aes(fill=Model), adjust=1, width=0.75, color=NA, position=position_nudge(x=0.06)) +
-  geom_boxplot(width=0.1, color="grey", alpha=0.5) +
+  stat_halfeye(aes(fill=Model), adjust=2, width=0.5, color=NA, position=position_nudge(x=0.10)) +
+  geom_boxplot(width=0.15, color="darkgrey") +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
-  scale_y_continuous(limits=c(50, 99.5), breaks=c(60, 70, 80, 90, 100), 
+  scale_y_continuous(limits=c(55, 99.5), breaks=c(60, 70, 80, 90, 100), 
                      name="F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
   theme(legend.position='bottom', legend.title=element_blank())
 
 violin_complex
-ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1500, units="px")
+ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1000, units="px")
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
   filter(Family != 'TOTAL') %>% 
-  summarise(Score=mean(Score), Languages=mean(Languages)) %>% 
-  group_by(Family) %>% count() %>% arrange(-n)
+  summarise(Score=mean(Score), Languages=mean(Languages))
 
 FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian')
 
@@ -56,16 +55,16 @@ scatter <-  per_family %>%
   geom_point(aes(size=1), shape=21) +
   geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding=unit(1.5, "lines"), size=6) +
+                   box.padding=unit(1.5, "lines"), size=4) +
   scale_y_log10(limits=c(3, 1000)) + 
   scale_fill_viridis(discrete=TRUE, option="D", begin=0.2) +
   # geom_smooth(method=lm , color="red", fill="#69b3a2", se=FALSE) +
   theme(
     legend.position="none", 
-    strip.text=element_text(size=20),
-    axis.text=element_text(size=16),
-    axis.title.x=element_text(size=18),
-    axis.title.y=element_text(size=18),
+    strip.text=element_text(size=18),
+    axis.text=element_text(size=14),
+    axis.title.x=element_text(size=16),
+    axis.title.y=element_text(size=16),
     ) +
   facet_wrap(~Model)
 scatter
@@ -74,15 +73,14 @@ ggsave("scatter.png", plot=scatter, dpi=300,  width=3000, height=2000, units="px
 
 #####################
 scope <- full_data %>% distinct(Model, Languages, Family) %>%
-  filter(family != 'TOTAL') %>% 
+  filter(Family != 'TOTAL') %>% 
   group_by(Model) %>%
   summarise(langs=sum(Languages), fams=length(unique(Family)))
-scope
 
 scope_plot <- scope %>% 
   ggplot(aes(x=fams, y=langs, fill=Model, label=Model)) +
   geom_point(aes(size=5), shape=c(21, 23, 23, 22), alpha=0.8, position=position_dodge(width=3)) +
-  scale_y_log10(limits=c(800, 5000), breaks=c(1000, 2000, 5000)) + 
+  scale_y_log10(limits=c(1000, 5100), breaks=c(1000, 2000, 5000)) + 
   geom_label_repel(max.overlaps=30, min.segment.length=unit(0, 'lines'), color="black",
                    box.padding=unit(0.7, "lines")) +
   theme(legend.position="none") +
@@ -137,11 +135,11 @@ model_comp <- predictions %>%
   stat_halfeye(aes(fill=Model), adjust=5) +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
-  scale_y_continuous(limits=c(60, 99.5), breaks=c(60, 70, 80, 90, 100), 
-                     name="Estimated Family Score") +
+  scale_y_continuous(limits=c(61, 99), breaks=c(60, 70, 80, 90, 100), 
+                     name="Estimated F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
   theme(legend.position='bottom', legend.title=element_blank())
 model_comp
 
-ggsave("model_est.png", plot=model_comp, dpi=300, width=3000, height=2000, units="px")
+ggsave("model_est.png", plot=model_comp, dpi=300, width=3000, height=1000, units="px")
