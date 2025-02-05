@@ -18,7 +18,7 @@ from ala import concept2vec, feature2vec, get_db, extract_branch
 
 
 # Hyperparameters
-EPOCHS = 200
+EPOCHS = 5000
 BATCH = 2048
 HIDDEN = 4  # multiplier for length of fam
 LEARNING_RATE = 1e-3
