@@ -24,3 +24,17 @@ cd examples/
 make download
 make prepare
 ```
+
+## Running the experiments
+
+The experiments can be reproducred by running the following python command:
+
+```shell
+python3 -u ala_ff_torch.py --database=lexibank
+```
+
+You can chose the database between `lexibank`, `grambank`, `asjp`, or `combined` for the intersection of `lexibank` and `grambank`. Additionally, you can add a flag `-experiment` if you want to test for the linguistic isolates and large language families as specified in the paper.
+
+```shell
+python3 -u ala_ff_torch.py --database=grambank -experiment
+```
