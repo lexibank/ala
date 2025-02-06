@@ -7,21 +7,15 @@ library(ggrepel)
 library(viridis)
 library(brms)
 library(tidybayes)
+library(stringr)
 
 
-gb_all <- read_tsv("../results/results_grambank.tsv") %>%
-  mutate(Model='Grambank')
-
-lb_all <- read_tsv("../results/results_lexibank.tsv") %>%
-  mutate(Model='Lexibank')
-
-asjp_all <- read_tsv("../results/results_asjp.tsv") %>%
-  mutate(Model='ASJP')
-
-combined <- read_tsv("../results/results_combined.tsv") %>%
-  mutate(Model='Combined')
-
-full_data <- rbind(gb_all, lb_all, asjp_all, combined)
+full_data <- c()
+for (model in c('grambank', 'lexibank', 'asjp', 'combined')){
+  data <- read_tsv(paste("../results/results_", model, ".tsv", sep='')) %>% 
+    mutate(Model=str_replace(str_to_title(model), 'Asjp', 'ASJP'))
+  full_data <- rbind(full_data, data)
+}
 
 per_model<- full_data %>% group_by(Model, Run) %>% 
   filter(Family=='TOTAL') %>% 
@@ -52,23 +46,23 @@ per_family <- full_data %>% group_by(Family, Model) %>%
   filter(Family != 'TOTAL') %>% 
   summarise(Score=mean(Score), Languages=mean(Languages))
 
-FamsToLabel <- c('Nuclear-Macro-Je', 'Austronesian', 'Indo-European', 'Koiarian')
+FamsToLabel <- c('Salishan', 'Austronesian', 'Indo-European')
 
 scatter <-  per_family %>% 
   ggplot(aes(x=Score, y=Languages, fill=Family)) +
   geom_point(aes(size=0.5), alpha=0.9, shape=21) +
   geom_label_repel(aes(label=Family), data=per_family[per_family$Family %in% FamsToLabel,],
                    max.overlaps=10, min.segment.length=unit(0, 'lines'), color="black",
-                   box.padding=unit(1.5, "lines"), size=4) +
-  scale_y_log10(limits=c(3, 1000)) + 
-  scale_fill_viridis(discrete=TRUE, option="D", begin=0.2) +
-  # geom_smooth(method=lm , color="red", fill="#69b3a2", se=FALSE) +
+                   box.padding=unit(1.2, "lines"), size=4) +
+  scale_y_log10(limits=c(3, 1008)) + 
+  scale_fill_viridis(discrete=TRUE, option="D", begin=0.4) +
+  geom_smooth(method=glm , se=TRUE, alpha=0.4, color="red", fill="#69b3a2") +
   theme(
     legend.position="none", 
-    strip.text=element_text(size=18),
-    axis.text=element_text(size=16),
-    axis.title.x=element_text(size=18),
-    axis.title.y=element_text(size=18), 
+    strip.text=element_text(size=16),
+    axis.text=element_text(size=14),
+    axis.title.x=element_text(size=16),
+    axis.title.y=element_text(size=16), 
     ) +
   facet_wrap(~Model)
 scatter

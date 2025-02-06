@@ -156,7 +156,7 @@ def run_ala(args):
         print('--- New Run: ', run+1, '/', args.runs, '---')
         fam_final = defaultdict()
         train_ds, test_ds = train_test_split(
-            tensor_ds, test_size=0.2, stratify=all_labels, random_state=42
+            tensor_ds, test_size=0.2, stratify=all_labels
             )
 
         train_ds = [(item[0].to(device), item[1].to(device)) for item in train_ds]
@@ -236,24 +236,31 @@ def run_ala(args):
         result_per_fam['TOTAL'].append([run+1, 'TOTAL', len(data), len(test_ds), 100*best_macro])
 
     # Detailed results per run
-    # output = 'results/results_' + args.database + '.tsv'
-    # with open(output, 'w', encoding='utf8', newline='') as f:
-    #     writer = csv.writer(f, delimiter='\t')
-    #     writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-    #     for fam, rows in result_per_fam.items():
-    #         writer.writerows(rows)
+    output = 'results/results_' + args.database + '.tsv'
+    with open(output, 'w', encoding='utf8', newline='') as f:
+        writer = csv.writer(f, delimiter='\t')
+        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
+        for fam, rows in result_per_fam.items():
+            writer.writerows(rows)
 
     # Summary table for experiments
-    results_table = [
-        [item[0], item[1], '\n'.join(
-            f"{k}: {v}" for k, v in Counter(results[item]).items() if v > (len(results[item])*0.1))]
-        for item in results
-        ]
+    if args.experiment:
+        results_table = []
+        for item in results:
+            for k, v in Counter(results[item]).items():
+                results_table.append([item[0], item[1], k, v])
 
-    print('---------------')
-    with Table(args, *['Language', 'Family', 'Predictions']) as t:
-        t.extend(results_table)
-    print('---------------')
+        output = 'results/experiment_' + args.database + '.tsv'
+        header = ['Language', 'Family', 'Prediction', 'Frequency']
+        with open(output, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, delimiter='\t')
+            writer.writerow(header)
+            writer.writerows(results_table)
+
+        print('---------------')
+        with Table(args, *header) as t:
+            t.extend(results_table)
+        print('---------------')
 
     # Summary table for command line
     table = [[
