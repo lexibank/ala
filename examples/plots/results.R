@@ -170,7 +170,7 @@ long_distance <- full_data %>%
     axis.text.x = element_blank()
   ) 
 long_distance
-ggsave("long_distance.png", plot=long_distance, dpi=300, width=2000, height=2000, units="px")
+ggsave("long_distance.png", plot=long_distance, dpi=300, width=2000, height=1600, units="px")
 
 
 
@@ -197,7 +197,7 @@ correct_exp
 ##############
 # Isolates
 isolates <- full_data %>% 
-  filter(Family=='Unclassified', Frequency>5, Language!='cara1273') %>% 
+  filter(Family=='Unclassified', Frequency>15, Language!='cara1273') %>% 
   group_by(Language, Model, Prediction) %>% 
   summarise(Frequency=sum(Frequency)) %>%
   group_by(Language, Model) %>% 
@@ -215,4 +215,4 @@ isolates <- full_data %>%
     axis.text.x = element_blank()
   )
 isolates
-ggsave("isolates.png", plot=isolates, dpi=300, width=2500, height=2000, units="px")
+ggsave("isolates.png", plot=isolates, dpi=300, width=2000, height=1600, units="px")
