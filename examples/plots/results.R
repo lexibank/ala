@@ -28,7 +28,7 @@ violin_complex <- per_model %>%
   geom_boxplot(width=0.15, color="darkgrey") +
   coord_flip() +
   scale_fill_viridis(discrete=TRUE, end=0.95) +
-  scale_y_continuous(limits=c(55, 99.5), breaks=c(60, 70, 80, 90, 100), 
+  scale_y_continuous(limits=c(51, 98), breaks=c(50, 60, 70, 80, 90), 
                      name="F1-macro average") +
   scale_x_discrete(label=NULL, name=NULL, breaks=NULL) +
   theme_grey(base_size=14) +
@@ -39,7 +39,7 @@ violin_complex <- per_model %>%
         )
 
 violin_complex
-ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1500, units="px")
+ggsave("violin_complex.png", plot=violin_complex, dpi=300, width=2000, height=1800, units="px")
 
 #####################
 per_family <- full_data %>% group_by(Family, Model) %>%
@@ -141,3 +141,78 @@ model_comp <- predictions %>%
 model_comp
 
 ggsave("model_est.png", plot=model_comp, dpi=300, width=3000, height=1000, units="px")
+
+
+############################################
+full_data <- c()
+for (model in c('grambank', 'lexibank', 'asjp', 'combined')){
+  data <- read_tsv(paste("../results/experiment_", model, ".tsv", sep='')) %>% 
+    mutate(Model=str_replace(str_to_title(model), 'Asjp', 'ASJP'))
+  full_data <- rbind(full_data, data)
+}
+
+long_distance <- full_data %>% 
+  filter(Family!="Unclassified", Frequency>5) %>% 
+  group_by(Family, Model, Prediction) %>% 
+  summarise(Frequency=sum(Frequency)/ n_distinct(Language)) %>% 
+  group_by(Family, Model) %>% 
+  slice_max(n=4, Frequency) %>% 
+  ggplot(aes(y=Frequency, x=Prediction, fill=Prediction)) +
+  geom_col() +
+  scale_y_continuous(breaks=c(0, 50, 100), 
+                     name="Frequency of prediction") +
+  scale_x_discrete(name='Predicted language family') +
+  scale_fill_viridis(discrete=T, begin=0, end=0.9) +
+  facet_grid(Model~Family, scales='free_x') +
+  theme(
+    legend.position='bottom',
+    legend.title=element_blank(),
+    axis.text.x = element_blank()
+  ) 
+long_distance
+ggsave("long_distance.png", plot=long_distance, dpi=300, width=2000, height=2000, units="px")
+
+
+
+correct_exp <- full_data %>% 
+  filter(Family!="Unclassified") %>% 
+  group_by(Family, Model, Prediction) %>% 
+  summarise(Frequency=sum(Frequency)/ n_distinct(Language)) %>% 
+  filter(Family == Prediction) %>% 
+  ggplot(aes(y=Frequency, x=reorder(Frequency, Model), fill=Model)) +
+  geom_col() +
+  scale_y_continuous(breaks=c(0, 50, 100), 
+                     name="Frequency of prediction") +
+  scale_x_discrete(name='Predicted language family') +
+  scale_fill_viridis(discrete=T, begin=0, end=0.9) +
+  facet_grid(~Family, scales='free_x') +
+  theme(
+    legend.position='bottom',
+    legend.title=element_blank(),
+    axis.text.x = element_blank()
+  )
+correct_exp
+
+
+##############
+# Isolates
+isolates <- full_data %>% 
+  filter(Family=='Unclassified', Frequency>5, Language!='cara1273') %>% 
+  group_by(Language, Model, Prediction) %>% 
+  summarise(Frequency=sum(Frequency)) %>%
+  group_by(Language, Model) %>% 
+  slice_max(n=3, Frequency) %>% 
+  ggplot(aes(y=Frequency, x=Prediction, fill=Prediction)) +
+  geom_col() +
+  scale_y_continuous(breaks=c(0, 50, 100), 
+                     name="Frequency of prediction") +
+  scale_x_discrete(name='Predicted language family') +
+  scale_fill_viridis(discrete=T, begin=0, end=0.95) +
+  facet_grid(Model~Language, scales='free_x') +
+  theme(
+    legend.position='bottom',
+    legend.title=element_blank(),
+    axis.text.x = element_blank()
+  )
+isolates
+ggsave("isolates.png", plot=isolates, dpi=300, width=2500, height=2000, units="px")
