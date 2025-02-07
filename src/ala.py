@@ -48,7 +48,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 20;
+  c.Word_Number >= 30;
 """
 
 CAR_QUERY = """
@@ -135,8 +135,6 @@ WHERE
   f.cldf_parameterReference = p.cldf_id
     AND
   f.cldf_languageReference = l.cldf_id
-    AND
-  l.Selexion = 1
     AND
   c.Word_Number >= 50
 ;
