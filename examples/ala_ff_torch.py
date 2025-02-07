@@ -236,12 +236,13 @@ def run_ala(args):
         result_per_fam['TOTAL'].append([run+1, 'TOTAL', len(data), len(test_ds), 100*best_macro])
 
     # Detailed results per run
-    output = 'results/results_' + args.database + '.tsv'
-    with open(output, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-        for fam, rows in result_per_fam.items():
-            writer.writerows(rows)
+    if args.experiment is False:
+        output = 'results/results_' + args.database + '.tsv'
+        with open(output, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, delimiter='\t')
+            writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
+            for fam, rows in result_per_fam.items():
+                writer.writerows(rows)
 
     # Summary table for experiments
     if args.experiment:

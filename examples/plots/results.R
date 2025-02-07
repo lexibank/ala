@@ -151,12 +151,22 @@ for (model in c('grambank', 'lexibank', 'asjp', 'combined')){
   full_data <- rbind(full_data, data)
 }
 
+full_data <- full_data %>% 
+  mutate(
+    Language = str_replace(Language, 'bang1363', 'Bangime'),
+    Language = str_replace(Language, 'basq1248', 'Basque'),
+    Language = str_replace(Language, 'kusu1250', 'Kusunda'),
+    Language = str_replace(Language, 'mapu1245', 'Mapudungun'),
+  )
+
+
 long_distance <- full_data %>% 
-  filter(Family!="Unclassified", Frequency>5) %>% 
+  filter(Family!="Unclassified") %>% 
   group_by(Family, Model, Prediction) %>% 
   summarise(Frequency=sum(Frequency)/ n_distinct(Language)) %>% 
+  filter(Frequency>=10) %>% 
   group_by(Family, Model) %>% 
-  slice_max(n=4, Frequency) %>% 
+  slice_max(n=3, Frequency) %>% 
   ggplot(aes(y=Frequency, x=Prediction, fill=Prediction)) +
   geom_col() +
   scale_y_continuous(breaks=c(0, 50, 100), 
@@ -167,10 +177,15 @@ long_distance <- full_data %>%
   theme(
     legend.position='bottom',
     legend.title=element_blank(),
-    axis.text.x = element_blank()
+    legend.text=element_text(size=14),
+    strip.text=element_text(size=16),
+    axis.text.x = element_blank(),
+    axis.text.y=element_text(size=12),
+    axis.title.x=element_text(size=18),
+    axis.title.y=element_text(size=18)
   ) 
 long_distance
-ggsave("long_distance.png", plot=long_distance, dpi=300, width=2000, height=1600, units="px")
+ggsave("long_distance.png", plot=long_distance, dpi=300, width=2500, height=2000, units="px")
 
 
 
@@ -197,9 +212,7 @@ correct_exp
 ##############
 # Isolates
 isolates <- full_data %>% 
-  filter(Family=='Unclassified', Frequency>15, Language!='cara1273') %>% 
-  group_by(Language, Model, Prediction) %>% 
-  summarise(Frequency=sum(Frequency)) %>%
+  filter(Family=='Unclassified', Frequency>12, Language!='cara1273') %>% 
   group_by(Language, Model) %>% 
   slice_max(n=3, Frequency) %>% 
   ggplot(aes(y=Frequency, x=Prediction, fill=Prediction)) +
@@ -212,7 +225,12 @@ isolates <- full_data %>%
   theme(
     legend.position='bottom',
     legend.title=element_blank(),
-    axis.text.x = element_blank()
-  )
+    legend.text=element_text(size=14),
+    strip.text=element_text(size=16),
+    axis.text.x=element_blank(),
+    axis.text.y=element_text(size=12),
+    axis.title.x=element_text(size=18),
+    axis.title.y=element_text(size=18)
+  ) 
 isolates
-ggsave("isolates.png", plot=isolates, dpi=300, width=2000, height=1600, units="px")
+ggsave("isolates.png", plot=isolates, dpi=300, width=2500, height=2000, units="px")
