@@ -129,14 +129,15 @@ dmypy.json
 .pyre/
 
 # Databases
-*sqlite3
 *.err
 *.out
-examples/data/
 *.pt
+examples/data/asjp/
+examples/data/glottolog/
+examples/data/grambank/
+examples/data/lexibank-analysed/
 examples/family-distances.tsv
 .Rproj.user
 *.Rproj
-
-# German-Shuri
-german-shuri/
+*.sqlite3
+!examples/data/carari.sqlite3

@@ -1,14 +1,13 @@
 import sqlite3
 from collections import defaultdict
-import lingpy
+from lingpy import rc, tokens2class
 import tqdm
 from clldutils.misc import slug
 
 
 ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank2.sqlite3' AS db2;"""
-ATTACH_NP = """ATTACH 'data/northernperu.sqlite3' AS db1;"""
 ATTACH_CAR = """ATTACH 'data/carari.sqlite3' AS db1;"""
+ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
 
 ASJP_QUERY = """
 SELECT
@@ -49,52 +48,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 25;
+  c.Word_Number >= 30;
 """
-
-LBMOD_QUERY = """
-SELECT
-  ROW_NUMBER() OVER(),
-  l.cldf_id,
-  l.cldf_glottocode,
-  l.family,
-  p.cldf_name,
-  f.cldf_segments,
-  p.cldf_id || "-" || SUBSTR(
-    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
-  c.Word_Number
-FROM
-  db2.formtable as f,
-  db2.languagetable as l,
-  db2.parametertable as p
-INNER JOIN
-  (
-    SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      db1.formtable as f_2,
-      db1.languagetable as l_2,
-      db2.parametertable as p_2
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      p_2.cldf_id = f_2.gloss_in_source
-        AND
-      p_2.core_concept like "%Holman-2008-40%"
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-    AND
-  c.Word_Number >= 25;
-"""
-
 
 CAR_QUERY = """
 SELECT
@@ -170,13 +125,7 @@ INNER JOIN
         AND
       f_2.cldf_parameterReference = p_2.cldf_id
         AND
-      (
-      --p_2.core_concept like "%Swadesh-1952-200%"
-      --  OR
-      --p_2.core_concept like "%Swadesh-1955-100%"
-      --  OR
       p_2.core_concept like "%Tadmor-2009-100%"
-      )
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -187,7 +136,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 35
+  c.Word_Number >= 50
 ;
 """
 
@@ -215,14 +164,9 @@ CONCEPT_QUERY = """SELECT
 FROM
   parametertable as p
 WHERE
-  (
-   --p.core_concept like "%Swadesh-1952-200%"
-   -- OR
-   --p.core_concept like "%Swadesh-1955-100%"
-   -- OR
   p.core_concept like "%Tadmor-2009-100%"
-  --p.core_concept like "%Holman-2008-40%"
-  );"""
+;
+"""
 
 
 GB_PARAMS = """SELECT
@@ -262,7 +206,6 @@ def get_other(mode):
     }
     select_queries = {
         "asjp": ASJP_QUERY,
-        "lb_mod": LBMOD_QUERY,
         "carari": CAR_QUERY
     }
     db.execute(attach_queries[mode])
@@ -288,9 +231,7 @@ def extract_branch(gcode):
     gcode = "%" + gcode + "%"
     db = get_db("data/glottolog.sqlite3")
     db.execute(BRANCH_QUERY, (gcode,))
-    gcodes = []
-    for glottocode in db.fetchall():
-        gcodes.append(glottocode[0])
+    gcodes = [glottocode[0] for glottocode in db.fetchall()]
 
     return gcodes
 
@@ -349,7 +290,7 @@ def concept2vec(db, model="dolgo"):
     of concepts. For each concept, two slots of n sound classes each are
     provided.
     """
-    sc_model = lingpy.rc(model)
+    sc_model = rc(model)
     # ugly hack, must refine dolgo-model in lingpy!
     sc_model.tones = "1"
 
@@ -365,7 +306,7 @@ def concept2vec(db, model="dolgo"):
         nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
         for concept, tokens in words:
             if concept in concepts:
-                class_string = lingpy.tokens2class(tokens, model)
+                class_string = tokens2class(tokens, model)
                 reduced_string = [t for t in class_string if t in sound_classes][:2]
                 first = "H" if len(reduced_string) == 0 else reduced_string[0]
                 second = "H" if len(reduced_string) < 2 else reduced_string[1]
@@ -392,23 +333,20 @@ def get_asjp(path="data/asjp.sqlite3"):
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_lb(path="data/lexibank2.sqlite3"):
+def get_lb(path="data/lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
 
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
-    wordlists = defaultdict(lambda: defaultdict(dict))
+    wl = defaultdict(lambda: defaultdict(dict))
     db.execute(WL_QUERY)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
-        wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
+        wl[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
-    # retrieve best glottocodeis
-    all_wordlists = {}
-    for glottocode in wordlists:
-        best_key = get_best_key(wordlists, glottocode)
-        all_wordlists[glottocode] = wordlists[glottocode][best_key]
+    # retrieve best glottocodes
+    all_wordlists = {glottocode: wl[glottocode][get_best_key(wl, glottocode)] for glottocode in wl}
     return all_wordlists
 
 

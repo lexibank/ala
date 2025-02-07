@@ -5,8 +5,8 @@ setup(
     name='ala',
     version='1.1.dev0',
     license='MIT',
-    description='Automated Language Affiliation with Wordlists',
-    long_description=open('README.md').read(),
+    description='Automated Language Affiliation',
+    long_description=open('README.md', encoding='utf8').read(),
     long_description_content_type='text/markdown',
     classifiers=[
         "Programming Language :: Python",
