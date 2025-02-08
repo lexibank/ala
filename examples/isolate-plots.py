@@ -60,12 +60,14 @@ for i in range(len(fams)):
 cm["Rest"] = "0.2"
 cm["Unclassified"] = "0.9"
 
-fig, axs = plt.subplots(4, 6)
+fig, axs = plt.subplots(4, 6, figsize=(12, 4))
 for i, ds in enumerate(datasets):
     axs[i, 0].set_ylabel(ds.upper())
     for j, lng in enumerate(languages):
         colors = [cm[f] for f in pies[ds][lng]["labels"]]
         axs[i, j].pie(pies[ds][lng]["hits"], colors=colors)
+        axs[i, j].set_xlim(-1, 1)
+        axs[i, j].set_ylim(-1, 1)
         if ds == "combined":
             axs[i, j].set_xlabel(lng)
 for i, ds in enumerate(datasets):
