@@ -5,9 +5,9 @@ import tqdm
 from clldutils.misc import slug
 
 
-ATTACH_ASJP = """ATTACH 'data/asjp.sqlite3' AS db1;"""
-ATTACH_CAR = """ATTACH 'data/carari.sqlite3' AS db1;"""
-ATTACH_LB = """ATTACH 'data/lexibank.sqlite3' AS db2;"""
+ATTACH_ASJP = """ATTACH '{0}/asjp.sqlite3' AS db1;"""
+ATTACH_CAR = """ATTACH '{0}/carari.sqlite3' AS db1;"""
+ATTACH_LB = """ATTACH '{0}/lexibank.sqlite3' AS db2;"""
 
 ASJP_QUERY = """
 SELECT
@@ -164,7 +164,7 @@ CONCEPT_QUERY = """SELECT
 FROM
   parametertable as p
 WHERE
-  p.core_concept like "%Tadmor-2009-100%"
+  p.core_concept like "%{0}%"
 ;
 """
 
@@ -195,18 +195,19 @@ def get_best_key(wordlists, glottocode):
         reverse=True)[0]
 
 
-def get_other(mode):
+def get_other(mode, data_path=None):
+    data_path = "data" if not data_path else data_path
     db = get_db("")
     wordlists = defaultdict(lambda: defaultdict(dict))
-    db.execute(ATTACH_LB)
+    db.execute(ATTACH_LB.format(data_path))
     attach_queries = {
-        "asjp": ATTACH_ASJP,
-        "lb_mod": ATTACH_ASJP,
-        "carari": ATTACH_CAR
+        "asjp": ATTACH_ASJP.format(data_path),
+        "lb_mod": ATTACH_ASJP.format(data_path),
+        "carari": ATTACH_CAR.format(data_path)
     }
     select_queries = {
-        "asjp": ASJP_QUERY,
-        "carari": CAR_QUERY
+        "asjp": ASJP_QUERY.format(data_path),
+        "carari": CAR_QUERY.format(data_path)
     }
     db.execute(attach_queries[mode])
     db.execute(select_queries[mode])
@@ -248,8 +249,8 @@ def get_gb(path="data/grambank.sqlite3"):
     for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
         if tokens:
             wordlists[glottocode][idx] = [
-                idx, glottocode, concept, tokens,
-                f"{slug(concept)}-{tokens}"
+                idx, glottocode, concept,
+                tokens, "{0}-{1}".format(slug(concept), tokens)
                 ]
     return wordlists
 
@@ -282,7 +283,7 @@ def feature2vec(db):
     return converter, len(keys)
 
 
-def concept2vec(db, model="dolgo"):
+def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
     """
     Function returns a function that converts data from one language to a vector.
 
@@ -291,10 +292,12 @@ def concept2vec(db, model="dolgo"):
     provided.
     """
     sc_model = rc(model)
+    
     # ugly hack, must refine dolgo-model in lingpy!
-    sc_model.tones = "1"
+    if model == "dolgo":
+        sc_model.tones = "1"
 
-    db.execute(CONCEPT_QUERY)
+    db.execute(CONCEPT_QUERY.format(conceptlist))
     concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
 
     sound_classes = [c for c in
@@ -308,8 +311,8 @@ def concept2vec(db, model="dolgo"):
             if concept in concepts:
                 class_string = tokens2class(tokens, model)
                 reduced_string = [t for t in class_string if t in sound_classes][:2]
-                first = "H" if len(reduced_string) == 0 else reduced_string[0]
-                second = "H" if len(reduced_string) < 2 else reduced_string[1]
+                first = h_class if len(reduced_string) == 0 else reduced_string[0]
+                second = h_class if len(reduced_string) < 2 else reduced_string[1]
 
                 idx = concepts[concept]
                 nested_vector[idx][0][cls2idx[first]] = 1
@@ -319,7 +322,7 @@ def concept2vec(db, model="dolgo"):
 
         return vector
 
-    return converter, 2*len(sound_classes)
+    return converter, 2 * len(sound_classes)
 
 
 def get_db(path):
@@ -353,6 +356,8 @@ def get_lb(path="data/lexibank.sqlite3"):
 def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
+
+    # XXX must not include specific tests in generic library
     for gcode in wordlists:
         if gcode == 'cara1273':
             by_fam['Arawakan'] += [gcode]
@@ -362,7 +367,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # assemble languages belonging to one family alone to form the group of
     # unclassified languages which is our control group (!)
     unclassified, delis = [], []
-    save = ['Chicham', 'Zaparoan', 'Boran', 'Huitotoan']
+    save = [] #'Chicham', 'Zaparoan', 'Boran', 'Huitotoan']
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)
@@ -400,3 +405,70 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
             all_languages[gcode] = [fam, label, feature_vector]
 
     return all_languages
+
+
+def get_sound_class(concept, tokens, model="dolgo"):
+    sc_model = rc(model)
+    # ugly hack, must refine dolgo-model in lingpy!
+    sc_model.tones = "1"
+
+    sound_classes = [c for c in
+                     sorted(set(sc_model.converter.values())) if c not
+                     in "+_" + sc_model.vowels + sc_model.tones] + ["?"]
+
+    class_string = tokens2class(tokens.split(), model)
+    reduced_string = [t for t in class_string if t in sound_classes][:2]
+    first = "H" if len(reduced_string) == 0 else reduced_string[0]
+    second = "H" if len(reduced_string) < 2 else reduced_string[1]
+    return concept + "-" + first + second
+
+
+def affiliate_by_consonant_class(
+        language,
+        wordlist,
+        wordlists,
+        criterion="mean",
+        families = None
+        ):
+    """
+    """
+    import statistics
+
+    crt = {"mean": 1, "median": 2, "max": 3, "min": 4}
+
+    # transform the language in the lingpy wordlist
+    items = set()
+    for row in wordlist.values():
+        items.add(row[-1])
+    matches = defaultdict(lambda : defaultdict(list))
+
+    by_fam = defaultdict(dict)
+    for gcode, wl in wordlists.items():
+        fam = list(wl.values())[0][1]
+        by_fam[fam][gcode] = wl 
+    families = families or sorted(by_fam)
+
+    classes = []
+    for fam, data in by_fam.items():
+        scores = []
+        for gcode, words in data.items():
+            if gcode != language:
+                items_b = set([row[-1] for row in words.values()])
+                commons = items.intersection(items_b)
+                matches = len(commons) / len(items)
+                scores += [matches]
+        classes += [(
+            fam,
+            statistics.mean(scores),
+            statistics.median(scores),
+            max(scores),
+            min(scores)
+            )]
+    results = [
+            sorted(classes, key=lambda x: x[crt["mean"]], reverse=True)[0],
+            sorted(classes, key=lambda x: x[crt["median"]], reverse=True)[0],
+            sorted(classes, key=lambda x: x[crt["max"]], reverse=True)[0],
+            sorted(classes, key=lambda x: x[crt["min"]], reverse=True)[0]
+            ]
+
+    return results #sorted(classes, key=lambda x: x[crt[criterion]], reverse=True)
