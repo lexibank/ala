@@ -1,3 +1,4 @@
+import sys
 import sqlite3
 from collections import defaultdict
 from lingpy import rc, tokens2class
@@ -124,8 +125,6 @@ INNER JOIN
       f_2.cldf_languageReference = l_2.cldf_id
         AND
       f_2.cldf_parameterReference = p_2.cldf_id
-        AND
-      p_2.core_concept like "%Tadmor-2009-100%"
     GROUP BY
       l_2.cldf_glottocode
   ) as c
@@ -136,7 +135,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 50
+  c.Word_Number >= 40
 ;
 """
 
@@ -250,7 +249,7 @@ def get_gb(path="data/grambank.sqlite3"):
         if tokens:
             wordlists[glottocode][idx] = [
                 idx, glottocode, concept,
-                tokens, "{0}-{1}".format(slug(concept), tokens)
+                tokens, f"{slug(concept)}-{tokens}"
                 ]
     return wordlists
 
@@ -280,7 +279,7 @@ def feature2vec(db):
                 vector[keys[param][value]] = 1
         return vector
 
-    return converter, len(keys)
+    return converter
 
 
 def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
@@ -292,7 +291,7 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
     provided.
     """
     sc_model = rc(model)
-    
+
     # ugly hack, must refine dolgo-model in lingpy!
     if model == "dolgo":
         sc_model.tones = "1"
@@ -322,7 +321,7 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
 
         return vector
 
-    return converter, 2 * len(sound_classes)
+    return converter
 
 
 def get_db(path):
@@ -356,18 +355,12 @@ def get_lb(path="data/lexibank.sqlite3"):
 def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     # order by family
     by_fam = defaultdict(list)
-
-    # XXX must not include specific tests in generic library
     for gcode in wordlists:
-        if gcode == 'cara1273':
-            by_fam['Arawakan'] += [gcode]
-        elif gcode in families:
+        if gcode in families:
             by_fam[families[gcode]] += [gcode]
 
-    # assemble languages belonging to one family alone to form the group of
-    # unclassified languages which is our control group (!)
     unclassified, delis = [], []
-    save = [] #'Chicham', 'Zaparoan', 'Boran', 'Huitotoan']
+    save = []
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)
@@ -381,7 +374,6 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     by_fam["Unclassified"] = unclassified
 
     fam2idx = {fam: i for i, fam in enumerate(by_fam)}
-    # Convert to vector
 
     features = []
     labels = []
@@ -407,68 +399,40 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     return all_languages
 
 
-def get_sound_class(concept, tokens, model="dolgo"):
-    sc_model = rc(model)
-    # ugly hack, must refine dolgo-model in lingpy!
-    sc_model.tones = "1"
-
-    sound_classes = [c for c in
-                     sorted(set(sc_model.converter.values())) if c not
-                     in "+_" + sc_model.vowels + sc_model.tones] + ["?"]
-
-    class_string = tokens2class(tokens.split(), model)
-    reduced_string = [t for t in class_string if t in sound_classes][:2]
-    first = "H" if len(reduced_string) == 0 else reduced_string[0]
-    second = "H" if len(reduced_string) < 2 else reduced_string[1]
-    return concept + "-" + first + second
-
-
-def affiliate_by_consonant_class(
-        language,
-        wordlist,
-        wordlists,
-        criterion="mean",
-        families = None
-        ):
+def load_data(database, threshold, intersection):
     """
+    Loads the datasets and selects a subset.
     """
-    import statistics
+    # Setup for databases
+    gb = get_gb()
+    lb = get_lb()
+    asjp_data = get_other(mode="asjp")
 
-    crt = {"mean": 1, "median": 2, "max": 3, "min": 4}
+    if intersection:
+        # prepare datasets, only use common languages
+        common_languages = [lng for lng in asjp_data if lng in gb and lng in lb]
 
-    # transform the language in the lingpy wordlist
-    items = set()
-    for row in wordlist.values():
-        items.add(row[-1])
-    matches = defaultdict(lambda : defaultdict(list))
+        asjp_data = {k: v for k, v in asjp_data.items() if k in common_languages}
+        gb = {k: v for k, v in gb.items() if k in common_languages}
+        lb = {k: v for k, v in lb.items() if k in common_languages}
 
-    by_fam = defaultdict(dict)
-    for gcode, wl in wordlists.items():
-        fam = list(wl.values())[0][1]
-        by_fam[fam][gcode] = wl 
-    families = families or sorted(by_fam)
+    # get number of families to be inferred
+    language_families = defaultdict(int)
+    for _, wl in lb.items():
+        language_families[list(wl.values())[0][1]] += 1
 
-    classes = []
-    for fam, data in by_fam.items():
-        scores = []
-        for gcode, words in data.items():
-            if gcode != language:
-                items_b = set([row[-1] for row in words.values()])
-                commons = items.intersection(items_b)
-                matches = len(commons) / len(items)
-                scores += [matches]
-        classes += [(
-            fam,
-            statistics.mean(scores),
-            statistics.median(scores),
-            max(scores),
-            min(scores)
-            )]
-    results = [
-            sorted(classes, key=lambda x: x[crt["mean"]], reverse=True)[0],
-            sorted(classes, key=lambda x: x[crt["median"]], reverse=True)[0],
-            sorted(classes, key=lambda x: x[crt["max"]], reverse=True)[0],
-            sorted(classes, key=lambda x: x[crt["min"]], reverse=True)[0]
-            ]
+    selected_families = {fam for fam, num in language_families.items() if num >= threshold}
+    selected_languages = [k for k, wl in lb.items() if list(wl.values())[0][1] in selected_families]
 
-    return results #sorted(classes, key=lambda x: x[crt[criterion]], reverse=True)
+    # Summary stats
+    print(f'This run includes {len(selected_languages)} languages from {len(selected_families)} families, the common subset to ASJP, Lexibank, and Grambank.')
+
+    # Load main data
+    data_map = {'lexibank': lb, 'grambank': gb, 'asjp': asjp_data, 'combined': lb}
+    wl = data_map[database]
+
+    if database not in data_map:
+        print("Invalid data selection. Please choose 'lexibank', 'grambank', 'combined' or 'asjp'")
+        sys.exit()
+
+    return wl
