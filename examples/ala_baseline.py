@@ -1,10 +1,9 @@
-from ala import get_lb, get_other, affiliate_by_consonant_class, get_gb, get_asjp
+from ala.data import get_lb, get_other, get_gb, get_asjp
+from ala.baseline import affiliate_by_consonant_class, get_sound_class
 import collections
 import statistics
 import random
 from tqdm import tqdm
-from ala import get_sound_class
-from sklearn.metrics import f1_score
 from torchmetrics import F1Score
 from torch import tensor
 from pyconcepticon import Concepticon
