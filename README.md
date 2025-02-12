@@ -7,30 +7,21 @@ With ALA, we offer a service for the automated affiliation of a language, based 
 In order to run all the code, you can install the packages from the `requirements.txt` file (the command `python` here refers to the Python version that you use on your computer, on some systems, this may result in the command `python3`, but we use `python` as a generic placeholder here). You should make sure to use a fresh virtual environment before installing any packages.
 
 ```shell
-python3 -m pip install -r requirements.txt
-python3 -m pip install .
+python -m pip install -r requirements.txt
+python -m pip install .
 ```
 
 ## Downloading SQLITE Data for Lexibank, ASJP, and Grambank
 
-In order to download the data necessary for the experiments, you can run the Makefile:
+In order to download the data necessary for the experiments, you can run the Makefile, by opening a terminal in the `examples` folder:
 
 ```shell
-cd examples/
 make download
 make prepare
 ```
 
-## Running the experiments
+## Running the Experiments
 
-The experiments can be reproduced by running the following python command:
+To run the experiments, you should open a terminal in the `examples` folder. Here, we have prepared shell scripts that call the Python commands for convenience.
 
-```shell
-python3 -u ala_ff_torch.py --database=lexibank
-```
 
-You can chose the database between `lexibank`, `grambank`, `asjp`, or `combined` for the intersection of `lexibank` and `grambank`. Additionally, you can add a flag `-experiment` if you want to test for the linguistic isolates and large language families as specified in the paper.
-
-```shell
-python3 -u ala_ff_torch.py --database=grambank -experiment
-```
