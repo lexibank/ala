@@ -2,7 +2,6 @@ from matplotlib import pyplot as plt
 import csv
 from collections import OrderedDict, defaultdict
 from pathlib import Path
-from matplotlib.pyplot import subplot
 from matplotlib import colormaps
 import numpy as np
 
@@ -24,8 +23,8 @@ datasets = [
 
 data = defaultdict(list)
 for ds in datasets:
-    with open(Path(__file__).parent / "results" / str("experiment_" + ds
-                                                      +".tsv")) as f:
+    with open(Path(__file__).parent / "results" / str("experiment_" + ds + ".tsv"),
+              encoding='utf8') as f:
         reader = csv.reader(f, delimiter="\t")
         for row in reader:
             if row[0] in isolates:
@@ -53,7 +52,8 @@ cm = {}
 fams = [f for f in sorted(fams) if f != "Unclassified"]
 scale = np.linspace(0, 1, len(fams))
 languages = list(isolates.values())
-for i in range(len(fams)):
+
+for i, _ in enumerate(fams):
     cm[fams[i]] = cmap(scale[i])
 
 # black and white for major values
@@ -73,6 +73,7 @@ for i, ds in enumerate(datasets):
 for i, ds in enumerate(datasets):
     axs[i, 4].axis("off")
     axs[i, 5].axis("off")
+
 for f, c in cm.items():
     axs[3, 4].set_xlim(0, 1)
     axs[3, 4].set_ylim(0, 1)

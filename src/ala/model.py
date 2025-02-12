@@ -38,9 +38,10 @@ class FF(nn.Module):
         return prediction
 
 
-def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3):
+def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=None, experiment=False):
     """Training the model."""
     result_per_fam = defaultdict(list)
+    results_experiment = defaultdict(list)
 
     # Switch on GPU if available
     device = 'mps' if torch.backends.mps.is_available() \
@@ -53,18 +54,17 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3):
 
     f1_macro = F1Score(num_classes=len(idx2fam), average='macro', task="multiclass")
 
-    features = [data[lang][2] for lang in data]
-    labels = [fam2idx[data[lang][0]] for lang in data]
+    tests = {lang: data[lang] for lang in data if lang in test_langs}
+    features = [data[lang][2] for lang in data if lang not in test_langs]
+    labels = [fam2idx[data[lang][0]] for lang in data if lang not in test_langs]
 
     # Summary stats
     summary_stats = {
         'Number of families': len(fam2idx),
         'Number of languages': len(data),
-        'Size of vector': len(features[0]),
-        #'Number of concepts': len(features[0]) / n_pars
+        'Size of vector': len(features[0])
     }
     print(summary_stats)
-
 
     # Weights for CrossEntropy
     fam2w = defaultdict(int)
@@ -138,7 +138,11 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3):
 
         model.load_state_dict(torch.load('results/best-mpar.pt', weights_only=True))
 
-        # Add family results
+        if experiment:
+            for lang in tests:
+                results_experiment[lang, tests[lang][0]].append(
+                    model.predict(tests, lang, idx2fam, device))
+
         for fam, res in fam_final.items():
             result_per_fam[fam].append(
                 [run + 1, fam, fam2w[fam], res[1], round(res[0], 3)]
@@ -147,4 +151,4 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3):
         result_per_fam['TOTAL'].append(
                 [run + 1, 'TOTAL', len(data), len(test_ds), 100 * best_macro])
 
-    return result_per_fam
+    return result_per_fam, results_experiment

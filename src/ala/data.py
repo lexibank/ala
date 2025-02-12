@@ -176,14 +176,6 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
-BRANCH_QUERY = """SELECT
-    cldf_languagereference
-FROM
-    valuetable
-WHERE
-    cldf_parameterreference = 'classification' and cldf_value like ?
-"""
-
 
 def get_best_key(wordlists, glottocode):
     if len(wordlists[glottocode]) == 1:
@@ -396,7 +388,7 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
     return all_languages
 
 
-def load_data(database, threshold, intersection):
+def load_data(database, threshold, experiment=False):
     """
     Loads the datasets and selects a subset.
     """
@@ -405,7 +397,7 @@ def load_data(database, threshold, intersection):
     lb = get_lb()
     asjp_data = get_other(mode="asjp")
 
-    if intersection:
+    if experiment is False:
         # prepare datasets, only use common languages
         common_languages = [lng for lng in asjp_data if lng in gb and lng in lb]
 

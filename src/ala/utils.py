@@ -1,23 +1,61 @@
 import argparse
 import csv
 import os
+from collections import Counter
 from statistics import mean, stdev
 from clldutils.clilib import add_format, Table
+from ala.data import get_db
 
 
-def write_table(database, results, intersection, print_table):
+BRANCH_QUERY = """SELECT
+    cldf_languagereference
+FROM
+    valuetable
+WHERE
+    cldf_parameterreference = 'classification' and cldf_value like ?
+"""
+
+
+def extract_branch(gcode):
+    """
+    Retrieves all glottocodes that are part of a certain branch
+    in Glottolog.
+    """
+    gcode = "%" + gcode + "%"
+    db = get_db("data/glottolog.sqlite3")
+    db.execute(BRANCH_QUERY, (gcode,))
+    gcodes = [glottocode[0] for glottocode in db.fetchall()]
+
+    return gcodes
+
+
+def write_table(database, results, experiment, print_table):
     """
     Writes the results to a file and optionally also prints a table to the command line.
     """
-    tag = 'results_' if intersection else 'experiments_'
-    output = os.path.join('results', tag + database + '.tsv')
-    with open(output, 'w', encoding='utf8', newline='') as f:
-        writer = csv.writer(f, delimiter='\t')
-        writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-        for _, rows in results.items():
-            writer.writerows(rows)
+    if experiment is True:
+        results_table = []
+        for item in results:
+            for k, v in Counter(results[item]).items():
+                results_table.append([item[0], item[1], k, v])
+        output = 'results/experiment_' + database + '.tsv'
+        header = ['Language', 'Family', 'Prediction', 'Frequency']
 
-    if print_table:
+        output = os.path.join('results', 'experiments_' + database + '.tsv')
+        with open(output, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, delimiter='\t')
+            writer.writerow(header)
+            writer.writerows(results_table)
+
+    else:
+        output = os.path.join('results', 'results_' + database + '.tsv')
+        with open(output, 'w', encoding='utf8', newline='') as f:
+            writer = csv.writer(f, delimiter='\t')
+            writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
+            for _, rows in results.items():
+                writer.writerows(rows)
+
+    if print_table and experiment is False:
         # Summary table for command line
         table = [[
             fam, mean([r[2] for r in rows]),
@@ -42,8 +80,8 @@ def main():
                         help='Choose the dataset: lexibank, grambank, or combined')
     parser.add_argument("--minimum", action="store", type=int, default=5,
                         help="select the minimum number of languages per family")
-    parser.add_argument("--intersection", action="store", type=bool, default=True,
-                        help="only add languages common to all databases")
+    parser.add_argument("--experiment", action="store_true", default=False,
+                        help="conduct experiment with full database")
     add_format(parser, default='simple')
     arguments = parser.parse_args()
 
