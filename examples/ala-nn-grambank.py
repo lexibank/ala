@@ -12,7 +12,7 @@ def run_ala(args):
     gb = load_data('grambank', args.minimum, args.intersection)
     asjp = get_asjp()
 
-    gb_conv = feature2vec(get_db('data/grambank.sqlite3'))
+    gb_conv, _ = feature2vec(get_db('data/grambank.sqlite3'))
     data = convert_data(gb, {k: v[0] for k, v in asjp.items()},
                         gb_conv, load='grambank', threshold=args.minimum)
 

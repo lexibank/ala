@@ -56,6 +56,16 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3):
     features = [data[lang][2] for lang in data]
     labels = [fam2idx[data[lang][0]] for lang in data]
 
+    # Summary stats
+    summary_stats = {
+        'Number of families': len(fam2idx),
+        'Number of languages': len(data),
+        'Size of vector': len(features[0]),
+        #'Number of concepts': len(features[0]) / n_pars
+    }
+    print(summary_stats)
+
+
     # Weights for CrossEntropy
     fam2w = defaultdict(int)
     for family in [data[lang][0] for lang in data]:

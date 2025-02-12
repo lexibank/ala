@@ -13,8 +13,8 @@ def run_ala(args):
     gb = load_data('grambank', args.minimum, args.intersection)
     asjp = get_asjp()
 
-    gb_conv = feature2vec(get_db('data/grambank.sqlite3'))
-    lb_conv = concept2vec(
+    gb_conv, _ = feature2vec(get_db('data/grambank.sqlite3'))
+    lb_conv, _ = concept2vec(
         get_db('data/lexibank.sqlite3'), model='dolgo', conceptlist="Swadesh-1955-100")
 
     # Set up combination of LB and GB

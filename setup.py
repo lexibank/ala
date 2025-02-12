@@ -22,7 +22,6 @@ setup(
     keywords='phylogeny',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
-    py_modules=["baseline", "data", "model", "utils"],
     include_package_data=True,
     zip_safe=False,
     platforms='any',

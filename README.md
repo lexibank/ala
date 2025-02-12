@@ -2,13 +2,9 @@
 
 With ALA, we offer a service for the automated affiliation of a language, based on standardized data from the Lexibank repository for CLDF wordlists. Language Affiliation is hereby understood as the task by which one tries to identify to which language family a given language belongs.
 
-If you make use of the code presented here, please cite us in the following way:
-
-> Blum, Frederic and Forkel, Robert and List, Johann-Mattis. 2024. Using Lexical and Grammatical Data to Automatically Affiliate Language Isolates and Orphans. Talk held at the 57th meeting of the Societas Linguisticae Europaea. 21/08/2024, Helsinki.
-
 ## Installation Instructions
 
-In order to run all the code, you can install the packages from the requirements.txt file:
+In order to run all the code, you can install the packages from the `requirements.txt` file (the command `python` here refers to the Python version that you use on your computer, on some systems, this may result in the command `python3`, but we use `python` as a generic placeholder here). You should make sure to use a fresh virtual environment before installing any packages.
 
 ```shell
 python3 -m pip install -r requirements.txt
@@ -27,7 +23,7 @@ make prepare
 
 ## Running the experiments
 
-The experiments can be reproducred by running the following python command:
+The experiments can be reproduced by running the following python command:
 
 ```shell
 python3 -u ala_ff_torch.py --database=lexibank

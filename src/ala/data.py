@@ -279,7 +279,7 @@ def feature2vec(db):
                 vector[keys[param][value]] = 1
         return vector
 
-    return converter
+    return converter, len(keys)
 
 
 def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
@@ -321,7 +321,7 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
 
         return vector
 
-    return converter
+    return converter, 2 * len(sound_classes)
 
 
 def get_db(path):
@@ -360,13 +360,10 @@ def convert_data(wordlists, families, converter, load="lexical", threshold=3):
             by_fam[families[gcode]] += [gcode]
 
     unclassified, delis = [], []
-    save = []
     for fam, gcodes in by_fam.items():
         if len(set(gcodes)) == 1:
             unclassified.extend(gcodes)
             delis.append(fam)
-        elif fam in save:
-            pass
         elif len(set(gcodes)) < threshold:
             delis.append(fam)
     for fam in delis:
@@ -425,7 +422,7 @@ def load_data(database, threshold, intersection):
     selected_languages = [k for k, wl in lb.items() if list(wl.values())[0][1] in selected_families]
 
     # Summary stats
-    print(f'This run includes {len(selected_languages)} languages from {len(selected_families)} families, the common subset to ASJP, Lexibank, and Grambank.')
+    print(f'This run includes {len(selected_languages)} languages from {len(selected_families)} families.')
 
     # Load main data
     data_map = {'lexibank': lb, 'grambank': gb, 'asjp': asjp_data, 'combined': lb}

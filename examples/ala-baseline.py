@@ -81,8 +81,8 @@ for fam in unclassified:
     del by_fam_asjp[fam]
 
 # make subselection by eligible language families
-by_fam_lb = {k: v for k, v in by_fam_lb.items() if len(v) >= 5}
-by_fam_asjp = {k: v for k, v in by_fam_asjp.items() if len(v) >= 5}
+by_fam_lb = {k: v for k, v in by_fam_lb.items() if len(v) >= MINS}
+by_fam_asjp = {k: v for k, v in by_fam_asjp.items() if len(v) >= MINS}
 
 # language to family
 l2fam = {}
@@ -139,7 +139,7 @@ for i in range(RUNS):
     scores = {}
     for fam in by_fam:
         faml = len(by_fam[fam])
-        if faml >= 5:
+        if faml >= MINS:
             results_mean[fam] = []
             results_max[fam] = []
             trainl = int(faml * 0.8 + 0.5)
