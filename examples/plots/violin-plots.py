@@ -13,16 +13,30 @@ import statistics
 
 
 datasets = [
+        "asjp-holm-max",
+        "lb-swa-100-max",
         "asjp",
         "grambank",
         "lexibank",
         "combined"
         ]
 
+methods = {
+        "asjp-holm-max": "ASJP Baseline",
+        "lb-star-max": "Lexibank Baseline (Starostin 110)",
+        "lb-swa-100-max": "Lexibank Baseline (Swadesh 100)",
+        "lb-swa-200-max": "Lexibank Baseline (Swadesh 200)",
+        "lj-max": "Lexibank Baseline (Leipzig-Jakarta)",
+        "asjp": "ASJP ALA Model",
+        "combined": "Combined ALA Model",
+        "grambank": "Grambank ALA Model",
+        "lexibank": "Lexibank ALA Model",
+        }
+
 
 data = defaultdict(lambda : defaultdict(list))
 for ds in datasets:
-    with open(Path(__file__).parent / "results" / str("results_" + ds
+    with open(Path(__file__).parent.parent / "results" / str("results_" + ds
                                                       +".tsv")) as f:
         reader = csv.reader(f, delimiter="\t")
         next(reader)
@@ -32,15 +46,18 @@ runs = {ds: [] for ds in datasets}
 for ds in datasets:
     for k, vals in data[ds].items():
         runs[ds] += [statistics.mean(vals)]
+for ds in datasets:
+    print(ds, statistics.mean(runs[ds]))
+
 
 plt.clf()
 fig, axs = plt.subplots(1, 1, layout="constrained", figsize=(12, 4))
 
 for i, ds in enumerate(datasets[::-1]):
     plt.violinplot(runs[ds], [i * 0.5 + 1], points=100, quantiles=[0.25, 0.75], showmeans=True, side="high", orientation="horizontal")
-plt.yticks([i * 0.5 + 1 for i in range(4)], [d.upper() for d in
+plt.yticks([i * 0.5 + 1 for i in range(len(datasets))], [methods[d] for d in
                                              datasets[::-1]], fontsize=15)
 plt.xlim(50, 100)
-plt.savefig(Path(__file__).parent / "plots" / "violin-scores.pdf")
+plt.savefig(Path(__file__).parent.parent / "plots" / "violin-scores.pdf")
 
 
