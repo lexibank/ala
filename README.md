@@ -24,4 +24,8 @@ make prepare
 
 To run the experiments, you should open a terminal in the `examples` folder. Here, we have prepared shell scripts that call the Python commands for convenience.
 
-
+```shell
+sh runs-bl.sh
+sh runs-comparison-nn.sh
+sh runs-experiments.sh
+```
