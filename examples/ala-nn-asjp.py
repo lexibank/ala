@@ -12,7 +12,7 @@ def run_ala(args):
     wl = load_data('asjp', args.minimum, args.intersection)
     asjp = get_asjp()
 
-    asjp_conv = concept2vec(
+    asjp_conv, _ = concept2vec(
             get_db('data/lexibank.sqlite3'), model='dolgo', conceptlist="Holman-2008-40")
 
     data = convert_data(wl, {k: v[0] for k, v in asjp.items()},
