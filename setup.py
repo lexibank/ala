@@ -16,8 +16,6 @@ setup(
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
     ],
-    author='Johann-Mattis List',
-    author_email='mattis.list@uni-passau.de',
     url='https://github.com/lexibank/ala',
     keywords='phylogeny',
     packages=find_packages(where='src'),
