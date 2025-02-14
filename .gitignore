@@ -141,3 +141,4 @@ examples/family-distances.tsv
 *.Rproj
 *.sqlite3
 !examples/data/carari.sqlite3
+*DS_Store
