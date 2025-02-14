@@ -42,7 +42,7 @@ def run_ala(args):
 
     # Only write overall results if not runnings the experiment
     if args.experiment is False:
-        write_table('combined', result_per_fam, print_table=True)
+        write_table('combined', result_per_fam, experiment=args.experiment, print_table=True)
 
     # Only write 'experiments_' results in the corresponding setting
     if args.experiment:

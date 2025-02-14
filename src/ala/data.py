@@ -176,7 +176,6 @@ WHERE
   p.cldf_id = c.cldf_parameterreference;"""
 
 
-
 def get_best_key(wordlists, glottocode):
     if len(wordlists[glottocode]) == 1:
         return list(wordlists[glottocode].keys())[0]
@@ -213,19 +212,6 @@ def get_other(mode, data_path=None):
         all_wordlists[glottocode] = wordlists[glottocode][best_key]
 
     return all_wordlists
-
-
-def extract_branch(gcode):
-    """
-    Retrieves all glottocodes that are part of a certain branch
-    in Glottolog.
-    """
-    gcode = "%" + gcode + "%"
-    db = get_db("data/glottolog.sqlite3")
-    db.execute(BRANCH_QUERY, (gcode,))
-    gcodes = [glottocode[0] for glottocode in db.fetchall()]
-
-    return gcodes
 
 
 def get_gb(path="data/grambank.sqlite3"):

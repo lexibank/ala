@@ -52,8 +52,9 @@ def write_table(database, results, experiment, print_table):
         with open(output, 'w', encoding='utf8', newline='') as f:
             writer = csv.writer(f, delimiter='\t')
             writer.writerow(['Run', 'Family', 'Languages', 'Tested', 'Score'])
-            for _, rows in results.items():
-                writer.writerows(rows)
+            for fam, rows in results.items():
+                if fam != 'TOTAL':
+                    writer.writerows(rows)
 
     if print_table and experiment is False:
         # Summary table for command line

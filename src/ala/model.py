@@ -1,7 +1,6 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from torchmetrics import F1Score
 from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import train_test_split
 from collections import defaultdict
@@ -51,8 +50,6 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=Non
 
     idx2fam = dict(enumerate(set((data[lang][0] for lang in data))))
     fam2idx = {family: idx for idx, family in enumerate(set(data[lang][0] for lang in data))}
-
-    f1_macro = F1Score(num_classes=len(idx2fam), average='macro', task="multiclass")
 
     tests = {lang: data[lang] for lang in data if lang in test_langs}
     features = [data[lang][2] for lang in data if lang not in test_langs]
@@ -115,7 +112,6 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=Non
                         for test_data, labels in test_loader:
                             outputs = model(test_data)
                             _, preds = torch.max(outputs.data, 1)
-                            macro = round(f1_macro(preds.cpu(), labels.cpu()).item(), 10)
 
                             # Labels per family
                             for idx, label in enumerate(labels):
@@ -126,10 +122,11 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=Non
                             total = len(family_results[fam])
                             fam_avg[idx2fam[fam]] = [100 * corr / total, total]
 
-                        print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. F1: {macro}.')
+                        bal_acc = sum([fam_avg[fam][0] for fam in fam_avg]) / len(fam_avg)
+                        print(f'Iter: {iters}. Loss: {round(loss.item(), 5)}. Bal. acc.: {bal_acc}.')
 
-                        if macro > best_macro:
-                            best_macro = macro
+                        if bal_acc > best_macro:
+                            best_macro = bal_acc
                             fam_final = fam_avg
                             no_improve = 0
                             torch.save(model.state_dict(), 'results/best-mpar.pt')
@@ -149,6 +146,6 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=Non
                 )
 
         result_per_fam['TOTAL'].append(
-                [run + 1, 'TOTAL', len(data), len(test_ds), 100 * best_macro])
+                [run + 1, 'TOTAL', len(data), len(test_ds), best_macro])
 
     return result_per_fam, results_experiment
