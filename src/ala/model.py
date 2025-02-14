@@ -38,7 +38,8 @@ class FF(nn.Module):
         return prediction
 
 
-def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=None, experiment=False):
+def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3,
+          test_langs=None, experiment=False, test_size=0.2):
     """Training the model."""
     result_per_fam = defaultdict(list)
     results_experiment = defaultdict(list)
@@ -83,7 +84,7 @@ def train(data, runs, epochs=5000, batch=2048, hidden=4, lr=1e-3, test_langs=Non
         print('--- New Run: ', run+1, '/', runs, '---')
         fam_final = defaultdict()
         train_ds, test_ds = train_test_split(
-            tensor_ds, test_size=0.2, stratify=all_labels
+            tensor_ds, test_size=test_size, stratify=all_labels
             )
 
         train_ds = [(item[0].to(device), item[1].to(device)) for item in train_ds]

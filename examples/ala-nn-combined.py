@@ -38,7 +38,8 @@ def run_ala(args):
         or lang in isolates))}
 
     result_per_fam, results_experiment = train(
-        data, args.runs, test_langs=test_langs, experiment=args.experiment)
+        data, args.runs, test_langs=test_langs, experiment=args.experiment,
+        test_size=0.05)
 
     # Only write overall results if not runnings the experiment
     if args.experiment is False:
