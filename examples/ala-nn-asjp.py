@@ -9,7 +9,7 @@ from ala.model import train
 def run_ala(args):
     """Defines the workflow for data loading in the different settings."""
     # get configuration options
-    wl = load_data('asjp', args.minimum, args.intersection)
+    wl = load_data('asjp', args.minimum, args.experiment)
     asjp = get_asjp()
 
     asjp_conv, _ = concept2vec(
@@ -18,9 +18,10 @@ def run_ala(args):
     data = convert_data(wl, {k: v[0] for k, v in asjp.items()},
                         asjp_conv, load='lexical', threshold=args.minimum)
 
-    result_per_fam = train(data, args.runs)
+    test_langs = []
+    result_per_fam, results_experiment = train(
+        data, args.runs, test_langs=test_langs, experiment=args.experiment)
 
-    write_table('asjp', result_per_fam, intersection=args.intersection, print_table=True)
-
+    write_table('asjp', result_per_fam, experiment=args.experiment, print_table=True)
 
 run_ala(main())

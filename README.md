@@ -13,7 +13,14 @@ python -m pip install .
 
 ## Downloading SQLITE Data for Lexibank, ASJP, and Grambank
 
-In order to download the data necessary for the experiments, you can run the Makefile, by opening a terminal in the `examples` folder:
+In order to download the data necessary for the experiments, you can run the Makefile, by opening a terminal in the `examples` folder and installing the additional packages:
+
+```shell
+cd examples
+python -m pip install -r requirements.txt
+```
+
+You can now download the data and create the SQLite databases.
 
 ```shell
 make download
