@@ -1,11 +1,13 @@
 #!/bin/bash
-#SBATCH --cpus-per-task 16
-#SBATCH --mem 500G
 #SBATCH -J results-ala
-#SBATCH --partition dlcegpu
-#SBATCH -w dlcenode01
 #SBATCH --output=%x.%j.out
 #SBATCH --error=%x.%j.err
+#SBATCH --partition=gpu  
+#SBATCH --cpus-per-task=32
+#SBATCH --gres=gpu:4  
+#SBATCH --mem-per-cpu=10G
+
+module load Python/3.13.2 
 
 python -u ala-nn-combined.py --experiment --runs=100
 python -u ala-nn-grambank.py --experiment --runs=100
