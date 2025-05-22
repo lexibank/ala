@@ -43,7 +43,7 @@ def affiliate_by_consonant_class(
             max(scores),
             min(scores)
             )]
-        print(scores)
+
     results = [
             sorted(classes, key=lambda x: x[crt["mean"]], reverse=True)[0],
             sorted(classes, key=lambda x: x[crt["median"]], reverse=True)[0],

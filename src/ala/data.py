@@ -49,7 +49,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 30;
+  c.Word_Number >= 20;
 """
 
 CAR_QUERY = """
@@ -135,7 +135,7 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 40
+  c.Word_Number >= 50
 ;
 """
 
@@ -382,10 +382,11 @@ def load_data(database, threshold, experiment=False):
     gb = get_gb()
     lb = get_lb()
     asjp_data = get_other(mode="asjp")
+    asjp = get_asjp()
 
     if experiment is False:
         # prepare datasets, only use common languages
-        common_languages = [lng for lng in asjp_data if lng in gb and lng in lb]
+        common_languages = [lng for lng in asjp if lng in lb and lng in gb]
 
         asjp_data = {k: v for k, v in asjp_data.items() if k in common_languages}
         gb = {k: v for k, v in gb.items() if k in common_languages}
