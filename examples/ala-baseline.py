@@ -44,9 +44,6 @@ holm = {concept.concepticon_gloss for concept in
 swad = {concept.concepticon_gloss for concept in 
         con.conceptlists[clist].concepts.values()}
 
-
-
-
 lb = get_lb()
 asjp = get_other(mode="asjp")
 gb = get_gb()
@@ -55,7 +52,6 @@ asjpc = get_asjp()
 common_languages = [lng for lng in lb if lng in asjp and lng in gb]
 lb = {k: v for k, v in lb.items() if k in common_languages}
 asjp = {k: v for k, v in asjp.items() if k in common_languages}
-
 
 by_fam_lb = collections.defaultdict(dict)
 by_fam_asjp = collections.defaultdict(dict)

@@ -35,6 +35,7 @@ def affiliate_by_consonant_class(
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
                 scores += [matches]
+
         classes += [(
             fam,
             statistics.mean(scores),
@@ -42,6 +43,7 @@ def affiliate_by_consonant_class(
             max(scores),
             min(scores)
             )]
+        print(scores)
     results = [
             sorted(classes, key=lambda x: x[crt["mean"]], reverse=True)[0],
             sorted(classes, key=lambda x: x[crt["median"]], reverse=True)[0],

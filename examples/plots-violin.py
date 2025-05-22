@@ -32,7 +32,7 @@ methods = {
 
 data = defaultdict(lambda: defaultdict(list))
 for ds in datasets:
-    with open(Path(__file__).parent.parent / "results" / str("results_" + ds + ".tsv"),
+    with open(Path(__file__).parent / "results" / str("results_" + ds + ".tsv"),
               encoding='utf8') as f:
         reader = csv.reader(f, delimiter="\t")
         next(reader)
@@ -52,7 +52,7 @@ for i, ds in enumerate(datasets[::-1]):
 plt.yticks([i * 0.5 + 1 for i in range(len(datasets))],
            [methods[d] for d in datasets[::-1]], fontsize=15)
 plt.xlim(50, 100)
-plt.savefig(Path(__file__).parent.parent / "plots" / "violin-scores.pdf")
+plt.savefig(Path(__file__).parent / "plots" / "violin-scores.pdf")
 
 # Alternative plot with color legend
 # plt.yticks([])
