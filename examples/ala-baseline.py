@@ -43,7 +43,7 @@ asjp_fams = get_asjp()
 fams = {k: v[0] for k, v in asjp_fams.items()}
 
 # Load ASJP wordlist data
-asjp = load_data('asjp', 1)
+asjp = load_data('asjp', 5)
 
 # Filter for common languages
 common_languages = [lng for lng in lb if lng in asjp_fams and lng in gb]
