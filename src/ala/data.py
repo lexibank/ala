@@ -397,11 +397,13 @@ def load_data(database, threshold, experiment=False):
     for _, wl in lb.items():
         language_families[list(wl.values())[0][1]] += 1
 
-    selected_families = {fam for fam, num in language_families.items() if num >= threshold}
-    selected_languages = [k for k, wl in lb.items() if list(wl.values())[0][1] in selected_families]
+    selected_fams = {fam: num for fam, num in language_families.items() if num >= threshold}
+    selected_langs = [
+        k for k, wl in lb.items() if list(wl.values())[0][1] in selected_fams or
+                                language_families[list(wl.values())[0][1]] == 1]
 
     # Summary stats
-    print(f'This run includes {len(selected_languages)} languages from {len(selected_families)} families.')
+    print(f'This run includes {len(selected_langs)} languages from {len(selected_fams)} families.')
 
     # Load main data
     data_map = {'lexibank': lb, 'grambank': gb, 'asjp': asjp_data, 'combined': lb}
