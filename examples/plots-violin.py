@@ -9,8 +9,8 @@ import statistics
 
 
 datasets = [
-        "asjp-holm-max",
-        "lb-swa-100-max",
+        "bl_asjp-holm-max",
+        "bl_lb-swa-100-max",
         "asjp",
         "grambank",
         "lexibank",
@@ -18,11 +18,11 @@ datasets = [
         ]
 
 methods = {
-        "asjp-holm-max": "ASJP Baseline",
-        "lb-star-max": "Lexibank Baseline (Starostin 110)",
-        "lb-swa-100-max": "Lexibank Baseline (Swadesh 100)",
-        "lb-swa-200-max": "Lexibank Baseline (Swadesh 200)",
-        "lj-max": "Lexibank Baseline (Leipzig-Jakarta)",
+        "bl_asjp-holm-max": "ASJP Baseline",
+        "bl_lb-star-max": "Lexibank Baseline (Starostin 110)",
+        "bl_lb-swa-100-max": "Lexibank Baseline",
+        "bl_lb-swa-200-max": "Lexibank Baseline (Swadesh 200)",
+        "bl_lj-max": "Lexibank Baseline (Leipzig-Jakarta)",
         "asjp": "ASJP ALA Model",
         "combined": "Combined ALA Model",
         "grambank": "Grambank ALA Model",

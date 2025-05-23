@@ -35,9 +35,9 @@ all_fams = {f: set() for f in datasets}
 fams = set()
 for (ds, lng), results in data.items():
     results = sorted(results, key=lambda x: x[1], reverse=True)
-    top2 = results[:2]
-    rest = sum([v[1] for v in results[2:]])
-    for f, hits in top2:
+    top3 = results[:3]
+    rest = sum([v[1] for v in results[3:]])
+    for f, hits in top3:
         all_fams[ds].add(f)
         fams.add(f)
         pies[ds][lng]["labels"] += [f]

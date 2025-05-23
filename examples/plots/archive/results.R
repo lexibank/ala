@@ -12,8 +12,7 @@ library(stringr)
 
 full_data <- c()
 for (model in c('grambank', 'lexibank', 'asjp', 'combined')){
-  data <- read_tsv(paste("../../results/results_", model, ".tsv", sep='')) %>% 
-    mutate(Model=str_replace(str_to_title(model), 'Asjp', 'ASJP'))
+  data <- read_tsv(paste("../../results/results_", model, ".tsv", sep=''))
   full_data <- rbind(full_data, data)
 }
 
@@ -216,12 +215,12 @@ correct_exp
 # Isolates
 colors_is <- c('#0c71ff', '#ca2800', '#ff28ba', '#000096', '#86e300', '#1c5951', '#20d2ff', '#20ae86', '#590000', '#65008e', '#b6005d')
 isolates <- full_data %>% 
-  filter(Family=='Unclassified', Frequency>=10,  Language!='cara1273') %>% 
+  filter(Family=='Unclassified', Frequency>=10) %>% 
   # filter(!(Prediction %in% c('Nuclear Trans New Guinea', 'Nakh-Daghestanian', 'Dravidian', 'Chibchan', 'Nuclear-Macro-Je'))) %>% 
   # filter(!(Prediction == 'Mande' & Language == 'Kusunda')) %>% 
   select(-Family) %>% 
   group_by(Language, Model) %>% 
-  slice_max(n=4, Frequency) %>% 
+  slice_max(n=3, Frequency) %>% 
   ggplot(aes(y=Frequency, x=Prediction, fill=Prediction)) +
   geom_col() +
   scale_y_continuous(breaks=c(0, 50, 100), 

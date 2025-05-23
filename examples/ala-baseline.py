@@ -61,7 +61,6 @@ for key, forms in data.items():
         wl_ = {k: v for k, v in forms.items() if v[2] in conc}
         by_fam[fam][key] = wl_
         data[key] = wl_
-        print(len(data[key]))
 
 # get unclassified
 unclassified = {fam for fam in by_fam if len(by_fam[fam]) == 1}
@@ -88,10 +87,11 @@ for key in common_languages:
 print(f"Investigating {len(l2fam)} languages from {len(by_fam)} families.")
 print("start investigation")
 
-base_path = "results/results_" + ds + "-" + fnames[clist]
+base_path = "results/results_bl_" + ds + "-" + fnames[clist]
 for i in range(RUNS):
     results_mean, results_max = {}, {}
     selection_train, selection_test = {}, {}
+    total_1, total_2 = [], []
     scores = {}
     for fam in by_fam:
         results_mean[fam] = []
@@ -111,21 +111,20 @@ for i in range(RUNS):
         scores[fam] = (len(train), len(test))
 
     for lng, wl in tqdm(selection_test.items()):
-        res = affiliate_by_consonant_class(lng, wl, selection_train, by_fam)
+        res = affiliate_by_consonant_class(lng, wl, selection_train)
 
         results_mean[l2fam[lng]] += [1] if res[0][0] == l2fam[lng] else [0]
         results_max[l2fam[lng]] += [1] if res[2][0] == l2fam[lng] else [0]
 
     # Write mean results
     with open(base_path + "-mean.tsv", "a", encoding='utf8') as f:
-        total_1, total_2 = [], []
         for k, v in results_mean.items():
             f.write("\t".join([
                 str(i + 1),
                 str(k),
                 str(sum(scores[k])),
                 str(scores[k][1]),
-                f"{round(100 * statistics.mean(v)), 2}"]) + "\n")
+                f"{round(100 * statistics.mean(v), 2)}"]) + "\n")
             total_1 += [statistics.mean(v)]
 
     # Write max results
@@ -136,12 +135,12 @@ for i in range(RUNS):
                 str(k),
                 str(sum(scores[k])),
                 str(scores[k][1]),
-                f"{round(100 * statistics.mean(v), 2)}"]) + "\n")
+                f"{round(100 * statistics.mean(v), 3)}"]) + "\n")
             total_2 += [statistics.mean(v)]
 
     # Print output per run
     results = {
-        "Mean": round(statistics.mean(total_1), 2),
-        "Max": round(statistics.mean(total_2), 2)
+        "Mean": round(statistics.mean(total_1), 3),
+        "Max": round(statistics.mean(total_2), 3)
     }
     print(f"Run {i + 1}: {results}")
