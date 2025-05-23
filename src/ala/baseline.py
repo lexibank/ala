@@ -3,12 +3,7 @@ import statistics
 from collections import defaultdict
 
 
-def affiliate_by_consonant_class(
-        language,
-        wordlist,
-        wordlists,
-        families=None
-        ):
+def affiliate_by_consonant_class(language, wordlist, wordlists):
     """
     """
 
@@ -23,8 +18,7 @@ def affiliate_by_consonant_class(
     by_fam = defaultdict(dict)
     for gcode, wl in wordlists.items():
         fam = list(wl.values())[0][1]
-        by_fam[fam][gcode] = wl 
-    families = families or sorted(by_fam)
+        by_fam[fam][gcode] = wl
 
     classes = []
     for fam, data in by_fam.items():
@@ -35,6 +29,7 @@ def affiliate_by_consonant_class(
                 commons = items.intersection(items_b)
                 matches = len(commons) / len(items)
                 scores += [matches]
+
         classes += [(
             fam,
             statistics.mean(scores),
@@ -42,6 +37,7 @@ def affiliate_by_consonant_class(
             max(scores),
             min(scores)
             )]
+
     results = [
             sorted(classes, key=lambda x: x[crt["mean"]], reverse=True)[0],
             sorted(classes, key=lambda x: x[crt["median"]], reverse=True)[0],

@@ -9,8 +9,8 @@ import statistics
 
 
 datasets = [
-        "asjp-holm-max",
-        "lb-swa-100-max",
+        "bl_asjp-holm-max",
+        "bl_lb-swa-100-max",
         "asjp",
         "grambank",
         "lexibank",
@@ -18,11 +18,11 @@ datasets = [
         ]
 
 methods = {
-        "asjp-holm-max": "ASJP Baseline",
-        "lb-star-max": "Lexibank Baseline (Starostin 110)",
-        "lb-swa-100-max": "Lexibank Baseline (Swadesh 100)",
-        "lb-swa-200-max": "Lexibank Baseline (Swadesh 200)",
-        "lj-max": "Lexibank Baseline (Leipzig-Jakarta)",
+        "bl_asjp-holm-max": "ASJP Baseline",
+        "bl_lb-star-max": "Lexibank Baseline (Starostin 110)",
+        "bl_lb-swa-100-max": "Lexibank Baseline",
+        "bl_lb-swa-200-max": "Lexibank Baseline (Swadesh 200)",
+        "bl_lj-max": "Lexibank Baseline (Leipzig-Jakarta)",
         "asjp": "ASJP ALA Model",
         "combined": "Combined ALA Model",
         "grambank": "Grambank ALA Model",
@@ -32,7 +32,7 @@ methods = {
 
 data = defaultdict(lambda: defaultdict(list))
 for ds in datasets:
-    with open(Path(__file__).parent.parent / "results" / str("results_" + ds + ".tsv"),
+    with open(Path(__file__).parent / "results" / str("results_" + ds + ".tsv"),
               encoding='utf8') as f:
         reader = csv.reader(f, delimiter="\t")
         next(reader)
@@ -52,7 +52,7 @@ for i, ds in enumerate(datasets[::-1]):
 plt.yticks([i * 0.5 + 1 for i in range(len(datasets))],
            [methods[d] for d in datasets[::-1]], fontsize=15)
 plt.xlim(50, 100)
-plt.savefig(Path(__file__).parent.parent / "plots" / "violin-scores.pdf")
+plt.savefig(Path(__file__).parent / "plots" / "violin-scores.pdf")
 
 # Alternative plot with color legend
 # plt.yticks([])

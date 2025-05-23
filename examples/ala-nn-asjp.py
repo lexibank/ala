@@ -19,7 +19,7 @@ def run_ala(args):
                         asjp_conv, load='lexical', threshold=args.minimum)
 
     test_langs = []
-    result_per_fam, results_experiment = train(
+    result_per_fam, _ = train(
         data, args.runs, test_langs=test_langs, experiment=args.experiment)
 
     write_table('asjp', result_per_fam, experiment=args.experiment, print_table=True)
