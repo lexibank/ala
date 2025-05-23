@@ -32,6 +32,7 @@ fnames = {
         "Holman-2008-40": "holm",
         "Starostin-1991-110": "star"
         }
+
 con = Concepticon()
 conc = {concept.concepticon_gloss for concept in con.conceptlists[clist].concepts.values()}
 
@@ -43,7 +44,7 @@ asjp_fams = get_asjp()
 fams = {k: v[0] for k, v in asjp_fams.items()}
 
 # Load ASJP wordlist data
-asjp = load_data('asjp', 5)
+asjp = load_data('asjp', 1)
 
 # Filter for common languages
 common_languages = [lng for lng in lb if lng in asjp_fams and lng in gb]
@@ -52,12 +53,15 @@ by_fam = collections.defaultdict(dict)
 data = lb if ds == "lb" else asjp if ds == "asjp" else []
 data = {k: v for k, v in data.items() if k in common_languages}
 
+filtered_data = {}
 # Filter concepts
 for key, forms in data.items():
     if key in common_languages:
         fam = fams[key]
         wl_ = {k: v for k, v in forms.items() if v[2] in conc}
         by_fam[fam][key] = wl_
+        data[key] = wl_
+        print(len(data[key]))
 
 # get unclassified
 unclassified = {fam for fam in by_fam if len(by_fam[fam]) == 1}
@@ -94,9 +98,9 @@ for i in range(RUNS):
         results_max[fam] = []
 
         languages = list(by_fam[fam])
-        sanple_n = int(len(by_fam[fam]) * 0.8)
+        sample_n = int(len(by_fam[fam]) * 0.8)
 
-        train = random.sample(languages, sanple_n)
+        train = random.sample(languages, sample_n)
         test = [l for l in languages if l not in train]
 
         for t in train:
@@ -114,7 +118,7 @@ for i in range(RUNS):
 
     # Write mean results
     with open(base_path + "-mean.tsv", "a", encoding='utf8') as f:
-        total_1, total_2, total_3 = [], [], []
+        total_1, total_2 = [], []
         for k, v in results_mean.items():
             f.write("\t".join([
                 str(i + 1),
