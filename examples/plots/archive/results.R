@@ -162,6 +162,18 @@ full_data <- full_data %>%
     Language = str_replace(Language, 'mapu1245', 'Mapudungun'),
   )
 
+library(tidyr)
+library(xtable)
+
+fams <- full_data %>% 
+  filter(Family!="Unclassified") %>% 
+  group_by(Family, Model, Prediction) %>% 
+  summarise(Frequency=sum(Frequency)/ n_distinct(Language)) %>% 
+  group_by(Family, Model) %>% 
+  filter(Family==Prediction) %>% 
+  pivot_wider(names_from='Model', values_from=c('Frequency'))
+print(xtable(fams), type="latex", include.rownames=FALSE)
+
 colors_ld <- c('#0c71ff', '#ca2800', '#ff28ba', '#000096', '#86e300', '#1c5951', '#20d2ff', '#20ae86', '#590000')
 long_distance <- full_data %>% 
   filter(Family!="Unclassified") %>% 
