@@ -1,3 +1,4 @@
+"""IMporting the databases from the different CLDF datasets."""
 import sys
 import sqlite3
 from collections import defaultdict
@@ -98,44 +99,39 @@ WHERE
 ;
 """
 
-WL_QUERY = """SELECT
-  ROW_NUMBER() OVER(),
+
+WL_QUERY = """
+WITH selected_concepts AS (
+  SELECT cc.cldf_concepticonReference
+  FROM db2.parametertable AS cc
+  WHERE cc.core_concept LIKE '%{0}%'
+)
+SELECT
+  ROW_NUMBER() OVER() AS row_num,
   l.cldf_id,
   l.cldf_glottocode,
   l.family,
   p.cldf_name,
   f.cldf_segments,
-  p.cldf_id || "-" || SUBSTR(
-    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, "V", ""), "+", ""), "1", ""), 0, 3),
-  c.Word_Number
-FROM
-  formtable as f,
-  languagetable as l,
-  parametertable as p
-INNER JOIN
-  (
+  p.cldf_id || '-' || SUBSTR(
+    REPLACE(REPLACE(REPLACE(f.dolgo_sound_classes, 'V', ''), '+', ''), '1', ''), 0, 3
+  ) AS sound_class_id,
+  c.word_number
+FROM formtable AS f
+JOIN languagetable AS l ON f.cldf_languageReference = l.cldf_id
+JOIN parametertable AS p ON f.cldf_parameterReference = p.cldf_id
+JOIN selected_concepts AS sc ON p.cldf_concepticonReference = sc.cldf_concepticonReference
+JOIN (
     SELECT
-      l_2.cldf_glottocode,
-      COUNT (*) as Word_Number
-    FROM
-      formtable as f_2,
-      languagetable as l_2,
-      parametertable as p_2
-    WHERE
-      f_2.cldf_languageReference = l_2.cldf_id
-        AND
-      f_2.cldf_parameterReference = p_2.cldf_id
-    GROUP BY
-      l_2.cldf_glottocode
-  ) as c
-ON
-  c.cldf_glottocode = l.cldf_glottocode
-WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id
-    AND
-  c.Word_Number >= 50
+      l2.cldf_glottocode,
+      COUNT(DISTINCT p2.cldf_name) AS word_number
+    FROM formtable AS f2
+    JOIN languagetable AS l2 ON f2.cldf_languageReference = l2.cldf_id
+    JOIN parametertable AS p2 ON f2.cldf_parameterReference = p2.cldf_id
+    JOIN selected_concepts AS sc2 ON p2.cldf_concepticonReference = sc2.cldf_concepticonReference
+    GROUP BY l2.cldf_glottocode
+) AS c ON c.cldf_glottocode = l.cldf_glottocode
+WHERE c.word_number >= 50
 ;
 """
 
@@ -144,7 +140,8 @@ GB_QUERY = """SELECT
   ROW_NUMBER() OVER(),
   l.cldf_id,
   p.cldf_name,
-  f.cldf_value
+  f.cldf_value,
+  l.Family_name
 FROM
   valuetable as f,
   languagetable as l,
@@ -152,9 +149,7 @@ FROM
 ON
   f.cldf_languagereference = l.cldf_id
 WHERE
-  f.cldf_parameterReference = p.cldf_id
-    AND
-  f.cldf_languageReference = l.cldf_id;
+  f.cldf_parameterReference = p.cldf_id;
 """
 
 
@@ -173,16 +168,15 @@ GB_PARAMS = """SELECT
 FROM
   parametertable as p, codetable as c
 WHERE
-  p.cldf_id = c.cldf_parameterreference;"""
+  p.cldf_id = c.cldf_parameterreference;
+"""
 
 
-def get_best_key(wordlists, glottocode):
+def _get_best_key(wordlists, glottocode):
     if len(wordlists[glottocode]) == 1:
         return list(wordlists[glottocode].keys())[0]
-    return sorted(
-        wordlists[glottocode].keys(),
-        key=lambda x: x[1],
-        reverse=True)[0]
+
+    return sorted(wordlists[glottocode].keys(), key=lambda x: x[1], reverse=True)[0]
 
 
 def get_other(mode, data_path=None):
@@ -208,7 +202,7 @@ def get_other(mode, data_path=None):
     # retrieve best glottocodes
     all_wordlists = {}
     for glottocode in wordlists:
-        best_key = get_best_key(wordlists, glottocode)
+        best_key = _get_best_key(wordlists, glottocode)
         all_wordlists[glottocode] = wordlists[glottocode][best_key]
 
     return all_wordlists
@@ -223,11 +217,10 @@ def get_gb(path="data/grambank.sqlite3"):
     db = get_db(path)
     wordlists = defaultdict(lambda: defaultdict(dict))
     db.execute(GB_QUERY)
-    for idx, glottocode, concept, tokens in tqdm.tqdm(db.fetchall()):
+    for idx, glottocode, concept, tokens, family in tqdm.tqdm(db.fetchall()):
         if tokens:
             wordlists[glottocode][idx] = [
-                idx, glottocode, concept,
-                tokens, f"{slug(concept)}-{tokens}"
+                glottocode, family, concept, tokens, f"{slug(concept)}-{tokens}"
                 ]
     return wordlists
 
@@ -260,7 +253,7 @@ def feature2vec(db):
     return converter, len(keys)
 
 
-def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
+def concept2vec(db, conceptlist, model="dolgo", h_class="H"):
     """
     Function returns a function that converts data from one language to a vector.
 
@@ -271,10 +264,9 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
     sc_model = rc(model)
 
     # ugly hack, must refine dolgo-model in lingpy!
-    if model == "dolgo":
-        sc_model.tones = "1"
+    sc_model.tones = "1"
 
-    db.execute(CONCEPT_QUERY.format(conceptlist))
+    db.execute(CONCEPT_QUERY).format(conceptlist)
     concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
 
     sound_classes = [c for c in
@@ -283,19 +275,22 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
     cls2idx = {c: i for i, c in enumerate(sound_classes)}
 
     def converter(words):
-        nested_vector = [[len(sound_classes) * [0], len(sound_classes) * [0]] for c in concepts]
+        # modify so that I can switch between 1-3 consonants dynamically
+        n_consonants = 2
+
+        nested_vector = [[len(sound_classes) * [0] for _ in range(n_consonants)] for c in concepts]
+
         for concept, tokens in words:
             if concept in concepts:
                 class_string = tokens2class(tokens, model)
-                reduced_string = [t for t in class_string if t in sound_classes][:2]
-                first = h_class if len(reduced_string) == 0 else reduced_string[0]
-                second = h_class if len(reduced_string) < 2 else reduced_string[1]
+                reduced_string = [t for t in class_string if t in sound_classes][:n_consonants]
 
                 idx = concepts[concept]
-                nested_vector[idx][0][cls2idx[first]] = 1
-                nested_vector[idx][1][cls2idx[second]] = 1
+                for pos in range(n_consonants):
+                    cls = reduced_string[pos] if pos < len(reduced_string) else h_class
+                    nested_vector[idx][pos][cls2idx[cls]] = 1
 
-        vector = [x for a, b in nested_vector for x in a + b]
+        vector = [x for group in nested_vector for sub in group for x in sub]
 
         return vector
 
@@ -303,114 +298,106 @@ def concept2vec(db, model="dolgo", h_class="H", conceptlist="Swadesh-1955-100"):
 
 
 def get_db(path):
+    """Simple access to a SQLite3 db."""
     con = sqlite3.connect(path)
     return con.cursor()
 
 
 def get_asjp(path="data/asjp.sqlite3"):
+    """Currently not used anymore. Could be reused for WALS classification if needed"""
+
     db = get_db(path)
     db.execute("select distinct cldf_glottocode, family, classification_wals from languagetable;")
     return {a: [b, c] for a, b, c in db.fetchall()}
 
 
-def get_lb(path="data/lexibank.sqlite3"):
+def get_lb(conceptlist, path="data/lexibank.sqlite3"):
     """
     Retrieve all wordlists from data.
-
     Note: fetch biggest by glottocode.
     """
     db = get_db(path)
     wl = defaultdict(lambda: defaultdict(dict))
-    db.execute(WL_QUERY)
+    db.execute(WL_QUERY).format(conceptlist)
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wl[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
     # retrieve best glottocodes
-    all_wordlists = {glottocode: wl[glottocode][get_best_key(wl, glottocode)] for glottocode in wl}
+    all_wordlists = {glottocode: wl[glottocode][_get_best_key(wl, glottocode)] for glottocode in wl}
     return all_wordlists
 
 
-def convert_data(wordlists, families, converter, load="lexical", threshold=3):
-    # order by family
-    by_fam = defaultdict(list)
-    for gcode in wordlists:
-        if gcode in families:
-            by_fam[families[gcode]] += [gcode]
-
-    unclassified, delis = [], []
-    for fam, gcodes in by_fam.items():
-        if len(set(gcodes)) == 1:
-            unclassified.extend(gcodes)
-            delis.append(fam)
-        elif len(set(gcodes)) < threshold:
-            delis.append(fam)
-    for fam in delis:
-        del by_fam[fam]
-    by_fam["Unclassified"] = unclassified
-
-    fam2idx = {fam: i for i, fam in enumerate(by_fam)}
-
-    features = []
-    labels = []
-    languages = []
-
+def convert_data(wordlists, families, converter, load="lexical"):
+    """Converts data into one-hot vectors."""
+    fam2idx = {fam: i for i, fam in enumerate(families)}
     all_languages = defaultdict()
-    for fam, gcodes in by_fam.items():
+
+    for fam, gcodes in families.items():
         for gcode in gcodes:
             data = wordlists[gcode]
             label = fam2idx[fam]
-            if load in ("lexical"):
+            if load == "lexical":
                 features = [[row[2], row[3].split()] for row in data.values()]
-            if load == "grambank":
+            elif load == "grambank":
                 features = [[x[2], x[3]] for x in data.values()]
-            feature_vector = converter(features)
+            else:
+                raise ValueError(f"Unknown database: {load}")
 
-            features.append(feature_vector)
-            labels.append(label)
-            languages.append(gcode)
+            feature_vector = converter(features)
 
             all_languages[gcode] = [fam, label, feature_vector]
 
     return all_languages
 
 
-def load_data(database, threshold, experiment=False):
+def load_data(database, conceptlist, threshold, experiment=False):
     """
     Loads the datasets and selects a subset.
+    This includes filtering the dataset for our threshold.
     """
-    # Setup for databases
     gb = get_gb()
-    lb = get_lb()
-    asjp_data = get_other(mode="asjp")
-    asjp = get_asjp()
+    lb = get_lb(conceptlist)
+    # asjp_data = get_other(mode="asjp")
 
-    if experiment is False:
-        # prepare datasets, only use common languages
-        common_languages = [lng for lng in asjp if lng in lb and lng in gb]
+    # Get intersection of datasets
+    # if experiment is False:
+    #     common_languages = [lng for lng in lb if lng in gb] # and lng in asjp_data]
 
-        asjp_data = {k: v for k, v in asjp_data.items() if k in common_languages}
-        gb = {k: v for k, v in gb.items() if k in common_languages}
-        lb = {k: v for k, v in lb.items() if k in common_languages}
+    #     gb = {k: v for k, v in gb.items() if k in common_languages}
+    #     lb = {k: v for k, v in lb.items() if k in common_languages}
+
+    data = lb if database == 'lexibank' else gb if database == 'grambank' else None #asjp_data
 
     # get number of families to be inferred
     language_families = defaultdict(int)
-    for _, wl in lb.items():
+    for _, wl in data.items():
         language_families[list(wl.values())[0][1]] += 1
 
     selected_fams = {fam: num for fam, num in language_families.items() if num >= threshold}
-    selected_langs = [
-        k for k, wl in lb.items() if list(wl.values())[0][1] in selected_fams or
-                                language_families[list(wl.values())[0][1]] == 1]
+
+    selected_langs = {}
+    by_fam = defaultdict(list)
+
+    for gcode, wl in data.items():
+        fam = list(wl.values())[0][1]
+        # TODO: try language_families[fam] < threshold
+        if fam is None or language_families[fam] == 1:
+            selected_langs[gcode] = 'Unclassified'
+            by_fam['Unclassified'].append(gcode)
+
+        elif fam in selected_fams:
+            selected_langs[gcode] = fam
+            by_fam[fam].append(gcode)
 
     # Summary stats
     print(f'This run includes {len(selected_langs)} languages from {len(selected_fams)} families.')
 
     # Load main data
-    data_map = {'lexibank': lb, 'grambank': gb, 'asjp': asjp_data, 'combined': lb}
+    data_map = {'lexibank': lb, 'grambank': gb, 'combined': lb}
     wl = data_map[database]
 
     if database not in data_map:
         print("Invalid data selection. Please choose 'lexibank', 'grambank', 'combined' or 'asjp'")
         sys.exit()
 
-    return wl
+    return wl, by_fam

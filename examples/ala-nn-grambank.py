@@ -1,7 +1,7 @@
 """
 Module for running the experiments for Automated Language Affiliation.
 """
-from ala.data import convert_data, load_data, feature2vec, get_db, get_asjp
+from ala.data import convert_data, load_data, feature2vec, get_db
 from ala.utils import write_table, main, extract_branch
 from ala.model import train
 
@@ -9,12 +9,10 @@ from ala.model import train
 def run_ala(args):
     """Defines the workflow for data loading in the different settings."""
     # get configuration options
-    gb = load_data('grambank', args.minimum, args.experiment)
-    asjp = get_asjp()
+    gb, families = load_data('grambank', args.minimum, args.experiment)
 
     gb_conv, _ = feature2vec(get_db('data/grambank.sqlite3'))
-    data = convert_data(gb, {k: v[0] for k, v in asjp.items()},
-                        gb_conv, load='grambank', threshold=args.minimum)
+    data = convert_data(gb, families, gb_conv, load='grambank')
 
     northern_uto = extract_branch(gcode='nort2953')
     anatolian = extract_branch(gcode='anat1257')
