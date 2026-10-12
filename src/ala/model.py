@@ -17,19 +17,19 @@ class FF(nn.Module):
         self.fc1 = nn.Linear(database_dim, hidden_dim)
         self.fc2 = nn.Linear(hidden_dim, hidden_dim)
         self.fc_out = nn.Linear(hidden_dim, output_dim)
-        self.relu = nn.GELU()
+        self.gelu = nn.GELU()
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, x):
         """Forward-pass with two hidden layers."""
         # First hidden
         out = self.fc1(x)
-        out = self.relu(out)
+        out = self.gelu(out)
         out = self.dropout(out)
 
         # Second hidden
         out = self.fc2(out)
-        out = self.relu(out)
+        out = self.gelu(out)
         out = self.dropout(out)
 
         out = self.fc_out(out)
@@ -52,9 +52,9 @@ class FF(nn.Module):
 class TrainConfig:
     """Stores the hyperparameters for the model."""
     epochs: int = 5000
-    batch: int = 16
+    batch: int = 8
     hidden: int = 4
-    lr: float = 3e-3
+    lr: float = 5e-3
     patience: int = 50
     dropout: float = 0.3
 
@@ -265,7 +265,7 @@ def run_model(data, runs, config: TrainConfig, test_langs=None):
         for fam, res in f_fam_avg.items():
             res_per_fam[fam].append([run + 1, fam, fam2w[fam], res[1], round(res[0], 3)])
 
-        res_per_fam['TOTAL'].append(run + 1, 'TOTAL', len(data), len(data)/5, round(f_total, 3))
+        res_per_fam['TOTAL'].append([run + 1, 'TOTAL', len(data), len(data)/5, round(f_total, 3)])
 
     return res_per_fam, results_experiment
 

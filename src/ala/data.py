@@ -103,7 +103,7 @@ WHERE
 WL_QUERY = """
 WITH selected_concepts AS (
   SELECT cc.cldf_concepticonReference
-  FROM db2.parametertable AS cc
+  FROM parametertable AS cc
   WHERE cc.core_concept LIKE '%{0}%'
 )
 SELECT
@@ -266,7 +266,7 @@ def concept2vec(db, conceptlist, model="dolgo", h_class="H"):
     # ugly hack, must refine dolgo-model in lingpy!
     sc_model.tones = "1"
 
-    db.execute(CONCEPT_QUERY).format(conceptlist)
+    db.execute(CONCEPT_QUERY.format(conceptlist))
     concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
 
     sound_classes = [c for c in
@@ -318,7 +318,7 @@ def get_lb(conceptlist, path="data/lexibank.sqlite3"):
     """
     db = get_db(path)
     wl = defaultdict(lambda: defaultdict(dict))
-    db.execute(WL_QUERY).format(conceptlist)
+    db.execute(WL_QUERY.format(conceptlist))
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
         wl[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 

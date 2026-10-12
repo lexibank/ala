@@ -25,7 +25,7 @@ def run_ala(args):
     test_langs = {lang: data[lang] for lang in data if (args.experiment and lang in isolates)}
 
     config = TrainConfig()
-    result_per_fam, results_experiment = run_model(data, config, test_langs=test_langs)
+    result_per_fam, results_experiment = run_model(data, args.runs, config, test_langs=test_langs)
 
     # Only write overall results if not runnings the experiment
     if args.experiment is False:
