@@ -5,7 +5,8 @@ from collections import defaultdict
 from lingpy import rc, tokens2class
 import tqdm
 from clldutils.misc import slug
-
+from soundvectors import SoundVectors
+from pyclts import CLTS
 
 ATTACH_ASJP = """ATTACH '{0}/asjp.sqlite3' AS db1;"""
 ATTACH_CAR = """ATTACH '{0}/carari.sqlite3' AS db1;"""
@@ -253,6 +254,53 @@ def feature2vec(db):
     return converter, len(keys)
 
 
+def concept2featurevec(db, conceptlist, n_consonants=2, fallback_sound=None):
+    """
+    Function returns a function that converts data from one language to a vector.
+
+    Instead of one-hot sound-class vectors (as in concept2vec), this uses
+    phonetic feature vectors from the `soundvectors` package, computed via a
+    CLTS transcription system (e.g. BIPA). For each concept, `n_consonants`
+    slots are reserved, each filled with the feature vector of the
+    corresponding consonant segment. Missing/short words are padded with a
+    neutral (zero) vector, or optionally with the feature vector of a
+    designated fallback sound (e.g. "h"), mirroring the h_class placeholder
+    used in concept2vec.
+    """
+    ts = CLTS().bipa
+    sv = SoundVectors(ts=ts)
+
+    db.execute(CONCEPT_QUERY.format(conceptlist))
+    concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
+
+    empty_vec = list(tuple([0] * len(sv.get_vec("b"))))[1:25]
+
+    def converter(words):
+        nested_vector = [[list(empty_vec) for _ in range(n_consonants)] for _ in concepts]
+
+        for concept, segments in words:
+            count = 0
+            idx = concepts[concept]
+            for segment in segments:
+                if count >= n_consonants:
+                    break
+                # Check if valid segment
+                try:
+                    feat_vec = list(sv.get_vec(segment))
+                except (KeyError, ValueError):
+                    continue
+
+                if feat_vec[0] == 1:
+                    nested_vector[idx][count] = feat_vec[1:25]
+                    count += 1
+            # print(segments, nested_vector[idx])
+        vector = [x for group in nested_vector for sub in group for x in sub]
+
+        return vector
+
+    return converter
+
+
 def concept2vec(db, conceptlist, model="dolgo", h_class="H"):
     """
     Function returns a function that converts data from one language to a vector.
@@ -281,20 +329,19 @@ def concept2vec(db, conceptlist, model="dolgo", h_class="H"):
         nested_vector = [[len(sound_classes) * [0] for _ in range(n_consonants)] for c in concepts]
 
         for concept, tokens in words:
-            if concept in concepts:
-                class_string = tokens2class(tokens, model)
-                reduced_string = [t for t in class_string if t in sound_classes][:n_consonants]
+            class_string = tokens2class(tokens, model)
+            reduced_string = [t for t in class_string if t in sound_classes][:n_consonants]
 
-                idx = concepts[concept]
-                for pos in range(n_consonants):
-                    cls = reduced_string[pos] if pos < len(reduced_string) else h_class
-                    nested_vector[idx][pos][cls2idx[cls]] = 1
+            idx = concepts[concept]
+            for pos in range(n_consonants):
+                cls = reduced_string[pos] if pos < len(reduced_string) else h_class
+                nested_vector[idx][pos][cls2idx[cls]] = 1
 
         vector = [x for group in nested_vector for sub in group for x in sub]
 
         return vector
 
-    return converter, 2 * len(sound_classes)
+    return converter
 
 
 def get_db(path):
@@ -350,7 +397,7 @@ def convert_data(wordlists, families, converter, load="lexical"):
     return all_languages
 
 
-def load_data(database, conceptlist, threshold, experiment=False):
+def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-100'):
     """
     Loads the datasets and selects a subset.
     This includes filtering the dataset for our threshold.

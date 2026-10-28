@@ -42,3 +42,7 @@ sh runs-bl.sh
 sh runs-comparison-nn.sh
 sh runs-experiments.sh
 ```
+
+## Hyperparameter grid search
+
+In order to find the best hyperparameters for each model, you can run the `ala-nn-hyperparams.py` script. Here, different values for learning rate, batch, and the size of hidden neurons are given.

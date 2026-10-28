@@ -50,11 +50,14 @@ class FF(nn.Module):
 
 @dataclass
 class TrainConfig:
-    """Stores the hyperparameters for the model."""
+    """
+    Stores the hyperparameters for the model.
+    Default values correspond to the best results for Lexibank.
+    """
     epochs: int = 5000
     batch: int = 8
-    hidden: int = 4
-    lr: float = 5e-3
+    hidden: int = 3
+    lr: float = 1e-3
     patience: int = 50
     dropout: float = 0.3
 
@@ -239,7 +242,7 @@ class ModelTrainer:
         return f_fam_avg, f_total, predictions
 
 
-def run_model(data, runs, config: TrainConfig, test_langs=None):
+def run_model(data, runs, config: TrainConfig, test_langs={}):
     """Runs the whole workflow, based on the ModelTrainer class."""
     device = 'mps' if torch.backends.mps.is_available() \
     else 'cuda' if torch.cuda.is_available() else 'cpu'
@@ -270,7 +273,7 @@ def run_model(data, runs, config: TrainConfig, test_langs=None):
     return res_per_fam, results_experiment
 
 
-def sweep_grid(data, base_config, param_grid, test_langs=None, runs=10):
+def sweep_grid(data, base_config, param_grid, test_langs={}, runs=10):
     """
     Run train() across all combinations of hyperparameters in param_grid.
     param_grid: {'lr': [], 'batch': [], 'hidden': []}

@@ -55,7 +55,6 @@ def _print_summary_table(results):
     print(tabulate(table, headers=headers, tablefmt="grid", floatfmt=".2f"))
 
 
-
 def write_table(database, results, experiment=False, print_table=True):
     """
     Writes the results to a file and optionally prints a summary table.
