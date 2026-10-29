@@ -254,7 +254,7 @@ def feature2vec(db):
     return converter, len(keys)
 
 
-def concept2featurevec(db, conceptlist, n_consonants=2, fallback_sound=None):
+def concept2featurevec(db, conceptlist, n_consonants=4):
     """
     Function returns a function that converts data from one language to a vector.
 
@@ -263,9 +263,7 @@ def concept2featurevec(db, conceptlist, n_consonants=2, fallback_sound=None):
     CLTS transcription system (e.g. BIPA). For each concept, `n_consonants`
     slots are reserved, each filled with the feature vector of the
     corresponding consonant segment. Missing/short words are padded with a
-    neutral (zero) vector, or optionally with the feature vector of a
-    designated fallback sound (e.g. "h"), mirroring the h_class placeholder
-    used in concept2vec.
+    neutral (zero) vector.
     """
     ts = CLTS().bipa
     sv = SoundVectors(ts=ts)

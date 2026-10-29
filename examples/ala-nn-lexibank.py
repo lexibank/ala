@@ -1,7 +1,7 @@
 """
 Module for running the experiments for Automated Language Affiliation.
 """
-from ala.data import convert_data, load_data, concept2vec, get_db
+from ala.data import convert_data, load_data, concept2featurevec, get_db
 from ala.utils import write_table, main
 from ala.model import run_model, TrainConfig
 
@@ -16,7 +16,7 @@ def run_ala(args):
 
     wl, families = load_data('lexibank', args.minimum, args.experiment, conceptlist)
 
-    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), conceptlist)
+    lb_conv = concept2featurevec(get_db('data/lexibank.sqlite3'), conceptlist)
 
     data = convert_data(wl, families, lb_conv, load='lexical')
 
@@ -43,10 +43,10 @@ def run_ala(args):
     test_langs = {lang: data[lang] for lang in data if (args.experiment and lang in isolates)}
 
     # For concept2vec
-    config = TrainConfig(lr=1e-3)
+    #config = TrainConfig(lr=1e-3)
 
     # # For concept2featurevec
-    # config = TrainConfig(lr=5e-4)
+    config = TrainConfig(lr=5e-4)
 
     result_per_fam, results_experiment = run_model(data, args.runs, config, test_langs=test_langs)
 
