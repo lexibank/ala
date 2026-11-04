@@ -1,7 +1,7 @@
 """
 Module for running the experiments for Automated Language Affiliation.
 """
-from ala.data import convert_data, load_data, concept2featurevec, get_db
+from ala.data import convert_data, load_data, concept2vec, get_db
 from ala.utils import write_table, main
 from ala.model import run_model, TrainConfig
 
@@ -9,14 +9,14 @@ from ala.model import run_model, TrainConfig
 def run_ala(args):
     """Defines the workflow for data loading in the different settings."""
     # get configuration options
-    conceptlist='Starostin-1991-110'
+    # conceptlist='Starostin-1991-110'
     # conceptlist="Swadesh-1955-100"
     # conceptlist="Tadmor-2009-100"
-    # conceptlist="Swadesh-1952-200"
+    conceptlist="Swadesh-1952-200"
 
     wl, families = load_data('lexibank', args.minimum, args.experiment, conceptlist)
 
-    lb_conv = concept2featurevec(get_db('data/lexibank.sqlite3'), conceptlist)
+    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), conceptlist)
 
     data = convert_data(wl, families, lb_conv, load='lexical')
 
