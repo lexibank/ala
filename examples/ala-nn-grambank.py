@@ -14,7 +14,7 @@ def run_ala(args):
     gb_conv, _ = feature2vec(get_db('data/grambank.sqlite3'))
     data = convert_data(gb, families, gb_conv, load='grambank')
 
-    isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250', 'cara1273']
+    # isolates = ['bang1363', 'basq1248', 'mapu1245', 'kusu1250', 'cara1273']
 
     test_langs = {lang: data[lang] for lang in data if (args.experiment and lang in isolates)}
 

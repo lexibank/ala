@@ -395,7 +395,7 @@ def convert_data(wordlists, families, converter, load="lexical"):
     return all_languages
 
 
-def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-100'):
+def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-100', isolates=list()):
     """
     Loads the datasets and selects a subset.
     This includes filtering the dataset for our threshold.
@@ -425,7 +425,6 @@ def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-1
 
     for gcode, wl in data.items():
         fam = list(wl.values())[0][1]
-        # TODO: try language_families[fam] < threshold
         if fam is None or language_families[fam] == 1:
             selected_langs[gcode] = 'Unclassified'
             by_fam['Unclassified'].append(gcode)
@@ -433,6 +432,12 @@ def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-1
         elif fam in selected_fams:
             selected_langs[gcode] = fam
             by_fam[fam].append(gcode)
+        
+        elif experiment is True and gcode in isolates:
+            # Adds languages from small families that are added to isolates
+            # print(gcode)
+            selected_langs[gcode] = 'Unclassified'
+            by_fam['Unclassified'].append(gcode)    
 
     # Summary stats
     print(f'This run includes {len(selected_langs)} languages from {len(selected_fams)} families.')
