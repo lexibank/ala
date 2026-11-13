@@ -92,7 +92,7 @@ class RunSettings:
     """Everything about how/where to run training, independent of the data itself."""
     config: TrainConfig
     device: str
-    checkpoint_path: str = 'results/best-mpar.pt'
+    checkpoint_path: str = 'results/best-mpar_2.pt'
 
 
 def prepare_data(data, test_langs, device):

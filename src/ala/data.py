@@ -132,7 +132,7 @@ JOIN (
     JOIN selected_concepts AS sc2 ON p2.cldf_concepticonReference = sc2.cldf_concepticonReference
     GROUP BY l2.cldf_glottocode
 ) AS c ON c.cldf_glottocode = l.cldf_glottocode
-WHERE c.word_number >= 50
+WHERE c.word_number >= 40
 ;
 """
 
@@ -251,16 +251,16 @@ def feature2vec(db):
                 vector[keys[param][value]] = 1
         return vector
 
-    return converter, len(keys)
+    return converter
 
 
-def concept2featurevec(db, conceptlist, n_consonants=4):
+def concept2featurevec(db, conceptlist, n_segments=2):
     """
     Function returns a function that converts data from one language to a vector.
 
     Instead of one-hot sound-class vectors (as in concept2vec), this uses
     phonetic feature vectors from the `soundvectors` package, computed via a
-    CLTS transcription system (e.g. BIPA). For each concept, `n_consonants`
+    CLTS transcription system (e.g. BIPA). For each concept, `n_segments`
     slots are reserved, each filled with the feature vector of the
     corresponding consonant segment. Missing/short words are padded with a
     neutral (zero) vector.
@@ -271,16 +271,17 @@ def concept2featurevec(db, conceptlist, n_consonants=4):
     db.execute(CONCEPT_QUERY.format(conceptlist))
     concepts = {c[0]: i for i, c in enumerate(db.fetchall())}
 
-    empty_vec = list(tuple([0] * len(sv.get_vec("b"))))[1:25]
+    # 1:25: consonants
+    empty_vec = list(tuple([0] * len(sv.get_vec("a"))))[1:25]
 
     def converter(words):
-        nested_vector = [[list(empty_vec) for _ in range(n_consonants)] for _ in concepts]
+        nested_vector = [[list(empty_vec) for _ in range(n_segments)] for _ in concepts]
 
         for concept, segments in words:
             count = 0
             idx = concepts[concept]
             for segment in segments:
-                if count >= n_consonants:
+                if count >= n_segments:
                     break
                 # Check if valid segment
                 try:
@@ -288,9 +289,14 @@ def concept2featurevec(db, conceptlist, n_consonants=4):
                 except (KeyError, ValueError):
                     continue
 
+                # == 1: consonants
+                # == 0: vowels
                 if feat_vec[0] == 1:
+                    # print(feat_vec)
+                    # 1:25: consonants
                     nested_vector[idx][count] = feat_vec[1:25]
-                    count += 1
+                #nested_vector[idx][count] = feat_vec[1:38]
+                count += 1
             # print(segments, nested_vector[idx])
         vector = [x for group in nested_vector for sub in group for x in sub]
 
@@ -395,7 +401,7 @@ def convert_data(wordlists, families, converter, load="lexical"):
     return all_languages
 
 
-def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-100', isolates=list()):
+def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-100', isolates=list(), small_fams=list()):
     """
     Loads the datasets and selects a subset.
     This includes filtering the dataset for our threshold.
@@ -418,8 +424,8 @@ def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-1
     for _, wl in data.items():
         language_families[list(wl.values())[0][1]] += 1
 
-    selected_fams = {fam: num for fam, num in language_families.items() if num >= threshold}
-
+    selected_fams = {fam: num for fam, num in language_families.items() if num >= threshold or fam in small_fams}
+    # print(selected_fams)
     selected_langs = {}
     by_fam = defaultdict(list)
 

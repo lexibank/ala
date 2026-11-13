@@ -17,7 +17,7 @@ def run_ala(args):
     config = TrainConfig()
     param_grid = {
         'lr': [0.0005, 0.0001, 0.00005],
-        'batch': [8, 16, 32],
+        'batch': [16, 32],
         'hidden': [3]
     }
 

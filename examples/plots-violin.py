@@ -9,13 +9,29 @@ import statistics
 
 
 datasets = [
-        "bl_asjp-holm-max",
-        "bl_lb-swa-100-max",
-        "asjp",
-        "grambank",
-        "lexibank",
-        "combined"
-        ]
+    # Baseline comparison
+    #"bl_asjp-holm-max",
+    #"bl_lb-swa-100-max",
+    #"asjp",
+    #"grambank",
+    #"lexibank",
+    #"combined"
+
+    # Conceptlist Comparison
+    # "lexibank_starostin",
+    # "lexibank_swadesh100",
+    # "lexibank_swadesh200",
+    # "lexibank_tadmor100"
+
+    # Lexibank features
+    "lexibank_cons_1",
+    "lexibank_cons_2",
+    "lexibank_feature_cons_1",
+    "lexibank_feature_cons_2",
+    "lexibank_feature_vowels_2",
+    "lexibank_features_2",
+    "lexibank_features_4"
+    ]
 
 methods = {
         "bl_asjp-holm-max": "ASJP Baseline",
@@ -27,38 +43,70 @@ methods = {
         "combined": "Combined ALA Model",
         "grambank": "Grambank ALA Model",
         "lexibank": "Lexibank ALA Model",
+        "lexibank_starostin": "Starostin-110",
+        "lexibank_swadesh100": "Swadesh-100",
+        "lexibank_swadesh200": "Swadesh-200",
+        "lexibank_tadmor100": "Tadmor-100",
+        "lexibank_cons_2": "Two Consonants (Dolgo)",
+        "lexibank_cons_1": "One Consonant (Dolgo)",
+        "lexibank_feature_cons_1": "One Consonant (Features)",
+        "lexibank_feature_cons_2": "Two Consonants (Features)",
+        "lexibank_features_2": "Two Segments (Features)",
+        "lexibank_features_4": "Four Segments (Features)",
+        "lexibank_feature_vowels_2": "Two Vowels (Features)"
         }
 
-
-data = defaultdict(lambda: defaultdict(list))
+# Compute avg per run
+run_averages = {}
 for ds in datasets:
+    run_averages[ds] = {}
     with open(Path(__file__).parent / "results" / str("results_" + ds + ".tsv"),
               encoding='utf8') as f:
-        reader = csv.reader(f, delimiter="\t")
-        next(reader)
+        reader = csv.DictReader(f, delimiter="\t")
         for row in reader:
-            data[ds][row[0]] += [float(row[-1])]
+            run_id = row['Run']
+            value = float(row['Score'])
+            if run_id not in run_averages[ds]:
+                run_averages[ds][run_id] = []
 
-runs = {ds: [statistics.mean(vals) for vals in data[ds].values()] for ds in datasets}
+            run_averages[ds][run_id].append(value)
+    
+    # Compute mean for each run
+    run_averages[ds] = {run_id: statistics.mean(vals) for run_id, vals in run_averages[ds].items()}
+
+# print(run_averages)
+
+filtered_data = {}
 for ds in datasets:
-    print(ds, statistics.mean(runs[ds]))
+    all_run_means = list(run_averages[ds].values())
+    sorted_vals = sorted(all_run_means)
+    n = len(sorted_vals)
+    
+    # Calculate the 89% interval
+    lower_idx = int(n * 0.055)
+    upper_idx = int(n * 0.945)
+    
+    # Ensure we have at least one value
+    if upper_idx <= lower_idx:
+        upper_idx = lower_idx + 1
+    
+    filtered_data[ds] = sorted_vals[lower_idx:upper_idx]
+
+filtered_data = dict(sorted(filtered_data.items(), key=lambda item: statistics.mean(item[1])))
+
+# for ds in datasets:
+#     # print(filtered_data[ds])
+#     print(ds, statistics.mean(filtered_data[ds]))
+print(filtered_data)
 
 plt.clf()
 fig, axs = plt.subplots(1, 1, layout="constrained", figsize=(12, 4))
 
-for i, ds in enumerate(datasets[::-1]):
-    plt.violinplot(runs[ds], [i * 0.5 + 1], points=100, quantiles=[0.25, 0.75], showmeans=True,
-                   side="high", orientation="horizontal")
+for i, ds in enumerate(filtered_data):
+    plt.violinplot(filtered_data[ds], [i * 0.5 + 1], points=20, 
+                   quantiles=[0.25, 0.75], showmeans=True, side="high", orientation="horizontal")
+
 plt.yticks([i * 0.5 + 1 for i in range(len(datasets))],
-           [methods[d] for d in datasets[::-1]], fontsize=15)
-plt.xlim(50, 100)
+           [methods[d] for d in filtered_data], fontsize=15)
+plt.xlim(0, 100)
 plt.savefig(Path(__file__).parent / "plots" / "violin-scores.pdf")
-
-# Alternative plot with color legend
-# plt.yticks([])
-# handles = [Line2D([0], [0], marker='o', color='w', label=ds.upper(),
-#                   markerfacecolor=f'C{i}', markersize=15)
-#            for i, ds in enumerate(datasets[::-1])]
-
-# plt.legend(handles=handles, loc='lower center', bbox_to_anchor=(0.5, -0.2), ncol=4)
-# plt.savefig(Path(__file__).parent / "plots" / "violin-scores-alternative.pdf", dpi=300)

@@ -1,0 +1,5901 @@
+Run	Family	Languages	Tested	Score
+1	Indo-European	146	30	96.667
+2	Indo-European	146	30	100.0
+3	Indo-European	146	30	100.0
+4	Indo-European	146	30	100.0
+5	Indo-European	146	29	100.0
+6	Indo-European	146	29	100.0
+7	Indo-European	146	29	96.552
+8	Indo-European	146	30	96.667
+9	Indo-European	146	30	100.0
+10	Indo-European	146	30	96.667
+11	Indo-European	146	29	100.0
+12	Indo-European	146	30	100.0
+13	Indo-European	146	30	100.0
+14	Indo-European	146	30	100.0
+15	Indo-European	146	29	100.0
+16	Indo-European	146	30	100.0
+17	Indo-European	146	30	100.0
+18	Indo-European	146	30	93.333
+19	Indo-European	146	30	100.0
+20	Indo-European	146	29	96.552
+21	Indo-European	146	30	100.0
+22	Indo-European	146	30	100.0
+23	Indo-European	146	30	100.0
+24	Indo-European	146	29	96.552
+25	Indo-European	146	29	100.0
+26	Indo-European	146	29	100.0
+27	Indo-European	146	29	96.552
+28	Indo-European	146	29	100.0
+29	Indo-European	146	29	100.0
+30	Indo-European	146	30	100.0
+31	Indo-European	146	30	100.0
+32	Indo-European	146	30	100.0
+33	Indo-European	146	30	96.667
+34	Indo-European	146	30	100.0
+35	Indo-European	146	29	100.0
+36	Indo-European	146	29	100.0
+37	Indo-European	146	30	100.0
+38	Indo-European	146	30	96.667
+39	Indo-European	146	30	100.0
+40	Indo-European	146	30	100.0
+41	Indo-European	146	30	100.0
+42	Indo-European	146	30	100.0
+43	Indo-European	146	30	100.0
+44	Indo-European	146	30	96.667
+45	Indo-European	146	30	100.0
+46	Indo-European	146	29	96.552
+47	Indo-European	146	29	96.552
+48	Indo-European	146	29	100.0
+49	Indo-European	146	29	96.552
+50	Indo-European	146	29	100.0
+51	Indo-European	146	29	93.103
+52	Indo-European	146	29	100.0
+53	Indo-European	146	30	96.667
+54	Indo-European	146	30	96.667
+55	Indo-European	146	30	100.0
+56	Indo-European	146	29	100.0
+57	Indo-European	146	30	100.0
+58	Indo-European	146	30	100.0
+59	Indo-European	146	29	100.0
+60	Indo-European	146	29	100.0
+61	Indo-European	146	29	100.0
+62	Indo-European	146	30	100.0
+63	Indo-European	146	29	100.0
+64	Indo-European	146	30	100.0
+65	Indo-European	146	30	96.667
+66	Indo-European	146	30	100.0
+67	Indo-European	146	29	100.0
+68	Indo-European	146	30	100.0
+69	Indo-European	146	29	100.0
+70	Indo-European	146	29	100.0
+71	Indo-European	146	29	100.0
+72	Indo-European	146	30	100.0
+73	Indo-European	146	30	100.0
+74	Indo-European	146	29	96.552
+75	Indo-European	146	29	93.103
+76	Indo-European	146	30	100.0
+77	Indo-European	146	29	96.552
+78	Indo-European	146	29	100.0
+79	Indo-European	146	30	96.667
+80	Indo-European	146	30	100.0
+81	Indo-European	146	30	100.0
+82	Indo-European	146	30	96.667
+83	Indo-European	146	29	100.0
+84	Indo-European	146	29	100.0
+85	Indo-European	146	29	100.0
+86	Indo-European	146	29	100.0
+87	Indo-European	146	29	100.0
+88	Indo-European	146	29	100.0
+89	Indo-European	146	30	100.0
+90	Indo-European	146	30	100.0
+91	Indo-European	146	29	100.0
+92	Indo-European	146	30	100.0
+93	Indo-European	146	30	100.0
+94	Indo-European	146	30	96.667
+95	Indo-European	146	30	100.0
+96	Indo-European	146	29	100.0
+97	Indo-European	146	29	100.0
+98	Indo-European	146	30	100.0
+99	Indo-European	146	30	100.0
+100	Indo-European	146	29	100.0
+1	Austronesian	573	115	99.13
+2	Austronesian	573	115	99.13
+3	Austronesian	573	115	98.261
+4	Austronesian	573	115	98.261
+5	Austronesian	573	114	97.368
+6	Austronesian	573	114	100.0
+7	Austronesian	573	114	96.491
+8	Austronesian	573	114	98.246
+9	Austronesian	573	114	99.123
+10	Austronesian	573	115	100.0
+11	Austronesian	573	115	99.13
+12	Austronesian	573	115	99.13
+13	Austronesian	573	114	98.246
+14	Austronesian	573	114	98.246
+15	Austronesian	573	115	100.0
+16	Austronesian	573	114	99.123
+17	Austronesian	573	114	99.123
+18	Austronesian	573	114	97.368
+19	Austronesian	573	114	99.123
+20	Austronesian	573	115	97.391
+21	Austronesian	573	114	97.368
+22	Austronesian	573	115	98.261
+23	Austronesian	573	115	98.261
+24	Austronesian	573	114	99.123
+25	Austronesian	573	114	100.0
+26	Austronesian	573	114	100.0
+27	Austronesian	573	114	99.123
+28	Austronesian	573	115	98.261
+29	Austronesian	573	114	99.123
+30	Austronesian	573	115	100.0
+31	Austronesian	573	115	98.261
+32	Austronesian	573	115	99.13
+33	Austronesian	573	114	97.368
+34	Austronesian	573	115	100.0
+35	Austronesian	573	114	100.0
+36	Austronesian	573	115	100.0
+37	Austronesian	573	115	98.261
+38	Austronesian	573	114	95.614
+39	Austronesian	573	115	98.261
+40	Austronesian	573	115	99.13
+41	Austronesian	573	115	98.261
+42	Austronesian	573	114	97.368
+43	Austronesian	573	114	100.0
+44	Austronesian	573	115	99.13
+45	Austronesian	573	115	99.13
+46	Austronesian	573	114	95.614
+47	Austronesian	573	115	100.0
+48	Austronesian	573	115	99.13
+49	Austronesian	573	114	100.0
+50	Austronesian	573	114	99.123
+51	Austronesian	573	115	98.261
+52	Austronesian	573	115	96.522
+53	Austronesian	573	114	99.123
+54	Austronesian	573	114	96.491
+55	Austronesian	573	114	99.123
+56	Austronesian	573	115	98.261
+57	Austronesian	573	114	97.368
+58	Austronesian	573	114	96.491
+59	Austronesian	573	115	100.0
+60	Austronesian	573	115	100.0
+61	Austronesian	573	115	99.13
+62	Austronesian	573	115	98.261
+63	Austronesian	573	115	98.261
+64	Austronesian	573	115	100.0
+65	Austronesian	573	115	99.13
+66	Austronesian	573	114	100.0
+67	Austronesian	573	115	100.0
+68	Austronesian	573	114	99.123
+69	Austronesian	573	114	99.123
+70	Austronesian	573	114	99.123
+71	Austronesian	573	114	95.614
+72	Austronesian	573	114	98.246
+73	Austronesian	573	114	98.246
+74	Austronesian	573	114	99.123
+75	Austronesian	573	114	97.368
+76	Austronesian	573	114	98.246
+77	Austronesian	573	115	98.261
+78	Austronesian	573	115	99.13
+79	Austronesian	573	115	99.13
+80	Austronesian	573	114	100.0
+81	Austronesian	573	115	100.0
+82	Austronesian	573	114	98.246
+83	Austronesian	573	114	97.368
+84	Austronesian	573	115	99.13
+85	Austronesian	573	114	100.0
+86	Austronesian	573	114	99.123
+87	Austronesian	573	115	97.391
+88	Austronesian	573	115	98.261
+89	Austronesian	573	115	98.261
+90	Austronesian	573	115	98.261
+91	Austronesian	573	115	99.13
+92	Austronesian	573	115	100.0
+93	Austronesian	573	115	99.13
+94	Austronesian	573	114	99.123
+95	Austronesian	573	114	99.123
+96	Austronesian	573	115	98.261
+97	Austronesian	573	114	100.0
+98	Austronesian	573	115	98.261
+99	Austronesian	573	114	100.0
+100	Austronesian	573	115	99.13
+1	Sino-Tibetan	262	53	92.453
+2	Sino-Tibetan	262	52	100.0
+3	Sino-Tibetan	262	52	98.077
+4	Sino-Tibetan	262	53	84.906
+5	Sino-Tibetan	262	53	98.113
+6	Sino-Tibetan	262	53	94.34
+7	Sino-Tibetan	262	53	100.0
+8	Sino-Tibetan	262	53	98.113
+9	Sino-Tibetan	262	53	96.226
+10	Sino-Tibetan	262	53	90.566
+11	Sino-Tibetan	262	52	88.462
+12	Sino-Tibetan	262	52	98.077
+13	Sino-Tibetan	262	53	96.226
+14	Sino-Tibetan	262	53	96.226
+15	Sino-Tibetan	262	52	94.231
+16	Sino-Tibetan	262	52	98.077
+17	Sino-Tibetan	262	52	98.077
+18	Sino-Tibetan	262	52	100.0
+19	Sino-Tibetan	262	52	100.0
+20	Sino-Tibetan	262	53	96.226
+21	Sino-Tibetan	262	52	98.077
+22	Sino-Tibetan	262	52	86.538
+23	Sino-Tibetan	262	52	98.077
+24	Sino-Tibetan	262	52	100.0
+25	Sino-Tibetan	262	53	96.226
+26	Sino-Tibetan	262	52	94.231
+27	Sino-Tibetan	262	53	98.113
+28	Sino-Tibetan	262	52	94.231
+29	Sino-Tibetan	262	53	100.0
+30	Sino-Tibetan	262	53	92.453
+31	Sino-Tibetan	262	52	98.077
+32	Sino-Tibetan	262	52	96.154
+33	Sino-Tibetan	262	52	98.077
+34	Sino-Tibetan	262	53	90.566
+35	Sino-Tibetan	262	53	94.34
+36	Sino-Tibetan	262	53	92.453
+37	Sino-Tibetan	262	53	96.226
+38	Sino-Tibetan	262	53	96.226
+39	Sino-Tibetan	262	53	88.679
+40	Sino-Tibetan	262	52	96.154
+41	Sino-Tibetan	262	53	96.226
+42	Sino-Tibetan	262	53	98.113
+43	Sino-Tibetan	262	52	96.154
+44	Sino-Tibetan	262	53	96.226
+45	Sino-Tibetan	262	53	94.34
+46	Sino-Tibetan	262	53	98.113
+47	Sino-Tibetan	262	52	96.154
+48	Sino-Tibetan	262	52	96.154
+49	Sino-Tibetan	262	52	94.231
+50	Sino-Tibetan	262	53	94.34
+51	Sino-Tibetan	262	53	100.0
+52	Sino-Tibetan	262	52	96.154
+53	Sino-Tibetan	262	52	100.0
+54	Sino-Tibetan	262	52	94.231
+55	Sino-Tibetan	262	52	100.0
+56	Sino-Tibetan	262	53	96.226
+57	Sino-Tibetan	262	52	100.0
+58	Sino-Tibetan	262	53	100.0
+59	Sino-Tibetan	262	53	98.113
+60	Sino-Tibetan	262	53	96.226
+61	Sino-Tibetan	262	53	96.226
+62	Sino-Tibetan	262	53	96.226
+63	Sino-Tibetan	262	52	90.385
+64	Sino-Tibetan	262	52	98.077
+65	Sino-Tibetan	262	53	90.566
+66	Sino-Tibetan	262	53	92.453
+67	Sino-Tibetan	262	53	96.226
+68	Sino-Tibetan	262	53	86.792
+69	Sino-Tibetan	262	53	90.566
+70	Sino-Tibetan	262	53	96.226
+71	Sino-Tibetan	262	52	84.615
+72	Sino-Tibetan	262	52	96.154
+73	Sino-Tibetan	262	52	88.462
+74	Sino-Tibetan	262	53	96.226
+75	Sino-Tibetan	262	52	98.077
+76	Sino-Tibetan	262	53	96.226
+77	Sino-Tibetan	262	52	92.308
+78	Sino-Tibetan	262	52	96.154
+79	Sino-Tibetan	262	53	90.566
+80	Sino-Tibetan	262	53	98.113
+81	Sino-Tibetan	262	53	88.679
+82	Sino-Tibetan	262	53	96.226
+83	Sino-Tibetan	262	53	100.0
+84	Sino-Tibetan	262	52	86.538
+85	Sino-Tibetan	262	53	98.113
+86	Sino-Tibetan	262	53	86.792
+87	Sino-Tibetan	262	52	86.538
+88	Sino-Tibetan	262	52	86.538
+89	Sino-Tibetan	262	52	98.077
+90	Sino-Tibetan	262	52	92.308
+91	Sino-Tibetan	262	52	98.077
+92	Sino-Tibetan	262	52	100.0
+93	Sino-Tibetan	262	52	98.077
+94	Sino-Tibetan	262	52	94.231
+95	Sino-Tibetan	262	52	90.385
+96	Sino-Tibetan	262	52	88.462
+97	Sino-Tibetan	262	53	100.0
+98	Sino-Tibetan	262	53	96.226
+99	Sino-Tibetan	262	53	94.34
+100	Sino-Tibetan	262	52	94.231
+1	Atlantic-Congo	378	75	100.0
+2	Atlantic-Congo	378	76	100.0
+3	Atlantic-Congo	378	76	100.0
+4	Atlantic-Congo	378	75	98.667
+5	Atlantic-Congo	378	75	100.0
+6	Atlantic-Congo	378	75	97.333
+7	Atlantic-Congo	378	76	100.0
+8	Atlantic-Congo	378	76	98.684
+9	Atlantic-Congo	378	75	97.333
+10	Atlantic-Congo	378	76	98.684
+11	Atlantic-Congo	378	76	98.684
+12	Atlantic-Congo	378	75	97.333
+13	Atlantic-Congo	378	76	100.0
+14	Atlantic-Congo	378	76	97.368
+15	Atlantic-Congo	378	75	98.667
+16	Atlantic-Congo	378	76	100.0
+17	Atlantic-Congo	378	76	98.684
+18	Atlantic-Congo	378	76	98.684
+19	Atlantic-Congo	378	75	98.667
+20	Atlantic-Congo	378	75	97.333
+21	Atlantic-Congo	378	76	98.684
+22	Atlantic-Congo	378	76	100.0
+23	Atlantic-Congo	378	75	97.333
+24	Atlantic-Congo	378	75	98.667
+25	Atlantic-Congo	378	76	98.684
+26	Atlantic-Congo	378	76	96.053
+27	Atlantic-Congo	378	75	96.0
+28	Atlantic-Congo	378	76	97.368
+29	Atlantic-Congo	378	76	98.684
+30	Atlantic-Congo	378	75	98.667
+31	Atlantic-Congo	378	75	98.667
+32	Atlantic-Congo	378	76	98.684
+33	Atlantic-Congo	378	76	100.0
+34	Atlantic-Congo	378	75	98.667
+35	Atlantic-Congo	378	75	97.333
+36	Atlantic-Congo	378	76	97.368
+37	Atlantic-Congo	378	75	98.667
+38	Atlantic-Congo	378	75	97.333
+39	Atlantic-Congo	378	75	100.0
+40	Atlantic-Congo	378	76	98.684
+41	Atlantic-Congo	378	75	98.667
+42	Atlantic-Congo	378	76	100.0
+43	Atlantic-Congo	378	76	98.684
+44	Atlantic-Congo	378	75	98.667
+45	Atlantic-Congo	378	75	100.0
+46	Atlantic-Congo	378	75	98.667
+47	Atlantic-Congo	378	76	98.684
+48	Atlantic-Congo	378	76	98.684
+49	Atlantic-Congo	378	76	98.684
+50	Atlantic-Congo	378	76	94.737
+51	Atlantic-Congo	378	76	98.684
+52	Atlantic-Congo	378	76	100.0
+53	Atlantic-Congo	378	76	100.0
+54	Atlantic-Congo	378	76	96.053
+55	Atlantic-Congo	378	75	100.0
+56	Atlantic-Congo	378	75	100.0
+57	Atlantic-Congo	378	76	96.053
+58	Atlantic-Congo	378	75	100.0
+59	Atlantic-Congo	378	75	96.0
+60	Atlantic-Congo	378	75	98.667
+61	Atlantic-Congo	378	75	98.667
+62	Atlantic-Congo	378	75	98.667
+63	Atlantic-Congo	378	76	98.684
+64	Atlantic-Congo	378	75	100.0
+65	Atlantic-Congo	378	75	100.0
+66	Atlantic-Congo	378	76	97.368
+67	Atlantic-Congo	378	75	92.0
+68	Atlantic-Congo	378	76	97.368
+69	Atlantic-Congo	378	75	100.0
+70	Atlantic-Congo	378	75	100.0
+71	Atlantic-Congo	378	75	97.333
+72	Atlantic-Congo	378	76	97.368
+73	Atlantic-Congo	378	76	98.684
+74	Atlantic-Congo	378	76	100.0
+75	Atlantic-Congo	378	75	98.667
+76	Atlantic-Congo	378	76	100.0
+77	Atlantic-Congo	378	76	100.0
+78	Atlantic-Congo	378	76	100.0
+79	Atlantic-Congo	378	76	98.684
+80	Atlantic-Congo	378	76	98.684
+81	Atlantic-Congo	378	76	97.368
+82	Atlantic-Congo	378	75	98.667
+83	Atlantic-Congo	378	75	97.333
+84	Atlantic-Congo	378	75	98.667
+85	Atlantic-Congo	378	75	100.0
+86	Atlantic-Congo	378	75	96.0
+87	Atlantic-Congo	378	76	98.684
+88	Atlantic-Congo	378	76	98.684
+89	Atlantic-Congo	378	75	97.333
+90	Atlantic-Congo	378	75	98.667
+91	Atlantic-Congo	378	76	98.684
+92	Atlantic-Congo	378	76	97.368
+93	Atlantic-Congo	378	76	98.684
+94	Atlantic-Congo	378	76	96.053
+95	Atlantic-Congo	378	76	97.368
+96	Atlantic-Congo	378	75	98.667
+97	Atlantic-Congo	378	76	100.0
+98	Atlantic-Congo	378	75	98.667
+99	Atlantic-Congo	378	76	96.053
+100	Atlantic-Congo	378	76	98.684
+1	Nuclear Trans New Guinea	189	38	100.0
+2	Nuclear Trans New Guinea	189	38	86.842
+3	Nuclear Trans New Guinea	189	38	97.368
+4	Nuclear Trans New Guinea	189	38	97.368
+5	Nuclear Trans New Guinea	189	38	97.368
+6	Nuclear Trans New Guinea	189	38	100.0
+7	Nuclear Trans New Guinea	189	38	100.0
+8	Nuclear Trans New Guinea	189	38	100.0
+9	Nuclear Trans New Guinea	189	38	100.0
+10	Nuclear Trans New Guinea	189	38	94.737
+11	Nuclear Trans New Guinea	189	38	89.474
+12	Nuclear Trans New Guinea	189	38	94.737
+13	Nuclear Trans New Guinea	189	38	97.368
+14	Nuclear Trans New Guinea	189	38	89.474
+15	Nuclear Trans New Guinea	189	38	100.0
+16	Nuclear Trans New Guinea	189	38	100.0
+17	Nuclear Trans New Guinea	189	38	100.0
+18	Nuclear Trans New Guinea	189	38	92.105
+19	Nuclear Trans New Guinea	189	38	94.737
+20	Nuclear Trans New Guinea	189	38	97.368
+21	Nuclear Trans New Guinea	189	38	97.368
+22	Nuclear Trans New Guinea	189	38	86.842
+23	Nuclear Trans New Guinea	189	38	100.0
+24	Nuclear Trans New Guinea	189	38	97.368
+25	Nuclear Trans New Guinea	189	38	97.368
+26	Nuclear Trans New Guinea	189	38	92.105
+27	Nuclear Trans New Guinea	189	38	97.368
+28	Nuclear Trans New Guinea	189	38	97.368
+29	Nuclear Trans New Guinea	189	38	97.368
+30	Nuclear Trans New Guinea	189	38	97.368
+31	Nuclear Trans New Guinea	189	38	94.737
+32	Nuclear Trans New Guinea	189	38	97.368
+33	Nuclear Trans New Guinea	189	38	97.368
+34	Nuclear Trans New Guinea	189	38	92.105
+35	Nuclear Trans New Guinea	189	38	86.842
+36	Nuclear Trans New Guinea	189	38	100.0
+37	Nuclear Trans New Guinea	189	38	97.368
+38	Nuclear Trans New Guinea	189	38	94.737
+39	Nuclear Trans New Guinea	189	38	97.368
+40	Nuclear Trans New Guinea	189	38	94.737
+41	Nuclear Trans New Guinea	189	38	97.368
+42	Nuclear Trans New Guinea	189	38	97.368
+43	Nuclear Trans New Guinea	189	38	97.368
+44	Nuclear Trans New Guinea	189	38	92.105
+45	Nuclear Trans New Guinea	189	38	97.368
+46	Nuclear Trans New Guinea	189	38	94.737
+47	Nuclear Trans New Guinea	189	38	100.0
+48	Nuclear Trans New Guinea	189	38	92.105
+49	Nuclear Trans New Guinea	189	38	100.0
+50	Nuclear Trans New Guinea	189	38	97.368
+51	Nuclear Trans New Guinea	189	38	100.0
+52	Nuclear Trans New Guinea	189	38	97.368
+53	Nuclear Trans New Guinea	189	38	100.0
+54	Nuclear Trans New Guinea	189	38	97.368
+55	Nuclear Trans New Guinea	189	38	94.737
+56	Nuclear Trans New Guinea	189	38	92.105
+57	Nuclear Trans New Guinea	189	38	97.368
+58	Nuclear Trans New Guinea	189	38	92.105
+59	Nuclear Trans New Guinea	189	38	97.368
+60	Nuclear Trans New Guinea	189	38	100.0
+61	Nuclear Trans New Guinea	189	38	97.368
+62	Nuclear Trans New Guinea	189	38	94.737
+63	Nuclear Trans New Guinea	189	38	97.368
+64	Nuclear Trans New Guinea	189	38	97.368
+65	Nuclear Trans New Guinea	189	38	94.737
+66	Nuclear Trans New Guinea	189	38	100.0
+67	Nuclear Trans New Guinea	189	38	97.368
+68	Nuclear Trans New Guinea	189	38	92.105
+69	Nuclear Trans New Guinea	189	38	92.105
+70	Nuclear Trans New Guinea	189	38	100.0
+71	Nuclear Trans New Guinea	189	38	97.368
+72	Nuclear Trans New Guinea	189	38	100.0
+73	Nuclear Trans New Guinea	189	38	94.737
+74	Nuclear Trans New Guinea	189	38	94.737
+75	Nuclear Trans New Guinea	189	38	94.737
+76	Nuclear Trans New Guinea	189	38	89.474
+77	Nuclear Trans New Guinea	189	38	97.368
+78	Nuclear Trans New Guinea	189	38	97.368
+79	Nuclear Trans New Guinea	189	38	97.368
+80	Nuclear Trans New Guinea	189	38	97.368
+81	Nuclear Trans New Guinea	189	38	97.368
+82	Nuclear Trans New Guinea	189	38	94.737
+83	Nuclear Trans New Guinea	189	38	92.105
+84	Nuclear Trans New Guinea	189	38	97.368
+85	Nuclear Trans New Guinea	189	38	97.368
+86	Nuclear Trans New Guinea	189	38	92.105
+87	Nuclear Trans New Guinea	189	38	94.737
+88	Nuclear Trans New Guinea	189	38	94.737
+89	Nuclear Trans New Guinea	189	38	100.0
+90	Nuclear Trans New Guinea	189	38	86.842
+91	Nuclear Trans New Guinea	189	38	100.0
+92	Nuclear Trans New Guinea	189	38	94.737
+93	Nuclear Trans New Guinea	189	38	89.474
+94	Nuclear Trans New Guinea	189	38	100.0
+95	Nuclear Trans New Guinea	189	38	94.737
+96	Nuclear Trans New Guinea	189	38	97.368
+97	Nuclear Trans New Guinea	189	38	97.368
+98	Nuclear Trans New Guinea	189	38	92.105
+99	Nuclear Trans New Guinea	189	38	97.368
+100	Nuclear Trans New Guinea	189	38	94.737
+1	Pama-Nyungan	151	31	96.774
+2	Pama-Nyungan	151	31	96.774
+3	Pama-Nyungan	151	31	100.0
+4	Pama-Nyungan	151	30	100.0
+5	Pama-Nyungan	151	30	96.667
+6	Pama-Nyungan	151	31	100.0
+7	Pama-Nyungan	151	31	100.0
+8	Pama-Nyungan	151	30	100.0
+9	Pama-Nyungan	151	30	93.333
+10	Pama-Nyungan	151	30	100.0
+11	Pama-Nyungan	151	31	100.0
+12	Pama-Nyungan	151	30	100.0
+13	Pama-Nyungan	151	31	100.0
+14	Pama-Nyungan	151	30	100.0
+15	Pama-Nyungan	151	31	100.0
+16	Pama-Nyungan	151	30	100.0
+17	Pama-Nyungan	151	30	96.667
+18	Pama-Nyungan	151	30	100.0
+19	Pama-Nyungan	151	31	100.0
+20	Pama-Nyungan	151	31	100.0
+21	Pama-Nyungan	151	31	100.0
+22	Pama-Nyungan	151	30	100.0
+23	Pama-Nyungan	151	31	100.0
+24	Pama-Nyungan	151	30	100.0
+25	Pama-Nyungan	151	30	100.0
+26	Pama-Nyungan	151	31	100.0
+27	Pama-Nyungan	151	31	100.0
+28	Pama-Nyungan	151	30	100.0
+29	Pama-Nyungan	151	31	100.0
+30	Pama-Nyungan	151	31	100.0
+31	Pama-Nyungan	151	31	100.0
+32	Pama-Nyungan	151	31	100.0
+33	Pama-Nyungan	151	30	100.0
+34	Pama-Nyungan	151	30	100.0
+35	Pama-Nyungan	151	30	100.0
+36	Pama-Nyungan	151	30	100.0
+37	Pama-Nyungan	151	30	100.0
+38	Pama-Nyungan	151	31	96.774
+39	Pama-Nyungan	151	31	100.0
+40	Pama-Nyungan	151	31	100.0
+41	Pama-Nyungan	151	31	100.0
+42	Pama-Nyungan	151	30	100.0
+43	Pama-Nyungan	151	31	100.0
+44	Pama-Nyungan	151	31	100.0
+45	Pama-Nyungan	151	31	96.774
+46	Pama-Nyungan	151	31	100.0
+47	Pama-Nyungan	151	31	100.0
+48	Pama-Nyungan	151	30	100.0
+49	Pama-Nyungan	151	30	100.0
+50	Pama-Nyungan	151	30	100.0
+51	Pama-Nyungan	151	31	100.0
+52	Pama-Nyungan	151	30	100.0
+53	Pama-Nyungan	151	31	100.0
+54	Pama-Nyungan	151	31	100.0
+55	Pama-Nyungan	151	30	96.667
+56	Pama-Nyungan	151	30	100.0
+57	Pama-Nyungan	151	30	100.0
+58	Pama-Nyungan	151	30	100.0
+59	Pama-Nyungan	151	30	100.0
+60	Pama-Nyungan	151	31	100.0
+61	Pama-Nyungan	151	31	96.774
+62	Pama-Nyungan	151	30	100.0
+63	Pama-Nyungan	151	31	100.0
+64	Pama-Nyungan	151	30	100.0
+65	Pama-Nyungan	151	30	100.0
+66	Pama-Nyungan	151	31	100.0
+67	Pama-Nyungan	151	31	100.0
+68	Pama-Nyungan	151	31	100.0
+69	Pama-Nyungan	151	31	100.0
+70	Pama-Nyungan	151	31	100.0
+71	Pama-Nyungan	151	31	100.0
+72	Pama-Nyungan	151	30	100.0
+73	Pama-Nyungan	151	31	96.774
+74	Pama-Nyungan	151	31	93.548
+75	Pama-Nyungan	151	31	100.0
+76	Pama-Nyungan	151	30	96.667
+77	Pama-Nyungan	151	31	100.0
+78	Pama-Nyungan	151	30	100.0
+79	Pama-Nyungan	151	31	100.0
+80	Pama-Nyungan	151	30	100.0
+81	Pama-Nyungan	151	30	100.0
+82	Pama-Nyungan	151	31	100.0
+83	Pama-Nyungan	151	30	96.667
+84	Pama-Nyungan	151	31	100.0
+85	Pama-Nyungan	151	30	100.0
+86	Pama-Nyungan	151	30	100.0
+87	Pama-Nyungan	151	31	100.0
+88	Pama-Nyungan	151	30	100.0
+89	Pama-Nyungan	151	30	100.0
+90	Pama-Nyungan	151	30	100.0
+91	Pama-Nyungan	151	30	100.0
+92	Pama-Nyungan	151	30	100.0
+93	Pama-Nyungan	151	30	100.0
+94	Pama-Nyungan	151	31	100.0
+95	Pama-Nyungan	151	31	100.0
+96	Pama-Nyungan	151	31	93.548
+97	Pama-Nyungan	151	30	100.0
+98	Pama-Nyungan	151	30	100.0
+99	Pama-Nyungan	151	31	96.774
+100	Pama-Nyungan	151	31	96.774
+1	Dogon	23	5	80.0
+2	Dogon	23	4	100.0
+3	Dogon	23	5	100.0
+4	Dogon	23	5	100.0
+5	Dogon	23	5	100.0
+6	Dogon	23	4	100.0
+7	Dogon	23	5	100.0
+8	Dogon	23	4	100.0
+9	Dogon	23	4	100.0
+10	Dogon	23	5	80.0
+11	Dogon	23	4	100.0
+12	Dogon	23	4	100.0
+13	Dogon	23	5	100.0
+14	Dogon	23	4	75.0
+15	Dogon	23	4	100.0
+16	Dogon	23	4	100.0
+17	Dogon	23	5	100.0
+18	Dogon	23	5	100.0
+19	Dogon	23	4	100.0
+20	Dogon	23	4	100.0
+21	Dogon	23	4	100.0
+22	Dogon	23	5	100.0
+23	Dogon	23	4	100.0
+24	Dogon	23	5	100.0
+25	Dogon	23	5	80.0
+26	Dogon	23	5	80.0
+27	Dogon	23	5	100.0
+28	Dogon	23	5	100.0
+29	Dogon	23	4	100.0
+30	Dogon	23	5	100.0
+31	Dogon	23	5	100.0
+32	Dogon	23	5	80.0
+33	Dogon	23	4	100.0
+34	Dogon	23	4	100.0
+35	Dogon	23	5	80.0
+36	Dogon	23	4	100.0
+37	Dogon	23	5	100.0
+38	Dogon	23	4	100.0
+39	Dogon	23	5	100.0
+40	Dogon	23	5	100.0
+41	Dogon	23	4	100.0
+42	Dogon	23	5	80.0
+43	Dogon	23	4	100.0
+44	Dogon	23	5	100.0
+45	Dogon	23	5	100.0
+46	Dogon	23	5	100.0
+47	Dogon	23	4	100.0
+48	Dogon	23	4	100.0
+49	Dogon	23	4	100.0
+50	Dogon	23	5	80.0
+51	Dogon	23	4	100.0
+52	Dogon	23	5	100.0
+53	Dogon	23	5	100.0
+54	Dogon	23	5	80.0
+55	Dogon	23	5	100.0
+56	Dogon	23	4	100.0
+57	Dogon	23	5	100.0
+58	Dogon	23	5	100.0
+59	Dogon	23	5	100.0
+60	Dogon	23	4	100.0
+61	Dogon	23	4	100.0
+62	Dogon	23	4	100.0
+63	Dogon	23	5	80.0
+64	Dogon	23	4	75.0
+65	Dogon	23	5	100.0
+66	Dogon	23	5	100.0
+67	Dogon	23	5	100.0
+68	Dogon	23	5	100.0
+69	Dogon	23	5	100.0
+70	Dogon	23	5	100.0
+71	Dogon	23	5	100.0
+72	Dogon	23	5	100.0
+73	Dogon	23	4	100.0
+74	Dogon	23	4	100.0
+75	Dogon	23	5	100.0
+76	Dogon	23	4	100.0
+77	Dogon	23	4	100.0
+78	Dogon	23	5	100.0
+79	Dogon	23	5	100.0
+80	Dogon	23	5	80.0
+81	Dogon	23	5	100.0
+82	Dogon	23	4	100.0
+83	Dogon	23	4	100.0
+84	Dogon	23	5	100.0
+85	Dogon	23	4	75.0
+86	Dogon	23	5	80.0
+87	Dogon	23	4	100.0
+88	Dogon	23	4	100.0
+89	Dogon	23	4	75.0
+90	Dogon	23	5	100.0
+91	Dogon	23	4	100.0
+92	Dogon	23	4	100.0
+93	Dogon	23	4	100.0
+94	Dogon	23	5	80.0
+95	Dogon	23	4	100.0
+96	Dogon	23	5	100.0
+97	Dogon	23	5	100.0
+98	Dogon	23	4	100.0
+99	Dogon	23	4	100.0
+100	Dogon	23	4	100.0
+1	Unclassified	166	33	60.606
+2	Unclassified	166	33	60.606
+3	Unclassified	166	33	51.515
+4	Unclassified	166	33	54.545
+5	Unclassified	166	34	32.353
+6	Unclassified	166	34	52.941
+7	Unclassified	166	33	48.485
+8	Unclassified	166	34	64.706
+9	Unclassified	166	34	50.0
+10	Unclassified	166	34	61.765
+11	Unclassified	166	34	58.824
+12	Unclassified	166	34	52.941
+13	Unclassified	166	33	60.606
+14	Unclassified	166	33	48.485
+15	Unclassified	166	33	57.576
+16	Unclassified	166	34	67.647
+17	Unclassified	166	33	63.636
+18	Unclassified	166	33	39.394
+19	Unclassified	166	33	48.485
+20	Unclassified	166	33	84.848
+21	Unclassified	166	33	57.576
+22	Unclassified	166	33	33.333
+23	Unclassified	166	34	67.647
+24	Unclassified	166	33	66.667
+25	Unclassified	166	33	69.697
+26	Unclassified	166	33	69.697
+27	Unclassified	166	33	51.515
+28	Unclassified	166	34	61.765
+29	Unclassified	166	33	42.424
+30	Unclassified	166	33	78.788
+31	Unclassified	166	33	45.455
+32	Unclassified	166	33	69.697
+33	Unclassified	166	34	73.529
+34	Unclassified	166	33	63.636
+35	Unclassified	166	34	50.0
+36	Unclassified	166	33	60.606
+37	Unclassified	166	34	41.176
+38	Unclassified	166	33	48.485
+39	Unclassified	166	33	60.606
+40	Unclassified	166	33	51.515
+41	Unclassified	166	33	54.545
+42	Unclassified	166	34	52.941
+43	Unclassified	166	33	78.788
+44	Unclassified	166	33	48.485
+45	Unclassified	166	34	61.765
+46	Unclassified	166	34	64.706
+47	Unclassified	166	33	48.485
+48	Unclassified	166	34	64.706
+49	Unclassified	166	34	41.176
+50	Unclassified	166	34	67.647
+51	Unclassified	166	34	73.529
+52	Unclassified	166	34	58.824
+53	Unclassified	166	34	61.765
+54	Unclassified	166	33	69.697
+55	Unclassified	166	34	67.647
+56	Unclassified	166	33	72.727
+57	Unclassified	166	34	55.882
+58	Unclassified	166	33	60.606
+59	Unclassified	166	34	47.059
+60	Unclassified	166	34	58.824
+61	Unclassified	166	33	42.424
+62	Unclassified	166	34	55.882
+63	Unclassified	166	33	54.545
+64	Unclassified	166	34	67.647
+65	Unclassified	166	33	57.576
+66	Unclassified	166	34	52.941
+67	Unclassified	166	33	54.545
+68	Unclassified	166	34	47.059
+69	Unclassified	166	34	55.882
+70	Unclassified	166	34	58.824
+71	Unclassified	166	34	52.941
+72	Unclassified	166	34	67.647
+73	Unclassified	166	33	54.545
+74	Unclassified	166	33	57.576
+75	Unclassified	166	33	72.727
+76	Unclassified	166	34	67.647
+77	Unclassified	166	33	51.515
+78	Unclassified	166	33	39.394
+79	Unclassified	166	34	58.824
+80	Unclassified	166	33	72.727
+81	Unclassified	166	33	75.758
+82	Unclassified	166	33	63.636
+83	Unclassified	166	33	72.727
+84	Unclassified	166	33	51.515
+85	Unclassified	166	33	66.667
+86	Unclassified	166	33	54.545
+87	Unclassified	166	34	41.176
+88	Unclassified	166	34	32.353
+89	Unclassified	166	33	30.303
+90	Unclassified	166	33	63.636
+91	Unclassified	166	33	66.667
+92	Unclassified	166	33	63.636
+93	Unclassified	166	33	75.758
+94	Unclassified	166	34	79.412
+95	Unclassified	166	34	64.706
+96	Unclassified	166	33	72.727
+97	Unclassified	166	34	61.765
+98	Unclassified	166	33	63.636
+99	Unclassified	166	33	51.515
+100	Unclassified	166	34	32.353
+1	Tupian	59	12	91.667
+2	Tupian	59	12	100.0
+3	Tupian	59	12	100.0
+4	Tupian	59	12	83.333
+5	Tupian	59	12	100.0
+6	Tupian	59	12	91.667
+7	Tupian	59	12	100.0
+8	Tupian	59	12	100.0
+9	Tupian	59	12	100.0
+10	Tupian	59	12	75.0
+11	Tupian	59	12	100.0
+12	Tupian	59	12	100.0
+13	Tupian	59	12	100.0
+14	Tupian	59	12	100.0
+15	Tupian	59	12	100.0
+16	Tupian	59	12	100.0
+17	Tupian	59	12	100.0
+18	Tupian	59	12	100.0
+19	Tupian	59	12	100.0
+20	Tupian	59	12	91.667
+21	Tupian	59	12	91.667
+22	Tupian	59	12	100.0
+23	Tupian	59	12	100.0
+24	Tupian	59	12	100.0
+25	Tupian	59	12	100.0
+26	Tupian	59	12	100.0
+27	Tupian	59	12	91.667
+28	Tupian	59	12	100.0
+29	Tupian	59	12	100.0
+30	Tupian	59	12	100.0
+31	Tupian	59	12	100.0
+32	Tupian	59	12	100.0
+33	Tupian	59	12	100.0
+34	Tupian	59	12	100.0
+35	Tupian	59	12	100.0
+36	Tupian	59	12	100.0
+37	Tupian	59	12	100.0
+38	Tupian	59	12	91.667
+39	Tupian	59	12	91.667
+40	Tupian	59	12	91.667
+41	Tupian	59	12	83.333
+42	Tupian	59	12	100.0
+43	Tupian	59	12	100.0
+44	Tupian	59	12	91.667
+45	Tupian	59	12	100.0
+46	Tupian	59	12	100.0
+47	Tupian	59	12	100.0
+48	Tupian	59	12	100.0
+49	Tupian	59	12	100.0
+50	Tupian	59	12	100.0
+51	Tupian	59	12	91.667
+52	Tupian	59	12	100.0
+53	Tupian	59	12	91.667
+54	Tupian	59	12	100.0
+55	Tupian	59	12	100.0
+56	Tupian	59	12	100.0
+57	Tupian	59	12	100.0
+58	Tupian	59	12	100.0
+59	Tupian	59	12	100.0
+60	Tupian	59	12	100.0
+61	Tupian	59	12	100.0
+62	Tupian	59	12	100.0
+63	Tupian	59	12	91.667
+64	Tupian	59	12	91.667
+65	Tupian	59	12	91.667
+66	Tupian	59	12	100.0
+67	Tupian	59	12	100.0
+68	Tupian	59	12	91.667
+69	Tupian	59	12	100.0
+70	Tupian	59	12	91.667
+71	Tupian	59	12	100.0
+72	Tupian	59	12	91.667
+73	Tupian	59	12	91.667
+74	Tupian	59	12	100.0
+75	Tupian	59	12	83.333
+76	Tupian	59	12	100.0
+77	Tupian	59	12	91.667
+78	Tupian	59	12	100.0
+79	Tupian	59	12	100.0
+80	Tupian	59	12	91.667
+81	Tupian	59	12	83.333
+82	Tupian	59	12	100.0
+83	Tupian	59	12	100.0
+84	Tupian	59	12	100.0
+85	Tupian	59	12	91.667
+86	Tupian	59	12	100.0
+87	Tupian	59	12	100.0
+88	Tupian	59	12	83.333
+89	Tupian	59	12	83.333
+90	Tupian	59	12	100.0
+91	Tupian	59	12	100.0
+92	Tupian	59	12	100.0
+93	Tupian	59	12	100.0
+94	Tupian	59	12	91.667
+95	Tupian	59	12	100.0
+96	Tupian	59	12	91.667
+97	Tupian	59	12	91.667
+98	Tupian	59	12	100.0
+99	Tupian	59	12	100.0
+100	Tupian	59	12	100.0
+1	Eleman	6	1	100.0
+2	Eleman	6	1	100.0
+3	Eleman	6	1	100.0
+4	Eleman	6	1	100.0
+5	Eleman	6	1	100.0
+6	Eleman	6	1	100.0
+7	Eleman	6	1	0.0
+8	Eleman	6	1	100.0
+9	Eleman	6	1	100.0
+10	Eleman	6	1	100.0
+11	Eleman	6	1	100.0
+12	Eleman	6	1	100.0
+13	Eleman	6	1	100.0
+14	Eleman	6	1	100.0
+15	Eleman	6	1	100.0
+16	Eleman	6	1	100.0
+17	Eleman	6	1	100.0
+18	Eleman	6	1	100.0
+19	Eleman	6	1	100.0
+20	Eleman	6	1	100.0
+21	Eleman	6	1	100.0
+22	Eleman	6	1	100.0
+23	Eleman	6	1	100.0
+24	Eleman	6	1	100.0
+25	Eleman	6	1	100.0
+26	Eleman	6	1	100.0
+27	Eleman	6	1	100.0
+28	Eleman	6	1	100.0
+29	Eleman	6	1	100.0
+30	Eleman	6	1	100.0
+31	Eleman	6	1	100.0
+32	Eleman	6	1	100.0
+33	Eleman	6	1	100.0
+34	Eleman	6	1	100.0
+35	Eleman	6	1	100.0
+36	Eleman	6	1	100.0
+37	Eleman	6	1	100.0
+38	Eleman	6	1	100.0
+39	Eleman	6	1	0.0
+40	Eleman	6	1	100.0
+41	Eleman	6	1	100.0
+42	Eleman	6	1	100.0
+43	Eleman	6	1	100.0
+44	Eleman	6	1	100.0
+45	Eleman	6	1	0.0
+46	Eleman	6	1	100.0
+47	Eleman	6	1	100.0
+48	Eleman	6	1	100.0
+49	Eleman	6	1	100.0
+50	Eleman	6	1	100.0
+51	Eleman	6	1	100.0
+52	Eleman	6	1	100.0
+53	Eleman	6	1	100.0
+54	Eleman	6	1	100.0
+55	Eleman	6	1	100.0
+56	Eleman	6	1	100.0
+57	Eleman	6	1	100.0
+58	Eleman	6	1	100.0
+59	Eleman	6	1	100.0
+60	Eleman	6	1	100.0
+61	Eleman	6	1	100.0
+62	Eleman	6	1	100.0
+63	Eleman	6	1	100.0
+64	Eleman	6	1	100.0
+65	Eleman	6	1	100.0
+66	Eleman	6	1	100.0
+67	Eleman	6	1	100.0
+68	Eleman	6	1	100.0
+69	Eleman	6	1	100.0
+70	Eleman	6	1	100.0
+71	Eleman	6	1	100.0
+72	Eleman	6	1	100.0
+73	Eleman	6	1	100.0
+74	Eleman	6	1	100.0
+75	Eleman	6	1	100.0
+76	Eleman	6	1	100.0
+77	Eleman	6	1	100.0
+78	Eleman	6	1	100.0
+79	Eleman	6	1	100.0
+80	Eleman	6	1	0.0
+81	Eleman	6	1	100.0
+82	Eleman	6	1	100.0
+83	Eleman	6	1	100.0
+84	Eleman	6	1	100.0
+85	Eleman	6	1	100.0
+86	Eleman	6	1	100.0
+87	Eleman	6	1	100.0
+88	Eleman	6	1	100.0
+89	Eleman	6	1	100.0
+90	Eleman	6	1	100.0
+91	Eleman	6	1	100.0
+92	Eleman	6	1	100.0
+93	Eleman	6	1	100.0
+94	Eleman	6	1	100.0
+95	Eleman	6	1	100.0
+96	Eleman	6	1	100.0
+97	Eleman	6	1	100.0
+98	Eleman	6	1	100.0
+99	Eleman	6	1	100.0
+100	Eleman	6	1	100.0
+1	Angan	12	2	0.0
+2	Angan	12	2	0.0
+3	Angan	12	3	0.0
+4	Angan	12	2	50.0
+5	Angan	12	2	100.0
+6	Angan	12	3	0.0
+7	Angan	12	2	0.0
+8	Angan	12	2	50.0
+9	Angan	12	3	33.333
+10	Angan	12	2	50.0
+11	Angan	12	3	66.667
+12	Angan	12	3	0.0
+13	Angan	12	2	0.0
+14	Angan	12	3	0.0
+15	Angan	12	3	66.667
+16	Angan	12	3	33.333
+17	Angan	12	2	0.0
+18	Angan	12	3	66.667
+19	Angan	12	3	66.667
+20	Angan	12	3	33.333
+21	Angan	12	2	0.0
+22	Angan	12	3	0.0
+23	Angan	12	2	50.0
+24	Angan	12	3	0.0
+25	Angan	12	2	0.0
+26	Angan	12	3	33.333
+27	Angan	12	3	66.667
+28	Angan	12	2	100.0
+29	Angan	12	3	0.0
+30	Angan	12	3	0.0
+31	Angan	12	3	33.333
+32	Angan	12	3	0.0
+33	Angan	12	2	0.0
+34	Angan	12	2	0.0
+35	Angan	12	2	0.0
+36	Angan	12	3	0.0
+37	Angan	12	3	66.667
+38	Angan	12	3	0.0
+39	Angan	12	3	66.667
+40	Angan	12	3	33.333
+41	Angan	12	3	0.0
+42	Angan	12	2	0.0
+43	Angan	12	3	0.0
+44	Angan	12	3	33.333
+45	Angan	12	2	50.0
+46	Angan	12	3	66.667
+47	Angan	12	2	0.0
+48	Angan	12	3	66.667
+49	Angan	12	3	66.667
+50	Angan	12	3	0.0
+51	Angan	12	3	33.333
+52	Angan	12	2	0.0
+53	Angan	12	2	50.0
+54	Angan	12	2	100.0
+55	Angan	12	3	0.0
+56	Angan	12	3	33.333
+57	Angan	12	3	0.0
+58	Angan	12	2	50.0
+59	Angan	12	2	0.0
+60	Angan	12	3	33.333
+61	Angan	12	3	33.333
+62	Angan	12	3	33.333
+63	Angan	12	3	33.333
+64	Angan	12	3	66.667
+65	Angan	12	3	0.0
+66	Angan	12	2	0.0
+67	Angan	12	2	0.0
+68	Angan	12	3	33.333
+69	Angan	12	3	0.0
+70	Angan	12	3	0.0
+71	Angan	12	2	0.0
+72	Angan	12	2	50.0
+73	Angan	12	3	33.333
+74	Angan	12	3	0.0
+75	Angan	12	2	50.0
+76	Angan	12	3	0.0
+77	Angan	12	3	0.0
+78	Angan	12	2	0.0
+79	Angan	12	3	33.333
+80	Angan	12	3	66.667
+81	Angan	12	3	0.0
+82	Angan	12	3	100.0
+83	Angan	12	3	0.0
+84	Angan	12	3	33.333
+85	Angan	12	3	66.667
+86	Angan	12	2	50.0
+87	Angan	12	2	50.0
+88	Angan	12	2	0.0
+89	Angan	12	2	0.0
+90	Angan	12	2	0.0
+91	Angan	12	3	0.0
+92	Angan	12	2	0.0
+93	Angan	12	3	100.0
+94	Angan	12	3	0.0
+95	Angan	12	2	50.0
+96	Angan	12	3	66.667
+97	Angan	12	2	50.0
+98	Angan	12	3	0.0
+99	Angan	12	3	0.0
+100	Angan	12	2	50.0
+1	Cariban	15	3	100.0
+2	Cariban	15	3	100.0
+3	Cariban	15	3	100.0
+4	Cariban	15	3	66.667
+5	Cariban	15	3	66.667
+6	Cariban	15	3	66.667
+7	Cariban	15	3	100.0
+8	Cariban	15	3	100.0
+9	Cariban	15	3	100.0
+10	Cariban	15	3	66.667
+11	Cariban	15	3	66.667
+12	Cariban	15	3	100.0
+13	Cariban	15	3	100.0
+14	Cariban	15	3	100.0
+15	Cariban	15	3	100.0
+16	Cariban	15	3	100.0
+17	Cariban	15	3	100.0
+18	Cariban	15	3	100.0
+19	Cariban	15	3	66.667
+20	Cariban	15	3	100.0
+21	Cariban	15	3	100.0
+22	Cariban	15	3	66.667
+23	Cariban	15	3	100.0
+24	Cariban	15	3	100.0
+25	Cariban	15	3	100.0
+26	Cariban	15	3	66.667
+27	Cariban	15	3	100.0
+28	Cariban	15	3	100.0
+29	Cariban	15	3	100.0
+30	Cariban	15	3	66.667
+31	Cariban	15	3	100.0
+32	Cariban	15	3	100.0
+33	Cariban	15	3	66.667
+34	Cariban	15	3	100.0
+35	Cariban	15	3	100.0
+36	Cariban	15	3	100.0
+37	Cariban	15	3	100.0
+38	Cariban	15	3	100.0
+39	Cariban	15	3	66.667
+40	Cariban	15	3	100.0
+41	Cariban	15	3	100.0
+42	Cariban	15	3	100.0
+43	Cariban	15	3	100.0
+44	Cariban	15	3	66.667
+45	Cariban	15	3	100.0
+46	Cariban	15	3	100.0
+47	Cariban	15	3	100.0
+48	Cariban	15	3	100.0
+49	Cariban	15	3	100.0
+50	Cariban	15	3	100.0
+51	Cariban	15	3	66.667
+52	Cariban	15	3	100.0
+53	Cariban	15	3	100.0
+54	Cariban	15	3	100.0
+55	Cariban	15	3	100.0
+56	Cariban	15	3	66.667
+57	Cariban	15	3	100.0
+58	Cariban	15	3	100.0
+59	Cariban	15	3	100.0
+60	Cariban	15	3	100.0
+61	Cariban	15	3	100.0
+62	Cariban	15	3	100.0
+63	Cariban	15	3	100.0
+64	Cariban	15	3	100.0
+65	Cariban	15	3	100.0
+66	Cariban	15	3	100.0
+67	Cariban	15	3	66.667
+68	Cariban	15	3	100.0
+69	Cariban	15	3	100.0
+70	Cariban	15	3	100.0
+71	Cariban	15	3	100.0
+72	Cariban	15	3	100.0
+73	Cariban	15	3	100.0
+74	Cariban	15	3	100.0
+75	Cariban	15	3	66.667
+76	Cariban	15	3	100.0
+77	Cariban	15	3	100.0
+78	Cariban	15	3	100.0
+79	Cariban	15	3	100.0
+80	Cariban	15	3	100.0
+81	Cariban	15	3	100.0
+82	Cariban	15	3	66.667
+83	Cariban	15	3	100.0
+84	Cariban	15	3	100.0
+85	Cariban	15	3	100.0
+86	Cariban	15	3	100.0
+87	Cariban	15	3	100.0
+88	Cariban	15	3	100.0
+89	Cariban	15	3	100.0
+90	Cariban	15	3	100.0
+91	Cariban	15	3	100.0
+92	Cariban	15	3	100.0
+93	Cariban	15	3	100.0
+94	Cariban	15	3	66.667
+95	Cariban	15	3	100.0
+96	Cariban	15	3	100.0
+97	Cariban	15	3	100.0
+98	Cariban	15	3	100.0
+99	Cariban	15	3	100.0
+100	Cariban	15	3	100.0
+1	Afro-Asiatic	96	20	90.0
+2	Afro-Asiatic	96	20	80.0
+3	Afro-Asiatic	96	19	94.737
+4	Afro-Asiatic	96	19	94.737
+5	Afro-Asiatic	96	19	89.474
+6	Afro-Asiatic	96	20	85.0
+7	Afro-Asiatic	96	20	100.0
+8	Afro-Asiatic	96	20	90.0
+9	Afro-Asiatic	96	19	89.474
+10	Afro-Asiatic	96	20	85.0
+11	Afro-Asiatic	96	20	90.0
+12	Afro-Asiatic	96	19	94.737
+13	Afro-Asiatic	96	20	100.0
+14	Afro-Asiatic	96	20	95.0
+15	Afro-Asiatic	96	20	85.0
+16	Afro-Asiatic	96	20	95.0
+17	Afro-Asiatic	96	20	65.0
+18	Afro-Asiatic	96	20	100.0
+19	Afro-Asiatic	96	20	95.0
+20	Afro-Asiatic	96	19	94.737
+21	Afro-Asiatic	96	20	85.0
+22	Afro-Asiatic	96	20	100.0
+23	Afro-Asiatic	96	20	95.0
+24	Afro-Asiatic	96	20	95.0
+25	Afro-Asiatic	96	20	100.0
+26	Afro-Asiatic	96	20	90.0
+27	Afro-Asiatic	96	19	94.737
+28	Afro-Asiatic	96	20	70.0
+29	Afro-Asiatic	96	20	80.0
+30	Afro-Asiatic	96	19	94.737
+31	Afro-Asiatic	96	20	95.0
+32	Afro-Asiatic	96	20	95.0
+33	Afro-Asiatic	96	19	94.737
+34	Afro-Asiatic	96	19	89.474
+35	Afro-Asiatic	96	19	89.474
+36	Afro-Asiatic	96	20	90.0
+37	Afro-Asiatic	96	19	89.474
+38	Afro-Asiatic	96	20	85.0
+39	Afro-Asiatic	96	19	73.684
+40	Afro-Asiatic	96	20	70.0
+41	Afro-Asiatic	96	19	84.211
+42	Afro-Asiatic	96	19	100.0
+43	Afro-Asiatic	96	20	90.0
+44	Afro-Asiatic	96	20	95.0
+45	Afro-Asiatic	96	19	94.737
+46	Afro-Asiatic	96	20	90.0
+47	Afro-Asiatic	96	19	100.0
+48	Afro-Asiatic	96	19	94.737
+49	Afro-Asiatic	96	20	90.0
+50	Afro-Asiatic	96	20	85.0
+51	Afro-Asiatic	96	19	94.737
+52	Afro-Asiatic	96	19	84.211
+53	Afro-Asiatic	96	20	80.0
+54	Afro-Asiatic	96	19	100.0
+55	Afro-Asiatic	96	20	90.0
+56	Afro-Asiatic	96	20	95.0
+57	Afro-Asiatic	96	19	94.737
+58	Afro-Asiatic	96	20	95.0
+59	Afro-Asiatic	96	20	95.0
+60	Afro-Asiatic	96	20	100.0
+61	Afro-Asiatic	96	20	95.0
+62	Afro-Asiatic	96	20	100.0
+63	Afro-Asiatic	96	20	90.0
+64	Afro-Asiatic	96	19	78.947
+65	Afro-Asiatic	96	19	94.737
+66	Afro-Asiatic	96	20	90.0
+67	Afro-Asiatic	96	20	90.0
+68	Afro-Asiatic	96	19	84.211
+69	Afro-Asiatic	96	20	90.0
+70	Afro-Asiatic	96	20	95.0
+71	Afro-Asiatic	96	19	89.474
+72	Afro-Asiatic	96	19	89.474
+73	Afro-Asiatic	96	20	95.0
+74	Afro-Asiatic	96	20	85.0
+75	Afro-Asiatic	96	20	95.0
+76	Afro-Asiatic	96	20	100.0
+77	Afro-Asiatic	96	19	89.474
+78	Afro-Asiatic	96	20	90.0
+79	Afro-Asiatic	96	20	90.0
+80	Afro-Asiatic	96	19	78.947
+81	Afro-Asiatic	96	19	89.474
+82	Afro-Asiatic	96	19	100.0
+83	Afro-Asiatic	96	19	84.211
+84	Afro-Asiatic	96	20	90.0
+85	Afro-Asiatic	96	19	84.211
+86	Afro-Asiatic	96	20	90.0
+87	Afro-Asiatic	96	20	90.0
+88	Afro-Asiatic	96	19	73.684
+89	Afro-Asiatic	96	20	100.0
+90	Afro-Asiatic	96	19	89.474
+91	Afro-Asiatic	96	20	95.0
+92	Afro-Asiatic	96	19	94.737
+93	Afro-Asiatic	96	19	84.211
+94	Afro-Asiatic	96	19	89.474
+95	Afro-Asiatic	96	19	100.0
+96	Afro-Asiatic	96	19	100.0
+97	Afro-Asiatic	96	19	89.474
+98	Afro-Asiatic	96	20	95.0
+99	Afro-Asiatic	96	19	89.474
+100	Afro-Asiatic	96	20	95.0
+1	Quechuan	33	7	100.0
+2	Quechuan	33	7	100.0
+3	Quechuan	33	7	100.0
+4	Quechuan	33	7	100.0
+5	Quechuan	33	6	100.0
+6	Quechuan	33	7	100.0
+7	Quechuan	33	6	100.0
+8	Quechuan	33	7	100.0
+9	Quechuan	33	7	100.0
+10	Quechuan	33	6	100.0
+11	Quechuan	33	7	100.0
+12	Quechuan	33	6	100.0
+13	Quechuan	33	6	100.0
+14	Quechuan	33	6	100.0
+15	Quechuan	33	7	100.0
+16	Quechuan	33	7	100.0
+17	Quechuan	33	7	100.0
+18	Quechuan	33	6	100.0
+19	Quechuan	33	7	100.0
+20	Quechuan	33	6	100.0
+21	Quechuan	33	6	100.0
+22	Quechuan	33	6	83.333
+23	Quechuan	33	6	100.0
+24	Quechuan	33	7	100.0
+25	Quechuan	33	6	100.0
+26	Quechuan	33	7	100.0
+27	Quechuan	33	7	100.0
+28	Quechuan	33	7	100.0
+29	Quechuan	33	7	100.0
+30	Quechuan	33	7	100.0
+31	Quechuan	33	6	100.0
+32	Quechuan	33	6	100.0
+33	Quechuan	33	7	100.0
+34	Quechuan	33	6	100.0
+35	Quechuan	33	7	100.0
+36	Quechuan	33	6	100.0
+37	Quechuan	33	6	100.0
+38	Quechuan	33	6	100.0
+39	Quechuan	33	7	100.0
+40	Quechuan	33	7	100.0
+41	Quechuan	33	7	100.0
+42	Quechuan	33	7	100.0
+43	Quechuan	33	7	100.0
+44	Quechuan	33	7	100.0
+45	Quechuan	33	6	100.0
+46	Quechuan	33	6	100.0
+47	Quechuan	33	7	100.0
+48	Quechuan	33	7	100.0
+49	Quechuan	33	6	100.0
+50	Quechuan	33	7	100.0
+51	Quechuan	33	6	100.0
+52	Quechuan	33	6	100.0
+53	Quechuan	33	6	100.0
+54	Quechuan	33	6	100.0
+55	Quechuan	33	7	100.0
+56	Quechuan	33	7	100.0
+57	Quechuan	33	6	100.0
+58	Quechuan	33	7	100.0
+59	Quechuan	33	6	100.0
+60	Quechuan	33	7	100.0
+61	Quechuan	33	6	100.0
+62	Quechuan	33	7	100.0
+63	Quechuan	33	6	100.0
+64	Quechuan	33	7	100.0
+65	Quechuan	33	6	100.0
+66	Quechuan	33	7	100.0
+67	Quechuan	33	7	100.0
+68	Quechuan	33	6	100.0
+69	Quechuan	33	7	100.0
+70	Quechuan	33	6	100.0
+71	Quechuan	33	6	100.0
+72	Quechuan	33	7	100.0
+73	Quechuan	33	6	100.0
+74	Quechuan	33	6	100.0
+75	Quechuan	33	7	100.0
+76	Quechuan	33	7	100.0
+77	Quechuan	33	6	100.0
+78	Quechuan	33	7	100.0
+79	Quechuan	33	7	100.0
+80	Quechuan	33	6	100.0
+81	Quechuan	33	6	100.0
+82	Quechuan	33	7	100.0
+83	Quechuan	33	7	100.0
+84	Quechuan	33	7	100.0
+85	Quechuan	33	7	100.0
+86	Quechuan	33	7	100.0
+87	Quechuan	33	7	100.0
+88	Quechuan	33	7	100.0
+89	Quechuan	33	6	100.0
+90	Quechuan	33	7	100.0
+91	Quechuan	33	6	100.0
+92	Quechuan	33	7	100.0
+93	Quechuan	33	7	100.0
+94	Quechuan	33	6	100.0
+95	Quechuan	33	7	100.0
+96	Quechuan	33	7	100.0
+97	Quechuan	33	7	100.0
+98	Quechuan	33	7	100.0
+99	Quechuan	33	6	100.0
+100	Quechuan	33	6	100.0
+1	Turkic	33	6	100.0
+2	Turkic	33	7	100.0
+3	Turkic	33	6	83.333
+4	Turkic	33	7	100.0
+5	Turkic	33	7	100.0
+6	Turkic	33	6	100.0
+7	Turkic	33	7	100.0
+8	Turkic	33	6	100.0
+9	Turkic	33	7	100.0
+10	Turkic	33	6	100.0
+11	Turkic	33	6	83.333
+12	Turkic	33	7	100.0
+13	Turkic	33	7	100.0
+14	Turkic	33	6	100.0
+15	Turkic	33	7	100.0
+16	Turkic	33	6	100.0
+17	Turkic	33	7	100.0
+18	Turkic	33	6	100.0
+19	Turkic	33	7	100.0
+20	Turkic	33	7	100.0
+21	Turkic	33	7	100.0
+22	Turkic	33	6	100.0
+23	Turkic	33	7	100.0
+24	Turkic	33	7	85.714
+25	Turkic	33	6	100.0
+26	Turkic	33	6	100.0
+27	Turkic	33	6	100.0
+28	Turkic	33	7	100.0
+29	Turkic	33	7	100.0
+30	Turkic	33	6	100.0
+31	Turkic	33	6	100.0
+32	Turkic	33	6	66.667
+33	Turkic	33	7	71.429
+34	Turkic	33	6	100.0
+35	Turkic	33	6	100.0
+36	Turkic	33	7	100.0
+37	Turkic	33	6	100.0
+38	Turkic	33	6	100.0
+39	Turkic	33	6	100.0
+40	Turkic	33	7	100.0
+41	Turkic	33	7	100.0
+42	Turkic	33	7	100.0
+43	Turkic	33	6	100.0
+44	Turkic	33	6	100.0
+45	Turkic	33	7	100.0
+46	Turkic	33	6	100.0
+47	Turkic	33	6	100.0
+48	Turkic	33	7	100.0
+49	Turkic	33	6	100.0
+50	Turkic	33	7	100.0
+51	Turkic	33	6	83.333
+52	Turkic	33	6	100.0
+53	Turkic	33	7	100.0
+54	Turkic	33	6	100.0
+55	Turkic	33	6	100.0
+56	Turkic	33	7	100.0
+57	Turkic	33	7	100.0
+58	Turkic	33	7	100.0
+59	Turkic	33	7	100.0
+60	Turkic	33	7	100.0
+61	Turkic	33	7	85.714
+62	Turkic	33	7	100.0
+63	Turkic	33	7	100.0
+64	Turkic	33	7	100.0
+65	Turkic	33	6	83.333
+66	Turkic	33	7	100.0
+67	Turkic	33	7	100.0
+68	Turkic	33	7	100.0
+69	Turkic	33	6	100.0
+70	Turkic	33	6	100.0
+71	Turkic	33	7	100.0
+72	Turkic	33	6	100.0
+73	Turkic	33	6	83.333
+74	Turkic	33	6	100.0
+75	Turkic	33	6	100.0
+76	Turkic	33	7	100.0
+77	Turkic	33	7	100.0
+78	Turkic	33	7	100.0
+79	Turkic	33	7	85.714
+80	Turkic	33	7	100.0
+81	Turkic	33	6	100.0
+82	Turkic	33	7	100.0
+83	Turkic	33	6	100.0
+84	Turkic	33	7	100.0
+85	Turkic	33	6	100.0
+86	Turkic	33	6	100.0
+87	Turkic	33	7	100.0
+88	Turkic	33	6	100.0
+89	Turkic	33	7	100.0
+90	Turkic	33	7	100.0
+91	Turkic	33	6	100.0
+92	Turkic	33	7	100.0
+93	Turkic	33	7	100.0
+94	Turkic	33	6	83.333
+95	Turkic	33	7	100.0
+96	Turkic	33	7	100.0
+97	Turkic	33	6	100.0
+98	Turkic	33	7	100.0
+99	Turkic	33	7	100.0
+100	Turkic	33	6	100.0
+1	Dravidian	17	3	100.0
+2	Dravidian	17	4	100.0
+3	Dravidian	17	4	100.0
+4	Dravidian	17	3	100.0
+5	Dravidian	17	3	100.0
+6	Dravidian	17	3	100.0
+7	Dravidian	17	4	100.0
+8	Dravidian	17	3	100.0
+9	Dravidian	17	3	100.0
+10	Dravidian	17	3	100.0
+11	Dravidian	17	4	75.0
+12	Dravidian	17	3	66.667
+13	Dravidian	17	3	100.0
+14	Dravidian	17	3	100.0
+15	Dravidian	17	4	100.0
+16	Dravidian	17	3	100.0
+17	Dravidian	17	4	100.0
+18	Dravidian	17	3	66.667
+19	Dravidian	17	4	100.0
+20	Dravidian	17	3	66.667
+21	Dravidian	17	4	100.0
+22	Dravidian	17	3	100.0
+23	Dravidian	17	4	100.0
+24	Dravidian	17	4	100.0
+25	Dravidian	17	4	75.0
+26	Dravidian	17	3	100.0
+27	Dravidian	17	4	25.0
+28	Dravidian	17	4	100.0
+29	Dravidian	17	3	100.0
+30	Dravidian	17	3	100.0
+31	Dravidian	17	4	75.0
+32	Dravidian	17	3	100.0
+33	Dravidian	17	3	100.0
+34	Dravidian	17	4	100.0
+35	Dravidian	17	3	100.0
+36	Dravidian	17	3	66.667
+37	Dravidian	17	3	66.667
+38	Dravidian	17	4	75.0
+39	Dravidian	17	4	100.0
+40	Dravidian	17	3	33.333
+41	Dravidian	17	4	100.0
+42	Dravidian	17	4	75.0
+43	Dravidian	17	3	100.0
+44	Dravidian	17	4	100.0
+45	Dravidian	17	3	100.0
+46	Dravidian	17	3	100.0
+47	Dravidian	17	3	100.0
+48	Dravidian	17	4	100.0
+49	Dravidian	17	4	75.0
+50	Dravidian	17	3	100.0
+51	Dravidian	17	3	66.667
+52	Dravidian	17	4	100.0
+53	Dravidian	17	4	50.0
+54	Dravidian	17	4	100.0
+55	Dravidian	17	3	100.0
+56	Dravidian	17	3	66.667
+57	Dravidian	17	4	100.0
+58	Dravidian	17	4	100.0
+59	Dravidian	17	4	100.0
+60	Dravidian	17	4	100.0
+61	Dravidian	17	3	100.0
+62	Dravidian	17	3	100.0
+63	Dravidian	17	4	100.0
+64	Dravidian	17	3	66.667
+65	Dravidian	17	3	66.667
+66	Dravidian	17	3	100.0
+67	Dravidian	17	3	66.667
+68	Dravidian	17	4	75.0
+69	Dravidian	17	4	100.0
+70	Dravidian	17	3	100.0
+71	Dravidian	17	4	100.0
+72	Dravidian	17	4	100.0
+73	Dravidian	17	4	75.0
+74	Dravidian	17	4	100.0
+75	Dravidian	17	4	100.0
+76	Dravidian	17	3	100.0
+77	Dravidian	17	3	100.0
+78	Dravidian	17	4	100.0
+79	Dravidian	17	3	100.0
+80	Dravidian	17	3	100.0
+81	Dravidian	17	3	66.667
+82	Dravidian	17	3	33.333
+83	Dravidian	17	4	100.0
+84	Dravidian	17	4	100.0
+85	Dravidian	17	4	50.0
+86	Dravidian	17	4	75.0
+87	Dravidian	17	4	100.0
+88	Dravidian	17	3	100.0
+89	Dravidian	17	3	66.667
+90	Dravidian	17	4	75.0
+91	Dravidian	17	4	75.0
+92	Dravidian	17	3	100.0
+93	Dravidian	17	3	100.0
+94	Dravidian	17	3	100.0
+95	Dravidian	17	3	100.0
+96	Dravidian	17	4	75.0
+97	Dravidian	17	4	100.0
+98	Dravidian	17	3	100.0
+99	Dravidian	17	3	66.667
+100	Dravidian	17	4	75.0
+1	Chibchan	18	4	100.0
+2	Chibchan	18	4	75.0
+3	Chibchan	18	3	100.0
+4	Chibchan	18	4	100.0
+5	Chibchan	18	4	100.0
+6	Chibchan	18	4	100.0
+7	Chibchan	18	4	100.0
+8	Chibchan	18	3	33.333
+9	Chibchan	18	3	0.0
+10	Chibchan	18	3	66.667
+11	Chibchan	18	4	75.0
+12	Chibchan	18	4	25.0
+13	Chibchan	18	3	100.0
+14	Chibchan	18	3	33.333
+15	Chibchan	18	4	75.0
+16	Chibchan	18	3	100.0
+17	Chibchan	18	3	100.0
+18	Chibchan	18	3	100.0
+19	Chibchan	18	4	75.0
+20	Chibchan	18	4	100.0
+21	Chibchan	18	4	75.0
+22	Chibchan	18	4	75.0
+23	Chibchan	18	3	66.667
+24	Chibchan	18	3	100.0
+25	Chibchan	18	4	75.0
+26	Chibchan	18	3	33.333
+27	Chibchan	18	3	100.0
+28	Chibchan	18	4	100.0
+29	Chibchan	18	4	75.0
+30	Chibchan	18	4	75.0
+31	Chibchan	18	4	75.0
+32	Chibchan	18	3	66.667
+33	Chibchan	18	3	100.0
+34	Chibchan	18	4	100.0
+35	Chibchan	18	4	75.0
+36	Chibchan	18	3	66.667
+37	Chibchan	18	3	100.0
+38	Chibchan	18	3	33.333
+39	Chibchan	18	4	100.0
+40	Chibchan	18	3	66.667
+41	Chibchan	18	4	75.0
+42	Chibchan	18	3	66.667
+43	Chibchan	18	3	100.0
+44	Chibchan	18	3	100.0
+45	Chibchan	18	4	50.0
+46	Chibchan	18	3	66.667
+47	Chibchan	18	4	100.0
+48	Chibchan	18	4	100.0
+49	Chibchan	18	3	33.333
+50	Chibchan	18	4	100.0
+51	Chibchan	18	3	100.0
+52	Chibchan	18	4	75.0
+53	Chibchan	18	4	75.0
+54	Chibchan	18	3	100.0
+55	Chibchan	18	3	100.0
+56	Chibchan	18	4	100.0
+57	Chibchan	18	3	100.0
+58	Chibchan	18	3	100.0
+59	Chibchan	18	4	100.0
+60	Chibchan	18	3	100.0
+61	Chibchan	18	4	75.0
+62	Chibchan	18	3	66.667
+63	Chibchan	18	3	100.0
+64	Chibchan	18	4	100.0
+65	Chibchan	18	3	100.0
+66	Chibchan	18	3	100.0
+67	Chibchan	18	4	75.0
+68	Chibchan	18	3	33.333
+69	Chibchan	18	3	66.667
+70	Chibchan	18	4	50.0
+71	Chibchan	18	4	100.0
+72	Chibchan	18	3	100.0
+73	Chibchan	18	4	100.0
+74	Chibchan	18	4	50.0
+75	Chibchan	18	3	100.0
+76	Chibchan	18	3	100.0
+77	Chibchan	18	4	100.0
+78	Chibchan	18	3	100.0
+79	Chibchan	18	3	100.0
+80	Chibchan	18	3	100.0
+81	Chibchan	18	3	33.333
+82	Chibchan	18	4	100.0
+83	Chibchan	18	4	75.0
+84	Chibchan	18	4	75.0
+85	Chibchan	18	4	100.0
+86	Chibchan	18	3	100.0
+87	Chibchan	18	3	66.667
+88	Chibchan	18	3	66.667
+89	Chibchan	18	4	75.0
+90	Chibchan	18	4	100.0
+91	Chibchan	18	4	50.0
+92	Chibchan	18	4	75.0
+93	Chibchan	18	4	50.0
+94	Chibchan	18	4	100.0
+95	Chibchan	18	3	100.0
+96	Chibchan	18	3	100.0
+97	Chibchan	18	3	66.667
+98	Chibchan	18	3	33.333
+99	Chibchan	18	4	75.0
+100	Chibchan	18	3	33.333
+1	Arawakan	47	10	60.0
+2	Arawakan	47	10	60.0
+3	Arawakan	47	9	77.778
+4	Arawakan	47	9	66.667
+5	Arawakan	47	10	30.0
+6	Arawakan	47	9	100.0
+7	Arawakan	47	9	66.667
+8	Arawakan	47	10	40.0
+9	Arawakan	47	10	90.0
+10	Arawakan	47	10	80.0
+11	Arawakan	47	9	66.667
+12	Arawakan	47	9	77.778
+13	Arawakan	47	9	77.778
+14	Arawakan	47	10	80.0
+15	Arawakan	47	10	90.0
+16	Arawakan	47	9	66.667
+17	Arawakan	47	9	77.778
+18	Arawakan	47	10	60.0
+19	Arawakan	47	9	100.0
+20	Arawakan	47	10	90.0
+21	Arawakan	47	10	90.0
+22	Arawakan	47	10	90.0
+23	Arawakan	47	10	60.0
+24	Arawakan	47	9	77.778
+25	Arawakan	47	9	66.667
+26	Arawakan	47	10	60.0
+27	Arawakan	47	9	77.778
+28	Arawakan	47	9	100.0
+29	Arawakan	47	10	100.0
+30	Arawakan	47	10	70.0
+31	Arawakan	47	10	90.0
+32	Arawakan	47	9	22.222
+33	Arawakan	47	9	100.0
+34	Arawakan	47	10	80.0
+35	Arawakan	47	10	80.0
+36	Arawakan	47	9	55.556
+37	Arawakan	47	9	55.556
+38	Arawakan	47	10	90.0
+39	Arawakan	47	9	88.889
+40	Arawakan	47	9	100.0
+41	Arawakan	47	10	50.0
+42	Arawakan	47	9	66.667
+43	Arawakan	47	10	60.0
+44	Arawakan	47	9	100.0
+45	Arawakan	47	9	66.667
+46	Arawakan	47	10	60.0
+47	Arawakan	47	10	70.0
+48	Arawakan	47	9	100.0
+49	Arawakan	47	9	77.778
+50	Arawakan	47	9	100.0
+51	Arawakan	47	9	66.667
+52	Arawakan	47	9	77.778
+53	Arawakan	47	9	77.778
+54	Arawakan	47	9	100.0
+55	Arawakan	47	10	90.0
+56	Arawakan	47	9	66.667
+57	Arawakan	47	9	77.778
+58	Arawakan	47	10	80.0
+59	Arawakan	47	9	55.556
+60	Arawakan	47	10	100.0
+61	Arawakan	47	9	100.0
+62	Arawakan	47	9	100.0
+63	Arawakan	47	9	88.889
+64	Arawakan	47	9	77.778
+65	Arawakan	47	10	80.0
+66	Arawakan	47	9	100.0
+67	Arawakan	47	9	66.667
+68	Arawakan	47	10	60.0
+69	Arawakan	47	10	60.0
+70	Arawakan	47	10	80.0
+71	Arawakan	47	10	70.0
+72	Arawakan	47	10	50.0
+73	Arawakan	47	10	60.0
+74	Arawakan	47	9	66.667
+75	Arawakan	47	9	55.556
+76	Arawakan	47	9	66.667
+77	Arawakan	47	9	88.889
+78	Arawakan	47	9	66.667
+79	Arawakan	47	9	77.778
+80	Arawakan	47	10	80.0
+81	Arawakan	47	9	55.556
+82	Arawakan	47	9	66.667
+83	Arawakan	47	9	77.778
+84	Arawakan	47	10	50.0
+85	Arawakan	47	9	66.667
+86	Arawakan	47	9	55.556
+87	Arawakan	47	10	80.0
+88	Arawakan	47	9	100.0
+89	Arawakan	47	10	60.0
+90	Arawakan	47	10	80.0
+91	Arawakan	47	10	80.0
+92	Arawakan	47	9	77.778
+93	Arawakan	47	9	66.667
+94	Arawakan	47	10	70.0
+95	Arawakan	47	9	55.556
+96	Arawakan	47	9	77.778
+97	Arawakan	47	10	90.0
+98	Arawakan	47	9	66.667
+99	Arawakan	47	9	88.889
+100	Arawakan	47	10	100.0
+1	Mataguayan	7	2	0.0
+2	Mataguayan	7	2	0.0
+3	Mataguayan	7	2	0.0
+4	Mataguayan	7	2	0.0
+5	Mataguayan	7	1	0.0
+6	Mataguayan	7	1	0.0
+7	Mataguayan	7	1	0.0
+8	Mataguayan	7	2	0.0
+9	Mataguayan	7	2	0.0
+10	Mataguayan	7	2	0.0
+11	Mataguayan	7	1	0.0
+12	Mataguayan	7	2	0.0
+13	Mataguayan	7	2	0.0
+14	Mataguayan	7	2	0.0
+15	Mataguayan	7	1	0.0
+16	Mataguayan	7	1	100.0
+17	Mataguayan	7	2	0.0
+18	Mataguayan	7	2	0.0
+19	Mataguayan	7	1	0.0
+20	Mataguayan	7	2	0.0
+21	Mataguayan	7	1	0.0
+22	Mataguayan	7	2	0.0
+23	Mataguayan	7	1	0.0
+24	Mataguayan	7	2	0.0
+25	Mataguayan	7	1	0.0
+26	Mataguayan	7	1	0.0
+27	Mataguayan	7	2	0.0
+28	Mataguayan	7	1	0.0
+29	Mataguayan	7	2	0.0
+30	Mataguayan	7	1	0.0
+31	Mataguayan	7	2	0.0
+32	Mataguayan	7	1	0.0
+33	Mataguayan	7	2	0.0
+34	Mataguayan	7	2	0.0
+35	Mataguayan	7	1	0.0
+36	Mataguayan	7	2	100.0
+37	Mataguayan	7	2	0.0
+38	Mataguayan	7	1	0.0
+39	Mataguayan	7	1	0.0
+40	Mataguayan	7	1	0.0
+41	Mataguayan	7	1	0.0
+42	Mataguayan	7	1	100.0
+43	Mataguayan	7	1	0.0
+44	Mataguayan	7	2	0.0
+45	Mataguayan	7	1	0.0
+46	Mataguayan	7	1	0.0
+47	Mataguayan	7	2	0.0
+48	Mataguayan	7	2	0.0
+49	Mataguayan	7	1	100.0
+50	Mataguayan	7	1	0.0
+51	Mataguayan	7	1	0.0
+52	Mataguayan	7	2	0.0
+53	Mataguayan	7	1	0.0
+54	Mataguayan	7	1	0.0
+55	Mataguayan	7	2	0.0
+56	Mataguayan	7	1	0.0
+57	Mataguayan	7	2	0.0
+58	Mataguayan	7	1	0.0
+59	Mataguayan	7	2	0.0
+60	Mataguayan	7	1	0.0
+61	Mataguayan	7	2	0.0
+62	Mataguayan	7	1	0.0
+63	Mataguayan	7	2	0.0
+64	Mataguayan	7	1	0.0
+65	Mataguayan	7	1	0.0
+66	Mataguayan	7	2	0.0
+67	Mataguayan	7	1	0.0
+68	Mataguayan	7	2	0.0
+69	Mataguayan	7	2	0.0
+70	Mataguayan	7	2	0.0
+71	Mataguayan	7	2	50.0
+72	Mataguayan	7	1	0.0
+73	Mataguayan	7	2	0.0
+74	Mataguayan	7	1	0.0
+75	Mataguayan	7	2	0.0
+76	Mataguayan	7	1	0.0
+77	Mataguayan	7	2	0.0
+78	Mataguayan	7	2	0.0
+79	Mataguayan	7	1	0.0
+80	Mataguayan	7	2	0.0
+81	Mataguayan	7	2	0.0
+82	Mataguayan	7	2	0.0
+83	Mataguayan	7	2	0.0
+84	Mataguayan	7	2	0.0
+85	Mataguayan	7	2	0.0
+86	Mataguayan	7	2	0.0
+87	Mataguayan	7	1	0.0
+88	Mataguayan	7	2	0.0
+89	Mataguayan	7	2	0.0
+90	Mataguayan	7	1	0.0
+91	Mataguayan	7	1	0.0
+92	Mataguayan	7	2	0.0
+93	Mataguayan	7	2	0.0
+94	Mataguayan	7	2	0.0
+95	Mataguayan	7	2	0.0
+96	Mataguayan	7	2	0.0
+97	Mataguayan	7	2	0.0
+98	Mataguayan	7	1	0.0
+99	Mataguayan	7	2	0.0
+100	Mataguayan	7	2	0.0
+1	Nuclear-Macro-Je	8	2	0.0
+2	Nuclear-Macro-Je	8	1	0.0
+3	Nuclear-Macro-Je	8	2	0.0
+4	Nuclear-Macro-Je	8	1	100.0
+5	Nuclear-Macro-Je	8	2	0.0
+6	Nuclear-Macro-Je	8	2	0.0
+7	Nuclear-Macro-Je	8	2	50.0
+8	Nuclear-Macro-Je	8	2	0.0
+9	Nuclear-Macro-Je	8	1	0.0
+10	Nuclear-Macro-Je	8	1	100.0
+11	Nuclear-Macro-Je	8	1	0.0
+12	Nuclear-Macro-Je	8	2	0.0
+13	Nuclear-Macro-Je	8	1	0.0
+14	Nuclear-Macro-Je	8	1	0.0
+15	Nuclear-Macro-Je	8	2	50.0
+16	Nuclear-Macro-Je	8	2	0.0
+17	Nuclear-Macro-Je	8	1	0.0
+18	Nuclear-Macro-Je	8	2	50.0
+19	Nuclear-Macro-Je	8	2	50.0
+20	Nuclear-Macro-Je	8	2	0.0
+21	Nuclear-Macro-Je	8	1	0.0
+22	Nuclear-Macro-Je	8	1	0.0
+23	Nuclear-Macro-Je	8	1	0.0
+24	Nuclear-Macro-Je	8	2	0.0
+25	Nuclear-Macro-Je	8	2	0.0
+26	Nuclear-Macro-Je	8	1	0.0
+27	Nuclear-Macro-Je	8	2	50.0
+28	Nuclear-Macro-Je	8	1	0.0
+29	Nuclear-Macro-Je	8	1	100.0
+30	Nuclear-Macro-Je	8	2	0.0
+31	Nuclear-Macro-Je	8	2	0.0
+32	Nuclear-Macro-Je	8	2	0.0
+33	Nuclear-Macro-Je	8	1	100.0
+34	Nuclear-Macro-Je	8	1	100.0
+35	Nuclear-Macro-Je	8	2	0.0
+36	Nuclear-Macro-Je	8	1	0.0
+37	Nuclear-Macro-Je	8	2	0.0
+38	Nuclear-Macro-Je	8	2	0.0
+39	Nuclear-Macro-Je	8	1	0.0
+40	Nuclear-Macro-Je	8	2	50.0
+41	Nuclear-Macro-Je	8	2	0.0
+42	Nuclear-Macro-Je	8	2	50.0
+43	Nuclear-Macro-Je	8	2	0.0
+44	Nuclear-Macro-Je	8	2	0.0
+45	Nuclear-Macro-Je	8	1	0.0
+46	Nuclear-Macro-Je	8	1	0.0
+47	Nuclear-Macro-Je	8	1	100.0
+48	Nuclear-Macro-Je	8	1	0.0
+49	Nuclear-Macro-Je	8	2	50.0
+50	Nuclear-Macro-Je	8	1	0.0
+51	Nuclear-Macro-Je	8	2	0.0
+52	Nuclear-Macro-Je	8	2	50.0
+53	Nuclear-Macro-Je	8	1	0.0
+54	Nuclear-Macro-Je	8	1	0.0
+55	Nuclear-Macro-Je	8	2	50.0
+56	Nuclear-Macro-Je	8	1	0.0
+57	Nuclear-Macro-Je	8	2	0.0
+58	Nuclear-Macro-Je	8	1	100.0
+59	Nuclear-Macro-Je	8	1	0.0
+60	Nuclear-Macro-Je	8	2	0.0
+61	Nuclear-Macro-Je	8	2	0.0
+62	Nuclear-Macro-Je	8	1	0.0
+63	Nuclear-Macro-Je	8	1	100.0
+64	Nuclear-Macro-Je	8	2	50.0
+65	Nuclear-Macro-Je	8	2	0.0
+66	Nuclear-Macro-Je	8	1	0.0
+67	Nuclear-Macro-Je	8	1	0.0
+68	Nuclear-Macro-Je	8	1	100.0
+69	Nuclear-Macro-Je	8	1	0.0
+70	Nuclear-Macro-Je	8	1	100.0
+71	Nuclear-Macro-Je	8	2	0.0
+72	Nuclear-Macro-Je	8	1	0.0
+73	Nuclear-Macro-Je	8	1	0.0
+74	Nuclear-Macro-Je	8	2	0.0
+75	Nuclear-Macro-Je	8	2	0.0
+76	Nuclear-Macro-Je	8	1	0.0
+77	Nuclear-Macro-Je	8	2	50.0
+78	Nuclear-Macro-Je	8	2	0.0
+79	Nuclear-Macro-Je	8	2	0.0
+80	Nuclear-Macro-Je	8	2	0.0
+81	Nuclear-Macro-Je	8	2	0.0
+82	Nuclear-Macro-Je	8	1	0.0
+83	Nuclear-Macro-Je	8	2	50.0
+84	Nuclear-Macro-Je	8	1	0.0
+85	Nuclear-Macro-Je	8	1	0.0
+86	Nuclear-Macro-Je	8	2	0.0
+87	Nuclear-Macro-Je	8	1	0.0
+88	Nuclear-Macro-Je	8	2	0.0
+89	Nuclear-Macro-Je	8	2	0.0
+90	Nuclear-Macro-Je	8	1	0.0
+91	Nuclear-Macro-Je	8	2	0.0
+92	Nuclear-Macro-Je	8	2	0.0
+93	Nuclear-Macro-Je	8	1	100.0
+94	Nuclear-Macro-Je	8	2	0.0
+95	Nuclear-Macro-Je	8	2	0.0
+96	Nuclear-Macro-Je	8	2	0.0
+97	Nuclear-Macro-Je	8	2	0.0
+98	Nuclear-Macro-Je	8	2	0.0
+99	Nuclear-Macro-Je	8	2	0.0
+100	Nuclear-Macro-Je	8	1	0.0
+1	Lower Sepik	6	1	100.0
+2	Lower Sepik	6	1	100.0
+3	Lower Sepik	6	1	100.0
+4	Lower Sepik	6	1	100.0
+5	Lower Sepik	6	1	100.0
+6	Lower Sepik	6	1	100.0
+7	Lower Sepik	6	1	100.0
+8	Lower Sepik	6	1	100.0
+9	Lower Sepik	6	1	100.0
+10	Lower Sepik	6	1	100.0
+11	Lower Sepik	6	1	0.0
+12	Lower Sepik	6	1	100.0
+13	Lower Sepik	6	1	100.0
+14	Lower Sepik	6	1	100.0
+15	Lower Sepik	6	1	0.0
+16	Lower Sepik	6	1	0.0
+17	Lower Sepik	6	1	0.0
+18	Lower Sepik	6	1	100.0
+19	Lower Sepik	6	1	100.0
+20	Lower Sepik	6	1	0.0
+21	Lower Sepik	6	1	0.0
+22	Lower Sepik	6	1	100.0
+23	Lower Sepik	6	1	100.0
+24	Lower Sepik	6	1	100.0
+25	Lower Sepik	6	1	0.0
+26	Lower Sepik	6	1	100.0
+27	Lower Sepik	6	1	0.0
+28	Lower Sepik	6	1	100.0
+29	Lower Sepik	6	1	0.0
+30	Lower Sepik	6	1	100.0
+31	Lower Sepik	6	1	100.0
+32	Lower Sepik	6	1	0.0
+33	Lower Sepik	6	1	0.0
+34	Lower Sepik	6	1	100.0
+35	Lower Sepik	6	1	100.0
+36	Lower Sepik	6	1	100.0
+37	Lower Sepik	6	1	100.0
+38	Lower Sepik	6	1	100.0
+39	Lower Sepik	6	1	100.0
+40	Lower Sepik	6	1	100.0
+41	Lower Sepik	6	1	100.0
+42	Lower Sepik	6	1	0.0
+43	Lower Sepik	6	1	100.0
+44	Lower Sepik	6	1	100.0
+45	Lower Sepik	6	1	0.0
+46	Lower Sepik	6	1	0.0
+47	Lower Sepik	6	1	100.0
+48	Lower Sepik	6	1	100.0
+49	Lower Sepik	6	1	100.0
+50	Lower Sepik	6	1	100.0
+51	Lower Sepik	6	1	0.0
+52	Lower Sepik	6	1	100.0
+53	Lower Sepik	6	1	0.0
+54	Lower Sepik	6	1	0.0
+55	Lower Sepik	6	1	100.0
+56	Lower Sepik	6	1	100.0
+57	Lower Sepik	6	1	100.0
+58	Lower Sepik	6	1	100.0
+59	Lower Sepik	6	1	100.0
+60	Lower Sepik	6	1	0.0
+61	Lower Sepik	6	1	100.0
+62	Lower Sepik	6	1	0.0
+63	Lower Sepik	6	1	100.0
+64	Lower Sepik	6	1	0.0
+65	Lower Sepik	6	1	0.0
+66	Lower Sepik	6	1	0.0
+67	Lower Sepik	6	1	100.0
+68	Lower Sepik	6	1	0.0
+69	Lower Sepik	6	1	0.0
+70	Lower Sepik	6	1	100.0
+71	Lower Sepik	6	1	0.0
+72	Lower Sepik	6	1	100.0
+73	Lower Sepik	6	1	0.0
+74	Lower Sepik	6	1	0.0
+75	Lower Sepik	6	1	100.0
+76	Lower Sepik	6	1	100.0
+77	Lower Sepik	6	1	100.0
+78	Lower Sepik	6	1	0.0
+79	Lower Sepik	6	1	0.0
+80	Lower Sepik	6	1	0.0
+81	Lower Sepik	6	1	100.0
+82	Lower Sepik	6	1	100.0
+83	Lower Sepik	6	1	0.0
+84	Lower Sepik	6	1	0.0
+85	Lower Sepik	6	1	100.0
+86	Lower Sepik	6	1	100.0
+87	Lower Sepik	6	1	100.0
+88	Lower Sepik	6	1	100.0
+89	Lower Sepik	6	1	0.0
+90	Lower Sepik	6	1	100.0
+91	Lower Sepik	6	1	0.0
+92	Lower Sepik	6	1	100.0
+93	Lower Sepik	6	1	100.0
+94	Lower Sepik	6	1	100.0
+95	Lower Sepik	6	1	100.0
+96	Lower Sepik	6	1	0.0
+97	Lower Sepik	6	1	0.0
+98	Lower Sepik	6	1	100.0
+99	Lower Sepik	6	1	0.0
+100	Lower Sepik	6	1	0.0
+1	Bookkeeping	5	1	100.0
+2	Bookkeeping	5	1	100.0
+3	Bookkeeping	5	1	0.0
+4	Bookkeeping	5	1	0.0
+5	Bookkeeping	5	1	100.0
+6	Bookkeeping	5	1	0.0
+7	Bookkeeping	5	1	0.0
+8	Bookkeeping	5	1	100.0
+9	Bookkeeping	5	1	100.0
+10	Bookkeeping	5	1	0.0
+11	Bookkeeping	5	1	100.0
+12	Bookkeeping	5	1	100.0
+13	Bookkeeping	5	1	0.0
+14	Bookkeeping	5	1	0.0
+15	Bookkeeping	5	1	100.0
+16	Bookkeeping	5	1	100.0
+17	Bookkeeping	5	1	0.0
+18	Bookkeeping	5	1	0.0
+19	Bookkeeping	5	1	0.0
+20	Bookkeeping	5	1	0.0
+21	Bookkeeping	5	1	0.0
+22	Bookkeeping	5	1	100.0
+23	Bookkeeping	5	1	100.0
+24	Bookkeeping	5	1	0.0
+25	Bookkeeping	5	1	0.0
+26	Bookkeeping	5	1	100.0
+27	Bookkeeping	5	1	0.0
+28	Bookkeeping	5	1	0.0
+29	Bookkeeping	5	1	100.0
+30	Bookkeeping	5	1	100.0
+31	Bookkeeping	5	1	100.0
+32	Bookkeeping	5	1	100.0
+33	Bookkeeping	5	1	100.0
+34	Bookkeeping	5	1	0.0
+35	Bookkeeping	5	1	0.0
+36	Bookkeeping	5	1	0.0
+37	Bookkeeping	5	1	100.0
+38	Bookkeeping	5	1	0.0
+39	Bookkeeping	5	1	100.0
+40	Bookkeeping	5	1	0.0
+41	Bookkeeping	5	1	0.0
+42	Bookkeeping	5	1	0.0
+43	Bookkeeping	5	1	100.0
+44	Bookkeeping	5	1	0.0
+45	Bookkeeping	5	1	0.0
+46	Bookkeeping	5	1	0.0
+47	Bookkeeping	5	1	100.0
+48	Bookkeeping	5	1	100.0
+49	Bookkeeping	5	1	0.0
+50	Bookkeeping	5	1	0.0
+51	Bookkeeping	5	1	0.0
+52	Bookkeeping	5	1	100.0
+53	Bookkeeping	5	1	0.0
+54	Bookkeeping	5	1	0.0
+55	Bookkeeping	5	1	0.0
+56	Bookkeeping	5	1	100.0
+57	Bookkeeping	5	1	0.0
+58	Bookkeeping	5	1	0.0
+59	Bookkeeping	5	1	100.0
+60	Bookkeeping	5	1	100.0
+61	Bookkeeping	5	1	0.0
+62	Bookkeeping	5	1	0.0
+63	Bookkeeping	5	1	100.0
+64	Bookkeeping	5	1	0.0
+65	Bookkeeping	5	1	0.0
+66	Bookkeeping	5	1	100.0
+67	Bookkeeping	5	1	0.0
+68	Bookkeeping	5	1	100.0
+69	Bookkeeping	5	1	100.0
+70	Bookkeeping	5	1	0.0
+71	Bookkeeping	5	1	100.0
+72	Bookkeeping	5	1	0.0
+73	Bookkeeping	5	1	100.0
+74	Bookkeeping	5	1	0.0
+75	Bookkeeping	5	1	0.0
+76	Bookkeeping	5	1	0.0
+77	Bookkeeping	5	1	100.0
+78	Bookkeeping	5	1	0.0
+79	Bookkeeping	5	1	0.0
+80	Bookkeeping	5	1	0.0
+81	Bookkeeping	5	1	100.0
+82	Bookkeeping	5	1	100.0
+83	Bookkeeping	5	1	0.0
+84	Bookkeeping	5	1	0.0
+85	Bookkeeping	5	1	100.0
+86	Bookkeeping	5	1	100.0
+87	Bookkeeping	5	1	100.0
+88	Bookkeeping	5	1	100.0
+89	Bookkeeping	5	1	100.0
+90	Bookkeeping	5	1	0.0
+91	Bookkeeping	5	1	100.0
+92	Bookkeeping	5	1	0.0
+93	Bookkeeping	5	1	0.0
+94	Bookkeeping	5	1	100.0
+95	Bookkeeping	5	1	0.0
+96	Bookkeeping	5	1	0.0
+97	Bookkeeping	5	1	0.0
+98	Bookkeeping	5	1	0.0
+99	Bookkeeping	5	1	0.0
+100	Bookkeeping	5	1	100.0
+1	Otomanguean	18	3	66.667
+2	Otomanguean	18	3	100.0
+3	Otomanguean	18	4	100.0
+4	Otomanguean	18	4	100.0
+5	Otomanguean	18	4	100.0
+6	Otomanguean	18	4	75.0
+7	Otomanguean	18	4	75.0
+8	Otomanguean	18	3	100.0
+9	Otomanguean	18	3	100.0
+10	Otomanguean	18	4	100.0
+11	Otomanguean	18	4	75.0
+12	Otomanguean	18	4	100.0
+13	Otomanguean	18	3	66.667
+14	Otomanguean	18	4	75.0
+15	Otomanguean	18	4	100.0
+16	Otomanguean	18	4	100.0
+17	Otomanguean	18	3	66.667
+18	Otomanguean	18	4	100.0
+19	Otomanguean	18	3	100.0
+20	Otomanguean	18	4	100.0
+21	Otomanguean	18	3	100.0
+22	Otomanguean	18	4	75.0
+23	Otomanguean	18	3	100.0
+24	Otomanguean	18	4	100.0
+25	Otomanguean	18	3	100.0
+26	Otomanguean	18	3	66.667
+27	Otomanguean	18	4	75.0
+28	Otomanguean	18	3	100.0
+29	Otomanguean	18	4	75.0
+30	Otomanguean	18	4	75.0
+31	Otomanguean	18	3	100.0
+32	Otomanguean	18	3	100.0
+33	Otomanguean	18	3	66.667
+34	Otomanguean	18	3	66.667
+35	Otomanguean	18	3	100.0
+36	Otomanguean	18	4	100.0
+37	Otomanguean	18	4	50.0
+38	Otomanguean	18	4	75.0
+39	Otomanguean	18	4	100.0
+40	Otomanguean	18	4	100.0
+41	Otomanguean	18	3	66.667
+42	Otomanguean	18	4	75.0
+43	Otomanguean	18	4	100.0
+44	Otomanguean	18	3	100.0
+45	Otomanguean	18	3	66.667
+46	Otomanguean	18	3	100.0
+47	Otomanguean	18	4	50.0
+48	Otomanguean	18	3	66.667
+49	Otomanguean	18	4	75.0
+50	Otomanguean	18	3	66.667
+51	Otomanguean	18	4	75.0
+52	Otomanguean	18	3	66.667
+53	Otomanguean	18	4	100.0
+54	Otomanguean	18	4	75.0
+55	Otomanguean	18	3	100.0
+56	Otomanguean	18	4	100.0
+57	Otomanguean	18	3	100.0
+58	Otomanguean	18	4	75.0
+59	Otomanguean	18	4	50.0
+60	Otomanguean	18	3	100.0
+61	Otomanguean	18	3	100.0
+62	Otomanguean	18	3	66.667
+63	Otomanguean	18	4	75.0
+64	Otomanguean	18	3	100.0
+65	Otomanguean	18	4	50.0
+66	Otomanguean	18	3	100.0
+67	Otomanguean	18	4	75.0
+68	Otomanguean	18	4	100.0
+69	Otomanguean	18	4	100.0
+70	Otomanguean	18	3	100.0
+71	Otomanguean	18	4	100.0
+72	Otomanguean	18	4	100.0
+73	Otomanguean	18	3	66.667
+74	Otomanguean	18	3	100.0
+75	Otomanguean	18	3	100.0
+76	Otomanguean	18	3	100.0
+77	Otomanguean	18	3	33.333
+78	Otomanguean	18	3	100.0
+79	Otomanguean	18	3	100.0
+80	Otomanguean	18	4	75.0
+81	Otomanguean	18	4	100.0
+82	Otomanguean	18	3	66.667
+83	Otomanguean	18	4	100.0
+84	Otomanguean	18	3	100.0
+85	Otomanguean	18	3	100.0
+86	Otomanguean	18	3	100.0
+87	Otomanguean	18	3	100.0
+88	Otomanguean	18	4	100.0
+89	Otomanguean	18	4	75.0
+90	Otomanguean	18	3	66.667
+91	Otomanguean	18	4	75.0
+92	Otomanguean	18	4	100.0
+93	Otomanguean	18	4	100.0
+94	Otomanguean	18	3	100.0
+95	Otomanguean	18	3	100.0
+96	Otomanguean	18	4	100.0
+97	Otomanguean	18	4	75.0
+98	Otomanguean	18	3	100.0
+99	Otomanguean	18	4	50.0
+100	Otomanguean	18	4	100.0
+1	Chapacuran	7	1	100.0
+2	Chapacuran	7	2	100.0
+3	Chapacuran	7	1	100.0
+4	Chapacuran	7	1	100.0
+5	Chapacuran	7	1	100.0
+6	Chapacuran	7	1	100.0
+7	Chapacuran	7	1	100.0
+8	Chapacuran	7	1	100.0
+9	Chapacuran	7	2	100.0
+10	Chapacuran	7	2	100.0
+11	Chapacuran	7	1	100.0
+12	Chapacuran	7	1	100.0
+13	Chapacuran	7	1	100.0
+14	Chapacuran	7	2	100.0
+15	Chapacuran	7	2	100.0
+16	Chapacuran	7	2	100.0
+17	Chapacuran	7	1	0.0
+18	Chapacuran	7	2	100.0
+19	Chapacuran	7	1	100.0
+20	Chapacuran	7	1	100.0
+21	Chapacuran	7	2	100.0
+22	Chapacuran	7	1	100.0
+23	Chapacuran	7	1	0.0
+24	Chapacuran	7	2	50.0
+25	Chapacuran	7	2	100.0
+26	Chapacuran	7	2	100.0
+27	Chapacuran	7	2	50.0
+28	Chapacuran	7	2	50.0
+29	Chapacuran	7	1	100.0
+30	Chapacuran	7	1	100.0
+31	Chapacuran	7	1	100.0
+32	Chapacuran	7	1	100.0
+33	Chapacuran	7	1	100.0
+34	Chapacuran	7	1	100.0
+35	Chapacuran	7	2	100.0
+36	Chapacuran	7	2	100.0
+37	Chapacuran	7	2	100.0
+38	Chapacuran	7	1	0.0
+39	Chapacuran	7	1	0.0
+40	Chapacuran	7	1	100.0
+41	Chapacuran	7	2	100.0
+42	Chapacuran	7	2	100.0
+43	Chapacuran	7	2	100.0
+44	Chapacuran	7	2	100.0
+45	Chapacuran	7	1	100.0
+46	Chapacuran	7	2	100.0
+47	Chapacuran	7	2	100.0
+48	Chapacuran	7	2	100.0
+49	Chapacuran	7	1	100.0
+50	Chapacuran	7	2	100.0
+51	Chapacuran	7	2	100.0
+52	Chapacuran	7	2	100.0
+53	Chapacuran	7	2	50.0
+54	Chapacuran	7	2	100.0
+55	Chapacuran	7	1	100.0
+56	Chapacuran	7	2	50.0
+57	Chapacuran	7	2	100.0
+58	Chapacuran	7	1	100.0
+59	Chapacuran	7	2	50.0
+60	Chapacuran	7	1	100.0
+61	Chapacuran	7	2	100.0
+62	Chapacuran	7	2	100.0
+63	Chapacuran	7	1	0.0
+64	Chapacuran	7	2	50.0
+65	Chapacuran	7	1	100.0
+66	Chapacuran	7	1	0.0
+67	Chapacuran	7	2	100.0
+68	Chapacuran	7	2	100.0
+69	Chapacuran	7	1	100.0
+70	Chapacuran	7	1	100.0
+71	Chapacuran	7	1	100.0
+72	Chapacuran	7	1	100.0
+73	Chapacuran	7	1	100.0
+74	Chapacuran	7	2	50.0
+75	Chapacuran	7	2	50.0
+76	Chapacuran	7	2	100.0
+77	Chapacuran	7	2	100.0
+78	Chapacuran	7	1	100.0
+79	Chapacuran	7	1	100.0
+80	Chapacuran	7	2	100.0
+81	Chapacuran	7	1	100.0
+82	Chapacuran	7	2	100.0
+83	Chapacuran	7	2	50.0
+84	Chapacuran	7	1	100.0
+85	Chapacuran	7	2	50.0
+86	Chapacuran	7	2	100.0
+87	Chapacuran	7	2	100.0
+88	Chapacuran	7	2	100.0
+89	Chapacuran	7	2	50.0
+90	Chapacuran	7	2	100.0
+91	Chapacuran	7	1	100.0
+92	Chapacuran	7	1	100.0
+93	Chapacuran	7	1	100.0
+94	Chapacuran	7	2	100.0
+95	Chapacuran	7	2	100.0
+96	Chapacuran	7	1	100.0
+97	Chapacuran	7	1	100.0
+98	Chapacuran	7	1	100.0
+99	Chapacuran	7	1	100.0
+100	Chapacuran	7	1	100.0
+1	Pano-Tacanan	15	3	33.333
+2	Pano-Tacanan	15	3	0.0
+3	Pano-Tacanan	15	3	0.0
+4	Pano-Tacanan	15	3	0.0
+5	Pano-Tacanan	15	3	100.0
+6	Pano-Tacanan	15	3	0.0
+7	Pano-Tacanan	15	3	33.333
+8	Pano-Tacanan	15	3	33.333
+9	Pano-Tacanan	15	3	0.0
+10	Pano-Tacanan	15	3	33.333
+11	Pano-Tacanan	15	3	33.333
+12	Pano-Tacanan	15	3	66.667
+13	Pano-Tacanan	15	3	33.333
+14	Pano-Tacanan	15	3	33.333
+15	Pano-Tacanan	15	3	100.0
+16	Pano-Tacanan	15	3	66.667
+17	Pano-Tacanan	15	3	33.333
+18	Pano-Tacanan	15	3	66.667
+19	Pano-Tacanan	15	3	0.0
+20	Pano-Tacanan	15	3	66.667
+21	Pano-Tacanan	15	3	33.333
+22	Pano-Tacanan	15	3	33.333
+23	Pano-Tacanan	15	3	33.333
+24	Pano-Tacanan	15	3	100.0
+25	Pano-Tacanan	15	3	0.0
+26	Pano-Tacanan	15	3	33.333
+27	Pano-Tacanan	15	3	33.333
+28	Pano-Tacanan	15	3	66.667
+29	Pano-Tacanan	15	3	0.0
+30	Pano-Tacanan	15	3	33.333
+31	Pano-Tacanan	15	3	0.0
+32	Pano-Tacanan	15	3	33.333
+33	Pano-Tacanan	15	3	66.667
+34	Pano-Tacanan	15	3	33.333
+35	Pano-Tacanan	15	3	66.667
+36	Pano-Tacanan	15	3	66.667
+37	Pano-Tacanan	15	3	66.667
+38	Pano-Tacanan	15	3	0.0
+39	Pano-Tacanan	15	3	100.0
+40	Pano-Tacanan	15	3	33.333
+41	Pano-Tacanan	15	3	0.0
+42	Pano-Tacanan	15	3	33.333
+43	Pano-Tacanan	15	3	33.333
+44	Pano-Tacanan	15	3	33.333
+45	Pano-Tacanan	15	3	0.0
+46	Pano-Tacanan	15	3	100.0
+47	Pano-Tacanan	15	3	66.667
+48	Pano-Tacanan	15	3	33.333
+49	Pano-Tacanan	15	3	100.0
+50	Pano-Tacanan	15	3	66.667
+51	Pano-Tacanan	15	3	0.0
+52	Pano-Tacanan	15	3	33.333
+53	Pano-Tacanan	15	3	33.333
+54	Pano-Tacanan	15	3	33.333
+55	Pano-Tacanan	15	3	33.333
+56	Pano-Tacanan	15	3	0.0
+57	Pano-Tacanan	15	3	66.667
+58	Pano-Tacanan	15	3	0.0
+59	Pano-Tacanan	15	3	0.0
+60	Pano-Tacanan	15	3	66.667
+61	Pano-Tacanan	15	3	33.333
+62	Pano-Tacanan	15	3	33.333
+63	Pano-Tacanan	15	3	33.333
+64	Pano-Tacanan	15	3	66.667
+65	Pano-Tacanan	15	3	33.333
+66	Pano-Tacanan	15	3	0.0
+67	Pano-Tacanan	15	3	0.0
+68	Pano-Tacanan	15	3	66.667
+69	Pano-Tacanan	15	3	33.333
+70	Pano-Tacanan	15	3	66.667
+71	Pano-Tacanan	15	3	33.333
+72	Pano-Tacanan	15	3	33.333
+73	Pano-Tacanan	15	3	0.0
+74	Pano-Tacanan	15	3	0.0
+75	Pano-Tacanan	15	3	0.0
+76	Pano-Tacanan	15	3	33.333
+77	Pano-Tacanan	15	3	66.667
+78	Pano-Tacanan	15	3	33.333
+79	Pano-Tacanan	15	3	0.0
+80	Pano-Tacanan	15	3	33.333
+81	Pano-Tacanan	15	3	0.0
+82	Pano-Tacanan	15	3	0.0
+83	Pano-Tacanan	15	3	66.667
+84	Pano-Tacanan	15	3	33.333
+85	Pano-Tacanan	15	3	66.667
+86	Pano-Tacanan	15	3	66.667
+87	Pano-Tacanan	15	3	100.0
+88	Pano-Tacanan	15	3	66.667
+89	Pano-Tacanan	15	3	0.0
+90	Pano-Tacanan	15	3	0.0
+91	Pano-Tacanan	15	3	33.333
+92	Pano-Tacanan	15	3	33.333
+93	Pano-Tacanan	15	3	66.667
+94	Pano-Tacanan	15	3	66.667
+95	Pano-Tacanan	15	3	33.333
+96	Pano-Tacanan	15	3	66.667
+97	Pano-Tacanan	15	3	0.0
+98	Pano-Tacanan	15	3	0.0
+99	Pano-Tacanan	15	3	66.667
+100	Pano-Tacanan	15	3	33.333
+1	Austroasiatic	97	20	100.0
+2	Austroasiatic	97	19	73.684
+3	Austroasiatic	97	19	100.0
+4	Austroasiatic	97	20	100.0
+5	Austroasiatic	97	19	100.0
+6	Austroasiatic	97	20	100.0
+7	Austroasiatic	97	20	85.0
+8	Austroasiatic	97	20	100.0
+9	Austroasiatic	97	19	94.737
+10	Austroasiatic	97	19	89.474
+11	Austroasiatic	97	19	94.737
+12	Austroasiatic	97	20	95.0
+13	Austroasiatic	97	19	89.474
+14	Austroasiatic	97	19	100.0
+15	Austroasiatic	97	20	95.0
+16	Austroasiatic	97	19	94.737
+17	Austroasiatic	97	20	90.0
+18	Austroasiatic	97	20	100.0
+19	Austroasiatic	97	20	100.0
+20	Austroasiatic	97	20	100.0
+21	Austroasiatic	97	20	100.0
+22	Austroasiatic	97	19	100.0
+23	Austroasiatic	97	20	100.0
+24	Austroasiatic	97	19	100.0
+25	Austroasiatic	97	20	100.0
+26	Austroasiatic	97	20	95.0
+27	Austroasiatic	97	19	100.0
+28	Austroasiatic	97	19	94.737
+29	Austroasiatic	97	19	100.0
+30	Austroasiatic	97	19	100.0
+31	Austroasiatic	97	19	94.737
+32	Austroasiatic	97	20	100.0
+33	Austroasiatic	97	20	100.0
+34	Austroasiatic	97	20	90.0
+35	Austroasiatic	97	19	94.737
+36	Austroasiatic	97	20	95.0
+37	Austroasiatic	97	19	100.0
+38	Austroasiatic	97	20	100.0
+39	Austroasiatic	97	19	78.947
+40	Austroasiatic	97	19	94.737
+41	Austroasiatic	97	20	90.0
+42	Austroasiatic	97	19	100.0
+43	Austroasiatic	97	20	100.0
+44	Austroasiatic	97	19	100.0
+45	Austroasiatic	97	20	95.0
+46	Austroasiatic	97	20	90.0
+47	Austroasiatic	97	20	90.0
+48	Austroasiatic	97	19	94.737
+49	Austroasiatic	97	20	90.0
+50	Austroasiatic	97	20	100.0
+51	Austroasiatic	97	20	90.0
+52	Austroasiatic	97	19	100.0
+53	Austroasiatic	97	19	94.737
+54	Austroasiatic	97	20	90.0
+55	Austroasiatic	97	20	100.0
+56	Austroasiatic	97	20	90.0
+57	Austroasiatic	97	19	94.737
+58	Austroasiatic	97	20	100.0
+59	Austroasiatic	97	19	100.0
+60	Austroasiatic	97	20	100.0
+61	Austroasiatic	97	19	94.737
+62	Austroasiatic	97	19	100.0
+63	Austroasiatic	97	20	100.0
+64	Austroasiatic	97	19	100.0
+65	Austroasiatic	97	19	100.0
+66	Austroasiatic	97	19	89.474
+67	Austroasiatic	97	20	100.0
+68	Austroasiatic	97	19	100.0
+69	Austroasiatic	97	19	100.0
+70	Austroasiatic	97	20	90.0
+71	Austroasiatic	97	20	100.0
+72	Austroasiatic	97	20	100.0
+73	Austroasiatic	97	20	95.0
+74	Austroasiatic	97	19	78.947
+75	Austroasiatic	97	20	90.0
+76	Austroasiatic	97	19	94.737
+77	Austroasiatic	97	20	100.0
+78	Austroasiatic	97	19	100.0
+79	Austroasiatic	97	19	89.474
+80	Austroasiatic	97	19	100.0
+81	Austroasiatic	97	19	94.737
+82	Austroasiatic	97	20	100.0
+83	Austroasiatic	97	19	94.737
+84	Austroasiatic	97	19	100.0
+85	Austroasiatic	97	19	100.0
+86	Austroasiatic	97	20	85.0
+87	Austroasiatic	97	19	94.737
+88	Austroasiatic	97	20	100.0
+89	Austroasiatic	97	20	100.0
+90	Austroasiatic	97	20	95.0
+91	Austroasiatic	97	20	100.0
+92	Austroasiatic	97	20	100.0
+93	Austroasiatic	97	19	100.0
+94	Austroasiatic	97	19	94.737
+95	Austroasiatic	97	20	100.0
+96	Austroasiatic	97	19	89.474
+97	Austroasiatic	97	20	100.0
+98	Austroasiatic	97	20	95.0
+99	Austroasiatic	97	19	89.474
+100	Austroasiatic	97	20	100.0
+1	Koreanic	11	2	100.0
+2	Koreanic	11	2	50.0
+3	Koreanic	11	2	100.0
+4	Koreanic	11	2	50.0
+5	Koreanic	11	2	50.0
+6	Koreanic	11	2	100.0
+7	Koreanic	11	2	100.0
+8	Koreanic	11	2	0.0
+9	Koreanic	11	2	50.0
+10	Koreanic	11	2	100.0
+11	Koreanic	11	2	50.0
+12	Koreanic	11	2	50.0
+13	Koreanic	11	2	0.0
+14	Koreanic	11	2	50.0
+15	Koreanic	11	2	50.0
+16	Koreanic	11	2	100.0
+17	Koreanic	11	2	100.0
+18	Koreanic	11	2	0.0
+19	Koreanic	11	2	50.0
+20	Koreanic	11	2	0.0
+21	Koreanic	11	2	0.0
+22	Koreanic	11	2	50.0
+23	Koreanic	11	2	50.0
+24	Koreanic	11	2	50.0
+25	Koreanic	11	2	0.0
+26	Koreanic	11	2	0.0
+27	Koreanic	11	2	50.0
+28	Koreanic	11	2	50.0
+29	Koreanic	11	2	0.0
+30	Koreanic	11	2	0.0
+31	Koreanic	11	2	50.0
+32	Koreanic	11	2	100.0
+33	Koreanic	11	2	0.0
+34	Koreanic	11	2	0.0
+35	Koreanic	11	2	100.0
+36	Koreanic	11	2	100.0
+37	Koreanic	11	2	50.0
+38	Koreanic	11	2	50.0
+39	Koreanic	11	2	100.0
+40	Koreanic	11	2	0.0
+41	Koreanic	11	2	0.0
+42	Koreanic	11	2	50.0
+43	Koreanic	11	2	100.0
+44	Koreanic	11	2	0.0
+45	Koreanic	11	2	0.0
+46	Koreanic	11	2	100.0
+47	Koreanic	11	2	0.0
+48	Koreanic	11	2	0.0
+49	Koreanic	11	2	100.0
+50	Koreanic	11	2	100.0
+51	Koreanic	11	2	0.0
+52	Koreanic	11	2	50.0
+53	Koreanic	11	2	50.0
+54	Koreanic	11	2	50.0
+55	Koreanic	11	2	100.0
+56	Koreanic	11	2	50.0
+57	Koreanic	11	2	100.0
+58	Koreanic	11	2	100.0
+59	Koreanic	11	2	50.0
+60	Koreanic	11	2	100.0
+61	Koreanic	11	2	100.0
+62	Koreanic	11	2	50.0
+63	Koreanic	11	2	50.0
+64	Koreanic	11	2	50.0
+65	Koreanic	11	2	50.0
+66	Koreanic	11	2	0.0
+67	Koreanic	11	2	50.0
+68	Koreanic	11	2	50.0
+69	Koreanic	11	2	0.0
+70	Koreanic	11	2	50.0
+71	Koreanic	11	2	100.0
+72	Koreanic	11	2	0.0
+73	Koreanic	11	2	100.0
+74	Koreanic	11	2	0.0
+75	Koreanic	11	2	100.0
+76	Koreanic	11	2	100.0
+77	Koreanic	11	2	100.0
+78	Koreanic	11	2	0.0
+79	Koreanic	11	2	100.0
+80	Koreanic	11	2	100.0
+81	Koreanic	11	2	50.0
+82	Koreanic	11	2	0.0
+83	Koreanic	11	2	50.0
+84	Koreanic	11	2	50.0
+85	Koreanic	11	2	100.0
+86	Koreanic	11	2	0.0
+87	Koreanic	11	2	50.0
+88	Koreanic	11	2	100.0
+89	Koreanic	11	2	0.0
+90	Koreanic	11	2	0.0
+91	Koreanic	11	2	50.0
+92	Koreanic	11	2	100.0
+93	Koreanic	11	2	50.0
+94	Koreanic	11	2	50.0
+95	Koreanic	11	2	100.0
+96	Koreanic	11	2	50.0
+97	Koreanic	11	2	0.0
+98	Koreanic	11	2	0.0
+99	Koreanic	11	2	50.0
+100	Koreanic	11	2	0.0
+1	Mixe-Zoque	9	2	100.0
+2	Mixe-Zoque	9	2	100.0
+3	Mixe-Zoque	9	2	100.0
+4	Mixe-Zoque	9	2	100.0
+5	Mixe-Zoque	9	2	100.0
+6	Mixe-Zoque	9	2	100.0
+7	Mixe-Zoque	9	2	100.0
+8	Mixe-Zoque	9	2	50.0
+9	Mixe-Zoque	9	2	50.0
+10	Mixe-Zoque	9	2	100.0
+11	Mixe-Zoque	9	2	100.0
+12	Mixe-Zoque	9	2	100.0
+13	Mixe-Zoque	9	2	100.0
+14	Mixe-Zoque	9	2	100.0
+15	Mixe-Zoque	9	2	50.0
+16	Mixe-Zoque	9	2	100.0
+17	Mixe-Zoque	9	2	100.0
+18	Mixe-Zoque	9	2	50.0
+19	Mixe-Zoque	9	2	50.0
+20	Mixe-Zoque	9	2	100.0
+21	Mixe-Zoque	9	2	100.0
+22	Mixe-Zoque	9	2	50.0
+23	Mixe-Zoque	9	2	100.0
+24	Mixe-Zoque	9	2	100.0
+25	Mixe-Zoque	9	2	100.0
+26	Mixe-Zoque	9	2	50.0
+27	Mixe-Zoque	9	2	100.0
+28	Mixe-Zoque	9	2	100.0
+29	Mixe-Zoque	9	2	100.0
+30	Mixe-Zoque	9	2	50.0
+31	Mixe-Zoque	9	2	100.0
+32	Mixe-Zoque	9	2	100.0
+33	Mixe-Zoque	9	2	100.0
+34	Mixe-Zoque	9	2	50.0
+35	Mixe-Zoque	9	2	100.0
+36	Mixe-Zoque	9	2	100.0
+37	Mixe-Zoque	9	2	100.0
+38	Mixe-Zoque	9	2	0.0
+39	Mixe-Zoque	9	2	100.0
+40	Mixe-Zoque	9	2	100.0
+41	Mixe-Zoque	9	2	50.0
+42	Mixe-Zoque	9	2	100.0
+43	Mixe-Zoque	9	2	50.0
+44	Mixe-Zoque	9	2	50.0
+45	Mixe-Zoque	9	2	50.0
+46	Mixe-Zoque	9	2	50.0
+47	Mixe-Zoque	9	2	50.0
+48	Mixe-Zoque	9	2	50.0
+49	Mixe-Zoque	9	2	100.0
+50	Mixe-Zoque	9	2	50.0
+51	Mixe-Zoque	9	2	50.0
+52	Mixe-Zoque	9	2	100.0
+53	Mixe-Zoque	9	2	100.0
+54	Mixe-Zoque	9	2	100.0
+55	Mixe-Zoque	9	2	100.0
+56	Mixe-Zoque	9	2	0.0
+57	Mixe-Zoque	9	2	100.0
+58	Mixe-Zoque	9	2	50.0
+59	Mixe-Zoque	9	2	100.0
+60	Mixe-Zoque	9	2	100.0
+61	Mixe-Zoque	9	2	100.0
+62	Mixe-Zoque	9	2	100.0
+63	Mixe-Zoque	9	2	100.0
+64	Mixe-Zoque	9	2	100.0
+65	Mixe-Zoque	9	2	100.0
+66	Mixe-Zoque	9	2	100.0
+67	Mixe-Zoque	9	2	100.0
+68	Mixe-Zoque	9	2	100.0
+69	Mixe-Zoque	9	2	100.0
+70	Mixe-Zoque	9	2	50.0
+71	Mixe-Zoque	9	2	50.0
+72	Mixe-Zoque	9	2	50.0
+73	Mixe-Zoque	9	2	100.0
+74	Mixe-Zoque	9	2	50.0
+75	Mixe-Zoque	9	2	100.0
+76	Mixe-Zoque	9	2	50.0
+77	Mixe-Zoque	9	2	100.0
+78	Mixe-Zoque	9	2	50.0
+79	Mixe-Zoque	9	2	50.0
+80	Mixe-Zoque	9	2	0.0
+81	Mixe-Zoque	9	2	100.0
+82	Mixe-Zoque	9	2	50.0
+83	Mixe-Zoque	9	2	50.0
+84	Mixe-Zoque	9	2	0.0
+85	Mixe-Zoque	9	2	100.0
+86	Mixe-Zoque	9	2	0.0
+87	Mixe-Zoque	9	2	50.0
+88	Mixe-Zoque	9	2	50.0
+89	Mixe-Zoque	9	2	50.0
+90	Mixe-Zoque	9	2	100.0
+91	Mixe-Zoque	9	2	100.0
+92	Mixe-Zoque	9	2	50.0
+93	Mixe-Zoque	9	2	100.0
+94	Mixe-Zoque	9	2	100.0
+95	Mixe-Zoque	9	2	100.0
+96	Mixe-Zoque	9	2	50.0
+97	Mixe-Zoque	9	2	100.0
+98	Mixe-Zoque	9	2	100.0
+99	Mixe-Zoque	9	2	100.0
+100	Mixe-Zoque	9	2	100.0
+1	Nakh-Daghestanian	34	7	100.0
+2	Nakh-Daghestanian	34	7	100.0
+3	Nakh-Daghestanian	34	7	100.0
+4	Nakh-Daghestanian	34	7	100.0
+5	Nakh-Daghestanian	34	7	100.0
+6	Nakh-Daghestanian	34	7	100.0
+7	Nakh-Daghestanian	34	7	100.0
+8	Nakh-Daghestanian	34	7	100.0
+9	Nakh-Daghestanian	34	7	100.0
+10	Nakh-Daghestanian	34	7	100.0
+11	Nakh-Daghestanian	34	7	100.0
+12	Nakh-Daghestanian	34	7	100.0
+13	Nakh-Daghestanian	34	7	100.0
+14	Nakh-Daghestanian	34	7	100.0
+15	Nakh-Daghestanian	34	7	100.0
+16	Nakh-Daghestanian	34	7	100.0
+17	Nakh-Daghestanian	34	7	100.0
+18	Nakh-Daghestanian	34	7	100.0
+19	Nakh-Daghestanian	34	7	100.0
+20	Nakh-Daghestanian	34	7	100.0
+21	Nakh-Daghestanian	34	7	100.0
+22	Nakh-Daghestanian	34	7	100.0
+23	Nakh-Daghestanian	34	7	100.0
+24	Nakh-Daghestanian	34	7	100.0
+25	Nakh-Daghestanian	34	7	100.0
+26	Nakh-Daghestanian	34	7	100.0
+27	Nakh-Daghestanian	34	7	100.0
+28	Nakh-Daghestanian	34	7	100.0
+29	Nakh-Daghestanian	34	7	100.0
+30	Nakh-Daghestanian	34	7	100.0
+31	Nakh-Daghestanian	34	7	100.0
+32	Nakh-Daghestanian	34	7	100.0
+33	Nakh-Daghestanian	34	7	100.0
+34	Nakh-Daghestanian	34	7	100.0
+35	Nakh-Daghestanian	34	7	100.0
+36	Nakh-Daghestanian	34	7	100.0
+37	Nakh-Daghestanian	34	7	100.0
+38	Nakh-Daghestanian	34	7	100.0
+39	Nakh-Daghestanian	34	7	100.0
+40	Nakh-Daghestanian	34	7	100.0
+41	Nakh-Daghestanian	34	7	100.0
+42	Nakh-Daghestanian	34	7	100.0
+43	Nakh-Daghestanian	34	7	100.0
+44	Nakh-Daghestanian	34	7	100.0
+45	Nakh-Daghestanian	34	7	100.0
+46	Nakh-Daghestanian	34	7	100.0
+47	Nakh-Daghestanian	34	7	100.0
+48	Nakh-Daghestanian	34	7	100.0
+49	Nakh-Daghestanian	34	7	100.0
+50	Nakh-Daghestanian	34	7	100.0
+51	Nakh-Daghestanian	34	7	100.0
+52	Nakh-Daghestanian	34	7	100.0
+53	Nakh-Daghestanian	34	7	100.0
+54	Nakh-Daghestanian	34	7	100.0
+55	Nakh-Daghestanian	34	7	100.0
+56	Nakh-Daghestanian	34	7	100.0
+57	Nakh-Daghestanian	34	7	100.0
+58	Nakh-Daghestanian	34	7	100.0
+59	Nakh-Daghestanian	34	7	100.0
+60	Nakh-Daghestanian	34	7	100.0
+61	Nakh-Daghestanian	34	7	100.0
+62	Nakh-Daghestanian	34	7	100.0
+63	Nakh-Daghestanian	34	7	100.0
+64	Nakh-Daghestanian	34	7	100.0
+65	Nakh-Daghestanian	34	7	100.0
+66	Nakh-Daghestanian	34	7	100.0
+67	Nakh-Daghestanian	34	7	100.0
+68	Nakh-Daghestanian	34	7	100.0
+69	Nakh-Daghestanian	34	7	100.0
+70	Nakh-Daghestanian	34	7	100.0
+71	Nakh-Daghestanian	34	7	100.0
+72	Nakh-Daghestanian	34	7	100.0
+73	Nakh-Daghestanian	34	7	100.0
+74	Nakh-Daghestanian	34	7	100.0
+75	Nakh-Daghestanian	34	7	100.0
+76	Nakh-Daghestanian	34	7	100.0
+77	Nakh-Daghestanian	34	7	100.0
+78	Nakh-Daghestanian	34	7	100.0
+79	Nakh-Daghestanian	34	7	100.0
+80	Nakh-Daghestanian	34	7	100.0
+81	Nakh-Daghestanian	34	7	100.0
+82	Nakh-Daghestanian	34	7	100.0
+83	Nakh-Daghestanian	34	7	100.0
+84	Nakh-Daghestanian	34	7	100.0
+85	Nakh-Daghestanian	34	7	100.0
+86	Nakh-Daghestanian	34	7	100.0
+87	Nakh-Daghestanian	34	7	100.0
+88	Nakh-Daghestanian	34	7	100.0
+89	Nakh-Daghestanian	34	7	100.0
+90	Nakh-Daghestanian	34	7	100.0
+91	Nakh-Daghestanian	34	7	100.0
+92	Nakh-Daghestanian	34	7	100.0
+93	Nakh-Daghestanian	34	7	100.0
+94	Nakh-Daghestanian	34	7	100.0
+95	Nakh-Daghestanian	34	7	100.0
+96	Nakh-Daghestanian	34	7	100.0
+97	Nakh-Daghestanian	34	7	100.0
+98	Nakh-Daghestanian	34	7	100.0
+99	Nakh-Daghestanian	34	7	100.0
+100	Nakh-Daghestanian	34	7	100.0
+1	Kru	5	1	100.0
+2	Kru	5	1	0.0
+3	Kru	5	1	100.0
+4	Kru	5	1	100.0
+5	Kru	5	1	100.0
+6	Kru	5	1	0.0
+7	Kru	5	1	100.0
+8	Kru	5	1	0.0
+9	Kru	5	1	0.0
+10	Kru	5	1	0.0
+11	Kru	5	1	100.0
+12	Kru	5	1	0.0
+13	Kru	5	1	100.0
+14	Kru	5	1	0.0
+15	Kru	5	1	100.0
+16	Kru	5	1	100.0
+17	Kru	5	1	100.0
+18	Kru	5	1	100.0
+19	Kru	5	1	0.0
+20	Kru	5	1	100.0
+21	Kru	5	1	100.0
+22	Kru	5	1	100.0
+23	Kru	5	1	100.0
+24	Kru	5	1	100.0
+25	Kru	5	1	0.0
+26	Kru	5	1	100.0
+27	Kru	5	1	0.0
+28	Kru	5	1	0.0
+29	Kru	5	1	0.0
+30	Kru	5	1	0.0
+31	Kru	5	1	0.0
+32	Kru	5	1	0.0
+33	Kru	5	1	100.0
+34	Kru	5	1	100.0
+35	Kru	5	1	0.0
+36	Kru	5	1	100.0
+37	Kru	5	1	100.0
+38	Kru	5	1	0.0
+39	Kru	5	1	0.0
+40	Kru	5	1	100.0
+41	Kru	5	1	100.0
+42	Kru	5	1	100.0
+43	Kru	5	1	100.0
+44	Kru	5	1	100.0
+45	Kru	5	1	0.0
+46	Kru	5	1	100.0
+47	Kru	5	1	100.0
+48	Kru	5	1	100.0
+49	Kru	5	1	100.0
+50	Kru	5	1	0.0
+51	Kru	5	1	100.0
+52	Kru	5	1	0.0
+53	Kru	5	1	100.0
+54	Kru	5	1	0.0
+55	Kru	5	1	100.0
+56	Kru	5	1	0.0
+57	Kru	5	1	100.0
+58	Kru	5	1	100.0
+59	Kru	5	1	100.0
+60	Kru	5	1	100.0
+61	Kru	5	1	100.0
+62	Kru	5	1	0.0
+63	Kru	5	1	0.0
+64	Kru	5	1	100.0
+65	Kru	5	1	100.0
+66	Kru	5	1	0.0
+67	Kru	5	1	0.0
+68	Kru	5	1	100.0
+69	Kru	5	1	0.0
+70	Kru	5	1	100.0
+71	Kru	5	1	100.0
+72	Kru	5	1	100.0
+73	Kru	5	1	0.0
+74	Kru	5	1	0.0
+75	Kru	5	1	0.0
+76	Kru	5	1	100.0
+77	Kru	5	1	100.0
+78	Kru	5	1	100.0
+79	Kru	5	1	100.0
+80	Kru	5	1	100.0
+81	Kru	5	1	100.0
+82	Kru	5	1	100.0
+83	Kru	5	1	0.0
+84	Kru	5	1	0.0
+85	Kru	5	1	0.0
+86	Kru	5	1	0.0
+87	Kru	5	1	100.0
+88	Kru	5	1	100.0
+89	Kru	5	1	0.0
+90	Kru	5	1	100.0
+91	Kru	5	1	100.0
+92	Kru	5	1	100.0
+93	Kru	5	1	100.0
+94	Kru	5	1	100.0
+95	Kru	5	1	100.0
+96	Kru	5	1	100.0
+97	Kru	5	1	100.0
+98	Kru	5	1	0.0
+99	Kru	5	1	0.0
+100	Kru	5	1	100.0
+1	Tucanoan	21	4	50.0
+2	Tucanoan	21	4	100.0
+3	Tucanoan	21	4	100.0
+4	Tucanoan	21	4	75.0
+5	Tucanoan	21	4	100.0
+6	Tucanoan	21	4	75.0
+7	Tucanoan	21	4	75.0
+8	Tucanoan	21	4	100.0
+9	Tucanoan	21	4	100.0
+10	Tucanoan	21	4	100.0
+11	Tucanoan	21	4	75.0
+12	Tucanoan	21	4	100.0
+13	Tucanoan	21	4	100.0
+14	Tucanoan	21	4	100.0
+15	Tucanoan	21	4	100.0
+16	Tucanoan	21	4	75.0
+17	Tucanoan	21	4	100.0
+18	Tucanoan	21	4	50.0
+19	Tucanoan	21	4	100.0
+20	Tucanoan	21	4	100.0
+21	Tucanoan	21	4	100.0
+22	Tucanoan	21	4	100.0
+23	Tucanoan	21	4	75.0
+24	Tucanoan	21	4	100.0
+25	Tucanoan	21	4	100.0
+26	Tucanoan	21	4	100.0
+27	Tucanoan	21	4	75.0
+28	Tucanoan	21	4	100.0
+29	Tucanoan	21	4	75.0
+30	Tucanoan	21	4	75.0
+31	Tucanoan	21	4	75.0
+32	Tucanoan	21	4	100.0
+33	Tucanoan	21	4	75.0
+34	Tucanoan	21	4	100.0
+35	Tucanoan	21	4	100.0
+36	Tucanoan	21	4	100.0
+37	Tucanoan	21	4	100.0
+38	Tucanoan	21	4	100.0
+39	Tucanoan	21	4	100.0
+40	Tucanoan	21	4	100.0
+41	Tucanoan	21	4	100.0
+42	Tucanoan	21	4	100.0
+43	Tucanoan	21	4	75.0
+44	Tucanoan	21	4	100.0
+45	Tucanoan	21	4	100.0
+46	Tucanoan	21	4	75.0
+47	Tucanoan	21	4	100.0
+48	Tucanoan	21	4	100.0
+49	Tucanoan	21	4	75.0
+50	Tucanoan	21	4	75.0
+51	Tucanoan	21	4	100.0
+52	Tucanoan	21	4	75.0
+53	Tucanoan	21	4	75.0
+54	Tucanoan	21	4	100.0
+55	Tucanoan	21	4	100.0
+56	Tucanoan	21	4	50.0
+57	Tucanoan	21	4	100.0
+58	Tucanoan	21	4	100.0
+59	Tucanoan	21	4	75.0
+60	Tucanoan	21	4	75.0
+61	Tucanoan	21	4	100.0
+62	Tucanoan	21	4	100.0
+63	Tucanoan	21	4	100.0
+64	Tucanoan	21	4	100.0
+65	Tucanoan	21	4	75.0
+66	Tucanoan	21	4	100.0
+67	Tucanoan	21	4	100.0
+68	Tucanoan	21	4	100.0
+69	Tucanoan	21	4	100.0
+70	Tucanoan	21	4	75.0
+71	Tucanoan	21	4	100.0
+72	Tucanoan	21	4	100.0
+73	Tucanoan	21	4	75.0
+74	Tucanoan	21	4	100.0
+75	Tucanoan	21	4	100.0
+76	Tucanoan	21	4	75.0
+77	Tucanoan	21	4	100.0
+78	Tucanoan	21	4	100.0
+79	Tucanoan	21	4	75.0
+80	Tucanoan	21	4	100.0
+81	Tucanoan	21	4	100.0
+82	Tucanoan	21	4	100.0
+83	Tucanoan	21	4	25.0
+84	Tucanoan	21	4	75.0
+85	Tucanoan	21	4	100.0
+86	Tucanoan	21	4	100.0
+87	Tucanoan	21	4	75.0
+88	Tucanoan	21	4	100.0
+89	Tucanoan	21	4	100.0
+90	Tucanoan	21	4	100.0
+91	Tucanoan	21	4	100.0
+92	Tucanoan	21	4	100.0
+93	Tucanoan	21	4	100.0
+94	Tucanoan	21	4	100.0
+95	Tucanoan	21	4	75.0
+96	Tucanoan	21	4	100.0
+97	Tucanoan	21	4	100.0
+98	Tucanoan	21	4	100.0
+99	Tucanoan	21	4	100.0
+100	Tucanoan	21	4	100.0
+1	Miwok-Costanoan	6	1	100.0
+2	Miwok-Costanoan	6	1	100.0
+3	Miwok-Costanoan	6	1	100.0
+4	Miwok-Costanoan	6	1	100.0
+5	Miwok-Costanoan	6	1	100.0
+6	Miwok-Costanoan	6	1	0.0
+7	Miwok-Costanoan	6	1	0.0
+8	Miwok-Costanoan	6	1	100.0
+9	Miwok-Costanoan	6	1	0.0
+10	Miwok-Costanoan	6	1	100.0
+11	Miwok-Costanoan	6	1	100.0
+12	Miwok-Costanoan	6	1	100.0
+13	Miwok-Costanoan	6	1	100.0
+14	Miwok-Costanoan	6	1	100.0
+15	Miwok-Costanoan	6	1	100.0
+16	Miwok-Costanoan	6	1	100.0
+17	Miwok-Costanoan	6	1	100.0
+18	Miwok-Costanoan	6	1	0.0
+19	Miwok-Costanoan	6	1	100.0
+20	Miwok-Costanoan	6	1	0.0
+21	Miwok-Costanoan	6	1	0.0
+22	Miwok-Costanoan	6	1	100.0
+23	Miwok-Costanoan	6	1	0.0
+24	Miwok-Costanoan	6	1	0.0
+25	Miwok-Costanoan	6	1	100.0
+26	Miwok-Costanoan	6	1	100.0
+27	Miwok-Costanoan	6	1	0.0
+28	Miwok-Costanoan	6	1	100.0
+29	Miwok-Costanoan	6	1	100.0
+30	Miwok-Costanoan	6	1	100.0
+31	Miwok-Costanoan	6	1	100.0
+32	Miwok-Costanoan	6	1	100.0
+33	Miwok-Costanoan	6	1	100.0
+34	Miwok-Costanoan	6	1	0.0
+35	Miwok-Costanoan	6	1	100.0
+36	Miwok-Costanoan	6	1	100.0
+37	Miwok-Costanoan	6	1	100.0
+38	Miwok-Costanoan	6	1	100.0
+39	Miwok-Costanoan	6	1	100.0
+40	Miwok-Costanoan	6	1	100.0
+41	Miwok-Costanoan	6	1	0.0
+42	Miwok-Costanoan	6	1	100.0
+43	Miwok-Costanoan	6	1	100.0
+44	Miwok-Costanoan	6	1	100.0
+45	Miwok-Costanoan	6	1	0.0
+46	Miwok-Costanoan	6	1	100.0
+47	Miwok-Costanoan	6	1	100.0
+48	Miwok-Costanoan	6	1	0.0
+49	Miwok-Costanoan	6	1	100.0
+50	Miwok-Costanoan	6	1	100.0
+51	Miwok-Costanoan	6	1	100.0
+52	Miwok-Costanoan	6	1	0.0
+53	Miwok-Costanoan	6	1	0.0
+54	Miwok-Costanoan	6	1	100.0
+55	Miwok-Costanoan	6	1	100.0
+56	Miwok-Costanoan	6	1	100.0
+57	Miwok-Costanoan	6	1	100.0
+58	Miwok-Costanoan	6	1	100.0
+59	Miwok-Costanoan	6	1	100.0
+60	Miwok-Costanoan	6	1	100.0
+61	Miwok-Costanoan	6	1	100.0
+62	Miwok-Costanoan	6	1	100.0
+63	Miwok-Costanoan	6	1	100.0
+64	Miwok-Costanoan	6	1	100.0
+65	Miwok-Costanoan	6	1	100.0
+66	Miwok-Costanoan	6	1	100.0
+67	Miwok-Costanoan	6	1	100.0
+68	Miwok-Costanoan	6	1	0.0
+69	Miwok-Costanoan	6	1	100.0
+70	Miwok-Costanoan	6	1	0.0
+71	Miwok-Costanoan	6	1	0.0
+72	Miwok-Costanoan	6	1	100.0
+73	Miwok-Costanoan	6	1	100.0
+74	Miwok-Costanoan	6	1	0.0
+75	Miwok-Costanoan	6	1	0.0
+76	Miwok-Costanoan	6	1	100.0
+77	Miwok-Costanoan	6	1	100.0
+78	Miwok-Costanoan	6	1	100.0
+79	Miwok-Costanoan	6	1	100.0
+80	Miwok-Costanoan	6	1	100.0
+81	Miwok-Costanoan	6	1	100.0
+82	Miwok-Costanoan	6	1	100.0
+83	Miwok-Costanoan	6	1	100.0
+84	Miwok-Costanoan	6	1	100.0
+85	Miwok-Costanoan	6	1	0.0
+86	Miwok-Costanoan	6	1	100.0
+87	Miwok-Costanoan	6	1	100.0
+88	Miwok-Costanoan	6	1	100.0
+89	Miwok-Costanoan	6	1	100.0
+90	Miwok-Costanoan	6	1	100.0
+91	Miwok-Costanoan	6	1	100.0
+92	Miwok-Costanoan	6	1	0.0
+93	Miwok-Costanoan	6	1	100.0
+94	Miwok-Costanoan	6	1	100.0
+95	Miwok-Costanoan	6	1	100.0
+96	Miwok-Costanoan	6	1	100.0
+97	Miwok-Costanoan	6	1	0.0
+98	Miwok-Costanoan	6	1	100.0
+99	Miwok-Costanoan	6	1	100.0
+100	Miwok-Costanoan	6	1	100.0
+1	Mongolic-Khitan	14	3	100.0
+2	Mongolic-Khitan	14	3	100.0
+3	Mongolic-Khitan	14	3	100.0
+4	Mongolic-Khitan	14	3	100.0
+5	Mongolic-Khitan	14	3	100.0
+6	Mongolic-Khitan	14	3	100.0
+7	Mongolic-Khitan	14	3	100.0
+8	Mongolic-Khitan	14	3	100.0
+9	Mongolic-Khitan	14	3	100.0
+10	Mongolic-Khitan	14	3	100.0
+11	Mongolic-Khitan	14	3	100.0
+12	Mongolic-Khitan	14	3	100.0
+13	Mongolic-Khitan	14	3	100.0
+14	Mongolic-Khitan	14	3	100.0
+15	Mongolic-Khitan	14	3	100.0
+16	Mongolic-Khitan	14	3	100.0
+17	Mongolic-Khitan	14	3	100.0
+18	Mongolic-Khitan	14	3	100.0
+19	Mongolic-Khitan	14	3	100.0
+20	Mongolic-Khitan	14	3	100.0
+21	Mongolic-Khitan	14	3	100.0
+22	Mongolic-Khitan	14	3	100.0
+23	Mongolic-Khitan	14	3	100.0
+24	Mongolic-Khitan	14	3	100.0
+25	Mongolic-Khitan	14	3	100.0
+26	Mongolic-Khitan	14	3	100.0
+27	Mongolic-Khitan	14	3	100.0
+28	Mongolic-Khitan	14	3	100.0
+29	Mongolic-Khitan	14	3	100.0
+30	Mongolic-Khitan	14	3	100.0
+31	Mongolic-Khitan	14	3	100.0
+32	Mongolic-Khitan	14	3	100.0
+33	Mongolic-Khitan	14	3	100.0
+34	Mongolic-Khitan	14	3	100.0
+35	Mongolic-Khitan	14	3	100.0
+36	Mongolic-Khitan	14	3	100.0
+37	Mongolic-Khitan	14	3	100.0
+38	Mongolic-Khitan	14	3	100.0
+39	Mongolic-Khitan	14	3	100.0
+40	Mongolic-Khitan	14	3	100.0
+41	Mongolic-Khitan	14	3	100.0
+42	Mongolic-Khitan	14	3	100.0
+43	Mongolic-Khitan	14	3	100.0
+44	Mongolic-Khitan	14	3	100.0
+45	Mongolic-Khitan	14	3	100.0
+46	Mongolic-Khitan	14	3	100.0
+47	Mongolic-Khitan	14	3	100.0
+48	Mongolic-Khitan	14	3	100.0
+49	Mongolic-Khitan	14	3	100.0
+50	Mongolic-Khitan	14	3	100.0
+51	Mongolic-Khitan	14	3	100.0
+52	Mongolic-Khitan	14	3	100.0
+53	Mongolic-Khitan	14	3	100.0
+54	Mongolic-Khitan	14	3	100.0
+55	Mongolic-Khitan	14	3	100.0
+56	Mongolic-Khitan	14	3	100.0
+57	Mongolic-Khitan	14	3	100.0
+58	Mongolic-Khitan	14	3	100.0
+59	Mongolic-Khitan	14	3	100.0
+60	Mongolic-Khitan	14	3	100.0
+61	Mongolic-Khitan	14	3	100.0
+62	Mongolic-Khitan	14	3	100.0
+63	Mongolic-Khitan	14	3	33.333
+64	Mongolic-Khitan	14	3	100.0
+65	Mongolic-Khitan	14	3	100.0
+66	Mongolic-Khitan	14	3	100.0
+67	Mongolic-Khitan	14	3	66.667
+68	Mongolic-Khitan	14	3	100.0
+69	Mongolic-Khitan	14	3	100.0
+70	Mongolic-Khitan	14	3	100.0
+71	Mongolic-Khitan	14	3	100.0
+72	Mongolic-Khitan	14	3	100.0
+73	Mongolic-Khitan	14	3	100.0
+74	Mongolic-Khitan	14	3	100.0
+75	Mongolic-Khitan	14	3	100.0
+76	Mongolic-Khitan	14	3	100.0
+77	Mongolic-Khitan	14	3	100.0
+78	Mongolic-Khitan	14	3	100.0
+79	Mongolic-Khitan	14	3	100.0
+80	Mongolic-Khitan	14	3	100.0
+81	Mongolic-Khitan	14	3	100.0
+82	Mongolic-Khitan	14	3	100.0
+83	Mongolic-Khitan	14	3	100.0
+84	Mongolic-Khitan	14	3	100.0
+85	Mongolic-Khitan	14	3	100.0
+86	Mongolic-Khitan	14	3	100.0
+87	Mongolic-Khitan	14	3	100.0
+88	Mongolic-Khitan	14	3	100.0
+89	Mongolic-Khitan	14	3	100.0
+90	Mongolic-Khitan	14	3	100.0
+91	Mongolic-Khitan	14	3	100.0
+92	Mongolic-Khitan	14	3	100.0
+93	Mongolic-Khitan	14	3	100.0
+94	Mongolic-Khitan	14	3	100.0
+95	Mongolic-Khitan	14	3	100.0
+96	Mongolic-Khitan	14	3	100.0
+97	Mongolic-Khitan	14	3	100.0
+98	Mongolic-Khitan	14	3	100.0
+99	Mongolic-Khitan	14	3	100.0
+100	Mongolic-Khitan	14	3	100.0
+1	Barbacoan	5	1	100.0
+2	Barbacoan	5	1	0.0
+3	Barbacoan	5	1	100.0
+4	Barbacoan	5	1	0.0
+5	Barbacoan	5	1	100.0
+6	Barbacoan	5	1	0.0
+7	Barbacoan	5	1	100.0
+8	Barbacoan	5	1	0.0
+9	Barbacoan	5	1	100.0
+10	Barbacoan	5	1	100.0
+11	Barbacoan	5	1	100.0
+12	Barbacoan	5	1	100.0
+13	Barbacoan	5	1	100.0
+14	Barbacoan	5	1	100.0
+15	Barbacoan	5	1	0.0
+16	Barbacoan	5	1	0.0
+17	Barbacoan	5	1	100.0
+18	Barbacoan	5	1	100.0
+19	Barbacoan	5	1	100.0
+20	Barbacoan	5	1	0.0
+21	Barbacoan	5	1	0.0
+22	Barbacoan	5	1	0.0
+23	Barbacoan	5	1	0.0
+24	Barbacoan	5	1	100.0
+25	Barbacoan	5	1	100.0
+26	Barbacoan	5	1	100.0
+27	Barbacoan	5	1	0.0
+28	Barbacoan	5	1	100.0
+29	Barbacoan	5	1	100.0
+30	Barbacoan	5	1	0.0
+31	Barbacoan	5	1	0.0
+32	Barbacoan	5	1	100.0
+33	Barbacoan	5	1	100.0
+34	Barbacoan	5	1	100.0
+35	Barbacoan	5	1	100.0
+36	Barbacoan	5	1	0.0
+37	Barbacoan	5	1	0.0
+38	Barbacoan	5	1	100.0
+39	Barbacoan	5	1	100.0
+40	Barbacoan	5	1	100.0
+41	Barbacoan	5	1	0.0
+42	Barbacoan	5	1	0.0
+43	Barbacoan	5	1	0.0
+44	Barbacoan	5	1	100.0
+45	Barbacoan	5	1	0.0
+46	Barbacoan	5	1	100.0
+47	Barbacoan	5	1	100.0
+48	Barbacoan	5	1	100.0
+49	Barbacoan	5	1	0.0
+50	Barbacoan	5	1	100.0
+51	Barbacoan	5	1	0.0
+52	Barbacoan	5	1	0.0
+53	Barbacoan	5	1	0.0
+54	Barbacoan	5	1	100.0
+55	Barbacoan	5	1	0.0
+56	Barbacoan	5	1	100.0
+57	Barbacoan	5	1	100.0
+58	Barbacoan	5	1	0.0
+59	Barbacoan	5	1	100.0
+60	Barbacoan	5	1	0.0
+61	Barbacoan	5	1	100.0
+62	Barbacoan	5	1	100.0
+63	Barbacoan	5	1	100.0
+64	Barbacoan	5	1	100.0
+65	Barbacoan	5	1	100.0
+66	Barbacoan	5	1	100.0
+67	Barbacoan	5	1	0.0
+68	Barbacoan	5	1	0.0
+69	Barbacoan	5	1	100.0
+70	Barbacoan	5	1	0.0
+71	Barbacoan	5	1	0.0
+72	Barbacoan	5	1	100.0
+73	Barbacoan	5	1	0.0
+74	Barbacoan	5	1	0.0
+75	Barbacoan	5	1	100.0
+76	Barbacoan	5	1	0.0
+77	Barbacoan	5	1	100.0
+78	Barbacoan	5	1	0.0
+79	Barbacoan	5	1	0.0
+80	Barbacoan	5	1	0.0
+81	Barbacoan	5	1	0.0
+82	Barbacoan	5	1	100.0
+83	Barbacoan	5	1	100.0
+84	Barbacoan	5	1	100.0
+85	Barbacoan	5	1	0.0
+86	Barbacoan	5	1	0.0
+87	Barbacoan	5	1	100.0
+88	Barbacoan	5	1	0.0
+89	Barbacoan	5	1	0.0
+90	Barbacoan	5	1	100.0
+91	Barbacoan	5	1	0.0
+92	Barbacoan	5	1	100.0
+93	Barbacoan	5	1	0.0
+94	Barbacoan	5	1	100.0
+95	Barbacoan	5	1	0.0
+96	Barbacoan	5	1	100.0
+97	Barbacoan	5	1	100.0
+98	Barbacoan	5	1	100.0
+99	Barbacoan	5	1	0.0
+100	Barbacoan	5	1	100.0
+1	Tai-Kadai	28	5	80.0
+2	Tai-Kadai	28	5	80.0
+3	Tai-Kadai	28	5	80.0
+4	Tai-Kadai	28	5	100.0
+5	Tai-Kadai	28	5	80.0
+6	Tai-Kadai	28	5	40.0
+7	Tai-Kadai	28	5	60.0
+8	Tai-Kadai	28	5	40.0
+9	Tai-Kadai	28	5	80.0
+10	Tai-Kadai	28	5	80.0
+11	Tai-Kadai	28	5	60.0
+12	Tai-Kadai	28	5	80.0
+13	Tai-Kadai	28	5	100.0
+14	Tai-Kadai	28	5	80.0
+15	Tai-Kadai	28	5	80.0
+16	Tai-Kadai	28	5	100.0
+17	Tai-Kadai	28	5	80.0
+18	Tai-Kadai	28	5	80.0
+19	Tai-Kadai	28	5	80.0
+20	Tai-Kadai	28	5	100.0
+21	Tai-Kadai	28	5	60.0
+22	Tai-Kadai	28	5	80.0
+23	Tai-Kadai	28	5	40.0
+24	Tai-Kadai	28	5	80.0
+25	Tai-Kadai	28	5	80.0
+26	Tai-Kadai	28	5	60.0
+27	Tai-Kadai	28	5	80.0
+28	Tai-Kadai	28	5	80.0
+29	Tai-Kadai	28	5	80.0
+30	Tai-Kadai	28	5	100.0
+31	Tai-Kadai	28	5	40.0
+32	Tai-Kadai	28	5	60.0
+33	Tai-Kadai	28	5	80.0
+34	Tai-Kadai	28	5	60.0
+35	Tai-Kadai	28	5	100.0
+36	Tai-Kadai	28	5	80.0
+37	Tai-Kadai	28	5	80.0
+38	Tai-Kadai	28	5	60.0
+39	Tai-Kadai	28	5	100.0
+40	Tai-Kadai	28	5	80.0
+41	Tai-Kadai	28	5	80.0
+42	Tai-Kadai	28	5	40.0
+43	Tai-Kadai	28	5	60.0
+44	Tai-Kadai	28	5	40.0
+45	Tai-Kadai	28	5	100.0
+46	Tai-Kadai	28	5	100.0
+47	Tai-Kadai	28	5	60.0
+48	Tai-Kadai	28	5	100.0
+49	Tai-Kadai	28	5	60.0
+50	Tai-Kadai	28	5	80.0
+51	Tai-Kadai	28	5	80.0
+52	Tai-Kadai	28	5	60.0
+53	Tai-Kadai	28	5	40.0
+54	Tai-Kadai	28	5	80.0
+55	Tai-Kadai	28	5	100.0
+56	Tai-Kadai	28	5	80.0
+57	Tai-Kadai	28	5	80.0
+58	Tai-Kadai	28	5	80.0
+59	Tai-Kadai	28	5	60.0
+60	Tai-Kadai	28	5	80.0
+61	Tai-Kadai	28	5	0.0
+62	Tai-Kadai	28	5	80.0
+63	Tai-Kadai	28	5	20.0
+64	Tai-Kadai	28	5	80.0
+65	Tai-Kadai	28	5	100.0
+66	Tai-Kadai	28	5	100.0
+67	Tai-Kadai	28	5	100.0
+68	Tai-Kadai	28	5	80.0
+69	Tai-Kadai	28	5	80.0
+70	Tai-Kadai	28	5	60.0
+71	Tai-Kadai	28	5	100.0
+72	Tai-Kadai	28	5	60.0
+73	Tai-Kadai	28	5	40.0
+74	Tai-Kadai	28	5	40.0
+75	Tai-Kadai	28	5	100.0
+76	Tai-Kadai	28	5	80.0
+77	Tai-Kadai	28	5	80.0
+78	Tai-Kadai	28	5	60.0
+79	Tai-Kadai	28	5	80.0
+80	Tai-Kadai	28	5	80.0
+81	Tai-Kadai	28	5	80.0
+82	Tai-Kadai	28	5	80.0
+83	Tai-Kadai	28	5	60.0
+84	Tai-Kadai	28	5	60.0
+85	Tai-Kadai	28	5	60.0
+86	Tai-Kadai	28	5	80.0
+87	Tai-Kadai	28	5	100.0
+88	Tai-Kadai	28	5	100.0
+89	Tai-Kadai	28	5	80.0
+90	Tai-Kadai	28	5	80.0
+91	Tai-Kadai	28	5	40.0
+92	Tai-Kadai	28	5	80.0
+93	Tai-Kadai	28	5	100.0
+94	Tai-Kadai	28	5	80.0
+95	Tai-Kadai	28	5	40.0
+96	Tai-Kadai	28	5	60.0
+97	Tai-Kadai	28	5	80.0
+98	Tai-Kadai	28	5	80.0
+99	Tai-Kadai	28	5	80.0
+100	Tai-Kadai	28	5	80.0
+1	Tungusic	20	4	50.0
+2	Tungusic	20	4	0.0
+3	Tungusic	20	4	75.0
+4	Tungusic	20	4	100.0
+5	Tungusic	20	4	50.0
+6	Tungusic	20	4	25.0
+7	Tungusic	20	4	100.0
+8	Tungusic	20	4	25.0
+9	Tungusic	20	4	25.0
+10	Tungusic	20	4	25.0
+11	Tungusic	20	4	0.0
+12	Tungusic	20	4	50.0
+13	Tungusic	20	4	50.0
+14	Tungusic	20	4	50.0
+15	Tungusic	20	4	100.0
+16	Tungusic	20	4	50.0
+17	Tungusic	20	4	0.0
+18	Tungusic	20	4	0.0
+19	Tungusic	20	4	25.0
+20	Tungusic	20	4	75.0
+21	Tungusic	20	4	25.0
+22	Tungusic	20	4	0.0
+23	Tungusic	20	4	0.0
+24	Tungusic	20	4	50.0
+25	Tungusic	20	4	0.0
+26	Tungusic	20	4	50.0
+27	Tungusic	20	4	50.0
+28	Tungusic	20	4	75.0
+29	Tungusic	20	4	25.0
+30	Tungusic	20	4	75.0
+31	Tungusic	20	4	75.0
+32	Tungusic	20	4	25.0
+33	Tungusic	20	4	0.0
+34	Tungusic	20	4	100.0
+35	Tungusic	20	4	0.0
+36	Tungusic	20	4	50.0
+37	Tungusic	20	4	50.0
+38	Tungusic	20	4	50.0
+39	Tungusic	20	4	50.0
+40	Tungusic	20	4	25.0
+41	Tungusic	20	4	0.0
+42	Tungusic	20	4	0.0
+43	Tungusic	20	4	75.0
+44	Tungusic	20	4	100.0
+45	Tungusic	20	4	75.0
+46	Tungusic	20	4	50.0
+47	Tungusic	20	4	75.0
+48	Tungusic	20	4	100.0
+49	Tungusic	20	4	100.0
+50	Tungusic	20	4	0.0
+51	Tungusic	20	4	0.0
+52	Tungusic	20	4	25.0
+53	Tungusic	20	4	50.0
+54	Tungusic	20	4	100.0
+55	Tungusic	20	4	0.0
+56	Tungusic	20	4	50.0
+57	Tungusic	20	4	75.0
+58	Tungusic	20	4	75.0
+59	Tungusic	20	4	50.0
+60	Tungusic	20	4	100.0
+61	Tungusic	20	4	50.0
+62	Tungusic	20	4	100.0
+63	Tungusic	20	4	0.0
+64	Tungusic	20	4	75.0
+65	Tungusic	20	4	0.0
+66	Tungusic	20	4	25.0
+67	Tungusic	20	4	25.0
+68	Tungusic	20	4	0.0
+69	Tungusic	20	4	25.0
+70	Tungusic	20	4	100.0
+71	Tungusic	20	4	50.0
+72	Tungusic	20	4	25.0
+73	Tungusic	20	4	50.0
+74	Tungusic	20	4	0.0
+75	Tungusic	20	4	75.0
+76	Tungusic	20	4	75.0
+77	Tungusic	20	4	100.0
+78	Tungusic	20	4	75.0
+79	Tungusic	20	4	50.0
+80	Tungusic	20	4	100.0
+81	Tungusic	20	4	25.0
+82	Tungusic	20	4	0.0
+83	Tungusic	20	4	0.0
+84	Tungusic	20	4	25.0
+85	Tungusic	20	4	25.0
+86	Tungusic	20	4	0.0
+87	Tungusic	20	4	0.0
+88	Tungusic	20	4	25.0
+89	Tungusic	20	4	25.0
+90	Tungusic	20	4	25.0
+91	Tungusic	20	4	50.0
+92	Tungusic	20	4	25.0
+93	Tungusic	20	4	25.0
+94	Tungusic	20	4	50.0
+95	Tungusic	20	4	100.0
+96	Tungusic	20	4	50.0
+97	Tungusic	20	4	100.0
+98	Tungusic	20	4	0.0
+99	Tungusic	20	4	25.0
+100	Tungusic	20	4	75.0
+1	Uto-Aztecan	38	8	100.0
+2	Uto-Aztecan	38	8	100.0
+3	Uto-Aztecan	38	8	100.0
+4	Uto-Aztecan	38	8	100.0
+5	Uto-Aztecan	38	8	100.0
+6	Uto-Aztecan	38	8	100.0
+7	Uto-Aztecan	38	8	100.0
+8	Uto-Aztecan	38	8	100.0
+9	Uto-Aztecan	38	8	100.0
+10	Uto-Aztecan	38	8	100.0
+11	Uto-Aztecan	38	8	87.5
+12	Uto-Aztecan	38	8	100.0
+13	Uto-Aztecan	38	8	100.0
+14	Uto-Aztecan	38	8	100.0
+15	Uto-Aztecan	38	8	100.0
+16	Uto-Aztecan	38	8	100.0
+17	Uto-Aztecan	38	8	100.0
+18	Uto-Aztecan	38	8	100.0
+19	Uto-Aztecan	38	8	100.0
+20	Uto-Aztecan	38	8	100.0
+21	Uto-Aztecan	38	8	100.0
+22	Uto-Aztecan	38	8	100.0
+23	Uto-Aztecan	38	8	100.0
+24	Uto-Aztecan	38	8	100.0
+25	Uto-Aztecan	38	8	100.0
+26	Uto-Aztecan	38	8	100.0
+27	Uto-Aztecan	38	8	100.0
+28	Uto-Aztecan	38	8	87.5
+29	Uto-Aztecan	38	8	100.0
+30	Uto-Aztecan	38	8	100.0
+31	Uto-Aztecan	38	8	100.0
+32	Uto-Aztecan	38	8	100.0
+33	Uto-Aztecan	38	8	100.0
+34	Uto-Aztecan	38	8	100.0
+35	Uto-Aztecan	38	8	100.0
+36	Uto-Aztecan	38	8	100.0
+37	Uto-Aztecan	38	8	87.5
+38	Uto-Aztecan	38	8	100.0
+39	Uto-Aztecan	38	8	100.0
+40	Uto-Aztecan	38	8	100.0
+41	Uto-Aztecan	38	8	100.0
+42	Uto-Aztecan	38	8	100.0
+43	Uto-Aztecan	38	8	100.0
+44	Uto-Aztecan	38	8	100.0
+45	Uto-Aztecan	38	8	100.0
+46	Uto-Aztecan	38	8	100.0
+47	Uto-Aztecan	38	8	87.5
+48	Uto-Aztecan	38	8	100.0
+49	Uto-Aztecan	38	8	100.0
+50	Uto-Aztecan	38	8	100.0
+51	Uto-Aztecan	38	8	100.0
+52	Uto-Aztecan	38	8	100.0
+53	Uto-Aztecan	38	8	100.0
+54	Uto-Aztecan	38	8	100.0
+55	Uto-Aztecan	38	8	100.0
+56	Uto-Aztecan	38	8	87.5
+57	Uto-Aztecan	38	8	100.0
+58	Uto-Aztecan	38	8	100.0
+59	Uto-Aztecan	38	8	100.0
+60	Uto-Aztecan	38	8	100.0
+61	Uto-Aztecan	38	8	87.5
+62	Uto-Aztecan	38	8	100.0
+63	Uto-Aztecan	38	8	100.0
+64	Uto-Aztecan	38	8	100.0
+65	Uto-Aztecan	38	8	75.0
+66	Uto-Aztecan	38	8	87.5
+67	Uto-Aztecan	38	8	100.0
+68	Uto-Aztecan	38	8	100.0
+69	Uto-Aztecan	38	8	100.0
+70	Uto-Aztecan	38	8	100.0
+71	Uto-Aztecan	38	8	100.0
+72	Uto-Aztecan	38	8	100.0
+73	Uto-Aztecan	38	8	100.0
+74	Uto-Aztecan	38	8	100.0
+75	Uto-Aztecan	38	8	100.0
+76	Uto-Aztecan	38	8	87.5
+77	Uto-Aztecan	38	8	100.0
+78	Uto-Aztecan	38	8	100.0
+79	Uto-Aztecan	38	8	100.0
+80	Uto-Aztecan	38	8	100.0
+81	Uto-Aztecan	38	8	100.0
+82	Uto-Aztecan	38	8	100.0
+83	Uto-Aztecan	38	8	87.5
+84	Uto-Aztecan	38	8	100.0
+85	Uto-Aztecan	38	8	100.0
+86	Uto-Aztecan	38	8	100.0
+87	Uto-Aztecan	38	8	100.0
+88	Uto-Aztecan	38	8	100.0
+89	Uto-Aztecan	38	8	100.0
+90	Uto-Aztecan	38	8	100.0
+91	Uto-Aztecan	38	8	100.0
+92	Uto-Aztecan	38	8	100.0
+93	Uto-Aztecan	38	8	100.0
+94	Uto-Aztecan	38	8	100.0
+95	Uto-Aztecan	38	8	100.0
+96	Uto-Aztecan	38	8	100.0
+97	Uto-Aztecan	38	8	100.0
+98	Uto-Aztecan	38	8	100.0
+99	Uto-Aztecan	38	8	100.0
+100	Uto-Aztecan	38	8	100.0
+1	Nyulnyulan	9	2	50.0
+2	Nyulnyulan	9	2	100.0
+3	Nyulnyulan	9	2	100.0
+4	Nyulnyulan	9	2	100.0
+5	Nyulnyulan	9	2	100.0
+6	Nyulnyulan	9	2	100.0
+7	Nyulnyulan	9	2	50.0
+8	Nyulnyulan	9	2	100.0
+9	Nyulnyulan	9	2	50.0
+10	Nyulnyulan	9	2	0.0
+11	Nyulnyulan	9	2	100.0
+12	Nyulnyulan	9	2	100.0
+13	Nyulnyulan	9	2	100.0
+14	Nyulnyulan	9	2	100.0
+15	Nyulnyulan	9	2	100.0
+16	Nyulnyulan	9	2	100.0
+17	Nyulnyulan	9	2	100.0
+18	Nyulnyulan	9	2	50.0
+19	Nyulnyulan	9	2	50.0
+20	Nyulnyulan	9	2	100.0
+21	Nyulnyulan	9	2	100.0
+22	Nyulnyulan	9	2	100.0
+23	Nyulnyulan	9	2	100.0
+24	Nyulnyulan	9	2	100.0
+25	Nyulnyulan	9	2	100.0
+26	Nyulnyulan	9	2	50.0
+27	Nyulnyulan	9	2	100.0
+28	Nyulnyulan	9	2	100.0
+29	Nyulnyulan	9	2	100.0
+30	Nyulnyulan	9	2	100.0
+31	Nyulnyulan	9	2	100.0
+32	Nyulnyulan	9	2	100.0
+33	Nyulnyulan	9	2	100.0
+34	Nyulnyulan	9	2	100.0
+35	Nyulnyulan	9	2	100.0
+36	Nyulnyulan	9	2	100.0
+37	Nyulnyulan	9	2	100.0
+38	Nyulnyulan	9	2	100.0
+39	Nyulnyulan	9	2	100.0
+40	Nyulnyulan	9	2	100.0
+41	Nyulnyulan	9	2	100.0
+42	Nyulnyulan	9	2	50.0
+43	Nyulnyulan	9	2	50.0
+44	Nyulnyulan	9	2	100.0
+45	Nyulnyulan	9	2	100.0
+46	Nyulnyulan	9	2	100.0
+47	Nyulnyulan	9	2	50.0
+48	Nyulnyulan	9	2	100.0
+49	Nyulnyulan	9	2	100.0
+50	Nyulnyulan	9	2	100.0
+51	Nyulnyulan	9	2	100.0
+52	Nyulnyulan	9	2	100.0
+53	Nyulnyulan	9	2	100.0
+54	Nyulnyulan	9	2	100.0
+55	Nyulnyulan	9	2	100.0
+56	Nyulnyulan	9	2	100.0
+57	Nyulnyulan	9	2	100.0
+58	Nyulnyulan	9	2	100.0
+59	Nyulnyulan	9	2	100.0
+60	Nyulnyulan	9	2	100.0
+61	Nyulnyulan	9	2	100.0
+62	Nyulnyulan	9	2	100.0
+63	Nyulnyulan	9	2	100.0
+64	Nyulnyulan	9	2	100.0
+65	Nyulnyulan	9	2	100.0
+66	Nyulnyulan	9	2	100.0
+67	Nyulnyulan	9	2	100.0
+68	Nyulnyulan	9	2	100.0
+69	Nyulnyulan	9	2	100.0
+70	Nyulnyulan	9	2	100.0
+71	Nyulnyulan	9	2	100.0
+72	Nyulnyulan	9	2	100.0
+73	Nyulnyulan	9	2	100.0
+74	Nyulnyulan	9	2	100.0
+75	Nyulnyulan	9	2	0.0
+76	Nyulnyulan	9	2	50.0
+77	Nyulnyulan	9	2	100.0
+78	Nyulnyulan	9	2	100.0
+79	Nyulnyulan	9	2	100.0
+80	Nyulnyulan	9	2	0.0
+81	Nyulnyulan	9	2	0.0
+82	Nyulnyulan	9	2	100.0
+83	Nyulnyulan	9	2	100.0
+84	Nyulnyulan	9	2	100.0
+85	Nyulnyulan	9	2	50.0
+86	Nyulnyulan	9	2	100.0
+87	Nyulnyulan	9	2	100.0
+88	Nyulnyulan	9	2	100.0
+89	Nyulnyulan	9	2	100.0
+90	Nyulnyulan	9	2	100.0
+91	Nyulnyulan	9	2	100.0
+92	Nyulnyulan	9	2	100.0
+93	Nyulnyulan	9	2	100.0
+94	Nyulnyulan	9	2	100.0
+95	Nyulnyulan	9	2	100.0
+96	Nyulnyulan	9	2	50.0
+97	Nyulnyulan	9	2	100.0
+98	Nyulnyulan	9	2	100.0
+99	Nyulnyulan	9	2	100.0
+100	Nyulnyulan	9	2	100.0
+1	Bosavi	7	2	100.0
+2	Bosavi	7	1	100.0
+3	Bosavi	7	1	100.0
+4	Bosavi	7	1	100.0
+5	Bosavi	7	2	100.0
+6	Bosavi	7	2	100.0
+7	Bosavi	7	1	100.0
+8	Bosavi	7	1	100.0
+9	Bosavi	7	2	100.0
+10	Bosavi	7	2	100.0
+11	Bosavi	7	2	100.0
+12	Bosavi	7	2	50.0
+13	Bosavi	7	2	100.0
+14	Bosavi	7	1	100.0
+15	Bosavi	7	1	100.0
+16	Bosavi	7	2	100.0
+17	Bosavi	7	2	100.0
+18	Bosavi	7	1	100.0
+19	Bosavi	7	1	100.0
+20	Bosavi	7	1	100.0
+21	Bosavi	7	2	100.0
+22	Bosavi	7	1	0.0
+23	Bosavi	7	2	50.0
+24	Bosavi	7	2	100.0
+25	Bosavi	7	2	50.0
+26	Bosavi	7	2	100.0
+27	Bosavi	7	2	100.0
+28	Bosavi	7	1	100.0
+29	Bosavi	7	2	100.0
+30	Bosavi	7	2	100.0
+31	Bosavi	7	2	0.0
+32	Bosavi	7	2	100.0
+33	Bosavi	7	2	100.0
+34	Bosavi	7	2	100.0
+35	Bosavi	7	1	100.0
+36	Bosavi	7	2	100.0
+37	Bosavi	7	2	50.0
+38	Bosavi	7	1	0.0
+39	Bosavi	7	2	100.0
+40	Bosavi	7	1	100.0
+41	Bosavi	7	1	100.0
+42	Bosavi	7	2	100.0
+43	Bosavi	7	2	50.0
+44	Bosavi	7	1	100.0
+45	Bosavi	7	2	100.0
+46	Bosavi	7	2	50.0
+47	Bosavi	7	1	100.0
+48	Bosavi	7	2	100.0
+49	Bosavi	7	2	100.0
+50	Bosavi	7	1	100.0
+51	Bosavi	7	2	100.0
+52	Bosavi	7	2	0.0
+53	Bosavi	7	2	100.0
+54	Bosavi	7	1	0.0
+55	Bosavi	7	2	100.0
+56	Bosavi	7	1	100.0
+57	Bosavi	7	1	100.0
+58	Bosavi	7	1	100.0
+59	Bosavi	7	1	100.0
+60	Bosavi	7	2	100.0
+61	Bosavi	7	1	100.0
+62	Bosavi	7	2	100.0
+63	Bosavi	7	1	100.0
+64	Bosavi	7	2	100.0
+65	Bosavi	7	2	100.0
+66	Bosavi	7	1	100.0
+67	Bosavi	7	1	100.0
+68	Bosavi	7	1	100.0
+69	Bosavi	7	1	100.0
+70	Bosavi	7	2	50.0
+71	Bosavi	7	1	100.0
+72	Bosavi	7	1	100.0
+73	Bosavi	7	1	100.0
+74	Bosavi	7	2	100.0
+75	Bosavi	7	2	100.0
+76	Bosavi	7	1	100.0
+77	Bosavi	7	2	50.0
+78	Bosavi	7	2	50.0
+79	Bosavi	7	2	50.0
+80	Bosavi	7	2	100.0
+81	Bosavi	7	1	100.0
+82	Bosavi	7	2	100.0
+83	Bosavi	7	2	100.0
+84	Bosavi	7	2	100.0
+85	Bosavi	7	2	100.0
+86	Bosavi	7	2	100.0
+87	Bosavi	7	1	100.0
+88	Bosavi	7	2	50.0
+89	Bosavi	7	1	100.0
+90	Bosavi	7	2	100.0
+91	Bosavi	7	2	100.0
+92	Bosavi	7	2	50.0
+93	Bosavi	7	2	50.0
+94	Bosavi	7	1	100.0
+95	Bosavi	7	1	100.0
+96	Bosavi	7	2	100.0
+97	Bosavi	7	2	0.0
+98	Bosavi	7	2	50.0
+99	Bosavi	7	1	100.0
+100	Bosavi	7	2	50.0
+1	Lengua-Mascoy	5	1	100.0
+2	Lengua-Mascoy	5	1	100.0
+3	Lengua-Mascoy	5	1	100.0
+4	Lengua-Mascoy	5	1	100.0
+5	Lengua-Mascoy	5	1	0.0
+6	Lengua-Mascoy	5	1	100.0
+7	Lengua-Mascoy	5	1	100.0
+8	Lengua-Mascoy	5	1	100.0
+9	Lengua-Mascoy	5	1	100.0
+10	Lengua-Mascoy	5	1	0.0
+11	Lengua-Mascoy	5	1	0.0
+12	Lengua-Mascoy	5	1	100.0
+13	Lengua-Mascoy	5	1	100.0
+14	Lengua-Mascoy	5	1	100.0
+15	Lengua-Mascoy	5	1	100.0
+16	Lengua-Mascoy	5	1	100.0
+17	Lengua-Mascoy	5	1	0.0
+18	Lengua-Mascoy	5	1	100.0
+19	Lengua-Mascoy	5	1	100.0
+20	Lengua-Mascoy	5	1	100.0
+21	Lengua-Mascoy	5	1	100.0
+22	Lengua-Mascoy	5	1	100.0
+23	Lengua-Mascoy	5	1	0.0
+24	Lengua-Mascoy	5	1	100.0
+25	Lengua-Mascoy	5	1	100.0
+26	Lengua-Mascoy	5	1	100.0
+27	Lengua-Mascoy	5	1	0.0
+28	Lengua-Mascoy	5	1	100.0
+29	Lengua-Mascoy	5	1	100.0
+30	Lengua-Mascoy	5	1	100.0
+31	Lengua-Mascoy	5	1	0.0
+32	Lengua-Mascoy	5	1	100.0
+33	Lengua-Mascoy	5	1	100.0
+34	Lengua-Mascoy	5	1	100.0
+35	Lengua-Mascoy	5	1	100.0
+36	Lengua-Mascoy	5	1	0.0
+37	Lengua-Mascoy	5	1	100.0
+38	Lengua-Mascoy	5	1	100.0
+39	Lengua-Mascoy	5	1	100.0
+40	Lengua-Mascoy	5	1	100.0
+41	Lengua-Mascoy	5	1	100.0
+42	Lengua-Mascoy	5	1	100.0
+43	Lengua-Mascoy	5	1	100.0
+44	Lengua-Mascoy	5	1	0.0
+45	Lengua-Mascoy	5	1	100.0
+46	Lengua-Mascoy	5	1	0.0
+47	Lengua-Mascoy	5	1	100.0
+48	Lengua-Mascoy	5	1	100.0
+49	Lengua-Mascoy	5	1	100.0
+50	Lengua-Mascoy	5	1	100.0
+51	Lengua-Mascoy	5	1	0.0
+52	Lengua-Mascoy	5	1	100.0
+53	Lengua-Mascoy	5	1	100.0
+54	Lengua-Mascoy	5	1	0.0
+55	Lengua-Mascoy	5	1	0.0
+56	Lengua-Mascoy	5	1	100.0
+57	Lengua-Mascoy	5	1	0.0
+58	Lengua-Mascoy	5	1	100.0
+59	Lengua-Mascoy	5	1	0.0
+60	Lengua-Mascoy	5	1	100.0
+61	Lengua-Mascoy	5	1	0.0
+62	Lengua-Mascoy	5	1	100.0
+63	Lengua-Mascoy	5	1	100.0
+64	Lengua-Mascoy	5	1	100.0
+65	Lengua-Mascoy	5	1	100.0
+66	Lengua-Mascoy	5	1	100.0
+67	Lengua-Mascoy	5	1	100.0
+68	Lengua-Mascoy	5	1	0.0
+69	Lengua-Mascoy	5	1	100.0
+70	Lengua-Mascoy	5	1	100.0
+71	Lengua-Mascoy	5	1	100.0
+72	Lengua-Mascoy	5	1	0.0
+73	Lengua-Mascoy	5	1	100.0
+74	Lengua-Mascoy	5	1	100.0
+75	Lengua-Mascoy	5	1	100.0
+76	Lengua-Mascoy	5	1	100.0
+77	Lengua-Mascoy	5	1	100.0
+78	Lengua-Mascoy	5	1	100.0
+79	Lengua-Mascoy	5	1	0.0
+80	Lengua-Mascoy	5	1	100.0
+81	Lengua-Mascoy	5	1	0.0
+82	Lengua-Mascoy	5	1	100.0
+83	Lengua-Mascoy	5	1	100.0
+84	Lengua-Mascoy	5	1	100.0
+85	Lengua-Mascoy	5	1	100.0
+86	Lengua-Mascoy	5	1	0.0
+87	Lengua-Mascoy	5	1	100.0
+88	Lengua-Mascoy	5	1	0.0
+89	Lengua-Mascoy	5	1	100.0
+90	Lengua-Mascoy	5	1	100.0
+91	Lengua-Mascoy	5	1	100.0
+92	Lengua-Mascoy	5	1	0.0
+93	Lengua-Mascoy	5	1	100.0
+94	Lengua-Mascoy	5	1	100.0
+95	Lengua-Mascoy	5	1	0.0
+96	Lengua-Mascoy	5	1	100.0
+97	Lengua-Mascoy	5	1	100.0
+98	Lengua-Mascoy	5	1	100.0
+99	Lengua-Mascoy	5	1	100.0
+100	Lengua-Mascoy	5	1	0.0
+1	Japonic	21	4	100.0
+2	Japonic	21	4	100.0
+3	Japonic	21	4	100.0
+4	Japonic	21	4	100.0
+5	Japonic	21	4	100.0
+6	Japonic	21	4	100.0
+7	Japonic	21	4	100.0
+8	Japonic	21	4	100.0
+9	Japonic	21	4	100.0
+10	Japonic	21	4	100.0
+11	Japonic	21	4	100.0
+12	Japonic	21	4	100.0
+13	Japonic	21	4	100.0
+14	Japonic	21	4	100.0
+15	Japonic	21	4	100.0
+16	Japonic	21	4	100.0
+17	Japonic	21	4	100.0
+18	Japonic	21	4	100.0
+19	Japonic	21	4	100.0
+20	Japonic	21	4	100.0
+21	Japonic	21	4	100.0
+22	Japonic	21	4	100.0
+23	Japonic	21	4	100.0
+24	Japonic	21	4	100.0
+25	Japonic	21	4	100.0
+26	Japonic	21	4	100.0
+27	Japonic	21	4	100.0
+28	Japonic	21	4	100.0
+29	Japonic	21	4	100.0
+30	Japonic	21	4	100.0
+31	Japonic	21	4	100.0
+32	Japonic	21	4	100.0
+33	Japonic	21	4	100.0
+34	Japonic	21	4	100.0
+35	Japonic	21	4	100.0
+36	Japonic	21	4	100.0
+37	Japonic	21	4	100.0
+38	Japonic	21	4	100.0
+39	Japonic	21	4	100.0
+40	Japonic	21	4	100.0
+41	Japonic	21	4	100.0
+42	Japonic	21	4	100.0
+43	Japonic	21	4	100.0
+44	Japonic	21	4	100.0
+45	Japonic	21	4	100.0
+46	Japonic	21	4	100.0
+47	Japonic	21	4	100.0
+48	Japonic	21	4	100.0
+49	Japonic	21	4	100.0
+50	Japonic	21	4	100.0
+51	Japonic	21	4	100.0
+52	Japonic	21	4	100.0
+53	Japonic	21	4	100.0
+54	Japonic	21	4	100.0
+55	Japonic	21	4	100.0
+56	Japonic	21	4	100.0
+57	Japonic	21	4	100.0
+58	Japonic	21	4	100.0
+59	Japonic	21	4	100.0
+60	Japonic	21	4	100.0
+61	Japonic	21	4	100.0
+62	Japonic	21	4	100.0
+63	Japonic	21	4	100.0
+64	Japonic	21	4	100.0
+65	Japonic	21	4	100.0
+66	Japonic	21	4	100.0
+67	Japonic	21	4	100.0
+68	Japonic	21	4	100.0
+69	Japonic	21	4	100.0
+70	Japonic	21	4	100.0
+71	Japonic	21	4	100.0
+72	Japonic	21	4	100.0
+73	Japonic	21	4	100.0
+74	Japonic	21	4	100.0
+75	Japonic	21	4	100.0
+76	Japonic	21	4	100.0
+77	Japonic	21	4	100.0
+78	Japonic	21	4	100.0
+79	Japonic	21	4	100.0
+80	Japonic	21	4	100.0
+81	Japonic	21	4	100.0
+82	Japonic	21	4	100.0
+83	Japonic	21	4	100.0
+84	Japonic	21	4	100.0
+85	Japonic	21	4	100.0
+86	Japonic	21	4	100.0
+87	Japonic	21	4	100.0
+88	Japonic	21	4	100.0
+89	Japonic	21	4	100.0
+90	Japonic	21	4	100.0
+91	Japonic	21	4	100.0
+92	Japonic	21	4	100.0
+93	Japonic	21	4	100.0
+94	Japonic	21	4	100.0
+95	Japonic	21	4	100.0
+96	Japonic	21	4	100.0
+97	Japonic	21	4	100.0
+98	Japonic	21	4	100.0
+99	Japonic	21	4	100.0
+100	Japonic	21	4	100.0
+1	West Bird's Head	5	1	100.0
+2	West Bird's Head	5	1	100.0
+3	West Bird's Head	5	1	100.0
+4	West Bird's Head	5	1	100.0
+5	West Bird's Head	5	1	100.0
+6	West Bird's Head	5	1	100.0
+7	West Bird's Head	5	1	0.0
+8	West Bird's Head	5	1	100.0
+9	West Bird's Head	5	1	100.0
+10	West Bird's Head	5	1	100.0
+11	West Bird's Head	5	1	100.0
+12	West Bird's Head	5	1	100.0
+13	West Bird's Head	5	1	100.0
+14	West Bird's Head	5	1	100.0
+15	West Bird's Head	5	1	100.0
+16	West Bird's Head	5	1	0.0
+17	West Bird's Head	5	1	100.0
+18	West Bird's Head	5	1	100.0
+19	West Bird's Head	5	1	100.0
+20	West Bird's Head	5	1	0.0
+21	West Bird's Head	5	1	100.0
+22	West Bird's Head	5	1	0.0
+23	West Bird's Head	5	1	100.0
+24	West Bird's Head	5	1	100.0
+25	West Bird's Head	5	1	100.0
+26	West Bird's Head	5	1	100.0
+27	West Bird's Head	5	1	100.0
+28	West Bird's Head	5	1	0.0
+29	West Bird's Head	5	1	100.0
+30	West Bird's Head	5	1	100.0
+31	West Bird's Head	5	1	100.0
+32	West Bird's Head	5	1	100.0
+33	West Bird's Head	5	1	0.0
+34	West Bird's Head	5	1	100.0
+35	West Bird's Head	5	1	100.0
+36	West Bird's Head	5	1	100.0
+37	West Bird's Head	5	1	100.0
+38	West Bird's Head	5	1	100.0
+39	West Bird's Head	5	1	100.0
+40	West Bird's Head	5	1	100.0
+41	West Bird's Head	5	1	100.0
+42	West Bird's Head	5	1	100.0
+43	West Bird's Head	5	1	100.0
+44	West Bird's Head	5	1	100.0
+45	West Bird's Head	5	1	100.0
+46	West Bird's Head	5	1	100.0
+47	West Bird's Head	5	1	100.0
+48	West Bird's Head	5	1	100.0
+49	West Bird's Head	5	1	100.0
+50	West Bird's Head	5	1	100.0
+51	West Bird's Head	5	1	100.0
+52	West Bird's Head	5	1	100.0
+53	West Bird's Head	5	1	100.0
+54	West Bird's Head	5	1	100.0
+55	West Bird's Head	5	1	100.0
+56	West Bird's Head	5	1	100.0
+57	West Bird's Head	5	1	100.0
+58	West Bird's Head	5	1	100.0
+59	West Bird's Head	5	1	100.0
+60	West Bird's Head	5	1	100.0
+61	West Bird's Head	5	1	100.0
+62	West Bird's Head	5	1	0.0
+63	West Bird's Head	5	1	100.0
+64	West Bird's Head	5	1	100.0
+65	West Bird's Head	5	1	100.0
+66	West Bird's Head	5	1	100.0
+67	West Bird's Head	5	1	100.0
+68	West Bird's Head	5	1	100.0
+69	West Bird's Head	5	1	100.0
+70	West Bird's Head	5	1	100.0
+71	West Bird's Head	5	1	100.0
+72	West Bird's Head	5	1	100.0
+73	West Bird's Head	5	1	100.0
+74	West Bird's Head	5	1	100.0
+75	West Bird's Head	5	1	0.0
+76	West Bird's Head	5	1	100.0
+77	West Bird's Head	5	1	100.0
+78	West Bird's Head	5	1	100.0
+79	West Bird's Head	5	1	100.0
+80	West Bird's Head	5	1	100.0
+81	West Bird's Head	5	1	0.0
+82	West Bird's Head	5	1	100.0
+83	West Bird's Head	5	1	100.0
+84	West Bird's Head	5	1	100.0
+85	West Bird's Head	5	1	100.0
+86	West Bird's Head	5	1	100.0
+87	West Bird's Head	5	1	100.0
+88	West Bird's Head	5	1	100.0
+89	West Bird's Head	5	1	100.0
+90	West Bird's Head	5	1	100.0
+91	West Bird's Head	5	1	0.0
+92	West Bird's Head	5	1	100.0
+93	West Bird's Head	5	1	100.0
+94	West Bird's Head	5	1	100.0
+95	West Bird's Head	5	1	100.0
+96	West Bird's Head	5	1	100.0
+97	West Bird's Head	5	1	0.0
+98	West Bird's Head	5	1	100.0
+99	West Bird's Head	5	1	0.0
+100	West Bird's Head	5	1	100.0
+1	Kiwaian	5	1	100.0
+2	Kiwaian	5	1	0.0
+3	Kiwaian	5	1	0.0
+4	Kiwaian	5	1	100.0
+5	Kiwaian	5	1	0.0
+6	Kiwaian	5	1	100.0
+7	Kiwaian	5	1	100.0
+8	Kiwaian	5	1	0.0
+9	Kiwaian	5	1	0.0
+10	Kiwaian	5	1	100.0
+11	Kiwaian	5	1	0.0
+12	Kiwaian	5	1	100.0
+13	Kiwaian	5	1	0.0
+14	Kiwaian	5	1	100.0
+15	Kiwaian	5	1	0.0
+16	Kiwaian	5	1	100.0
+17	Kiwaian	5	1	100.0
+18	Kiwaian	5	1	0.0
+19	Kiwaian	5	1	100.0
+20	Kiwaian	5	1	100.0
+21	Kiwaian	5	1	100.0
+22	Kiwaian	5	1	0.0
+23	Kiwaian	5	1	100.0
+24	Kiwaian	5	1	0.0
+25	Kiwaian	5	1	0.0
+26	Kiwaian	5	1	0.0
+27	Kiwaian	5	1	0.0
+28	Kiwaian	5	1	100.0
+29	Kiwaian	5	1	100.0
+30	Kiwaian	5	1	100.0
+31	Kiwaian	5	1	0.0
+32	Kiwaian	5	1	0.0
+33	Kiwaian	5	1	0.0
+34	Kiwaian	5	1	0.0
+35	Kiwaian	5	1	100.0
+36	Kiwaian	5	1	100.0
+37	Kiwaian	5	1	0.0
+38	Kiwaian	5	1	100.0
+39	Kiwaian	5	1	100.0
+40	Kiwaian	5	1	100.0
+41	Kiwaian	5	1	0.0
+42	Kiwaian	5	1	100.0
+43	Kiwaian	5	1	100.0
+44	Kiwaian	5	1	0.0
+45	Kiwaian	5	1	0.0
+46	Kiwaian	5	1	100.0
+47	Kiwaian	5	1	0.0
+48	Kiwaian	5	1	100.0
+49	Kiwaian	5	1	100.0
+50	Kiwaian	5	1	100.0
+51	Kiwaian	5	1	0.0
+52	Kiwaian	5	1	0.0
+53	Kiwaian	5	1	0.0
+54	Kiwaian	5	1	0.0
+55	Kiwaian	5	1	0.0
+56	Kiwaian	5	1	100.0
+57	Kiwaian	5	1	0.0
+58	Kiwaian	5	1	100.0
+59	Kiwaian	5	1	100.0
+60	Kiwaian	5	1	100.0
+61	Kiwaian	5	1	0.0
+62	Kiwaian	5	1	0.0
+63	Kiwaian	5	1	100.0
+64	Kiwaian	5	1	0.0
+65	Kiwaian	5	1	100.0
+66	Kiwaian	5	1	0.0
+67	Kiwaian	5	1	100.0
+68	Kiwaian	5	1	0.0
+69	Kiwaian	5	1	100.0
+70	Kiwaian	5	1	100.0
+71	Kiwaian	5	1	100.0
+72	Kiwaian	5	1	100.0
+73	Kiwaian	5	1	0.0
+74	Kiwaian	5	1	0.0
+75	Kiwaian	5	1	0.0
+76	Kiwaian	5	1	100.0
+77	Kiwaian	5	1	0.0
+78	Kiwaian	5	1	100.0
+79	Kiwaian	5	1	0.0
+80	Kiwaian	5	1	100.0
+81	Kiwaian	5	1	100.0
+82	Kiwaian	5	1	100.0
+83	Kiwaian	5	1	100.0
+84	Kiwaian	5	1	0.0
+85	Kiwaian	5	1	0.0
+86	Kiwaian	5	1	0.0
+87	Kiwaian	5	1	100.0
+88	Kiwaian	5	1	0.0
+89	Kiwaian	5	1	0.0
+90	Kiwaian	5	1	100.0
+91	Kiwaian	5	1	0.0
+92	Kiwaian	5	1	0.0
+93	Kiwaian	5	1	100.0
+94	Kiwaian	5	1	0.0
+95	Kiwaian	5	1	100.0
+96	Kiwaian	5	1	0.0
+97	Kiwaian	5	1	0.0
+98	Kiwaian	5	1	100.0
+99	Kiwaian	5	1	0.0
+100	Kiwaian	5	1	0.0
+1	Salishan	7	1	100.0
+2	Salishan	7	1	100.0
+3	Salishan	7	2	100.0
+4	Salishan	7	2	50.0
+5	Salishan	7	2	0.0
+6	Salishan	7	2	50.0
+7	Salishan	7	2	100.0
+8	Salishan	7	1	100.0
+9	Salishan	7	1	100.0
+10	Salishan	7	1	100.0
+11	Salishan	7	2	100.0
+12	Salishan	7	1	100.0
+13	Salishan	7	2	50.0
+14	Salishan	7	2	50.0
+15	Salishan	7	2	100.0
+16	Salishan	7	1	0.0
+17	Salishan	7	2	50.0
+18	Salishan	7	1	100.0
+19	Salishan	7	2	100.0
+20	Salishan	7	2	100.0
+21	Salishan	7	2	50.0
+22	Salishan	7	2	50.0
+23	Salishan	7	1	100.0
+24	Salishan	7	2	100.0
+25	Salishan	7	2	0.0
+26	Salishan	7	2	100.0
+27	Salishan	7	1	100.0
+28	Salishan	7	1	0.0
+29	Salishan	7	1	0.0
+30	Salishan	7	2	100.0
+31	Salishan	7	2	0.0
+32	Salishan	7	2	0.0
+33	Salishan	7	1	100.0
+34	Salishan	7	2	50.0
+35	Salishan	7	2	50.0
+36	Salishan	7	2	50.0
+37	Salishan	7	1	100.0
+38	Salishan	7	2	100.0
+39	Salishan	7	1	100.0
+40	Salishan	7	2	0.0
+41	Salishan	7	1	100.0
+42	Salishan	7	1	100.0
+43	Salishan	7	2	50.0
+44	Salishan	7	1	100.0
+45	Salishan	7	2	50.0
+46	Salishan	7	2	50.0
+47	Salishan	7	2	0.0
+48	Salishan	7	1	100.0
+49	Salishan	7	2	100.0
+50	Salishan	7	2	50.0
+51	Salishan	7	1	100.0
+52	Salishan	7	2	50.0
+53	Salishan	7	1	0.0
+54	Salishan	7	2	50.0
+55	Salishan	7	1	100.0
+56	Salishan	7	1	100.0
+57	Salishan	7	2	50.0
+58	Salishan	7	2	0.0
+59	Salishan	7	1	100.0
+60	Salishan	7	1	100.0
+61	Salishan	7	2	0.0
+62	Salishan	7	1	100.0
+63	Salishan	7	2	50.0
+64	Salishan	7	2	100.0
+65	Salishan	7	1	100.0
+66	Salishan	7	2	50.0
+67	Salishan	7	1	0.0
+68	Salishan	7	2	100.0
+69	Salishan	7	1	100.0
+70	Salishan	7	1	0.0
+71	Salishan	7	2	50.0
+72	Salishan	7	2	50.0
+73	Salishan	7	2	50.0
+74	Salishan	7	2	0.0
+75	Salishan	7	2	50.0
+76	Salishan	7	2	100.0
+77	Salishan	7	1	0.0
+78	Salishan	7	1	100.0
+79	Salishan	7	2	100.0
+80	Salishan	7	1	0.0
+81	Salishan	7	2	50.0
+82	Salishan	7	2	100.0
+83	Salishan	7	2	100.0
+84	Salishan	7	2	50.0
+85	Salishan	7	2	50.0
+86	Salishan	7	1	0.0
+87	Salishan	7	1	0.0
+88	Salishan	7	2	100.0
+89	Salishan	7	2	0.0
+90	Salishan	7	1	100.0
+91	Salishan	7	1	0.0
+92	Salishan	7	1	100.0
+93	Salishan	7	2	0.0
+94	Salishan	7	1	0.0
+95	Salishan	7	2	50.0
+96	Salishan	7	1	100.0
+97	Salishan	7	2	50.0
+98	Salishan	7	2	50.0
+99	Salishan	7	2	50.0
+100	Salishan	7	2	50.0
+1	Uralic	28	5	100.0
+2	Uralic	28	5	100.0
+3	Uralic	28	5	100.0
+4	Uralic	28	5	100.0
+5	Uralic	28	5	80.0
+6	Uralic	28	5	100.0
+7	Uralic	28	5	100.0
+8	Uralic	28	5	100.0
+9	Uralic	28	5	100.0
+10	Uralic	28	5	100.0
+11	Uralic	28	5	100.0
+12	Uralic	28	5	100.0
+13	Uralic	28	5	100.0
+14	Uralic	28	5	100.0
+15	Uralic	28	5	100.0
+16	Uralic	28	5	80.0
+17	Uralic	28	5	100.0
+18	Uralic	28	5	60.0
+19	Uralic	28	5	100.0
+20	Uralic	28	5	100.0
+21	Uralic	28	5	100.0
+22	Uralic	28	5	80.0
+23	Uralic	28	5	100.0
+24	Uralic	28	5	100.0
+25	Uralic	28	5	100.0
+26	Uralic	28	5	100.0
+27	Uralic	28	5	100.0
+28	Uralic	28	5	100.0
+29	Uralic	28	5	100.0
+30	Uralic	28	5	80.0
+31	Uralic	28	5	100.0
+32	Uralic	28	5	100.0
+33	Uralic	28	5	100.0
+34	Uralic	28	5	100.0
+35	Uralic	28	5	100.0
+36	Uralic	28	5	100.0
+37	Uralic	28	5	80.0
+38	Uralic	28	5	100.0
+39	Uralic	28	5	100.0
+40	Uralic	28	5	80.0
+41	Uralic	28	5	100.0
+42	Uralic	28	5	80.0
+43	Uralic	28	5	100.0
+44	Uralic	28	5	100.0
+45	Uralic	28	5	100.0
+46	Uralic	28	5	100.0
+47	Uralic	28	5	80.0
+48	Uralic	28	5	80.0
+49	Uralic	28	5	100.0
+50	Uralic	28	5	80.0
+51	Uralic	28	5	80.0
+52	Uralic	28	5	100.0
+53	Uralic	28	5	100.0
+54	Uralic	28	5	100.0
+55	Uralic	28	5	100.0
+56	Uralic	28	5	100.0
+57	Uralic	28	5	100.0
+58	Uralic	28	5	100.0
+59	Uralic	28	5	100.0
+60	Uralic	28	5	80.0
+61	Uralic	28	5	100.0
+62	Uralic	28	5	80.0
+63	Uralic	28	5	100.0
+64	Uralic	28	5	100.0
+65	Uralic	28	5	80.0
+66	Uralic	28	5	80.0
+67	Uralic	28	5	80.0
+68	Uralic	28	5	100.0
+69	Uralic	28	5	100.0
+70	Uralic	28	5	100.0
+71	Uralic	28	5	100.0
+72	Uralic	28	5	100.0
+73	Uralic	28	5	100.0
+74	Uralic	28	5	100.0
+75	Uralic	28	5	100.0
+76	Uralic	28	5	100.0
+77	Uralic	28	5	100.0
+78	Uralic	28	5	100.0
+79	Uralic	28	5	100.0
+80	Uralic	28	5	100.0
+81	Uralic	28	5	80.0
+82	Uralic	28	5	80.0
+83	Uralic	28	5	100.0
+84	Uralic	28	5	100.0
+85	Uralic	28	5	100.0
+86	Uralic	28	5	80.0
+87	Uralic	28	5	100.0
+88	Uralic	28	5	80.0
+89	Uralic	28	5	100.0
+90	Uralic	28	5	80.0
+91	Uralic	28	5	100.0
+92	Uralic	28	5	80.0
+93	Uralic	28	5	100.0
+94	Uralic	28	5	100.0
+95	Uralic	28	5	60.0
+96	Uralic	28	5	80.0
+97	Uralic	28	5	100.0
+98	Uralic	28	5	80.0
+99	Uralic	28	5	100.0
+100	Uralic	28	5	80.0
+1	Chumashan	5	1	100.0
+2	Chumashan	5	1	100.0
+3	Chumashan	5	1	100.0
+4	Chumashan	5	1	0.0
+5	Chumashan	5	1	100.0
+6	Chumashan	5	1	100.0
+7	Chumashan	5	1	100.0
+8	Chumashan	5	1	100.0
+9	Chumashan	5	1	100.0
+10	Chumashan	5	1	100.0
+11	Chumashan	5	1	0.0
+12	Chumashan	5	1	100.0
+13	Chumashan	5	1	0.0
+14	Chumashan	5	1	0.0
+15	Chumashan	5	1	100.0
+16	Chumashan	5	1	100.0
+17	Chumashan	5	1	100.0
+18	Chumashan	5	1	100.0
+19	Chumashan	5	1	100.0
+20	Chumashan	5	1	0.0
+21	Chumashan	5	1	100.0
+22	Chumashan	5	1	100.0
+23	Chumashan	5	1	100.0
+24	Chumashan	5	1	100.0
+25	Chumashan	5	1	100.0
+26	Chumashan	5	1	0.0
+27	Chumashan	5	1	0.0
+28	Chumashan	5	1	100.0
+29	Chumashan	5	1	100.0
+30	Chumashan	5	1	100.0
+31	Chumashan	5	1	100.0
+32	Chumashan	5	1	0.0
+33	Chumashan	5	1	100.0
+34	Chumashan	5	1	100.0
+35	Chumashan	5	1	100.0
+36	Chumashan	5	1	100.0
+37	Chumashan	5	1	100.0
+38	Chumashan	5	1	100.0
+39	Chumashan	5	1	100.0
+40	Chumashan	5	1	100.0
+41	Chumashan	5	1	100.0
+42	Chumashan	5	1	100.0
+43	Chumashan	5	1	0.0
+44	Chumashan	5	1	0.0
+45	Chumashan	5	1	0.0
+46	Chumashan	5	1	0.0
+47	Chumashan	5	1	0.0
+48	Chumashan	5	1	100.0
+49	Chumashan	5	1	0.0
+50	Chumashan	5	1	0.0
+51	Chumashan	5	1	100.0
+52	Chumashan	5	1	0.0
+53	Chumashan	5	1	100.0
+54	Chumashan	5	1	0.0
+55	Chumashan	5	1	100.0
+56	Chumashan	5	1	0.0
+57	Chumashan	5	1	100.0
+58	Chumashan	5	1	100.0
+59	Chumashan	5	1	0.0
+60	Chumashan	5	1	0.0
+61	Chumashan	5	1	100.0
+62	Chumashan	5	1	100.0
+63	Chumashan	5	1	0.0
+64	Chumashan	5	1	100.0
+65	Chumashan	5	1	100.0
+66	Chumashan	5	1	100.0
+67	Chumashan	5	1	100.0
+68	Chumashan	5	1	100.0
+69	Chumashan	5	1	100.0
+70	Chumashan	5	1	100.0
+71	Chumashan	5	1	100.0
+72	Chumashan	5	1	0.0
+73	Chumashan	5	1	0.0
+74	Chumashan	5	1	100.0
+75	Chumashan	5	1	100.0
+76	Chumashan	5	1	0.0
+77	Chumashan	5	1	100.0
+78	Chumashan	5	1	0.0
+79	Chumashan	5	1	100.0
+80	Chumashan	5	1	100.0
+81	Chumashan	5	1	100.0
+82	Chumashan	5	1	0.0
+83	Chumashan	5	1	0.0
+84	Chumashan	5	1	100.0
+85	Chumashan	5	1	100.0
+86	Chumashan	5	1	100.0
+87	Chumashan	5	1	0.0
+88	Chumashan	5	1	100.0
+89	Chumashan	5	1	0.0
+90	Chumashan	5	1	0.0
+91	Chumashan	5	1	100.0
+92	Chumashan	5	1	0.0
+93	Chumashan	5	1	100.0
+94	Chumashan	5	1	100.0
+95	Chumashan	5	1	100.0
+96	Chumashan	5	1	100.0
+97	Chumashan	5	1	100.0
+98	Chumashan	5	1	0.0
+99	Chumashan	5	1	100.0
+100	Chumashan	5	1	100.0
+1	Timor-Alor-Pantar	17	3	66.667
+2	Timor-Alor-Pantar	17	3	100.0
+3	Timor-Alor-Pantar	17	3	33.333
+4	Timor-Alor-Pantar	17	3	100.0
+5	Timor-Alor-Pantar	17	4	75.0
+6	Timor-Alor-Pantar	17	3	100.0
+7	Timor-Alor-Pantar	17	4	75.0
+8	Timor-Alor-Pantar	17	4	75.0
+9	Timor-Alor-Pantar	17	3	66.667
+10	Timor-Alor-Pantar	17	4	75.0
+11	Timor-Alor-Pantar	17	3	66.667
+12	Timor-Alor-Pantar	17	3	100.0
+13	Timor-Alor-Pantar	17	3	66.667
+14	Timor-Alor-Pantar	17	3	100.0
+15	Timor-Alor-Pantar	17	3	33.333
+16	Timor-Alor-Pantar	17	4	75.0
+17	Timor-Alor-Pantar	17	3	100.0
+18	Timor-Alor-Pantar	17	3	66.667
+19	Timor-Alor-Pantar	17	4	100.0
+20	Timor-Alor-Pantar	17	4	75.0
+21	Timor-Alor-Pantar	17	3	100.0
+22	Timor-Alor-Pantar	17	3	66.667
+23	Timor-Alor-Pantar	17	3	100.0
+24	Timor-Alor-Pantar	17	4	100.0
+25	Timor-Alor-Pantar	17	3	66.667
+26	Timor-Alor-Pantar	17	3	100.0
+27	Timor-Alor-Pantar	17	3	33.333
+28	Timor-Alor-Pantar	17	3	100.0
+29	Timor-Alor-Pantar	17	4	100.0
+30	Timor-Alor-Pantar	17	3	100.0
+31	Timor-Alor-Pantar	17	3	100.0
+32	Timor-Alor-Pantar	17	4	100.0
+33	Timor-Alor-Pantar	17	4	25.0
+34	Timor-Alor-Pantar	17	4	100.0
+35	Timor-Alor-Pantar	17	4	100.0
+36	Timor-Alor-Pantar	17	4	75.0
+37	Timor-Alor-Pantar	17	3	100.0
+38	Timor-Alor-Pantar	17	4	100.0
+39	Timor-Alor-Pantar	17	4	100.0
+40	Timor-Alor-Pantar	17	3	100.0
+41	Timor-Alor-Pantar	17	3	100.0
+42	Timor-Alor-Pantar	17	3	100.0
+43	Timor-Alor-Pantar	17	3	100.0
+44	Timor-Alor-Pantar	17	3	100.0
+45	Timor-Alor-Pantar	17	3	100.0
+46	Timor-Alor-Pantar	17	3	100.0
+47	Timor-Alor-Pantar	17	3	100.0
+48	Timor-Alor-Pantar	17	4	100.0
+49	Timor-Alor-Pantar	17	4	100.0
+50	Timor-Alor-Pantar	17	3	33.333
+51	Timor-Alor-Pantar	17	4	100.0
+52	Timor-Alor-Pantar	17	3	100.0
+53	Timor-Alor-Pantar	17	3	66.667
+54	Timor-Alor-Pantar	17	4	100.0
+55	Timor-Alor-Pantar	17	3	33.333
+56	Timor-Alor-Pantar	17	4	100.0
+57	Timor-Alor-Pantar	17	3	100.0
+58	Timor-Alor-Pantar	17	4	100.0
+59	Timor-Alor-Pantar	17	3	100.0
+60	Timor-Alor-Pantar	17	3	100.0
+61	Timor-Alor-Pantar	17	4	100.0
+62	Timor-Alor-Pantar	17	4	75.0
+63	Timor-Alor-Pantar	17	3	66.667
+64	Timor-Alor-Pantar	17	3	100.0
+65	Timor-Alor-Pantar	17	4	75.0
+66	Timor-Alor-Pantar	17	3	66.667
+67	Timor-Alor-Pantar	17	3	100.0
+68	Timor-Alor-Pantar	17	3	66.667
+69	Timor-Alor-Pantar	17	3	100.0
+70	Timor-Alor-Pantar	17	3	33.333
+71	Timor-Alor-Pantar	17	3	66.667
+72	Timor-Alor-Pantar	17	4	100.0
+73	Timor-Alor-Pantar	17	3	100.0
+74	Timor-Alor-Pantar	17	4	25.0
+75	Timor-Alor-Pantar	17	3	100.0
+76	Timor-Alor-Pantar	17	4	75.0
+77	Timor-Alor-Pantar	17	3	100.0
+78	Timor-Alor-Pantar	17	3	100.0
+79	Timor-Alor-Pantar	17	3	100.0
+80	Timor-Alor-Pantar	17	3	100.0
+81	Timor-Alor-Pantar	17	4	75.0
+82	Timor-Alor-Pantar	17	4	100.0
+83	Timor-Alor-Pantar	17	4	100.0
+84	Timor-Alor-Pantar	17	3	66.667
+85	Timor-Alor-Pantar	17	4	100.0
+86	Timor-Alor-Pantar	17	4	100.0
+87	Timor-Alor-Pantar	17	4	100.0
+88	Timor-Alor-Pantar	17	4	75.0
+89	Timor-Alor-Pantar	17	4	75.0
+90	Timor-Alor-Pantar	17	3	100.0
+91	Timor-Alor-Pantar	17	4	50.0
+92	Timor-Alor-Pantar	17	4	100.0
+93	Timor-Alor-Pantar	17	3	100.0
+94	Timor-Alor-Pantar	17	3	0.0
+95	Timor-Alor-Pantar	17	3	100.0
+96	Timor-Alor-Pantar	17	4	100.0
+97	Timor-Alor-Pantar	17	3	33.333
+98	Timor-Alor-Pantar	17	4	100.0
+99	Timor-Alor-Pantar	17	3	66.667
+100	Timor-Alor-Pantar	17	4	100.0
+1	Guahiboan	5	1	100.0
+2	Guahiboan	5	1	100.0
+3	Guahiboan	5	1	100.0
+4	Guahiboan	5	1	100.0
+5	Guahiboan	5	1	100.0
+6	Guahiboan	5	1	100.0
+7	Guahiboan	5	1	100.0
+8	Guahiboan	5	1	100.0
+9	Guahiboan	5	1	100.0
+10	Guahiboan	5	1	100.0
+11	Guahiboan	5	1	100.0
+12	Guahiboan	5	1	100.0
+13	Guahiboan	5	1	100.0
+14	Guahiboan	5	1	100.0
+15	Guahiboan	5	1	100.0
+16	Guahiboan	5	1	100.0
+17	Guahiboan	5	1	100.0
+18	Guahiboan	5	1	100.0
+19	Guahiboan	5	1	100.0
+20	Guahiboan	5	1	100.0
+21	Guahiboan	5	1	100.0
+22	Guahiboan	5	1	100.0
+23	Guahiboan	5	1	100.0
+24	Guahiboan	5	1	100.0
+25	Guahiboan	5	1	100.0
+26	Guahiboan	5	1	100.0
+27	Guahiboan	5	1	100.0
+28	Guahiboan	5	1	100.0
+29	Guahiboan	5	1	100.0
+30	Guahiboan	5	1	100.0
+31	Guahiboan	5	1	100.0
+32	Guahiboan	5	1	100.0
+33	Guahiboan	5	1	100.0
+34	Guahiboan	5	1	100.0
+35	Guahiboan	5	1	100.0
+36	Guahiboan	5	1	100.0
+37	Guahiboan	5	1	100.0
+38	Guahiboan	5	1	100.0
+39	Guahiboan	5	1	100.0
+40	Guahiboan	5	1	100.0
+41	Guahiboan	5	1	100.0
+42	Guahiboan	5	1	100.0
+43	Guahiboan	5	1	100.0
+44	Guahiboan	5	1	100.0
+45	Guahiboan	5	1	100.0
+46	Guahiboan	5	1	100.0
+47	Guahiboan	5	1	100.0
+48	Guahiboan	5	1	100.0
+49	Guahiboan	5	1	100.0
+50	Guahiboan	5	1	100.0
+51	Guahiboan	5	1	100.0
+52	Guahiboan	5	1	100.0
+53	Guahiboan	5	1	100.0
+54	Guahiboan	5	1	100.0
+55	Guahiboan	5	1	100.0
+56	Guahiboan	5	1	100.0
+57	Guahiboan	5	1	100.0
+58	Guahiboan	5	1	100.0
+59	Guahiboan	5	1	100.0
+60	Guahiboan	5	1	0.0
+61	Guahiboan	5	1	100.0
+62	Guahiboan	5	1	100.0
+63	Guahiboan	5	1	100.0
+64	Guahiboan	5	1	100.0
+65	Guahiboan	5	1	100.0
+66	Guahiboan	5	1	100.0
+67	Guahiboan	5	1	100.0
+68	Guahiboan	5	1	100.0
+69	Guahiboan	5	1	100.0
+70	Guahiboan	5	1	100.0
+71	Guahiboan	5	1	100.0
+72	Guahiboan	5	1	100.0
+73	Guahiboan	5	1	100.0
+74	Guahiboan	5	1	100.0
+75	Guahiboan	5	1	100.0
+76	Guahiboan	5	1	100.0
+77	Guahiboan	5	1	100.0
+78	Guahiboan	5	1	0.0
+79	Guahiboan	5	1	100.0
+80	Guahiboan	5	1	100.0
+81	Guahiboan	5	1	100.0
+82	Guahiboan	5	1	100.0
+83	Guahiboan	5	1	100.0
+84	Guahiboan	5	1	100.0
+85	Guahiboan	5	1	100.0
+86	Guahiboan	5	1	100.0
+87	Guahiboan	5	1	100.0
+88	Guahiboan	5	1	100.0
+89	Guahiboan	5	1	100.0
+90	Guahiboan	5	1	100.0
+91	Guahiboan	5	1	100.0
+92	Guahiboan	5	1	100.0
+93	Guahiboan	5	1	100.0
+94	Guahiboan	5	1	100.0
+95	Guahiboan	5	1	100.0
+96	Guahiboan	5	1	100.0
+97	Guahiboan	5	1	100.0
+98	Guahiboan	5	1	100.0
+99	Guahiboan	5	1	100.0
+100	Guahiboan	5	1	100.0
+1	Lakes Plain	16	3	100.0
+2	Lakes Plain	16	3	100.0
+3	Lakes Plain	16	3	100.0
+4	Lakes Plain	16	3	100.0
+5	Lakes Plain	16	3	100.0
+6	Lakes Plain	16	3	100.0
+7	Lakes Plain	16	3	100.0
+8	Lakes Plain	16	3	100.0
+9	Lakes Plain	16	3	100.0
+10	Lakes Plain	16	3	66.667
+11	Lakes Plain	16	3	100.0
+12	Lakes Plain	16	3	66.667
+13	Lakes Plain	16	3	66.667
+14	Lakes Plain	16	3	100.0
+15	Lakes Plain	16	3	100.0
+16	Lakes Plain	16	3	100.0
+17	Lakes Plain	16	3	100.0
+18	Lakes Plain	16	3	66.667
+19	Lakes Plain	16	3	100.0
+20	Lakes Plain	16	3	100.0
+21	Lakes Plain	16	3	100.0
+22	Lakes Plain	16	3	33.333
+23	Lakes Plain	16	3	100.0
+24	Lakes Plain	16	3	100.0
+25	Lakes Plain	16	3	100.0
+26	Lakes Plain	16	3	100.0
+27	Lakes Plain	16	3	100.0
+28	Lakes Plain	16	3	100.0
+29	Lakes Plain	16	3	100.0
+30	Lakes Plain	16	3	100.0
+31	Lakes Plain	16	3	100.0
+32	Lakes Plain	16	3	66.667
+33	Lakes Plain	16	3	100.0
+34	Lakes Plain	16	3	66.667
+35	Lakes Plain	16	3	66.667
+36	Lakes Plain	16	3	100.0
+37	Lakes Plain	16	3	66.667
+38	Lakes Plain	16	3	66.667
+39	Lakes Plain	16	3	100.0
+40	Lakes Plain	16	3	100.0
+41	Lakes Plain	16	3	66.667
+42	Lakes Plain	16	3	66.667
+43	Lakes Plain	16	3	66.667
+44	Lakes Plain	16	3	100.0
+45	Lakes Plain	16	3	33.333
+46	Lakes Plain	16	3	100.0
+47	Lakes Plain	16	3	100.0
+48	Lakes Plain	16	3	100.0
+49	Lakes Plain	16	3	100.0
+50	Lakes Plain	16	3	100.0
+51	Lakes Plain	16	3	66.667
+52	Lakes Plain	16	3	66.667
+53	Lakes Plain	16	3	66.667
+54	Lakes Plain	16	3	100.0
+55	Lakes Plain	16	3	100.0
+56	Lakes Plain	16	3	66.667
+57	Lakes Plain	16	3	66.667
+58	Lakes Plain	16	3	100.0
+59	Lakes Plain	16	3	66.667
+60	Lakes Plain	16	3	100.0
+61	Lakes Plain	16	3	33.333
+62	Lakes Plain	16	3	100.0
+63	Lakes Plain	16	3	33.333
+64	Lakes Plain	16	3	66.667
+65	Lakes Plain	16	3	100.0
+66	Lakes Plain	16	3	100.0
+67	Lakes Plain	16	3	66.667
+68	Lakes Plain	16	3	100.0
+69	Lakes Plain	16	3	100.0
+70	Lakes Plain	16	3	100.0
+71	Lakes Plain	16	3	66.667
+72	Lakes Plain	16	3	66.667
+73	Lakes Plain	16	3	100.0
+74	Lakes Plain	16	3	100.0
+75	Lakes Plain	16	3	100.0
+76	Lakes Plain	16	3	100.0
+77	Lakes Plain	16	3	100.0
+78	Lakes Plain	16	3	66.667
+79	Lakes Plain	16	3	100.0
+80	Lakes Plain	16	3	100.0
+81	Lakes Plain	16	3	100.0
+82	Lakes Plain	16	3	100.0
+83	Lakes Plain	16	3	100.0
+84	Lakes Plain	16	3	100.0
+85	Lakes Plain	16	3	100.0
+86	Lakes Plain	16	3	66.667
+87	Lakes Plain	16	3	100.0
+88	Lakes Plain	16	3	100.0
+89	Lakes Plain	16	3	66.667
+90	Lakes Plain	16	3	100.0
+91	Lakes Plain	16	3	100.0
+92	Lakes Plain	16	3	100.0
+93	Lakes Plain	16	3	100.0
+94	Lakes Plain	16	3	33.333
+95	Lakes Plain	16	3	100.0
+96	Lakes Plain	16	3	66.667
+97	Lakes Plain	16	3	100.0
+98	Lakes Plain	16	3	66.667
+99	Lakes Plain	16	3	33.333
+100	Lakes Plain	16	3	66.667
+1	Hmong-Mien	24	5	100.0
+2	Hmong-Mien	24	5	80.0
+3	Hmong-Mien	24	5	80.0
+4	Hmong-Mien	24	5	100.0
+5	Hmong-Mien	24	5	80.0
+6	Hmong-Mien	24	5	80.0
+7	Hmong-Mien	24	5	60.0
+8	Hmong-Mien	24	5	100.0
+9	Hmong-Mien	24	5	100.0
+10	Hmong-Mien	24	5	100.0
+11	Hmong-Mien	24	5	80.0
+12	Hmong-Mien	24	5	80.0
+13	Hmong-Mien	24	5	100.0
+14	Hmong-Mien	24	5	100.0
+15	Hmong-Mien	24	5	80.0
+16	Hmong-Mien	24	5	100.0
+17	Hmong-Mien	24	5	100.0
+18	Hmong-Mien	24	5	80.0
+19	Hmong-Mien	24	5	100.0
+20	Hmong-Mien	24	5	80.0
+21	Hmong-Mien	24	5	80.0
+22	Hmong-Mien	24	5	100.0
+23	Hmong-Mien	24	5	100.0
+24	Hmong-Mien	24	5	60.0
+25	Hmong-Mien	24	5	100.0
+26	Hmong-Mien	24	5	80.0
+27	Hmong-Mien	24	5	100.0
+28	Hmong-Mien	24	5	100.0
+29	Hmong-Mien	24	5	100.0
+30	Hmong-Mien	24	5	80.0
+31	Hmong-Mien	24	5	80.0
+32	Hmong-Mien	24	5	100.0
+33	Hmong-Mien	24	5	100.0
+34	Hmong-Mien	24	5	100.0
+35	Hmong-Mien	24	5	100.0
+36	Hmong-Mien	24	5	80.0
+37	Hmong-Mien	24	5	100.0
+38	Hmong-Mien	24	5	80.0
+39	Hmong-Mien	24	5	100.0
+40	Hmong-Mien	24	5	80.0
+41	Hmong-Mien	24	5	100.0
+42	Hmong-Mien	24	5	80.0
+43	Hmong-Mien	24	5	100.0
+44	Hmong-Mien	24	5	100.0
+45	Hmong-Mien	24	5	100.0
+46	Hmong-Mien	24	5	100.0
+47	Hmong-Mien	24	5	80.0
+48	Hmong-Mien	24	5	80.0
+49	Hmong-Mien	24	5	80.0
+50	Hmong-Mien	24	5	100.0
+51	Hmong-Mien	24	5	100.0
+52	Hmong-Mien	24	5	100.0
+53	Hmong-Mien	24	5	100.0
+54	Hmong-Mien	24	5	80.0
+55	Hmong-Mien	24	5	80.0
+56	Hmong-Mien	24	5	100.0
+57	Hmong-Mien	24	5	80.0
+58	Hmong-Mien	24	5	100.0
+59	Hmong-Mien	24	5	80.0
+60	Hmong-Mien	24	5	80.0
+61	Hmong-Mien	24	5	100.0
+62	Hmong-Mien	24	5	80.0
+63	Hmong-Mien	24	5	100.0
+64	Hmong-Mien	24	5	80.0
+65	Hmong-Mien	24	5	100.0
+66	Hmong-Mien	24	5	100.0
+67	Hmong-Mien	24	5	80.0
+68	Hmong-Mien	24	5	100.0
+69	Hmong-Mien	24	5	100.0
+70	Hmong-Mien	24	5	100.0
+71	Hmong-Mien	24	5	80.0
+72	Hmong-Mien	24	5	100.0
+73	Hmong-Mien	24	5	100.0
+74	Hmong-Mien	24	5	100.0
+75	Hmong-Mien	24	5	100.0
+76	Hmong-Mien	24	5	100.0
+77	Hmong-Mien	24	5	100.0
+78	Hmong-Mien	24	5	100.0
+79	Hmong-Mien	24	5	100.0
+80	Hmong-Mien	24	5	100.0
+81	Hmong-Mien	24	5	60.0
+82	Hmong-Mien	24	5	100.0
+83	Hmong-Mien	24	5	100.0
+84	Hmong-Mien	24	5	80.0
+85	Hmong-Mien	24	5	80.0
+86	Hmong-Mien	24	5	100.0
+87	Hmong-Mien	24	5	80.0
+88	Hmong-Mien	24	5	100.0
+89	Hmong-Mien	24	5	100.0
+90	Hmong-Mien	24	5	100.0
+91	Hmong-Mien	24	5	80.0
+92	Hmong-Mien	24	5	100.0
+93	Hmong-Mien	24	5	100.0
+94	Hmong-Mien	24	5	100.0
+95	Hmong-Mien	24	5	100.0
+96	Hmong-Mien	24	5	80.0
+97	Hmong-Mien	24	5	80.0
+98	Hmong-Mien	24	5	100.0
+99	Hmong-Mien	24	5	80.0
+100	Hmong-Mien	24	5	80.0
+1	Cochimi-Yuman	7	2	100.0
+2	Cochimi-Yuman	7	1	100.0
+3	Cochimi-Yuman	7	1	100.0
+4	Cochimi-Yuman	7	2	100.0
+5	Cochimi-Yuman	7	2	100.0
+6	Cochimi-Yuman	7	1	100.0
+7	Cochimi-Yuman	7	2	100.0
+8	Cochimi-Yuman	7	1	100.0
+9	Cochimi-Yuman	7	2	100.0
+10	Cochimi-Yuman	7	1	100.0
+11	Cochimi-Yuman	7	1	0.0
+12	Cochimi-Yuman	7	2	100.0
+13	Cochimi-Yuman	7	2	100.0
+14	Cochimi-Yuman	7	2	100.0
+15	Cochimi-Yuman	7	1	0.0
+16	Cochimi-Yuman	7	2	100.0
+17	Cochimi-Yuman	7	2	100.0
+18	Cochimi-Yuman	7	2	100.0
+19	Cochimi-Yuman	7	2	100.0
+20	Cochimi-Yuman	7	1	100.0
+21	Cochimi-Yuman	7	1	100.0
+22	Cochimi-Yuman	7	2	100.0
+23	Cochimi-Yuman	7	2	100.0
+24	Cochimi-Yuman	7	1	100.0
+25	Cochimi-Yuman	7	2	100.0
+26	Cochimi-Yuman	7	2	50.0
+27	Cochimi-Yuman	7	2	50.0
+28	Cochimi-Yuman	7	1	100.0
+29	Cochimi-Yuman	7	1	100.0
+30	Cochimi-Yuman	7	1	100.0
+31	Cochimi-Yuman	7	1	100.0
+32	Cochimi-Yuman	7	1	100.0
+33	Cochimi-Yuman	7	2	100.0
+34	Cochimi-Yuman	7	1	100.0
+35	Cochimi-Yuman	7	2	100.0
+36	Cochimi-Yuman	7	1	100.0
+37	Cochimi-Yuman	7	1	100.0
+38	Cochimi-Yuman	7	2	50.0
+39	Cochimi-Yuman	7	2	100.0
+40	Cochimi-Yuman	7	2	100.0
+41	Cochimi-Yuman	7	1	0.0
+42	Cochimi-Yuman	7	1	0.0
+43	Cochimi-Yuman	7	1	100.0
+44	Cochimi-Yuman	7	1	100.0
+45	Cochimi-Yuman	7	1	100.0
+46	Cochimi-Yuman	7	2	100.0
+47	Cochimi-Yuman	7	2	100.0
+48	Cochimi-Yuman	7	1	100.0
+49	Cochimi-Yuman	7	1	100.0
+50	Cochimi-Yuman	7	1	100.0
+51	Cochimi-Yuman	7	1	100.0
+52	Cochimi-Yuman	7	1	100.0
+53	Cochimi-Yuman	7	2	100.0
+54	Cochimi-Yuman	7	2	100.0
+55	Cochimi-Yuman	7	1	0.0
+56	Cochimi-Yuman	7	1	100.0
+57	Cochimi-Yuman	7	1	100.0
+58	Cochimi-Yuman	7	1	100.0
+59	Cochimi-Yuman	7	2	50.0
+60	Cochimi-Yuman	7	2	100.0
+61	Cochimi-Yuman	7	2	100.0
+62	Cochimi-Yuman	7	1	100.0
+63	Cochimi-Yuman	7	2	100.0
+64	Cochimi-Yuman	7	2	100.0
+65	Cochimi-Yuman	7	2	50.0
+66	Cochimi-Yuman	7	2	100.0
+67	Cochimi-Yuman	7	1	100.0
+68	Cochimi-Yuman	7	1	100.0
+69	Cochimi-Yuman	7	2	100.0
+70	Cochimi-Yuman	7	2	100.0
+71	Cochimi-Yuman	7	1	100.0
+72	Cochimi-Yuman	7	2	100.0
+73	Cochimi-Yuman	7	2	100.0
+74	Cochimi-Yuman	7	1	100.0
+75	Cochimi-Yuman	7	2	100.0
+76	Cochimi-Yuman	7	2	0.0
+77	Cochimi-Yuman	7	2	50.0
+78	Cochimi-Yuman	7	2	100.0
+79	Cochimi-Yuman	7	1	100.0
+80	Cochimi-Yuman	7	1	0.0
+81	Cochimi-Yuman	7	2	100.0
+82	Cochimi-Yuman	7	1	100.0
+83	Cochimi-Yuman	7	2	100.0
+84	Cochimi-Yuman	7	1	100.0
+85	Cochimi-Yuman	7	2	100.0
+86	Cochimi-Yuman	7	2	100.0
+87	Cochimi-Yuman	7	2	100.0
+88	Cochimi-Yuman	7	1	100.0
+89	Cochimi-Yuman	7	1	0.0
+90	Cochimi-Yuman	7	1	100.0
+91	Cochimi-Yuman	7	2	100.0
+92	Cochimi-Yuman	7	1	100.0
+93	Cochimi-Yuman	7	2	50.0
+94	Cochimi-Yuman	7	2	100.0
+95	Cochimi-Yuman	7	2	50.0
+96	Cochimi-Yuman	7	1	100.0
+97	Cochimi-Yuman	7	1	100.0
+98	Cochimi-Yuman	7	2	100.0
+99	Cochimi-Yuman	7	1	100.0
+100	Cochimi-Yuman	7	1	100.0
+1	Mande	18	3	66.667
+2	Mande	18	3	100.0
+3	Mande	18	3	100.0
+4	Mande	18	4	50.0
+5	Mande	18	3	100.0
+6	Mande	18	3	100.0
+7	Mande	18	3	66.667
+8	Mande	18	3	66.667
+9	Mande	18	3	66.667
+10	Mande	18	3	100.0
+11	Mande	18	4	100.0
+12	Mande	18	4	75.0
+13	Mande	18	4	75.0
+14	Mande	18	3	100.0
+15	Mande	18	3	100.0
+16	Mande	18	4	75.0
+17	Mande	18	4	75.0
+18	Mande	18	4	75.0
+19	Mande	18	3	100.0
+20	Mande	18	4	100.0
+21	Mande	18	4	75.0
+22	Mande	18	3	100.0
+23	Mande	18	3	66.667
+24	Mande	18	3	100.0
+25	Mande	18	4	100.0
+26	Mande	18	4	75.0
+27	Mande	18	4	100.0
+28	Mande	18	4	75.0
+29	Mande	18	3	66.667
+30	Mande	18	3	100.0
+31	Mande	18	4	75.0
+32	Mande	18	3	33.333
+33	Mande	18	4	100.0
+34	Mande	18	4	100.0
+35	Mande	18	4	75.0
+36	Mande	18	4	75.0
+37	Mande	18	3	100.0
+38	Mande	18	3	66.667
+39	Mande	18	3	33.333
+40	Mande	18	3	66.667
+41	Mande	18	4	100.0
+42	Mande	18	3	100.0
+43	Mande	18	3	33.333
+44	Mande	18	4	50.0
+45	Mande	18	4	100.0
+46	Mande	18	4	50.0
+47	Mande	18	3	66.667
+48	Mande	18	3	66.667
+49	Mande	18	4	100.0
+50	Mande	18	4	25.0
+51	Mande	18	3	100.0
+52	Mande	18	4	50.0
+53	Mande	18	4	100.0
+54	Mande	18	4	75.0
+55	Mande	18	4	100.0
+56	Mande	18	4	50.0
+57	Mande	18	4	100.0
+58	Mande	18	4	100.0
+59	Mande	18	4	100.0
+60	Mande	18	3	100.0
+61	Mande	18	4	75.0
+62	Mande	18	4	75.0
+63	Mande	18	3	33.333
+64	Mande	18	3	100.0
+65	Mande	18	4	75.0
+66	Mande	18	3	100.0
+67	Mande	18	4	75.0
+68	Mande	18	3	33.333
+69	Mande	18	3	100.0
+70	Mande	18	3	100.0
+71	Mande	18	4	75.0
+72	Mande	18	4	75.0
+73	Mande	18	4	100.0
+74	Mande	18	4	100.0
+75	Mande	18	3	33.333
+76	Mande	18	4	100.0
+77	Mande	18	3	66.667
+78	Mande	18	4	100.0
+79	Mande	18	3	100.0
+80	Mande	18	4	75.0
+81	Mande	18	3	66.667
+82	Mande	18	3	100.0
+83	Mande	18	3	66.667
+84	Mande	18	3	100.0
+85	Mande	18	4	50.0
+86	Mande	18	3	100.0
+87	Mande	18	4	50.0
+88	Mande	18	4	50.0
+89	Mande	18	3	66.667
+90	Mande	18	4	100.0
+91	Mande	18	3	66.667
+92	Mande	18	3	33.333
+93	Mande	18	3	33.333
+94	Mande	18	4	100.0
+95	Mande	18	3	100.0
+96	Mande	18	3	66.667
+97	Mande	18	3	100.0
+98	Mande	18	3	33.333
+99	Mande	18	4	100.0
+100	Mande	18	3	66.667
+1	East Strickland	6	1	100.0
+2	East Strickland	6	1	100.0
+3	East Strickland	6	1	100.0
+4	East Strickland	6	1	100.0
+5	East Strickland	6	1	100.0
+6	East Strickland	6	1	100.0
+7	East Strickland	6	1	100.0
+8	East Strickland	6	1	100.0
+9	East Strickland	6	1	100.0
+10	East Strickland	6	1	100.0
+11	East Strickland	6	1	0.0
+12	East Strickland	6	1	100.0
+13	East Strickland	6	1	0.0
+14	East Strickland	6	1	0.0
+15	East Strickland	6	1	100.0
+16	East Strickland	6	1	100.0
+17	East Strickland	6	1	100.0
+18	East Strickland	6	1	0.0
+19	East Strickland	6	1	100.0
+20	East Strickland	6	1	100.0
+21	East Strickland	6	1	100.0
+22	East Strickland	6	1	100.0
+23	East Strickland	6	1	0.0
+24	East Strickland	6	1	100.0
+25	East Strickland	6	1	100.0
+26	East Strickland	6	1	100.0
+27	East Strickland	6	1	100.0
+28	East Strickland	6	1	100.0
+29	East Strickland	6	1	100.0
+30	East Strickland	6	1	100.0
+31	East Strickland	6	1	100.0
+32	East Strickland	6	1	100.0
+33	East Strickland	6	1	100.0
+34	East Strickland	6	1	100.0
+35	East Strickland	6	1	100.0
+36	East Strickland	6	1	100.0
+37	East Strickland	6	1	100.0
+38	East Strickland	6	1	100.0
+39	East Strickland	6	1	0.0
+40	East Strickland	6	1	100.0
+41	East Strickland	6	1	0.0
+42	East Strickland	6	1	100.0
+43	East Strickland	6	1	100.0
+44	East Strickland	6	1	100.0
+45	East Strickland	6	1	0.0
+46	East Strickland	6	1	0.0
+47	East Strickland	6	1	100.0
+48	East Strickland	6	1	100.0
+49	East Strickland	6	1	100.0
+50	East Strickland	6	1	100.0
+51	East Strickland	6	1	100.0
+52	East Strickland	6	1	0.0
+53	East Strickland	6	1	100.0
+54	East Strickland	6	1	0.0
+55	East Strickland	6	1	100.0
+56	East Strickland	6	1	100.0
+57	East Strickland	6	1	100.0
+58	East Strickland	6	1	100.0
+59	East Strickland	6	1	100.0
+60	East Strickland	6	1	100.0
+61	East Strickland	6	1	100.0
+62	East Strickland	6	1	100.0
+63	East Strickland	6	1	100.0
+64	East Strickland	6	1	100.0
+65	East Strickland	6	1	100.0
+66	East Strickland	6	1	100.0
+67	East Strickland	6	1	0.0
+68	East Strickland	6	1	100.0
+69	East Strickland	6	1	100.0
+70	East Strickland	6	1	100.0
+71	East Strickland	6	1	100.0
+72	East Strickland	6	1	100.0
+73	East Strickland	6	1	100.0
+74	East Strickland	6	1	100.0
+75	East Strickland	6	1	0.0
+76	East Strickland	6	1	0.0
+77	East Strickland	6	1	100.0
+78	East Strickland	6	1	100.0
+79	East Strickland	6	1	0.0
+80	East Strickland	6	1	0.0
+81	East Strickland	6	1	100.0
+82	East Strickland	6	1	100.0
+83	East Strickland	6	1	100.0
+84	East Strickland	6	1	100.0
+85	East Strickland	6	1	100.0
+86	East Strickland	6	1	100.0
+87	East Strickland	6	1	100.0
+88	East Strickland	6	1	100.0
+89	East Strickland	6	1	100.0
+90	East Strickland	6	1	100.0
+91	East Strickland	6	1	100.0
+92	East Strickland	6	1	100.0
+93	East Strickland	6	1	100.0
+94	East Strickland	6	1	100.0
+95	East Strickland	6	1	100.0
+96	East Strickland	6	1	0.0
+97	East Strickland	6	1	0.0
+98	East Strickland	6	1	100.0
+99	East Strickland	6	1	100.0
+100	East Strickland	6	1	0.0
+1	Mailuan	12	2	100.0
+2	Mailuan	12	3	100.0
+3	Mailuan	12	2	50.0
+4	Mailuan	12	2	100.0
+5	Mailuan	12	3	100.0
+6	Mailuan	12	3	66.667
+7	Mailuan	12	2	100.0
+8	Mailuan	12	3	66.667
+9	Mailuan	12	3	66.667
+10	Mailuan	12	3	33.333
+11	Mailuan	12	3	100.0
+12	Mailuan	12	2	50.0
+13	Mailuan	12	3	33.333
+14	Mailuan	12	3	66.667
+15	Mailuan	12	2	100.0
+16	Mailuan	12	3	66.667
+17	Mailuan	12	3	66.667
+18	Mailuan	12	2	50.0
+19	Mailuan	12	2	100.0
+20	Mailuan	12	2	100.0
+21	Mailuan	12	3	66.667
+22	Mailuan	12	2	100.0
+23	Mailuan	12	3	66.667
+24	Mailuan	12	2	100.0
+25	Mailuan	12	2	100.0
+26	Mailuan	12	3	66.667
+27	Mailuan	12	2	50.0
+28	Mailuan	12	3	66.667
+29	Mailuan	12	2	100.0
+30	Mailuan	12	2	100.0
+31	Mailuan	12	2	50.0
+32	Mailuan	12	2	50.0
+33	Mailuan	12	3	100.0
+34	Mailuan	12	2	100.0
+35	Mailuan	12	3	66.667
+36	Mailuan	12	2	50.0
+37	Mailuan	12	3	66.667
+38	Mailuan	12	2	100.0
+39	Mailuan	12	2	0.0
+40	Mailuan	12	3	100.0
+41	Mailuan	12	2	50.0
+42	Mailuan	12	2	100.0
+43	Mailuan	12	3	66.667
+44	Mailuan	12	2	100.0
+45	Mailuan	12	2	100.0
+46	Mailuan	12	2	50.0
+47	Mailuan	12	3	100.0
+48	Mailuan	12	3	66.667
+49	Mailuan	12	3	100.0
+50	Mailuan	12	2	50.0
+51	Mailuan	12	3	100.0
+52	Mailuan	12	2	100.0
+53	Mailuan	12	2	100.0
+54	Mailuan	12	3	66.667
+55	Mailuan	12	3	100.0
+56	Mailuan	12	2	100.0
+57	Mailuan	12	3	33.333
+58	Mailuan	12	2	50.0
+59	Mailuan	12	2	100.0
+60	Mailuan	12	2	50.0
+61	Mailuan	12	2	50.0
+62	Mailuan	12	3	33.333
+63	Mailuan	12	2	50.0
+64	Mailuan	12	2	100.0
+65	Mailuan	12	2	50.0
+66	Mailuan	12	3	100.0
+67	Mailuan	12	3	66.667
+68	Mailuan	12	2	50.0
+69	Mailuan	12	2	100.0
+70	Mailuan	12	2	100.0
+71	Mailuan	12	2	100.0
+72	Mailuan	12	3	33.333
+73	Mailuan	12	2	100.0
+74	Mailuan	12	2	100.0
+75	Mailuan	12	2	100.0
+76	Mailuan	12	3	33.333
+77	Mailuan	12	2	50.0
+78	Mailuan	12	3	100.0
+79	Mailuan	12	2	100.0
+80	Mailuan	12	3	66.667
+81	Mailuan	12	2	100.0
+82	Mailuan	12	2	50.0
+83	Mailuan	12	2	100.0
+84	Mailuan	12	2	50.0
+85	Mailuan	12	2	50.0
+86	Mailuan	12	2	100.0
+87	Mailuan	12	3	100.0
+88	Mailuan	12	2	100.0
+89	Mailuan	12	3	66.667
+90	Mailuan	12	3	66.667
+91	Mailuan	12	2	0.0
+92	Mailuan	12	3	66.667
+93	Mailuan	12	3	100.0
+94	Mailuan	12	2	100.0
+95	Mailuan	12	3	66.667
+96	Mailuan	12	3	66.667
+97	Mailuan	12	3	66.667
+98	Mailuan	12	3	100.0
+99	Mailuan	12	2	100.0
+100	Mailuan	12	2	100.0
+1	Sepik	8	1	0.0
+2	Sepik	8	2	0.0
+3	Sepik	8	2	50.0
+4	Sepik	8	2	100.0
+5	Sepik	8	1	100.0
+6	Sepik	8	2	0.0
+7	Sepik	8	1	100.0
+8	Sepik	8	2	0.0
+9	Sepik	8	2	100.0
+10	Sepik	8	1	100.0
+11	Sepik	8	1	100.0
+12	Sepik	8	1	100.0
+13	Sepik	8	2	0.0
+14	Sepik	8	2	50.0
+15	Sepik	8	1	0.0
+16	Sepik	8	1	0.0
+17	Sepik	8	1	100.0
+18	Sepik	8	1	0.0
+19	Sepik	8	2	50.0
+20	Sepik	8	1	0.0
+21	Sepik	8	1	100.0
+22	Sepik	8	2	50.0
+23	Sepik	8	2	50.0
+24	Sepik	8	2	50.0
+25	Sepik	8	1	0.0
+26	Sepik	8	1	100.0
+27	Sepik	8	1	0.0
+28	Sepik	8	2	50.0
+29	Sepik	8	2	50.0
+30	Sepik	8	2	50.0
+31	Sepik	8	1	100.0
+32	Sepik	8	2	100.0
+33	Sepik	8	2	50.0
+34	Sepik	8	2	100.0
+35	Sepik	8	2	50.0
+36	Sepik	8	1	100.0
+37	Sepik	8	2	0.0
+38	Sepik	8	1	0.0
+39	Sepik	8	2	0.0
+40	Sepik	8	1	100.0
+41	Sepik	8	1	100.0
+42	Sepik	8	2	50.0
+43	Sepik	8	1	0.0
+44	Sepik	8	2	50.0
+45	Sepik	8	2	100.0
+46	Sepik	8	1	0.0
+47	Sepik	8	2	0.0
+48	Sepik	8	2	50.0
+49	Sepik	8	2	50.0
+50	Sepik	8	1	100.0
+51	Sepik	8	1	0.0
+52	Sepik	8	2	50.0
+53	Sepik	8	1	0.0
+54	Sepik	8	1	0.0
+55	Sepik	8	2	0.0
+56	Sepik	8	2	50.0
+57	Sepik	8	1	0.0
+58	Sepik	8	1	0.0
+59	Sepik	8	1	0.0
+60	Sepik	8	1	100.0
+61	Sepik	8	1	100.0
+62	Sepik	8	2	50.0
+63	Sepik	8	1	100.0
+64	Sepik	8	2	100.0
+65	Sepik	8	2	0.0
+66	Sepik	8	2	0.0
+67	Sepik	8	2	50.0
+68	Sepik	8	1	0.0
+69	Sepik	8	2	50.0
+70	Sepik	8	2	0.0
+71	Sepik	8	1	0.0
+72	Sepik	8	1	0.0
+73	Sepik	8	1	0.0
+74	Sepik	8	2	50.0
+75	Sepik	8	2	50.0
+76	Sepik	8	1	0.0
+77	Sepik	8	2	50.0
+78	Sepik	8	1	100.0
+79	Sepik	8	1	100.0
+80	Sepik	8	1	0.0
+81	Sepik	8	2	0.0
+82	Sepik	8	2	50.0
+83	Sepik	8	2	100.0
+84	Sepik	8	2	50.0
+85	Sepik	8	2	50.0
+86	Sepik	8	2	100.0
+87	Sepik	8	1	100.0
+88	Sepik	8	2	100.0
+89	Sepik	8	1	0.0
+90	Sepik	8	2	50.0
+91	Sepik	8	1	100.0
+92	Sepik	8	2	50.0
+93	Sepik	8	2	50.0
+94	Sepik	8	1	0.0
+95	Sepik	8	2	100.0
+96	Sepik	8	1	100.0
+97	Sepik	8	1	100.0
+98	Sepik	8	1	100.0
+99	Sepik	8	2	0.0
+100	Sepik	8	2	0.0
+1	Eastern Trans-Fly	10	2	100.0
+2	Eastern Trans-Fly	10	2	50.0
+3	Eastern Trans-Fly	10	2	50.0
+4	Eastern Trans-Fly	10	2	100.0
+5	Eastern Trans-Fly	10	2	100.0
+6	Eastern Trans-Fly	10	2	100.0
+7	Eastern Trans-Fly	10	2	100.0
+8	Eastern Trans-Fly	10	2	100.0
+9	Eastern Trans-Fly	10	2	50.0
+10	Eastern Trans-Fly	10	2	100.0
+11	Eastern Trans-Fly	10	2	100.0
+12	Eastern Trans-Fly	10	2	100.0
+13	Eastern Trans-Fly	10	2	50.0
+14	Eastern Trans-Fly	10	2	50.0
+15	Eastern Trans-Fly	10	2	50.0
+16	Eastern Trans-Fly	10	2	50.0
+17	Eastern Trans-Fly	10	2	50.0
+18	Eastern Trans-Fly	10	2	100.0
+19	Eastern Trans-Fly	10	2	100.0
+20	Eastern Trans-Fly	10	2	100.0
+21	Eastern Trans-Fly	10	2	100.0
+22	Eastern Trans-Fly	10	2	50.0
+23	Eastern Trans-Fly	10	2	100.0
+24	Eastern Trans-Fly	10	2	100.0
+25	Eastern Trans-Fly	10	2	100.0
+26	Eastern Trans-Fly	10	2	50.0
+27	Eastern Trans-Fly	10	2	100.0
+28	Eastern Trans-Fly	10	2	50.0
+29	Eastern Trans-Fly	10	2	100.0
+30	Eastern Trans-Fly	10	2	100.0
+31	Eastern Trans-Fly	10	2	100.0
+32	Eastern Trans-Fly	10	2	50.0
+33	Eastern Trans-Fly	10	2	100.0
+34	Eastern Trans-Fly	10	2	100.0
+35	Eastern Trans-Fly	10	2	100.0
+36	Eastern Trans-Fly	10	2	100.0
+37	Eastern Trans-Fly	10	2	50.0
+38	Eastern Trans-Fly	10	2	100.0
+39	Eastern Trans-Fly	10	2	100.0
+40	Eastern Trans-Fly	10	2	100.0
+41	Eastern Trans-Fly	10	2	100.0
+42	Eastern Trans-Fly	10	2	100.0
+43	Eastern Trans-Fly	10	2	100.0
+44	Eastern Trans-Fly	10	2	100.0
+45	Eastern Trans-Fly	10	2	100.0
+46	Eastern Trans-Fly	10	2	100.0
+47	Eastern Trans-Fly	10	2	100.0
+48	Eastern Trans-Fly	10	2	50.0
+49	Eastern Trans-Fly	10	2	100.0
+50	Eastern Trans-Fly	10	2	100.0
+51	Eastern Trans-Fly	10	2	100.0
+52	Eastern Trans-Fly	10	2	50.0
+53	Eastern Trans-Fly	10	2	100.0
+54	Eastern Trans-Fly	10	2	50.0
+55	Eastern Trans-Fly	10	2	100.0
+56	Eastern Trans-Fly	10	2	100.0
+57	Eastern Trans-Fly	10	2	50.0
+58	Eastern Trans-Fly	10	2	100.0
+59	Eastern Trans-Fly	10	2	100.0
+60	Eastern Trans-Fly	10	2	50.0
+61	Eastern Trans-Fly	10	2	100.0
+62	Eastern Trans-Fly	10	2	100.0
+63	Eastern Trans-Fly	10	2	50.0
+64	Eastern Trans-Fly	10	2	50.0
+65	Eastern Trans-Fly	10	2	100.0
+66	Eastern Trans-Fly	10	2	100.0
+67	Eastern Trans-Fly	10	2	100.0
+68	Eastern Trans-Fly	10	2	0.0
+69	Eastern Trans-Fly	10	2	50.0
+70	Eastern Trans-Fly	10	2	50.0
+71	Eastern Trans-Fly	10	2	0.0
+72	Eastern Trans-Fly	10	2	100.0
+73	Eastern Trans-Fly	10	2	0.0
+74	Eastern Trans-Fly	10	2	100.0
+75	Eastern Trans-Fly	10	2	100.0
+76	Eastern Trans-Fly	10	2	100.0
+77	Eastern Trans-Fly	10	2	50.0
+78	Eastern Trans-Fly	10	2	100.0
+79	Eastern Trans-Fly	10	2	50.0
+80	Eastern Trans-Fly	10	2	50.0
+81	Eastern Trans-Fly	10	2	50.0
+82	Eastern Trans-Fly	10	2	100.0
+83	Eastern Trans-Fly	10	2	100.0
+84	Eastern Trans-Fly	10	2	100.0
+85	Eastern Trans-Fly	10	2	100.0
+86	Eastern Trans-Fly	10	2	50.0
+87	Eastern Trans-Fly	10	2	100.0
+88	Eastern Trans-Fly	10	2	100.0
+89	Eastern Trans-Fly	10	2	100.0
+90	Eastern Trans-Fly	10	2	100.0
+91	Eastern Trans-Fly	10	2	50.0
+92	Eastern Trans-Fly	10	2	100.0
+93	Eastern Trans-Fly	10	2	50.0
+94	Eastern Trans-Fly	10	2	100.0
+95	Eastern Trans-Fly	10	2	100.0
+96	Eastern Trans-Fly	10	2	100.0
+97	Eastern Trans-Fly	10	2	50.0
+98	Eastern Trans-Fly	10	2	100.0
+99	Eastern Trans-Fly	10	2	50.0
+100	Eastern Trans-Fly	10	2	0.0
+1	Chocoan	6	1	100.0
+2	Chocoan	6	1	100.0
+3	Chocoan	6	1	0.0
+4	Chocoan	6	1	100.0
+5	Chocoan	6	1	100.0
+6	Chocoan	6	1	0.0
+7	Chocoan	6	1	0.0
+8	Chocoan	6	1	0.0
+9	Chocoan	6	1	0.0
+10	Chocoan	6	1	100.0
+11	Chocoan	6	1	100.0
+12	Chocoan	6	1	0.0
+13	Chocoan	6	1	100.0
+14	Chocoan	6	1	0.0
+15	Chocoan	6	1	100.0
+16	Chocoan	6	1	100.0
+17	Chocoan	6	1	100.0
+18	Chocoan	6	1	0.0
+19	Chocoan	6	1	100.0
+20	Chocoan	6	1	100.0
+21	Chocoan	6	1	100.0
+22	Chocoan	6	1	100.0
+23	Chocoan	6	1	100.0
+24	Chocoan	6	1	0.0
+25	Chocoan	6	1	0.0
+26	Chocoan	6	1	100.0
+27	Chocoan	6	1	0.0
+28	Chocoan	6	1	100.0
+29	Chocoan	6	1	0.0
+30	Chocoan	6	1	0.0
+31	Chocoan	6	1	100.0
+32	Chocoan	6	1	0.0
+33	Chocoan	6	1	100.0
+34	Chocoan	6	1	100.0
+35	Chocoan	6	1	100.0
+36	Chocoan	6	1	0.0
+37	Chocoan	6	1	100.0
+38	Chocoan	6	1	0.0
+39	Chocoan	6	1	100.0
+40	Chocoan	6	1	0.0
+41	Chocoan	6	1	100.0
+42	Chocoan	6	1	100.0
+43	Chocoan	6	1	0.0
+44	Chocoan	6	1	100.0
+45	Chocoan	6	1	0.0
+46	Chocoan	6	1	100.0
+47	Chocoan	6	1	100.0
+48	Chocoan	6	1	0.0
+49	Chocoan	6	1	100.0
+50	Chocoan	6	1	0.0
+51	Chocoan	6	1	100.0
+52	Chocoan	6	1	100.0
+53	Chocoan	6	1	100.0
+54	Chocoan	6	1	100.0
+55	Chocoan	6	1	100.0
+56	Chocoan	6	1	0.0
+57	Chocoan	6	1	100.0
+58	Chocoan	6	1	100.0
+59	Chocoan	6	1	0.0
+60	Chocoan	6	1	100.0
+61	Chocoan	6	1	0.0
+62	Chocoan	6	1	100.0
+63	Chocoan	6	1	100.0
+64	Chocoan	6	1	100.0
+65	Chocoan	6	1	100.0
+66	Chocoan	6	1	0.0
+67	Chocoan	6	1	0.0
+68	Chocoan	6	1	0.0
+69	Chocoan	6	1	0.0
+70	Chocoan	6	1	100.0
+71	Chocoan	6	1	100.0
+72	Chocoan	6	1	0.0
+73	Chocoan	6	1	100.0
+74	Chocoan	6	1	100.0
+75	Chocoan	6	1	100.0
+76	Chocoan	6	1	0.0
+77	Chocoan	6	1	0.0
+78	Chocoan	6	1	0.0
+79	Chocoan	6	1	0.0
+80	Chocoan	6	1	100.0
+81	Chocoan	6	1	100.0
+82	Chocoan	6	1	100.0
+83	Chocoan	6	1	0.0
+84	Chocoan	6	1	100.0
+85	Chocoan	6	1	100.0
+86	Chocoan	6	1	100.0
+87	Chocoan	6	1	0.0
+88	Chocoan	6	1	100.0
+89	Chocoan	6	1	0.0
+90	Chocoan	6	1	0.0
+91	Chocoan	6	1	100.0
+92	Chocoan	6	1	100.0
+93	Chocoan	6	1	0.0
+94	Chocoan	6	1	100.0
+95	Chocoan	6	1	0.0
+96	Chocoan	6	1	0.0
+97	Chocoan	6	1	0.0
+98	Chocoan	6	1	100.0
+99	Chocoan	6	1	100.0
+100	Chocoan	6	1	100.0
+1	Anim	8	1	0.0
+2	Anim	8	1	0.0
+3	Anim	8	2	0.0
+4	Anim	8	1	0.0
+5	Anim	8	2	0.0
+6	Anim	8	1	0.0
+7	Anim	8	1	0.0
+8	Anim	8	2	50.0
+9	Anim	8	2	0.0
+10	Anim	8	1	0.0
+11	Anim	8	1	100.0
+12	Anim	8	2	0.0
+13	Anim	8	1	0.0
+14	Anim	8	2	0.0
+15	Anim	8	1	0.0
+16	Anim	8	1	100.0
+17	Anim	8	1	0.0
+18	Anim	8	2	0.0
+19	Anim	8	1	100.0
+20	Anim	8	1	0.0
+21	Anim	8	1	0.0
+22	Anim	8	2	50.0
+23	Anim	8	2	50.0
+24	Anim	8	1	0.0
+25	Anim	8	2	0.0
+26	Anim	8	1	0.0
+27	Anim	8	2	0.0
+28	Anim	8	2	0.0
+29	Anim	8	1	0.0
+30	Anim	8	1	0.0
+31	Anim	8	1	0.0
+32	Anim	8	2	50.0
+33	Anim	8	2	0.0
+34	Anim	8	2	0.0
+35	Anim	8	1	0.0
+36	Anim	8	1	0.0
+37	Anim	8	2	0.0
+38	Anim	8	2	50.0
+39	Anim	8	1	0.0
+40	Anim	8	1	0.0
+41	Anim	8	1	100.0
+42	Anim	8	2	0.0
+43	Anim	8	1	0.0
+44	Anim	8	1	0.0
+45	Anim	8	2	0.0
+46	Anim	8	2	0.0
+47	Anim	8	1	0.0
+48	Anim	8	1	0.0
+49	Anim	8	1	0.0
+50	Anim	8	2	50.0
+51	Anim	8	2	0.0
+52	Anim	8	2	0.0
+53	Anim	8	1	0.0
+54	Anim	8	2	0.0
+55	Anim	8	1	0.0
+56	Anim	8	2	0.0
+57	Anim	8	2	0.0
+58	Anim	8	2	0.0
+59	Anim	8	2	0.0
+60	Anim	8	1	0.0
+61	Anim	8	1	0.0
+62	Anim	8	1	0.0
+63	Anim	8	2	0.0
+64	Anim	8	2	0.0
+65	Anim	8	2	50.0
+66	Anim	8	1	0.0
+67	Anim	8	1	0.0
+68	Anim	8	1	0.0
+69	Anim	8	2	0.0
+70	Anim	8	2	50.0
+71	Anim	8	2	0.0
+72	Anim	8	1	100.0
+73	Anim	8	2	0.0
+74	Anim	8	1	0.0
+75	Anim	8	2	50.0
+76	Anim	8	1	0.0
+77	Anim	8	2	0.0
+78	Anim	8	2	0.0
+79	Anim	8	1	0.0
+80	Anim	8	1	0.0
+81	Anim	8	2	0.0
+82	Anim	8	1	0.0
+83	Anim	8	1	0.0
+84	Anim	8	1	0.0
+85	Anim	8	2	0.0
+86	Anim	8	2	0.0
+87	Anim	8	1	0.0
+88	Anim	8	1	0.0
+89	Anim	8	1	100.0
+90	Anim	8	1	0.0
+91	Anim	8	2	0.0
+92	Anim	8	1	0.0
+93	Anim	8	1	0.0
+94	Anim	8	2	0.0
+95	Anim	8	1	0.0
+96	Anim	8	2	0.0
+97	Anim	8	1	0.0
+98	Anim	8	1	0.0
+99	Anim	8	2	0.0
+100	Anim	8	1	0.0
+1	Border	6	1	0.0
+2	Border	6	1	0.0
+3	Border	6	1	0.0
+4	Border	6	1	0.0
+5	Border	6	1	0.0
+6	Border	6	1	0.0
+7	Border	6	1	0.0
+8	Border	6	1	0.0
+9	Border	6	1	100.0
+10	Border	6	1	0.0
+11	Border	6	1	0.0
+12	Border	6	1	0.0
+13	Border	6	1	0.0
+14	Border	6	1	100.0
+15	Border	6	1	100.0
+16	Border	6	1	100.0
+17	Border	6	1	0.0
+18	Border	6	1	100.0
+19	Border	6	1	100.0
+20	Border	6	1	0.0
+21	Border	6	1	0.0
+22	Border	6	1	0.0
+23	Border	6	1	0.0
+24	Border	6	1	0.0
+25	Border	6	1	0.0
+26	Border	6	1	0.0
+27	Border	6	1	100.0
+28	Border	6	1	0.0
+29	Border	6	1	100.0
+30	Border	6	1	0.0
+31	Border	6	1	0.0
+32	Border	6	1	0.0
+33	Border	6	1	100.0
+34	Border	6	1	100.0
+35	Border	6	1	100.0
+36	Border	6	1	100.0
+37	Border	6	1	100.0
+38	Border	6	1	0.0
+39	Border	6	1	0.0
+40	Border	6	1	0.0
+41	Border	6	1	0.0
+42	Border	6	1	100.0
+43	Border	6	1	0.0
+44	Border	6	1	0.0
+45	Border	6	1	0.0
+46	Border	6	1	0.0
+47	Border	6	1	0.0
+48	Border	6	1	100.0
+49	Border	6	1	100.0
+50	Border	6	1	0.0
+51	Border	6	1	0.0
+52	Border	6	1	0.0
+53	Border	6	1	0.0
+54	Border	6	1	0.0
+55	Border	6	1	100.0
+56	Border	6	1	0.0
+57	Border	6	1	0.0
+58	Border	6	1	100.0
+59	Border	6	1	100.0
+60	Border	6	1	100.0
+61	Border	6	1	0.0
+62	Border	6	1	100.0
+63	Border	6	1	0.0
+64	Border	6	1	0.0
+65	Border	6	1	0.0
+66	Border	6	1	0.0
+67	Border	6	1	0.0
+68	Border	6	1	0.0
+69	Border	6	1	100.0
+70	Border	6	1	0.0
+71	Border	6	1	0.0
+72	Border	6	1	0.0
+73	Border	6	1	0.0
+74	Border	6	1	0.0
+75	Border	6	1	0.0
+76	Border	6	1	100.0
+77	Border	6	1	0.0
+78	Border	6	1	0.0
+79	Border	6	1	0.0
+80	Border	6	1	100.0
+81	Border	6	1	0.0
+82	Border	6	1	0.0
+83	Border	6	1	0.0
+84	Border	6	1	100.0
+85	Border	6	1	0.0
+86	Border	6	1	100.0
+87	Border	6	1	0.0
+88	Border	6	1	0.0
+89	Border	6	1	0.0
+90	Border	6	1	0.0
+91	Border	6	1	0.0
+92	Border	6	1	0.0
+93	Border	6	1	0.0
+94	Border	6	1	100.0
+95	Border	6	1	0.0
+96	Border	6	1	0.0
+97	Border	6	1	0.0
+98	Border	6	1	0.0
+99	Border	6	1	0.0
+100	Border	6	1	100.0
