@@ -1,7 +1,7 @@
 """
 Module for running the experiments for Automated Language Affiliation.
 """
-from ala.data import convert_data, load_data, concept2vec, concept2featurevec, get_db
+from ala.data import convert_data, load_data, concept2vec, concept2featurevec, get_db, get_other
 from ala.utils import write_table, main
 from ala.model import run_model, TrainConfig
 
@@ -20,7 +20,13 @@ def run_ala(args):
     "pume1238", "taus1253", "urar1246", "wara1303", "kwaz1243", "trum1247",
     "kunz1244", "puel1244", "yama1264", "anda1286", "cayu1262", "iton1250",
     "kano1245", "muni1258", "pira1253", "yura1255", "cani1243", "mapu1245",
-    "cara1273", "puqu1242", "moch1259",
+    "cara1273",
+    # Puquina
+    "puqu1242",
+    # Mochica
+    "moch1259",
+    # Yanomamic
+    "nina1238", "sanu1240", "yano1261", "yano1262",
     # Peba-Yagua
     'yagu1244', 'peba1243', 'yame1242',
     # Zaparoan
@@ -30,16 +36,18 @@ def run_ala(args):
     # Cahuapanan
     "jebe1250", "chay1248",
     # Arawan
-    "jama1261",
+    "jama1261", "paum1247", "suru1263", "culi1244", "jara1276", "deni1241", "bana1307", "arua1263",
     # Harakmbut
-    "amar1274"
+    "amar1274", "sapi1239", "toye1240", "aras1241",
+    # Katukinan
+    "kata1270", "kana1291"
     ]
 
-    # small_fams = ["Zaparoan"]
-    small_fams = []
-    wl, families = load_data('lexibank', args.minimum, args.experiment, conceptlist, small_fams=small_fams)
+    small_fams = [] # ["Arawan"]
 
-    lb_conv = concept2featurevec(get_db('data/lexibank_old.sqlite3'), conceptlist)
+    # Load Lexibank
+    wl, families = load_data('lexibank', args.minimum, args.experiment, conceptlist, small_fams=small_fams)
+    lb_conv = concept2vec(get_db('data/lexibank.sqlite3'), conceptlist)
 
     data = convert_data(wl, families, lb_conv, load='lexical')
 
@@ -51,7 +59,7 @@ def run_ala(args):
 
     # Only write overall results if not runnings the experiment
     if args.experiment is False:
-        write_table('lexibank_new', result_per_fam)
+        write_table('lexibank', result_per_fam)
 
     # Only write 'experiments_' results in the corresponding setting
     if args.experiment:

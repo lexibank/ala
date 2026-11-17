@@ -13,9 +13,9 @@ datasets = [
     #"bl_asjp-holm-max",
     #"bl_lb-swa-100-max",
     #"asjp",
-    #"grambank",
-    #"lexibank",
-    #"combined"
+    "grambank",
+    "lexibank",
+    "combined"
 
     # Conceptlist Comparison
     # "lexibank_starostin",
@@ -24,13 +24,15 @@ datasets = [
     # "lexibank_tadmor100"
 
     # Lexibank features
-    "lexibank_cons_1",
-    "lexibank_cons_2",
-    "lexibank_feature_cons_1",
-    "lexibank_feature_cons_2",
-    "lexibank_feature_vowels_2",
-    "lexibank_features_2",
-    "lexibank_features_4"
+    # "lexibank_cons_1",
+    # "lexibank_cons_2",
+    # "lexibank_feature_cons_1",
+    # "lexibank_feature_cons_2",
+    # "lexibank_feature_vowels_2",
+    # "lexibank_features_2",
+    # "lexibank_features_4",
+    # "lexibank_sca_1",
+    # "lexibank_sca_2"
     ]
 
 methods = {
@@ -53,7 +55,9 @@ methods = {
         "lexibank_feature_cons_2": "Two Consonants (Features)",
         "lexibank_features_2": "Two Segments (Features)",
         "lexibank_features_4": "Four Segments (Features)",
-        "lexibank_feature_vowels_2": "Two Vowels (Features)"
+        "lexibank_feature_vowels_2": "Two Vowels (Features)",
+        "lexibank_sca_2": "Two Consonants (SCA)",
+        "lexibank_sca_1": "One Consonant (SCA)"
         }
 
 # Compute avg per run
@@ -93,11 +97,6 @@ for ds in datasets:
     filtered_data[ds] = sorted_vals[lower_idx:upper_idx]
 
 filtered_data = dict(sorted(filtered_data.items(), key=lambda item: statistics.mean(item[1])))
-
-# for ds in datasets:
-#     # print(filtered_data[ds])
-#     print(ds, statistics.mean(filtered_data[ds]))
-print(filtered_data)
 
 plt.clf()
 fig, axs = plt.subplots(1, 1, layout="constrained", figsize=(12, 4))

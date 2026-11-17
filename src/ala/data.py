@@ -51,7 +51,8 @@ WHERE
     AND
   f.cldf_languageReference = l.cldf_id
     AND
-  c.Word_Number >= 20;
+  c.Word_Number >= 20
+  ;
 """
 
 CAR_QUERY = """
@@ -198,6 +199,7 @@ def get_other(mode, data_path=None):
     db.execute(select_queries[mode])
 
     for idx, lidx, glottocode, family, concept, tokens, cog, size in tqdm.tqdm(db.fetchall()):
+        # print(glottocode, family, concept, tokens)
         wordlists[glottocode][lidx, size][idx] = [glottocode, family, concept, tokens, lidx, cog]
 
     # retrieve best glottocodes
@@ -379,7 +381,6 @@ def get_lb(conceptlist, path="data/lexibank.sqlite3"):
 
 
 def convert_data(wordlists, families, converter, load="lexical"):
-    """Converts data into one-hot vectors."""
     fam2idx = {fam: i for i, fam in enumerate(families)}
     all_languages = defaultdict()
 
@@ -411,11 +412,11 @@ def load_data(database, threshold, experiment=False, conceptlist='Swadesh-1955-1
     # asjp_data = get_other(mode="asjp")
 
     # Get intersection of datasets
-    # if experiment is False:
-    #     common_languages = [lng for lng in lb if lng in gb] # and lng in asjp_data]
+    if experiment is False:
+        common_languages = [lng for lng in lb if lng in gb] # and lng in asjp_data]
 
-    #     gb = {k: v for k, v in gb.items() if k in common_languages}
-    #     lb = {k: v for k, v in lb.items() if k in common_languages}
+        gb = {k: v for k, v in gb.items() if k in common_languages}
+        lb = {k: v for k, v in lb.items() if k in common_languages}
 
     data = lb if database == 'lexibank' else gb if database == 'grambank' else None #asjp_data
 
