@@ -108,4 +108,4 @@ for i, ds in enumerate(filtered_data):
 plt.yticks([i * 0.5 + 1 for i in range(len(datasets))],
            [methods[d] for d in filtered_data], fontsize=15)
 plt.xlim(0, 100)
-plt.savefig(Path(__file__).parent / "plots" / "violin-scores.pdf")
+plt.savefig(Path(__file__).parent / "plots" / "violin-scores-comp.pdf")
